@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080b12">
+<title>AI投資予報・資産分析システム</title>
+<style>
+:root{color-scheme:dark;--bg:#080b12;--panel:#111827;--line:#263244;--gold:#e5bd68;--muted:#9aa8ba;--up:#55d6a0;--down:#ff7885}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#1b2940 0,var(--bg) 48%);color:#f4f6fa;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:20px 14px 40px}
+main{max-width:920px;margin:auto}header{text-align:center;padding:14px 0 22px}h1{font-size:clamp(21px,5vw,30px);letter-spacing:.08em;margin:0;color:var(--gold)}header p{color:var(--muted);font-size:13px;margin:9px 0 0}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 14px;color:var(--muted);font-size:12px}button{background:linear-gradient(135deg,#e9ca83,#b88a39);border:0;border-radius:9px;padding:11px 16px;color:#16120a;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.card,.section{background:linear-gradient(150deg,#151f30,#0e1521);border:1px solid var(--line);border-radius:14px;padding:15px;min-width:0}.name{font-size:14px;color:#dbe3ef;font-weight:700}.price{font-size:22px;font-weight:750;margin:12px 0 5px;overflow-wrap:anywhere}.change{font-size:12px;color:var(--muted)}.prob{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:13px}.prob strong{font-size:21px;color:var(--gold);display:block;margin-top:4px}.periods{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}.periods span{background:#202c3d;border-radius:6px;padding:5px 7px;font-size:11px;color:#dce5f2}.section{margin-top:14px}.section h2{font-size:15px;color:var(--gold);margin:0 0 12px}.indicators{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.indicator{background:#0b111b;border-radius:9px;padding:10px}.indicator b{display:block;font-size:12px}.indicator span{font-size:12px;color:var(--muted);display:block;margin-top:6px;overflow-wrap:anywhere}.news{padding:10px 0;border-top:1px solid var(--line);font-size:13px;line-height:1.55}.news:first-of-type{border-top:0}.news small{display:block;color:var(--muted);margin-top:4px}.reason{font-size:12px;line-height:1.6;color:#c1ccda;margin-top:10px}.up{color:var(--up)}.dn{color:var(--down)}.note{color:var(--muted);font-size:11px;line-height:1.6;margin-top:14px}.status{color:var(--muted);font-size:11px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.indicators{grid-template-columns:repeat(2,1fr)}.price{font-size:25px}.toolbar{align-items:flex-start}}
+</style>
+</head>
+<body><main>
+<header><h1>AI INVESTMENT FORECAST</h1><p>世界経済ニュース × マーケット分析｜投資判断を補助する予測システム</p></header>
+<div class="toolbar"><span id="updated">データ取得準備中</span><button id="refresh">最新情報に更新</button></div>
+<div class="grid" id="markets">
+<div class="card"><div class="name">FANG+</div><div class="price">取得中…</div></div>
+<div class="card"><div class="name">日経225</div><div class="price">取得中…</div></div>
+<div class="card"><div class="name">TOPIX</div><div class="price">取得中…</div></div>
+</div>
+<section class="section"><h2>主要マーケット・経済指標</h2><div class="indicators" id="indicators">
+<div class="indicator"><b>S&amp;P 500</b><span>取得中</span></div><div class="indicator"><b>NASDAQ</b><span>取得中</span></div><div class="indicator"><b>半導体 ETF</b><span>取得中</span></div><div class="indicator"><b>ドル / 円</b><span>取得中</span></div><div class="indicator"><b>WTI 原油</b><span>取得中</span></div>
+</div></section>
+<section class="section"><h2>世界経済ニュース分析</h2><div id="news"><div class="status">ニュースを取得しています…</div></div></section>
+<section class="section"><h2>予測の見方</h2><div class="reason">上昇確率は、直近の価格変化と関連市場の動きを使った簡易モデルの推定値です。金利・為替・半導体/AI・日本経済・地政学・原油に関するニュースを補助材料として表示します。確率は利益や上昇を保証するものではありません。</div></section>
+<div class="note">更新目安：5分ごと。市場休場中は最新取引日の価格が表示されます。データ提供元への接続制限や取得失敗時は「取得不可」と表示し、古い数値を最新値として扱いません。ニュースの取得・内容分析には外部サービスを利用します。</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const assets=[
+{name:'FANG+',ticker:'^NYFANG',fallback:['FANG+','NYFANG']},
+{name:'日経225',ticker:'^N225'},
+{name:'TOPIX',ticker:'^TOPX'}
+];
+const indicators=[
+{name:'S&P 500',ticker:'^GSPC'},{name:'NASDAQ',ticker:'^IXIC'},{name:'半導体 ETF',ticker:'SOXX'},{name:'ドル / 円',ticker:'JPY=X'},{name:'WTI 原油',ticker:'CL=F'}
+];
+const fmt=n=>Number(n).toLocaleString('ja-JP',{maximumFractionDigits:2});
+async function quote(ticker){
+const u='https://query1.finance.yahoo.com/v8/finance/chart/'+encodeURIComponent(ticker)+'?range=3mo&interval=1d';
+const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
+const j=await r.json(),x=j.chart&&j.chart.result&&j.chart.result[0];if(!x)throw Error('データなし');
+const q=x.indicators.quote[0],cl=q.close.filter(v=>v!=null);if(cl.length<2)throw Error('価格不足');
+const last=cl[cl.length-1],prev=cl[cl.length-2],first=cl[Math.max(0,cl.length-6)];
+return {price:last,change:(last/prev-1)*100,week:(last/first-1)*100,date:new Date(x.timestamp[x.timestamp.length-1]*1000).toLocaleString('ja-JP')};
+}
+function estimate(a,related,headlines){
+let score=Math.max(-2,Math.min(2,a.week*0.32));
+for(const r of related)if(r)score+=Math.max(-1,Math.min(1,r.change*0.08));
+const words={positive:['上昇','好調','利下げ','成長','需要増','過去最高','合意','回復','beat','surge','growth','rally','AI投資'],negative:['下落','急落','インフレ','利上げ','関税','戦争','緊張','景気後退','減速','懸念','miss','selloff','sanction']};
+let pos=0,neg=0;for(const h of headlines){const s=h.toLowerCase();if(words.positive.some(w=>s.includes(w.toLowerCase())))pos++;if(words.negative.some(w=>s.includes(w.toLowerCase())))neg++}
+score+=Math.max(-1,Math.min(1,(pos-neg)*0.12));
+const p=Math.round(Math.max(35,Math.min(75,50+score*5)));
+return {day:Math.max(35,Math.min(75,p+Math.round(score*1.5))),week:p,month:Math.max(35,Math.min(75,Math.round(50+score*3.2))),score};
+}
+function renderCard(asset,data,related,headlines){
+if(!data)return '<div class="card"><div class="name">'+asset.name+'</div><div class="price">取得不可</div><div class="change">価格データを取得できません</div></div>';
+const e=estimate(data,related,headlines),cls=data.change>=0?'up':'dn';
+return '<div class="card"><div class="name">'+asset.name+'</div><div class="price">'+fmt(data.price)+'</div><div class="change '+cls+'">'+(data.change>=0?'+':'')+data.change.toFixed(2)+'%（前日比）</div><div class="prob">上昇確率<strong>'+e.day+'%</strong><div class="periods"><span>1週間 '+e.week+'%</span><span>1か月 '+e.month+'%</span></div></div><div class="reason">判断材料：直近5営業日の値動き、米国株・半導体・為替などの関連市場、取得できたニュース見出し。<br>簡易推定であり、リアルタイムAIによる個別ニュースの深層分析ではありません。</div></div>';
+}
+async function getNews(){
+try{const url='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent('https://news.google.com/rss/search?q=global+economy+markets+Federal+Reserve+Japan+semiconductor+AI&hl=en-US&gl=US&ceid=US:en');
+const r=await fetch(url);if(!r.ok)throw Error('news HTTP');const j=await r.json();if(!j.items)throw Error('news empty');
+return j.items.slice(0,8).map(x=>({title:x.title,link:x.link,date:x.pubDate}));
+}catch(e){return []}
+}
+async function update(){
+$('updated').textContent='市場データ・ニュースを取得中…';$('refresh').disabled=true;
+const results=await Promise.all([...assets,...indicators].map(async a=>{try{return await quote(a.ticker)}catch(e){return null}}));
+const market=results.slice(0,3),other=results.slice(3);
+const news=await getNews(),heads=news.map(n=>n.title);
+$('markets').innerHTML=assets.map((a,i)=>renderCard(a,market[i],[other[0],other[1],other[2],other[3]],heads)).join('');
+$('indicators').innerHTML=indicators.map((a,i)=>'<div class="indicator"><b>'+a.name+'</b><span>'+(other[i]?fmt(other[i].price)+' ('+(other[i].change>=0?'+':'')+other[i].change.toFixed(2)+'%)':'取得不可')+'</span></div>').join('');
+$('news').innerHTML=news.length?news.map(n=>'<div class="news"><a href="'+n.link+'" target="_blank" rel="noopener" style="color:#e7edf6;text-decoration:none">'+n.title+'</a><small>'+n.date+'</small></div>').join(''):'<div class="status">ニュースを取得できません。通信環境または提供元の制限を確認してください。</div>';
+const ok=results.filter(Boolean).length;
+$('updated').textContent='更新：'+new Date().toLocaleString('ja-JP')+'｜価格データ '+ok+'/'+results.length+' 指標取得';
+$('refresh').disabled=false;
+}
+$('refresh').addEventListener('click',update);update();setInterval(update,300000);
+</script></body></html>
