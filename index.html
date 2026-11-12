@@ -126,7 +126,7 @@ function forecast(asset,own,quotes,news){
 }
 function renderAsset(asset,quotes,news){
  const own=quotes[asset.id],f=forecast(asset,own,quotes,news);
- const p=f.probs.map(x=>'<div class="prob"><small>'+['翌営業日','1週間','1か月'][f.probs.indexOf(x)]+'</small><b>'+x+'%</b></div>').join('');
+ const p=f.probs.map((x,i)=>'<div class="prob"><small>'+['翌営業日','1週間','1か月'][i]+'</small><b>'+x+'%</b></div>').join('');
  const reason=[...f.positives.map(x=>'<li class="good">上昇要因：'+x.name+'</li>'),...f.negatives.map(x=>'<li class="bad">下落要因：'+x.name+'</li>')];
  if(!reason.length)reason.push('<li class="neutral">方向感を示す材料が不足。中立寄りの推定です。</li>');
  const conf=Math.round(f.quality*100);
