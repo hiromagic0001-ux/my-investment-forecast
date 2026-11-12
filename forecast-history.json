@@ -1,0 +1,60 @@
+[
+  {
+    "date": "2026-11-13",
+    "savedAt": "2026-11-12T23:29:52.171Z",
+    "results": [
+      {
+        "id": "fang",
+        "name": "NYSE FANG+（参考）",
+        "basePrice": 17571.81640625,
+        "baseDate": "2026-11-12",
+        "probability": 55.4,
+        "direction": "上昇",
+        "rangeLow": 16993.619702944896,
+        "rangeHigh": 18150.013109555104,
+        "actual": null,
+        "actualUp": null,
+        "actualDate": null,
+        "hit": null,
+        "quality": 0.7749999999999999,
+        "score": 0.40754434651110366,
+        "source": "GitHub Actions daily model"
+      },
+      {
+        "id": "nikkei",
+        "name": "日経225",
+        "basePrice": 61248.58984375,
+        "baseDate": "2026-11-11",
+        "probability": 51.5,
+        "direction": "上昇",
+        "rangeLow": 59133.026370860316,
+        "rangeHigh": 63364.153316639684,
+        "actual": null,
+        "actualUp": null,
+        "actualDate": null,
+        "hit": null,
+        "quality": 0.7749999999999999,
+        "score": 0.10947457031684422,
+        "source": "GitHub Actions daily model"
+      },
+      {
+        "id": "topix",
+        "name": "TOPIX（1306連動ETF参考）",
+        "basePrice": 414.29998779296875,
+        "baseDate": "2026-11-12",
+        "probability": 51.9,
+        "direction": "上昇",
+        "rangeLow": 401.9937305423717,
+        "rangeHigh": 426.6062450435658,
+        "actual": null,
+        "actualUp": null,
+        "actualDate": null,
+        "hit": null,
+        "quality": 0.7749999999999999,
+        "score": 0.1440080722773176,
+        "source": "GitHub Actions daily model"
+      }
+    ],
+    "newsCount": 5
+  }
+]
