@@ -7,7 +7,7 @@ const assets = [
 ];
 const indicators = [
   ["us","^GSPC"],["nasdaq","^IXIC"],["semi","SOXX"],["nvda","NVDA"],
-  ["fx","JPY=X"],["rates","^TNX"],["oil","CL=F"],["risk","^VIX"]
+  ["fx","JPY=X"],["rates","^TNX"],["oil","CL=F"],["risk","^VIX"],["japan","1306.T"]
 ];
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const jstDate=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Tokyo",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
