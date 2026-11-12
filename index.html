@@ -209,6 +209,7 @@ function forecast(asset,own,quotes,news){
 }
 function renderAsset(asset,quotes,news){
  const own=quotes[asset.id],f=forecast(asset,own,quotes,news);
+ if(!own||f.quality<.4){const missing=Object.keys(asset.exp).filter(id=>!quotes[id]).map(id=>indicators.find(x=>x.id===id)?.name||id);return '<article class="card"><h2>'+asset.name+'</h2><div class="price">予測保留</div><div class="change">必要な市場データが不足しているため、確率を表示しません。</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>—</b></div><div class="prob"><small>1週間</small><b>—</b></div><div class="prob"><small>1か月</small><b>—</b></div></div><div class="confidence">データ充足度 '+Math.round(f.quality*100)+'%</div><ul class="reasons"><li class="bad">不足データ：'+(missing.join('・')||'指数価格')+'</li></ul></article>';}
  const p=f.probs.map((x,i)=>'<div class="prob"><small>'+['翌営業日','1週間','1か月'][i]+'</small><b style="color:var(--up)">上昇 '+x+'%</b><small style="color:var(--dn);margin-top:3px">下落 '+(100-x)+'%</small></div>').join('');
  const reason=[...f.positives.map(x=>'<li class="good">上昇要因：'+x.name+'</li>'),...f.negatives.map(x=>'<li class="bad">下落要因：'+x.name+'</li>')];
  if(!reason.length)reason.push('<li class="neutral">方向感を示す材料が不足。中立寄りの推定です。</li>');
@@ -221,7 +222,7 @@ function renderNews(news){
 }
 async function update(){
  $('refresh').disabled=true;$('status').textContent='市場価格・ニュースを収集中…';
- const qjobs=[...indicators.map(async x=>[x.id,await quote(x.ticker)]),...assets.map(async x=>[x.id,await quote(x.ticker)])];
+ const qjobs=[...indicators.map(async x=>{try{return [x.id,await quote(x.ticker)]}catch(e){throw Error(x.name+' ('+x.ticker+'): '+(e.message||e))}}),...assets.map(async x=>{try{return [x.id,await quote(x.ticker)]}catch(e){throw Error(x.name+' ('+x.ticker+'): '+(e.message||e))}})];
  const settled=await Promise.allSettled(qjobs),quotes={},quoteErrors=[];
  settled.forEach(x=>{if(x.status==='fulfilled')quotes[x.value[0]]=x.value[1];else quoteErrors.push(String(x.reason?.message||x.reason))});
  const feedsResult=await Promise.allSettled(feeds.map(loadFeed));
@@ -232,7 +233,7 @@ async function update(){
  $('indicators').innerHTML=indicators.map(x=>{const q=quotes[x.id];return '<div class="factor"><b>'+x.name+'</b><span>'+(q?fmt(q.price)+' ('+pct(q.week)+' / 5日)':'取得不可')+'</span></div>'}).join('');
  $('news').innerHTML=renderNews(unique);
  const count=Object.keys(quotes).length,total=assets.length+indicators.length;
- $('status').textContent='最終更新 '+new Date().toLocaleString('ja-JP')+'｜市場データ '+count+'/'+total+'｜ニュース '+unique.length+'件'+(quoteErrors.length?'｜株価取得エラー：'+quoteErrors.slice(0,2).join(' / '):'');
+ $('status').textContent='最終更新 '+new Date().toLocaleString('ja-JP')+'｜市場データ '+count+'/'+total+'｜ニュース '+unique.length+'件'+(quoteErrors.length?'｜株価取得エラー：'+quoteErrors.slice(0,3).join(' / '):'');
  $('refresh').disabled=false;
 }
 $('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',validateSavedForecasts);renderValidation();update();setInterval(update,300000);
