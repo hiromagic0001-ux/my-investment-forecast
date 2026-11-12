@@ -3,7 +3,7 @@ import fs from "node:fs/promises";
 const assets = [
   {id:"fang",name:"NYSE FANG+（参考）",ticker:"^NYFANG",exp:{us:.22,nasdaq:.34,semi:.42,nvda:.28,fx:.08,rates:-.34,oil:-.04,risk:.22,japan:.02}},
   {id:"nikkei",name:"日経225",ticker:"^N225",exp:{us:.23,nasdaq:.20,semi:.34,nvda:.10,fx:.32,rates:-.10,oil:-.08,risk:.14,japan:.20}},
-  {id:"topix",name:"TOPIX",ticker:"^TOPX",exp:{us:.14,nasdaq:.10,semi:.16,nvda:.05,fx:.22,rates:-.10,oil:-.07,risk:.13,japan:.32}}
+  {id:"topix",name:"TOPIX",ticker:"998405.T",exp:{us:.14,nasdaq:.10,semi:.16,nvda:.05,fx:.22,rates:-.10,oil:-.07,risk:.13,japan:.32}}
 ];
 const indicators = [
   ["us","^GSPC"],["nasdaq","^IXIC"],["semi","SOXX"],["nvda","NVDA"],
