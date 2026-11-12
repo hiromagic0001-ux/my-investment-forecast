@@ -23,7 +23,7 @@
 
 <section class="panel" id="validationPanel">
  <h3>予測記録・引け後検証・予測的中率</h3>
- <p class="legend">毎営業日7:00以降、アプリが開かれて市場データを取得すると予測を自動保存します。後日、新しい確定終値を取得した際に実績も自動保存・照合します。未検証は的中率に含めません。現在の保存先はこの端末のブラウザ内です。</p>
+ <p class="legend">毎営業日7:00（日本時間）にGitHub Actionsが予測を作成し、サーバー公開ファイルへ保存します。翌営業日以降の新しい終値で自動検証します。アプリを閉じていても定期処理されます。端末内の手動記録も併用します。</p>
  <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
   <button id="saveForecast">今日の予測を手動保存</button>
   <button id="validateForecast" style="background:#26364a;color:#eef4ff;border:1px solid #49617e">引け後に検証</button>
@@ -41,14 +41,15 @@ let latestQuotes={},latestNews=[],autoValidationRunning=false;
 const HISTORY_KEY='aiInvestmentForecastHistory_v1';
 const jstDate=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 function readHistory(){try{return JSON.parse(localStorage.getItem(HISTORY_KEY)||'[]')}catch(e){return []}}
-function writeHistory(rows){localStorage.setItem(HISTORY_KEY,JSON.stringify(rows.slice(-180)))}
+function writeHistory(rows){localStorage.setItem(HISTORY_KEY,JSON.stringify(rows.slice(-365)))}
+async function loadRemoteHistory(){try{const r=await fetch('./forecast-history.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)return;const remote=await r.json();if(!Array.isArray(remote))return;const merged=new Map(remote.map(x=>[x.date,x]));for(const x of readHistory())if(!merged.has(x.date))merged.set(x.date,x);writeHistory([...merged.values()].sort((a,b)=>a.date.localeCompare(b.date)));renderValidation();}catch(e){console.warn('サーバー保存履歴の取得に失敗しました',e)}}
 function renderValidation(){
  const rows=readHistory();
  const done=rows.flatMap(r=>r.results||[]);
  const valid=done.filter(x=>x.actual!==null&&x.actual!==undefined);
  const correct=valid.filter(x=>x.hit).length;
  const accuracy=valid.length?correct/valid.length*100:null;
- const brier=valid.length?valid.reduce((s,x)=>s+Math.pow(x.probability-(x.actualUp?1:0),2),0)/valid.length:null;
+ const brier=valid.length?valid.reduce((s,x)=>s+Math.pow((x.probability/100)-(x.actualUp?1:0),2),0)/valid.length:null;
  const byIndex=assets.map(a=>{
   const sample=valid.filter(x=>x.id===a.id);
   const hits=sample.filter(x=>x.hit===true).length;
@@ -262,6 +263,6 @@ async function update(){
  $('refresh').disabled=false;
  await autoSaveAndValidate();
 }
-$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',validateSavedForecasts);renderValidation();update();setInterval(update,300000);setInterval(autoSaveAndValidate,60000);
+$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',validateSavedForecasts);renderValidation();loadRemoteHistory();update();setInterval(update,300000);setInterval(autoSaveAndValidate,60000);
 </script></body></html>
 <!-- deploy-sync: 2026-11-12 22:10 JST -->
