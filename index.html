@@ -23,9 +23,9 @@
 
 <section class="panel" id="validationPanel">
  <h3>予測記録・引け後検証・予測的中率</h3>
- <p class="legend">朝の予測（翌営業日の上昇・下落方向）を保存し、引け後の実績と照合します。全指数合計と日経225・TOPIX・NYSE FANG+別の方向的中率、検証件数を表示します。予測を保存した日以降の確定終値だけを検証対象にし、未検証は的中率に含めません。記録はこの端末内に保存します。</p>
+ <p class="legend">毎営業日7:00以降、アプリが開かれて市場データを取得すると予測を自動保存します。後日、新しい確定終値を取得した際に実績も自動保存・照合します。未検証は的中率に含めません。現在の保存先はこの端末のブラウザ内です。</p>
  <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
-  <button id="saveForecast">今日の予測を保存</button>
+  <button id="saveForecast">今日の予測を手動保存</button>
   <button id="validateForecast" style="background:#26364a;color:#eef4ff;border:1px solid #49617e">引け後に検証</button>
  </div>
  <div id="validationStatus" class="legend">予測記録はまだありません。</div>
@@ -37,7 +37,7 @@
 </main>
 <script>
 const $=id=>document.getElementById(id);
-let latestQuotes={},latestNews=[];
+let latestQuotes={},latestNews=[],autoValidationRunning=false;
 const HISTORY_KEY='aiInvestmentForecastHistory_v1';
 const jstDate=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 function readHistory(){try{return JSON.parse(localStorage.getItem(HISTORY_KEY)||'[]')}catch(e){return []}}
@@ -235,6 +235,15 @@ function renderNews(news){
  if(!news.length)return '<div class="empty">ニュース取得不可。ニュースを取得できない間はニュース要因を予測に反映していません。</div>';
  return news.slice(0,18).map(n=>'<div class="news"><a href="'+n.link+'" target="_blank" rel="noopener">'+n.title+'</a><span class="impact">'+n.label+'｜'+(n.score>0?'強気':n.score<0?'弱気':'中立')+'</span><small>'+n.date+'</small></div>').join('');
 }
+async function autoSaveAndValidate(){
+ const hour=Number(new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Tokyo',hour:'2-digit',hourCycle:'h23'}).format(new Date()));
+ const weekday=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Tokyo',weekday:'short'}).format(new Date());
+ if(hour<7||weekday==='Sat'||weekday==='Sun')return;
+ if(assets.every(a=>latestQuotes[a.id]))saveTodayForecast();
+ if(autoValidationRunning)return;
+ autoValidationRunning=true;
+ try{await validateSavedForecasts();}finally{autoValidationRunning=false;}
+}
 async function update(){
  $('refresh').disabled=true;$('status').textContent='市場価格・ニュースを収集中…';
  const qjobs=[...indicators.map(async x=>{try{return [x.id,await quote(x.ticker)]}catch(e){throw Error(x.name+' ('+x.ticker+'): '+(e.message||e))}}),...assets.map(async x=>{try{return [x.id,await quote(x.ticker)]}catch(e){throw Error(x.name+' ('+x.ticker+'): '+(e.message||e))}})];
@@ -251,7 +260,8 @@ async function update(){
  const count=Object.keys(quotes).length,total=assets.length+indicators.length;
  $('status').textContent='最終更新 '+new Date().toLocaleString('ja-JP')+'｜市場データ '+count+'/'+total+'｜ニュース '+unique.length+'件'+(quoteErrors.length?'｜株価取得エラー：'+quoteErrors.slice(0,3).join(' / '):'');
  $('refresh').disabled=false;
+ await autoSaveAndValidate();
 }
-$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',validateSavedForecasts);renderValidation();update();setInterval(update,300000);
+$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',validateSavedForecasts);renderValidation();update();setInterval(update,300000);setInterval(autoSaveAndValidate,60000);
 </script></body></html>
 <!-- deploy-sync: 2026-11-12 22:10 JST -->
