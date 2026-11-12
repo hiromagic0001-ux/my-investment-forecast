@@ -1,5 +1,9 @@
 name: Daily investment forecast
 on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - forecast-history.json
   schedule:
     # 07:00 JST Monday-Friday = 22:00 UTC Sunday-Thursday
     - cron: "0 22 * * 0-4"
