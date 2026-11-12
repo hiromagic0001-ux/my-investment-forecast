@@ -126,11 +126,11 @@ function forecast(asset,own,quotes,news){
 }
 function renderAsset(asset,quotes,news){
  const own=quotes[asset.id],f=forecast(asset,own,quotes,news);
- const p=f.probs.map((x,i)=>'<div class="prob"><small>'+['翌営業日','1週間','1か月'][i]+'</small><b>'+x+'%</b></div>').join('');
+ const p=f.probs.map((x,i)=>'<div class="prob"><small>'+['翌営業日','1週間','1か月'][i]+'</small><b style="color:var(--up)">上昇 '+x+'%</b><small style="color:var(--dn);margin-top:3px">下落 '+(100-x)+'%</small></div>').join('');
  const reason=[...f.positives.map(x=>'<li class="good">上昇要因：'+x.name+'</li>'),...f.negatives.map(x=>'<li class="bad">下落要因：'+x.name+'</li>')];
  if(!reason.length)reason.push('<li class="neutral">方向感を示す材料が不足。中立寄りの推定です。</li>');
  const conf=Math.round(f.quality*100);
- return '<article class="card"><h2>'+asset.name+'</h2><div class="price">'+(own?fmt(own.price):'取得不可')+'</div><div class="change">'+(own?'前日比 '+pct(own.day)+' ｜ 5日 '+pct(own.week)+' ｜ 20日 '+pct(own.month):'指数価格を取得できません')+'</div><div class="probrow">'+p+'</div><div class="meter"><i style="width:'+conf+'%"></i></div><div class="confidence">データ充足度 '+conf+'%｜上昇/下落の参考確率（下落は100%との差）</div><ul class="reasons">'+reason.join('')+'</ul>'+(f.news.length?'<div class="confidence">関連ニュース：'+f.news.map(n=>n.category).join(' / ')+'</div>':'')+'</article>';
+ return '<article class="card"><h2>'+asset.name+'</h2><div class="price">'+(own?fmt(own.price):'取得不可')+'</div><div class="change">'+(own?'前日比 '+pct(own.day)+' ｜ 5日 '+pct(own.week)+' ｜ 20日 '+pct(own.month):'指数価格を取得できません')+'</div><div class="probrow">'+p+'</div><div class="meter"><i style="width:'+conf+'%"></i></div><div class="confidence">データ充足度 '+conf+'%｜上昇・下落の参考確率</div><ul class="reasons">'+reason.join('')+'</ul>'+(f.news.length?'<div class="confidence">関連ニュース：'+f.news.map(n=>n.category).join(' / ')+'</div>':'')+'</article>';
 }
 function renderNews(news){
  if(!news.length)return '<div class="empty">ニュース取得不可。ニュースを取得できない間はニュース要因を予測に反映していません。</div>';
