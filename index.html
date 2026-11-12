@@ -22,8 +22,8 @@
 <section class="panel"><h3>世界経済ニュースの材料分析</h3><div id="news"><div class="empty">ニュースを取得中…</div></div></section>
 
 <section class="panel" id="validationPanel">
- <h3>予測記録・引け後検証</h3>
- <p class="legend">朝の予測を保存すると、この端末内に日付・基準価格・上昇確率・想定レンジを記録します。引け後に実績を取得して照合します。口座情報や個人情報は保存しません。</p>
+ <h3>予測記録・引け後検証・予測的中率</h3>
+ <p class="legend">朝の予測（翌営業日の上昇・下落方向）を保存し、引け後の実績と照合します。全指数合計と日経225・TOPIX・NYSE FANG+別の方向的中率、検証件数を表示します。予測を保存した日以降の確定終値だけを検証対象にし、未検証は的中率に含めません。記録はこの端末内に保存します。</p>
  <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
   <button id="saveForecast">今日の予測を保存</button>
   <button id="validateForecast" style="background:#26364a;color:#eef4ff;border:1px solid #49617e">引け後に検証</button>
@@ -49,10 +49,15 @@ function renderValidation(){
  const correct=valid.filter(x=>x.hit).length;
  const accuracy=valid.length?correct/valid.length*100:null;
  const brier=valid.length?valid.reduce((s,x)=>s+Math.pow(x.probability-(x.actualUp?1:0),2),0)/valid.length:null;
- $('validationStatus').textContent=rows.length?'保存済み予測 '+rows.length+'日分｜検証済み '+valid.length+'件':'予測記録はまだありません。';
+ const byIndex=assets.map(a=>{
+  const sample=valid.filter(x=>x.id===a.id);
+  const hits=sample.filter(x=>x.hit===true).length;
+  return {name:a.name,sample:sample.length,hits,rate:sample.length?hits/sample.length*100:null};
+ });
+ $('validationStatus').textContent=rows.length?'保存済み予測 '+rows.length+'日分｜検証済み '+valid.length+'件（翌営業日の方向予測）':'予測記録はまだありません。';
  $('validationSummary').innerHTML=[
-  ['方向的中率',accuracy===null?'—':accuracy.toFixed(1)+'%'],
-  ['検証サンプル',String(valid.length)+'件'],
+  ['全指数・方向的中率',accuracy===null?'—':accuracy.toFixed(1)+'% ('+correct+'/'+valid.length+')'],
+  ...byIndex.map(x=>[x.name+' 的中率',x.rate===null?'—（0件）':x.rate.toFixed(1)+'% ('+x.hits+'/'+x.sample+')']),
   ['Brier score',brier===null?'—':brier.toFixed(3)],
   ['対象期間',valid.length?valid.map(x=>x.date).sort()[0]+'〜'+valid.map(x=>x.date).sort().at(-1):'未検証']
  ].map(x=>'<div class="factor"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('');
