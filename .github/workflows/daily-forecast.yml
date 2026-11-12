@@ -12,7 +12,7 @@ permissions:
   contents: write
 concurrency:
   group: daily-investment-forecast
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   forecast:
     runs-on: ubuntu-latest
@@ -30,5 +30,6 @@ jobs:
             echo "No forecast changes to save."
           else
             git commit -m "Save daily investment forecast and validation"
+            git pull --rebase origin main
             git push
           fi
