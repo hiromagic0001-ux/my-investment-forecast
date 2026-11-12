@@ -63,7 +63,7 @@ function renderValidation(){
   ['対象期間',valid.length?valid.map(x=>x.date).sort()[0]+'〜'+valid.map(x=>x.date).sort().at(-1):'未検証']
  ].map(x=>'<div class="factor"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('');
  $('validationHistory').innerHTML=rows.slice().reverse().map(r=>{
-  const outcomes=(r.results||[]).map(x=>'<div class="news">'+x.name+'：予測 '+x.probability+'%（'+x.direction+'）｜想定レンジ '+Number(x.rangeLow).toLocaleString('ja-JP',{maximumFractionDigits:2})+'〜'+Number(x.rangeHigh).toLocaleString('ja-JP',{maximumFractionDigits:2})+'｜'+(x.actual===null?'未検証':(x.hit?'方向的中':'方向外れ')+'｜実績 '+Number(x.actual).toLocaleString('ja-JP',{maximumFractionDigits:2})+'（'+(x.actualUp?'上昇':'下落')+'）｜'+x.baseDate+' → '+x.actualDate)+'</div>').join('');
+  const outcomes=(r.results||[]).map(x=>'<div class="news">'+x.name+'：予測 '+x.probability+'%（'+x.direction+'）｜基準日 '+(x.baseDate||'不明')+'｜想定レンジ '+Number(x.rangeLow).toLocaleString('ja-JP',{maximumFractionDigits:2})+'〜'+Number(x.rangeHigh).toLocaleString('ja-JP',{maximumFractionDigits:2})+'｜'+(x.actual===null?'未検証':(x.hit?'方向的中':'方向外れ')+'｜実績 '+Number(x.actual).toLocaleString('ja-JP',{maximumFractionDigits:2})+'（'+(x.actualUp?'上昇':'下落')+'）｜'+x.baseDate+' → '+x.actualDate)+'</div>').join('');
   return '<div class="news"><b>'+r.date+' の予測</b><small>保存 '+r.savedAt+'｜'+(r.results||[]).filter(x=>x.actual!==null).length+'/3 指数を検証済み</small>'+outcomes+'</div>';
  }).join('')||'<div class="empty">保存された予測はありません。</div>';
 }
