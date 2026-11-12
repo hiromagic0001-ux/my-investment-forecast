@@ -12,18 +12,9 @@
 </head>
 <body><main>
 <header><h1>AI INVESTMENT FORECAST</h1><p>世界経済・金融市場・ニュースを統合したマルチファクター予報｜2026年11月12日 米国市場予想を掲載</p></header>
-<section class="panel" id="usTonightPanel">
- <h3>今夜の米国株・寄り前予想｜2026年11月12日</h3>
- <p class="legend">寄り付き前の材料を使った本日の見通し。下記は手動の総合判断で、アプリ内の自動計算値・バックテスト済み確率とは別です。</p>
- <div class="factorgrid">
-  <div class="factor"><b>S&amp;P 500</b><span class="bad">下落 60%</span><span>上昇 40%｜小幅安予想</span></div>
-  <div class="factor"><b>NASDAQ総合</b><span class="bad">下落 65%</span><span>上昇 35%｜下落予想</span></div>
-  <div class="factor"><b>NYSE FANG+</b><span class="bad">下落 70%</span><span>上昇 30%｜下落予想</span></div>
-  <div class="factor"><b>NYダウ</b><span>下落 52%</span><span>上昇 48%｜ほぼ横ばい〜小幅安</span></div>
- </div>
- <div class="legend" style="margin-top:10px"><b>主な根拠：</b>Reutersは寄り前にNASDAQ100先物−0.64%、S&amp;P500先物−0.31%、NVIDIA約−6%と報道。AI・半導体株への売り圧力と、予想を上回った米CPI・高い長期金利を警戒。一方、ダウ先物は小幅高で、全面安とは限りません。</div>
- <div class="legend">想定レンジ：S&amp;P500 −0.3〜−0.8%／NASDAQ −0.5〜−1.2%／FANG+ −0.8〜−1.8%／NYダウ −0.1〜−0.5%。予想であり保証ではありません。</div>
- <div class="legend">出典：<a href="https://www.reuters.com/business/nasdaq-futures-fall-nvidia-turmoil-rattles-ai-stocks-2026-11-12/" target="_blank" rel="noopener">Reuters・11月12日寄り前市場報道</a> ／ <a href="https://www.home.saxo/content/articles/macro/market-quick-take---nvidia-stumble-weighs-on-sentiment---12-november-2026-12112026" target="_blank" rel="noopener">Saxo・市場コメント</a></div>
+<section class="panel" id="riskBrief">
+ <h3>今夜の重要リスク・リアルタイム反映</h3>
+ <div id="riskBriefBody" class="legend">最新の指数価格とニュースを取得して評価します。</div>
 </section>
 <div class="bar"><span id="status">市場データを確認しています…</span><button id="refresh">最新情報に更新</button></div>
 <div class="cards" id="forecasts"></div>
@@ -105,14 +96,15 @@ async function validateSavedForecasts(){
 }
 
 const assets=[
- {id:'fang',name:'NYSE FANG+（参考）',ticker:'^NYFANG',exp:{us:.22,nasdaq:.34,semi:.42,fx:.08,rates:-.34,oil:-.04,risk:.22,japan:.02},queries:['FANG+ index technology stocks','Nasdaq AI semiconductor stocks']},
- {id:'nikkei',name:'日経225',ticker:'^N225',exp:{us:.23,nasdaq:.20,semi:.34,fx:.32,rates:-.10,oil:-.08,risk:.14,japan:.20},queries:['Japan economy BOJ yen Nikkei','Japan stocks semiconductor exporters']},
- {id:'topix',name:'TOPIX',ticker:'^TOPX',exp:{us:.14,nasdaq:.10,semi:.16,fx:.22,rates:-.10,oil:-.07,risk:.13,japan:.32},queries:['Japan economy BOJ corporate earnings TOPIX','Japan inflation wages economy'] }
+ {id:'fang',name:'NYSE FANG+（参考）',ticker:'^NYFANG',exp:{us:.22,nasdaq:.34,semi:.42,nvda:.28,fx:.08,rates:-.34,oil:-.04,risk:.22,japan:.02},queries:['FANG+ index technology stocks','Nasdaq AI semiconductor stocks']},
+ {id:'nikkei',name:'日経225',ticker:'^N225',exp:{us:.23,nasdaq:.20,semi:.34,nvda:.10,fx:.32,rates:-.10,oil:-.08,risk:.14,japan:.20},queries:['Japan economy BOJ yen Nikkei','Japan stocks semiconductor exporters']},
+ {id:'topix',name:'TOPIX',ticker:'^TOPX',exp:{us:.14,nasdaq:.10,semi:.16,nvda:.05,fx:.22,rates:-.10,oil:-.07,risk:.13,japan:.32},queries:['Japan economy BOJ corporate earnings TOPIX','Japan inflation wages economy'] }
 ];
 const indicators=[
  {id:'us',name:'S&P 500',ticker:'^GSPC',factor:'us'},
  {id:'nasdaq',name:'NASDAQ総合',ticker:'^IXIC',factor:'nasdaq'},
  {id:'semi',name:'半導体 SOXX',ticker:'SOXX',factor:'semi'},
+ {id:'nvda',name:'NVIDIA',ticker:'NVDA',factor:'nvda'},
  {id:'fx',name:'ドル / 円',ticker:'JPY=X',factor:'fx'},
  {id:'rates',name:'米10年金利',ticker:'^TNX',factor:'rates'},
  {id:'oil',name:'WTI原油',ticker:'CL=F',factor:'oil'},
@@ -121,6 +113,7 @@ const indicators=[
 const feeds=[
  {id:'rates',label:'金利・金融政策',q:'Federal Reserve interest rates inflation CPI Treasury yields'},
  {id:'tech',label:'AI・半導体',q:'AI semiconductor chip demand Nvidia data center technology stocks'},
+ {id:'nvda',label:'NVIDIA・AIリスク',q:'NVIDIA NVDA shares stock latest CEO resignation AI semiconductor November 2026'},
  {id:'japan',label:'日本経済・日銀',q:'Japan economy Bank of Japan yen wages inflation stocks'},
  {id:'geo',label:'地政学・貿易',q:'geopolitics trade tariffs sanctions war global markets'},
  {id:'oil',label:'原油・資源',q:'WTI crude oil OPEC supply energy prices'}
@@ -144,6 +137,7 @@ function classify(text){
  const out=[];
  if(has(['fed','federal reserve','interest rate','treasury yield','利上げ','利下げ','金利','cpi','inflation','インフレ']))out.push('rates');
  if(has(['semiconductor','chip','nvidia','ai data center','artificial intelligence','半導体','生成ai','データセンター']))out.push('tech');
+ if(has(['nvidia','nvda','エヌビディア']))out.push('nvda');
  if(has(['bank of japan','boj','japan','yen','日銀','日本','円安','円高']))out.push('japan');
  if(has(['war','tariff','sanction','geopolit','trade dispute','戦争','関税','制裁','地政学']))out.push('geo');
  if(has(['crude','oil','opec','energy','原油','石油','資源']))out.push('oil');
@@ -151,8 +145,8 @@ function classify(text){
 }
 function sentiment(text){
  const s=text.toLowerCase();
- const pos=['beat','beats','surge','growth','record high','strong demand','upgrade','deal reached','利下げ','需要増','上方修正','好調','合意','回復','最高益','増益','上昇'];
- const neg=['miss','selloff','plunge','slump','recession','downgrade','sanction','war','tariff','inflation rises','利上げ','急落','下落','景気後退','関税','制裁','戦争','インフレ加速','減益','下方修正','供給懸念'];
+ const pos=['beat','beats','surge','rally','rallies','rise','rises','rose','gain','gains','growth','record high','strong demand','upgrade','deal reached','利下げ','需要増','上方修正','好調','合意','回復','最高益','増益','上昇','反発'];
+ const neg=['miss','selloff','plunge','plunged','slump','fell','fall','drops','dropped','decline','declined','rattle','rattles','turmoil','resignation','resigns','resigned','exit','scandal','probe','investigation','recession','downgrade','sanction','war','tariff','inflation rises','利上げ','急落','下落','景気後退','関税','制裁','戦争','インフレ加速','減益','下方修正','供給懸念','懸念','売り'];
  let p=pos.filter(w=>s.includes(w)).length,n=neg.filter(w=>s.includes(w)).length;
  return clamp((p-n)*.55,-1,1);
 }
@@ -168,7 +162,7 @@ function factorValue(id,quotes){
  if(id==='fx')raw=q.week;
  if(id==='rates')raw=-q.week;
  if(id==='risk')raw=-q.week;
- const scale=id==='rates'?1.4:id==='fx'?1.2:id==='risk'?2.2:2.5;
+ const scale=id==='rates'?1.4:id==='fx'?1.2:id==='risk'?2.2:id==='nvda'?3.0:2.5;
  return clamp(raw/scale,-1,1);
 }
 function newsSignal(asset,news){
@@ -176,6 +170,7 @@ function newsSignal(asset,news){
  for(const n of news){
   let rel=0;
   if(n.category==='tech')rel=asset.id==='fang'?1.25:asset.id==='nikkei'?1.0:.55;
+  if(n.category==='nvda')rel=asset.id==='fang'?1.55:asset.id==='nikkei'?.8:.4;
   if(n.category==='rates')rel=asset.id==='fang'?1.0:asset.id==='nikkei'?.75:.7;
   if(n.category==='japan')rel=asset.id==='fang'?.15:asset.id==='nikkei'?.8:1.0;
   if(n.category==='geo')rel=.65;
@@ -196,6 +191,8 @@ function forecast(asset,own,quotes,news){
  for(const [id,exp] of Object.entries(asset.exp)){
   const v=factorValue(id,quotes);if(v!==null&&Math.abs(exp)>.01)parts.push({name:indicators.find(x=>x.id===id)?.name||id,v:v*exp*.42});
  }
+ const nvda=quotes.nvda;
+ if(nvda&&asset.exp.nvda)parts.push({name:'NVIDIA当日変動',v:clamp(nvda.day/4,-1,1)*asset.exp.nvda*.7});
  parts.push({name:'ニュース材料',v:ns.score*.22});
  const score=clamp(parts.reduce((s,p)=>s+p.v,0),-.85,.85);
  const coverage=Object.keys(asset.exp).filter(id=>quotes[id]).length/Object.keys(asset.exp).length;
@@ -210,11 +207,24 @@ function forecast(asset,own,quotes,news){
 function renderAsset(asset,quotes,news){
  const own=quotes[asset.id],f=forecast(asset,own,quotes,news);
  if(!own||f.quality<.4){const missing=Object.keys(asset.exp).filter(id=>!quotes[id]).map(id=>indicators.find(x=>x.id===id)?.name||id);return '<article class="card"><h2>'+asset.name+'</h2><div class="price">予測保留</div><div class="change">必要な市場データが不足しているため、確率を表示しません。</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>—</b></div><div class="prob"><small>1週間</small><b>—</b></div><div class="prob"><small>1か月</small><b>—</b></div></div><div class="confidence">データ充足度 '+Math.round(f.quality*100)+'%</div><ul class="reasons"><li class="bad">不足データ：'+(missing.join('・')||'指数価格')+'</li></ul></article>';}
- const p=f.probs.map((x,i)=>'<div class="prob"><small>'+['翌営業日','1週間','1か月'][i]+'</small><b style="color:var(--up)">上昇 '+x.toFixed(1)+'%</b><small style="color:var(--dn);margin-top:3px">下落 '+(100-x).toFixed(1)+'%</small></div>').join('');
+ const p=f.probs.map((x,i)=>'<div class="prob"><small>'+['翌営業日','1週間','1か月'][i]+'</small><b style="color:'+(x>=50?'var(--up)':'var(--dn)')+'">'+(x>=50?'上昇 ':'下落 ')+Math.max(x,100-x).toFixed(1)+'%</b><small style="color:var(--muted);margin-top:3px">上昇 '+x.toFixed(1)+'%</small></div>').join('');
  const reason=[...f.positives.map(x=>'<li class="good">上昇要因：'+x.name+'</li>'),...f.negatives.map(x=>'<li class="bad">下落要因：'+x.name+'</li>')];
  if(!reason.length)reason.push('<li class="neutral">方向感を示す材料が不足。中立寄りの推定です。</li>');
  const conf=Math.round(f.quality*100);
  return '<article class="card"><h2>'+asset.name+'</h2><div class="price">'+(own?fmt(own.price):'取得不可')+'</div><div class="change">'+(own?'前日比 '+pct(own.day)+' ｜ 5日 '+pct(own.week)+' ｜ 20日 '+pct(own.month):'指数価格を取得できません')+'</div><div class="probrow">'+p+'</div><div class="meter"><i style="width:'+conf+'%"></i></div><div class="confidence">データ充足度 '+conf+'%｜モデルスコア '+(f.score*100).toFixed(2)+'｜上昇・下落の参考確率</div><ul class="reasons">'+reason.join('')+'</ul>'+(f.news.length?'<div class="confidence">関連ニュース：'+f.news.map(n=>n.category).join(' / ')+'</div>':'')+'</article>';
+}
+function renderRiskBrief(quotes,news){
+ const nv=quotes.nvda,semi=quotes.semi,nas=quotes.nasdaq,fang=quotes.fang;
+ const nvidiaNews=news.filter(n=>n.category==='nvda').slice(0,3);
+ const lines=[];
+ if(nv)lines.push('NVIDIA：前日比 '+pct(nv.day)+'／5日 '+pct(nv.week));
+ if(semi)lines.push('半導体SOXX：前日比 '+pct(semi.day)+'／5日 '+pct(semi.week));
+ if(nas)lines.push('NASDAQ：前日比 '+pct(nas.day)+'／5日 '+pct(nas.week));
+ if(fang)lines.push('FANG+：前日比 '+pct(fang.day)+'／5日 '+pct(fang.week));
+ const newsText=nvidiaNews.length?nvidiaNews.map(n=>'<div class="news"><a href="'+n.link+'" target="_blank" rel="noopener">'+n.title+'</a><span class="impact">'+(n.score<0?'弱気材料':n.score>0?'強気材料':'中立')+'</span></div>').join(''):'<div class="empty">NVIDIA関連ニュースは取得できていません。</div>';
+ const pressure=(nv&&nv.day<=-4)||(semi&&semi.day<=-1.5)||(nas&&nas.day<=-1);
+ const status=pressure?'<b class="bad">AI・半導体の下落圧力を検知</b>':'<b class="neutral">現時点で強い下落シグナルは未確認</b>';
+ $('riskBriefBody').innerHTML=status+'<div style="margin-top:7px">'+(lines.join('｜')||'主要市場データ取得待ち')+'</div><div style="margin-top:8px"><b>NVIDIA関連ニュース</b>'+newsText+'</div><div class="legend">NVIDIAの当日変動をFANG+・日経225・TOPIXの予測要因に直接加算し、関連ニュースも独立した材料として評価します。取得できない場合は影響を推測で補いません。</div>';
 }
 function renderNews(news){
  if(!news.length)return '<div class="empty">ニュース取得不可。ニュースを取得できない間はニュース要因を予測に反映していません。</div>';
@@ -229,6 +239,7 @@ async function update(){
  const news=feedsResult.filter(x=>x.status==='fulfilled').flatMap(x=>x.value);
  const unique=[...new Map(news.map(n=>[n.link,n])).values()];
  latestQuotes=quotes;latestNews=unique;
+ renderRiskBrief(quotes,unique);
  $('forecasts').innerHTML=assets.map(a=>renderAsset(a,quotes,unique)).join('');
  $('indicators').innerHTML=indicators.map(x=>{const q=quotes[x.id];return '<div class="factor"><b>'+x.name+'</b><span>'+(q?fmt(q.price)+' ('+pct(q.week)+' / 5日)':'取得不可')+'</span></div>'}).join('');
  $('news').innerHTML=renderNews(unique);
