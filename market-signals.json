@@ -1,19 +1,16 @@
 {
-  "date": null,
-  "generatedAt": null,
+  "date": "2026-11-13",
+  "generatedAt": "2026-11-13T06:59:07.394Z",
   "status": "disabled",
   "reason": "X API未接続。X_API_ENABLED=true と X_BEARER_TOKEN が設定されるまでAPIを呼び出しません。",
   "attention": {
     "posts": 0,
     "authors": 0,
-    "engagement": 0,
-    "crediblePosts": 0
+    "engagement": 0
   },
   "usage": {
     "maxPosts": 30,
-    "requests": 0,
-    "postsRead": 0,
-    "estimatedUsd": 0
+    "requests": 0
   },
   "posts": []
 }
