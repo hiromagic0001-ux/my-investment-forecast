@@ -344,7 +344,7 @@ function renderXSignals(data){
  const generated=Date.parse(data.generatedAt||"");
  const stale=!Number.isFinite(generated)||(Date.now()-generated)>36*60*60*1000;
  const attention=data.attention||{};
- const head='<div class="legend">取得状態：'+(data.status==="active"?'公式API接続中':data.status==="free-indexed"?'無料検索連携中':data.status==="partial"?'一部取得エラー':'未接続')+'｜投稿 '+(attention.posts||0)+'件｜投稿者 '+(attention.authors||0)+'人｜裏付け候補 '+(attention.crediblePosts||0)+'件｜API読取上限 '+(data.usage?.maxPosts||30)+'件/回</div>';
+ const head='<div class="legend">取得状態：'+(data.status==="active"?'公式API接続中':data.status==="free-indexed"?'無料検索連携中':data.status==="partial"?'一部取得エラー':'未接続')+'｜検索ヒット '+(attention.posts||0)+'件｜投稿者 '+(attention.authors||0)+'人｜裏付け候補 '+(attention.crediblePosts||0)+'件｜画面表示上限 '+(data.usage?.maxPosts||30)+'件</div>';
  if(data.status==="disabled")return head+'<div class="empty">無料検索連携のデータがまだありません。検索インデックスの更新を待ちます。API利用料は発生しません。</div>';
  if(stale)return head+'<div class="empty">Xデータが36時間以上更新されていません。古い投稿を最新情報として扱いません。</div>';
  const posts=(data.posts||[]).slice(0,12);
