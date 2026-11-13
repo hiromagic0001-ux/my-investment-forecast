@@ -170,7 +170,8 @@ async function loadYearEndScenarios(){
 let dailyScoreDetailRecord=null;
 function openDailyScoreDetail(index){
  const record=dailyScoreDetailRecord;
- const x=record&&record.results&&record.results[index];
+ const list=record&&(record.results||record.forecasts)||[];
+ const x=list[index];
  if(!x)return;
  const unit=x.id==='topix'?'円':'pt',show=n=>n===null||n===undefined?'—':Number(n).toLocaleString('ja-JP',{maximumFractionDigits:2})+' '+unit;
  const actual=x.actual!==null&&x.actual!==undefined;
@@ -187,7 +188,7 @@ function renderDailyScoreboard(){
  if(!latest){$('dailyScoreDate').textContent='予測記録なし';$('dailyScoreBody').innerHTML='<div class="empty">予測データがまだありません。価格・ニュース取得後に自動保存します。</div>';return;}
  $('dailyScoreDate').textContent='予測日 '+latest.date+'｜保存 '+(latest.savedAt||'記録あり');
  const list=latest.results||latest.forecasts||[];
- $('dailyScoreBody').innerHTML=list.map(x=>{
+ $('dailyScoreBody').innerHTML=list.map((x,i)=>{
   const unit=x.id==='topix'?'円':'pt',show=n=>n===null||n===undefined?'—':Number(n).toLocaleString('ja-JP',{maximumFractionDigits:2})+' '+unit;
   const actual=x.actual!==null&&x.actual!==undefined,hit=x.hit===true,miss=x.hit===false;
   const status=actual?(hit?'<span class="daily-status hit">的中</span>':'<span class="daily-status miss">外れ</span>'):'<span class="daily-status pending">結果待ち</span>';
