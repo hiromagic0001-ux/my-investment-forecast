@@ -1,6 +1,6 @@
 {
   "date": "2026-11-13",
-  "generatedAt": "2026-11-13T07:19:36.117Z",
+  "generatedAt": "2026-11-13T07:20:29.633Z",
   "status": "free-indexed",
   "reason": "",
   "attention": {
@@ -8,7 +8,7 @@
     "authors": 18,
     "engagement": 0,
     "crediblePosts": 2,
-    "coordinationFlags": 116
+    "coordinationFlags": 117
   },
   "usage": {
     "maxPosts": 30,
@@ -126,7 +126,7 @@
       "eventType": "半導体・AI関連",
       "engagement": 0,
       "independentPosts": 0,
-      "copyClusterPosts": 5,
+      "copyClusterPosts": 4,
       "coordinationFlag": true,
       "verifiedForSignal": false,
       "confidence": "同文・類似投稿の集中",
