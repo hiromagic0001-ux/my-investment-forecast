@@ -21,6 +21,10 @@
 <section class="panel"><h3>市場・金融環境</h3><div class="factorgrid" id="indicators"></div><div class="legend">価格変化は各市場の直近取得可能な取引日ベース。取得できない項目は推測値で補完しません。</div></section>
 <section class="panel"><h3>世界経済ニュースの材料分析</h3><div id="news"><div class="empty">ニュースを取得中…</div></div></section>
 
+<section class="panel" id="usMarketReview">
+ <h3>米国市場・予測検証（2026年11月12日）</h3>
+ <div id="usMarketReviewBody" class="legend">検証記録を読み込んでいます…</div>
+</section>
 <section class="panel" id="validationPanel">
  <h3>予測記録・引け後検証・予測的中率</h3>
  <p class="legend">毎営業日7:00（日本時間）にGitHub Actionsが予測を作成し、サーバー公開ファイルへ保存します。翌営業日以降の新しい終値で自動検証します。アプリを閉じていても定期処理されます。端末内の手動記録も併用します。</p>
@@ -43,6 +47,17 @@ const jstDate=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tokyo',year:'n
 function readHistory(){try{return JSON.parse(localStorage.getItem(HISTORY_KEY)||'[]')}catch(e){return []}}
 function writeHistory(rows){localStorage.setItem(HISTORY_KEY,JSON.stringify(rows.slice(-365)))}
 async function loadRemoteHistory(){try{const r=await fetch('./forecast-history.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)return;const remote=await r.json();if(!Array.isArray(remote))return;const merged=new Map(remote.map(x=>[x.date,x]));for(const x of readHistory())if(!merged.has(x.date))merged.set(x.date,x);writeHistory([...merged.values()].sort((a,b)=>a.date.localeCompare(b.date)));renderValidation();}catch(e){console.warn('サーバー保存履歴の取得に失敗しました',e)}}
+async function loadUSMarketReview(){
+ try{
+  const r=await fetch('./us-market-review.json?ts='+Date.now(),{cache:'no-store'});
+  if(!r.ok)throw Error('review unavailable');
+  const d=await r.json();
+  const rows=d.actuals.map(x=>'<div class="factor"><b>'+x.name+'</b><span>'+Number(x.close).toLocaleString('ja-JP',{maximumFractionDigits:2})+' ｜ '+(x.changePct>0?'+':'')+x.changePct.toFixed(2)+'%</span></div>').join('');
+  const factors=d.factors.map(x=>'<li>'+x+'</li>').join('');
+  const learning=d.learning.map(x=>'<li>'+x+'</li>').join('');
+  $('usMarketReviewBody').innerHTML='<b class="bad">前夜予想：'+d.forecast.direction+' ／ 結果：'+d.result+'</b><div class="legend" style="margin:6px 0">予測確率・想定レンジ：保存記録なし（推測で補完せず）</div><div class="factorgrid">'+rows+'</div><h4>外れた要因</h4><ul class="reasons">'+factors+'</ul><h4>次回への改善</h4><ul class="reasons">'+learning+'</ul><div class="legend">'+d.sourceNotes+'</div>';
+ }catch(e){$('usMarketReviewBody').textContent='米国市場の検証記録を取得できませんでした。';}
+}
 function renderValidation(){
  const rows=readHistory();
  const done=rows.flatMap(r=>r.results||[]);
@@ -263,6 +278,6 @@ async function update(){
  $('refresh').disabled=false;
  await autoSaveAndValidate();
 }
-$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',validateSavedForecasts);renderValidation();loadRemoteHistory();update();setInterval(update,300000);setInterval(autoSaveAndValidate,60000);
+loadUSMarketReview();$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',validateSavedForecasts);renderValidation();loadRemoteHistory();update();setInterval(update,300000);setInterval(autoSaveAndValidate,60000);
 </script></body></html>
 <!-- deploy-sync: 2026-11-12 22:10 JST -->
