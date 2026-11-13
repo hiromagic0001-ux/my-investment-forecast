@@ -23,15 +23,15 @@
 <details class="panel disclosure" id="xSignalPanel"><summary>X速報・信頼性判定</summary><div class="legend">無料の検索インデックス経由の公開投稿。未確認投稿は方向予測に採用しません。</div><div id="xSignals"><div class="empty">X情報を確認しています…</div></div></details>
 
 <details class="panel disclosure" id="yearEndScenarios"><summary>2026年末までの株価シナリオ</summary>
- <h3>2026年末までの株価シナリオ（12月31日まで）</h3>
+ 
  <div id="yearEndScenarioBody" class="legend">年末シナリオを読み込んでいます…</div>
 </details>
 <details class="panel disclosure" id="usMarketReview"><summary>米国市場の予測検証</summary>
- <h3>米国市場・予測検証（2026年11月12日）</h3>
+ 
  <div id="usMarketReviewBody" class="legend">検証記録を読み込んでいます…</div>
 </details>
 <details class="panel disclosure" id="validationPanel"><summary>予測記録・的中率・バックテスト</summary>
- <h3>予測記録・引け後検証・予測的中率</h3>
+ 
  <p class="legend">毎営業日7:00（日本時間）にGitHub Actionsが予測を作成し、サーバー公開ファイルへ保存します。翌営業日以降の新しい終値で自動検証します。アプリを閉じていても定期処理されます。端末内の手動記録も併用します。</p>
  <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
   <button id="saveForecast">今日の予測を手動保存</button>
@@ -393,7 +393,7 @@ function renderAsset(asset,quotes,news){
  if(missingNews.length)reasons.push('重要ニュース未取得：'+missingNews.map(id=>id==='geo'?'戦争・地政学':'原油・供給リスク').join('・'));
  if(!own||f.quality<.7||quoteIsStale(own)||missingNews.length>0){
   if(!reasons.length)reasons.push('データ充足度が基準未満');
-  return '<article class="card"><h2>'+asset.name+'</h2><div class="price">予測保留</div><div class="change">価格データや重要ニュースが不足しているため、確率を表示しません。</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>—</b></div><div class="prob"><small>1週間</small><b>—</b></div><div class="prob"><small>1か月</small><b>—</b></div></div><div class="confidence">データ充足度 '+Math.round(f.quality*100)+'%</div><ul class="reasons">'+reasons.map(x=>'<li class="bad">'+x+'</li>').join('')+'</ul></article>';
+  return '<article class="card"><h2>'+asset.name+'</h2><div class="price">予測保留</div><div class="change">必要データが不足</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>—</b></div><div class="prob"><small>1週間</small><b>—</b></div><div class="prob"><small>1か月</small><b>—</b></div></div><div class="confidence">データ充足度 '+Math.round(f.quality*100)+'%</div><details class="card-detail"><summary>保留理由を確認</summary><ul class="reasons">'+reasons.map(x=>'<li class="bad">'+esc(x)+'</li>').join('')+'</ul></details></article>';
  }
  const p=f.probs.map((x,i)=>'<div class="prob"><small>'+['翌営業日','1週間','1か月'][i]+'</small><b style="color:'+(x>=50?'var(--up)':'var(--dn)')+'">'+(x>=50?'上昇優勢':'下落優勢')+'</b><small style="color:var(--muted);margin-top:3px">上昇 '+x.toFixed(1)+'% ／ 下落 '+(100-x).toFixed(1)+'%</small></div>').join('');
  const reason=[...f.positives.map(x=>'<li class="good">上昇要因：'+x.name+'</li>'),...f.negatives.map(x=>'<li class="bad">下落要因：'+x.name+'</li>')];
