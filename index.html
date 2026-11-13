@@ -214,8 +214,6 @@ async function loadFeed(feed){
  const j=await r.json();return (j.items||[]).slice(0,7).map(x=>({title:x.title,link:x.link,date:x.pubDate,category:feed.id,label:feed.label,score:sentiment(x.title,feed.id),cats:classify(x.title)}));
 }
 function factorValue(id,quotes){
- const q=quotes[id];if(!q)return null;
- let raw=q.week;
  if(id==='oil'){
   const oilQuotes=[quotes.oil,quotes.brent].filter(Boolean);
   if(!oilQuotes.length)return null;
@@ -226,6 +224,8 @@ function factorValue(id,quotes){
   });
   return clamp(signals.reduce((s,v)=>s+v,0)/signals.length,-1,1);
  }
+ const q=quotes[id];if(!q)return null;
+ let raw=q.week;
  if(id==='fx')raw=q.week;
  if(id==='rates')raw=-q.week;
  if(id==='risk')raw=-q.week;
