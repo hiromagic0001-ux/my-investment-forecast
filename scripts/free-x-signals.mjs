@@ -1,7 +1,7 @@
 const SEARCHES = [
- ...["CENTCOM","USNavy","WhiteHouse","StateDept","OSINTtechnical","sentdefender","clashreport"].map(account=>({category:"geo",account,query:'site:x.com/'+account+' (Iran OR Hormuz OR Houthi OR tanker OR airstrike OR ceasefire OR イラン OR ホルムズ)'})),
- ...["EIAgov","IEA","OPECSecretariat","ReutersBiz","Bloomberg"].map(account=>({category:"oil",account,query:'site:x.com/'+account+' (WTI OR Brent OR crude OR OPEC OR oil supply OR 原油 OR 石油供給)'})),
- ...["NVIDIA","Reuters","Bloomberg"].map(account=>({category:"tech",account,query:'site:x.com/'+account+' (semiconductor OR AI data center OR chip OR 半導体 OR エヌビディア)'}))
+ {category:"geo",query:'site:x.com (Iran OR Hormuz OR Houthi OR tanker OR airstrike OR ceasefire OR イラン OR ホルムズ)'},
+ {category:"oil",query:'site:x.com (WTI OR Brent OR crude OR OPEC OR oil supply OR 原油 OR 石油供給)'},
+ {category:"tech",query:'site:x.com (NVIDIA OR semiconductor OR AI data center OR chip OR 半導体 OR エヌビディア)'}
 ];
 const OFFICIAL=["CENTCOM","USNavy","WhiteHouse","StateDept","EIAgov","IEA","OPECSecretariat","NVIDIA"];
 const MEDIA=["Reuters","ReutersBiz","Bloomberg","business"];
@@ -26,11 +26,11 @@ function parse(xml,category,account){
   const title=get("title"),link=get("link"),date=get("pubDate"),source=get("source");
   if(!title||!link)continue;
   const match=title.match(/@([A-Za-z0-9_]{1,15})/);
-  const author=account||match?.[1]||"";
+  const author=match?.[1]||"";
   const official=OFFICIAL.some(x=>x.toLowerCase()===author.toLowerCase());
   const media=MEDIA.some(x=>x.toLowerCase()===author.toLowerCase());
   const event=classify(title,category);
-  items.push({id:link,title,author:author||source||"検索結果",createdAt:date,url:link,category,sourceClass:official?"公的機関候補":media?"主要報道機関候補":"X検索掲載",sourceScore:official?.78:media?.65:.35,officialUrl:false,trustedUrl:false,impactScore:event.impactScore,eventType:event.eventType,engagement:0,independentPosts:0,copyClusterPosts:0,coordinationFlag:false,verifiedForSignal:false,confidence:"未確認・予測不採用",trustScore:official?.78:media?.65:.35,via:"Google News RSS（X公開投稿の検索インデックス）"});
+  items.push({id:link,title,author:author||source||"検索結果",createdAt:date,url:link,category,sourceClass:official?"公的機関候補":media?"主要報道機関候補":"X公開投稿・投稿者未確認",sourceScore:official?.78:media?.65:.35,officialUrl:false,trustedUrl:false,impactScore:event.impactScore,eventType:event.eventType,engagement:0,independentPosts:0,copyClusterPosts:0,coordinationFlag:false,verifiedForSignal:false,confidence:"未確認・予測不採用",trustScore:official?.78:media?.65:.35,via:"Google News RSS（X公開投稿の検索インデックス）"});
  }
  return items;
 }
@@ -46,15 +46,15 @@ export async function fetchFreeXSignals(rssNews=[]){
  }
  const unique=[...new Map(all.map(p=>[p.id,p])).values()];
  for(const p of unique){
-  const independent=rssNews.filter(n=>n.category===p.category&&TRUSTED.some(d=>host(n.link)===d||host(n.link).endsWith("."+d))&&overlap(p.title,n.title)>=2).length;
+  const independent=rssNews.filter(n=>n.category===p.category&&TRUSTED.some(d=>(n.domain||host(n.link))===d||(n.domain||host(n.link)).endsWith("."+d))&&overlap(p.title,n.title)>=2).length;
   const otherX=unique.filter(q=>q.id!==p.id&&q.category===p.category&&overlap(p.title,q.title)>=2).length;
   p.independentPosts=independent;
   p.copyClusterPosts=otherX;
   p.coordinationFlag=otherX>=3;
   p.rssCorroborated=independent>0;
-  p.verifiedForSignal=!p.coordinationFlag&&p.rssCorroborated&&(p.sourceScore>=.6);
+  p.verifiedForSignal=!p.coordinationFlag&&p.rssCorroborated&&independent>=1;
   p.confidence=p.coordinationFlag?"同文・類似投稿の集中":p.verifiedForSignal?"報道裏付けあり・予測反映候補":"検索掲載のみ・未確認";
-  if(p.verifiedForSignal)p.trustScore=clamp(p.sourceScore+.12,0,.9);
+  if(p.verifiedForSignal)p.trustScore=clamp(Math.max(p.sourceScore,.48)+.12,0,.72);
  }
  unique.sort((a,b)=>(b.verifiedForSignal-a.verifiedForSignal)||(b.trustScore-a.trustScore)||Date.parse(b.createdAt)-Date.parse(a.createdAt));
  const authors=new Set(unique.map(p=>p.author).filter(Boolean));
