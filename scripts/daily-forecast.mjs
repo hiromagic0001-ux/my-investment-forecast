@@ -15,20 +15,58 @@ const jstDate=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Tokyo",year:"numer
 const dayName=new Intl.DateTimeFormat("en-US",{timeZone:"Asia/Tokyo",weekday:"short"}).format(new Date());
 if(["Sat","Sun"].includes(dayName)) process.exit(0);
 
+function buildTechnicalSeries(closes){
+ const mean=a=>a.reduce((s,v)=>s+v,0)/a.length;
+ const rows=[],widths=[];
+ for(let i=0;i<closes.length;i++){
+  const row={};
+  for(const n of [5,25,75,200])row["sma"+n]=i+1>=n?mean(closes.slice(i-n+1,i+1)):null;
+  if(i>=19){
+   const w=closes.slice(i-19,i+1),m=mean(w),sd=Math.sqrt(w.reduce((s,v)=>s+(v-m)**2,0)/w.length);
+   row.bbMiddle=m;row.bbUpper=m+2*sd;row.bbLower=m-2*sd;
+   row.bbPercentB=sd?((closes[i]-row.bbLower)/(row.bbUpper-row.bbLower)):0.5;
+   row.bbWidth=m?(row.bbUpper-row.bbLower)/m*100:0;
+  }else{row.bbMiddle=null;row.bbUpper=null;row.bbLower=null;row.bbPercentB=null;row.bbWidth=null;}
+  rows.push(row);if(row.bbWidth!==null)widths.push(row.bbWidth);
+ }
+ const last=rows.at(-1),price=closes.at(-1);
+ const rank=last.bbWidth===null?null:widths.slice(-60).filter(v=>v<=last.bbWidth).length/Math.min(60,widths.length);
+ let score=0;
+ if(last.sma25!==null)score+=price>last.sma25 ? .18 : -.18;
+ if(last.sma75!==null)score+=price>last.sma75 ? .14 : -.14;
+ if(last.sma200!==null)score+=price>last.sma200 ? .10 : -.10;
+ if(last.sma5!==null&&last.sma25!==null)score+=last.sma5>last.sma25 ? .14 : -.14;
+ if(last.sma25!==null&&last.sma75!==null)score+=last.sma25>last.sma75 ? .12 : -.12;
+ if(last.sma75!==null&&last.sma200!==null)score+=last.sma75>last.sma200 ? .08 : -.08;
+ const p=last.bbPercentB;
+ if(p!==null){if(p>1)score+=score>0 ? .05 : -.10;else if(p<0)score+=score<0 ? -.05 : .10;else if(p>=.5)score+=.07;else if(p<=.25)score-=.07;}
+ const trend=score>.22?"上昇トレンド":score<-.22?"下降トレンド":"方向感が弱い";
+ const bbState=p===null?"算出中":p>1?"+2σ上抜け":p<0?"-2σ下抜け":p>=.8?"上限寄り":p<=.2?"下限寄り":"バンド内";
+ return {rows:rows.map(r=>({sma5:r.sma5,sma25:r.sma25,sma75:r.sma75,sma200:r.sma200,bbMiddle:r.bbMiddle,bbUpper:r.bbUpper,bbLower:r.bbLower})),current:{sma5:last.sma5,sma25:last.sma25,sma75:last.sma75,sma200:last.sma200,bbMiddle:last.bbMiddle,bbUpper:last.bbUpper,bbLower:last.bbLower,bbPercentB:p,bbWidth:last.bbWidth,bbWidthPercentile:rank,squeeze:rank!==null&&rank<=.2,bbState,trend,score:Math.max(-1,Math.min(1,score))}};
+}
+function fxInterventionRisk(q){
+ if(!q)return {score:0,label:"データ不足"};
+ const p=q.price;
+ let base=p>=160.5 ? .95 : p>=159.5 ? .82 : p>=158.5 ? .62 : p>=157.5 ? .38 : .12;
+ const pace=(q.day>=.8 ? .10 : 0)+(q.week>=1.8 ? .10 : 0);
+ const score=Math.min(1,base+pace);
+ return {score,label:score>=.8?"非常に高い":score>=.6?"高い":score>=.35?"警戒":"通常"};
+}
 async function quote(ticker){
- const url="https://query1.finance.yahoo.com/v8/finance/chart/"+encodeURIComponent(ticker)+"?range=6mo&interval=1d";
+ const url="https://query1.finance.yahoo.com/v8/finance/chart/"+encodeURIComponent(ticker)+"?range=1y&interval=1d";
  const r=await fetch(url,{headers:{"User-Agent":"Mozilla/5.0"}});
- if(!r.ok) throw new Error("Yahoo HTTP "+r.status+" "+ticker);
+ if(!r.ok)throw new Error("Yahoo HTTP "+r.status+" "+ticker);
  const j=await r.json(),x=j.chart?.result?.[0];
- if(!x) throw new Error("No Yahoo data: "+ticker);
+ if(!x)throw new Error("No Yahoo data: "+ticker);
  const q=x.indicators.quote[0],pairs=x.timestamp.map((t,i)=>({t,c:q.close[i]})).filter(v=>v.c!=null);
- if(pairs.length<25) throw new Error("Insufficient history: "+ticker);
+ if(pairs.length<25)throw new Error("Insufficient history: "+ticker);
  const c=pairs.map(v=>v.c),last=c.at(-1),prev=c.at(-2),w=c.at(-6),m=c.at(-22);
  const daily=c.slice(1).map((v,i)=>Math.log(v/c[i]));
  const vol=Math.sqrt(daily.slice(-20).reduce((s,v)=>s+v*v,0)/Math.min(20,daily.length))*Math.sqrt(252)*100;
  const avg60=c.slice(-Math.min(60,c.length)).reduce((s,v)=>s+v,0)/Math.min(60,c.length);
- const series=pairs.map(v=>({dateISO:new Date(v.t*1000).toISOString().slice(0,10),price:v.c}));
- return {price:last,day:(last/prev-1)*100,week:(last/w-1)*100,month:(last/m-1)*100,vol,avg60,series,dateISO:series.at(-1).dateISO};
+ const technical=buildTechnicalSeries(c);
+ const series=pairs.map((v,i)=>({dateISO:new Date(v.t*1000).toISOString().slice(0,10),price:v.c,...technical.rows[i]}));
+ return {price:last,day:(last/prev-1)*100,week:(last/w-1)*100,month:(last/m-1)*100,vol,avg60,technical:technical.current,series,dateISO:series.at(-1).dateISO};
 }
 const feeds=[
  ["rates","Federal Reserve interest rates inflation CPI Treasury yields"],
@@ -109,7 +147,8 @@ function factorValue(id){
  const q=quotes[id];if(!q)return null;
  let raw=q.week;if(id==="rates"||id==="risk")raw=-q.week;
  const scale=id==="rates"?1.4:id==="fx"?1.2:id==="risk"?2.2:id==="nvda"?3:2.5;
- return clamp(raw/scale,-1,1);
+ const fxRisk=fxInterventionRisk(quotes.fx).score;
+ return id==="fx" ? clamp((raw/scale)*(1-.65*fxRisk)-.10*fxRisk,-1,1) : clamp(raw/scale,-1,1);
 }
 function relFor(asset,cat){
  if(cat==="ipo")return asset.id==="fang"?1.0:asset.id==="nikkei"?.42:.30;
@@ -122,10 +161,13 @@ function relFor(asset,cat){
 }
 function forecast(a){
  const own=quotes[a.id];if(!own)return null;
+ const fxRisk=fxInterventionRisk(quotes.fx);
  const parts=[
   clamp(own.week/2.8,-1,1)*.24,
   clamp(own.month/7,-1,1)*.18,
-  clamp((12-own.vol)/18,-.5,.5)*.05
+  clamp((12-own.vol)/18,-.5,.5)*.05,
+  (own.technical?.score||0)*.18,
+  ...(a.id==="nikkei"?[-fxRisk.score*.12]:a.id==="topix"?[-fxRisk.score*.08]:[])
  ];
  for(const [id,exp] of Object.entries(a.exp)){const v=factorValue(id);if(v!==null&&Math.abs(exp)>.01)parts.push(v*exp*.42);}
  if(quotes.nvda&&a.exp.nvda)parts.push(clamp(quotes.nvda.day/4,-1,1)*a.exp.nvda*.7);
@@ -144,11 +186,11 @@ function forecast(a){
  const attentionHeat=0; // RSS検索ヒット数はX上の実際の注目度ではないため、予測レンジに使わない
  const authorConcentration=0; // RSS検索結果では投稿者集中度を測定できない
  const attentionRisk=attentionHeat*(.5+.5*authorConcentration);
- const quality=clamp(baseQuality*(1-attentionRisk*.12),.2,1);
+ const quality=clamp(baseQuality*(1-attentionRisk*.12)*(a.id==="fang"?1:1-fxRisk.score*.08),.2,1);
  if(!coveredFeeds.has("geo")||!coveredFeeds.has("oil")||quality<.7)return null;
  const probability=Math.round(clamp(50+score*.75*23*quality,28,72)*10)/10;
  const sigma=(own.vol/Math.sqrt(252))/100,rangePct=Math.max(.003,sigma*1.5*(1+attentionHeat*.2));
- return {id:a.id,name:a.name,basePrice:own.price,baseDate:own.dateISO,probability,direction:probability>=50?"上昇":"下落",rangeLow:own.price*(1-rangePct),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,source:"GitHub Actions daily model"};
+ return {id:a.id,name:a.name,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,fxInterventionRisk:fxRisk,probability,direction:probability>=50?"上昇":"下落",rangeLow:own.price*(1-rangePct),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,source:"GitHub Actions daily model"};
 }
 const path="forecast-history.json";
 let history=[];
@@ -170,9 +212,9 @@ if(!history.some(x=>x.date===jstDate)){
  const stale=assets.filter(a=>!quotes[a.id]||age(quotes[a.id].dateISO)>maxAge).map(a=>({id:a.id,date:quotes[a.id]?.dateISO||null}));
  const criticalOilAvailable=Boolean(quotes.oil||quotes.brent);
  if(results.every(Boolean)&&!stale.length&&criticalOilAvailable){
-  const marketContext=Object.fromEntries(Object.entries(quotes).map(([id,q])=>[id,{price:q.price,day:q.day,week:q.week,avg60:q.avg60,dateISO:q.dateISO}]));
+  const marketContext=Object.fromEntries(Object.entries(quotes).map(([id,q])=>[id,{price:q.price,day:q.day,week:q.week,avg60:q.avg60,dateISO:q.dateISO,technical:q.technical||null}]));
   const newsContext=signalNews.map(n=>({title:n.title,category:n.category,score:n.score,date:n.date,link:n.link,source:n.source||"RSS",trustScore:n.trustScore??1}));
-  history.push({date:jstDate,savedAt:new Date().toISOString(),results,newsCount:news.length,xCount:xSignals.posts.length,xAttention,marketContext,newsContext});
+  history.push({date:jstDate,savedAt:new Date().toISOString(),fxInterventionRisk:fxInterventionRisk(quotes.fx),results,newsCount:news.length,xCount:xSignals.posts.length,xAttention,marketContext,newsContext});
  }else{
   console.log("Forecast not saved: stale or missing critical data",JSON.stringify({stale,criticalOilAvailable}));
  }
