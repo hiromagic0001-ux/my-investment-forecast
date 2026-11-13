@@ -233,8 +233,17 @@ function forecast(a){
  ];
  for(const [id,exp] of Object.entries(a.exp)){const v=factorValue(id);if(v!==null&&Math.abs(exp)>.01)parts.push(v*exp*.42);}
  if(quotes.nvda&&a.exp.nvda)parts.push(clamp(quotes.nvda.day/4,-1,1)*a.exp.nvda*.7);
+ if(a.id==="fang"){
+  const semi=quotes.semi,nasdaq=quotes.nasdaq,vix=quotes.risk,nvda=quotes.nvda;
+  const semiShock=semi?Math.max(0,-semi.day-1.5)*.025:0;
+  const nasdaqShock=nasdaq?Math.max(0,-nasdaq.day-1.0)*.02:0;
+  const nvdaShock=nvda?Math.max(0,-nvda.day-2.0)*.012:0;
+  const volatilityShock=vix?Math.max(0,vix.day-8.0)*.004:0;
+  const shockPenalty=clamp(semiShock+nasdaqShock+nvdaShock+volatilityShock,0,.25);
+  if(shockPenalty>0)parts.push(-shockPenalty);
+ }
  let total=0,weight=0;
- for(const n of signalNews){const rel=relFor(a,n.category),sourceWeight=n.source==="X"?Number(n.trustScore||0):1;total+=n.score*rel*sourceWeight;weight+=rel*sourceWeight;}
+ for(const n of signalNews){const rel=relFor(a,n.category),sourceWeight=n.source==="X"?(n.verifiedForSignal?Number(n.trustScore||0):0):1;total+=n.score*rel*sourceWeight;weight+=rel*sourceWeight;}
  const ns=weight?clamp(total/Math.max(2,weight),-1,1):0;
  parts.push(ns*.28);
  const rawScore=clamp(parts.reduce((s,v)=>s+v,0),-.85,.85);
@@ -254,7 +263,7 @@ function forecast(a){
  // Missing news feeds reduce quality and pull the forecast toward neutral; they do not silently erase a forecast.
  const probability=Math.round(clamp(50+score*.75*23*quality,28,72)*10)/10;
  const sigma=(own.vol/Math.sqrt(252))/100,rangePct=Math.max(.003,sigma*1.5*(1+attentionHeat*.2+earningsRisk.score*.8));
- return {id:a.id,name:a.name,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,coverage,newsCoverage,missingFeeds,modelVersion:"2.2.0",source:"GitHub Actions daily model"};
+ return {id:a.id,name:a.name,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,coverage,newsCoverage,missingFeeds,modelVersion:"2.3.0",source:"GitHub Actions daily model"};
 }
 const path="forecast-history.json";
 let history=[];
@@ -278,7 +287,7 @@ if(!history.some(x=>x.date===jstDate)){
  if(results.every(Boolean)&&!stale.length&&criticalOilAvailable){
   const marketContext=Object.fromEntries(Object.entries(quotes).map(([id,q])=>[id,{price:q.price,day:q.day,week:q.week,avg60:q.avg60,dateISO:q.dateISO,technical:q.technical||null}]));
   const newsContext=signalNews.map(n=>({title:n.title,category:n.category,score:n.score,date:n.date,link:n.link,source:n.source||"RSS",trustScore:n.trustScore??1}));
-  history.push({date:jstDate,savedAt:new Date().toISOString(),modelVersion:"2.2.0",fxInterventionRisk:fxInterventionRisk(quotes.fx),earningsCalendarStatus:earningsCalendar.status,earningsRisk:results.map(x=>({id:x.id,...x.earningsRisk})),results,newsCount:news.length,xCount:xSignals.posts.length,xAttention,marketContext,newsContext});
+  history.push({date:jstDate,savedAt:new Date().toISOString(),modelVersion:"2.3.0",fxInterventionRisk:fxInterventionRisk(quotes.fx),earningsCalendarStatus:earningsCalendar.status,earningsRisk:results.map(x=>({id:x.id,...x.earningsRisk})),results,newsCount:news.length,xCount:xSignals.posts.length,xAttention,marketContext,newsContext});
  }else{
   console.log("Forecast not saved: stale or missing critical data",JSON.stringify({stale,criticalOilAvailable}));
  }
