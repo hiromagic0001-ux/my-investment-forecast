@@ -1,6 +1,6 @@
 {
   "date": "2026-11-13",
-  "generatedAt": "2026-11-13T06:59:07.394Z",
+  "generatedAt": "2026-11-13T07:00:16.292Z",
   "status": "disabled",
   "reason": "X API未接続。X_API_ENABLED=true と X_BEARER_TOKEN が設定されるまでAPIを呼び出しません。",
   "attention": {
