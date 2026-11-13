@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import { fetchFreeXSignals } from "./free-x-signals.mjs";
+import { fetchEarningsCalendar } from "./earnings-calendar.mjs";
 
 const assets = [
   {id:"fang",name:"NYSE FANG+（参考）",ticker:"^NYFANG",exp:{us:.22,nasdaq:.34,semi:.42,nvda:.28,fx:.08,rates:-.34,oil:-.14,risk:.22,japan:.02}},
@@ -125,17 +126,45 @@ async function newsItems(){
  }
  return all;
 }
-const quoteJobs=[...indicators.map(async ([id,t])=>[id,await quote(t)]),...assets.map(async a=>[a.id,await quote(a.ticker)])];
+const earningsCalendar=await fetchEarningsCalendar();
+const eventTickers=[...new Set(earningsCalendar.events.map(e=>e.symbol))];
+const quoteJobs=[...indicators.map(async ([id,t])=>[id,await quote(t)]),...assets.map(async a=>[a.id,await quote(a.ticker)]),...eventTickers.map(async ticker=>[ticker,await quote(ticker)])];
 const settled=await Promise.allSettled(quoteJobs),quotes={},errors=[];
 for(const x of settled){if(x.status==="fulfilled")quotes[x.value[0]]=x.value[1];else errors.push(String(x.reason));}
 let signalNews=[];
 let xAttention={posts:0,authors:0,engagement:0};
+function earningsRiskForAsset(assetId){
+ const baseWeight=assetId==="fang"?.20:assetId==="nikkei"?.055:.045;
+ const relevant=earningsCalendar.events.map(e=>{
+  const dayDiff=Math.round((Date.parse(e.date+"T12:00:00Z")-Date.parse(earningsCalendar.asOfDate+"T12:00:00Z"))/86400000);
+  const afterClose=/after/i.test(e.reportTime),beforeOpen=/before/i.test(e.reportTime);
+  let windowWeight=dayDiff===0?(afterClose?1:beforeOpen ? .25 : .65)
+   :dayDiff===1?(beforeOpen ? .8 : afterClose ? .7 : .65)
+   :dayDiff===2 ? .35
+   :dayDiff===-1?(afterClose ? .12 : .05)
+   :dayDiff===-2?(afterClose ? .78 : .10):0;
+  if(!windowWeight)return null;
+  const q=quotes[e.symbol],nasdaq=quotes.nasdaq;
+  const relativeStrength=q&&nasdaq?q.month-nasdaq.month:0;
+  const bandStretch=q && q.technical && q.technical.bbPercentB > 0.8 ? 0.15 : 0;
+  const pricedInScore=clamp((relativeStrength-2)/13,0,1)+bandStretch;
+  const pricedIn=clamp(pricedInScore,0,1);
+  return {...e,dayDiff,windowWeight,relativeStrength,pricedInScore:pricedIn,
+   risk:windowWeight*baseWeight*(1+.35*pricedIn)};
+ }).filter(Boolean);
+ const score=clamp(relevant.reduce((sum,e)=>sum+e.risk,0),0,.85);
+ const avgPriceIn=relevant.length?relevant.reduce((sum,e)=>sum+e.pricedInScore*e.risk,0)/Math.max(.001,relevant.reduce((sum,e)=>sum+e.risk,0)):0;
+ return {score,pricedInScore:avgPriceIn,label:earningsCalendar.status==="unavailable"?"決算日程データ未取得":score>=.35?"非常に高い":score>=.18?"高い":score>=.07?"注意":"通常",
+  dataStatus:earningsCalendar.status,events:relevant.map(e=>({symbol:e.symbol,name:e.name,date:e.date,reportTime:e.reportTime,epsForecast:e.epsForecast,estimateCount:e.estimateCount,dayDiff:e.dayDiff,relativeStrength:e.relativeStrength,pricedInScore:e.pricedInScore,risk:e.risk,sourceUrl:e.sourceUrl}))};
+}
 const news=await newsItems();
 const xSignals=await fetchFreeXSignals(news);
 const trustedX=xSignals.posts.filter(p=>p.verifiedForSignal).map(p=>({title:p.title,category:p.category,score:p.impactScore,date:p.createdAt,link:p.url,source:"X",trustScore:p.trustScore,label:"X "+p.sourceClass,verifiedForSignal:true}));
 signalNews=[...news,...trustedX];
 xAttention=xSignals.attention||xAttention;
 await fs.writeFile("market-signals.json",JSON.stringify({date:jstDate,generatedAt:new Date().toISOString(),status:xSignals.status,reason:xSignals.reason,attention:xSignals.attention,usage:xSignals.usage,posts:xSignals.posts},null,2)+"\n");
+await fs.writeFile("earnings-calendar.json",JSON.stringify(earningsCalendar,null,2)+"\n");
+await fs.writeFile("earnings-calendar.json",JSON.stringify(earningsCalendar,null,2)+"\n");
 function factorValue(id){
  if(id==="oil"){
   const oilQuotes=[quotes.oil,quotes.brent].filter(Boolean);
@@ -165,6 +194,7 @@ function relFor(asset,cat){
 function forecast(a){
  const own=quotes[a.id];if(!own)return null;
  const fxRisk=fxInterventionRisk(quotes.fx);
+ const earningsRisk=earningsRiskForAsset(a.id);
  const parts=[
   clamp(own.week/2.8,-1,1)*.24,
   clamp(own.month/7,-1,1)*.18,
@@ -178,7 +208,8 @@ function forecast(a){
  for(const n of signalNews){const rel=relFor(a,n.category),sourceWeight=n.source==="X"?Number(n.trustScore||0):1;total+=n.score*rel*sourceWeight;weight+=rel*sourceWeight;}
  const ns=weight?clamp(total/Math.max(2,weight),-1,1):0;
  parts.push(ns*.28);
- const score=clamp(parts.reduce((s,v)=>s+v,0),-.85,.85);
+ const rawScore=clamp(parts.reduce((s,v)=>s+v,0),-.85,.85);
+ const score=clamp(rawScore*(1-.65*earningsRisk.score)-.035*earningsRisk.pricedInScore*earningsRisk.score,-.85,.85);
  const coverage=Object.keys(a.exp).filter(id=>id==="oil"?(quotes.oil||quotes.brent):quotes[id]).length/Object.keys(a.exp).length;
  const coveredFeeds=new Set(signalNews.map(n=>n.category));
  const criticalCoverage=coveredFeeds.has("geo")&&coveredFeeds.has("oil")?1:0;
@@ -189,11 +220,11 @@ function forecast(a){
  const attentionHeat=0; // RSS検索ヒット数はX上の実際の注目度ではないため、予測レンジに使わない
  const authorConcentration=0; // RSS検索結果では投稿者集中度を測定できない
  const attentionRisk=attentionHeat*(.5+.5*authorConcentration);
- const quality=clamp(baseQuality*(1-attentionRisk*.12)*(a.id==="fang"?1:1-fxRisk.score*.08),.2,1);
+ const quality=clamp(baseQuality*(1-attentionRisk*.12)*(a.id==="fang"?1:1-fxRisk.score*.08)*(1-earningsRisk.score*.18),.2,1);
  if(!coveredFeeds.has("geo")||!coveredFeeds.has("oil")||quality<.7)return null;
  const probability=Math.round(clamp(50+score*.75*23*quality,28,72)*10)/10;
- const sigma=(own.vol/Math.sqrt(252))/100,rangePct=Math.max(.003,sigma*1.5*(1+attentionHeat*.2));
- return {id:a.id,name:a.name,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,fxInterventionRisk:fxRisk,probability,direction:probability>=50?"上昇":"下落",rangeLow:own.price*(1-rangePct),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,source:"GitHub Actions daily model"};
+ const sigma=(own.vol/Math.sqrt(252))/100,rangePct=Math.max(.003,sigma*1.5*(1+attentionHeat*.2+earningsRisk.score*.8));
+ return {id:a.id,name:a.name,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,source:"GitHub Actions daily model"};
 }
 const path="forecast-history.json";
 let history=[];
@@ -217,12 +248,12 @@ if(!history.some(x=>x.date===jstDate)){
  if(results.every(Boolean)&&!stale.length&&criticalOilAvailable){
   const marketContext=Object.fromEntries(Object.entries(quotes).map(([id,q])=>[id,{price:q.price,day:q.day,week:q.week,avg60:q.avg60,dateISO:q.dateISO,technical:q.technical||null}]));
   const newsContext=signalNews.map(n=>({title:n.title,category:n.category,score:n.score,date:n.date,link:n.link,source:n.source||"RSS",trustScore:n.trustScore??1}));
-  history.push({date:jstDate,savedAt:new Date().toISOString(),fxInterventionRisk:fxInterventionRisk(quotes.fx),results,newsCount:news.length,xCount:xSignals.posts.length,xAttention,marketContext,newsContext});
+  history.push({date:jstDate,savedAt:new Date().toISOString(),fxInterventionRisk:fxInterventionRisk(quotes.fx),earningsCalendarStatus:earningsCalendar.status,earningsRisk:results.map(x=>({id:x.id,...x.earningsRisk})),results,newsCount:news.length,xCount:xSignals.posts.length,xAttention,marketContext,newsContext});
  }else{
   console.log("Forecast not saved: stale or missing critical data",JSON.stringify({stale,criticalOilAvailable}));
  }
 }
 history=history.slice(-365);
 await fs.writeFile(path,JSON.stringify(history,null,2)+"\n");
-console.log(JSON.stringify({date:jstDate,quotes:Object.keys(quotes),news:news.length,xStatus:xSignals.status,xSearchHits:xSignals.posts.length,xCredible:xSignals.attention.crediblePosts,xUsage:xSignals.usage,newsCoverage:[...new Set(signalNews.map(n=>n.category))],errors,validated:changed,days:history.length}));
+console.log(JSON.stringify({date:jstDate,quotes:Object.keys(quotes),earningsCalendarStatus:earningsCalendar.status,earningsEvents:earningsCalendar.events.length,news:news.length,xStatus:xSignals.status,xSearchHits:xSignals.posts.length,xCredible:xSignals.attention.crediblePosts,xUsage:xSignals.usage,newsCoverage:[...new Set(signalNews.map(n=>n.category))],errors,validated:changed,days:history.length}));
 if(!assets.every(a=>quotes[a.id]))throw new Error("Not all three index prices were available; no daily forecast was recorded.");
