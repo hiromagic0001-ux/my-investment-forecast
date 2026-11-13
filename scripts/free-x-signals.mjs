@@ -1,7 +1,7 @@
 const SEARCHES = [
- {category:"geo",query:'site:x.com/ (from:CENTCOM OR from:USNavy OR from:WhiteHouse OR from:StateDept OR from:sentdefender OR from:clashreport OR from:OSINTtechnical) (Iran OR Hormuz OR Houthi OR tanker OR airstrike OR ceasefire OR イラン OR ホルムズ)'},
- {category:"oil",query:'site:x.com/ (from:EIAgov OR from:IEA OR from:OPECSecretariat OR from:ReutersBiz OR from:Bloomberg) (WTI OR Brent OR crude OR OPEC OR oil supply OR 原油 OR 石油供給)'},
- {category:"tech",query:'site:x.com/ (from:NVIDIA OR from:Reuters OR from:Bloomberg OR from:business) (semiconductor OR AI data center OR chip OR 半導体 OR エヌビディア)'}
+ ...["CENTCOM","USNavy","WhiteHouse","StateDept","OSINTtechnical","sentdefender","clashreport"].map(account=>({category:"geo",account,query:'site:x.com/'+account+' (Iran OR Hormuz OR Houthi OR tanker OR airstrike OR ceasefire OR イラン OR ホルムズ)'})),
+ ...["EIAgov","IEA","OPECSecretariat","ReutersBiz","Bloomberg"].map(account=>({category:"oil",account,query:'site:x.com/'+account+' (WTI OR Brent OR crude OR OPEC OR oil supply OR 原油 OR 石油供給)'})),
+ ...["NVIDIA","Reuters","Bloomberg"].map(account=>({category:"tech",account,query:'site:x.com/'+account+' (semiconductor OR AI data center OR chip OR 半導体 OR エヌビディア)'}))
 ];
 const OFFICIAL=["CENTCOM","USNavy","WhiteHouse","StateDept","EIAgov","IEA","OPECSecretariat","NVIDIA"];
 const MEDIA=["Reuters","ReutersBiz","Bloomberg","business"];
@@ -19,7 +19,7 @@ function classify(text,category){
 }
 function tokens(s){return new Set((s.toLowerCase().match(/[a-z0-9$]{3,}|[\u3040-\u30ff\u4e00-\u9faf]{2,}/g)||[]).filter(x=>!["the","and","for","with","from","that","this","will","have","has"].includes(x)))}
 function overlap(a,b){const x=tokens(a),y=tokens(b);return [...x].filter(t=>y.has(t)).length}
-function parse(xml,category){
+function parse(xml,category,account){
  const items=[];
  for(const m of xml.matchAll(/<item>([\s\S]*?)<\/item>/g)){
   const block=m[1],get=(tag)=>decode((block.match(new RegExp("<"+tag+"(?:\\s[^>]*)?>([\\s\\S]*?)</"+tag+">","i"))||[])[1]||"");
@@ -41,7 +41,7 @@ export async function fetchFreeXSignals(rssNews=[]){
    const url="https://news.google.com/rss/search?q="+encodeURIComponent(q.query+" when:3d")+"&hl=ja&gl=JP&ceid=JP:ja";
    const res=await fetch(url,{headers:{"User-Agent":"Mozilla/5.0 (compatible; MarketSignalReader/1.0)"}});
    if(!res.ok){errors.push("RSS "+res.status+" "+q.category);continue;}
-   all.push(...parse(await res.text(),q.category));
+   all.push(...parse(await res.text(),q.category,q.account));
   }catch(e){errors.push(String(e.message||e).slice(0,100));}
  }
  const unique=[...new Map(all.map(p=>[p.id,p])).values()];
