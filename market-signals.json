@@ -1,6 +1,6 @@
 {
   "date": "2026-11-13",
-  "generatedAt": "2026-11-13T10:29:14.606Z",
+  "generatedAt": "2026-11-13T10:30:23.416Z",
   "status": "free-indexed",
   "reason": "",
   "attention": {
@@ -8,7 +8,7 @@
     "authors": 14,
     "engagement": 0,
     "crediblePosts": 2,
-    "coordinationFlags": 123
+    "coordinationFlags": 124
   },
   "usage": {
     "maxPosts": 30,
@@ -342,6 +342,29 @@
       "rssCorroborated": false
     },
     {
+      "id": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9VUEVnMHZka3RKV0ZZNnNqRWZhRkFsa0R2WVk0cVBIM2JJQUVGTlRCMU9oVUNvVE5wYU00Tzg1TUZuVEZYcEI1WEVvcXlnUG5aeTlxam5kZFE5QVE2VjFhOWY3UnU0cFU?oc=5",
+      "title": "Outlookが使えず本当に仕事にならない・・・。 よし！紙の復活だ！ 灯油も高いし・・・原油もイラン戦争で不安定。 よし！石炭ストーブの復活だ！ 製紙工場に炭鉱で北海道の復活だ！ 【まとめ】マイクロソフト大規模障害 OutlookやCopilot使用出来ず「休みにしようぜ」オフィス混乱( - X",
+      "author": "X",
+      "createdAt": "Fri, 13 Nov 2026 08:18:03 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9VUEVnMHZka3RKV0ZZNnNqRWZhRkFsa0R2WVk0cVBIM2JJQUVGTlRCMU9oVUNvVE5wYU00Tzg1TUZuVEZYcEI1WEVvcXlnUG5aeTlxam5kZFE5QVE2VjFhOWY3UnU0cFU?oc=5",
+      "category": "geo",
+      "sourceClass": "X関連検索結果・投稿者未確認",
+      "sourceScore": 0.35,
+      "officialUrl": false,
+      "trustedUrl": false,
+      "impactScore": -0.2,
+      "eventType": "地政学リスク",
+      "engagement": 0,
+      "independentPosts": 0,
+      "copyClusterPosts": 0,
+      "coordinationFlag": false,
+      "verifiedForSignal": false,
+      "confidence": "検索掲載のみ・未確認",
+      "trustScore": 0.35,
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
+      "rssCorroborated": false
+    },
+    {
       "id": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFA3M05MOGhLaURWVklmR21UdDZNd2lPUkQ2a2xEbHotVVRGOUwxUDdwV2JGZWJDQ0VZTExwdHhGdjdSSkR5ck0tQnlCWGFOS201bjU5TC05Q1BXVFBfMndhZXY1cw?oc=5",
       "title": "OilPrice 14:45 掲載 中東での新たな攻撃にもかかわらず、原油価格は2週連続の下落へ Oil Prices Head for Second Weekly Loss Despite Fresh Middle East Attacks サウジアラビアの生産回復が、中東での緊張継続や海上輸送への脅威を相殺し、原油価格は2週連続の下 - X",
       "author": "X",
@@ -448,7 +471,7 @@
       "eventType": "地政学リスク",
       "engagement": 0,
       "independentPosts": 0,
-      "copyClusterPosts": 5,
+      "copyClusterPosts": 4,
       "coordinationFlag": true,
       "verifiedForSignal": false,
       "confidence": "同文・類似投稿の集中",
@@ -682,29 +705,6 @@
       "coordinationFlag": true,
       "verifiedForSignal": false,
       "confidence": "同文・類似投稿の集中",
-      "trustScore": 0.35,
-      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
-      "rssCorroborated": false
-    },
-    {
-      "id": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9LQUFiUjNKeWJ6Q0Y0Qnl1Q3RvaVZHSXR3MGNESU4tV1VWUlBhT0luOGVYQmp3dmVnOFJKRldpMW1wTndzdmZIVV9rbnliV013NHhVTG5CakpLUzM4UWxQVV9QSQ?oc=5",
-      "title": "焦点は米側から円安けん制発言が出るか。イランによる暗殺の脅威で自宅を離れ軍の基地内に移ったとも報じられたベッセント米財務長官は、円安にどの程度関心を持っているか？ ーー 円に再び介入警戒感 160円台に下落、薄れぬ「夏の記憶」 - 日本経済新聞 https://t.co/XvA - X",
-      "author": "X",
-      "createdAt": "Fri, 13 Nov 2026 06:06:39 GMT",
-      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9LQUFiUjNKeWJ6Q0Y0Qnl1Q3RvaVZHSXR3MGNESU4tV1VWUlBhT0luOGVYQmp3dmVnOFJKRldpMW1wTndzdmZIVV9rbnliV013NHhVTG5CakpLUzM4UWxQVV9QSQ?oc=5",
-      "category": "geo",
-      "sourceClass": "X関連検索結果・投稿者未確認",
-      "sourceScore": 0.35,
-      "officialUrl": false,
-      "trustedUrl": false,
-      "impactScore": -0.2,
-      "eventType": "地政学リスク",
-      "engagement": 0,
-      "independentPosts": 0,
-      "copyClusterPosts": 1,
-      "coordinationFlag": false,
-      "verifiedForSignal": false,
-      "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
       "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
