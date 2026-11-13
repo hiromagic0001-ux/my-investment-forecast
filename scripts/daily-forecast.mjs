@@ -33,7 +33,9 @@ const feeds=[
  ["rates","Federal Reserve interest rates inflation CPI Treasury yields"],
  ["tech","AI semiconductor chip demand Nvidia data center technology stocks"],
  ["japan","Japan economy BOJ yen Nikkei stocks"],
- ["geo","Iran war OR Israel Iran conflict OR Strait of Hormuz OR Houthi attack OR tanker attack OR Saudi oil facility OR ceasefire OR イラン戦争 OR ホルムズ海峡 OR フーシ派 OR タンカー攻撃"],
+ ["geo","Iran war"],
+ ["geo","Strait of Hormuz"],
+ ["geo","Houthi attack"],
  ["oil","Brent crude OR WTI crude OR oil prices OR oil supply OR OPEC OR 原油価格 OR 原油高 OR 石油供給"]
 ];
 function sentimentFor(title,category){
@@ -113,11 +115,11 @@ function forecast(a){
  const score=clamp(parts.reduce((s,v)=>s+v,0),-.85,.85);
  const coverage=Object.keys(a.exp).filter(id=>id==="oil"?(quotes.oil||quotes.brent):quotes[id]).length/Object.keys(a.exp).length;
  const coveredFeeds=new Set(news.map(n=>n.category));
- const criticalCoverage=["geo","oil"].filter(id=>coveredFeeds.has(id)).length/2;
+ const criticalCoverage=coveredFeeds.has("geo")&&coveredFeeds.has("oil")?1:0;
  const broadCoverage=["rates","tech","japan"].filter(id=>coveredFeeds.has(id)).length/3;
  const newsCoverage=.7*criticalCoverage+.3*broadCoverage;
  const quality=clamp(.2+.4*coverage+.4*newsCoverage,.2,1);
- if(quality<.7)return null;
+ if(!coveredFeeds.has("geo")||!coveredFeeds.has("oil")||quality<.7)return null;
  const probability=Math.round(clamp(50+score*.75*23*quality,28,72)*10)/10;
  const sigma=(own.vol/Math.sqrt(252))/100,rangePct=Math.max(.003,sigma*1.5);
  return {id:a.id,name:a.name,basePrice:own.price,baseDate:own.dateISO,probability,direction:probability>=50?"上昇":"下落",rangeLow:own.price*(1-rangePct),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,source:"GitHub Actions daily model"};
