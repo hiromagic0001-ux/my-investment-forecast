@@ -91,7 +91,7 @@ let signalNews=[];
 let xAttention={posts:0,authors:0,engagement:0};
 const news=await newsItems();
 const xSignals=await fetchFreeXSignals(news);
-const trustedX=xSignals.posts.filter(p=>p.verifiedForSignal).map(p=>({title:p.text,category:p.category,score:p.impactScore,date:p.createdAt,link:p.url,source:"X",trustScore:p.trustScore,label:"X "+p.sourceClass,verifiedForSignal:true}));
+const trustedX=xSignals.posts.filter(p=>p.verifiedForSignal).map(p=>({title:p.title,category:p.category,score:p.impactScore,date:p.createdAt,link:p.url,source:"X",trustScore:p.trustScore,label:"X "+p.sourceClass,verifiedForSignal:true}));
 signalNews=[...news,...trustedX];
 xAttention=xSignals.attention||xAttention;
 await fs.writeFile("market-signals.json",JSON.stringify({date:jstDate,generatedAt:new Date().toISOString(),status:xSignals.status,reason:xSignals.reason,attention:xSignals.attention,usage:xSignals.usage,posts:xSignals.posts},null,2)+"\n");
@@ -141,8 +141,8 @@ function forecast(a){
  const newsCoverage=.7*criticalCoverage+.3*broadCoverage;
  const baseQuality=clamp(.2+.4*coverage+.4*newsCoverage,.2,1);
  const xPosts=Number(xAttention.posts||0),xAuthors=Number(xAttention.authors||0),xEngagement=Number(xAttention.engagement||0);
- const attentionHeat=clamp((xPosts/30)*.45+(xAuthors/30)*.35+(Math.log1p(xEngagement)/Math.log(5001))*.2,0,1);
- const authorConcentration=xPosts?clamp(1-xAuthors/xPosts,0,1):0;
+ const attentionHeat=0; // RSS検索ヒット数はX上の実際の注目度ではないため、予測レンジに使わない
+ const authorConcentration=0; // RSS検索結果では投稿者集中度を測定できない
  const attentionRisk=attentionHeat*(.5+.5*authorConcentration);
  const quality=clamp(baseQuality*(1-attentionRisk*.12),.2,1);
  if(!coveredFeeds.has("geo")||!coveredFeeds.has("oil")||quality<.7)return null;
@@ -179,5 +179,5 @@ if(!history.some(x=>x.date===jstDate)){
 }
 history=history.slice(-365);
 await fs.writeFile(path,JSON.stringify(history,null,2)+"\n");
-console.log(JSON.stringify({date:jstDate,quotes:Object.keys(quotes),news:news.length,xStatus:xSignals.status,xPosts:xSignals.posts.length,xCredible:xSignals.attention.crediblePosts,xUsage:xSignals.usage,newsCoverage:[...new Set(signalNews.map(n=>n.category))],errors,validated:changed,days:history.length}));
+console.log(JSON.stringify({date:jstDate,quotes:Object.keys(quotes),news:news.length,xStatus:xSignals.status,xSearchHits:xSignals.posts.length,xCredible:xSignals.attention.crediblePosts,xUsage:xSignals.usage,newsCoverage:[...new Set(signalNews.map(n=>n.category))],errors,validated:changed,days:history.length}));
 if(!assets.every(a=>quotes[a.id]))throw new Error("Not all three index prices were available; no daily forecast was recorded.");
