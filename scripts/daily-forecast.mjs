@@ -117,7 +117,7 @@ function forecast(a){
  for(const [id,exp] of Object.entries(a.exp)){const v=factorValue(id);if(v!==null&&Math.abs(exp)>.01)parts.push(v*exp*.42);}
  if(quotes.nvda&&a.exp.nvda)parts.push(clamp(quotes.nvda.day/4,-1,1)*a.exp.nvda*.7);
  let total=0,weight=0;
- for(const n of signalNews){const rel=relFor(a,n.category);total+=n.score*rel;weight+=rel;}
+ for(const n of signalNews){const rel=relFor(a,n.category),sourceWeight=n.source==="X"?Number(n.trustScore||0):1;total+=n.score*rel*sourceWeight;weight+=rel*sourceWeight;}
  const ns=weight?clamp(total/Math.max(2,weight),-1,1):0;
  parts.push(ns*.28);
  const score=clamp(parts.reduce((s,v)=>s+v,0),-.85,.85);
