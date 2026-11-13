@@ -116,7 +116,7 @@ header p{font-size:13px}
  <div id="validationSummary" class="factorgrid" style="margin-top:10px"></div>
  <div id="validationHistory" style="margin-top:10px"></div>
 </details>
-<details class="panel disclosure"><summary>予測モデルの仕組み・注意事項</summary><div><h3>予測モデルの仕組み</h3><div class="legend">① 価格トレンド・短期モメンタム・変動率 ② 米国株・半導体・為替・金利・原油などの関連市場 ③ 金融政策・インフレ・景気・AI/半導体・日本経済・地政学ニュースを分類し、指数ごとの感応度で重み付けします。翌営業日・1週間・1か月で時間軸ごとの影響を調整します。</div><div class="legend">確率はこのモデルの参考推定値で、十分なバックテスト・統計的校正を完了した投資シグナルではありません。ニュースの取得失敗や市場データ不足時は信頼度を下げて表示します。</div></div></details>
+<details class="panel disclosure"><summary>予測モデルの仕組み・注意事項</summary><div><h3>予測モデルの仕組み</h3><div class="legend">① 価格トレンド・短期モメンタム・変動率 ② 米国株・半導体・為替・金利・原油などの関連市場 ③ 金融政策・インフレ・景気・AI/半導体・日本経済・地政学ニュースを分類し、指数ごとの感応度で重み付けします。主要指数のトップカードには翌営業日の予測だけを表示します。1週間・1か月の予測は表示しません。</div><div class="legend">確率はこのモデルの参考推定値で、十分なバックテスト・統計的校正を完了した投資シグナルではありません。ニュースの取得失敗や市場データ不足時は信頼度を下げて表示します。</div></div></details>
 <div class="disclaimer">自動更新：5分ごと。個人情報・口座情報は入力も保存もしません。投資判断の最終決定はご自身で行ってください。データ提供元の仕様変更・アクセス制限により取得できない場合があります。</div>
 </main>
 <script>
@@ -465,8 +465,7 @@ function forecast(asset,own,quotes,news){
  const authorConcentration=xPosts?clamp(1-xAuthors/xPosts,0,1):0;
  const attentionRisk=attentionHeat*(.5+.5*authorConcentration);
  const quality=clamp(baseQuality*(1-attentionRisk*.12)*(asset.id==='fang'?1:1-fxRisk.score*.08)*(1-earningsRisk.score*.18),.2,1);
- const horizons=[{key:'翌営業日',mult:.75},{key:'1週間',mult:1},{key:'1か月',mult:.82}];
- const probs=horizons.map(h=>Math.round(clamp(50+score*h.mult*23*quality,28,72)*10)/10);
+ const probs=[Math.round(clamp(50+score*.75*23*quality,28,72)*10)/10];
  const positives=parts.filter(p=>p.v>.035).sort((a,b)=>b.v-a.v).slice(0,2);
  const negatives=parts.filter(p=>p.v<-.035).sort((a,b)=>a.v-b.v).slice(0,2);
  return {probs,score,quality,news:ns.items,positives,negatives,parts,technical:own?.technical||null,fxInterventionRisk:fxRisk,earningsRisk};
@@ -493,7 +492,7 @@ function renderAsset(asset,quotes,news){
  const conf=Math.round(f.quality*100);
  const earningsLine='<div class="confidence">決算警戒：'+f.earningsRisk.label+'｜織り込み代理 '+Math.round(f.earningsRisk.pricedInScore*100)+'/100'+(f.earningsRisk.events.length?'｜'+f.earningsRisk.events.map(e=>e.symbol).join(', '):'')+'</div>';
  const reasonDetails='<details class="card-detail"><summary>予測の根拠・重要リスクを確認</summary><ul class="reasons">'+reason.join('')+'</ul>'+earningsLine+(f.news.length?'<div class="confidence">関連材料：'+f.news.slice(0,3).map(n=>esc(n.category)).join(' / ')+'</div>':'')+'</details>';
- return '<article class="card'+(limited?' data-limited':'')+'" data-asset="'+asset.id+'" tabindex="0"><h2>'+asset.name+'</h2><div class="price">'+(own?fmt(own.price):'価格取得不可')+'</div><div class="change">'+(own?'前日比 '+pct(own.day)+' ｜ 5日 '+pct(own.week):'最新価格を取得でき次第、予測を更新')+'</div><div class="probrow">'+p+'</div><div class="meter"><i style="width:'+conf+'%"></i></div><div class="confidence">データ充足度 '+conf+'%｜'+(limited?'低信頼・参考値':'参考推定')+'</div>'+reasonDetails+'</article>';
+ return '<article class="card'+(limited?' data-limited':'')+'" data-asset="'+asset.id+'" tabindex="0"><h2>'+asset.name+'</h2><div class="price">'+(own?fmt(own.price):'価格取得不可')+'</div><div class="change">'+(own?'前日比 '+pct(own.day):'最新価格を取得でき次第、予測を更新')+'</div><div class="probrow">'+p+'</div><div class="meter"><i style="width:'+conf+'%"></i></div><div class="confidence">データ充足度 '+conf+'%｜'+(limited?'低信頼・参考値':'参考推定')+'</div>'+reasonDetails+'</article>';
 }
 function renderTechnicalChart(q){
  const rows=(q.series||[]).slice(-90),keys=['price','sma25','sma75','bbUpper','bbLower'];
