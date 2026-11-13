@@ -532,7 +532,7 @@ function forecast(asset,own,quotes,news){
  const coverage=1-missingRatio;
  const requiredFeeds=['rates','tech','japan','geo','oil'];
  const coveredFeeds=new Set(news.map(n=>n.category));
- const criticalCoverage=coveredFeeds.has('geo')&&coveredFeeds.has('oil')?1:0;
+ const criticalCoverage=['geo','oil'].filter(id=>coveredFeeds.has(id)).length/2;
  const broadCoverage=['rates','tech','japan'].filter(id=>coveredFeeds.has(id)).length/3;
  const newsCoverage=.7*criticalCoverage+.3*broadCoverage;
  const baseQuality=clamp(.2+.4*coverage+.4*newsCoverage,.2,1);
