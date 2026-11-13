@@ -1,0 +1,125 @@
+<!doctype html>
+<!-- Render auto-deploy check: Japan heatmap only -->
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>日本225 ヒートマップ</title>
+<style>
+:root{color-scheme:dark;--bg:#07111f;--panel:#102039;--line:#28415f;--text:#eef5ff;--muted:#9bb0ca;--yellow:#ffd84a}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#10243c 0,#07111f 260px);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{max-width:1100px;margin:auto;padding:17px 13px 12px}
+.brand{font-size:10px;letter-spacing:.2em;color:#83bfff;font-weight:800}
+h1{font-size:22px;margin:6px 0}
+.sub{font-size:11px;color:var(--muted);line-height:1.5}
+.toolbar{max-width:1100px;margin:0 auto;padding:0 12px 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+button,.back{border:1px solid #355574;border-radius:10px;background:#142b46;color:#eef5ff;padding:10px 13px;font-size:12px;font-weight:750;text-decoration:none}
+#status{font-size:11px;color:var(--muted);margin-left:auto}
+.legend{max-width:1100px;margin:0 auto;padding:0 13px 11px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:10px;color:var(--muted)}
+.key{display:inline-flex;align-items:center;gap:5px}
+.swatch{width:13px;height:13px;border-radius:3px;display:inline-block}
+.swatch.up{background:#b74354}.swatch.down{background:#245f9d}.swatch.hold{background:#142b46;border:2px solid var(--yellow)}
+main{max-width:1100px;margin:auto;padding:0 10px 26px}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+.tile{min-width:0;min-height:83px;border-radius:8px;padding:7px 5px 6px;background:#142b46;border:1px solid #29435f;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.tile.held{box-shadow:inset 0 0 0 2px var(--yellow)}
+.tile.up{background:linear-gradient(145deg,#a83d50,#762d43);border-color:#c05a68}
+.tile.down{background:linear-gradient(145deg,#245f9d,#193e6b);border-color:#3d76ad}
+.tile.flat{background:#273b52}
+.code{font-size:11px;font-weight:850;letter-spacing:.02em;white-space:nowrap}
+.name{font-size:9px;color:#e1eaf5;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;opacity:.9}
+.price{font-size:11px;font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+.change{font-size:11px;font-weight:850;font-variant-numeric:tabular-nums}
+.loading .price,.loading .change{opacity:.55}
+@media(max-width:350px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{min-height:76px}}
+@media(min-width:700px){.tiles{grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}.tile{min-height:94px;padding:9px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand">WORLD MARKET BOARD · JAPAN</div>
+ <h1>🇯🇵 日本225 ヒートマップ</h1>
+ <div class="sub">日経225構成銘柄 225社｜前日終値比の騰落率</div>
+ <div class="sub">黄色い内枠＝2026年11月7日 楽天証券CSV基準の保有銘柄（日経225該当24銘柄）</div>
+</header>
+<div class="toolbar">
+ <a class="back" href="shikyou.html#jp225">← 世界の株価へ戻る</a>
+ <button id="refresh" type="button">↻ 株価を更新</button>
+ <span id="status">株価データを準備中…</span>
+</div>
+<div class="legend">
+ <span class="key"><i class="swatch up"></i>上昇</span>
+ <span class="key"><i class="swatch down"></i>下落</span>
+ <span class="key"><i class="swatch hold"></i>保有銘柄</span>
+ <span>色は前日比。黄色枠は保有銘柄の目印です。</span>
+</div>
+<main><div class="tiles" id="tiles"></div></main>
+<script>
+const STOCKS=[{"code":"285A","name":"KIOXIA HOLDINGS CORP.","sector":"Technology"},{"code":"1332","name":"NISSUI CORP.","sector":"Consumer Goods"},{"code":"1605","name":"INPEX CORP.","sector":"Materials"},{"code":"1721","name":"COMSYS HOLDINGS CORP.","sector":"Capital Goods/Others"},{"code":"1801","name":"TAISEI CORP.","sector":"Capital Goods/Others"},{"code":"1802","name":"OBAYASHI CORP.","sector":"Capital Goods/Others"},{"code":"1803","name":"SHIMIZU CORP.","sector":"Capital Goods/Others"},{"code":"1808","name":"HASEKO CORP.","sector":"Capital Goods/Others"},{"code":"1812","name":"KAJIMA CORP.","sector":"Capital Goods/Others"},{"code":"1925","name":"DAIWA HOUSE IND. CO., LTD.","sector":"Capital Goods/Others"},{"code":"1928","name":"SEKISUI HOUSE, LTD.","sector":"Capital Goods/Others"},{"code":"1963","name":"JGC HOLDINGS CORP.","sector":"Capital Goods/Others"},{"code":"2002","name":"NISSHIN SEIFUN GROUP INC.","sector":"Consumer Goods"},{"code":"2269","name":"MEIJI HOLDINGS CO., LTD.","sector":"Consumer Goods"},{"code":"2282","name":"NH FOODS LTD.","sector":"Consumer Goods"},{"code":"2413","name":"M3, INC.","sector":"Consumer Goods"},{"code":"2432","name":"DENA CO., LTD.","sector":"Information and Communications"},{"code":"2501","name":"SAPPORO BREWERIES LTD.","sector":"Consumer Goods"},{"code":"2502","name":"ASAHI GROUP HOLDINGS, LTD.","sector":"Consumer Goods"},{"code":"2503","name":"KIRIN HOLDINGS CO., LTD.","sector":"Consumer Goods"},{"code":"2768","name":"SOJITZ CORP.","sector":"Materials"},{"code":"2801","name":"KIKKOMAN CORP.","sector":"Consumer Goods"},{"code":"2802","name":"AJINOMOTO CO., INC.","sector":"Consumer Goods"},{"code":"2871","name":"NICHIREI CORP.","sector":"Consumer Goods"},{"code":"2914","name":"JAPAN TOBACCO INC.","sector":"Consumer Goods"},{"code":"3086","name":"J.FRONT RETAILING CO., LTD.","sector":"Consumer Goods"},{"code":"3092","name":"ZOZO, INC.","sector":"Consumer Goods"},{"code":"3099","name":"ISETAN MITSUKOSHI HOLDINGS LTD.","sector":"Consumer Goods"},{"code":"3289","name":"TOKYU FUDOSAN HOLDINGS CORP.","sector":"Capital Goods/Others"},{"code":"3382","name":"SEVEN & I HOLDINGS CO., LTD.","sector":"Consumer Goods"},{"code":"3401","name":"TEIJIN LTD.","sector":"Materials"},{"code":"3402","name":"TORAY INDUSTRIES, INC.","sector":"Materials"},{"code":"3405","name":"KURARAY CO., LTD.","sector":"Materials"},{"code":"3407","name":"ASAHI KASEI CORP.","sector":"Materials"},{"code":"3436","name":"SUMCO CORP.","sector":"Materials"},{"code":"3659","name":"NEXON CO., LTD.","sector":"Information and Communications"},{"code":"3697","name":"SHIFT INC.","sector":"Information and Communications"},{"code":"3861","name":"OJI HOLDINGS CORP.","sector":"Materials"},{"code":"4004","name":"RESONAC HOLDINGS CORP.","sector":"Materials"},{"code":"4005","name":"SUMITOMO CHEMICAL CO., LTD.","sector":"Materials"},{"code":"4021","name":"NISSAN CHEMICAL CORP.","sector":"Materials"},{"code":"4042","name":"TOSOH CORP.","sector":"Materials"},{"code":"4043","name":"TOKUYAMA CORP.","sector":"Materials"},{"code":"4061","name":"DENKA CO., LTD.","sector":"Materials"},{"code":"4062","name":"IBIDEN CO., LTD.","sector":"Technology"},{"code":"4063","name":"SHIN-ETSU CHEMICAL CO., LTD.","sector":"Materials"},{"code":"4151","name":"KYOWA KIRIN CO., LTD.","sector":"Consumer Goods"},{"code":"4183","name":"MITSUI CHEMICALS, INC.","sector":"Materials"},{"code":"4188","name":"MITSUBISHI CHEMICAL GROUP CORP.","sector":"Materials"},{"code":"4208","name":"UBE CORP.","sector":"Materials"},{"code":"4307","name":"NOMURA RESEARCH INSTITUTE, LTD.","sector":"Information and Communications"},{"code":"4324","name":"DENTSU GROUP INC.","sector":"Consumer Goods"},{"code":"4385","name":"MERCARI, INC.","sector":"Information and Communications"},{"code":"4452","name":"KAO CORP.","sector":"Materials"},{"code":"4502","name":"TAKEDA PHARMACEUTICAL CO., LTD.","sector":"Consumer Goods"},{"code":"4503","name":"ASTELLAS PHARMA INC.","sector":"Consumer Goods"},{"code":"4506","name":"SUMITOMO PHARMA CO., LTD.","sector":"Consumer Goods"},{"code":"4507","name":"SHIONOGI & CO., LTD.","sector":"Consumer Goods"},{"code":"4519","name":"CHUGAI PHARMACEUTICAL CO., LTD.","sector":"Consumer Goods"},{"code":"4523","name":"EISAI CO., LTD.","sector":"Consumer Goods"},{"code":"4543","name":"TERUMO CORP.","sector":"Technology"},{"code":"4568","name":"DAIICHI SANKYO CO., LTD.","sector":"Consumer Goods"},{"code":"4578","name":"OTSUKA HOLDINGS CO., LTD.","sector":"Consumer Goods"},{"code":"4661","name":"ORIENTAL LAND CO., LTD.","sector":"Consumer Goods"},{"code":"4689","name":"LY CORP.","sector":"Information and Communications"},{"code":"4704","name":"TREND MICRO INC.","sector":"Information and Communications"},{"code":"4751","name":"CYBERAGENT, INC.","sector":"Consumer Goods"},{"code":"4755","name":"RAKUTEN GROUP, INC.","sector":"Consumer Goods"},{"code":"4901","name":"FUJIFILM HOLDINGS CORP.","sector":"Materials"},{"code":"4911","name":"SHISEIDO CO., LTD.","sector":"Materials"},{"code":"5016","name":"JX ADVANCED METALS CORP.","sector":"Materials"},{"code":"5019","name":"IDEMITSU KOSAN CO., LTD.","sector":"Materials"},{"code":"5020","name":"ENEOS HOLDINGS, INC.","sector":"Materials"},{"code":"5101","name":"THE YOKOHAMA RUBBER CO., LTD.","sector":"Materials"},{"code":"5108","name":"BRIDGESTONE CORP.","sector":"Materials"},{"code":"5201","name":"AGC INC.","sector":"Materials"},{"code":"5214","name":"NIPPON ELECTRIC GLASS CO., LTD.","sector":"Materials"},{"code":"5233","name":"TAIHEIYO CEMENT CORP.","sector":"Materials"},{"code":"5301","name":"TOKAI CARBON CO., LTD.","sector":"Materials"},{"code":"5332","name":"TOTO LTD.","sector":"Materials"},{"code":"5333","name":"NGK CORP.","sector":"Materials"},{"code":"5401","name":"NIPPON STEEL CORP.","sector":"Materials"},{"code":"5406","name":"KOBE STEEL, LTD.","sector":"Materials"},{"code":"5411","name":"JFE HOLDINGS, INC.","sector":"Materials"},{"code":"5631","name":"THE JAPAN STEEL WORKS, LTD.","sector":"Capital Goods/Others"},{"code":"5706","name":"MITSUI KINZOKU CO., LTD.","sector":"Materials"},{"code":"5711","name":"MITSUBISHI MATERIALS CORP.","sector":"Materials"},{"code":"5713","name":"SUMITOMO METAL MINING CO., LTD.","sector":"Materials"},{"code":"5714","name":"DOWA HOLDINGS CO., LTD.","sector":"Materials"},{"code":"5801","name":"FURUKAWA ELECTRIC CO., LTD.","sector":"Materials"},{"code":"5802","name":"SUMITOMO ELECTRIC IND., LTD.","sector":"Materials"},{"code":"5803","name":"FUJIKURA LTD.","sector":"Materials"},{"code":"5831","name":"SHIZUOKA FINANCIAL GROUP, INC.","sector":"Financials"},{"code":"6098","name":"RECRUIT HOLDINGS CO., LTD.","sector":"Consumer Goods"},{"code":"6103","name":"OKUMA CORP.","sector":"Capital Goods/Others"},{"code":"6113","name":"AMADA CO., LTD.","sector":"Capital Goods/Others"},{"code":"6146","name":"DISCO CORP.","sector":"Technology"},{"code":"6178","name":"JAPAN POST HOLDINGS CO., LTD.","sector":"Consumer Goods"},{"code":"6273","name":"SMC CORP.","sector":"Capital Goods/Others"},{"code":"6301","name":"KOMATSU LTD.","sector":"Capital Goods/Others"},{"code":"6302","name":"SUMITOMO HEAVY IND., LTD.","sector":"Capital Goods/Others"},{"code":"6305","name":"HITACHI CONST. MACH. CO., LTD.","sector":"Capital Goods/Others"},{"code":"6326","name":"KUBOTA CORP.","sector":"Capital Goods/Others"},{"code":"6361","name":"EBARA CORP.","sector":"Capital Goods/Others"},{"code":"6367","name":"DAIKIN INDUSTRIES, LTD.","sector":"Capital Goods/Others"},{"code":"6471","name":"NSK LTD.","sector":"Capital Goods/Others"},{"code":"6472","name":"NTN CORP.","sector":"Capital Goods/Others"},{"code":"6473","name":"JTEKT CORP.","sector":"Capital Goods/Others"},{"code":"6479","name":"MINEBEA MITSUMI INC.","sector":"Technology"},{"code":"6501","name":"HITACHI, LTD.","sector":"Technology"},{"code":"6503","name":"MITSUBISHI ELECTRIC CORP.","sector":"Technology"},{"code":"6504","name":"FUJI ELECTRIC CO., LTD.","sector":"Technology"},{"code":"6506","name":"YASKAWA ELECTRIC CORP.","sector":"Technology"},{"code":"6525","name":"KOKUSAI ELECTRIC CORP.","sector":"Technology"},{"code":"6526","name":"SOCIONEXT INC.","sector":"Technology"},{"code":"6532","name":"BAYCURRENT, INC.","sector":"Consumer Goods"},{"code":"6645","name":"OMRON CORP.","sector":"Technology"},{"code":"6701","name":"NEC CORP.","sector":"Technology"},{"code":"6702","name":"FUJITSU LTD.","sector":"Technology"},{"code":"6723","name":"RENESAS ELECTRONICS CORP.","sector":"Technology"},{"code":"6724","name":"SEIKO EPSON CORP.","sector":"Technology"},{"code":"6752","name":"PANASONIC HOLDINGS CORP.","sector":"Technology"},{"code":"6753","name":"SHARP CORP.","sector":"Technology"},{"code":"6758","name":"SONY GROUP CORP.","sector":"Technology"},{"code":"6762","name":"TDK CORP.","sector":"Technology"},{"code":"6770","name":"ALPS ALPINE CO., LTD.","sector":"Technology"},{"code":"6841","name":"YOKOGAWA ELECTRIC CORP.","sector":"Technology"},{"code":"6857","name":"ADVANTEST CORP.","sector":"Technology"},{"code":"6861","name":"KEYENCE CORP.","sector":"Technology"},{"code":"6902","name":"DENSO CORP.","sector":"Technology"},{"code":"6920","name":"LASERTEC CORP.","sector":"Technology"},{"code":"6954","name":"FANUC CORP.","sector":"Technology"},{"code":"6963","name":"ROHM CO., LTD.","sector":"Technology"},{"code":"6971","name":"KYOCERA CORP.","sector":"Technology"},{"code":"6976","name":"TAIYO YUDEN CO., LTD.","sector":"Technology"},{"code":"6981","name":"MURATA MANUFACTURING CO., LTD.","sector":"Technology"},{"code":"6988","name":"NITTO DENKO CORP.","sector":"Materials"},{"code":"7011","name":"MITSUBISHI HEAVY IND., LTD.","sector":"Capital Goods/Others"},{"code":"7012","name":"KAWASAKI HEAVY IND., LTD.","sector":"Capital Goods/Others"},{"code":"7013","name":"IHI CORP.","sector":"Capital Goods/Others"},{"code":"7186","name":"YOKOHAMA FINANCIAL GROUP, INC.","sector":"Financials"},{"code":"7201","name":"NISSAN MOTOR CO., LTD.","sector":"Technology"},{"code":"7202","name":"ISUZU MOTORS LTD.","sector":"Technology"},{"code":"7203","name":"TOYOTA MOTOR CORP.","sector":"Technology"},{"code":"7211","name":"MITSUBISHI MOTORS CORP.","sector":"Technology"},{"code":"7261","name":"MAZDA MOTOR CORP.","sector":"Technology"},{"code":"7267","name":"HONDA MOTOR CO., LTD.","sector":"Technology"},{"code":"7269","name":"SUZUKI MOTOR CORP.","sector":"Technology"},{"code":"7270","name":"SUBARU CORP.","sector":"Technology"},{"code":"7272","name":"YAMAHA MOTOR CO., LTD.","sector":"Technology"},{"code":"7453","name":"RYOHIN KEIKAKU CO., LTD.","sector":"Consumer Goods"},{"code":"7532","name":"PAN PACIFIC INTERNATIONAL HOLDINGS CORP.","sector":"Consumer Goods"},{"code":"7731","name":"NIKON CORP.","sector":"Technology"},{"code":"7733","name":"OLYMPUS CORP.","sector":"Technology"},{"code":"7735","name":"SCREEN HOLDINGS CO., LTD.","sector":"Technology"},{"code":"7741","name":"HOYA CORP.","sector":"Technology"},{"code":"7751","name":"CANON INC.","sector":"Technology"},{"code":"7752","name":"RICOH CO., LTD.","sector":"Technology"},{"code":"7832","name":"BANDAI NAMCO HOLDINGS INC.","sector":"Capital Goods/Others"},{"code":"7911","name":"TOPPAN HOLDINGS INC.","sector":"Capital Goods/Others"},{"code":"7912","name":"DAI NIPPON PRINTING CO., LTD.","sector":"Capital Goods/Others"},{"code":"7951","name":"YAMAHA CORP.","sector":"Capital Goods/Others"},{"code":"7974","name":"NINTENDO CO., LTD.","sector":"Information and Communications"},{"code":"8001","name":"ITOCHU CORP.","sector":"Materials"},{"code":"8002","name":"MARUBENI CORP.","sector":"Materials"},{"code":"8015","name":"TOYOTA TSUSHO CORP.","sector":"Materials"},{"code":"8031","name":"MITSUI & CO., LTD.","sector":"Materials"},{"code":"8035","name":"TOKYO ELECTRON LTD.","sector":"Technology"},{"code":"8053","name":"SUMITOMO CORP.","sector":"Materials"},{"code":"8058","name":"MITSUBISHI CORP.","sector":"Materials"},{"code":"8233","name":"TAKASHIMAYA CO., LTD.","sector":"Consumer Goods"},{"code":"8252","name":"MARUI GROUP CO., LTD.","sector":"Consumer Goods"},{"code":"8253","name":"CREDIT SAISON CO., LTD.","sector":"Financials"},{"code":"8267","name":"AEON CO., LTD.","sector":"Consumer Goods"},{"code":"8304","name":"AOZORA BANK, LTD.","sector":"Financials"},{"code":"8306","name":"MITSUBISHI UFJ FINANCIAL GROUP, INC.","sector":"Financials"},{"code":"8308","name":"RESONA HOLDINGS, INC.","sector":"Financials"},{"code":"8309","name":"SUMITOMO MITSUI TRUST GROUP, INC.","sector":"Financials"},{"code":"8316","name":"SUMITOMO MITSUI FINANCIAL GROUP, INC.","sector":"Financials"},{"code":"8331","name":"THE CHIBA BANK, LTD.","sector":"Financials"},{"code":"8354","name":"FUKUOKA FINANCIAL GROUP, INC.","sector":"Financials"},{"code":"8411","name":"MIZUHO FINANCIAL GROUP, INC.","sector":"Financials"},{"code":"8591","name":"ORIX CORP.","sector":"Financials"},{"code":"8601","name":"DAIWA SECURITIES GROUP INC.","sector":"Financials"},{"code":"8604","name":"NOMURA HOLDINGS, INC.","sector":"Financials"},{"code":"8630","name":"SOMPO HOLDINGS, INC.","sector":"Financials"},{"code":"8697","name":"JAPAN EXCHANGE GROUP, INC.","sector":"Financials"},{"code":"8725","name":"MS&AD INSURANCE GROUP HOLDINGS, INC.","sector":"Financials"},{"code":"8750","name":"DAIICHI LIFE GROUP, INC.","sector":"Financials"},{"code":"8766","name":"TOKIO MARINE HOLDINGS, INC.","sector":"Financials"},{"code":"8795","name":"T&D HOLDINGS, INC.","sector":"Financials"},{"code":"8801","name":"MITSUI FUDOSAN CO., LTD.","sector":"Capital Goods/Others"},{"code":"8802","name":"MITSUBISHI ESTATE CO., LTD.","sector":"Capital Goods/Others"},{"code":"8804","name":"TOKYO TATEMONO CO., LTD.","sector":"Capital Goods/Others"},{"code":"8830","name":"SUMITOMO REALTY & DEVELOPMENT CO., LTD.","sector":"Capital Goods/Others"},{"code":"9001","name":"TOBU RAILWAY CO., LTD.","sector":"Transportation and Utilities"},{"code":"9005","name":"TOKYU CORP.","sector":"Transportation and Utilities"},{"code":"9007","name":"ODAKYU ELECTRIC RAILWAY CO., LTD.","sector":"Transportation and Utilities"},{"code":"9008","name":"KEIO CORP.","sector":"Transportation and Utilities"},{"code":"9009","name":"KEISEI ELECTRIC RAILWAY CO., LTD.","sector":"Transportation and Utilities"},{"code":"9020","name":"EAST JAPAN RAILWAY CO.","sector":"Transportation and Utilities"},{"code":"9021","name":"WEST JAPAN RAILWAY CO.","sector":"Transportation and Utilities"},{"code":"9022","name":"CENTRAL JAPAN RAILWAY CO., LTD.","sector":"Transportation and Utilities"},{"code":"9064","name":"YAMATO HOLDINGS CO., LTD.","sector":"Transportation and Utilities"},{"code":"9101","name":"NIPPON YUSEN K.K.","sector":"Transportation and Utilities"},{"code":"9104","name":"MITSUI O.S.K.LINES, LTD.","sector":"Transportation and Utilities"},{"code":"9107","name":"KAWASAKI KISEN KAISHA, LTD.","sector":"Transportation and Utilities"},{"code":"9147","name":"NIPPON EXPRESS HOLDINGS, INC.","sector":"Transportation and Utilities"},{"code":"9201","name":"JAPAN AIRLINES CO., LTD.","sector":"Transportation and Utilities"},{"code":"9202","name":"ANA HOLDINGS INC.","sector":"Transportation and Utilities"},{"code":"9432","name":"NTT, INC.","sector":"Information and Communications"},{"code":"9433","name":"KDDI CORP.","sector":"Information and Communications"},{"code":"9434","name":"SOFTBANK CORP.","sector":"Information and Communications"},{"code":"9501","name":"TOKYO ELECTRIC POWER COMPANY HOLDINGS, I","sector":"Transportation and Utilities"},{"code":"9502","name":"CHUBU ELECTRIC POWER CO., INC.","sector":"Transportation and Utilities"},{"code":"9503","name":"THE KANSAI ELECTRIC POWER CO., INC.","sector":"Transportation and Utilities"},{"code":"9531","name":"TOKYO GAS CO., LTD.","sector":"Transportation and Utilities"},{"code":"9532","name":"OSAKA GAS CO., LTD.","sector":"Transportation and Utilities"},{"code":"9602","name":"TOHO CO., LTD","sector":"Information and Communications"},{"code":"9697","name":"CAPCOM CO., LTD.","sector":"Information and Communications"},{"code":"9735","name":"SECOM CO., LTD.","sector":"Consumer Goods"},{"code":"9766","name":"KONAMI GROUP CORP.","sector":"Information and Communications"},{"code":"9843","name":"NITORI HOLDINGS CO., LTD.","sector":"Consumer Goods"},{"code":"9983","name":"FAST RETAILING CO., LTD.","sector":"Consumer Goods"},{"code":"9984","name":"SOFTBANK GROUP CORP.","sector":"Information and Communications"}];
+const HOLDINGS=new Set(["1605","1928","2914","4042","4502","4755","5108","6501","6976","6981","7011","7272","7974","8001","8002","8053","8058","8267","8306","8309","8766","9432","9434","9984"]);
+const tiles=document.getElementById('tiles');
+const statusEl=document.getElementById('status');
+const nf=new Intl.NumberFormat('ja-JP',{maximumFractionDigits:1});
+const priceFmt=new Intl.NumberFormat('ja-JP',{maximumFractionDigits:2});
+const els=new Map();
+for(const s of STOCKS){
+ const el=document.createElement('article');
+ el.className='tile loading'+(HOLDINGS.has(s.code)?' held':'');
+ el.innerHTML='<div class="code"></div><div class="name"></div><div class="price">取得中…</div><div class="change">—</div>';
+ el.querySelector('.code').textContent=s.code;
+ el.querySelector('.name').textContent=s.name;
+ tiles.appendChild(el); els.set(s.code,el);
+}
+function setQuote(s,q){
+ const el=els.get(s.code); if(!el)return;
+ el.classList.remove('loading','up','down','flat');
+ const price=el.querySelector('.price'),change=el.querySelector('.change');
+ if(!q||!Number.isFinite(q.price)||!Number.isFinite(q.pct)){
+   price.textContent='取得不可';change.textContent='—';el.classList.add('flat');return;
+ }
+ price.textContent='¥'+priceFmt.format(q.price);
+ const sign=q.pct>0?'+':q.pct<0?'−':'';
+ change.textContent=sign+nf.format(Math.abs(q.pct))+'%';
+ el.classList.add(q.pct>0.015?'up':q.pct<-.015?'down':'flat');
+}
+async function getQuote(s){
+ const ticker=encodeURIComponent(s.code+'.T');
+ const url='https://query1.finance.yahoo.com/v8/finance/chart/'+ticker+'?range=5d&interval=1d';
+ const res=await fetch(url,{cache:'no-store'});
+ if(!res.ok)throw new Error('HTTP '+res.status);
+ const json=await res.json();
+ const r=json?.chart?.result?.[0]; if(!r)throw new Error('No data');
+ const meta=r.meta||{};
+ const q=r.indicators?.quote?.[0]||{};
+ const closes=(q.close||[]).filter(v=>Number.isFinite(v));
+ const price=Number.isFinite(meta.regularMarketPrice)?meta.regularMarketPrice:closes.at(-1);
+ let prev=Number.isFinite(meta.chartPreviousClose)?meta.chartPreviousClose:closes.length>1?closes.at(-2):null;
+ if(!Number.isFinite(prev)||prev===0)throw new Error('No previous close');
+ return {price,pct:(price/prev-1)*100};
+}
+async function load(){
+ const button=document.getElementById('refresh');button.disabled=true;
+ statusEl.textContent='株価を取得中…';
+ let ok=0,fail=0;
+ for(let i=0;i<STOCKS.length;i+=20){
+   const batch=STOCKS.slice(i,i+20);
+   await Promise.all(batch.map(async s=>{
+     try{setQuote(s,await getQuote(s));ok++;}
+     catch(e){setQuote(s,null);fail++;}
+   }));
+   statusEl.textContent='取得 '+Math.min(i+20,STOCKS.length)+' / '+STOCKS.length+' 銘柄';
+   if(i+20<STOCKS.length)await new Promise(r=>setTimeout(r,250));
+ }
+ const now=new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',hour:'2-digit',minute:'2-digit'}).format(new Date());
+ statusEl.textContent='更新 '+now+'｜取得 '+ok+'銘柄'+(fail?'・未取得 '+fail+'銘柄':'');
+ button.disabled=false;
+}
+document.getElementById('refresh').addEventListener('click',load);
+load();
+</script>
+</body>
+</html>
