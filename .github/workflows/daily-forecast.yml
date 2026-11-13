@@ -22,8 +22,11 @@ jobs:
       X_API_ENABLED: ${{ vars.X_API_ENABLED }}
       X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
     steps:
-      - name: Checkout
+      - name: Checkout deployment branch
         uses: actions/checkout@v4
+        with:
+          ref: restore-world-market-japan-heatmap
+          fetch-depth: 0
       - name: Validate JavaScript syntax
         run: |
           node --check scripts/daily-forecast.mjs
@@ -33,7 +36,7 @@ jobs:
           node --input-type=module -e 'import fs from "node:fs"; const html=fs.readFileSync("index.html","utf8"); const start=html.indexOf("<script>"); const end=html.indexOf("</script>",start+8); if(start<0 || end<0) throw new Error("inline script not found"); new Function(html.slice(start+8,end)); console.log("Inline app JavaScript syntax OK");'
       - name: Run daily forecast and validation
         run: node scripts/daily-forecast.mjs
-      - name: Save forecast history
+      - name: Save forecast history to deployment branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -42,6 +45,7 @@ jobs:
             echo "No forecast changes to save."
           else
             git commit -m "Save daily investment forecast and validation"
-            git pull --rebase origin main
-            git push
+            git fetch origin restore-world-market-japan-heatmap
+            git rebase FETCH_HEAD
+            git push origin HEAD:restore-world-market-japan-heatmap
           fi
