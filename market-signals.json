@@ -1,6 +1,6 @@
 {
   "date": "2026-11-13",
-  "generatedAt": "2026-11-13T12:03:49.106Z",
+  "generatedAt": "2026-11-13T12:06:54.067Z",
   "status": "free-indexed",
   "reason": "",
   "attention": {
@@ -8,7 +8,7 @@
     "authors": 14,
     "engagement": 0,
     "crediblePosts": 1,
-    "coordinationFlags": 125
+    "coordinationFlags": 127
   },
   "usage": {
     "maxPosts": 30,
