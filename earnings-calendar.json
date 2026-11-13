@@ -1,6 +1,6 @@
 {
   "asOfDate": "2026-11-13",
-  "generatedAt": "2026-11-13T10:30:20.127Z",
+  "generatedAt": "2026-11-13T10:32:03.991Z",
   "status": "ok",
   "source": "Nasdaq public earnings calendar",
   "window": {
@@ -13,7 +13,7 @@
       "symbol": "NVDA",
       "name": "NVIDIA Corporation",
       "reportTime": "time-after-hours",
-      "marketCap": 4186892930000,
+      "marketCap": 4070249070000,
       "epsForecast": 2.49,
       "actualEPS": null,
       "surprise": null,
