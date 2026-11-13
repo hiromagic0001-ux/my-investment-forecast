@@ -20,7 +20,7 @@
 <div class="cards" id="forecasts"></div>
 <section class="panel"><h3>市場・金融環境</h3><div class="factorgrid" id="indicators"></div><div class="legend">価格変化は各市場の直近取得可能な取引日ベース。取得できない項目は推測値で補完しません。</div></section>
 <section class="panel"><h3>世界経済ニュースの材料分析</h3><div id="news"><div class="empty">ニュースを取得中…</div></div></section>
-<section class="panel" id="xSignalPanel"><h3>X速報・情報の信頼性判定</h3><div class="legend">X投稿は投稿者・一次情報リンク・独立した裏付けを評価します。未確認投稿は速報として表示しても方向予測には採用しません。</div><div id="xSignals"><div class="empty">X情報を確認しています…</div></div></section>
+<section class="panel" id="xSignalPanel"><h3>X速報・情報の信頼性判定</h3><div class="legend">無料の検索インデックス経由で見つかったX公開投稿を表示します。投稿の存在確認とニュース裏付けを分け、未確認投稿は方向予測に採用しません。公式APIによる全投稿検索ではありません。</div><div id="xSignals"><div class="empty">X情報を確認しています…</div></div></section>
 
 <section class="panel" id="yearEndScenarios">
  <h3>2026年末までの株価シナリオ（12月31日まで）</h3>
@@ -344,8 +344,8 @@ function renderXSignals(data){
  const generated=Date.parse(data.generatedAt||"");
  const stale=!Number.isFinite(generated)||(Date.now()-generated)>36*60*60*1000;
  const attention=data.attention||{};
- const head='<div class="legend">取得状態：'+(data.status==="active"?'接続中':data.status==="partial"?'一部取得エラー':'未接続')+'｜投稿 '+(attention.posts||0)+'件｜投稿者 '+(attention.authors||0)+'人｜裏付け候補 '+(attention.crediblePosts||0)+'件｜API読取上限 '+(data.usage?.maxPosts||30)+'件/回</div>';
- if(data.status==="disabled")return head+'<div class="empty">X APIは未接続です。X_API_ENABLED と X_BEARER_TOKEN の設定後に収集を開始します。現時点でAPI利用料は発生していません。</div>';
+ const head='<div class="legend">取得状態：'+(data.status==="active"?'公式API接続中':data.status==="free-indexed"?'無料検索連携中':data.status==="partial"?'一部取得エラー':'未接続')+'｜投稿 '+(attention.posts||0)+'件｜投稿者 '+(attention.authors||0)+'人｜裏付け候補 '+(attention.crediblePosts||0)+'件｜API読取上限 '+(data.usage?.maxPosts||30)+'件/回</div>';
+ if(data.status==="disabled")return head+'<div class="empty">無料検索連携のデータがまだありません。検索インデックスの更新を待ちます。API利用料は発生しません。</div>';
  if(stale)return head+'<div class="empty">Xデータが36時間以上更新されていません。古い投稿を最新情報として扱いません。</div>';
  const posts=(data.posts||[]).slice(0,12);
  if(!posts.length)return head+'<div class="empty">対象キーワードの投稿はありません。'+esc(data.reason||"")+'</div>';
