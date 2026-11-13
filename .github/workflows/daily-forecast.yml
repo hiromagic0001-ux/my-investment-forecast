@@ -5,6 +5,7 @@ on:
     paths-ignore:
       - forecast-history.json
       - market-signals.json
+      - earnings-calendar.json
   schedule:
     # 07:00 JST Monday-Friday = 22:00 UTC Sunday-Thursday
     - cron: "0 22 * * 0-4"
@@ -27,6 +28,7 @@ jobs:
         run: |
           node --check scripts/daily-forecast.mjs
           node --check scripts/free-x-signals.mjs
+          node --check scripts/earnings-calendar.mjs
           node --check scripts/x-signals.mjs
           node --input-type=module -e 'import fs from "node:fs"; const html=fs.readFileSync("index.html","utf8"); const start=html.indexOf("<script>"); const end=html.indexOf("</script>",start+8); if(start<0 || end<0) throw new Error("inline script not found"); new Function(html.slice(start+8,end)); console.log("Inline app JavaScript syntax OK");'
       - name: Run daily forecast and validation
