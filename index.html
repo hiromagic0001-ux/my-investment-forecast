@@ -143,7 +143,7 @@ async function loadUSMarketReview(){
   const r=await fetch('./us-market-review.json?ts='+Date.now(),{cache:'no-store'});
   if(!r.ok)throw Error('review unavailable');
   const d=await r.json();
-  const rows=d.actuals.map(x=>'<div class="factor"><b>'+x.name+'</b><span>'+Number(x.close).toLocaleString('ja-JP',{maximumFractionDigits:2})+' ｜ '+(x.changePct>0?'+':'')+x.changePct.toFixed(2)+'%</span></div>').join('');
+  const rows=d.actuals.map(x=>{const close=x.close==null?'—':Number(x.close).toLocaleString('ja-JP',{maximumFractionDigits:2});const change=x.changePct==null?'騰落率 —':(x.changePct>0?'+':'')+Number(x.changePct).toFixed(2)+'%';return '<div class="factor"><b>'+x.name+'</b><span>'+close+' ｜ '+change+'</span></div>';}).join('');
   const factors=d.factors.map(x=>'<li>'+x+'</li>').join('');
   const learning=d.learning.map(x=>'<li>'+x+'</li>').join('');
   $('usMarketReviewBody').innerHTML='<b class="bad">前夜予想：'+d.forecast.direction+' ／ 結果：'+d.result+'</b><div class="legend" style="margin:6px 0">予測確率・想定レンジ：保存記録なし（推測で補完せず）</div><div class="factorgrid">'+rows+'</div><h4>外れた要因</h4><ul class="reasons">'+factors+'</ul><h4>次回への改善</h4><ul class="reasons">'+learning+'</ul><div class="legend">'+d.sourceNotes+'</div>';
@@ -195,30 +195,45 @@ function renderDailyScoreboard(){
   const unit=x.id==='topix'?'円':'pt',show=n=>n===null||n===undefined?'—':Number(n).toLocaleString('ja-JP',{maximumFractionDigits:2})+' '+unit;
   const actual=x.actual!==null&&x.actual!==undefined,hit=x.hit===true,miss=x.hit===false;
   const status=actual?(hit?'<span class="daily-status hit">的中</span>':'<span class="daily-status miss">外れ</span>'):'<span class="daily-status pending">結果待ち</span>';
-  return '<article class="daily-score-item" role="button" tabindex="0" data-daily-index="'+i+'" aria-label="'+esc(x.name)+'の予想・検証詳細を開く"><b>'+esc(x.name)+'</b><div class="daily-pred">予想：'+esc(x.direction||((Number(x.probability)>=50)?'上昇':'下落'))+'｜上昇確率 '+Number(x.probability).toFixed(1)+'%</div><small>基準価格 '+show(x.basePrice)+'（'+esc(x.baseDate||'')+'）</small><div class="daily-actual">実績：'+(actual?show(x.actual):'未確定')+'</div><small>'+(actual?'実績日 '+esc(x.actualDate||'')+'｜'+(x.actualUp?'上昇':'下落'):'次の確定終値を取得後に自動判定')+'</small>'+status+'<span class="daily-score-tap">タップして詳細を見る ›</span></article>';
+  return '<article class="daily-score-item" role="button" tabindex="0" data-daily-index="'+i+'" aria-label="'+esc(x.name)+'の予想・検証詳細を開く"><b>'+esc(x.name)+'</b><div class="daily-pred">予想：'+probabilitySignal(Number(x.probability)).label+'｜上昇確率 '+Number(x.probability).toFixed(1)+'%</div><small>基準価格 '+show(x.basePrice)+'（'+esc(x.baseDate||'')+'）</small><div class="daily-actual">実績：'+(actual?show(x.actual):'未確定')+'</div><small>'+(actual?'実績日 '+esc(x.actualDate||'')+'｜'+(x.actualUp?'上昇':'下落'):'次の確定終値を取得後に自動判定')+'</small>'+status+'<span class="daily-score-tap">タップして詳細を見る ›</span></article>';
  }).join('')||'<div class="empty">この日の予測データはありません。</div>';
 }
 function renderValidation(){
  const rows=readHistory();
  const done=rows.flatMap(r=>Array.isArray(r.results)&&r.results.length?r.results:(Array.isArray(r.forecasts)?r.forecasts:[]));
  const valid=done.filter(x=>x.actual!==null&&x.actual!==undefined);
- const correct=valid.filter(x=>x.hit).length;
- const accuracy=valid.length?correct/valid.length*100:null;
- const brier=valid.length?valid.reduce((s,x)=>s+Math.pow((x.probability/100)-(x.actualUp?1:0),2),0)/valid.length:null;
+ const scored=valid.filter(x=>typeof x.actualUp==="boolean"&&Number.isFinite(Number(x.probability)));
+ const directional=scored.filter(x=>Number(x.probability)!==50);
+ const correct=directional.filter(x=>(Number(x.probability)>50&&x.actualUp)||(Number(x.probability)<50&&!x.actualUp)).length;
+ const accuracy=directional.length?correct/directional.length*100:null;
+ const brier=scored.length?scored.reduce((s,x)=>s+Math.pow((Number(x.probability)/100)-(x.actualUp?1:0),2),0)/scored.length:null;
+ const rangeScored=valid.filter(x=>Number.isFinite(Number(x.rangeLow))&&Number.isFinite(Number(x.rangeHigh)));
+ const rangeCoverage=rangeScored.length?rangeScored.filter(x=>Number(x.actual)>=Number(x.rangeLow)&&Number(x.actual)<=Number(x.rangeHigh)).length/rangeScored.length*100:null;
  const byIndex=assets.map(a=>{
-  const sample=valid.filter(x=>x.id===a.id);
-  const hits=sample.filter(x=>x.hit===true).length;
-  return {name:a.name,sample:sample.length,hits,rate:sample.length?hits/sample.length*100:null};
+  const sample=scored.filter(x=>x.id===a.id),directionSample=sample.filter(x=>Number(x.probability)!==50);
+  const hits=directionSample.filter(x=>(Number(x.probability)>50&&x.actualUp)||(Number(x.probability)<50&&!x.actualUp)).length;
+  const score=sample.length?sample.reduce((s,x)=>s+Math.pow(Number(x.probability)/100-(x.actualUp?1:0),2),0)/sample.length:null;
+  return {name:a.name,sample:sample.length,hits,rate:directionSample.length?hits/directionSample.length*100:null,brier:score};
  });
- $('validationStatus').textContent=rows.length?'保存済み予測 '+rows.length+'日分｜検証済み '+valid.length+'件（翌営業日の方向予測）':'予測記録はまだありません。';
+ const buckets=[{label:"40%未満",min:0,max:40},{label:"40〜50%",min:40,max:50},{label:"50〜60%",min:50,max:60},{label:"60%以上",min:60,max:101}].map(b=>{
+  const xs=scored.filter(x=>Number(x.probability)>=b.min&&Number(x.probability)<b.max);
+  const predicted=xs.length?xs.reduce((s,x)=>s+Number(x.probability),0)/xs.length:null;
+  const actual=xs.length?xs.filter(x=>x.actualUp).length/xs.length*100:null;
+  return {label:b.label,n:xs.length,predicted,actual};
+ });
+ $('validationStatus').textContent=rows.length?'保存済み予測 '+rows.length+'日分｜検証済み '+scored.length+'件｜方向判定 '+directional.length+'件'+(scored.length<30?'｜件数不足のため統計評価は参考値':''):'予測記録はまだありません。';
  $('validationSummary').innerHTML=[
-  ['全指数・方向的中率',accuracy===null?'—':accuracy.toFixed(1)+'% ('+correct+'/'+valid.length+')'],
+  ['方向的中率',accuracy===null?'—':accuracy.toFixed(1)+'% ('+correct+'/'+directional.length+')'],
   ...byIndex.map(x=>[x.name+' 的中率',x.rate===null?'—（0件）':x.rate.toFixed(1)+'% ('+x.hits+'/'+x.sample+')']),
-  ['Brier score',brier===null?'—':brier.toFixed(3)],
-  ['対象期間',valid.length?valid.map(x=>x.date).sort()[0]+'〜'+valid.map(x=>x.date).sort().at(-1):'未検証']
+  ['全体 Brier score',brier===null?'—':brier.toFixed(3)+'（小さいほど良い）'],
+  ...byIndex.map(x=>[x.name+' Brier',x.brier===null?'—':x.brier.toFixed(3)]),
+  ['想定レンジ内率',rangeCoverage===null?'—':rangeCoverage.toFixed(1)+'% ('+rangeScored.length+'件)'],
+  ...buckets.map(x=>['確率帯 '+x.label,x.n?('予測 '+x.predicted.toFixed(1)+'%｜実績 '+x.actual.toFixed(1)+'%｜'+x.n+'件'):'データ不足']),
+  ['統計上の注意',scored.length<30?'検証 '+scored.length+'件。校正判断には不足しています。':'検証件数は30件以上。継続して確認してください。'],
+  ['対象期間',scored.length?scored.map(x=>x.actualDate||x.date).sort()[0]+'〜'+scored.map(x=>x.actualDate||x.date).sort().at(-1):'未検証']
  ].map(x=>'<div class="factor"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('');
  $('validationHistory').innerHTML=rows.slice().reverse().map(r=>{
-  const outcomes=(r.results||[]).map(x=>'<div class="news">'+x.name+'：予測 '+x.probability+'%（'+x.direction+'）｜基準日 '+(x.baseDate||'不明')+'｜想定レンジ '+Number(x.rangeLow).toLocaleString('ja-JP',{maximumFractionDigits:2})+'〜'+Number(x.rangeHigh).toLocaleString('ja-JP',{maximumFractionDigits:2})+'｜'+(x.actual===null?'未検証':(x.hit?'方向的中':'方向外れ')+'｜実績 '+Number(x.actual).toLocaleString('ja-JP',{maximumFractionDigits:2})+'（'+(x.actualUp?'上昇':'下落')+'）｜'+x.baseDate+' → '+x.actualDate)+'</div>').join('');
+  const outcomes=(r.results||[]).map(x=>'<div class="news">'+x.name+'：予測 '+x.probability+'%（'+x.direction+'）｜基準日 '+(x.baseDate||'不明')+'｜想定レンジ '+Number(x.rangeLow).toLocaleString('ja-JP',{maximumFractionDigits:2})+'〜'+Number(x.rangeHigh).toLocaleString('ja-JP',{maximumFractionDigits:2})+'｜'+(x.actual==null?'未検証':(x.hit?'方向的中':'方向外れ')+'｜実績 '+Number(x.actual).toLocaleString('ja-JP',{maximumFractionDigits:2})+'（'+(x.actualUp?'上昇':'下落')+'）｜'+x.baseDate+' → '+x.actualDate)+'</div>').join('');
   return '<div class="news"><b>'+r.date+' の予測</b><small>保存 '+r.savedAt+'｜'+(r.results||[]).filter(x=>x.actual!==null).length+'/3 指数を検証済み</small>'+outcomes+'</div>';
  }).join('')||'<div class="empty">保存された予測はありません。</div>';
  renderDailyScoreboard();
@@ -536,6 +551,14 @@ function priceForecastData(asset,own,quotes,news){if(!own||quoteIsStale(own))ret
 function forecastSvg(ps){const W=620,H=230,L=65,R=12,T=18,B=35,v=ps.flatMap(p=>[p.low,p.base,p.high]),mn=Math.min(...v)*.94,mx=Math.max(...v)*1.04,x=i=>L+i*(W-L-R)/(ps.length-1),y=n=>T+(mx-n)/(mx-mn)*(H-T-B),path=k=>ps.map((p,i)=>(i?"L":"M")+x(i)+","+y(p[k])).join(" "),grid=[0,1,2,3,4].map(i=>{const n=mn+(mx-mn)*i/4;return '<line x1="'+L+'" y1="'+y(n)+'" x2="'+(W-R)+'" y2="'+y(n)+'" stroke="#28364a"/><text x="'+(L-6)+'" y="'+(y(n)+4)+'" fill="#9eacbf" font-size="10" text-anchor="end">'+fmt(n)+'</text>'}).join(""),dots=ps.map((p,i)=>'<circle cx="'+x(i)+'" cy="'+y(p.base)+'" r="4" fill="#e7c477"/><text x="'+x(i)+'" y="'+(y(p.base)-9)+'" fill="#e7c477" font-size="9" text-anchor="middle">'+fmt(p.base)+'</text><text x="'+x(i)+'" y="'+(H-10)+'" fill="#cbd5e2" font-size="10" text-anchor="middle">'+p.label+'</text>').join("");return '<svg class="forecast-chart" viewBox="0 0 '+W+' '+H+'">'+grid+'<path d="'+path("low")+'" fill="none" stroke="#83b8ff" stroke-dasharray="5 4" stroke-width="2"/><path d="'+path("high")+'" fill="none" stroke="#83b8ff" stroke-dasharray="5 4" stroke-width="2"/><path d="'+path("base")+'" fill="none" stroke="#e7c477" stroke-width="3"/>'+dots+'</svg><div class="legend">実線：基本　破線：慎重・強気</div>';}
 function openPriceForecast(id){const a=assets.find(v=>v.id===id),q=latestQuotes[id];if(!a||!q)return;const d=priceForecastData(a,q,latestQuotes,latestNews);if(!d){$("forecastModalContent").innerHTML="最新価格が古いため予想を表示できません。";}else{const unit=id==="topix"?"円":"pt",show=n=>fmt(n)+" "+unit,ps=d.points,A=d.assumptions,cards=ps.slice(1).map(p=>'<div class="forecast-value"><small>'+p.label+'｜'+p.date+'</small><b>'+show(p.base)+'</b><span>基本シナリオ　現在比 '+pct((p.base/q.price-1)*100)+'</span></div>').join(""),rows=ps.slice(1).map(p=>'<tr><td>'+p.label+'<br>'+p.date+'</td><td>'+show(p.low)+'</td><td><b>'+show(p.base)+'</b></td><td>'+show(p.high)+'</td></tr>').join("");$("forecastModalContent").innerHTML='<h2>'+esc(a.name)+'｜価格予想</h2><div class="legend">基準価格 '+show(q.price)+'｜基準日 '+d.baseDate+'</div>'+forecastSvg(ps)+'<div class="forecast-value-grid">'+cards+'</div><table class="forecast-table"><thead><tr><th>時点</th><th>慎重</th><th>基本</th><th>強気</th></tr></thead><tbody>'+rows+'</tbody></table><div class="forecast-scenarios"><div class="forecast-scenario"><b>慎重</b><span>年率 '+A.low+'%</span></div><div class="forecast-scenario"><b>基本</b><span>年率 '+A.base+'%</span></div><div class="forecast-scenario"><b>強気</b><span>年率 '+A.high+'%</span></div></div><p class="forecast-note">明日の価格は現在の予測スコアと直近変動率による短期推定。年度末は2027年3月31日。5年・10年は仮定した年率を複利計算した参考シナリオで、確定予測ではありません。TOPIX欄は1306連動ETFの参考価格です。東証株価指数そのものの価格・5分足ではありません。為替、分配金、税金、構成変更などは別途反映していません。</p>';}$("priceForecastModal").classList.add("open");$("priceForecastModal").setAttribute("aria-hidden","false");}
 function closePriceForecast(){$("priceForecastModal").classList.remove("open");$("priceForecastModal").setAttribute("aria-hidden","true");}
+function probabilitySignal(p){
+ if(!Number.isFinite(p))return {label:"判定不能",color:"var(--muted)"};
+ if(p>=60)return {label:"上昇優勢",color:"var(--up)"};
+ if(p>=52)return {label:"上昇寄り",color:"var(--up)"};
+ if(p<=40)return {label:"下落優勢",color:"var(--dn)"};
+ if(p<=48)return {label:"下落寄り",color:"var(--dn)"};
+ return {label:"中立",color:"var(--muted)"};
+}
 function renderAsset(asset,quotes,news){
  const own=quotes[asset.id],f=forecast(asset,own,quotes,news);
  const missingQuotes=Object.keys(asset.exp).filter(id=>id==='oil'?!(quotes.oil||quotes.brent):!quotes[id]).map(id=>indicators.find(x=>x.id===id)?.name||id);
@@ -547,7 +570,7 @@ function renderAsset(asset,quotes,news){
  if(missingNews.length)reasons.push('重要ニュース未取得：'+missingNews.map(id=>id==='geo'?'戦争・地政学':'原油・供給リスク').join('・'));
  const limited=!own||f.quality<.7||quoteIsStale(own)||missingNews.length>0;
  if(limited&&!reasons.length)reasons.push('データ充足度が基準未満');
- const nextProb=own?f.probs[0]:null;const p=own?'<div class="prob"><small>翌営業日</small><b style="color:'+(nextProb>=50?'var(--up)':'var(--dn)')+'">'+(nextProb>=50?'上昇優勢':'下落優勢')+'</b><small style="color:var(--muted);margin-top:3px">上昇 '+nextProb.toFixed(1)+'% ／ 下落 '+(100-nextProb).toFixed(1)+'%</small></div>':'<div class="prob"><small>翌営業日</small><b>—</b><small>価格データ未取得</small></div>';
+ const nextProb=own?f.probs[0]:null,signal=own?probabilitySignal(nextProb):null;const p=own?'<div class="prob"><small>翌営業日</small><b style="color:'+signal.color+'">'+signal.label+'</b><small style="color:var(--muted);margin-top:3px">上昇 '+nextProb.toFixed(1)+'% ／ 下落 '+(100-nextProb).toFixed(1)+'%</small></div>':'<div class="prob"><small>翌営業日</small><b>—</b><small>価格データ未取得</small></div>';
  const reason=[...f.positives.map(x=>'<li class="good">上昇要因：'+x.name+'</li>'),...f.negatives.map(x=>'<li class="bad">下落要因：'+x.name+'</li>')];
  if(!reason.length)reason.push('<li class="neutral">方向感を示す材料が不足。中立寄りの推定です。</li>');
  const conf=Math.round(f.quality*100);
