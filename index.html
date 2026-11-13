@@ -332,7 +332,7 @@ function earningsRiskForAsset(assetId,own,quotes){
  }).filter(Boolean);
  const score=clamp(relevant.reduce((v,e)=>v+e.risk,0),0,.85);
  const pricedInScore=relevant.length?relevant.reduce((v,e)=>v+e.pricedInScore*e.risk,0)/Math.max(.001,relevant.reduce((v,e)=>v+e.risk,0)):0;
- return {score,pricedInScore,label:score>=.35?"非常に高い":score>=.18?"高い":score>=.07?"注意":"通常",dataStatus:cal.status,events:relevant};
+ return {score,pricedInScore,label:score>=.35?"非常に高い":score>=.18?"高い":score>=.07?"注意":relevant.length?"決算予定あり":"通常",dataStatus:cal.status,events:relevant};
 }
 function renderEarningsCalendar(cal,quotes){
  if(!cal){$('earningsBody').innerHTML='<div class="empty">決算カレンダーを取得できません。</div>';return;}
