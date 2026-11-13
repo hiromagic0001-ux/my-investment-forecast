@@ -41,14 +41,17 @@ function buildTechnicalSeries(closes){
  const p=last.bbPercentB;
  if(p!==null){if(p>1)score+=score>0 ? .05 : -.10;else if(p<0)score+=score<0 ? -.05 : .10;else if(p>=.5)score+=.07;else if(p<=.25)score-=.07;}
  const trend=score>.22?"上昇トレンド":score<-.22?"下降トレンド":"方向感が弱い";
+ const crossState=last.sma5!==null&&last.sma25!==null?(last.sma5>last.sma25?"5日線＞25日線":"5日線＜25日線"):"短期線データ不足";
+ const midCross=last.sma25!==null&&last.sma75!==null?(last.sma25>last.sma75?"25日線＞75日線":"25日線＜75日線"):"中期線データ不足";
  const bbState=p===null?"算出中":p>1?"+2σ上抜け":p<0?"-2σ下抜け":p>=.8?"上限寄り":p<=.2?"下限寄り":"バンド内";
- return {rows:rows.map(r=>({sma5:r.sma5,sma25:r.sma25,sma75:r.sma75,sma200:r.sma200,bbMiddle:r.bbMiddle,bbUpper:r.bbUpper,bbLower:r.bbLower})),current:{sma5:last.sma5,sma25:last.sma25,sma75:last.sma75,sma200:last.sma200,bbMiddle:last.bbMiddle,bbUpper:last.bbUpper,bbLower:last.bbLower,bbPercentB:p,bbWidth:last.bbWidth,bbWidthPercentile:rank,squeeze:rank!==null&&rank<=.2,bbState,trend,score:Math.max(-1,Math.min(1,score))}};
+ return {rows:rows.map(r=>({sma5:r.sma5,sma25:r.sma25,sma75:r.sma75,sma200:r.sma200,bbMiddle:r.bbMiddle,bbUpper:r.bbUpper,bbLower:r.bbLower})),current:{sma5:last.sma5,sma25:last.sma25,sma75:last.sma75,sma200:last.sma200,bbMiddle:last.bbMiddle,bbUpper:last.bbUpper,bbLower:last.bbLower,bbPercentB:p,bbWidth:last.bbWidth,bbWidthPercentile:rank,squeeze:rank!==null&&rank<=.2,bbState,trend,crossState,midCross,score:Math.max(-1,Math.min(1,score))}};
 }
 function fxInterventionRisk(q){
  if(!q)return {score:0,label:"データ不足"};
  const p=q.price;
  let base=p>=160.5 ? .95 : p>=159.5 ? .82 : p>=158.5 ? .62 : p>=157.5 ? .38 : .12;
- const pace=(q.day>=.8 ? .10 : 0)+(q.week>=1.8 ? .10 : 0);
+ const smaStretch=q.technical?.sma25?(q.price/q.technical.sma25-1):0;
+ const pace=(q.day>=.8 ? .10 : 0)+(q.week>=1.8 ? .10 : 0)+(q.technical?.bbPercentB>1 ? .06 : 0)+(smaStretch>.01 ? .05 : 0);
  const score=Math.min(1,base+pace);
  return {score,label:score>=.8?"非常に高い":score>=.6?"高い":score>=.35?"警戒":"通常"};
 }
