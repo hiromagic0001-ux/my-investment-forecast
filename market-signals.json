@@ -1,19 +1,20 @@
 {
   "date": "2026-11-13",
-  "generatedAt": "2026-11-13T07:06:13.127Z",
+  "generatedAt": "2026-11-13T07:09:51.593Z",
   "status": "free-indexed",
   "reason": "",
   "attention": {
-    "posts": 295,
+    "posts": 296,
     "authors": 18,
     "engagement": 0,
     "crediblePosts": 2,
-    "coordinationFlags": 113
+    "coordinationFlags": 115
   },
   "usage": {
     "maxPosts": 30,
+    "maxDisplay": 30,
     "requests": 3,
-    "postsRead": 295,
+    "searchHits": 296,
     "estimatedUsd": 0,
     "method": "Google News RSSの公開検索インデックス。X公式API不使用。"
   },
@@ -25,7 +26,7 @@
       "createdAt": "Wed, 11 Nov 2026 21:45:04 GMT",
       "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE51Q3Jrdks0VUliaDZmVVIwcXB6ZmdEYUlObnpoWlpEWEVpLWpvVnN0YS1oN1U5RlZYWG9lMTU3LVB4Y1hXa29oeGxDdnA1aUxyQ2VRakVMUlUtMXFQeFE?oc=5",
       "category": "geo",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -38,7 +39,7 @@
       "verifiedForSignal": true,
       "confidence": "報道裏付けあり・予測反映候補",
       "trustScore": 0.6,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": true
     },
     {
@@ -48,7 +49,7 @@
       "createdAt": "Tue, 10 Nov 2026 11:48:56 GMT",
       "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5GaEVueG95ZVZZZ1Y3WTBoVm41UUUxeElVSlczQlc1ckNmQjJpbWtyaXQxRHhGVmdmcmpQck9fUWtBTm1XbXAtZUl6bnF4eUliUmx3WHktc1JxeUMwTTQ4b1hoYw?oc=5",
       "category": "geo",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -61,7 +62,7 @@
       "verifiedForSignal": true,
       "confidence": "報道裏付けあり・予測反映候補",
       "trustScore": 0.6,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": true
     },
     {
@@ -71,7 +72,7 @@
       "createdAt": "Fri, 13 Nov 2026 06:58:09 GMT",
       "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE1TSjN4OFRNRVZoS3FVYTdmUnRsdHhhZ2dIWXQ2a1pOUWdyTzJXUWt5el9JdWdHaXlidU80?oc=5",
       "category": "tech",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -84,7 +85,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -94,7 +95,7 @@
       "createdAt": "Fri, 13 Nov 2026 06:57:37 GMT",
       "url": "https://news.google.com/rss/articles/CBMiQEFVX3lxTFBIXy1Va2pXcVQzODViOXZSNFhHSWlHUWIzdXVQbHB4eEdCcFNNb0pXM0FSRzRScC1OOVU3aTUzeXc?oc=5",
       "category": "tech",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -107,7 +108,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -117,7 +118,7 @@
       "createdAt": "Fri, 13 Nov 2026 06:30:23 GMT",
       "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5UY204NUVfS0FlWEx1LWc0TFRFcXJMTXhEWENLOVRFc3JWZHoyWXF0XzVpZDYxeVdyMjVMRjlrTzJyaXlrZHlLbTZ5OE1GaVpyTlZQT0RJUWU?oc=5",
       "category": "tech",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -130,7 +131,7 @@
       "verifiedForSignal": false,
       "confidence": "同文・類似投稿の集中",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -140,7 +141,7 @@
       "createdAt": "Fri, 13 Nov 2026 06:30:00 GMT",
       "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFB0bFktMG8teFBia0N4Z0VvckZmMXFmc0lVd3dqY3pOalhTeGI1RGRUMkRPUGpTbExKemFJVm45RWNueHNldmhmaUJwOERKaTFYeUJUNUlOQ3VETXY5WFJKVzNlaw?oc=5",
       "category": "tech",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -153,7 +154,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -163,7 +164,7 @@
       "createdAt": "Fri, 13 Nov 2026 06:21:22 GMT",
       "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBVZkxxck5ISGszNnFLMFY2M1pBT2RBS0FweXBrVlo4RG14RVlwWk1KNklibUEyTllEOWVpeVJhQ1B2QjUxSzg1YzRlblRGU3RxYmZYY3pGRGM?oc=5",
       "category": "tech",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -176,7 +177,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -186,7 +187,7 @@
       "createdAt": "Fri, 13 Nov 2026 06:18:41 GMT",
       "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBYM2JuMWtWZjU1SWRtMUFFWGtnQUhQa2dHWDhMRkxobFo0SmI3NlFTMDhUOGc3dzhMeXlGOC1UUU9aelRENVp6QjU2S0xKN0pmU3RDWmZVN285QklOMVo1Sw?oc=5",
       "category": "geo",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -199,7 +200,7 @@
       "verifiedForSignal": false,
       "confidence": "同文・類似投稿の集中",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -209,7 +210,7 @@
       "createdAt": "Fri, 13 Nov 2026 06:06:39 GMT",
       "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9LQUFiUjNKeWJ6Q0Y0Qnl1Q3RvaVZHSXR3MGNESU4tV1VWUlBhT0luOGVYQmp3dmVnOFJKRldpMW1wTndzdmZIVV9rbnliV013NHhVTG5CakpLUzM4UWxQVV9QSQ?oc=5",
       "category": "geo",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -222,7 +223,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -232,7 +233,7 @@
       "createdAt": "Fri, 13 Nov 2026 05:58:07 GMT",
       "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE90dldkSEVDWmp5Y1dVdUN1cEEzTWtBNXFEcXJBNkJCSS1oYXEycGpodXFaS1gzaU9vS0phUWZLWmhfdTd6OWZrd1ZWbkx4ak01UjJlemZaU2pTa016b1lEMlNLYUI?oc=5",
       "category": "geo",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -245,7 +246,7 @@
       "verifiedForSignal": false,
       "confidence": "同文・類似投稿の集中",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -255,7 +256,7 @@
       "createdAt": "Fri, 13 Nov 2026 05:42:25 GMT",
       "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBySG5BTEdBWjA4dEJPTk42UlE4aUZvV0Vqa2Y3RGVGOHM5VkNEU0VCWDhjUkh4bVhrcXI3MXhUU1VIRmx4b1JDT0V2R1Foc3l5OWZXb1FRVUtsTDF4c1JR?oc=5",
       "category": "oil",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -268,7 +269,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -278,7 +279,7 @@
       "createdAt": "Fri, 13 Nov 2026 05:30:00 GMT",
       "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE13MlVJTEVwV0RTeUpMMG0tZFMxOWhULTc2YmZ4WEFxcnNQdTRtTDRGeVBVb1hKbkEwXzhwYU5La2dHV1Fxa1RFcVd5RmFLV2MyWkpiRjFpNUF3ekhMVVE?oc=5",
       "category": "geo",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -291,7 +292,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -301,7 +302,7 @@
       "createdAt": "Fri, 13 Nov 2026 05:29:33 GMT",
       "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE80NzlxLV84cEx0WEpuZzduZk01aWZGaDZqa2lhbHJEcmg1QTlFck9GX3lVR1BtTFBXREE5N3RsSE9pSloyQTZzdms2RDdvc196YXBTcFlITF9NLTZUWnRHbw?oc=5",
       "category": "tech",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -314,7 +315,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -324,7 +325,7 @@
       "createdAt": "Fri, 13 Nov 2026 05:26:13 GMT",
       "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBEa2tnWnM2N3ZMaXM3N2Z6WC1mUlNsTlh0ZWxVV0VFeExlRnRfMjZTWWhUbGpKbEEtNjRfT0RvbUNiNkFnTzB1OHk0VjlkRzZoRVRKMWEwdDRUM09scU9sb0VnLWVkUQ?oc=5",
       "category": "oil",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -337,7 +338,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -347,7 +348,7 @@
       "createdAt": "Fri, 13 Nov 2026 05:19:34 GMT",
       "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFB6d0owMHpDTmZVbUdrTHFRa0FKeHg2ZnRJM2YxaHBRSHZJUmgxaUJ6ZEhaR3hjSzBaTFNUNllOUVpkeVVZdG53cEltamtEMGduUnNXNmtyNU93R2t1WWl4bzFOR3I2a3JkY3c?oc=5",
       "category": "oil",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -360,7 +361,7 @@
       "verifiedForSignal": false,
       "confidence": "同文・類似投稿の集中",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -370,7 +371,7 @@
       "createdAt": "Fri, 13 Nov 2026 05:08:30 GMT",
       "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5pUmVqUUV4VW1rdG80SjNYY293T1duSGF4LWwxMjdhUndyRDlxTkM3NnByTFJGY1hIR1ROMVpNWU9VSVl2S2JmNWtoc1NFOVp3QWRKZzR0ZjB6X0lVeXRR?oc=5",
       "category": "tech",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -383,7 +384,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -393,7 +394,7 @@
       "createdAt": "Fri, 13 Nov 2026 04:08:29 GMT",
       "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE14QlNLTDZ3MHRqVDRlU0dQVGJVSlI2bXpuaUNsQmVBVnJrVkJhdVhUUXhjZUNFU1hrNDV2Qkx5T1JlOHprRHRnVVQ3Q1VjMlpZOGlILXB6LVZiQjdFR3F3eQ?oc=5",
       "category": "tech",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -406,7 +407,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -416,7 +417,7 @@
       "createdAt": "Fri, 13 Nov 2026 04:05:26 GMT",
       "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE05YTZGYkw5YzlBTDZCQzZJY1ZVVkVlcUQ1TXlhbFVxOTJ3ZVBKdEFMUm1ZVnlfelE2azZrenBjVmwyaGZ5Yk4zSWl2ZnZsSUZlVkRfMzJGSWxRc1NR?oc=5",
       "category": "tech",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -429,7 +430,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -439,7 +440,7 @@
       "createdAt": "Fri, 13 Nov 2026 04:00:02 GMT",
       "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5CRHRPSFJkOG1aV3FtWUM0OVRKZUNsZDZpOWdlcHRzbGN4N2VEX29PX1NSU1Q2MlNRMEJzV2ZUb0twYkRHLUROUnlKT0JKZG01LVhZYkRpdmhpWXZFaVdfb1hPRDNpZw?oc=5",
       "category": "geo",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -452,7 +453,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -462,7 +463,7 @@
       "createdAt": "Fri, 13 Nov 2026 03:59:00 GMT",
       "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1hWFhyTlBaVHNJeEdHcThJZnJMVDl6Uzd6aGhnelJTUDNhS2tneDNJOGxqMlZIRUwzMHF5T3JuZTlmdURBVHBYeUxHbW1jaEVpX1VzRXphcXNUZHU5WWpWUmdnbms4dWM?oc=5",
       "category": "geo",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -475,7 +476,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -485,7 +486,7 @@
       "createdAt": "Fri, 13 Nov 2026 03:47:52 GMT",
       "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9FNGM3S0luYkx2eTJFR01EQW5UdGJFRlVTWG5BRFRpLWpHY2RlR3Vxemp4b3pZdDdoalRfZWFNV1FWQkR3cXdCdkxZSmFZNVRxSXpCNHA5eVJyV1ZV?oc=5",
       "category": "oil",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -498,7 +499,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -508,7 +509,7 @@
       "createdAt": "Fri, 13 Nov 2026 03:44:43 GMT",
       "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE02R281TERQdXpNUnF4MFEwZjRzRFZBY2o0SGw2ckE3VnpOampjel9XZExCVy1PdUpDcUVMTlpzRl8ybUlFYTFjYnAzNlRBdEFta3BLRVJ3aw?oc=5",
       "category": "tech",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -521,7 +522,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -531,7 +532,7 @@
       "createdAt": "Fri, 13 Nov 2026 03:36:02 GMT",
       "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE53VlQ0RkUtaVEtQkRvSkFXX3REMU1tOG13NUFUN180cnhlM0x5akIzQ0NUb2dKUUZhQXZWUTNGanJVS29TdVhvQWVfaVprd1dQWUpfN1pPQ0xCWTN3bHdjRXFSdDRuVkE?oc=5",
       "category": "geo",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -544,7 +545,7 @@
       "verifiedForSignal": false,
       "confidence": "同文・類似投稿の集中",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -554,7 +555,7 @@
       "createdAt": "Fri, 13 Nov 2026 03:30:39 GMT",
       "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBISGxMRlM1R3VOejBRYlZYWlViVEpXdUxFbG5pZE1rcEZOcTlZMHpYdjZPUEpJTmhpNC1vSE5JWEh3MFZuR1NFN1BTaV9TaFBFbkZvU3puU252ZkJ2aHFDZjh3?oc=5",
       "category": "geo",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -567,7 +568,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -577,7 +578,7 @@
       "createdAt": "Fri, 13 Nov 2026 03:11:44 GMT",
       "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1LQU1iUEVUbWl0ZV90VVZCc09TZWpwRldkT0VhLVRhVjkzY29GMzF1eDVNT2g4eVZVWkVnZzFhZUEtZ0w1VThNdjZycVBZZ0VWWUlrWTNBZmpwSWxyaFF5RmhB?oc=5",
       "category": "oil",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -590,7 +591,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -600,7 +601,7 @@
       "createdAt": "Fri, 13 Nov 2026 02:54:34 GMT",
       "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE53TVJzaVZQcVktR0JLeHBZSVRNQXRFS3B6V1BxSFktdmxEWkYycVcwQnllRzdVT3FXbE9nbGgyM1lrUW5uWFhFWU9wVHlXWHE2anNxbEhGRFFJTWM1X1FYQnhRbw?oc=5",
       "category": "geo",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -608,12 +609,12 @@
       "eventType": "攻撃・供給障害",
       "engagement": 0,
       "independentPosts": 0,
-      "copyClusterPosts": 2,
+      "copyClusterPosts": 1,
       "coordinationFlag": false,
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -623,7 +624,7 @@
       "createdAt": "Fri, 13 Nov 2026 02:47:02 GMT",
       "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE0tamhZMktkMFhWUjFLUkYtUnphbTNQWUVQMTl1OGVFUEdjNVBCZ3lPS2FVQ0tJZHV0d1pxV3FwRnpZYlFtZkZGVGJ3ZlhQb0p1X1M4ZjFaY0RIYjJvcDQ4?oc=5",
       "category": "oil",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -636,7 +637,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -646,7 +647,7 @@
       "createdAt": "Fri, 13 Nov 2026 02:33:15 GMT",
       "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1zdmpidlNZbXpiQmtrZjJnR1Z5bXJtVEx2TXNCYUhNNkNjN3JncXowWHFKMFVhanNQMnZJdExZTHVHQ2M2R19IWFcxTUtQWnljMVg3SzJYekxOTVdTc1k4?oc=5",
       "category": "oil",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -659,7 +660,7 @@
       "verifiedForSignal": false,
       "confidence": "同文・類似投稿の集中",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -669,7 +670,7 @@
       "createdAt": "Fri, 13 Nov 2026 02:22:13 GMT",
       "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE83RzRqOG02LXZteXBDb1VPdTVSR09SNUpzdVRHZjNZMEVwc2djVjk0eXN6QVpfdDhtT3ltNHJLZEVWTDFKc1NZZGhoR0gwc2puUUduQmZ1ZDMySmpUQVd6S0tHYw?oc=5",
       "category": "geo",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -682,7 +683,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     },
     {
@@ -692,7 +693,7 @@
       "createdAt": "Fri, 13 Nov 2026 02:02:47 GMT",
       "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBzZUo0QWJpanlldXA5RC16VXM1bVdteU5maUxKcTdwNGxzd0hwTlJfM2Frd1ZPblV1RE93NS1MOXpMRVNQbmtXSW9UZUQ5cXFlZDBmYlFKcTNaWmc?oc=5",
       "category": "geo",
-      "sourceClass": "X公開投稿・投稿者未確認",
+      "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
       "officialUrl": false,
       "trustedUrl": false,
@@ -705,7 +706,7 @@
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
       "trustScore": 0.35,
-      "via": "Google News RSS（X公開投稿の検索インデックス）",
+      "via": "Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）",
       "rssCorroborated": false
     }
   ]
