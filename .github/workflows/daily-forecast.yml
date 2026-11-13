@@ -1,4 +1,5 @@
 name: Daily investment forecast
+# The deployed app branch is the single source for the forecast engine and UI.
 on:
   push:
     branches: [main]
