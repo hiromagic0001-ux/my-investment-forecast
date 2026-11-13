@@ -58,7 +58,9 @@ function parseItems(xml,category){
  for(const m of xml.matchAll(/<item>([\s\S]*?)<\/item>/g)){
   const b=m[1],get=k=>((b.match(new RegExp("<"+k+">([\\s\\S]*?)</"+k+">"))||[])[1]||"").replace(/<!\[CDATA\[|\]\]>/g,"").replace(/<[^>]+>/g," ").trim();
   const title=get("title"); if(!title)continue;
-  out.push({title,category,score:sentimentFor(title,category),date:get("pubDate"),link:get("link")});
+  const sourceUrl=(b.match(/<source[^>]*url="([^"]+)"/i)||[])[1]||"";
+  let domain="";try{domain=new URL(sourceUrl).hostname.toLowerCase().replace(/^www\\./,"")}catch{}
+  out.push({title,category,score:sentimentFor(title,category),date:get("pubDate"),link:get("link"),domain});
  }
  return out.slice(0,7);
 }
