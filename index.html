@@ -20,6 +20,7 @@
 <div class="cards" id="forecasts"></div>
 <section class="panel"><h3>市場・金融環境</h3><div class="factorgrid" id="indicators"></div><div class="legend">価格変化は各市場の直近取得可能な取引日ベース。取得できない項目は推測値で補完しません。</div></section>
 <section class="panel"><h3>世界経済ニュースの材料分析</h3><div id="news"><div class="empty">ニュースを取得中…</div></div></section>
+<section class="panel" id="xSignalPanel"><h3>X速報・情報の信頼性判定</h3><div class="legend">X投稿は投稿者・一次情報リンク・独立した裏付けを評価します。未確認投稿は速報として表示しても方向予測には採用しません。</div><div id="xSignals"><div class="empty">X情報を確認しています…</div></div></section>
 
 <section class="panel" id="yearEndScenarios">
  <h3>2026年末までの株価シナリオ（12月31日まで）</h3>
@@ -45,7 +46,8 @@
 </main>
 <script>
 const $=id=>document.getElementById(id);
-let latestQuotes={},latestNews=[],autoValidationRunning=false;
+const esc=s=>String(s??"").replace(/[&<>"\']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","\'":"&#39;"}[ch]));
+let latestQuotes={},latestNews=[],latestXSignals=null,autoValidationRunning=false;
 const HISTORY_KEY='aiInvestmentForecastHistory_v1';
 function quoteIsStale(q){
  if(!q?.dateISO)return true;
@@ -256,7 +258,8 @@ function newsSignal(asset,news){
   if(n.category==='geo')rel=1.0;
   if(n.category==='oil')rel=asset.id==='fang'?.65:asset.id==='nikkei'?.75:.65;
   if(n.cats.includes('global'))rel=.3;
-  const impact=n.score*rel;total+=impact;weight+=rel;
+  const sourceWeight=n.source==="X"?(n.verifiedForSignal?Number(n.trustScore||0):0):1;
+  const impact=n.score*rel*sourceWeight;total+=impact;weight+=rel*sourceWeight;
   if(Math.abs(impact)>.12)items.push({text:n.title,impact,category:n.label});
  }
  return {score:weight?clamp(total/Math.max(2,weight),-1,1):0,items:items.sort((a,b)=>Math.abs(b.impact)-Math.abs(a.impact)).slice(0,3)};
@@ -328,7 +331,23 @@ function renderRiskBrief(quotes,news){
 }
 function renderNews(news){
  if(!news.length)return '<div class="empty">ニュース取得不可。ニュースを取得できない間はニュース要因を予測に反映していません。</div>';
- return news.slice(0,18).map(n=>'<div class="news"><a href="'+n.link+'" target="_blank" rel="noopener">'+n.title+'</a><span class="impact">'+n.label+'｜'+(n.score>0?'強気':n.score<0?'弱気':'中立')+'</span><small>'+n.date+'</small></div>').join('');
+ return news.slice(0,18).map(n=>'<div class="news"><a href="'+esc(n.link)+'" target="_blank" rel="noopener">'+esc(n.title)+'</a><span class="impact">'+esc(n.label)+'｜'+(n.score>0?'強気':n.score<0?'弱気':'中立')+'</span><small>'+esc(n.date)+'</small></div>').join('');
+}
+function renderXSignals(data){
+ if(!data)return '<div class="empty">X速報ファイルをまだ取得できていません。</div>';
+ const generated=Date.parse(data.generatedAt||"");
+ const stale=!Number.isFinite(generated)||(Date.now()-generated)>36*60*60*1000;
+ const attention=data.attention||{};
+ const head='<div class="legend">取得状態：'+(data.status==="active"?'接続中':data.status==="partial"?'一部取得エラー':'未接続')+'｜投稿 '+(attention.posts||0)+'件｜投稿者 '+(attention.authors||0)+'人｜裏付け候補 '+(attention.crediblePosts||0)+'件｜API読取上限 '+(data.usage?.maxPosts||30)+'件/回</div>';
+ if(data.status==="disabled")return head+'<div class="empty">X APIは未接続です。X_API_ENABLED と X_BEARER_TOKEN の設定後に収集を開始します。現時点でAPI利用料は発生していません。</div>';
+ if(stale)return head+'<div class="empty">Xデータが36時間以上更新されていません。古い投稿を最新情報として扱いません。</div>';
+ const posts=(data.posts||[]).slice(0,12);
+ if(!posts.length)return head+'<div class="empty">対象キーワードの投稿はありません。'+esc(data.reason||"")+'</div>';
+ return head+posts.map(p=>{
+  const impact=p.impactScore>0?'市場には強気':p.impactScore<0?'市場には弱気':'方向性なし';
+  const trust=p.verifiedForSignal?'予測反映候補':'未確認・方向予測に不採用';
+  return '<div class="news"><a href="'+esc(p.url)+'" target="_blank" rel="noopener">'+esc(p.text)+'</a><span class="impact">'+esc(p.author)+'｜'+esc(p.sourceClass)+'｜'+trust+'</span><small>'+esc(p.createdAt)+'｜信頼スコア '+Math.round((p.trustScore||p.sourceScore||0)*100)+'%｜独立投稿 '+(p.independentPosts||0)+'件｜'+esc(p.eventType)+'｜'+impact+'</small></div>';
+ }).join('');
 }
 async function autoSaveAndValidate(){
  const hour=Number(new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Tokyo',hour:'2-digit',hourCycle:'h23'}).format(new Date()));
@@ -346,14 +365,19 @@ async function update(){
  settled.forEach(x=>{if(x.status==='fulfilled')quotes[x.value[0]]=x.value[1];else quoteErrors.push(String(x.reason?.message||x.reason))});
  const feedsResult=await Promise.allSettled(feeds.map(loadFeed));
  const news=feedsResult.filter(x=>x.status==='fulfilled').flatMap(x=>x.value);
- const unique=[...new Map(news.map(n=>[n.link,n])).values()];
+ let xSnapshot=null;
+ try{const xr=await fetch('./market-signals.json?ts='+Date.now(),{cache:'no-store'});if(xr.ok)xSnapshot=await xr.json();}catch(e){console.warn('X signals unavailable',e)}
+ latestXSignals=xSnapshot;
+ const xNews=(xSnapshot?.posts||[]).filter(p=>p.verifiedForSignal).map(p=>({title:p.text,link:p.url,date:p.createdAt,category:p.category,label:'X '+p.sourceClass,score:p.impactScore,cats:[],source:'X',trustScore:p.trustScore,verifiedForSignal:true}));
+ const unique=[...new Map([...news,...xNews].map(n=>[n.link,n])).values()];
  latestQuotes=quotes;latestNews=unique;
  renderRiskBrief(quotes,unique);
  $('forecasts').innerHTML=assets.map(a=>renderAsset(a,quotes,unique)).join('');
  $('indicators').innerHTML=indicators.map(x=>{const q=quotes[x.id];return '<div class="factor"><b>'+x.name+'</b><span>'+(q?fmt(q.price)+' ('+pct(q.week)+' / 5日)':'取得不可')+'</span></div>'}).join('');
  $('news').innerHTML=renderNews(unique);
+ $('xSignals').innerHTML=renderXSignals(xSnapshot);
  const count=Object.keys(quotes).length,total=assets.length+indicators.length;
- $('status').textContent='最終更新 '+new Date().toLocaleString('ja-JP')+'｜市場データ '+count+'/'+total+'｜ニュース '+unique.length+'件'+(quoteErrors.length?'｜株価取得エラー：'+quoteErrors.slice(0,3).join(' / '):'');
+ $('status').textContent='最終更新 '+new Date().toLocaleString('ja-JP')+'｜市場データ '+count+'/'+total+'｜ニュース '+unique.length+'件'+(quoteErrors.length?'｜株価取得エラー：'+quoteErrors.slice(0,3).join(' / '):'')+(xSnapshot?'｜X投稿 '+(xSnapshot.posts?.length||0)+'件':'｜X速報未取得');
  $('refresh').disabled=false;
  await autoSaveAndValidate();
 }
