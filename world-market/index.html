@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080d18">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>世界の株価｜WORLD MARKET BOARD</title>
+<style>
+:root{color-scheme:dark;--bg:#080d18;--panel:#111a2b;--line:#25334b;--muted:#91a1ba;--gold:#e7bd67;--text:#f3f6fc}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#16233a 0,#080d18 55%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{padding:22px 16px 14px;max-width:1100px;margin:auto} .eyebrow{font-size:11px;letter-spacing:.2em;color:var(--gold);font-weight:700}h1{font-size:25px;margin:7px 0 4px;letter-spacing:.03em}.sub{font-size:12px;color:var(--muted)}
+nav{display:flex;gap:8px;overflow:auto;padding:0 16px 14px;max-width:1100px;margin:auto}nav a{white-space:nowrap;text-decoration:none;color:#dbe5f7;border:1px solid var(--line);border-radius:999px;padding:9px 13px;font-size:12px;background:#101a2b}
+main{max-width:1100px;margin:auto;padding:0 14px 36px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.panel{background:linear-gradient(145deg,#121d30,#0d1524);border:1px solid var(--line);border-radius:16px;padding:15px;min-width:0;box-shadow:0 8px 24px #0003}.panel h2{font-size:15px;margin:0 0 8px}.tag{font-size:10px;color:var(--gold);letter-spacing:.08em}.desc{font-size:12px;color:var(--muted);line-height:1.6}.wide{grid-column:1/-1}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.btn{display:inline-block;padding:9px 12px;border:1px solid #394b67;border-radius:9px;color:#eaf1ff;text-decoration:none;font-size:12px;background:#17243a}.official{height:580px;width:100%;border:1px solid var(--line);border-radius:12px;background:#fff;margin-top:12px}.notice{font-size:11px;color:#aab8cd;line-height:1.65;margin-top:10px}.status{display:inline-block;border:1px solid #39506e;border-radius:999px;padding:4px 8px;font-size:10px;color:#bed0e8}
+@media(max-width:640px){.grid{grid-template-columns:1fr}h1{font-size:22px}.official{height:650px}}
+</style>
+</head>
+<body>
+<header><div class="eyebrow">WORLD MARKET BOARD</div><h1>世界の株価</h1><div class="sub">主要指数・為替・マーケット情報</div></header>
+<nav><a href="#fang">FANG+</a><a href="#topix">TOPIX</a><a href="#fx">為替</a><a href="#heatmap">ヒートマップ</a></nav>
+<main><div class="grid">
+<section class="panel" id="fang"><div class="tag">U.S. GROWTH INDEX</div><h2>FANG+ CFD</h2><div class="desc">旧ページのCFDチャート接続先を確認中です。価格を推測で表示せず、接続確認後に復元します。</div></section>
+<section class="panel"><div class="tag">ICE NYSE FANG+ INDEX</div><h2>FANG+ 指数</h2><div class="desc">CFDとは区別して、指数そのもののチャートを復元予定です。</div></section>
+<section class="panel wide" id="topix"><div class="tag">JAPAN · OFFICIAL INDEX</div><h2>TOPIX（東証株価指数）</h2><span class="status">JPX公式データ</span><p class="desc">ETF代理値ではなく、JPXが公表する実際のTOPIXを参照します。公式ページの掲載値は平日9:00〜15:30に1分間隔で更新されます。</p>
+<div class="actions"><a class="btn" href="https://www.jpx.co.jp/markets/indices/realvalues/index.html" target="_blank" rel="noopener">JPX公式TOPIXデータを開く</a><a class="btn" href="https://www.jpx.co.jp/markets/indices/topix/" target="_blank" rel="noopener">TOPIX指数情報</a></div>
+<iframe class="official" title="JPX公式株価指数情報" src="https://www.jpx.co.jp/markets/indices/realvalues/index.html" loading="lazy" referrerpolicy="no-referrer"></iframe>
+<div class="notice">※公式ページがアプリ内で表示されない場合は、上の「JPX公式TOPIXデータを開く」をタップしてください。現時点では公式ページへのリンク表示であり、独自の5分足・日足チャートを取得できたという意味ではありません。</div>
+</section>
+<section class="panel" id="fx"><div class="tag">FOREX</div><h2>USD / JPY</h2><div class="desc">ドル円チャートは旧ページの表示仕様を確認し、別途復元します。</div></section>
+<section class="panel" id="heatmap"><div class="tag">JAPAN EQUITIES</div><h2>日本株ヒートマップ</h2><div class="desc">銘柄別の騰落率と市場全体の強弱を表示する機能を復元予定です。</div></section>
+</div><p class="notice">データの取得元・更新時刻・遅延の有無を明記し、取得できない場合はエラーを隠さず表示します。</p></main>
+</body></html>
