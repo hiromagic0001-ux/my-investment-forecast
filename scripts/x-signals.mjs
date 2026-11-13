@@ -1,7 +1,7 @@
 const QUERIES = [
-  {category:"geo",query:'Iran OR Hormuz OR Houthi OR tanker OR "oil supply" OR airstrike OR ceasefire OR イラン OR ホルムズ OR フーシ派 -is:retweet'},
-  {category:"oil",query:'WTI OR Brent OR "crude oil" OR OPEC OR "oil price" OR 原油 OR 石油供給 OR 原油高 -is:retweet'},
-  {category:"tech",query:'$NVDA OR Nvidia OR semiconductor OR "AI data center" OR 半導体 OR エヌビディア -is:retweet'}
+  {category:"geo",query:'(Iran OR Hormuz OR Houthi OR tanker OR "oil supply" OR airstrike OR ceasefire OR イラン OR ホルムズ OR フーシ派) -is:retweet'},
+  {category:"oil",query:'(WTI OR Brent OR "crude oil" OR OPEC OR "oil price" OR 原油 OR 石油供給 OR 原油高) -is:retweet'},
+  {category:"tech",query:'($NVDA OR Nvidia OR semiconductor OR "AI data center" OR 半導体 OR エヌビディア) -is:retweet'}
 ];
 const PRIMARY = new Set(["federalreserve","eia_gov","iea","opecsecretariat","whitehouse","centcom","usnavy","statedept","sec_news","sec_investor_ed"]);
 const NEWS = new Set(["reuters","reutersbiz","reutersjapan","ap","apnews","bloomberg","business","cnbc","wsj","ft","nikkeiasia","nikkei"]);
