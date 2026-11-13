@@ -22,13 +22,13 @@ button,.back{border:1px solid #355574;border-radius:10px;background:#142b46;colo
 .legend{max-width:1100px;margin:0 auto;padding:0 13px 11px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:10px;color:var(--muted)}
 .key{display:inline-flex;align-items:center;gap:5px}
 .swatch{width:13px;height:13px;border-radius:3px;display:inline-block}
-.swatch.up{background:#b74354}.swatch.down{background:#245f9d}.swatch.hold{background:#142b46;border:2px solid var(--yellow)}
+.swatch.up{background:#20d98b}.swatch.down{background:#8b202b}.swatch.hold{background:#142b46;border:2px solid var(--yellow)}
 main{max-width:1100px;margin:auto;padding:0 10px 26px}
 .tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
 .tile{min-width:0;min-height:83px;border-radius:8px;padding:7px 5px 6px;background:#142b46;border:1px solid #29435f;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
 .tile.held{box-shadow:inset 0 0 0 2px var(--yellow)}
-.tile.up{background:linear-gradient(145deg,#a83d50,#762d43);border-color:#c05a68}
-.tile.down{background:linear-gradient(145deg,#245f9d,#193e6b);border-color:#3d76ad}
+.tile.up{background:var(--heat-bg,linear-gradient(145deg,#174d39,#123b2d));border-color:var(--heat-border,#27875d)}
+.tile.down{background:var(--heat-bg,linear-gradient(145deg,#e15a62,#b63b45));border-color:var(--heat-border,#9d303a)}
 .tile.flat{background:#273b52}
 .code{font-size:11px;font-weight:850;letter-spacing:.02em;white-space:nowrap}
 .name{font-size:9px;color:#e1eaf5;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;opacity:.9}
@@ -52,8 +52,8 @@ main{max-width:1100px;margin:auto;padding:0 10px 26px}
  <span id="status">株価データを準備中…</span>
 </div>
 <div class="legend">
- <span class="key"><i class="swatch up"></i>上昇</span>
- <span class="key"><i class="swatch down"></i>下落</span>
+ <span class="key"><i class="swatch up"></i>上昇（大きいほど明るい緑）</span>
+ <span class="key"><i class="swatch down"></i>下落（大きいほど暗い赤）</span>
  <span class="key"><i class="swatch hold"></i>保有銘柄</span>
  <span>色は前日比。黄色枠は保有銘柄の目印です。</span>
 </div>
@@ -70,9 +70,15 @@ for(const s of STOCKS){
  const el=tiles.querySelector('[data-code="'+s.code+'"]');
  if(el) els.set(s.code,el);
 }
+function mixColor(a,b,t){
+ const x=a.match(/[0-9a-f]{2}/gi).map(v=>parseInt(v,16));
+ const y=b.match(/[0-9a-f]{2}/gi).map(v=>parseInt(v,16));
+ return 'rgb('+x.map((v,i)=>Math.round(v+(y[i]-v)*t)).join(',')+')';
+}
 function setQuote(s,q){
  const el=els.get(s.code); if(!el)return;
  el.classList.remove('loading','up','down','flat');
+ el.style.removeProperty('--heat-bg');el.style.removeProperty('--heat-border');
  const price=el.querySelector('.price'),change=el.querySelector('.change');
  if(!q||!Number.isFinite(q.price)||!Number.isFinite(q.pct)){
    price.textContent='取得不可';change.textContent='—';el.classList.add('flat');return;
@@ -80,7 +86,23 @@ function setQuote(s,q){
  price.textContent='¥'+priceFmt.format(q.price);
  const sign=q.pct>0?'+':q.pct<0?'−':'';
  change.textContent=sign+nf.format(Math.abs(q.pct))+'%';
- el.classList.add(q.pct>0.015?'up':q.pct<-.015?'down':'flat');
+ if(q.pct>0.015){
+  const strength=Math.min(1,Math.max(0,(q.pct-0.015)/4.985));
+  const base=mixColor('#174d39','#20e68a',strength);
+  const edge=mixColor('#267653','#8affc4',strength);
+  el.style.setProperty('--heat-bg','linear-gradient(145deg,'+edge+','+base+')');
+  el.style.setProperty('--heat-border',mixColor('#27875d','#9affce',strength));
+  el.classList.add('up');
+ }else if(q.pct<-.015){
+  const strength=Math.min(1,Math.max(0,(Math.abs(q.pct)-0.015)/4.985));
+  const base=mixColor('#f0787e','#681923',strength);
+  const edge=mixColor('#ff9b9f','#3f0d16',strength);
+  el.style.setProperty('--heat-bg','linear-gradient(145deg,'+edge+','+base+')');
+  el.style.setProperty('--heat-border',mixColor('#f28b91','#3a0b13',strength));
+  el.classList.add('down');
+ }else{
+  el.classList.add('flat');
+ }
 }
 async function getQuote(s){
  const ticker=encodeURIComponent(s.code+'.T');
