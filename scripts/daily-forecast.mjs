@@ -1,13 +1,13 @@
 import fs from "node:fs/promises";
 
 const assets = [
-  {id:"fang",name:"NYSE FANG+（参考）",ticker:"^NYFANG",exp:{us:.22,nasdaq:.34,semi:.42,nvda:.28,fx:.08,rates:-.34,oil:-.04,risk:.22,japan:.02}},
-  {id:"nikkei",name:"日経225",ticker:"^N225",exp:{us:.23,nasdaq:.20,semi:.34,nvda:.10,fx:.32,rates:-.10,oil:-.08,risk:.14,japan:.20}},
-  {id:"topix",name:"TOPIX（1306連動ETF参考）",ticker:"1306.T",exp:{us:.14,nasdaq:.10,semi:.16,nvda:.05,fx:.22,rates:-.10,oil:-.07,risk:.13,japan:.32}}
+  {id:"fang",name:"NYSE FANG+（参考）",ticker:"^NYFANG",exp:{us:.22,nasdaq:.34,semi:.42,nvda:.28,fx:.08,rates:-.34,oil:-.14,risk:.22,japan:.02}},
+  {id:"nikkei",name:"日経225",ticker:"^N225",exp:{us:.23,nasdaq:.20,semi:.34,nvda:.10,fx:.32,rates:-.10,oil:-.18,risk:.14,japan:.20}},
+  {id:"topix",name:"TOPIX（1306連動ETF参考）",ticker:"1306.T",exp:{us:.14,nasdaq:.10,semi:.16,nvda:.05,fx:.22,rates:-.10,oil:-.15,risk:.13,japan:.32}}
 ];
 const indicators = [
   ["us","^GSPC"],["nasdaq","^IXIC"],["semi","SOXX"],["nvda","NVDA"],
-  ["fx","JPY=X"],["rates","^TNX"],["oil","CL=F"],["risk","^VIX"],["japan","1306.T"]
+  ["fx","JPY=X"],["rates","^TNX"],["oil","CL=F"],["brent","BZ=F"],["risk","^VIX"],["japan","1306.T"]
 ];
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const jstDate=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Tokyo",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
@@ -25,24 +25,37 @@ async function quote(ticker){
  const c=pairs.map(v=>v.c),last=c.at(-1),prev=c.at(-2),w=c.at(-6),m=c.at(-22);
  const daily=c.slice(1).map((v,i)=>Math.log(v/c[i]));
  const vol=Math.sqrt(daily.slice(-20).reduce((s,v)=>s+v*v,0)/Math.min(20,daily.length))*Math.sqrt(252)*100;
- return {price:last,day:(last/prev-1)*100,week:(last/w-1)*100,month:(last/m-1)*100,vol,dateISO:new Date(pairs.at(-1).t*1000).toISOString().slice(0,10)};
+ const avg60=c.slice(-Math.min(60,c.length)).reduce((s,v)=>s+v,0)/Math.min(60,c.length);
+ const series=pairs.map(v=>({dateISO:new Date(v.t*1000).toISOString().slice(0,10),price:v.c}));
+ return {price:last,day:(last/prev-1)*100,week:(last/w-1)*100,month:(last/m-1)*100,vol,avg60,series,dateISO:series.at(-1).dateISO};
 }
 const feeds=[
  ["rates","Federal Reserve interest rates inflation CPI Treasury yields"],
  ["tech","AI semiconductor chip demand Nvidia data center technology stocks"],
  ["japan","Japan economy BOJ yen Nikkei stocks"],
- ["geo","geopolitics war tariffs sanctions global markets"],
- ["oil","crude oil OPEC energy prices"]
+ ["geo","Iran Israel war Strait of Hormuz Houthi tanker attacks Saudi oil facilities ceasefire de-escalation November 2026"],
+ ["oil","Brent WTI crude oil price surge decline supply disruption OPEC November 2026"]
 ];
+function sentimentFor(title,category){
+ const s=title.toLowerCase();
+ const relief=["ceasefire","truce","de-escalation","deescalation","peace deal","talks resume","tensions ease","easing tensions","停戦","和平","緊張緩和","協議再開","攻撃停止"];
+ const escalation=["airstrike","air strike","missile attack","tanker hit","tanker attack","pipeline attack","oil facility attack","military escalation","blockade tightened","strait closure","shipping disrupted","爆発","攻撃","空爆","ミサイル","タンカー被害","石油施設","パイプライン攻撃","封鎖強化","航行停止"];
+ if(category==="geo"){
+  if(relief.some(w=>s.includes(w)))return .85;
+  if(escalation.some(w=>s.includes(w)))return -.9;
+  if(["war","conflict","iran","israel","houthi","hormuz","戦争","紛争","イラン","ホルムズ"].some(w=>s.includes(w)))return -.35;
+ }
+ const pos=["beat","surge","rally","rise","gain","growth","strong demand","upgrade","利下げ","需要増","好調","上昇","反発"];
+ const neg=["miss","selloff","plunge","slump","fell","drop","decline","recession","downgrade","tariff","inflation","利上げ","急落","下落","景気後退","関税","懸念","売り"];
+ const raw=clamp((pos.filter(w=>s.includes(w)).length-neg.filter(w=>s.includes(w)).length)*.45,-1,1);
+ return category==="oil"?-raw:raw;
+}
 function parseItems(xml,category){
  const out=[];
  for(const m of xml.matchAll(/<item>([\s\S]*?)<\/item>/g)){
   const b=m[1],get=k=>((b.match(new RegExp("<"+k+">([\\s\\S]*?)</"+k+">"))||[])[1]||"").replace(/<!\[CDATA\[|\]\]>/g,"").replace(/<[^>]+>/g," ").trim();
   const title=get("title"); if(!title)continue;
-  const s=title.toLowerCase(),pos=["beat","surge","rally","rise","gain","growth","strong demand","upgrade","利下げ","需要増","好調","上昇","反発"].filter(w=>s.includes(w)).length;
-  const neg=["miss","selloff","plunge","slump","fell","drop","decline","recession","downgrade","war","tariff","inflation","利上げ","急落","下落","景気後退","関税","戦争","懸念","売り"].filter(w=>s.includes(w)).length;
-  const score=clamp((pos-neg)*.55,-1,1);
-  out.push({title,category,score});
+  out.push({title,category,score:sentimentFor(title,category),date:get("pubDate"),link:get("link")});
  }
  return out.slice(0,7);
 }
@@ -62,6 +75,16 @@ for(const x of settled){if(x.status==="fulfilled")quotes[x.value[0]]=x.value[1];
 const news=await newsItems();
 function factorValue(id){
  const q=quotes[id];if(!q)return null;
+ if(id==="oil"){
+  const oilQuotes=[quotes.oil,quotes.brent].filter(Boolean);
+  if(!oilQuotes.length)return null;
+  const signals=oilQuotes.map(v=>{
+   const momentum=clamp((v.day*.4+v.week*.6)/4,-1,1);
+   const premium=v.avg60?clamp(((v.price/v.avg60)-1)/.15,-1,1):0;
+   return momentum*.55+premium*.45;
+  });
+  return clamp(signals.reduce((s,v)=>s+v,0)/signals.length,-1,1);
+ }
  let raw=q.week;if(id==="rates"||id==="risk")raw=-q.week;
  const scale=id==="rates"?1.4:id==="fx"?1.2:id==="risk"?2.2:id==="nvda"?3:2.5;
  return clamp(raw/scale,-1,1);
@@ -71,7 +94,7 @@ function relFor(asset,cat){
  if(cat==="nvda")return asset.id==="fang"?1.55:asset.id==="nikkei"?.8:.4;
  if(cat==="rates")return asset.id==="fang"?1:asset.id==="nikkei"?.75:.7;
  if(cat==="japan")return asset.id==="fang"?.15:asset.id==="nikkei"?.8:1;
- if(cat==="geo")return .65;if(cat==="oil")return asset.id==="fang"?.3:asset.id==="nikkei"?.5:.4;
+ if(cat==="geo")return 1.0;if(cat==="oil")return asset.id==="fang"?.65:asset.id==="nikkei"?.75:.65;
  return .3;
 }
 function forecast(a){
@@ -86,11 +109,13 @@ function forecast(a){
  let total=0,weight=0;
  for(const n of news){const rel=relFor(a,n.category);total+=n.score*rel;weight+=rel;}
  const ns=weight?clamp(total/Math.max(2,weight),-1,1):0;
- parts.push(ns*.22);
+ parts.push(ns*.28);
  const score=clamp(parts.reduce((s,v)=>s+v,0),-.85,.85);
- const coverage=Object.keys(a.exp).filter(id=>quotes[id]).length/Object.keys(a.exp).length;
- const newsCoverage=news.length?Math.min(1,news.length/12):0;
- const quality=clamp(.25+.45*coverage+.3*newsCoverage,.2,1);
+ const coverage=Object.keys(a.exp).filter(id=>id==="oil"?(quotes.oil||quotes.brent):quotes[id]).length/Object.keys(a.exp).length;
+ const requiredFeeds=["rates","tech","japan","geo","oil"];
+ const coveredFeeds=new Set(news.map(n=>n.category));
+ const newsCoverage=requiredFeeds.filter(id=>coveredFeeds.has(id)).length/requiredFeeds.length;
+ const quality=clamp(.2+.45*coverage+.35*newsCoverage,.2,1);
  const probability=Math.round(clamp(50+score*.75*23*quality,28,72)*10)/10;
  const sigma=(own.vol/Math.sqrt(252))/100,rangePct=Math.max(.003,sigma*1.5);
  return {id:a.id,name:a.name,basePrice:own.price,baseDate:own.dateISO,probability,direction:probability>=50?"上昇":"下落",rangeLow:own.price*(1-rangePct),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,source:"GitHub Actions daily model"};
@@ -101,18 +126,28 @@ try{history=JSON.parse(await fs.readFile(path,"utf8"));if(!Array.isArray(history
 let changed=0;
 for(const day of history){
  for(const x of day.results||[]){
-  const q=quotes[x.id];
-  if(q&&q.dateISO&&q.dateISO>x.baseDate&&(x.actual===null||x.actual===undefined)){
-   x.actual=q.price;x.actualDate=q.dateISO;x.actualUp=q.price>x.basePrice;
+  const q=quotes[x.id],firstNextClose=q?.series?.find(v=>v.dateISO>x.baseDate);
+  if(firstNextClose&&(x.actual===null||x.actual===undefined)){
+   x.actual=firstNextClose.price;x.actualDate=firstNextClose.dateISO;x.actualUp=x.actual>x.basePrice;
    x.hit=(x.actualUp&&x.probability>=50)||(!x.actualUp&&x.probability<50);changed++;
   }
  }
 }
 if(!history.some(x=>x.date===jstDate)){
  const results=assets.map(forecast);
- if(results.every(Boolean))history.push({date:jstDate,savedAt:new Date().toISOString(),results,newsCount:news.length});
+ const age=date=>Math.round((Date.parse(jstDate+"T00:00:00Z")-Date.parse(date+"T00:00:00Z"))/86400000);
+ const maxAge=dayName==="Mon"?3:1;
+ const stale=assets.filter(a=>!quotes[a.id]||age(quotes[a.id].dateISO)>maxAge).map(a=>({id:a.id,date:quotes[a.id]?.dateISO||null}));
+ const criticalOilAvailable=Boolean(quotes.oil||quotes.brent);
+ if(results.every(Boolean)&&!stale.length&&criticalOilAvailable){
+  const marketContext=Object.fromEntries(Object.entries(quotes).map(([id,q])=>[id,{price:q.price,day:q.day,week:q.week,avg60:q.avg60,dateISO:q.dateISO}]));
+  const newsContext=news.map(n=>({title:n.title,category:n.category,score:n.score,date:n.date,link:n.link}));
+  history.push({date:jstDate,savedAt:new Date().toISOString(),results,newsCount:news.length,marketContext,newsContext});
+ }else{
+  console.log("Forecast not saved: stale or missing critical data",JSON.stringify({stale,criticalOilAvailable}));
+ }
 }
 history=history.slice(-365);
 await fs.writeFile(path,JSON.stringify(history,null,2)+"\n");
-console.log(JSON.stringify({date:jstDate,quotes:Object.keys(quotes),news:news.length,errors,validated:changed,days:history.length}));
+console.log(JSON.stringify({date:jstDate,quotes:Object.keys(quotes),news:news.length,newsCoverage:[...new Set(news.map(n=>n.category))],errors,validated:changed,days:history.length}));
 if(!assets.every(a=>quotes[a.id]))throw new Error("Not all three index prices were available; no daily forecast was recorded.");
