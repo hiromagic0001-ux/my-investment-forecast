@@ -76,10 +76,12 @@ const quoteJobs=[...indicators.map(async ([id,t])=>[id,await quote(t)]),...asset
 const settled=await Promise.allSettled(quoteJobs),quotes={},errors=[];
 for(const x of settled){if(x.status==="fulfilled")quotes[x.value[0]]=x.value[1];else errors.push(String(x.reason));}
 let signalNews=[];
+let xAttention={posts:0,authors:0,engagement:0};
 const news=await newsItems();
 const xSignals=await fetchXSignals(news);
 const trustedX=xSignals.posts.filter(p=>p.verifiedForSignal).map(p=>({title:p.text,category:p.category,score:p.impactScore,date:p.createdAt,link:p.url,source:"X",trustScore:p.trustScore,label:"X "+p.sourceClass,verifiedForSignal:true}));
 signalNews=[...news,...trustedX];
+xAttention=xSignals.attention||xAttention;
 await fs.writeFile("market-signals.json",JSON.stringify({date:jstDate,generatedAt:new Date().toISOString(),status:xSignals.status,reason:xSignals.reason,attention:xSignals.attention,usage:xSignals.usage,posts:xSignals.posts},null,2)+"\n");
 function factorValue(id){
  if(id==="oil"){
@@ -124,10 +126,15 @@ function forecast(a){
  const criticalCoverage=coveredFeeds.has("geo")&&coveredFeeds.has("oil")?1:0;
  const broadCoverage=["rates","tech","japan"].filter(id=>coveredFeeds.has(id)).length/3;
  const newsCoverage=.7*criticalCoverage+.3*broadCoverage;
- const quality=clamp(.2+.4*coverage+.4*newsCoverage,.2,1);
+ const baseQuality=clamp(.2+.4*coverage+.4*newsCoverage,.2,1);
+ const xPosts=Number(xAttention.posts||0),xAuthors=Number(xAttention.authors||0),xEngagement=Number(xAttention.engagement||0);
+ const attentionHeat=clamp((xPosts/30)*.45+(xAuthors/30)*.35+(Math.log1p(xEngagement)/Math.log(5001))*.2,0,1);
+ const authorConcentration=xPosts?clamp(1-xAuthors/xPosts,0,1):0;
+ const attentionRisk=attentionHeat*(.5+.5*authorConcentration);
+ const quality=clamp(baseQuality*(1-attentionRisk*.12),.2,1);
  if(!coveredFeeds.has("geo")||!coveredFeeds.has("oil")||quality<.7)return null;
  const probability=Math.round(clamp(50+score*.75*23*quality,28,72)*10)/10;
- const sigma=(own.vol/Math.sqrt(252))/100,rangePct=Math.max(.003,sigma*1.5);
+ const sigma=(own.vol/Math.sqrt(252))/100,rangePct=Math.max(.003,sigma*1.5*(1+attentionHeat*.2));
  return {id:a.id,name:a.name,basePrice:own.price,baseDate:own.dateISO,probability,direction:probability>=50?"上昇":"下落",rangeLow:own.price*(1-rangePct),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,source:"GitHub Actions daily model"};
 }
 const path="forecast-history.json";
@@ -152,7 +159,7 @@ if(!history.some(x=>x.date===jstDate)){
  if(results.every(Boolean)&&!stale.length&&criticalOilAvailable){
   const marketContext=Object.fromEntries(Object.entries(quotes).map(([id,q])=>[id,{price:q.price,day:q.day,week:q.week,avg60:q.avg60,dateISO:q.dateISO}]));
   const newsContext=signalNews.map(n=>({title:n.title,category:n.category,score:n.score,date:n.date,link:n.link,source:n.source||"RSS",trustScore:n.trustScore??1}));
-  history.push({date:jstDate,savedAt:new Date().toISOString(),results,newsCount:news.length,xCount:xSignals.posts.length,marketContext,newsContext});
+  history.push({date:jstDate,savedAt:new Date().toISOString(),results,newsCount:news.length,xCount:xSignals.posts.length,xAttention,marketContext,newsContext});
  }else{
   console.log("Forecast not saved: stale or missing critical data",JSON.stringify({stale,criticalOilAvailable}));
  }
