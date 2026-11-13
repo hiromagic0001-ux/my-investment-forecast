@@ -74,7 +74,6 @@ const settled=await Promise.allSettled(quoteJobs),quotes={},errors=[];
 for(const x of settled){if(x.status==="fulfilled")quotes[x.value[0]]=x.value[1];else errors.push(String(x.reason));}
 const news=await newsItems();
 function factorValue(id){
- const q=quotes[id];if(!q)return null;
  if(id==="oil"){
   const oilQuotes=[quotes.oil,quotes.brent].filter(Boolean);
   if(!oilQuotes.length)return null;
@@ -85,6 +84,7 @@ function factorValue(id){
   });
   return clamp(signals.reduce((s,v)=>s+v,0)/signals.length,-1,1);
  }
+ const q=quotes[id];if(!q)return null;
  let raw=q.week;if(id==="rates"||id==="risk")raw=-q.week;
  const scale=id==="rates"?1.4:id==="fx"?1.2:id==="risk"?2.2:id==="nvda"?3:2.5;
  return clamp(raw/scale,-1,1);
