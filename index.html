@@ -119,7 +119,7 @@ function saveTodayForecast(){
  if(!assets.every(a=>latestQuotes[a.id])){$('validationStatus').textContent='3指数すべての価格が取得できていません。更新後に再度保存してください。';return;}
  const stale=assets.filter(a=>quoteIsStale(latestQuotes[a.id]));
  if(stale.length){$('validationStatus').textContent='価格データが古いため保存を保留しました：'+stale.map(a=>a.name).join('・');return;}
- const weakNews=assets.filter(a=>forecast(a,latestQuotes[a.id],latestQuotes,latestNews).quality<.7);
+ const weakNews=assets.filter(a=>forecast(a,latestQuotes[a.id],latestQuotes,latestNews).quality<.7||!latestNews.some(n=>n.category==='geo')||!latestNews.some(n=>n.category==='oil'));
  if(weakNews.length){$('validationStatus').textContent='戦争・原油など重要ニュースの取得不足で保存を保留しました。ニュースが揃ってから再計算します。';return;}
  const forecasts=assets.map(a=>{
   const q=latestQuotes[a.id],f=forecast(a,q,latestQuotes,latestNews);
@@ -174,7 +174,9 @@ const feeds=[
  {id:'tech',label:'AI・半導体',q:'AI semiconductor chip demand Nvidia data center technology stocks'},
  {id:'nvda',label:'NVIDIA・AIリスク',q:'NVIDIA NVDA shares stock latest CEO resignation AI semiconductor November 2026'},
  {id:'japan',label:'日本経済・日銀',q:'Japan economy Bank of Japan yen wages inflation stocks'},
- {id:'geo',label:'戦争・地政学',q:'Iran war OR Israel Iran conflict OR Strait of Hormuz OR Houthi attack OR tanker attack OR Saudi oil facility OR ceasefire OR イラン戦争 OR ホルムズ海峡 OR フーシ派 OR タンカー攻撃'},
+ {id:'geo',label:'イラン情勢',q:'Iran war'},
+ {id:'geo',label:'ホルムズ海峡',q:'Strait of Hormuz'},
+ {id:'geo',label:'フーシ派攻撃',q:'Houthi attack'},
  {id:'oil',label:'原油・供給リスク',q:'Brent crude OR WTI crude OR oil prices OR oil supply OR OPEC OR 原油価格 OR 原油高 OR 石油供給'}
 ];
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
@@ -276,7 +278,7 @@ function forecast(asset,own,quotes,news){
  const coverage=Object.keys(asset.exp).filter(id=>id==='oil'?!(quotes.oil||quotes.brent):!quotes[id]).length/Object.keys(asset.exp).length;
  const requiredFeeds=['rates','tech','japan','geo','oil'];
  const coveredFeeds=new Set(news.map(n=>n.category));
- const criticalCoverage=['geo','oil'].filter(id=>coveredFeeds.has(id)).length/2;
+ const criticalCoverage=coveredFeeds.has('geo')&&coveredFeeds.has('oil')?1:0;
  const broadCoverage=['rates','tech','japan'].filter(id=>coveredFeeds.has(id)).length/3;
  const newsCoverage=.7*criticalCoverage+.3*broadCoverage;
  const quality=clamp(.2+.4*coverage+.4*newsCoverage,.2,1);
@@ -295,7 +297,7 @@ function renderAsset(asset,quotes,news){
  if(own&&quoteIsStale(own))reasons.push('価格データが古い（最終基準日 '+own.dateISO+'）');
  if(missingQuotes.length)reasons.push('不足市場データ：'+missingQuotes.join('・'));
  if(missingNews.length)reasons.push('重要ニュース未取得：'+missingNews.map(id=>id==='geo'?'戦争・地政学':'原油・供給リスク').join('・'));
- if(!own||f.quality<.7||quoteIsStale(own)){
+ if(!own||f.quality<.7||quoteIsStale(own)||missingNews.length>0){
   if(!reasons.length)reasons.push('データ充足度が基準未満');
   return '<article class="card"><h2>'+asset.name+'</h2><div class="price">予測保留</div><div class="change">価格データや重要ニュースが不足しているため、確率を表示しません。</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>—</b></div><div class="prob"><small>1週間</small><b>—</b></div><div class="prob"><small>1か月</small><b>—</b></div></div><div class="confidence">データ充足度 '+Math.round(f.quality*100)+'%</div><ul class="reasons">'+reasons.map(x=>'<li class="bad">'+x+'</li>').join('')+'</ul></article>';
  }
