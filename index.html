@@ -42,6 +42,7 @@ body{font-size:16px}
 .daily-score-head span{font-size:12px;color:var(--muted)}
 .daily-score-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .daily-score-item{background:#0a111c;border:1px solid var(--line);border-radius:10px;padding:10px;min-width:0}
+.daily-score-item{cursor:pointer;transition:border-color .15s,transform .15s}.daily-score-item:hover,.daily-score-item:focus-visible{border-color:var(--gold);outline:none}.daily-score-item:active{transform:scale(.99)}.daily-score-tap{display:block;font-size:11px;color:var(--gold);margin-top:8px}
 .daily-score-item b{display:block;font-size:13px;margin-bottom:7px}
 .daily-score-item .daily-pred{font-size:14px;font-weight:750}
 .daily-score-item .daily-actual{font-size:13px;margin-top:6px}
@@ -89,7 +90,7 @@ header p{font-size:13px}
 <article class="card forecast-loading"><h2>NYSE FANG+（参考）</h2><div class="price">予測を計算中</div><div class="change">市場価格・ニュースを取得しています</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>—</b></div></div></article>
 <article class="card forecast-loading"><h2>日経225</h2><div class="price">予測を計算中</div><div class="change">市場価格・ニュースを取得しています</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>—</b></div></div></article>
 <article class="card forecast-loading"><h2>TOPIX（1306連動ETF参考）</h2><div class="price">予測を計算中</div><div class="change">市場価格・ニュースを取得しています</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>—</b></div></div></article>
-</div><section class="panel daily-scoreboard" id="dailyScoreboard"><div class="daily-score-head"><b>本日の予想・検証結果</b><span id="dailyScoreDate">記録を読み込み中</span></div><div id="dailyScoreBody" class="daily-score-grid"><div class="empty">予測記録を読み込んでいます…</div></div><div class="legend">予想は保存時点の数値を固定。実績は基準日より後の確定終値を取得した場合のみ表示します。</div></section><div id="priceForecastModal" class="forecast-modal" aria-hidden="true"><div class="forecast-modal-backdrop" data-close-forecast="1"></div><section class="forecast-dialog" role="dialog" aria-modal="true"><button type="button" class="forecast-close" id="closeForecastModal">×</button><div id="forecastModalContent"></div></section></div>
+</div><section class="panel daily-scoreboard" id="dailyScoreboard"><div class="daily-score-head"><b>本日の予想・検証結果</b><span id="dailyScoreDate">記録を読み込み中</span></div><div class="legend">各指数のカードをタップすると予想・実績の詳細を確認できます。</div><div id="dailyScoreBody" class="daily-score-grid"><div class="empty">予測記録を読み込んでいます…</div></div><div class="legend">予想は保存時点の数値を固定。実績は基準日より後の確定終値を取得した場合のみ表示します。</div></section><div id="priceForecastModal" class="forecast-modal" aria-hidden="true"><div class="forecast-modal-backdrop" data-close-forecast="1"></div><section class="forecast-dialog" role="dialog" aria-modal="true"><button type="button" class="forecast-close" id="closeForecastModal">×</button><div id="forecastModalContent"></div></section></div>
 <details class="panel disclosure" id="riskBrief"><summary>最重要リスク・市場全体の状況</summary><div id="riskBriefBody" class="legend">最新の指数価格とニュースを取得して評価します。</div></details>
 <details class="panel disclosure" id="earningsPanel"><summary>米大型テック決算・織り込み済みリスク</summary><div class="legend">好決算でも売られる可能性を確認します。</div><div id="earningsBody"><div class="empty">決算日程を確認しています…</div></div></details>
 <details class="panel disclosure"><summary>テクニカル分析｜移動平均線・ボリンジャーバンド</summary><div class="legend">1年分の日足終値から5・25・75・200日移動平均線、20日ボリンジャーバンド（±2σ）を計算。</div><div id="technicalBody"><div class="empty">テクニカル指標を計算中…</div></div></details>
@@ -166,9 +167,23 @@ async function loadYearEndScenarios(){
   $('yearEndScenarioBody').innerHTML='<div class="legend">更新基準：'+d.asOf+'｜予測期限：'+d.horizon+'｜'+d.method+'</div><div class="factorgrid" style="margin:10px 0">'+baseHtml+'</div><div class="cards">'+scenarioHtml+'</div><div class="legend" style="margin-top:10px">'+monitors+'</div>'+caveats+'<div class="legend">基準値出典：'+sources+'</div>';
  }catch(e){$('yearEndScenarioBody').textContent='年末シナリオを読み込めませんでした。';}
 }
+let dailyScoreDetailRecord=null;
+function openDailyScoreDetail(index){
+ const record=dailyScoreDetailRecord;
+ const x=record&&record.results&&record.results[index];
+ if(!x)return;
+ const unit=x.id==='topix'?'円':'pt',show=n=>n===null||n===undefined?'—':Number(n).toLocaleString('ja-JP',{maximumFractionDigits:2})+' '+unit;
+ const actual=x.actual!==null&&x.actual!==undefined;
+ const direction=x.direction||((Number(x.probability)>=50)?'上昇':'下落');
+ const status=actual?(x.hit===true?'<span class="daily-status hit">的中</span>':'<span class="daily-status miss">外れ</span>'):'<span class="daily-status pending">結果待ち</span>';
+ const change=actual&&x.basePrice?((Number(x.actual)/Number(x.basePrice)-1)*100):null;
+ $('forecastModalContent').innerHTML='<h2>'+esc(x.name)+'｜本日の予想・検証詳細</h2><div class="legend">予測日 '+esc(record.date||'')+'｜保存 '+esc(record.savedAt||'記録あり')+'</div><div class="forecast-value-grid"><div class="forecast-value"><small>予測方向</small><b>'+esc(direction)+'</b><span>上昇確率 '+Number(x.probability||0).toFixed(1)+'%</span></div><div class="forecast-value"><small>予測の基準価格</small><b>'+show(x.basePrice)+'</b><span>基準日 '+esc(x.baseDate||'—')+'</span></div><div class="forecast-value"><small>確定実績</small><b>'+show(x.actual)+'</b><span>'+(actual?'実績日 '+esc(x.actualDate||'—'):'次の確定終値を待っています')+'</span></div><div class="forecast-value"><small>実績の変化率</small><b>'+(change===null?'—':pct(change))+'</b><span>'+(actual?(x.actualUp?'基準価格より上昇':'基準価格より下落'):'実績確定後に表示')+'</span></div></div><p>検証結果：'+status+'</p><p class="forecast-note">予想は保存時点の方向・上昇確率を表示しています。実績が未確定の場合、的中・外れはまだ判定されません。これは保存済み予測の記録であり、後から予測値を書き換えるものではありません。</p>';
+ $('priceForecastModal').classList.add('open');$('priceForecastModal').setAttribute('aria-hidden','false');
+}
 function renderDailyScoreboard(){
  const rows=readHistory().slice().sort((a,b)=>b.date.localeCompare(a.date));
  const latest=rows[0];
+ dailyScoreDetailRecord=latest||null;
  if(!latest){$('dailyScoreDate').textContent='予測記録なし';$('dailyScoreBody').innerHTML='<div class="empty">予測データがまだありません。価格・ニュース取得後に自動保存します。</div>';return;}
  $('dailyScoreDate').textContent='予測日 '+latest.date+'｜保存 '+(latest.savedAt||'記録あり');
  const list=latest.results||latest.forecasts||[];
@@ -176,7 +191,7 @@ function renderDailyScoreboard(){
   const unit=x.id==='topix'?'円':'pt',show=n=>n===null||n===undefined?'—':Number(n).toLocaleString('ja-JP',{maximumFractionDigits:2})+' '+unit;
   const actual=x.actual!==null&&x.actual!==undefined,hit=x.hit===true,miss=x.hit===false;
   const status=actual?(hit?'<span class="daily-status hit">的中</span>':'<span class="daily-status miss">外れ</span>'):'<span class="daily-status pending">結果待ち</span>';
-  return '<article class="daily-score-item"><b>'+esc(x.name)+'</b><div class="daily-pred">予想：'+esc(x.direction||((Number(x.probability)>=50)?'上昇':'下落'))+'｜上昇確率 '+Number(x.probability).toFixed(1)+'%</div><small>基準価格 '+show(x.basePrice)+'（'+esc(x.baseDate||'')+'）</small><div class="daily-actual">実績：'+(actual?show(x.actual):'未確定')+'</div><small>'+(actual?'実績日 '+esc(x.actualDate||'')+'｜'+(x.actualUp?'上昇':'下落'):'次の確定終値を取得後に自動判定')+'</small>'+status+'</article>';
+  return '<article class="daily-score-item" role="button" tabindex="0" data-daily-index="'+i+'" aria-label="'+esc(x.name)+'の予想・検証詳細を開く"><b>'+esc(x.name)+'</b><div class="daily-pred">予想：'+esc(x.direction||((Number(x.probability)>=50)?'上昇':'下落'))+'｜上昇確率 '+Number(x.probability).toFixed(1)+'%</div><small>基準価格 '+show(x.basePrice)+'（'+esc(x.baseDate||'')+'）</small><div class="daily-actual">実績：'+(actual?show(x.actual):'未確定')+'</div><small>'+(actual?'実績日 '+esc(x.actualDate||'')+'｜'+(x.actualUp?'上昇':'下落'):'次の確定終値を取得後に自動判定')+'</small>'+status+'<span class="daily-score-tap">タップして詳細を見る ›</span></article>';
  }).join('')||'<div class="empty">この日の予測データはありません。</div>';
 }
 function renderValidation(){
@@ -594,6 +609,6 @@ async function update(){
  $('refresh').disabled=false;
  await autoSaveAndValidate();
 }
-$('forecasts').addEventListener('click',e=>{if(e.target.closest('details,a,button'))return;const c=e.target.closest('[data-asset]');if(c)openPriceForecast(c.dataset.asset);});$('forecasts').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-asset]');if(c){e.preventDefault();openPriceForecast(c.dataset.asset);}}});$('closeForecastModal').addEventListener('click',closePriceForecast);$('priceForecastModal').addEventListener('click',e=>{if(e.target.dataset.closeForecast)closePriceForecast();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closePriceForecast();});loadYearEndScenarios();loadUSMarketReview();$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',validateSavedForecasts);renderValidation();loadRemoteHistory();update();setInterval(update,300000);setInterval(autoSaveAndValidate,60000);
+$('forecasts').addEventListener('click',e=>{if(e.target.closest('details,a,button'))return;const c=e.target.closest('[data-asset]');if(c)openPriceForecast(c.dataset.asset);});$('dailyScoreBody').addEventListener('click',e=>{const c=e.target.closest('[data-daily-index]');if(c)openDailyScoreDetail(Number(c.dataset.dailyIndex));});$('dailyScoreBody').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-daily-index]');if(c){e.preventDefault();openDailyScoreDetail(Number(c.dataset.dailyIndex));}}});$('forecasts').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-asset]');if(c){e.preventDefault();openPriceForecast(c.dataset.asset);}}});$('closeForecastModal').addEventListener('click',closePriceForecast);$('priceForecastModal').addEventListener('click',e=>{if(e.target.dataset.closeForecast)closePriceForecast();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closePriceForecast();});loadYearEndScenarios();loadUSMarketReview();$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',validateSavedForecasts);renderValidation();loadRemoteHistory();update();setInterval(update,300000);setInterval(autoSaveAndValidate,60000);
 </script></body></html>
 <!-- deploy-sync: 2026-11-13 risk model update -->
