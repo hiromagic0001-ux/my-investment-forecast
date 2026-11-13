@@ -1,14 +1,14 @@
 {
   "date": "2026-11-13",
-  "generatedAt": "2026-11-13T07:04:04.157Z",
+  "generatedAt": "2026-11-13T07:04:53.243Z",
   "status": "free-indexed",
   "reason": "",
   "attention": {
     "posts": 297,
-    "authors": 19,
+    "authors": 18,
     "engagement": 0,
     "crediblePosts": 2,
-    "coordinationFlags": 116
+    "coordinationFlags": 115
   },
   "usage": {
     "maxPosts": 30,
@@ -217,7 +217,7 @@
       "eventType": "地政学リスク",
       "engagement": 0,
       "independentPosts": 0,
-      "copyClusterPosts": 2,
+      "copyClusterPosts": 1,
       "coordinationFlag": false,
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
@@ -608,7 +608,7 @@
       "eventType": "攻撃・供給障害",
       "engagement": 0,
       "independentPosts": 0,
-      "copyClusterPosts": 1,
+      "copyClusterPosts": 2,
       "coordinationFlag": false,
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
