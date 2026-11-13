@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080d18">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>世界の株価｜WORLD MARKET BOARD</title>
+<style>
+:root{color-scheme:dark;--bg:#080d18;--panel:#111a2b;--line:#25334b;--muted:#91a1ba;--gold:#e7bd67;--text:#f3f6fc}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at top,#16233a 0,#080d18 55%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{padding:22px 16px 14px;max-width:1100px;margin:auto}.eyebrow{font-size:11px;letter-spacing:.2em;color:var(--gold);font-weight:700}h1{font-size:25px;margin:7px 0 4px;letter-spacing:.03em}.sub{font-size:12px;color:var(--muted)}
+nav{display:flex;gap:8px;overflow:auto;padding:0 16px 14px;max-width:1100px;margin:auto}nav a{white-space:nowrap;text-decoration:none;color:#dbe5f7;border:1px solid var(--line);border-radius:999px;padding:9px 13px;font-size:12px;background:#101a2b}
+main{max-width:1100px;margin:auto;padding:0 14px 36px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.panel{background:linear-gradient(145deg,#121d30,#0d1524);border:1px solid var(--line);border-radius:16px;padding:15px;min-width:0;box-shadow:0 8px 24px #0003}.panel h2{font-size:16px;margin:0 0 8px}.tag{font-size:10px;color:var(--gold);letter-spacing:.08em}.desc{font-size:12px;color:var(--muted);line-height:1.7}.wide{grid-column:1/-1}.status{display:inline-block;border:1px solid #39506e;border-radius:999px;padding:4px 8px;font-size:10px;color:#bed0e8}.chart{height:390px;width:100%;margin-top:12px;border-radius:10px;overflow:hidden;background:#0b1422}.chart.tall{height:470px}.chart iframe{width:100%;height:100%;border:0}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.btn{display:inline-block;padding:11px 14px;border:1px solid #536b91;border-radius:10px;color:#f3f6fc;text-decoration:none;font-size:13px;background:#1b2b45;font-weight:650}.notice{font-size:11px;color:#aab8cd;line-height:1.7;margin-top:10px}.official-card{margin-top:13px;padding:16px;border:1px solid #334866;border-radius:12px;background:#0a1424}.official-card strong{display:block;font-size:14px;margin-bottom:6px}.official-card p{margin:0;color:#aebed4;font-size:12px;line-height:1.7}
+@media(max-width:640px){.grid{grid-template-columns:1fr}h1{font-size:22px}.chart{height:360px}.chart.tall{height:430px}}
+</style>
+</head>
+<body>
+<header><div class="eyebrow">WORLD MARKET BOARD</div><h1>世界の株価</h1><div class="sub">主要指数・為替・マーケット情報</div></header>
+<nav><a href="#fang">FANG+ CFD</a><a href="#index">FANG+指数</a><a href="#topix">TOPIX</a><a href="#fx">ドル円</a><a href="#heatmap">日本株ヒートマップ</a></nav>
+<main><div class="grid">
+<section class="panel wide" id="fang"><div class="tag">CAPITAL.COM · CFD</div><h2>FANG+ CFD（Capital.com）</h2><span class="status">Capital.com NYFANG</span><div class="desc">Capital.comが提供するFANG+ CFDのチャートです。ICEの現物指数とは別の商品で、CFD価格には提供会社の価格条件が反映されます。</div>
+<div class="chart"><iframe title="Capital.com FANG+ CFD chart" loading="lazy" src="https://www.tradingview.com/widgetembed/?symbol=CAPITALCOM%3ANYFANG&interval=5&theme=dark&style=1&timezone=Asia%2FTokyo&locale=ja&hide_top_toolbar=0&hide_legend=0&saveimage=0&toolbarbg=%23080d18&withdateranges=1&hide_side_toolbar=1&allow_symbol_change=0" allowtransparency="true" scrolling="no"></iframe></div>
+<div class="notice">※TradingViewの埋め込みチャートを使用。配信遅延・利用可能な時間足はTradingView／データ提供元の条件に従います。</div></section>
+<section class="panel wide" id="index"><div class="tag">ICE DATA INDICES · NYFANG</div><h2>NYSE FANG+ 指数（ICE）</h2><span class="status">ICEUS:NYFANG</span><div class="desc">ICEのNYSE FANG+価格リターン指数。上のCapital.com CFDとは分けて表示します。</div>
+<div class="chart"><iframe title="ICE NYSE FANG+ index chart" loading="lazy" src="https://www.tradingview.com/widgetembed/?symbol=ICEUS%3ANYFANG&interval=D&theme=dark&style=1&timezone=Asia%2FTokyo&locale=ja&hide_top_toolbar=0&hide_legend=0&saveimage=0&toolbarbg=%23080d18&withdateranges=1&hide_side_toolbar=1&allow_symbol_change=0" allowtransparency="true" scrolling="no"></iframe></div>
+<div class="notice">※ICE指数の公表頻度は指数種別・市場時間により異なります。埋め込み先で「市場クローズ」「トレードなし」と表示される場合があります。</div></section>
+<section class="panel wide" id="topix"><div class="tag">JAPAN · TOPIX INDEX</div><h2>TOPIX（東証株価指数・5分足）</h2><span class="status">TSE:TOPIX · TradingView</span><div class="desc">TOPIXそのものの指数チャートです。1306 ETFの代理値ではありません。初期表示は5分足です。</div>
+<div class="chart"><iframe title="TOPIX 5 minute index chart" loading="lazy" src="https://www.tradingview.com/widgetembed/?symbol=TSE%3ATOPIX&interval=5&theme=dark&style=1&timezone=Asia%2FTokyo&locale=ja&hide_top_toolbar=0&hide_legend=0&saveimage=0&toolbarbg=%23080d18&withdateranges=1&hide_side_toolbar=1&allow_symbol_change=0" allowtransparency="true" scrolling="no"></iframe></div>
+<div class="notice">※無料データの配信状況により遅延する場合があります。TradingView側で指数データが利用できない時間帯は、チャートが空欄になることがあります。Yahoo Financeや無料CORS中継サービスの404に依存する取得処理は使用しません。</div>
+</section>
+<section class="panel wide" id="fx"><div class="tag">FOREX · USD / JPY</div><h2>ドル円（USD/JPY）</h2><span class="status">FX:USDJPY</span><div class="desc">ドル円の為替チャートです。日次の公的基準レートではなく、TradingViewの市場データ表示を利用します。</div>
+<div class="chart"><iframe title="USD JPY chart" loading="lazy" src="https://www.tradingview.com/widgetembed/?symbol=FX%3AUSDJPY&interval=60&theme=dark&style=1&timezone=Asia%2FTokyo&locale=ja&hide_top_toolbar=0&hide_legend=0&saveimage=0&toolbarbg=%23080d18&withdateranges=1&hide_side_toolbar=1&allow_symbol_change=0" allowtransparency="true" scrolling="no"></iframe></div></section>
+<section class="panel wide" id="heatmap"><div class="tag">JAPAN EQUITIES</div><h2>日本株ヒートマップ</h2><span class="status">対応データ未確認</span><div class="desc">日本株の銘柄別・業種別騰落率を正確に表示するため、データ提供元の対応市場と利用条件を確認しています。</div><div class="official-card"><strong>現時点では誤った市場データを表示しません</strong><p>TradingViewの公開対応市場一覧では、日本の株式取引所データの対応を確認できず、現時点で日本株ヒートマップとして埋め込めることを確認できていません。米国株など別市場のデータを日本株として表示することは避けます。</p><div class="actions"><a class="btn" href="https://jp.tradingview.com/heatmap/stock/" target="_blank" rel="noopener">TradingView公式ヒートマップ</a><a class="btn" href="https://www.tradingview.com/widget-docs/markets/asia-pacific/" target="_blank" rel="noopener">対応市場一覧</a></div></div><div class="notice">※日本株の正規データソースを確保でき次第、銘柄・業種別のヒートマップを追加します。</div></section>
+</div><p class="notice">データの取得元・更新時刻・遅延の有無を明記し、取得できない場合はエラーを隠さず表示します。チャートの提供・表示条件は各データ提供元に従います。</p></main>
+</body></html>
