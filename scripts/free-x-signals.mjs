@@ -26,7 +26,7 @@ function parse(xml,category,account){
   const title=get("title"),link=get("link"),date=get("pubDate"),source=get("source");
   if(!title||!link)continue;
   const match=title.match(/@([A-Za-z0-9_]{1,15})/);
-  const author=match?.[1]||"";
+  const author=account||match?.[1]||"";
   const official=OFFICIAL.some(x=>x.toLowerCase()===author.toLowerCase());
   const media=MEDIA.some(x=>x.toLowerCase()===author.toLowerCase());
   const event=classify(title,category);
