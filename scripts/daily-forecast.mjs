@@ -33,13 +33,13 @@ const feeds=[
  ["rates","Federal Reserve interest rates inflation CPI Treasury yields"],
  ["tech","AI semiconductor chip demand Nvidia data center technology stocks"],
  ["japan","Japan economy BOJ yen Nikkei stocks"],
- ["geo","Iran Israel war Strait of Hormuz Houthi tanker attacks Saudi oil facilities ceasefire de-escalation November 2026"],
- ["oil","Brent WTI crude oil price surge decline supply disruption OPEC November 2026"]
+ ["geo","Iran war OR Israel Iran conflict OR Strait of Hormuz OR Houthi attack OR tanker attack OR Saudi oil facility OR ceasefire OR イラン戦争 OR ホルムズ海峡 OR フーシ派 OR タンカー攻撃"],
+ ["oil","Brent crude OR WTI crude OR oil prices OR oil supply OR OPEC OR 原油価格 OR 原油高 OR 石油供給"]
 ];
 function sentimentFor(title,category){
  const s=title.toLowerCase();
  const relief=["ceasefire","truce","de-escalation","deescalation","peace deal","talks resume","tensions ease","easing tensions","停戦","和平","緊張緩和","協議再開","攻撃停止"];
- const escalation=["airstrike","air strike","missile attack","tanker hit","tanker attack","pipeline attack","oil facility attack","military escalation","blockade tightened","strait closure","shipping disrupted","爆発","攻撃","空爆","ミサイル","タンカー被害","石油施設","パイプライン攻撃","封鎖強化","航行停止"];
+ const escalation=["airstrike","air strike","missile attack","tanker hit","tanker attack","pipeline attack","oil facility attack","military escalation","blockade tightened","strait closure","shipping disrupted","attack","attacks","strike","strikes","explosion","explosions","爆発","攻撃","空爆","ミサイル","タンカー被害","石油施設","パイプライン攻撃","封鎖強化","航行停止"];
  if(category==="geo"){
   if(relief.some(w=>s.includes(w)))return .85;
   if(escalation.some(w=>s.includes(w)))return -.9;
@@ -112,10 +112,12 @@ function forecast(a){
  parts.push(ns*.28);
  const score=clamp(parts.reduce((s,v)=>s+v,0),-.85,.85);
  const coverage=Object.keys(a.exp).filter(id=>id==="oil"?(quotes.oil||quotes.brent):quotes[id]).length/Object.keys(a.exp).length;
- const requiredFeeds=["rates","tech","japan","geo","oil"];
  const coveredFeeds=new Set(news.map(n=>n.category));
- const newsCoverage=requiredFeeds.filter(id=>coveredFeeds.has(id)).length/requiredFeeds.length;
- const quality=clamp(.2+.45*coverage+.35*newsCoverage,.2,1);
+ const criticalCoverage=["geo","oil"].filter(id=>coveredFeeds.has(id)).length/2;
+ const broadCoverage=["rates","tech","japan"].filter(id=>coveredFeeds.has(id)).length/3;
+ const newsCoverage=.7*criticalCoverage+.3*broadCoverage;
+ const quality=clamp(.2+.4*coverage+.4*newsCoverage,.2,1);
+ if(quality<.7)return null;
  const probability=Math.round(clamp(50+score*.75*23*quality,28,72)*10)/10;
  const sigma=(own.vol/Math.sqrt(252))/100,rangePct=Math.max(.003,sigma*1.5);
  return {id:a.id,name:a.name,basePrice:own.price,baseDate:own.dateISO,probability,direction:probability>=50?"上昇":"下落",rangeLow:own.price*(1-rangePct),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,source:"GitHub Actions daily model"};
