@@ -30,7 +30,7 @@ function parse(xml,category,account){
   const official=OFFICIAL.some(x=>x.toLowerCase()===author.toLowerCase());
   const media=MEDIA.some(x=>x.toLowerCase()===author.toLowerCase());
   const event=classify(title,category);
-  items.push({id:link,title,author:author||source||"検索結果",createdAt:date,url:link,category,sourceClass:official?"公的機関候補":media?"主要報道機関候補":"X公開投稿・投稿者未確認",sourceScore:official?.78:media?.65:.35,officialUrl:false,trustedUrl:false,impactScore:event.impactScore,eventType:event.eventType,engagement:0,independentPosts:0,copyClusterPosts:0,coordinationFlag:false,verifiedForSignal:false,confidence:"未確認・予測不採用",trustScore:official?.78:media?.65:.35,via:"Google News RSS（X公開投稿の検索インデックス）"});
+  items.push({id:link,title,author:author||source||"検索結果",createdAt:date,url:link,category,sourceClass:official?"公的機関候補":media?"主要報道機関候補":"X関連検索結果・投稿者未確認",sourceScore:official?.78:media?.65:.35,officialUrl:false,trustedUrl:false,impactScore:event.impactScore,eventType:event.eventType,engagement:0,independentPosts:0,copyClusterPosts:0,coordinationFlag:false,verifiedForSignal:false,confidence:"未確認・予測不採用",trustScore:official?.78:media?.65:.35,via:"Google News RSS（X関連公開検索インデックス。投稿本文・投稿者の直接取得ではない）"});
  }
  return items;
 }
@@ -58,5 +58,5 @@ export async function fetchFreeXSignals(rssNews=[]){
  }
  unique.sort((a,b)=>(b.verifiedForSignal-a.verifiedForSignal)||(b.trustScore-a.trustScore)||Date.parse(b.createdAt)-Date.parse(a.createdAt));
  const authors=new Set(unique.map(p=>p.author).filter(Boolean));
- return {status:errors.length?"partial":"free-indexed",reason:errors.join(" | "),posts:unique.slice(0,30),attention:{posts:unique.length,authors:authors.size,engagement:0,crediblePosts:unique.filter(p=>p.verifiedForSignal).length,coordinationFlags:unique.filter(p=>p.coordinationFlag).length},usage:{maxPosts:30,requests:SEARCHES.length,postsRead:unique.length,estimatedUsd:0,method:"Google News RSSの公開検索インデックス。X公式API不使用。"}};
+ return {status:errors.length?"partial":"free-indexed",reason:errors.join(" | "),posts:unique.slice(0,30),attention:{posts:unique.length,authors:authors.size,engagement:0,crediblePosts:unique.filter(p=>p.verifiedForSignal).length,coordinationFlags:unique.filter(p=>p.coordinationFlag).length},usage:{maxPosts:30,maxDisplay:30,requests:SEARCHES.length,searchHits:unique.length,estimatedUsd:0,method:"Google News RSSの公開検索インデックス。X公式API不使用。"}};
 }
