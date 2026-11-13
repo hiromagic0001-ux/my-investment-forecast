@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import { fetchXSignals } from "./x-signals.mjs";
 
 const assets = [
   {id:"fang",name:"NYSE FANG+（参考）",ticker:"^NYFANG",exp:{us:.22,nasdaq:.34,semi:.42,nvda:.28,fx:.08,rates:-.34,oil:-.14,risk:.22,japan:.02}},
@@ -75,6 +76,10 @@ const quoteJobs=[...indicators.map(async ([id,t])=>[id,await quote(t)]),...asset
 const settled=await Promise.allSettled(quoteJobs),quotes={},errors=[];
 for(const x of settled){if(x.status==="fulfilled")quotes[x.value[0]]=x.value[1];else errors.push(String(x.reason));}
 const news=await newsItems();
+const xSignals=await fetchXSignals(news);
+const trustedX=xSignals.posts.filter(p=>p.verifiedForSignal).map(p=>({title:p.text,category:p.category,score:p.impactScore,date:p.createdAt,link:p.url,source:"X",trustScore:p.trustScore,label:"X "+p.sourceClass,verifiedForSignal:true}));
+signalNews=[...news,...trustedX];
+await fs.writeFile("market-signals.json",JSON.stringify({date:jstDate,generatedAt:new Date().toISOString(),status:xSignals.status,reason:xSignals.reason,attention:xSignals.attention,usage:xSignals.usage,posts:xSignals.posts},null,2)+"\\n");
 function factorValue(id){
  if(id==="oil"){
   const oilQuotes=[quotes.oil,quotes.brent].filter(Boolean);
@@ -99,6 +104,7 @@ function relFor(asset,cat){
  if(cat==="geo")return 1.0;if(cat==="oil")return asset.id==="fang"?.65:asset.id==="nikkei"?.75:.65;
  return .3;
 }
+let signalNews=[];
 function forecast(a){
  const own=quotes[a.id];if(!own)return null;
  const parts=[
@@ -109,12 +115,12 @@ function forecast(a){
  for(const [id,exp] of Object.entries(a.exp)){const v=factorValue(id);if(v!==null&&Math.abs(exp)>.01)parts.push(v*exp*.42);}
  if(quotes.nvda&&a.exp.nvda)parts.push(clamp(quotes.nvda.day/4,-1,1)*a.exp.nvda*.7);
  let total=0,weight=0;
- for(const n of news){const rel=relFor(a,n.category);total+=n.score*rel;weight+=rel;}
+ for(const n of signalNews){const rel=relFor(a,n.category);total+=n.score*rel;weight+=rel;}
  const ns=weight?clamp(total/Math.max(2,weight),-1,1):0;
  parts.push(ns*.28);
  const score=clamp(parts.reduce((s,v)=>s+v,0),-.85,.85);
  const coverage=Object.keys(a.exp).filter(id=>id==="oil"?(quotes.oil||quotes.brent):quotes[id]).length/Object.keys(a.exp).length;
- const coveredFeeds=new Set(news.map(n=>n.category));
+ const coveredFeeds=new Set(signalNews.map(n=>n.category));
  const criticalCoverage=coveredFeeds.has("geo")&&coveredFeeds.has("oil")?1:0;
  const broadCoverage=["rates","tech","japan"].filter(id=>coveredFeeds.has(id)).length/3;
  const newsCoverage=.7*criticalCoverage+.3*broadCoverage;
@@ -145,13 +151,13 @@ if(!history.some(x=>x.date===jstDate)){
  const criticalOilAvailable=Boolean(quotes.oil||quotes.brent);
  if(results.every(Boolean)&&!stale.length&&criticalOilAvailable){
   const marketContext=Object.fromEntries(Object.entries(quotes).map(([id,q])=>[id,{price:q.price,day:q.day,week:q.week,avg60:q.avg60,dateISO:q.dateISO}]));
-  const newsContext=news.map(n=>({title:n.title,category:n.category,score:n.score,date:n.date,link:n.link}));
-  history.push({date:jstDate,savedAt:new Date().toISOString(),results,newsCount:news.length,marketContext,newsContext});
+  const newsContext=signalNews.map(n=>({title:n.title,category:n.category,score:n.score,date:n.date,link:n.link,source:n.source||"RSS",trustScore:n.trustScore??1}));
+  history.push({date:jstDate,savedAt:new Date().toISOString(),results,newsCount:news.length,xCount:xSignals.posts.length,marketContext,newsContext});
  }else{
   console.log("Forecast not saved: stale or missing critical data",JSON.stringify({stale,criticalOilAvailable}));
  }
 }
 history=history.slice(-365);
 await fs.writeFile(path,JSON.stringify(history,null,2)+"\n");
-console.log(JSON.stringify({date:jstDate,quotes:Object.keys(quotes),news:news.length,newsCoverage:[...new Set(news.map(n=>n.category))],errors,validated:changed,days:history.length}));
+console.log(JSON.stringify({date:jstDate,quotes:Object.keys(quotes),news:news.length,xStatus:xSignals.status,xPosts:xSignals.posts.length,xCredible:xSignals.attention.crediblePosts,xUsage:xSignals.usage,newsCoverage:[...new Set(signalNews.map(n=>n.category))],errors,validated:changed,days:history.length}));
 if(!assets.every(a=>quotes[a.id]))throw new Error("Not all three index prices were available; no daily forecast was recorded.");
