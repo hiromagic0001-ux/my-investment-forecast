@@ -21,6 +21,10 @@
 <section class="panel"><h3>市場・金融環境</h3><div class="factorgrid" id="indicators"></div><div class="legend">価格変化は各市場の直近取得可能な取引日ベース。取得できない項目は推測値で補完しません。</div></section>
 <section class="panel"><h3>世界経済ニュースの材料分析</h3><div id="news"><div class="empty">ニュースを取得中…</div></div></section>
 
+<section class="panel" id="yearEndScenarios">
+ <h3>2026年末までの株価シナリオ（12月31日まで）</h3>
+ <div id="yearEndScenarioBody" class="legend">年末シナリオを読み込んでいます…</div>
+</section>
 <section class="panel" id="usMarketReview">
  <h3>米国市場・予測検証（2026年11月12日）</h3>
  <div id="usMarketReviewBody" class="legend">検証記録を読み込んでいます…</div>
@@ -57,6 +61,27 @@ async function loadUSMarketReview(){
   const learning=d.learning.map(x=>'<li>'+x+'</li>').join('');
   $('usMarketReviewBody').innerHTML='<b class="bad">前夜予想：'+d.forecast.direction+' ／ 結果：'+d.result+'</b><div class="legend" style="margin:6px 0">予測確率・想定レンジ：保存記録なし（推測で補完せず）</div><div class="factorgrid">'+rows+'</div><h4>外れた要因</h4><ul class="reasons">'+factors+'</ul><h4>次回への改善</h4><ul class="reasons">'+learning+'</ul><div class="legend">'+d.sourceNotes+'</div>';
  }catch(e){$('usMarketReviewBody').textContent='米国市場の検証記録を取得できませんでした。';}
+}
+async function loadYearEndScenarios(){
+ try{
+  const r=await fetch('./year-end-scenarios-2026.json?ts='+Date.now(),{cache:'no-store'});
+  if(!r.ok)throw Error('scenario unavailable');
+  const d=await r.json();
+  const names={nikkei:'日経225',topix:'TOPIX',fang:'NYSE FANG+'};
+  const fmtScenario=(v,id)=>Number(v).toLocaleString('ja-JP',{maximumFractionDigits:id==='fang'?0:2});
+  const baseHtml=d.marketBases.map(m=>'<div class="factor"><b>'+m.name+'</b><span>基準 '+fmtScenario(m.base,m.id)+'（'+m.baseDate+' 確定終値）</span></div>').join('');
+  const scenarioHtml=d.scenarios.map(s=>{
+   const items=s.indices.map(x=>{
+    const m=d.marketBases.find(z=>z.id===x.id),lo=(x.low/m.base-1)*100,hi=(x.high/m.base-1)*100;
+    return '<div class="news"><b>'+names[x.id]+'</b>：'+fmtScenario(x.low,x.id)+'〜'+fmtScenario(x.high,x.id)+' <span class="impact">('+((lo>=0?'+':'')+lo.toFixed(1))+'%〜'+((hi>=0?'+':'')+hi.toFixed(1))+'%)</span></div>';
+   }).join('');
+   return '<article class="card"><h2>'+s.name+'｜'+s.probability+'%</h2><div class="legend">'+s.path+'</div>'+items+'<div class="legend"><b>成立条件</b><ul class="reasons">'+s.conditions.map(x=>'<li>'+x+'</li>').join('')+'</ul></div></article>';
+  }).join('');
+  const monitors='<b>毎週確認する転換点</b><ul class="reasons">'+d.monitoring.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
+  const caveats='<div class="legend"><b>前提・注意</b><ul class="reasons">'+d.caveats.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>';
+  const sources=d.marketBases.map(m=>'<a href="'+m.source+'" target="_blank" rel="noopener">'+m.name+'の基準値出典</a>').join(' ｜ ');
+  $('yearEndScenarioBody').innerHTML='<div class="legend">更新基準：'+d.asOf+'｜予測期限：'+d.horizon+'｜'+d.method+'</div><div class="factorgrid" style="margin:10px 0">'+baseHtml+'</div><div class="cards">'+scenarioHtml+'</div><div class="legend" style="margin-top:10px">'+monitors+'</div>'+caveats+'<div class="legend">基準値出典：'+sources+'</div>';
+ }catch(e){$('yearEndScenarioBody').textContent='年末シナリオを読み込めませんでした。';}
 }
 function renderValidation(){
  const rows=readHistory();
@@ -278,6 +303,6 @@ async function update(){
  $('refresh').disabled=false;
  await autoSaveAndValidate();
 }
-loadUSMarketReview();$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',validateSavedForecasts);renderValidation();loadRemoteHistory();update();setInterval(update,300000);setInterval(autoSaveAndValidate,60000);
+loadYearEndScenarios();loadUSMarketReview();$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',validateSavedForecasts);renderValidation();loadRemoteHistory();update();setInterval(update,300000);setInterval(autoSaveAndValidate,60000);
 </script></body></html>
 <!-- deploy-sync: 2026-11-12 22:10 JST -->
