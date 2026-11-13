@@ -421,10 +421,10 @@ function factorValue(id,quotes){
   return clamp(signals.reduce((s,v)=>s+v,0)/signals.length,-1,1);
  }
  const q=quotes[id];if(!q)return null;
- let raw=q.week;
- if(id==='fx')raw=q.week;
- if(id==='rates')raw=-q.week;
- if(id==='risk')raw=-q.week;
+ let raw=q.week*.65+q.day*.35;
+ if(id==='fx')raw=q.week*.65+q.day*.35;
+ if(id==='rates')raw=-(q.week*.65+q.day*.35);
+ if(id==='risk')raw=-(q.week*.65+q.day*.35);
  const scale=id==='rates'?1.4:id==='fx'?1.2:id==='risk'?2.2:id==='nvda'?3.0:2.5;
  const fxRisk=fxInterventionRisk(quotes.fx).score;
  return id==='fx' ? clamp((raw/scale)*(1-.65*fxRisk)-.10*fxRisk,-1,1) : clamp(raw/scale,-1,1);
@@ -500,10 +500,20 @@ function forecast(asset,own,quotes,news){
  }
  const nvda=quotes.nvda;
  if(nvda&&asset.exp.nvda)parts.push({name:'NVIDIA当日変動',v:clamp(nvda.day/4,-1,1)*asset.exp.nvda*.7});
+ if(asset.id==='fang'){
+  const semi=quotes.semi,nasdaq=quotes.nasdaq,vix=quotes.risk;
+  const semiShock=semi?Math.max(0,-semi.day-1.5)*.025:0;
+  const nasdaqShock=nasdaq?Math.max(0,-nasdaq.day-1.0)*.02:0;
+  const nvdaShock=nvda?Math.max(0,-nvda.day-2.0)*.012:0;
+  const volatilityShock=vix?Math.max(0,vix.day-8.0)*.004:0;
+  const shockPenalty=clamp(semiShock+nasdaqShock+nvdaShock+volatilityShock,0,.25);
+  if(shockPenalty>0)parts.push({name:'米国ハイテク急落リスク（日次ストレス補正）',v:-shockPenalty});
+ }
  parts.push({name:'ニュース材料',v:ns.score*.28});
  const rawScore=clamp(parts.reduce((s,p)=>s+p.v,0),-.85,.85);
  const score=clamp(rawScore*(1-.65*earningsRisk.score)-.035*earningsRisk.pricedInScore*earningsRisk.score,-.85,.85);
- const coverage=Object.keys(asset.exp).filter(id=>id==='oil'?!(quotes.oil||quotes.brent):!quotes[id]).length/Object.keys(asset.exp).length;
+ const missingRatio=Object.keys(asset.exp).filter(id=>id==='oil'?!(quotes.oil||quotes.brent):!quotes[id]).length/Object.keys(asset.exp).length;
+ const coverage=1-missingRatio;
  const requiredFeeds=['rates','tech','japan','geo','oil'];
  const coveredFeeds=new Set(news.map(n=>n.category));
  const criticalCoverage=coveredFeeds.has('geo')&&coveredFeeds.has('oil')?1:0;
