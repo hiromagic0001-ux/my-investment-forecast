@@ -207,7 +207,7 @@ function renderValidation(){
  const correct=directional.filter(x=>(Number(x.probability)>50&&x.actualUp)||(Number(x.probability)<50&&!x.actualUp)).length;
  const accuracy=directional.length?correct/directional.length*100:null;
  const brier=scored.length?scored.reduce((s,x)=>s+Math.pow((Number(x.probability)/100)-(x.actualUp?1:0),2),0)/scored.length:null;
- const rangeScored=valid.filter(x=>Number.isFinite(Number(x.rangeLow))&&Number.isFinite(Number(x.rangeHigh)));
+ const rangeScored=valid.filter(x=>x.rangeLow!==null&&x.rangeLow!==undefined&&x.rangeHigh!==null&&x.rangeHigh!==undefined&&Number.isFinite(Number(x.rangeLow))&&Number.isFinite(Number(x.rangeHigh)));
  const rangeCoverage=rangeScored.length?rangeScored.filter(x=>Number(x.actual)>=Number(x.rangeLow)&&Number(x.actual)<=Number(x.rangeHigh)).length/rangeScored.length*100:null;
  const byIndex=assets.map(a=>{
   const sample=scored.filter(x=>x.id===a.id),directionSample=sample.filter(x=>Number(x.probability)!==50);
@@ -226,6 +226,7 @@ function renderValidation(){
   ['方向的中率',accuracy===null?'—':accuracy.toFixed(1)+'% ('+correct+'/'+directional.length+')'],
   ...byIndex.map(x=>[x.name+' 的中率',x.rate===null?'—（0件）':x.rate.toFixed(1)+'% ('+x.hits+'/'+x.sample+')']),
   ['全体 Brier score',brier===null?'—':brier.toFixed(3)+'（小さいほど良い）'],
+  ['50%予測との比較',brier===null?'—':(1-brier/.25>=0?'+':'')+((1-brier/.25)*100).toFixed(1)+'%（プラスなら基準より改善）'],
   ...byIndex.map(x=>[x.name+' Brier',x.brier===null?'—':x.brier.toFixed(3)]),
   ['想定レンジ内率',rangeCoverage===null?'—':rangeCoverage.toFixed(1)+'% ('+rangeScored.length+'件)'],
   ...buckets.map(x=>['確率帯 '+x.label,x.n?('予測 '+x.predicted.toFixed(1)+'%｜実績 '+x.actual.toFixed(1)+'%｜'+x.n+'件'):'データ不足']),
