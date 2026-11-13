@@ -85,7 +85,7 @@ function setQuote(s,q){
 async function getQuote(s){
  const ticker=encodeURIComponent(s.code+'.T');
  const url='https://query1.finance.yahoo.com/v8/finance/chart/'+ticker+'?range=5d&interval=1d';
- const res=await fetch(url,{cache:'no-store'});
+ const res=await fetch('https://proxy.cors.dev/'+url,{cache:'no-store',credentials:'omit'});
  if(!res.ok)throw new Error('HTTP '+res.status);
  const json=await res.json();
  const r=json?.chart?.result?.[0]; if(!r)throw new Error('No data');
