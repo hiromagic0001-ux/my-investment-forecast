@@ -34,6 +34,12 @@ function overlaps(a,b){
   const aa=new Set(tokenize(a)),bb=tokenize(b);
   return bb.filter(x=>aa.has(x)).length;
 }
+function similarity(a,b){
+  const aa=new Set(tokenize(a)),bb=new Set(tokenize(b));
+  const union=new Set([...aa,...bb]).size;
+  if(!union)return 0;
+  return [...aa].filter(x=>bb.has(x)).length/union;
+}
 function accountTrust(user,urls){
   const handle=(user.username||"").toLowerCase();
   const primary=PRIMARY.has(handle),news=NEWS.has(handle);
@@ -90,17 +96,21 @@ export async function fetchXSignals(rssNews=[]){
     return {id:x.post.id,text:x.post.text,author:x.user.username||"unknown",authorId:x.user.id||"",createdAt:x.post.created_at||"",url,category:x.category,sourceScore:source.score,sourceClass:source.primary?"一次情報候補":source.news?"主要報道機関":source.verifiedType==="government"?"政府認証アカウント":"一般アカウント",officialUrl:source.officialUrl,trustedUrl:source.trustedUrl,ageYears:Number(source.ageYears.toFixed(1)),followers:x.user.public_metrics?.followers_count||0,verifiedType:source.verifiedType,eventType:event.eventType,impactScore:event.impactScore,engagement:(engagement.like_count||0)+(engagement.retweet_count||0)*2+(engagement.reply_count||0)+(engagement.quote_count||0)*2,urls:x.urls};
   });
   for(const p of prepared){
-    const independent=prepared.filter(q=>q.id!==p.id&&q.authorId!==p.authorId&&q.category===p.category&&overlaps(p.text,q.text)>=2).length;
-    const rssMatch=rssNews.some(n=>n.category===p.category&&overlaps(p.text,n.title)>=2);
+    const related=prepared.filter(q=>q.id!==p.id&&q.authorId!==p.authorId&&q.category===p.category&&similarity(p.text,q.text)>=.18);
+    const copyCluster=related.filter(q=>similarity(p.text,q.text)>=.82).length;
+    const independent=related.filter(q=>similarity(p.text,q.text)<.82).length;
+    const rssMatch=rssNews.some(n=>n.category===p.category&&[...TRUSTED_DOMAINS].some(d=>hostOf(n.link)===d||hostOf(n.link).endsWith("."+d))&&overlaps(p.text,n.title)>=3);
     p.independentPosts=independent;
+    p.copyClusterPosts=copyCluster;
+    p.coordinationFlag=copyCluster>=2;
     p.rssCorroborated=rssMatch;
-    p.verifiedForSignal=(p.sourceClass==="一次情報候補"&&(p.officialUrl||p.verifiedType==="government"||independent>=1||rssMatch))
-      ||(p.sourceClass==="主要報道機関"&&(p.trustedUrl||rssMatch||independent>=2));
-    p.confidence=p.verifiedForSignal?"予測反映候補":p.sourceScore>=.55?"要裏付け":"未確認・方向予測に不採用";
+    p.verifiedForSignal=!p.coordinationFlag&&((p.sourceClass==="一次情報候補"&&(p.officialUrl||p.verifiedType==="government"||independent>=2||rssMatch))
+      ||(p.sourceClass==="主要報道機関"&&(p.trustedUrl||rssMatch||independent>=2)));
+    p.confidence=p.coordinationFlag?"同文投稿の集中・要警戒":p.verifiedForSignal?"予測反映候補":p.sourceScore>=.55?"要裏付け":"未確認・方向予測に不採用";
     p.trustScore=clamp(p.sourceScore+(p.officialUrl?.04:0)+(p.rssCorroborated?.06:0)+(independent>=2?.04:0),0,.99);
   }
   prepared.sort((a,b)=>(b.verifiedForSignal-a.verifiedForSignal)||(b.trustScore-a.trustScore)||Date.parse(b.createdAt)-Date.parse(a.createdAt));
   const authors=new Set(prepared.map(p=>p.authorId).filter(Boolean));
-  const attention={posts:prepared.length,authors:authors.size,engagement:prepared.reduce((s,p)=>s+p.engagement,0),crediblePosts:prepared.filter(p=>p.verifiedForSignal).length};
+  const attention={posts:prepared.length,authors:authors.size,engagement:prepared.reduce((s,p)=>s+p.engagement,0),crediblePosts:prepared.filter(p=>p.verifiedForSignal).length,coordinationFlags:prepared.filter(p=>p.coordinationFlag).length};
   return {status:errors.length?"partial":"active",reason:errors.join(" | "),posts:prepared.slice(0,30),attention,usage:{maxPosts:30,requests,postsRead:reads,estimatedUsd:Math.round(reads*.005*1000)/1000}};
 }
