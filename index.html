@@ -130,9 +130,10 @@ async function validateSavedForecasts(){
  for(const r of rows){
   r.results=r.results||r.forecasts||[];
   for(const x of r.results){
-   const q=fresh[x.id];if(!q||!q.dateISO||q.dateISO<=x.baseDate)continue;
+   const q=fresh[x.id];if(!q)continue;
+   const firstNextClose=q.series?.find(v=>v.dateISO>x.baseDate);if(!firstNextClose)continue;
    if(x.actual!==null&&x.actual!==undefined)continue;
-   x.actual=q.price;x.actualDate=q.dateISO;x.actualUp=q.price>x.basePrice;
+   x.actual=firstNextClose.price;x.actualDate=firstNextClose.dateISO;x.actualUp=x.actual>x.basePrice;
    x.hit=(x.actualUp&&x.probability>=50)||(!x.actualUp&&x.probability<50);
    x.basePrice=Number(x.basePrice);changed++;
   }
@@ -142,9 +143,9 @@ async function validateSavedForecasts(){
 }
 
 const assets=[
- {id:'fang',name:'NYSE FANG+（参考）',ticker:'^NYFANG',exp:{us:.22,nasdaq:.34,semi:.42,nvda:.28,fx:.08,rates:-.34,oil:-.04,risk:.22,japan:.02},queries:['FANG+ index technology stocks','Nasdaq AI semiconductor stocks']},
- {id:'nikkei',name:'日経225',ticker:'^N225',exp:{us:.23,nasdaq:.20,semi:.34,nvda:.10,fx:.32,rates:-.10,oil:-.08,risk:.14,japan:.20},queries:['Japan economy BOJ yen Nikkei','Japan stocks semiconductor exporters']},
- {id:'topix',name:'TOPIX（1306連動ETF参考）',ticker:'1306.T',exp:{us:.14,nasdaq:.10,semi:.16,nvda:.05,fx:.22,rates:-.10,oil:-.07,risk:.13,japan:.32},queries:['Japan economy BOJ corporate earnings TOPIX','Japan inflation wages economy'] }
+ {id:'fang',name:'NYSE FANG+（参考）',ticker:'^NYFANG',exp:{us:.22,nasdaq:.34,semi:.42,nvda:.28,fx:.08,rates:-.34,oil:-.14,risk:.22,japan:.02},queries:['FANG+ index technology stocks','Nasdaq AI semiconductor stocks']},
+ {id:'nikkei',name:'日経225',ticker:'^N225',exp:{us:.23,nasdaq:.20,semi:.34,nvda:.10,fx:.32,rates:-.10,oil:-.18,risk:.14,japan:.20},queries:['Japan economy BOJ yen Nikkei','Japan stocks semiconductor exporters']},
+ {id:'topix',name:'TOPIX（1306連動ETF参考）',ticker:'1306.T',exp:{us:.14,nasdaq:.10,semi:.16,nvda:.05,fx:.22,rates:-.10,oil:-.15,risk:.13,japan:.32},queries:['Japan economy BOJ corporate earnings TOPIX','Japan inflation wages economy'] }
 ];
 const indicators=[
  {id:'us',name:'S&P 500',ticker:'^GSPC',factor:'us'},
@@ -154,6 +155,7 @@ const indicators=[
  {id:'fx',name:'ドル / 円',ticker:'JPY=X',factor:'fx'},
  {id:'rates',name:'米10年金利',ticker:'^TNX',factor:'rates'},
  {id:'oil',name:'WTI原油',ticker:'CL=F',factor:'oil'},
+ {id:'brent',name:'ブレント原油',ticker:'BZ=F',factor:'oil'},
  {id:'risk',name:'VIX恐怖指数',ticker:'^VIX',factor:'risk'}
 ];
 const feeds=[
@@ -161,8 +163,8 @@ const feeds=[
  {id:'tech',label:'AI・半導体',q:'AI semiconductor chip demand Nvidia data center technology stocks'},
  {id:'nvda',label:'NVIDIA・AIリスク',q:'NVIDIA NVDA shares stock latest CEO resignation AI semiconductor November 2026'},
  {id:'japan',label:'日本経済・日銀',q:'Japan economy Bank of Japan yen wages inflation stocks'},
- {id:'geo',label:'地政学・貿易',q:'geopolitics trade tariffs sanctions war global markets'},
- {id:'oil',label:'原油・資源',q:'WTI crude oil OPEC supply energy prices'}
+ {id:'geo',label:'戦争・地政学',q:'Iran Israel war Strait of Hormuz Houthi tanker attacks Saudi oil facilities ceasefire de-escalation'},
+ {id:'oil',label:'原油・供給リスク',q:'Brent WTI crude oil price surge decline supply disruption OPEC'}
 ];
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const fmt=n=>Number(n).toLocaleString('ja-JP',{maximumFractionDigits:2});
@@ -176,7 +178,9 @@ async function quote(ticker){
  const closes=pairs.map(v=>v.c),last=closes.at(-1),prev=closes.at(-2),w=closes.at(-6),m=closes.at(-22);
  const daily=closes.slice(1).map((v,i)=>Math.log(v/closes[i]));
  const vol=Math.sqrt(daily.slice(-20).reduce((s,v)=>s+v*v,0)/Math.min(20,daily.length))*Math.sqrt(252)*100;
- return {price:last,day:(last/prev-1)*100,week:(last/w-1)*100,month:(last/m-1)*100,vol,dateISO:new Date(pairs.at(-1).t*1000).toISOString().slice(0,10),date:new Date(pairs.at(-1).t*1000).toLocaleString('ja-JP')};
+ const avg60=closes.slice(-Math.min(60,closes.length)).reduce((s,v)=>s+v,0)/Math.min(60,closes.length);
+ const series=pairs.map(v=>({dateISO:new Date(v.t*1000).toISOString().slice(0,10),price:v.c}));
+ return {price:last,day:(last/prev-1)*100,week:(last/w-1)*100,month:(last/m-1)*100,vol,avg60,series,dateISO:series.at(-1).dateISO,date:new Date(pairs.at(-1).t*1000).toLocaleString('ja-JP')};
 }
 function classify(text){
  const s=text.toLowerCase(),has=a=>a.some(w=>s.includes(w));
@@ -189,22 +193,39 @@ function classify(text){
  if(has(['crude','oil','opec','energy','原油','石油','資源']))out.push('oil');
  return out.length?out:['global'];
 }
-function sentiment(text){
+function sentiment(text,category){
  const s=text.toLowerCase();
+ const relief=['ceasefire','truce','de-escalation','deescalation','peace deal','talks resume','tensions ease','easing tensions','停戦','和平','緊張緩和','協議再開','攻撃停止'];
+ const escalation=['airstrike','air strike','missile attack','tanker hit','tanker attack','pipeline attack','oil facility attack','military escalation','blockade tightened','strait closure','shipping disrupted','explosion','attack','strike','爆発','攻撃','空爆','ミサイル','タンカー被害','石油施設','パイプライン攻撃','封鎖強化','航行停止'];
+ if(category==='geo'){
+  if(relief.some(w=>s.includes(w)))return .85;
+  if(escalation.some(w=>s.includes(w)))return -.9;
+  if(['war','conflict','iran','israel','houthi','hormuz','戦争','紛争','イラン','ホルムズ'].some(w=>s.includes(w)))return -.35;
+ }
  const pos=['beat','beats','surge','rally','rallies','rise','rises','rose','gain','gains','growth','record high','strong demand','upgrade','deal reached','利下げ','需要増','上方修正','好調','合意','回復','最高益','増益','上昇','反発'];
- const neg=['miss','selloff','plunge','plunged','slump','fell','fall','drops','dropped','decline','declined','rattle','rattles','turmoil','resignation','resigns','resigned','exit','scandal','probe','investigation','recession','downgrade','sanction','war','tariff','inflation rises','利上げ','急落','下落','景気後退','関税','制裁','戦争','インフレ加速','減益','下方修正','供給懸念','懸念','売り'];
- let p=pos.filter(w=>s.includes(w)).length,n=neg.filter(w=>s.includes(w)).length;
- return clamp((p-n)*.55,-1,1);
+ const neg=['miss','selloff','plunge','plunged','slump','fell','fall','drops','dropped','decline','declined','rattle','rattles','turmoil','resignation','resigns','resigned','exit','scandal','probe','investigation','recession','downgrade','sanction','tariff','inflation rises','利上げ','急落','下落','景気後退','関税','制裁','インフレ加速','減益','下方修正','供給懸念','懸念','売り'];
+ const raw=clamp((pos.filter(w=>s.includes(w)).length-neg.filter(w=>s.includes(w)).length)*.45,-1,1);
+ return category==='oil'?-raw:raw;
 }
 async function loadFeed(feed){
  const rss='https://news.google.com/rss/search?q='+encodeURIComponent(feed.q+' when:7d')+'&hl=ja&gl=JP&ceid=JP:ja';
  const url='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(rss);
  const r=await fetch(url);if(!r.ok)throw Error('rss error');
- const j=await r.json();return (j.items||[]).slice(0,7).map(x=>({title:x.title,link:x.link,date:x.pubDate,category:feed.id,label:feed.label,score:sentiment(x.title),cats:classify(x.title)}));
+ const j=await r.json();return (j.items||[]).slice(0,7).map(x=>({title:x.title,link:x.link,date:x.pubDate,category:feed.id,label:feed.label,score:sentiment(x.title,feed.id),cats:classify(x.title)}));
 }
 function factorValue(id,quotes){
  const q=quotes[id];if(!q)return null;
  let raw=q.week;
+ if(id==='oil'){
+  const oilQuotes=[quotes.oil,quotes.brent].filter(Boolean);
+  if(!oilQuotes.length)return null;
+  const signals=oilQuotes.map(v=>{
+   const momentum=clamp((v.day*.4+v.week*.6)/4,-1,1);
+   const premium=v.avg60?clamp(((v.price/v.avg60)-1)/.15,-1,1):0;
+   return momentum*.55+premium*.45;
+  });
+  return clamp(signals.reduce((s,v)=>s+v,0)/signals.length,-1,1);
+ }
  if(id==='fx')raw=q.week;
  if(id==='rates')raw=-q.week;
  if(id==='risk')raw=-q.week;
@@ -219,8 +240,8 @@ function newsSignal(asset,news){
   if(n.category==='nvda')rel=asset.id==='fang'?1.55:asset.id==='nikkei'?.8:.4;
   if(n.category==='rates')rel=asset.id==='fang'?1.0:asset.id==='nikkei'?.75:.7;
   if(n.category==='japan')rel=asset.id==='fang'?.15:asset.id==='nikkei'?.8:1.0;
-  if(n.category==='geo')rel=.65;
-  if(n.category==='oil')rel=asset.id==='fang'?.3:asset.id==='nikkei'?.5:.4;
+  if(n.category==='geo')rel=1.0;
+  if(n.category==='oil')rel=asset.id==='fang'?.65:asset.id==='nikkei'?.75:.65;
   if(n.cats.includes('global'))rel=.3;
   const impact=n.score*rel;total+=impact;weight+=rel;
   if(Math.abs(impact)>.12)items.push({text:n.title,impact,category:n.label});
@@ -239,11 +260,13 @@ function forecast(asset,own,quotes,news){
  }
  const nvda=quotes.nvda;
  if(nvda&&asset.exp.nvda)parts.push({name:'NVIDIA当日変動',v:clamp(nvda.day/4,-1,1)*asset.exp.nvda*.7});
- parts.push({name:'ニュース材料',v:ns.score*.22});
+ parts.push({name:'ニュース材料',v:ns.score*.28});
  const score=clamp(parts.reduce((s,p)=>s+p.v,0),-.85,.85);
- const coverage=Object.keys(asset.exp).filter(id=>quotes[id]).length/Object.keys(asset.exp).length;
- const newsCoverage=news.length?Math.min(1,news.length/12):0;
- const quality=clamp(.25+.45*coverage+.3*newsCoverage,.2,1);
+ const coverage=Object.keys(asset.exp).filter(id=>id==='oil'?(quotes.oil||quotes.brent):quotes[id]).length/Object.keys(asset.exp).length;
+ const requiredFeeds=['rates','tech','japan','geo','oil'];
+ const coveredFeeds=new Set(news.map(n=>n.category));
+ const newsCoverage=requiredFeeds.filter(id=>coveredFeeds.has(id)).length/requiredFeeds.length;
+ const quality=clamp(.2+.45*coverage+.35*newsCoverage,.2,1);
  const horizons=[{key:'翌営業日',mult:.75},{key:'1週間',mult:1},{key:'1か月',mult:.82}];
  const probs=horizons.map(h=>Math.round(clamp(50+score*h.mult*23*quality,28,72)*10)/10);
  const positives=parts.filter(p=>p.v>.035).sort((a,b)=>b.v-a.v).slice(0,2);
@@ -260,13 +283,97 @@ function renderAsset(asset,quotes,news){
  return '<article class="card"><h2>'+asset.name+'</h2><div class="price">'+(own?fmt(own.price):'取得不可')+'</div><div class="change">'+(own?'前日比 '+pct(own.day)+' ｜ 5日 '+pct(own.week)+' ｜ 20日 '+pct(own.month):'指数価格を取得できません')+'</div><div class="probrow">'+p+'</div><div class="meter"><i style="width:'+conf+'%"></i></div><div class="confidence">データ充足度 '+conf+'%｜モデルスコア '+(f.score*100).toFixed(2)+'｜上昇・下落の参考確率</div><ul class="reasons">'+reason.join('')+'</ul>'+(f.news.length?'<div class="confidence">関連ニュース：'+f.news.map(n=>n.category).join(' / ')+'</div>':'')+'</article>';
 }
 function renderRiskBrief(quotes,news){
- const nv=quotes.nvda,semi=quotes.semi,nas=quotes.nasdaq,fang=quotes.fang;
+ const nv=quotes.nvda,semi=quotes.semi,nas=quotes.nasdaq,fang=quotes.fang,oil=quotes.oil,brent=quotes.brent;
  const nvidiaNews=news.filter(n=>n.category==='nvda').slice(0,3);
+ const geoNews=news.filter(n=>n.category==='geo').slice(0,4);
  const lines=[];
  if(nv)lines.push('NVIDIA：前日比 '+pct(nv.day)+'／5日 '+pct(nv.week));
  if(semi)lines.push('半導体SOXX：前日比 '+pct(semi.day)+'／5日 '+pct(semi.week));
  if(nas)lines.push('NASDAQ：前日比 '+pct(nas.day)+'／5日 '+pct(nas.week));
  if(fang)lines.push('FANG+：前日比 '+pct(fang.day)+'／5日 '+pct(fang.week));
+ if(oil)lines.push('WTI：
+ const newsText=nvidiaNews.length?nvidiaNews.map(n=>'<div class="news"><a href="'+n.link+'" target="_blank" rel="noopener">'+n.title+'</a><span class="impact">'+(n.score<0?'弱気材料':n.score>0?'強気材料':'中立')+'</span></div>').join(''):'<div class="empty">NVIDIA関連ニュースは取得できていません。</div>';
+ const geoText=geoNews.length?geoNews.map(n=>'<div class="news"><a href="'+n.link+'" target="_blank" rel="noopener">'+n.title+'</a><span class="impact">'+(n.score<0?'地政学リスク上昇':n.score>0?'緊張緩和':'中立')+'</span></div>').join(''):'<div class="empty">戦争・地政学ニュースは取得できていません。</div>';
+ const pressure=(nv&&nv.day<=-4)||(semi&&semi.day<=-1.5)||(nas&&nas.day<=-1)||(oil&&oil.day>=3)||(brent&&brent.day>=3);
+ const status=pressure?'<b class="bad">市場下落リスクを検知</b>':'<b class="neutral">急激な下落シグナルは未確認（価格水準・ニュースは別途評価）</b>';
+ $('riskBriefBody').innerHTML=status+'<div style="margin-top:7px">'+(lines.join('｜')||'主要市場データ取得待ち')+'</div><div style="margin-top:8px"><b>戦争・地政学ニュース</b>'+geoText+'</div><div style="margin-top:8px"><b>NVIDIA関連ニュース</b>'+newsText+'</div><div class="legend">原油はWTI・Brentの前日/5日変化と60日平均比を評価。戦争ニュースは攻撃・供給障害と停戦・緊張緩和を分け、方向を区別して予測に反映します。</div>';
+}
+function renderNews(news){
+ if(!news.length)return '<div class="empty">ニュース取得不可。ニュースを取得できない間はニュース要因を予測に反映していません。</div>';
+ return news.slice(0,18).map(n=>'<div class="news"><a href="'+n.link+'" target="_blank" rel="noopener">'+n.title+'</a><span class="impact">'+n.label+'｜'+(n.score>0?'強気':n.score<0?'弱気':'中立')+'</span><small>'+n.date+'</small></div>').join('');
+}
+async function autoSaveAndValidate(){
+ const hour=Number(new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Tokyo',hour:'2-digit',hourCycle:'h23'}).format(new Date()));
+ const weekday=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Tokyo',weekday:'short'}).format(new Date());
+ if(hour<7||weekday==='Sat'||weekday==='Sun')return;
+ if(assets.every(a=>latestQuotes[a.id]))saveTodayForecast();
+ if(autoValidationRunning)return;
+ autoValidationRunning=true;
+ try{await validateSavedForecasts();}finally{autoValidationRunning=false;}
+}
+async function update(){
+ $('refresh').disabled=true;$('status').textContent='市場価格・ニュースを収集中…';
+ const qjobs=[...indicators.map(async x=>{try{return [x.id,await quote(x.ticker)]}catch(e){throw Error(x.name+' ('+x.ticker+'): '+(e.message||e))}}),...assets.map(async x=>{try{return [x.id,await quote(x.ticker)]}catch(e){throw Error(x.name+' ('+x.ticker+'): '+(e.message||e))}})];
+ const settled=await Promise.allSettled(qjobs),quotes={},quoteErrors=[];
+ settled.forEach(x=>{if(x.status==='fulfilled')quotes[x.value[0]]=x.value[1];else quoteErrors.push(String(x.reason?.message||x.reason))});
+ const feedsResult=await Promise.allSettled(feeds.map(loadFeed));
+ const news=feedsResult.filter(x=>x.status==='fulfilled').flatMap(x=>x.value);
+ const unique=[...new Map(news.map(n=>[n.link,n])).values()];
+ latestQuotes=quotes;latestNews=unique;
+ renderRiskBrief(quotes,unique);
+ $('forecasts').innerHTML=assets.map(a=>renderAsset(a,quotes,unique)).join('');
+ $('indicators').innerHTML=indicators.map(x=>{const q=quotes[x.id];return '<div class="factor"><b>'+x.name+'</b><span>'+(q?fmt(q.price)+' ('+pct(q.week)+' / 5日)':'取得不可')+'</span></div>'}).join('');
+ $('news').innerHTML=renderNews(unique);
+ const count=Object.keys(quotes).length,total=assets.length+indicators.length;
+ $('status').textContent='最終更新 '+new Date().toLocaleString('ja-JP')+'｜市場データ '+count+'/'+total+'｜ニュース '+unique.length+'件'+(quoteErrors.length?'｜株価取得エラー：'+quoteErrors.slice(0,3).join(' / '):'');
+ $('refresh').disabled=false;
+ await autoSaveAndValidate();
+}
+loadYearEndScenarios();loadUSMarketReview();$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',validateSavedForecasts);renderValidation();loadRemoteHistory();update();setInterval(update,300000);setInterval(autoSaveAndValidate,60000);
+</script></body></html>
+<!-- deploy-sync: 2026-11-12 22:10 JST -->
++fmt(oil.price)+'／前日 '+pct(oil.day)+'／5日 '+pct(oil.week)+'／60日平均比 '+pct((oil.price/oil.avg60-1)*100));
+ if(brent)lines.push('Brent：
+ const newsText=nvidiaNews.length?nvidiaNews.map(n=>'<div class="news"><a href="'+n.link+'" target="_blank" rel="noopener">'+n.title+'</a><span class="impact">'+(n.score<0?'弱気材料':n.score>0?'強気材料':'中立')+'</span></div>').join(''):'<div class="empty">NVIDIA関連ニュースは取得できていません。</div>';
+ const pressure=(nv&&nv.day<=-4)||(semi&&semi.day<=-1.5)||(nas&&nas.day<=-1);
+ const status=pressure?'<b class="bad">AI・半導体の下落圧力を検知</b>':'<b class="neutral">現時点で強い下落シグナルは未確認</b>';
+ $('riskBriefBody').innerHTML=status+'<div style="margin-top:7px">'+(lines.join('｜')||'主要市場データ取得待ち')+'</div><div style="margin-top:8px"><b>NVIDIA関連ニュース</b>'+newsText+'</div><div class="legend">NVIDIAの当日変動をFANG+・日経225・TOPIXの予測要因に直接加算し、関連ニュースも独立した材料として評価します。取得できない場合は影響を推測で補いません。</div>';
+}
+function renderNews(news){
+ if(!news.length)return '<div class="empty">ニュース取得不可。ニュースを取得できない間はニュース要因を予測に反映していません。</div>';
+ return news.slice(0,18).map(n=>'<div class="news"><a href="'+n.link+'" target="_blank" rel="noopener">'+n.title+'</a><span class="impact">'+n.label+'｜'+(n.score>0?'強気':n.score<0?'弱気':'中立')+'</span><small>'+n.date+'</small></div>').join('');
+}
+async function autoSaveAndValidate(){
+ const hour=Number(new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Tokyo',hour:'2-digit',hourCycle:'h23'}).format(new Date()));
+ const weekday=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Tokyo',weekday:'short'}).format(new Date());
+ if(hour<7||weekday==='Sat'||weekday==='Sun')return;
+ if(assets.every(a=>latestQuotes[a.id]))saveTodayForecast();
+ if(autoValidationRunning)return;
+ autoValidationRunning=true;
+ try{await validateSavedForecasts();}finally{autoValidationRunning=false;}
+}
+async function update(){
+ $('refresh').disabled=true;$('status').textContent='市場価格・ニュースを収集中…';
+ const qjobs=[...indicators.map(async x=>{try{return [x.id,await quote(x.ticker)]}catch(e){throw Error(x.name+' ('+x.ticker+'): '+(e.message||e))}}),...assets.map(async x=>{try{return [x.id,await quote(x.ticker)]}catch(e){throw Error(x.name+' ('+x.ticker+'): '+(e.message||e))}})];
+ const settled=await Promise.allSettled(qjobs),quotes={},quoteErrors=[];
+ settled.forEach(x=>{if(x.status==='fulfilled')quotes[x.value[0]]=x.value[1];else quoteErrors.push(String(x.reason?.message||x.reason))});
+ const feedsResult=await Promise.allSettled(feeds.map(loadFeed));
+ const news=feedsResult.filter(x=>x.status==='fulfilled').flatMap(x=>x.value);
+ const unique=[...new Map(news.map(n=>[n.link,n])).values()];
+ latestQuotes=quotes;latestNews=unique;
+ renderRiskBrief(quotes,unique);
+ $('forecasts').innerHTML=assets.map(a=>renderAsset(a,quotes,unique)).join('');
+ $('indicators').innerHTML=indicators.map(x=>{const q=quotes[x.id];return '<div class="factor"><b>'+x.name+'</b><span>'+(q?fmt(q.price)+' ('+pct(q.week)+' / 5日)':'取得不可')+'</span></div>'}).join('');
+ $('news').innerHTML=renderNews(unique);
+ const count=Object.keys(quotes).length,total=assets.length+indicators.length;
+ $('status').textContent='最終更新 '+new Date().toLocaleString('ja-JP')+'｜市場データ '+count+'/'+total+'｜ニュース '+unique.length+'件'+(quoteErrors.length?'｜株価取得エラー：'+quoteErrors.slice(0,3).join(' / '):'');
+ $('refresh').disabled=false;
+ await autoSaveAndValidate();
+}
+loadYearEndScenarios();loadUSMarketReview();$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',validateSavedForecasts);renderValidation();loadRemoteHistory();update();setInterval(update,300000);setInterval(autoSaveAndValidate,60000);
+</script></body></html>
+<!-- deploy-sync: 2026-11-12 22:10 JST -->
++fmt(brent.price)+'／前日 '+pct(brent.day)+'／5日 '+pct(brent.week)+'／60日平均比 '+pct((brent.price/brent.avg60-1)*100));
  const newsText=nvidiaNews.length?nvidiaNews.map(n=>'<div class="news"><a href="'+n.link+'" target="_blank" rel="noopener">'+n.title+'</a><span class="impact">'+(n.score<0?'弱気材料':n.score>0?'強気材料':'中立')+'</span></div>').join(''):'<div class="empty">NVIDIA関連ニュースは取得できていません。</div>';
  const pressure=(nv&&nv.day<=-4)||(semi&&semi.day<=-1.5)||(nas&&nas.day<=-1);
  const status=pressure?'<b class="bad">AI・半導体の下落圧力を検知</b>':'<b class="neutral">現時点で強い下落シグナルは未確認</b>';
