@@ -141,6 +141,9 @@ function earningsRiskForAsset(assetId){
   let windowWeight=dayDiff===0?(afterClose?1:beforeOpen ? .25 : .65)
    :dayDiff===1?(beforeOpen ? .8 : afterClose ? .7 : .65)
    :dayDiff===2 ? .35
+   :dayDiff===3 ? .20
+   :dayDiff===4 ? .12
+   :dayDiff===5 ? .08
    :dayDiff===-1?(afterClose ? .12 : .05)
    :dayDiff===-2?(afterClose ? .78 : .10):0;
   if(!windowWeight)return null;
@@ -163,6 +166,32 @@ const trustedX=xSignals.posts.filter(p=>p.verifiedForSignal).map(p=>({title:p.ti
 signalNews=[...news,...trustedX];
 xAttention=xSignals.attention||xAttention;
 await fs.writeFile("market-signals.json",JSON.stringify({date:jstDate,generatedAt:new Date().toISOString(),status:xSignals.status,reason:xSignals.reason,attention:xSignals.attention,usage:xSignals.usage,posts:xSignals.posts},null,2)+"\n");
+function attachEarningsReactions(){
+ earningsCalendar.events=earningsCalendar.events.map(e=>{
+  const q=quotes[e.symbol],benchmark=quotes.nasdaq;
+  if(!q?.series?.length)return e;
+  const afterClose=/after/i.test(e.reportTime);
+  const response=q.series.find(v=>afterClose?v.dateISO>e.date:v.dateISO>=e.date);
+  if(!response)return e;
+  const prior=q.series.filter(v=>v.dateISO<response.dateISO).at(-1);
+  const marketResponse=benchmark?.series?.find(v=>v.dateISO===response.dateISO);
+  const marketPrior=prior?benchmark?.series?.find(v=>v.dateISO===prior.dateISO):null;
+  if(!prior)return e;
+  const stockPct=(response.price/prior.price-1)*100;
+  const marketPct=marketResponse&&marketPrior?(marketResponse.price/marketPrior.price-1)*100:null;
+  const excessPct=marketPct===null?null:stockPct-marketPct;
+  const surprisePct=e.actualEPS!==null&&e.epsForecast!==null&&e.epsForecast>0?(e.actualEPS/e.epsForecast-1)*100:null;
+  let label="決算後の株価反応を確認";
+  if(surprisePct!==null&&excessPct!==null){
+   if(surprisePct>=1&&excessPct<-.5)label="EPS上振れでも指数比で売られた";
+   else if(surprisePct>=1&&excessPct>.5)label="EPS上振れ・指数比で買われた";
+   else if(surprisePct<=-1&&excessPct>.5)label="EPS下振れでも指数比で買われた";
+   else if(surprisePct<=-1&&excessPct<-.5)label="EPS下振れ・指数比で売られた";
+  }
+  return {...e,reaction:{responseDate:response.dateISO,stockPct,marketPct,excessPct,surprisePct,label}};
+ });
+}
+attachEarningsReactions();
 await fs.writeFile("earnings-calendar.json",JSON.stringify(earningsCalendar,null,2)+"\n");
 await fs.writeFile("earnings-calendar.json",JSON.stringify(earningsCalendar,null,2)+"\n");
 function factorValue(id){
