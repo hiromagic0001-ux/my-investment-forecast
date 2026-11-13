@@ -306,7 +306,7 @@ function renderMarketSession(force=false){
  currentMarketSession=session;
  $('marketSessionTitle').textContent=session==='japan'?'日本市場｜翌営業日の予測':'米国市場｜翌営業日の予測';
  $('marketSessionNote').textContent=session==='japan'?'日本株取引時間に表示｜米国市場の時間帯は自動切替':'米国株取引時間に表示｜日本市場の時間帯は自動切替';
- const visible=assets.filter(a=>session==='japan'?a.id==='nikkei'||a.id==='topix':a.id==='fang');
+ const visible=assets.filter(a=>session==='japan'?a.id==='nikkei'||a.id==='topix'||a.id==='fang':a.id==='fang');
  $('forecasts').innerHTML=visible.map(a=>latestQuotes[a.id]?renderAsset(a,latestQuotes,latestNews):'<article class="card forecast-loading"><h2>'+a.name+'</h2><div class="price">予測を計算中</div><div class="change">市場価格・ニュースを取得しています</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>—</b></div></div></article>').join('');
 }
 const indicators=[
