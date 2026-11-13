@@ -119,9 +119,10 @@ function saveTodayForecast(){
  if(!assets.every(a=>latestQuotes[a.id])){$('validationStatus').textContent='3指数すべての価格が取得できていません。更新後に再度保存してください。';return;}
  const stale=assets.filter(a=>quoteIsStale(latestQuotes[a.id]));
  if(stale.length){$('validationStatus').textContent='価格データが古いため保存を保留しました：'+stale.map(a=>a.name).join('・');return;}
+ const weakNews=assets.filter(a=>forecast(a,latestQuotes[a.id],latestQuotes,latestNews).quality<.7);
+ if(weakNews.length){$('validationStatus').textContent='戦争・原油など重要ニュースの取得不足で保存を保留しました。ニュースが揃ってから再計算します。';return;}
  const forecasts=assets.map(a=>{
   const q=latestQuotes[a.id],f=forecast(a,q,latestQuotes,latestNews);
-  if(f.quality<.7)throw new Error('重要ニュースの取得不足のため予測保存を保留しました');
   const prob=f.probs[0];
   const sigma=(q.vol/Math.sqrt(252))/100;
   const rangePct=Math.max(.003,sigma*1.5);
@@ -272,7 +273,7 @@ function forecast(asset,own,quotes,news){
  if(nvda&&asset.exp.nvda)parts.push({name:'NVIDIA当日変動',v:clamp(nvda.day/4,-1,1)*asset.exp.nvda*.7});
  parts.push({name:'ニュース材料',v:ns.score*.28});
  const score=clamp(parts.reduce((s,p)=>s+p.v,0),-.85,.85);
- const coverage=Object.keys(asset.exp).filter(id=>id==='oil'?(quotes.oil||quotes.brent):quotes[id]).length/Object.keys(asset.exp).length;
+ const coverage=Object.keys(asset.exp).filter(id=>id==='oil'?!(quotes.oil||quotes.brent):!quotes[id]).length/Object.keys(asset.exp).length;
  const requiredFeeds=['rates','tech','japan','geo','oil'];
  const coveredFeeds=new Set(news.map(n=>n.category));
  const criticalCoverage=['geo','oil'].filter(id=>coveredFeeds.has(id)).length/2;
