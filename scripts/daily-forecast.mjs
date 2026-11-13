@@ -33,6 +33,8 @@ async function quote(ticker){
 const feeds=[
  ["rates","Federal Reserve interest rates inflation CPI Treasury yields"],
  ["tech","AI semiconductor chip demand Nvidia data center technology stocks"],
+ ["ipo","Anthropic IPO index inclusion Nasdaq 100 S&P 500 passive inflows listing pricing demand"],
+ ["ipo","Anthropic IPO valuation pricing range bookbuilding oversubscribed delay withdrawal investor demand"],
  ["japan","Japan economy BOJ yen Nikkei stocks"],
  ["geo","Iran war"],
  ["geo","Strait of Hormuz"],
@@ -41,6 +43,14 @@ const feeds=[
 ];
 function sentimentFor(title,category){
  const s=title.toLowerCase();
+ if(category==="ipo"){
+  const positive=["index inclusion","nasdaq 100","s&p 500","passive inflow","passive demand","index demand","oversubscribed","strong demand","priced above","pricing above","successful debut","strong debut","指数採用","指数組み入れ","パッシブ資金","資金流入","需要旺盛","応募超過","公開価格上限","好調な上場"];
+  const negative=["delay","postpone","withdraw","pull","weak demand","undersubscribed","priced below","price range cut","valuation cut","valuation concern","延期","上場延期","撤回","需要低迷","応募不足","公開価格引き下げ","評価額引き下げ","割高懸念"];
+  const p=positive.some(w=>s.includes(w)),n=negative.some(w=>s.includes(w));
+  if(p&&!n)return .85;
+  if(n&&!p)return -.9;
+  return 0;
+ }
  const relief=["ceasefire","truce","de-escalation","deescalation","peace deal","talks resume","tensions ease","easing tensions","停戦","和平","緊張緩和","協議再開","攻撃停止"];
  const escalation=["airstrike","air strike","missile attack","tanker hit","tanker attack","pipeline attack","oil facility attack","military escalation","blockade tightened","strait closure","shipping disrupted","attack","attacks","strike","strikes","explosion","explosions","爆発","攻撃","空爆","ミサイル","タンカー被害","石油施設","パイプライン攻撃","封鎖強化","航行停止"];
  if(category==="geo"){
@@ -102,6 +112,7 @@ function factorValue(id){
  return clamp(raw/scale,-1,1);
 }
 function relFor(asset,cat){
+ if(cat==="ipo")return asset.id==="fang"?1.0:asset.id==="nikkei"?.42:.30;
  if(cat==="tech")return asset.id==="fang"?1.25:asset.id==="nikkei"?1:.55;
  if(cat==="nvda")return asset.id==="fang"?1.55:asset.id==="nikkei"?.8:.4;
  if(cat==="rates")return asset.id==="fang"?1:asset.id==="nikkei"?.75:.7;
