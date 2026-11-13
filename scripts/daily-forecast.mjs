@@ -79,7 +79,7 @@ const news=await newsItems();
 const xSignals=await fetchXSignals(news);
 const trustedX=xSignals.posts.filter(p=>p.verifiedForSignal).map(p=>({title:p.text,category:p.category,score:p.impactScore,date:p.createdAt,link:p.url,source:"X",trustScore:p.trustScore,label:"X "+p.sourceClass,verifiedForSignal:true}));
 signalNews=[...news,...trustedX];
-await fs.writeFile("market-signals.json",JSON.stringify({date:jstDate,generatedAt:new Date().toISOString(),status:xSignals.status,reason:xSignals.reason,attention:xSignals.attention,usage:xSignals.usage,posts:xSignals.posts},null,2)+"\\n");
+await fs.writeFile("market-signals.json",JSON.stringify({date:jstDate,generatedAt:new Date().toISOString(),status:xSignals.status,reason:xSignals.reason,attention:xSignals.attention,usage:xSignals.usage,posts:xSignals.posts},null,2)+"\n");
 function factorValue(id){
  if(id==="oil"){
   const oilQuotes=[quotes.oil,quotes.brent].filter(Boolean);
