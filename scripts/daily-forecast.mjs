@@ -241,7 +241,8 @@ function forecast(a){
  const score=clamp(rawScore*(1-.65*earningsRisk.score)-.035*earningsRisk.pricedInScore*earningsRisk.score,-.85,.85);
  const coverage=Object.keys(a.exp).filter(id=>id==="oil"?(quotes.oil||quotes.brent):quotes[id]).length/Object.keys(a.exp).length;
  const coveredFeeds=new Set(signalNews.map(n=>n.category));
- const criticalCoverage=coveredFeeds.has("geo")&&coveredFeeds.has("oil")?1:0;
+ const missingFeeds=["geo","oil","rates","tech","japan"].filter(id=>!coveredFeeds.has(id));
+ const criticalCoverage=["geo","oil"].filter(id=>coveredFeeds.has(id)).length/2;
  const broadCoverage=["rates","tech","japan"].filter(id=>coveredFeeds.has(id)).length/3;
  const newsCoverage=.7*criticalCoverage+.3*broadCoverage;
  const baseQuality=clamp(.2+.4*coverage+.4*newsCoverage,.2,1);
@@ -250,10 +251,10 @@ function forecast(a){
  const authorConcentration=0; // RSS検索結果では投稿者集中度を測定できない
  const attentionRisk=attentionHeat*(.5+.5*authorConcentration);
  const quality=clamp(baseQuality*(1-attentionRisk*.12)*(a.id==="fang"?1:1-fxRisk.score*.08)*(1-earningsRisk.score*.18),.2,1);
- if(!coveredFeeds.has("geo")||!coveredFeeds.has("oil")||quality<.7)return null;
+ // Missing news feeds reduce quality and pull the forecast toward neutral; they do not silently erase a forecast.
  const probability=Math.round(clamp(50+score*.75*23*quality,28,72)*10)/10;
  const sigma=(own.vol/Math.sqrt(252))/100,rangePct=Math.max(.003,sigma*1.5*(1+attentionHeat*.2+earningsRisk.score*.8));
- return {id:a.id,name:a.name,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,modelVersion:"2.1.0",source:"GitHub Actions daily model"};
+ return {id:a.id,name:a.name,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,coverage,newsCoverage,missingFeeds,modelVersion:"2.2.0",source:"GitHub Actions daily model"};
 }
 const path="forecast-history.json";
 let history=[];
@@ -277,7 +278,7 @@ if(!history.some(x=>x.date===jstDate)){
  if(results.every(Boolean)&&!stale.length&&criticalOilAvailable){
   const marketContext=Object.fromEntries(Object.entries(quotes).map(([id,q])=>[id,{price:q.price,day:q.day,week:q.week,avg60:q.avg60,dateISO:q.dateISO,technical:q.technical||null}]));
   const newsContext=signalNews.map(n=>({title:n.title,category:n.category,score:n.score,date:n.date,link:n.link,source:n.source||"RSS",trustScore:n.trustScore??1}));
-  history.push({date:jstDate,savedAt:new Date().toISOString(),modelVersion:"2.1.0",fxInterventionRisk:fxInterventionRisk(quotes.fx),earningsCalendarStatus:earningsCalendar.status,earningsRisk:results.map(x=>({id:x.id,...x.earningsRisk})),results,newsCount:news.length,xCount:xSignals.posts.length,xAttention,marketContext,newsContext});
+  history.push({date:jstDate,savedAt:new Date().toISOString(),modelVersion:"2.2.0",fxInterventionRisk:fxInterventionRisk(quotes.fx),earningsCalendarStatus:earningsCalendar.status,earningsRisk:results.map(x=>({id:x.id,...x.earningsRisk})),results,newsCount:news.length,xCount:xSignals.posts.length,xAttention,marketContext,newsContext});
  }else{
   console.log("Forecast not saved: stale or missing critical data",JSON.stringify({stale,criticalOilAvailable}));
  }
