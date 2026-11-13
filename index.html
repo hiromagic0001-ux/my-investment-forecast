@@ -288,28 +288,41 @@ function forecast(asset,own,quotes,news){
 }
 function renderAsset(asset,quotes,news){
  const own=quotes[asset.id],f=forecast(asset,own,quotes,news);
- if(!own||f.quality<.7||quoteIsStale(own)){const missing=Object.keys(asset.exp).filter(id=>id==='oil'?!(quotes.oil||quotes.brent):!quotes[id]).map(id=>indicators.find(x=>x.id===id)?.name||id);return '<article class="card"><h2>'+asset.name+'</h2><div class="price">予測保留</div><div class="change">市場価格が古い、または戦争・原油などの重要ニュースが不足しているため、確率を表示しません。</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>—</b></div><div class="prob"><small>1週間</small><b>—</b></div><div class="prob"><small>1か月</small><b>—</b></div></div><div class="confidence">データ充足度 '+Math.round(f.quality*100)+'%</div><ul class="reasons"><li class="bad">不足データ：'+(missing.join('・')||'指数価格')+'</li></ul></article>';}
+ const missingQuotes=Object.keys(asset.exp).filter(id=>id==='oil'?!(quotes.oil||quotes.brent):!quotes[id]).map(id=>indicators.find(x=>x.id===id)?.name||id);
+ const missingNews=['geo','oil'].filter(id=>!news.some(n=>n.category===id));
+ const reasons=[];
+ if(!own)reasons.push('指数価格が取得できません');
+ if(own&&quoteIsStale(own))reasons.push('価格データが古い（最終基準日 '+own.dateISO+'）');
+ if(missingQuotes.length)reasons.push('不足市場データ：'+missingQuotes.join('・'));
+ if(missingNews.length)reasons.push('重要ニュース未取得：'+missingNews.map(id=>id==='geo'?'戦争・地政学':'原油・供給リスク').join('・'));
+ if(!own||f.quality<.7||quoteIsStale(own)){
+  if(!reasons.length)reasons.push('データ充足度が基準未満');
+  return '<article class="card"><h2>'+asset.name+'</h2><div class="price">予測保留</div><div class="change">価格データや重要ニュースが不足しているため、確率を表示しません。</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>—</b></div><div class="prob"><small>1週間</small><b>—</b></div><div class="prob"><small>1か月</small><b>—</b></div></div><div class="confidence">データ充足度 '+Math.round(f.quality*100)+'%</div><ul class="reasons">'+reasons.map(x=>'<li class="bad">'+x+'</li>').join('')+'</ul></article>';
+ }
  const p=f.probs.map((x,i)=>'<div class="prob"><small>'+['翌営業日','1週間','1か月'][i]+'</small><b style="color:'+(x>=50?'var(--up)':'var(--dn)')+'">'+(x>=50?'上昇優勢':'下落優勢')+'</b><small style="color:var(--muted);margin-top:3px">上昇 '+x.toFixed(1)+'% ／ 下落 '+(100-x).toFixed(1)+'%</small></div>').join('');
  const reason=[...f.positives.map(x=>'<li class="good">上昇要因：'+x.name+'</li>'),...f.negatives.map(x=>'<li class="bad">下落要因：'+x.name+'</li>')];
  if(!reason.length)reason.push('<li class="neutral">方向感を示す材料が不足。中立寄りの推定です。</li>');
  const conf=Math.round(f.quality*100);
- return '<article class="card"><h2>'+asset.name+'</h2><div class="price">'+(own?fmt(own.price):'取得不可')+'</div><div class="change">'+(own?'前日比 '+pct(own.day)+' ｜ 5日 '+pct(own.week)+' ｜ 20日 '+pct(own.month):'指数価格を取得できません')+'</div><div class="probrow">'+p+'</div><div class="meter"><i style="width:'+conf+'%"></i></div><div class="confidence">データ充足度 '+conf+'%｜モデルスコア '+(f.score*100).toFixed(2)+'｜上昇・下落の参考確率</div><ul class="reasons">'+reason.join('')+'</ul>'+(f.news.length?'<div class="confidence">関連ニュース：'+f.news.map(n=>n.category).join(' / ')+'</div>':'')+'</article>';
+ return '<article class="card"><h2>'+asset.name+'</h2><div class="price">'+fmt(own.price)+'</div><div class="change">前日比 '+pct(own.day)+' ｜ 5日 '+pct(own.week)+' ｜ 20日 '+pct(own.month)+'</div><div class="probrow">'+p+'</div><div class="meter"><i style="width:'+conf+'%"></i></div><div class="confidence">データ充足度 '+conf+'%｜モデルスコア '+(f.score*100).toFixed(2)+'｜上昇・下落の参考確率</div><ul class="reasons">'+reason.join('')+'</ul>'+(f.news.length?'<div class="confidence">関連ニュース：'+f.news.map(n=>n.category).join(' / ')+'</div>':'')+'</article>';
 }
 function renderRiskBrief(quotes,news){
  const nv=quotes.nvda,semi=quotes.semi,nas=quotes.nasdaq,fang=quotes.fang,oil=quotes.oil,brent=quotes.brent;
  const nvidiaNews=news.filter(n=>n.category==='nvda').slice(0,3);
  const geoNews=news.filter(n=>n.category==='geo').slice(0,4);
  const lines=[];
- if(nv)lines.push('NVIDIA：前日比 '+pct(nv.day)+'／5日 '+pct(nv.week));
- if(semi)lines.push('半導体SOXX：前日比 '+pct(semi.day)+'／5日 '+pct(semi.week));
- if(nas)lines.push('NASDAQ：前日比 '+pct(nas.day)+'／5日 '+pct(nas.week));
- if(fang)lines.push('FANG+：前日比 '+pct(fang.day)+'／5日 '+pct(fang.week));
- if(oil)lines.push('WTI：
- const newsText=nvidiaNews.length?nvidiaNews.map(n=>'<div class="news"><a href="'+n.link+'" target="_blank" rel="noopener">'+n.title+'</a><span class="impact">'+(n.score<0?'弱気材料':n.score>0?'強気材料':'中立')+'</span></div>').join(''):'<div class="empty">NVIDIA関連ニュースは取得できていません。</div>';
+ if(nv)lines.push('NVIDIA '+pct(nv.day)+'（5日 '+pct(nv.week)+'）');
+ if(semi)lines.push('SOXX '+pct(semi.day)+'（5日 '+pct(semi.week)+'）');
+ if(nas)lines.push('NASDAQ '+pct(nas.day)+'（5日 '+pct(nas.week)+'）');
+ if(fang)lines.push('FANG+ '+pct(fang.day)+'（5日 '+pct(fang.week)+'）');
+ if(oil)lines.push('WTI '+fmt(oil.price)+' USD/bbl、前日 '+pct(oil.day)+'、5日 '+pct(oil.week)+'、60日平均比 '+pct((oil.price/oil.avg60-1)*100));
+ if(brent)lines.push('Brent '+fmt(brent.price)+' USD/bbl、前日 '+pct(brent.day)+'、5日 '+pct(brent.week)+'、60日平均比 '+pct((brent.price/brent.avg60-1)*100));
+ const nvidiaText=nvidiaNews.length?nvidiaNews.map(n=>'<div class="news"><a href="'+n.link+'" target="_blank" rel="noopener">'+n.title+'</a><span class="impact">'+(n.score<0?'弱気材料':n.score>0?'強気材料':'中立')+'</span></div>').join(''):'<div class="empty">NVIDIA関連ニュースは取得できていません。</div>';
  const geoText=geoNews.length?geoNews.map(n=>'<div class="news"><a href="'+n.link+'" target="_blank" rel="noopener">'+n.title+'</a><span class="impact">'+(n.score<0?'地政学リスク上昇':n.score>0?'緊張緩和':'中立')+'</span></div>').join(''):'<div class="empty">戦争・地政学ニュースは取得できていません。</div>';
+ const missingCritical=['geo','oil'].filter(id=>!news.some(n=>n.category===id));
+ const coverageNote=missingCritical.length?'重要ニュース未取得：'+missingCritical.map(id=>id==='geo'?'戦争・地政学':'原油・供給リスク').join('・'):'戦争・原油の重要ニュースを取得済み';
  const pressure=(nv&&nv.day<=-4)||(semi&&semi.day<=-1.5)||(nas&&nas.day<=-1)||(oil&&oil.day>=3)||(brent&&brent.day>=3);
  const status=pressure?'<b class="bad">市場下落リスクを検知</b>':'<b class="neutral">急激な下落シグナルは未確認（価格水準・ニュースは別途評価）</b>';
- $('riskBriefBody').innerHTML=status+'<div style="margin-top:7px">'+(lines.join('｜')||'主要市場データ取得待ち')+'</div><div style="margin-top:8px"><b>戦争・地政学ニュース</b>'+geoText+'</div><div style="margin-top:8px"><b>NVIDIA関連ニュース</b>'+newsText+'</div><div class="legend">原油はWTI・Brentの前日/5日変化と60日平均比を評価。戦争ニュースは攻撃・供給障害と停戦・緊張緩和を分け、方向を区別して予測に反映します。</div>';
+ $('riskBriefBody').innerHTML=status+'<div style="margin-top:7px">'+(lines.join('｜')||'主要市場データ取得待ち')+'</div><div style="margin-top:8px"><b>戦争・地政学ニュース</b>'+geoText+'</div><div class="legend">'+coverageNote+'</div><div style="margin-top:8px"><b>NVIDIA関連ニュース</b>'+nvidiaText+'</div><div class="legend">原油はWTI・Brentの前日/5日変化と60日平均比を評価。戦争ニュースは攻撃・供給障害と停戦・緊張緩和を分けて予測に反映します。</div>';
 }
 function renderNews(news){
  if(!news.length)return '<div class="empty">ニュース取得不可。ニュースを取得できない間はニュース要因を予測に反映していません。</div>';
