@@ -1,20 +1,20 @@
 {
   "date": "2026-11-13",
-  "generatedAt": "2026-11-13T09:31:38.514Z",
+  "generatedAt": "2026-11-13T09:33:01.743Z",
   "status": "free-indexed",
   "reason": "",
   "attention": {
-    "posts": 296,
+    "posts": 295,
     "authors": 14,
     "engagement": 0,
     "crediblePosts": 2,
-    "coordinationFlags": 120
+    "coordinationFlags": 119
   },
   "usage": {
     "maxPosts": 30,
     "maxDisplay": 30,
     "requests": 3,
-    "searchHits": 296,
+    "searchHits": 295,
     "estimatedUsd": 0,
     "method": "Google News RSSの公開検索インデックス。X公式API不使用。"
   },
@@ -379,7 +379,7 @@
       "eventType": "半導体・AI関連",
       "engagement": 0,
       "independentPosts": 0,
-      "copyClusterPosts": 6,
+      "copyClusterPosts": 5,
       "coordinationFlag": true,
       "verifiedForSignal": false,
       "confidence": "同文・類似投稿の集中",
