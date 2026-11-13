@@ -1,0 +1,28 @@
+{
+  "asOfDate": "2026-11-13",
+  "generatedAt": "2026-11-13T07:18:07.788Z",
+  "status": "ok",
+  "source": "Nasdaq public earnings calendar",
+  "window": {
+    "from": "2026-11-11",
+    "to": "2026-11-19"
+  },
+  "events": [
+    {
+      "date": "2026-11-17",
+      "symbol": "NVDA",
+      "name": "NVIDIA Corporation",
+      "reportTime": "time-after-hours",
+      "marketCap": 4186892930000,
+      "epsForecast": 2.49,
+      "actualEPS": null,
+      "surprise": null,
+      "estimateCount": 13,
+      "fiscalQuarter": "Oct/2026",
+      "source": "Nasdaq earnings calendar",
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/earnings"
+    }
+  ],
+  "errors": [],
+  "note": "発表予定日は変更される場合があります。Nasdaq掲載情報を取得できない日は「決算なし」と判断しません。"
+}
