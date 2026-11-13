@@ -170,7 +170,7 @@ async function loadYearEndScenarios(){
 let dailyScoreDetailRecord=null;
 function openDailyScoreDetail(index){
  const record=dailyScoreDetailRecord;
- const list=record&&(record.results||record.forecasts)||[];
+ const list=record?(Array.isArray(record.results)&&record.results.length?record.results:(Array.isArray(record.forecasts)?record.forecasts:[])) : [];
  const x=list[index];
  if(!x)return;
  const unit=x.id==='topix'?'円':'pt',show=n=>n===null||n===undefined?'—':Number(n).toLocaleString('ja-JP',{maximumFractionDigits:2})+' '+unit;
@@ -187,7 +187,7 @@ function renderDailyScoreboard(){
  dailyScoreDetailRecord=latest||null;
  if(!latest){$('dailyScoreDate').textContent='予測記録なし';$('dailyScoreBody').innerHTML='<div class="empty">予測データがまだありません。価格・ニュース取得後に自動保存します。</div>';return;}
  $('dailyScoreDate').textContent='予測日 '+latest.date+'｜保存 '+(latest.savedAt||'記録あり');
- const list=latest.results||latest.forecasts||[];
+ const list=Array.isArray(latest.results)&&latest.results.length?latest.results:(Array.isArray(latest.forecasts)?latest.forecasts:[]);
  $('dailyScoreBody').innerHTML=list.map((x,i)=>{
   const unit=x.id==='topix'?'円':'pt',show=n=>n===null||n===undefined?'—':Number(n).toLocaleString('ja-JP',{maximumFractionDigits:2})+' '+unit;
   const actual=x.actual!==null&&x.actual!==undefined,hit=x.hit===true,miss=x.hit===false;
@@ -197,7 +197,7 @@ function renderDailyScoreboard(){
 }
 function renderValidation(){
  const rows=readHistory();
- const done=rows.flatMap(r=>r.results||[]);
+ const done=rows.flatMap(r=>Array.isArray(r.results)&&r.results.length?r.results:(Array.isArray(r.forecasts)?r.forecasts:[]));
  const valid=done.filter(x=>x.actual!==null&&x.actual!==undefined);
  const correct=valid.filter(x=>x.hit).length;
  const accuracy=valid.length?correct/valid.length*100:null;
