@@ -1,5 +1,6 @@
 name: Daily investment forecast
 # The deployed app branch is the single source for the forecast engine and UI.
+# Validation includes confidence bins and a neutral 50% Brier baseline.
 on:
   push:
     branches: [main]
