@@ -48,18 +48,36 @@ body{font-size:16px}
 .daily-score-item small{display:block;font-size:11px;color:var(--muted);margin-top:5px;line-height:1.5}
 .daily-status{display:inline-block;border-radius:6px;padding:3px 6px;font-size:11px;margin-top:7px;background:#172337}
 .daily-status.hit{color:var(--up)}.daily-status.miss{color:var(--dn)}.daily-status.pending{color:var(--gold)}
+/* 全体の可読性を少し改善 */
+body{font-size:16px}
+header p{font-size:13px}
+.bar{font-size:12px}
+.forecast-heading{font-size:15px}
+.forecast-heading span{font-size:12px}
+.card h2{font-size:15px}
+.price{font-size:22px}
+.change{font-size:12px}
+.prob b{font-size:17px}
+.prob small{font-size:11px}
+.confidence,.card-detail>summary{font-size:12px}
+.legend,.news,.factor{font-size:13px}
+.daily-score-item b{font-size:16px}
+.daily-score-item .daily-pred{font-size:17px}
+.daily-score-item small{font-size:12px}
+.daily-status{font-size:12px}
+.forecast-value b{font-size:20px}
 @media(max-width:720px){
- .card h2{font-size:12px}
- .price{font-size:19px}
- .change{font-size:10px}
- .prob b{font-size:15px}
- .prob small{font-size:9px}
- .confidence,.card-detail>summary{font-size:10px}
+ .card h2{font-size:13px}
+ .price{font-size:20px}
+ .change{font-size:11px}
+ .prob b{font-size:16px}
+ .prob small{font-size:10px}
+ .confidence,.card-detail>summary{font-size:11px}
  .daily-score-grid{grid-template-columns:1fr}
- .daily-score-item b{font-size:14px}
- .daily-score-item .daily-pred{font-size:15px}
+ .daily-score-item b{font-size:15px}
+ .daily-score-item .daily-pred{font-size:16px}
  .daily-score-head{align-items:flex-start;flex-direction:column}
- .forecast-value b{font-size:18px}
+ .forecast-value b{font-size:19px}
 }
 </style>
 </head>
@@ -467,17 +485,15 @@ function renderAsset(asset,quotes,news){
  if(own&&quoteIsStale(own))reasons.push('価格データが古い（最終基準日 '+own.dateISO+'）');
  if(missingQuotes.length)reasons.push('不足市場データ：'+missingQuotes.join('・'));
  if(missingNews.length)reasons.push('重要ニュース未取得：'+missingNews.map(id=>id==='geo'?'戦争・地政学':'原油・供給リスク').join('・'));
- if(!own||f.quality<.7||quoteIsStale(own)||missingNews.length>0){
-  if(!reasons.length)reasons.push('データ充足度が基準未満');
-  return '<article class="card" data-asset="'+asset.id+'" tabindex="0"><h2>'+asset.name+'</h2><div class="price">予測保留</div><div class="change">必要データが不足</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>—</b></div><div class="prob"><small>1週間</small><b>—</b></div><div class="prob"><small>1か月</small><b>—</b></div></div><div class="confidence">データ充足度 '+Math.round(f.quality*100)+'%</div><details class="card-detail"><summary>保留理由を確認</summary><ul class="reasons">'+reasons.map(x=>'<li class="bad">'+esc(x)+'</li>').join('')+'</ul></details></article>';
- }
- const p=f.probs.map((x,i)=>'<div class="prob"><small>'+['翌営業日','1週間','1か月'][i]+'</small><b style="color:'+(x>=50?'var(--up)':'var(--dn)')+'">'+(x>=50?'上昇優勢':'下落優勢')+'</b><small style="color:var(--muted);margin-top:3px">上昇 '+x.toFixed(1)+'% ／ 下落 '+(100-x).toFixed(1)+'%</small></div>').join('');
+ const limited=!own||f.quality<.7||quoteIsStale(own)||missingNews.length>0;
+ if(limited&&!reasons.length)reasons.push('データ充足度が基準未満');
+ const p=own?f.probs.map((x,i)=>'<div class="prob"><small>'+['翌営業日','1週間','1か月'][i]+'</small><b style="color:'+(x>=50?'var(--up)':'var(--dn)')+'">'+(x>=50?'上昇優勢':'下落優勢')+'</b><small style="color:var(--muted);margin-top:3px">上昇 '+x.toFixed(1)+'% ／ 下落 '+(100-x).toFixed(1)+'%</small></div>').join(''):['翌営業日','1週間','1か月'].map(x=>'<div class="prob"><small>'+x+'</small><b>—</b><small>価格データ未取得</small></div>').join('');
  const reason=[...f.positives.map(x=>'<li class="good">上昇要因：'+x.name+'</li>'),...f.negatives.map(x=>'<li class="bad">下落要因：'+x.name+'</li>')];
  if(!reason.length)reason.push('<li class="neutral">方向感を示す材料が不足。中立寄りの推定です。</li>');
  const conf=Math.round(f.quality*100);
  const earningsLine='<div class="confidence">決算警戒：'+f.earningsRisk.label+'｜織り込み代理 '+Math.round(f.earningsRisk.pricedInScore*100)+'/100'+(f.earningsRisk.events.length?'｜'+f.earningsRisk.events.map(e=>e.symbol).join(', '):'')+'</div>';
  const reasonDetails='<details class="card-detail"><summary>予測の根拠・重要リスクを確認</summary><ul class="reasons">'+reason.join('')+'</ul>'+earningsLine+(f.news.length?'<div class="confidence">関連材料：'+f.news.slice(0,3).map(n=>esc(n.category)).join(' / ')+'</div>':'')+'</details>';
- return '<article class="card" data-asset="'+asset.id+'" tabindex="0"><h2>'+asset.name+'</h2><div class="price">'+fmt(own.price)+'</div><div class="change">前日比 '+pct(own.day)+' ｜ 5日 '+pct(own.week)+'</div><div class="probrow">'+p+'</div><div class="meter"><i style="width:'+conf+'%"></i></div><div class="confidence">データ充足度 '+conf+'%｜参考推定</div>'+reasonDetails+'</article>';
+ return '<article class="card'+(limited?' data-limited':'')+'" data-asset="'+asset.id+'" tabindex="0"><h2>'+asset.name+'</h2><div class="price">'+(own?fmt(own.price):'価格取得不可')+'</div><div class="change">'+(own?'前日比 '+pct(own.day)+' ｜ 5日 '+pct(own.week):'最新価格を取得でき次第、予測を更新')+'</div><div class="probrow">'+p+'</div><div class="meter"><i style="width:'+conf+'%"></i></div><div class="confidence">データ充足度 '+conf+'%｜'+(limited?'低信頼・参考値':'参考推定')+'</div>'+reasonDetails+'</article>';
 }
 function renderTechnicalChart(q){
  const rows=(q.series||[]).slice(-90),keys=['price','sma25','sma75','bbUpper','bbLower'];
