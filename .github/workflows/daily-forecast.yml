@@ -37,7 +37,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add forecast-history.json market-signals.json
+          git add forecast-history.json market-signals.json earnings-calendar.json
           if git diff --cached --quiet; then
             echo "No forecast changes to save."
           else
