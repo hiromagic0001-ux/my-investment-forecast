@@ -284,7 +284,13 @@ function forecast(asset,own,quotes,news){
  const criticalCoverage=coveredFeeds.has('geo')&&coveredFeeds.has('oil')?1:0;
  const broadCoverage=['rates','tech','japan'].filter(id=>coveredFeeds.has(id)).length/3;
  const newsCoverage=.7*criticalCoverage+.3*broadCoverage;
- const quality=clamp(.2+.4*coverage+.4*newsCoverage,.2,1);
+ const baseQuality=clamp(.2+.4*coverage+.4*newsCoverage,.2,1);
+ const attention=latestXSignals?.attention||{};
+ const xPosts=Number(attention.posts||0),xAuthors=Number(attention.authors||0),xEngagement=Number(attention.engagement||0);
+ const attentionHeat=clamp((xPosts/30)*.45+(xAuthors/30)*.35+(Math.log1p(xEngagement)/Math.log(5001))*.2,0,1);
+ const authorConcentration=xPosts?clamp(1-xAuthors/xPosts,0,1):0;
+ const attentionRisk=attentionHeat*(.5+.5*authorConcentration);
+ const quality=clamp(baseQuality*(1-attentionRisk*.12),.2,1);
  const horizons=[{key:'翌営業日',mult:.75},{key:'1週間',mult:1},{key:'1か月',mult:.82}];
  const probs=horizons.map(h=>Math.round(clamp(50+score*h.mult*23*quality,28,72)*10)/10);
  const positives=parts.filter(p=>p.v>.035).sort((a,b)=>b.v-a.v).slice(0,2);
