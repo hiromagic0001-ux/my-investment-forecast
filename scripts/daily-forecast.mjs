@@ -75,6 +75,7 @@ async function newsItems(){
 const quoteJobs=[...indicators.map(async ([id,t])=>[id,await quote(t)]),...assets.map(async a=>[a.id,await quote(a.ticker)])];
 const settled=await Promise.allSettled(quoteJobs),quotes={},errors=[];
 for(const x of settled){if(x.status==="fulfilled")quotes[x.value[0]]=x.value[1];else errors.push(String(x.reason));}
+let signalNews=[];
 const news=await newsItems();
 const xSignals=await fetchXSignals(news);
 const trustedX=xSignals.posts.filter(p=>p.verifiedForSignal).map(p=>({title:p.text,category:p.category,score:p.impactScore,date:p.createdAt,link:p.url,source:"X",trustScore:p.trustScore,label:"X "+p.sourceClass,verifiedForSignal:true}));
@@ -104,7 +105,6 @@ function relFor(asset,cat){
  if(cat==="geo")return 1.0;if(cat==="oil")return asset.id==="fang"?.65:asset.id==="nikkei"?.75:.65;
  return .3;
 }
-let signalNews=[];
 function forecast(a){
  const own=quotes[a.id];if(!own)return null;
  const parts=[
