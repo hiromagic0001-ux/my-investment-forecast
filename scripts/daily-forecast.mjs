@@ -157,7 +157,7 @@ function earningsRiskForAsset(assetId){
  }).filter(Boolean);
  const score=clamp(relevant.reduce((sum,e)=>sum+e.risk,0),0,.85);
  const avgPriceIn=relevant.length?relevant.reduce((sum,e)=>sum+e.pricedInScore*e.risk,0)/Math.max(.001,relevant.reduce((sum,e)=>sum+e.risk,0)):0;
- return {score,pricedInScore:avgPriceIn,label:earningsCalendar.status==="unavailable"?"決算日程データ未取得":score>=.35?"非常に高い":score>=.18?"高い":score>=.07?"注意":"通常",
+ return {score,pricedInScore:avgPriceIn,label:earningsCalendar.status==="unavailable"?"決算日程データ未取得":score>=.35?"非常に高い":score>=.18?"高い":score>=.07?"注意":relevant.length?"決算予定あり":"通常",
   dataStatus:earningsCalendar.status,events:relevant.map(e=>({symbol:e.symbol,name:e.name,date:e.date,reportTime:e.reportTime,epsForecast:e.epsForecast,estimateCount:e.estimateCount,dayDiff:e.dayDiff,relativeStrength:e.relativeStrength,pricedInScore:e.pricedInScore,risk:e.risk,sourceUrl:e.sourceUrl}))};
 }
 const news=await newsItems();
