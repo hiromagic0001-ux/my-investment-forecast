@@ -1,10 +1,10 @@
 {
   "date": "2026-11-13",
-  "generatedAt": "2026-11-13T07:09:51.593Z",
+  "generatedAt": "2026-11-13T07:10:21.584Z",
   "status": "free-indexed",
   "reason": "",
   "attention": {
-    "posts": 296,
+    "posts": 297,
     "authors": 18,
     "engagement": 0,
     "crediblePosts": 2,
@@ -14,7 +14,7 @@
     "maxPosts": 30,
     "maxDisplay": 30,
     "requests": 3,
-    "searchHits": 296,
+    "searchHits": 297,
     "estimatedUsd": 0,
     "method": "Google News RSSの公開検索インデックス。X公式API不使用。"
   },
@@ -609,7 +609,7 @@
       "eventType": "攻撃・供給障害",
       "engagement": 0,
       "independentPosts": 0,
-      "copyClusterPosts": 1,
+      "copyClusterPosts": 2,
       "coordinationFlag": false,
       "verifiedForSignal": false,
       "confidence": "検索掲載のみ・未確認",
