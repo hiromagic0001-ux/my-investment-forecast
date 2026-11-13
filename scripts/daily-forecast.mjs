@@ -1,5 +1,5 @@
 import fs from "node:fs/promises";
-import { fetchXSignals } from "./x-signals.mjs";
+import { fetchFreeXSignals } from "./free-x-signals.mjs";
 
 const assets = [
   {id:"fang",name:"NYSE FANG+（参考）",ticker:"^NYFANG",exp:{us:.22,nasdaq:.34,semi:.42,nvda:.28,fx:.08,rates:-.34,oil:-.14,risk:.22,japan:.02}},
@@ -78,7 +78,7 @@ for(const x of settled){if(x.status==="fulfilled")quotes[x.value[0]]=x.value[1];
 let signalNews=[];
 let xAttention={posts:0,authors:0,engagement:0};
 const news=await newsItems();
-const xSignals=await fetchXSignals(news);
+const xSignals=await fetchFreeXSignals(news);
 const trustedX=xSignals.posts.filter(p=>p.verifiedForSignal).map(p=>({title:p.text,category:p.category,score:p.impactScore,date:p.createdAt,link:p.url,source:"X",trustScore:p.trustScore,label:"X "+p.sourceClass,verifiedForSignal:true}));
 signalNews=[...news,...trustedX];
 xAttention=xSignals.attention||xAttention;
