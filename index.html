@@ -332,6 +332,7 @@ const feeds=[
  {id:'tech',label:'AI・半導体',q:'AI semiconductor chip demand Nvidia data center technology stocks'},
  {id:'nvda',label:'NVIDIA・AIリスク',q:'NVIDIA NVDA shares stock latest CEO resignation AI semiconductor November 2026'},
  {id:'japan',label:'日本経済・日銀',q:'Japan economy Bank of Japan yen wages inflation stocks'},
+ {id:'aviation',label:'航空・交通インフラ',q:'FAA nationwide ground stop lifted air traffic control communications outage flight delays November 13 2026'},
  {id:'geo',label:'イラン情勢',q:'Iran war'},
  {id:'geo',label:'ホルムズ海峡',q:'Strait of Hormuz'},
  {id:'geo',label:'フーシ派攻撃',q:'Houthi attack'},
@@ -401,6 +402,7 @@ function classify(text){
  if(has(['semiconductor','chip','nvidia','ai data center','artificial intelligence','半導体','生成ai','データセンター']))out.push('tech');
  if(has(['nvidia','nvda','エヌビディア']))out.push('nvda');
  if(has(['bank of japan','boj','japan','yen','日銀','日本','円安','円高']))out.push('japan');
+ if(has(['faa','air traffic control','ground stop','flight delay','航空管制','航空機','地上待機','運航停止','運航再開']))out.push('aviation');
  if(has(['war','tariff','sanction','geopolit','trade dispute','iran','houthi','hormuz','tanker','missile','attack','strike','ceasefire','戦争','関税','制裁','地政学','イラン','ホルムズ','タンカー','フーシ派','攻撃','空爆','停戦']))out.push('geo');
  if(has(['crude','oil','opec','energy','原油','石油','資源']))out.push('oil');
  return out.length?out:['global'];
@@ -455,6 +457,7 @@ function newsSignal(asset,news){
   if(n.category==='japan')rel=asset.id==='fang'?.15:asset.id==='nikkei'?.8:1.0;
   if(n.category==='geo')rel=1.0;
   if(n.category==='oil')rel=asset.id==='fang'?.65:asset.id==='nikkei'?.75:.65;
+  if(n.category==='aviation')rel=.08; // 航空管制ニュースは主要指数への直接影響が小さいため低ウェイト
   if(n.cats.includes('global'))rel=.3;
   const sourceWeight=n.source==="X"?(n.verifiedForSignal?Number(n.trustScore||0):0):1;
   const impact=n.score*rel*sourceWeight;total+=impact;weight+=rel*sourceWeight;
@@ -665,7 +668,8 @@ async function update(){
  try{const xr=await fetch('./market-signals.json?ts='+Date.now(),{cache:'no-store'});if(xr.ok)xSnapshot=await xr.json();}catch(e){console.warn('X signals unavailable',e)}
  latestXSignals=xSnapshot;
  const xNews=(xSnapshot?.posts||[]).filter(p=>p.verifiedForSignal).map(p=>({title:p.title,link:p.url,date:p.createdAt,category:p.category,label:'X '+p.sourceClass,score:p.impactScore,cats:[],source:'X',trustScore:p.trustScore,verifiedForSignal:true}));
- const unique=[...new Map([...news,...xNews].map(n=>[n.link,n])).values()];
+ const manualNews=[{title:'【速報】米FAAが全国の航空機地上待機命令を解除。管制通信障害は復旧したが、遅延・欠航の影響は残る見通し',link:'https://apnews.com/article/f81b0904331dafad6133f291e5f531a8',date:'2026-11-14T10:55:00+09:00',category:'aviation',label:'航空・交通インフラ',score:0,cats:[]}].filter(n=>Date.now()-Date.parse(n.date)<72*60*60*1000);
+ const unique=[...new Map([...news,...xNews,...manualNews].map(n=>[n.link,n])).values()];
  latestQuotes=quotes;latestNews=unique;
  renderRiskBrief(quotes,unique);
  renderEarningsCalendar(latestEarningsCalendar,quotes);
