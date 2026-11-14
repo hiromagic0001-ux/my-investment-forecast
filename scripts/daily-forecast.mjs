@@ -263,7 +263,16 @@ function forecast(a){
  const own=quotes[a.id];if(!own)return null;
  const fxRisk=fxInterventionRisk(quotes.fx);
  const earningsRisk=earningsRiskForAsset(a.id);
+ const macroWeights=a.id==="fang"
+  ?{macro_cpi:-.25,macro_core_cpi:-.45,macro_unemployment:.25,macro_payrolls:.25,macro_claims:.20,macro_indpro:.18,macro_sentiment:.12,macro_curve:.18,macro_10y:-.25,macro_hy:.35,macro_nfci:.25}
+  :{macro_cpi:-.12,macro_core_cpi:-.20,macro_unemployment:.15,macro_payrolls:.18,macro_claims:.12,macro_indpro:.20,macro_sentiment:.10,macro_curve:.12,macro_10y:-.12,macro_hy:.18,macro_nfci:.15};
+ const macroById=Object.fromEntries((macroData.signals||[]).map(s=>[s.id,s.value]));
+ const macroKeys=Object.keys(macroWeights).filter(k=>Number.isFinite(macroById[k]));
+ const macroDen=macroKeys.reduce((sum,k)=>sum+Math.abs(macroWeights[k]),0);
+ const macroScore=macroDen?macroKeys.reduce((sum,k)=>sum+macroById[k]*macroWeights[k],0)/macroDen:0;
+ const macroContribution=macroScore*(a.id==="fang"?.14:.09);
  const parts=[
+  macroContribution,
   clamp(own.week/2.8,-1,1)*.24,
   clamp(own.month/7,-1,1)*.18,
   clamp((12-own.vol)/18,-.5,.5)*.05,
@@ -293,7 +302,8 @@ function forecast(a){
  const criticalCoverage=["geo","oil"].filter(id=>coveredFeeds.has(id)).length/2;
  const broadCoverage=["rates","tech","japan"].filter(id=>coveredFeeds.has(id)).length/3;
  const newsCoverage=.7*criticalCoverage+.3*broadCoverage;
- const baseQuality=clamp(.2+.4*coverage+.4*newsCoverage,.2,1);
+ const macroCoverage=clamp(macroKeys.length/8,0,1);
+ const baseQuality=clamp((.2+.4*coverage+.4*newsCoverage)*(.88+.12*macroCoverage),.2,1);
  const xPosts=Number(xAttention.posts||0),xAuthors=Number(xAttention.authors||0),xEngagement=Number(xAttention.engagement||0);
  const attentionHeat=0; // RSS検索ヒット数はX上の実際の注目度ではないため、予測レンジに使わない
  const authorConcentration=0; // RSS検索結果では投稿者集中度を測定できない
@@ -305,7 +315,7 @@ function forecast(a){
  const positives=parts.filter(p=>p>.035).map((v,i)=>({name:"上昇要因 "+(i+1),value:v}));
  const negatives=parts.filter(p=>p<-.035).map((v,i)=>({name:"下落要因 "+(i+1),value:v}));
  const relatedNews=signalNews.filter(n=>relFor(a,n.category)>0).slice(0,8).map(n=>({title:n.title,category:n.category,score:n.score,link:n.link}));
- return {id:a.id,name:a.name,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",probs:[probability],rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,coverage,newsCoverage,missingFeeds,positives,negatives,news:relatedNews,modelVersion:"2.3.1",source:"GitHub Actions server-side model"};
+ return {id:a.id,name:a.name,macroScore:Number(macroScore.toFixed(3)),macroSignalsUsed:macroKeys.length,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",probs:[probability],rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,coverage,newsCoverage,missingFeeds,positives,negatives,news:relatedNews,modelVersion:"2.3.1",source:"GitHub Actions server-side model"};
 }
 function buildMacroOutlook(){
  const q=quotes, valid=id=>q[id]&&Number.isFinite(q[id].week)&&Number.isFinite(q[id].day);
