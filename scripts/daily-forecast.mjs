@@ -9,7 +9,7 @@ const assets = [
 ];
 const indicators = [
   ["us","^GSPC"],["nasdaq","^IXIC"],["semi","SOXX"],["nvda","NVDA"],
-  ["fx","JPY=X"],["rates","^TNX"],["oil","CL=F"],["brent","BZ=F"],["risk","^VIX"],["japan","1306.T"]
+  ["fx","JPY=X"],["dxy","DX-Y.NYB"],["rates","^TNX"],["oil","CL=F"],["brent","BZ=F"],["risk","^VIX"],["japan","1306.T"],["gold","GC=F"],["copper","HG=F"],["hyg","HYG"],["lqd","LQD"]
 ];
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const jstDate=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Tokyo",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
@@ -314,7 +314,12 @@ function buildMacroOutlook(){
  add("semi","半導体サイクル",valid("semi")?clamp((q.semi.week*.6+q.semi.month*.4)/8,-1,1):null,.18,valid("semi")?"SOXX 5日 "+q.semi.week.toFixed(2)+"%":"未取得");
  add("volatility","市場ストレス",valid("risk")?clamp(-((q.risk.price-18)/18)*.65-(q.risk.week/20)*.35,-1,1):null,.16,valid("risk")?"VIX "+q.risk.price.toFixed(1)+"｜5日 "+q.risk.week.toFixed(2)+"%":"未取得");
  add("rates","金利圧力",valid("rates")?clamp(-((q.rates.price-3.5)/2)*.55-(q.rates.week/1.2)*.45,-1,1):null,.12,valid("rates")?"米10年金利 "+q.rates.price.toFixed(2)+"｜5日 "+q.rates.week.toFixed(2)+"%":"未取得");
- add("fx","ドル高圧力",valid("fx")?clamp(-((q.fx.week*.6+q.fx.month*.4)/4),-1,1):null,.08,valid("fx")?"ドル円 5日 "+q.fx.week.toFixed(2)+"%":"未取得");
+ add("fx","ドル円圧力",valid("fx")?clamp(-((q.fx.week*.6+q.fx.month*.4)/4),-1,1):null,.05,valid("fx")?"ドル円 5日 "+q.fx.week.toFixed(2)+"%":"未取得");
+ add("dxy","ドル指数",valid("dxy")?clamp(-((q.dxy.week*.6+q.dxy.month*.4)/4),-1,1):null,.06,valid("dxy")?"ドル指数 5日 "+q.dxy.week.toFixed(2)+"%":"未取得");
+ add("copper","銅価格・製造業需要 proxy",valid("copper")?clamp((q.copper.week*.6+q.copper.month*.4)/8,-1,1):null,.08,valid("copper")?"銅 5日 "+q.copper.week.toFixed(2)+"%":"未取得");
+ const credit=valid("hyg")&&valid("lqd")?q.hyg.week-q.lqd.week:null;
+ add("credit","信用市場リスク選好",credit===null?null:clamp(credit/3,-1,1),.08,credit===null?"HY/IG債券ETF proxy 未取得":"HYG－LQD 5日相対 "+credit.toFixed(2)+"pt");
+ add("gold","金価格・逃避需要 proxy",valid("gold")?clamp(-((q.gold.week*.6+q.gold.month*.4)/8),-1,1):null,.04,valid("gold")?"金 5日 "+q.gold.week.toFixed(2)+"%":"未取得");
  const oil=valid("oil")?q.oil:valid("brent")?q.brent:null;
  add("energy","エネルギー価格圧力",oil?clamp(-((oil.week*.6+oil.month*.4)/8),-1,1):null,.12,oil?"原油 5日 "+oil.week.toFixed(2)+"%":"未取得");
  const used=components.reduce((s,x)=>s+x.weight,0),score=used?components.reduce((s,x)=>s+x.value*x.weight,0)/used:0;
