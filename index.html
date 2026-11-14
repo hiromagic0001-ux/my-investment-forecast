@@ -125,7 +125,7 @@ header p{font-size:13px}
 <script>
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"\']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","\'":"&#39;"}[ch]));
-let latestQuotes={},latestNews=[],latestXSignals=null,latestEarningsCalendar=null;
+let latestQuotes={},latestNews=[],latestXSignals=null,latestEarningsCalendar=null,latestForecasts={};
 const HISTORY_KEY='aiInvestmentForecastHistory_v1';
 function quoteIsStale(q){
  if(!q?.dateISO)return true;
@@ -273,7 +273,7 @@ function renderMarketSession(force=false){
  $('marketSessionTitle').textContent=session==='japan'?'日本市場｜翌営業日の予測':'米国市場｜翌営業日の予測';
  $('marketSessionNote').textContent=session==='japan'?'日本株取引時間に表示｜米国市場の時間帯は自動切替':'米国株取引時間に表示｜日本市場の時間帯は自動切替';
  const visible=assets.filter(a=>session==='japan'?a.id==='nikkei'||a.id==='topix'||a.id==='fang':a.id==='fang');
- $('forecasts').innerHTML=visible.map(a=>latestQuotes[a.id]?renderAsset(a,latestQuotes,latestNews):'<article class="card forecast-loading"><h2>'+a.name+'</h2><div class="price">予測を計算中</div><div class="change">市場価格・ニュースを取得しています</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>—</b></div></div></article>').join('');
+ $('forecasts').innerHTML=visible.map(a=>latestQuotes[a.id]?renderAsset(a,latestQuotes,latestNews,latestForecasts[a.id]):'<article class="card forecast-loading"><h2>'+a.name+'</h2><div class="price">予測を計算中</div><div class="change">市場価格・ニュースを取得しています</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>—</b></div></div></article>').join('');
 }
 const indicators=[
  {id:'us',name:'S&P 500',ticker:'^GSPC',factor:'us'},
@@ -449,54 +449,8 @@ function renderEarningsCalendar(cal,quotes){
  const risk=assets.map(a=>{const r=earningsRiskForAsset(a.id,quotes[a.id],quotes);return '<span class="event-risk">'+a.name+'：'+r.label+'（'+Math.round(r.score*100)+'/100）</span>';}).join('');
  $('earningsBody').innerHTML='<div class="legend">取得元：Nasdaq公開決算カレンダー｜基準日（米国東部時間） '+esc(cal.asOfDate)+'｜状態：'+status+'｜対象：大型テック株</div><div class="event-risks">'+risk+'</div>'+(events||'<div class="empty">対象銘柄の決算予定はこの期間に見つかりませんでした。</div>')+'<div class="legend" style="margin-top:10px">「織り込み度」は決算前の相対株価上昇とテクニカル位置を使う代理指標です。実際の機関投資家の保有・先物・オプション建玉を示すものではありません。オプション市場の想定変動幅（ATMストラドル）とIVは、無料データの取得可否を検証した後に別途追加します。決算日程を取得できない場合は、決算なしと扱わず警戒情報を未確認とします。</div>';
 }
-function forecast(asset,own,quotes,news){
- const ns=newsSignal(asset,news),parts=[],fxRisk=fxInterventionRisk(quotes.fx),earningsRisk=earningsRiskForAsset(asset.id,own,quotes);
- if(own){
-  parts.push({name:'価格モメンタム',v:clamp(own.week/2.8,-1,1)*.24});
-  parts.push({name:'中期トレンド',v:clamp(own.month/7,-1,1)*.18});
-  parts.push({name:'変動率補正',v:clamp((12-own.vol)/18,-.5,.5)*.05});
-  parts.push({name:'テクニカル分析（移動平均・ボリンジャー）',v:(own.technical?.score||0)*.18});
-  if(asset.id==='nikkei')parts.push({name:'160円近辺の為替介入テールリスク',v:-fxRisk.score*.12});
-  if(asset.id==='topix')parts.push({name:'160円近辺の為替介入テールリスク',v:-fxRisk.score*.08});
- }
- for(const [id,exp] of Object.entries(asset.exp)){
-  const v=factorValue(id,quotes);if(v!==null&&Math.abs(exp)>.01)parts.push({name:indicators.find(x=>x.id===id)?.name||id,v:v*exp*.42});
- }
- const nvda=quotes.nvda;
- if(nvda&&asset.exp.nvda)parts.push({name:'NVIDIA当日変動',v:clamp(nvda.day/4,-1,1)*asset.exp.nvda*.7});
- if(asset.id==='fang'){
-  const semi=quotes.semi,nasdaq=quotes.nasdaq,vix=quotes.risk;
-  const semiShock=semi?Math.max(0,-semi.day-1.5)*.025:0;
-  const nasdaqShock=nasdaq?Math.max(0,-nasdaq.day-1.0)*.02:0;
-  const nvdaShock=nvda?Math.max(0,-nvda.day-2.0)*.012:0;
-  const volatilityShock=vix?Math.max(0,vix.day-8.0)*.004:0;
-  const shockPenalty=clamp(semiShock+nasdaqShock+nvdaShock+volatilityShock,0,.25);
-  if(shockPenalty>0)parts.push({name:'米国ハイテク急落リスク（日次ストレス補正）',v:-shockPenalty});
- }
- parts.push({name:'ニュース材料',v:ns.score*.28});
- const rawScore=clamp(parts.reduce((s,p)=>s+p.v,0),-.85,.85);
- const score=clamp(rawScore*(1-.65*earningsRisk.score)-.035*earningsRisk.pricedInScore*earningsRisk.score,-.85,.85);
- const missingRatio=Object.keys(asset.exp).filter(id=>id==='oil'?!(quotes.oil||quotes.brent):!quotes[id]).length/Object.keys(asset.exp).length;
- const coverage=1-missingRatio;
- const requiredFeeds=['rates','tech','japan','geo','oil'];
- const coveredFeeds=new Set(news.map(n=>n.category));
- const criticalCoverage=['geo','oil'].filter(id=>coveredFeeds.has(id)).length/2;
- const broadCoverage=['rates','tech','japan'].filter(id=>coveredFeeds.has(id)).length/3;
- const newsCoverage=.7*criticalCoverage+.3*broadCoverage;
- const baseQuality=clamp(.2+.4*coverage+.4*newsCoverage,.2,1);
- const attention=latestXSignals?.attention||{};
- const xPosts=Number(attention.posts||0),xAuthors=Number(attention.authors||0),xEngagement=Number(attention.engagement||0);
- const attentionHeat=clamp((xPosts/30)*.45+(xAuthors/30)*.35+(Math.log1p(xEngagement)/Math.log(5001))*.2,0,1);
- const authorConcentration=xPosts?clamp(1-xAuthors/xPosts,0,1):0;
- const attentionRisk=attentionHeat*(.5+.5*authorConcentration);
- const quality=clamp(baseQuality*(1-attentionRisk*.12)*(asset.id==='fang'?1:1-fxRisk.score*.08)*(1-earningsRisk.score*.18),.2,1);
- const probs=[Math.round(clamp(50+score*.75*23*quality,28,72)*10)/10];
- const positives=parts.filter(p=>p.v>.035).sort((a,b)=>b.v-a.v).slice(0,2);
- const negatives=parts.filter(p=>p.v<-.035).sort((a,b)=>a.v-b.v).slice(0,2);
- return {probs,score,quality,news:ns.items,positives,negatives,parts,technical:own?.technical||null,fxInterventionRisk:fxRisk,earningsRisk};
-}
 const longTermAssumptions={fang:{low:0,base:8,high:15},nikkei:{low:1,base:5,high:8},topix:{low:1,base:4,high:7}};
-function priceForecastData(asset,own,quotes,news){if(!own||quoteIsStale(own))return null;const f=forecast(asset,own,quotes,news),today=new Date(jstDate()+"T12:00:00+09:00"),tomorrow=new Date(today);tomorrow.setDate(tomorrow.getDate()+1);while([0,6].includes(tomorrow.getDay()))tomorrow.setDate(tomorrow.getDate()+1);const fyEnd=new Date(today.getFullYear()+1,2,31,12),fyYears=Math.max(0,(fyEnd-today)/(365.2425*86400000)),a=longTermAssumptions[asset.id],vol=Math.max(own.vol||20,8)/100,move=clamp(f.score*.35*vol/Math.sqrt(252),-.035,.035),future=n=>new Date(today.getFullYear()+n,today.getMonth(),today.getDate(),12).toISOString().slice(0,10);return {assumptions:a,baseDate:own.dateISO,points:[{label:"現在",date:own.dateISO,low:own.price,base:own.price,high:own.price},{label:"明日",date:tomorrow.toISOString().slice(0,10),low:own.price*(1+move),base:own.price*(1+move),high:own.price*(1+move)},{label:"年度末",date:fyEnd.toISOString().slice(0,10),low:own.price*Math.pow(1+a.low/100,fyYears),base:own.price*Math.pow(1+a.base/100,fyYears),high:own.price*Math.pow(1+a.high/100,fyYears)},{label:"5年後",date:future(5),low:own.price*Math.pow(1+a.low/100,5),base:own.price*Math.pow(1+a.base/100,5),high:own.price*Math.pow(1+a.high/100,5)},{label:"10年後",date:future(10),low:own.price*Math.pow(1+a.low/100,10),base:own.price*Math.pow(1+a.base/100,10),high:own.price*Math.pow(1+a.high/100,10)}]};}
+function priceForecastData(asset,own,quotes,news){if(!own||quoteIsStale(own))return null;const f=latestForecasts[asset.id]||{score:0},today=new Date(jstDate()+"T12:00:00+09:00"),tomorrow=new Date(today);tomorrow.setDate(tomorrow.getDate()+1);while([0,6].includes(tomorrow.getDay()))tomorrow.setDate(tomorrow.getDate()+1);const fyEnd=new Date(today.getFullYear()+1,2,31,12),fyYears=Math.max(0,(fyEnd-today)/(365.2425*86400000)),a=longTermAssumptions[asset.id],vol=Math.max(own.vol||20,8)/100,move=clamp(f.score*.35*vol/Math.sqrt(252),-.035,.035),future=n=>new Date(today.getFullYear()+n,today.getMonth(),today.getDate(),12).toISOString().slice(0,10);return {assumptions:a,baseDate:own.dateISO,points:[{label:"現在",date:own.dateISO,low:own.price,base:own.price,high:own.price},{label:"明日",date:tomorrow.toISOString().slice(0,10),low:own.price*(1+move),base:own.price*(1+move),high:own.price*(1+move)},{label:"年度末",date:fyEnd.toISOString().slice(0,10),low:own.price*Math.pow(1+a.low/100,fyYears),base:own.price*Math.pow(1+a.base/100,fyYears),high:own.price*Math.pow(1+a.high/100,fyYears)},{label:"5年後",date:future(5),low:own.price*Math.pow(1+a.low/100,5),base:own.price*Math.pow(1+a.base/100,5),high:own.price*Math.pow(1+a.high/100,5)},{label:"10年後",date:future(10),low:own.price*Math.pow(1+a.low/100,10),base:own.price*Math.pow(1+a.base/100,10),high:own.price*Math.pow(1+a.high/100,10)}]};}
 function forecastSvg(ps){const W=620,H=230,L=65,R=12,T=18,B=35,v=ps.flatMap(p=>[p.low,p.base,p.high]),mn=Math.min(...v)*.94,mx=Math.max(...v)*1.04,x=i=>L+i*(W-L-R)/(ps.length-1),y=n=>T+(mx-n)/(mx-mn)*(H-T-B),path=k=>ps.map((p,i)=>(i?"L":"M")+x(i)+","+y(p[k])).join(" "),grid=[0,1,2,3,4].map(i=>{const n=mn+(mx-mn)*i/4;return '<line x1="'+L+'" y1="'+y(n)+'" x2="'+(W-R)+'" y2="'+y(n)+'" stroke="#28364a"/><text x="'+(L-6)+'" y="'+(y(n)+4)+'" fill="#9eacbf" font-size="10" text-anchor="end">'+fmt(n)+'</text>'}).join(""),dots=ps.map((p,i)=>'<circle cx="'+x(i)+'" cy="'+y(p.base)+'" r="4" fill="#e7c477"/><text x="'+x(i)+'" y="'+(y(p.base)-9)+'" fill="#e7c477" font-size="9" text-anchor="middle">'+fmt(p.base)+'</text><text x="'+x(i)+'" y="'+(H-10)+'" fill="#cbd5e2" font-size="10" text-anchor="middle">'+p.label+'</text>').join("");return '<svg class="forecast-chart" viewBox="0 0 '+W+' '+H+'">'+grid+'<path d="'+path("low")+'" fill="none" stroke="#83b8ff" stroke-dasharray="5 4" stroke-width="2"/><path d="'+path("high")+'" fill="none" stroke="#83b8ff" stroke-dasharray="5 4" stroke-width="2"/><path d="'+path("base")+'" fill="none" stroke="#e7c477" stroke-width="3"/>'+dots+'</svg><div class="legend">実線：基本　破線：慎重・強気</div>';}
 function openPriceForecast(id){const a=assets.find(v=>v.id===id),q=latestQuotes[id];if(!a||!q)return;const d=priceForecastData(a,q,latestQuotes,latestNews);if(!d){$("forecastModalContent").innerHTML="最新価格が古いため予想を表示できません。";}else{const unit=id==="topix"?"円":"pt",show=n=>fmt(n)+" "+unit,ps=d.points,A=d.assumptions,cards=ps.slice(1).map(p=>'<div class="forecast-value"><small>'+p.label+'｜'+p.date+'</small><b>'+show(p.base)+'</b><span>基本シナリオ　現在比 '+pct((p.base/q.price-1)*100)+'</span></div>').join(""),rows=ps.slice(1).map(p=>'<tr><td>'+p.label+'<br>'+p.date+'</td><td>'+show(p.low)+'</td><td><b>'+show(p.base)+'</b></td><td>'+show(p.high)+'</td></tr>').join("");$("forecastModalContent").innerHTML='<h2>'+esc(a.name)+'｜価格予想</h2><div class="legend">基準価格 '+show(q.price)+'｜基準日 '+d.baseDate+'</div>'+forecastSvg(ps)+'<div class="forecast-value-grid">'+cards+'</div><table class="forecast-table"><thead><tr><th>時点</th><th>慎重</th><th>基本</th><th>強気</th></tr></thead><tbody>'+rows+'</tbody></table><div class="forecast-scenarios"><div class="forecast-scenario"><b>慎重</b><span>年率 '+A.low+'%</span></div><div class="forecast-scenario"><b>基本</b><span>年率 '+A.base+'%</span></div><div class="forecast-scenario"><b>強気</b><span>年率 '+A.high+'%</span></div></div><p class="forecast-note">明日の価格は現在の予測スコアと直近変動率による短期推定。年度末は2027年3月31日。5年・10年は仮定した年率を複利計算した参考シナリオで、確定予測ではありません。TOPIX欄は1306連動ETFの参考価格です。東証株価指数そのものの価格・5分足ではありません。為替、分配金、税金、構成変更などは別途反映していません。</p>';}$("priceForecastModal").classList.add("open");$("priceForecastModal").setAttribute("aria-hidden","false");}
 function closePriceForecast(){$("priceForecastModal").classList.remove("open");$("priceForecastModal").setAttribute("aria-hidden","true");}
@@ -508,8 +462,8 @@ function probabilitySignal(p){
  if(p<=48)return {label:"下落寄り",color:"var(--dn)"};
  return {label:"中立",color:"var(--muted)"};
 }
-function renderAsset(asset,quotes,news){
- const own=quotes[asset.id],f=forecast(asset,own,quotes,news);
+function renderAsset(asset,quotes,news,f){
+ const own=quotes[asset.id];f=f||{};
  const missingQuotes=Object.keys(asset.exp).filter(id=>id==='oil'?!(quotes.oil||quotes.brent):!quotes[id]).map(id=>indicators.find(x=>x.id===id)?.name||id);
  const missingNews=['geo','oil'].filter(id=>!news.some(n=>n.category===id));
  const reasons=[];
@@ -517,13 +471,13 @@ function renderAsset(asset,quotes,news){
  if(own&&quoteIsStale(own))reasons.push('価格データが古い（最終基準日 '+own.dateISO+'）');
  if(missingQuotes.length)reasons.push('不足市場データ：'+missingQuotes.join('・'));
  if(missingNews.length)reasons.push('重要ニュース未取得：'+missingNews.map(id=>id==='geo'?'戦争・地政学':'原油・供給リスク').join('・'));
- const limited=!own||f.quality<.7||quoteIsStale(own)||missingNews.length>0;
+ const limited=!own||!Number.isFinite(f.quality)||f.quality<.7||quoteIsStale(own)||missingNews.length>0;
  if(limited&&!reasons.length)reasons.push('データ充足度が基準未満');
- const nextProb=own?f.probs[0]:null,signal=own?probabilitySignal(nextProb):null;const p=own?'<div class="prob"><small>翌営業日</small><b style="color:'+signal.color+'">'+signal.label+'</b><small style="color:var(--muted);margin-top:3px">上昇 '+nextProb.toFixed(1)+'% ／ 下落 '+(100-nextProb).toFixed(1)+'%</small></div>':'<div class="prob"><small>翌営業日</small><b>—</b><small>価格データ未取得</small></div>';
+ const nextProb=own?(f.probability??f.probs?.[0]??null):null,signal=own&&nextProb!==null?probabilitySignal(nextProb):null;const p=own&&nextProb!==null?'<div class="prob"><small>翌営業日</small><b style="color:'+signal.color+'">'+signal.label+'</b><small style="color:var(--muted);margin-top:3px">上昇 '+nextProb.toFixed(1)+'% ／ 下落 '+(100-nextProb).toFixed(1)+'%</small></div>':'<div class="prob"><small>翌営業日</small><b>—</b><small>予測データ未取得</small></div>';
  const reason=[...f.positives.map(x=>'<li class="good">上昇要因：'+x.name+'</li>'),...f.negatives.map(x=>'<li class="bad">下落要因：'+x.name+'</li>')];
  if(!reason.length)reason.push('<li class="neutral">方向感を示す材料が不足。中立寄りの推定です。</li>');
- const conf=Math.round(f.quality*100);
- const earningsLine='<div class="confidence">決算警戒：'+f.earningsRisk.label+'｜織り込み代理 '+Math.round(f.earningsRisk.pricedInScore*100)+'/100'+(f.earningsRisk.events.length?'｜'+f.earningsRisk.events.map(e=>e.symbol).join(', '):'')+'</div>';
+ const conf=Math.round((Number(f.quality)||0)*100);
+ const er=f.earningsRisk||{label:'未確認',pricedInScore:0,events:[]};const earningsLine='<div class="confidence">決算警戒：'+er.label+'｜織り込み代理 '+Math.round((er.pricedInScore||0)*100)+'/100'+(er.events?.length?'｜'+er.events.map(e=>e.symbol).join(', '):'')+'</div>';
  const reasonDetails='<details class="card-detail"><summary>予測の根拠・重要リスクを確認</summary><ul class="reasons">'+reason.join('')+'</ul>'+earningsLine+(f.news.length?'<div class="confidence">関連材料：'+f.news.slice(0,3).map(n=>esc(n.category)).join(' / ')+'</div>':'')+'</details>';
  return '<article class="card'+(limited?' data-limited':'')+'" data-asset="'+asset.id+'" tabindex="0"><h2>'+asset.name+'</h2><div class="price">'+(own?fmt(own.price):'価格取得不可')+'</div><div class="change">'+(own?'前日比 '+pct(own.day):'最新価格を取得でき次第、予測を更新')+'</div><div class="probrow">'+p+'</div><div class="meter"><i style="width:'+conf+'%"></i></div><div class="confidence">データ充足度 '+conf+'%｜'+(limited?'低信頼・参考値':'参考推定')+'</div>'+reasonDetails+'</article>';
 }
@@ -604,7 +558,7 @@ async function update(){
   if(!Number.isFinite(generated)||age<0||age>30*60*1000)throw Error('サーバーデータが30分以上更新されていません');
   if(snapshot.status==='collecting'||!snapshot.forecasts?.length||!Object.keys(snapshot.quotes||{}).length)throw Error('サーバー側の市場データ収集中です。少し待って再読み込みしてください');
   const quotes=snapshot.quotes||{},unique=snapshot.news||[];
-  latestQuotes=quotes;latestNews=unique;latestEarningsCalendar=snapshot.earningsCalendar||null;
+  latestQuotes=quotes;latestNews=unique;latestEarningsCalendar=snapshot.earningsCalendar||null;latestForecasts=Object.fromEntries((snapshot.forecasts||[]).map(f=>[f.id,f]));
   latestXSignals=snapshot.xSignals||null;
   renderRiskBrief(quotes,unique);
   renderEarningsCalendar(latestEarningsCalendar,quotes);
