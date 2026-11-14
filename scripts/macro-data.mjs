@@ -55,7 +55,7 @@ const ten=change("DGS10",63,false);if(ten!==null)add("macro_10y","米国10年金
 
 let oecd={status:"unavailable",source:"OECD Key Short-Term Economic Indicators / Composite Leading Indicators",signals:[],series:[],error:null};
 try{
- const oecdUrl="https://sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.0/.M.LI...AA...H?startPeriod=2023-01&dimensionAtObservation=AllDimensions&format=csvfile";
+ const oecdUrl="https://sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI/.M.LI...AA...H?startPeriod=2023-01&dimensionAtObservation=AllDimensions&format=csvfile";
  const response=await fetch(oecdUrl,{headers:{"User-Agent":"Mozilla/5.0 (compatible; MacroResearchBot/1.0)","Accept-Language":"en","Accept":"text/csv"},signal:AbortSignal.timeout(25000)});
  if(!response.ok)throw new Error("OECD CLI HTTP "+response.status);
  const lines=(await response.text()).trim().split(/\r?\n/);
