@@ -85,8 +85,9 @@ header p{font-size:13px}
 <link rel="apple-touch-icon" href="./investment-icon.jpg?v=1">
 </head>
 <body><main>
-<header><h1>AI INVESTMENT FORECAST</h1><p>世界経済・金融市場・ニュースを統合したマルチファクター予報</p></header>
+<header><h1>AI INVESTMENT FORECAST</h1><p>世界経済の変化を先読みし、資産配分の判断材料を提供</p></header>
 <div class="bar"><span id="status">市場データを確認しています…</span><button id="refresh">最新情報に更新</button></div>
+<section class="panel" id="macroOutlook"><h3>世界経済の先行シグナル｜投資判断ダッシュボード</h3><div id="macroRegime" class="empty">サーバーのマクロ分析を読み込んでいます…</div><div id="macroScenario" class="factorgrid"></div><div id="macroAllocation" class="factorgrid" style="margin-top:8px"></div><div id="macroDrivers" class="factorgrid" style="margin-top:8px"></div><div id="macroLimitations" class="legend"></div></section>
 <div class="forecast-heading" id="marketSessionHeading"><b id="marketSessionTitle">日本市場｜翌営業日の予測</b><span id="marketSessionNote">市場時間に合わせて日本市場・米国市場を自動切替</span></div>
 <div class="cards" id="forecasts">
 <article class="card forecast-loading"><h2>NYSE FANG+（参考）</h2><div class="price">予測を計算中</div><div class="change">市場価格・ニュースを取得しています</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>—</b></div></div></article>
@@ -98,7 +99,7 @@ header p{font-size:13px}
 <details class="panel disclosure" id="earningsPanel"><summary>米大型テック決算・織り込み済みリスク</summary><div class="legend">好決算でも売られる可能性を確認します。</div><div id="earningsBody"><div class="empty">決算日程を確認しています…</div></div></details>
 <details class="panel disclosure"><summary>テクニカル分析｜移動平均線・ボリンジャーバンド</summary><div class="legend">1年分の日足終値から5・25・75・200日移動平均線、20日ボリンジャーバンド（±2σ）を計算。</div><div id="technicalBody"><div class="empty">テクニカル指標を計算中…</div></div></details>
 <details class="panel disclosure"><summary>市場・金融環境（米国株・半導体・為替・金利・原油）</summary><div class="factorgrid" id="indicators"></div><div class="legend">直近取得可能な取引日ベース。未取得値は補完しません。</div></details>
-<details class="panel disclosure"><summary>重要ニュース・材料分析</summary><div id="news"><div class="empty">ニュースを取得中…</div></div></details>
+<details class="panel disclosure"><summary>参考情報：重要ニュース・材料分析（判断の主役ではありません）</summary><div id="news"><div class="empty">ニュースを取得中…</div></div></details>
 <details class="panel disclosure" id="xSignalPanel"><summary>X速報・信頼性判定</summary><div class="legend">無料の検索インデックス経由の公開投稿。未確認投稿は方向予測に採用しません。</div><div id="xSignals"><div class="empty">X情報を確認しています…</div></div></details>
 
 <details class="panel disclosure" id="yearEndScenarios"><summary>2026年末までの株価シナリオ</summary>
@@ -546,6 +547,15 @@ function renderXSignals(data){
   return '<div class="news"><a href="'+esc(p.url)+'" target="_blank" rel="noopener">'+esc(p.title)+'</a><span class="impact">'+esc(p.author)+'｜'+esc(p.sourceClass)+'｜'+trust+'</span><small>'+esc(p.createdAt)+'｜信頼スコア '+Math.round((p.trustScore||p.sourceScore||0)*100)+'%｜独立投稿 '+(p.independentPosts||0)+'件｜'+esc(p.eventType)+'｜'+impact+'</small></div>';
  }).join('');
 }
+function renderMacroOutlook(m){
+ if(!m||!Array.isArray(m.components)){ $('macroRegime').textContent='マクロ分析データ未取得';return; }
+ const color=m.regimeKey==="risk-on"?"good":m.regimeKey==="risk-off"||m.regimeKey==="inflation"?"bad":"neutral";
+ $('macroRegime').innerHTML='<b class="'+color+'" style="font-size:18px">'+esc(m.regime)+'</b><div class="legend">市場環境スコア '+(Number(m.score)*100).toFixed(0)+'｜分析充足度 '+Math.round((m.quality||0)*100)+'%｜取得 '+(m.coverage||0)+'指標</div>';
+ $('macroScenario').innerHTML=(m.scenarios||[]).map(x=>'<div class="factor"><b>'+esc(x.name)+'</b><span>暫定シナリオ比率 '+x.probability+'%</span></div>').join('');
+ $('macroAllocation').innerHTML=(m.allocation||[]).map(x=>'<div class="factor"><b>'+esc(x.asset)+'</b><span>'+esc(x.bias)+'</span></div>').join('');
+ $('macroDrivers').innerHTML=(m.components||[]).map(x=>'<div class="factor"><b>'+esc(x.label)+'</b><span>'+esc(x.detail)+'｜シグナル '+(x.value*100).toFixed(0)+'</span></div>').join('');
+ $('macroLimitations').innerHTML='<b>読み方・注意：</b>'+(m.limitations||[]).map(esc).join('／');
+}
 async function update(){
  $('refresh').disabled=true;$('status').textContent='サーバー側の最新市場データを取得中…';
  try{
@@ -560,6 +570,7 @@ async function update(){
   const quotes=snapshot.quotes||{},unique=snapshot.news||[];
   latestQuotes=quotes;latestNews=unique;latestEarningsCalendar=snapshot.earningsCalendar||null;latestForecasts=Object.fromEntries((snapshot.forecasts||[]).map(f=>[f.id,f]));
   latestXSignals=snapshot.xSignals||null;
+  renderMacroOutlook(snapshot.macroOutlook);
   renderRiskBrief(quotes,unique);
   renderEarningsCalendar(latestEarningsCalendar,quotes);
   renderTechnicalDashboard(quotes);
