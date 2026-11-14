@@ -666,7 +666,7 @@ async function update(){
  let news=feedsResult.filter(x=>x.status==='fulfilled').flatMap(x=>x.value);
  let serverNewsStatus='未取得';
  try{
-  const nr=await fetch('./market-news.json?ts='+Date.now(),{cache:'no-store'});
+  const nr=await fetch('https://raw.githubusercontent.com/hiromagic0001-ux/my-investment-forecast/news-cache/market-news.json?ts='+Date.now(),{cache:'no-store'});
   if(nr.ok){
    const nd=await nr.json(),age=Date.now()-Date.parse(nd.generatedAt||'');
    if(Array.isArray(nd.items)&&Number.isFinite(age)&&age>=0&&age<36*60*60*1000){
