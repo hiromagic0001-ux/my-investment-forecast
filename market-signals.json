@@ -1,20 +1,20 @@
 {
   "date": "2026-11-14",
-  "generatedAt": "2026-11-14T02:04:48.671Z",
+  "generatedAt": "2026-11-14T02:05:41.402Z",
   "status": "free-indexed",
   "reason": "",
   "attention": {
-    "posts": 293,
+    "posts": 292,
     "authors": 16,
     "engagement": 0,
     "crediblePosts": 1,
-    "coordinationFlags": 108
+    "coordinationFlags": 107
   },
   "usage": {
     "maxPosts": 30,
     "maxDisplay": 30,
     "requests": 3,
-    "searchHits": 293,
+    "searchHits": 292,
     "estimatedUsd": 0,
     "method": "Google News RSSの公開検索インデックス。X公式API不使用。"
   },
@@ -264,7 +264,7 @@
       "eventType": "地政学リスク",
       "engagement": 0,
       "independentPosts": 0,
-      "copyClusterPosts": 7,
+      "copyClusterPosts": 6,
       "coordinationFlag": true,
       "verifiedForSignal": false,
       "confidence": "同文・類似投稿の集中",
