@@ -294,7 +294,7 @@ const marketSnapshot={
  earningsCalendar,
  source:"server-side GitHub Actions market collector"
 };
-await fs.writeFile("market-snapshot.json",JSON.stringify(marketSnapshot,null,2)+"\\n");
+await fs.writeFile("market-snapshot.json",JSON.stringify(marketSnapshot,null,2)+"\n");
 const path="forecast-history.json";
 let history=[];
 try{history=JSON.parse(await fs.readFile(path,"utf8"));if(!Array.isArray(history))history=[];}catch{}
