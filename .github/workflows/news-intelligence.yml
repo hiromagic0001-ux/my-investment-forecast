@@ -22,22 +22,30 @@ jobs:
         with:
           ref: restore-world-market-japan-heatmap
           fetch-depth: 0
+      - name: Restore cached official macro series
+        run: |
+          git fetch origin news-cache || true
+          if git rev-parse --verify origin/news-cache >/dev/null 2>&1; then git show origin/news-cache:macro-data.json > macro-data.json || true; fi
       - name: Collect global economic news
         run: node scripts/news-intelligence.mjs
+      - name: Collect official macroeconomic data (6-hour cache)
+        run: node scripts/macro-data.mjs
       - name: Generate server-side macro and market snapshot
         run: node scripts/daily-forecast.mjs
       - name: Validate generated data
         run: |
           node --check scripts/news-intelligence.mjs
+          node --check scripts/macro-data.mjs
           node --check scripts/daily-forecast.mjs
           node -e 'const d=require("./market-news.json"); if(!d.generatedAt || !Array.isArray(d.items)) throw Error("invalid news cache"); console.log("News cache valid:",d.items.length)'
-          node -e 'const d=require("./market-snapshot.json"); if(!d.generatedAt || d.status==="collecting" || Object.keys(d.quotes||{}).length<8 || !Array.isArray(d.forecasts) || d.forecasts.length<3 || !d.macroOutlook || !Array.isArray(d.macroOutlook.components) || d.macroOutlook.components.length<5) throw Error("incomplete market/macro snapshot; refusing to publish"); console.log("Macro snapshot valid:",Object.keys(d.quotes).length,"quotes",d.macroOutlook.components.length,"macro signals")'
+          node -e 'const d=require("./macro-data.json"); if(d.status!=="ok" || !Array.isArray(d.signals) || d.signals.length<6) throw Error("official macro data unavailable; refusing to publish"); console.log("Official macro series:",d.signals.length)'
+          node -e 'const d=require("./market-snapshot.json"); if(!d.generatedAt || d.status==="collecting" || Object.keys(d.quotes||{}).length<8 || !Array.isArray(d.forecasts) || d.forecasts.length<3 || !d.macroOutlook || !Array.isArray(d.macroOutlook.components) || d.macroOutlook.components.length<10 || !d.macroData || d.macroData.signalCount<6) throw Error("incomplete market/macro snapshot; refusing to publish"); console.log("Macro snapshot valid:",Object.keys(d.quotes).length,"quotes",d.macroOutlook.components.length,"signals")'
       - name: Publish cache on isolated data branch (no app redeploy)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -B news-cache
-          for f in market-news.json market-snapshot.json market-signals.json earnings-calendar.json forecast-history.json; do [ ! -f "$f" ] || git add "$f"; done
+          for f in market-news.json market-snapshot.json macro-data.json market-signals.json earnings-calendar.json forecast-history.json; do [ ! -f "$f" ] || git add "$f"; done
           if git diff --cached --quiet; then
             echo "No news cache changes."
           else
