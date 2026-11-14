@@ -1,0 +1,38 @@
+name: Global economic news collector
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: global-economic-news
+  cancel-in-progress: true
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout investment app deployment branch
+        uses: actions/checkout@v4
+        with:
+          ref: restore-world-market-japan-heatmap
+          fetch-depth: 0
+      - name: Collect global economic news
+        run: node scripts/news-intelligence.mjs
+      - name: Validate output
+        run: |
+          node --check scripts/news-intelligence.mjs
+          node -e 'const d=require("./market-news.json"); if(!d.generatedAt || !Array.isArray(d.items)) throw Error("invalid news cache"); console.log("News cache valid:",d.items.length)'
+      - name: Publish news cache
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add market-news.json
+          if git diff --cached --quiet; then
+            echo "No news cache changes."
+          else
+            git commit -m "Refresh global economic news cache"
+            git fetch origin restore-world-market-japan-heatmap
+            git rebase FETCH_HEAD
+            git push origin HEAD:restore-world-market-japan-heatmap
+          fi
