@@ -1,7 +1,7 @@
 name: Global economic news collector
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 permissions:
   contents: write
@@ -19,16 +19,21 @@ jobs:
           fetch-depth: 0
       - name: Collect global economic news
         run: node scripts/news-intelligence.mjs
-      - name: Validate output
+      - name: Generate server-side market snapshot
+        continue-on-error: true
+        run: node scripts/daily-forecast.mjs
+      - name: Validate generated data
         run: |
           node --check scripts/news-intelligence.mjs
+          node --check scripts/daily-forecast.mjs
           node -e 'const d=require("./market-news.json"); if(!d.generatedAt || !Array.isArray(d.items)) throw Error("invalid news cache"); console.log("News cache valid:",d.items.length)'
+          if [ -f market-snapshot.json ]; then node -e 'const d=require("./market-snapshot.json"); if(!d.generatedAt || !d.quotes || !Array.isArray(d.forecasts)) throw Error("invalid market snapshot"); console.log("Market snapshot valid:",Object.keys(d.quotes).length,"quotes")'; fi
       - name: Publish cache on isolated data branch (no app redeploy)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -B news-cache
-          git add market-news.json
+          for f in market-news.json market-snapshot.json market-signals.json earnings-calendar.json forecast-history.json; do [ ! -f "$f" ] || git add "$f"; done
           if git diff --cached --quiet; then
             echo "No news cache changes."
           else
