@@ -111,10 +111,10 @@ header p{font-size:13px}
 </details>
 <details class="panel disclosure" id="validationPanel"><summary>予測記録・的中率・バックテスト</summary>
  
- <p class="legend">毎営業日7:00（日本時間）にGitHub Actionsが予測を作成し、サーバー公開ファイルへ保存します。翌営業日以降の新しい終値で自動検証します。アプリを閉じていても定期処理されます。端末内の手動記録も併用します。</p>
+ <p class="legend">毎営業日7:00（日本時間）にGitHub Actionsが予測を作成し、サーバー公開ファイルへ保存します。翌営業日以降の新しい終値で自動検証します。アプリを閉じていても定期処理されます。端末では市場データの取得・予測計算・終値照合を行わず、起動時にサーバーの最新データを読み込みます。</p>
  <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
   <button id="saveForecast">今日の予測を手動保存</button>
-  <button id="validateForecast" style="background:#26364a;color:#eef4ff;border:1px solid #49617e">引け後に検証</button>
+  <button id="validateForecast" style="background:#26364a;color:#eef4ff;border:1px solid #49617e">サーバー検証結果を再読込</button>
  </div>
  <div id="validationStatus" class="legend">予測記録はまだありません。</div>
  <div id="validationSummary" class="factorgrid" style="margin-top:10px"></div>
@@ -126,7 +126,7 @@ header p{font-size:13px}
 <script>
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"\']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","\'":"&#39;"}[ch]));
-let latestQuotes={},latestNews=[],latestXSignals=null,latestEarningsCalendar=null,autoValidationRunning=false;
+let latestQuotes={},latestNews=[],latestXSignals=null,latestEarningsCalendar=null;
 const HISTORY_KEY='aiInvestmentForecastHistory_v1';
 function quoteIsStale(q){
  if(!q?.dateISO)return true;
@@ -258,26 +258,7 @@ function saveTodayForecast(){
  writeHistory(rows);renderValidation();
  $('validationStatus').textContent='本日の予測を端末内に保存しました。基準日・基準価格を固定して、後から書き換えません。';
 }
-async function validateSavedForecasts(){
- const rows=readHistory();if(!rows.length){$('validationStatus').textContent='先に「今日の予測を保存」を押してください。';return;}
- $('validationStatus').textContent='最新終値を取得して照合しています…';
- const fresh={};
- await Promise.all(assets.map(async a=>{try{fresh[a.id]=await quote(a.ticker)}catch(e){}}));
- let changed=0;
- for(const r of rows){
-  r.results=r.results||r.forecasts||[];
-  for(const x of r.results){
-   const q=fresh[x.id];if(!q)continue;
-   const firstNextClose=q.series?.find(v=>v.dateISO>x.baseDate);if(!firstNextClose)continue;
-   if(x.actual!==null&&x.actual!==undefined)continue;
-   x.actual=firstNextClose.price;x.actualDate=firstNextClose.dateISO;x.actualUp=x.actual>x.basePrice;
-   x.hit=(x.actualUp&&x.probability>=50)||(!x.actualUp&&x.probability<50);
-   x.basePrice=Number(x.basePrice);changed++;
-  }
- }
- writeHistory(rows);renderValidation();
- $('validationStatus').textContent=changed?'新たに '+changed+'件を検証しました。終値日が基準日より後のデータだけを採用しています。':'新しい確定終値がまだありません。市場休場日・取引時間中・データ未更新の場合は、後でもう一度検証してください。';
-}
+
 
 const assets=[
  {id:'fang',name:'NYSE FANG+（参考）',ticker:'^NYFANG',exp:{us:.22,nasdaq:.34,semi:.42,nvda:.28,fx:.08,rates:-.34,oil:-.14,risk:.22,japan:.02},queries:['FANG+ index technology stocks','Nasdaq AI semiconductor stocks']},
@@ -380,20 +361,6 @@ function fxInterventionRisk(q){
  const pace=(q.day>=.8 ? .10 : 0)+(q.week>=1.8 ? .10 : 0)+(q.technical?.bbPercentB>1 ? .06 : 0)+(smaStretch>.01 ? .05 : 0);
  const score=Math.min(1,base+pace);
  return {score,label:score>=.8?"非常に高い":score>=.6?"高い":score>=.35?"警戒":"通常"};
-}
-async function quote(ticker){
- const url='https://query1.finance.yahoo.com/v8/finance/chart/'+encodeURIComponent(ticker)+'?range=1y&interval=1d';
- const res=await fetch('https://proxy.cors.dev/'+url,{cache:'no-store',credentials:'omit'});if(!res.ok)throw Error('Yahoo proxy HTTP '+res.status+' '+(res.headers.get('X-Cors-Error')||''));
- const j=await res.json(),x=j.chart?.result?.[0];if(!x)throw Error('no result');
- const q=x.indicators.quote[0],pairs=x.timestamp.map((t,i)=>({t,c:q.close[i]})).filter(v=>v.c!=null);
- if(pairs.length<25)throw Error('not enough history');
- const closes=pairs.map(v=>v.c),last=closes.at(-1),prev=closes.at(-2),w=closes.at(-6),m=closes.at(-22);
- const daily=closes.slice(1).map((v,i)=>Math.log(v/closes[i]));
- const vol=Math.sqrt(daily.slice(-20).reduce((s,v)=>s+v*v,0)/Math.min(20,daily.length))*Math.sqrt(252)*100;
- const avg60=closes.slice(-Math.min(60,closes.length)).reduce((s,v)=>s+v,0)/Math.min(60,closes.length);
- const technical=buildTechnicalSeries(closes);
- const series=pairs.map((v,i)=>({dateISO:new Date(v.t*1000).toISOString().slice(0,10),price:v.c,...technical.rows[i]}));
- return {price:last,day:(last/prev-1)*100,week:(last/w-1)*100,month:(last/m-1)*100,vol,avg60,technical:technical.current,series,dateISO:series.at(-1).dateISO,date:new Date(pairs.at(-1).t*1000).toLocaleString('ja-JP')};
 }
 function classify(text){
  const s=text.toLowerCase(),has=a=>a.some(w=>s.includes(w));
@@ -647,15 +614,6 @@ function renderXSignals(data){
   return '<div class="news"><a href="'+esc(p.url)+'" target="_blank" rel="noopener">'+esc(p.title)+'</a><span class="impact">'+esc(p.author)+'｜'+esc(p.sourceClass)+'｜'+trust+'</span><small>'+esc(p.createdAt)+'｜信頼スコア '+Math.round((p.trustScore||p.sourceScore||0)*100)+'%｜独立投稿 '+(p.independentPosts||0)+'件｜'+esc(p.eventType)+'｜'+impact+'</small></div>';
  }).join('');
 }
-async function autoSaveAndValidate(){
- const hour=Number(new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Tokyo',hour:'2-digit',hourCycle:'h23'}).format(new Date()));
- const weekday=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Tokyo',weekday:'short'}).format(new Date());
- if(hour<7||weekday==='Sat'||weekday==='Sun')return;
- if(assets.every(a=>latestQuotes[a.id]))saveTodayForecast();
- if(autoValidationRunning)return;
- autoValidationRunning=true;
- try{await validateSavedForecasts();}finally{autoValidationRunning=false;}
-}
 async function update(){
  $('refresh').disabled=true;$('status').textContent='サーバー側の最新市場データを取得中…';
  try{
@@ -666,6 +624,7 @@ async function update(){
   const generated=Date.parse(snapshot.generatedAt||'');
   const age=Date.now()-generated;
   if(!Number.isFinite(generated)||age<0||age>30*60*1000)throw Error('サーバーデータが30分以上更新されていません');
+  if(snapshot.status==='collecting'||!snapshot.forecasts?.length||!Object.keys(snapshot.quotes||{}).length)throw Error('サーバー側の市場データ収集中です。少し待って再読み込みしてください');
   const quotes=snapshot.quotes||{},unique=snapshot.news||[];
   latestQuotes=quotes;latestNews=unique;latestEarningsCalendar=snapshot.earningsCalendar||null;
   latestXSignals=snapshot.xSignals||null;
@@ -679,13 +638,12 @@ async function update(){
   const count=Object.keys(quotes).length,total=assets.length+indicators.length;
   const stamp=new Date(generated).toLocaleString('ja-JP');
   $('status').textContent='サーバー更新 '+stamp+'｜データ '+count+'/'+total+'｜ニュース '+unique.length+'件｜更新間隔5分（サーバー側）'+(snapshot.status!=='ok'?'｜一部データ不足':'');
-  await autoSaveAndValidate();
  }catch(e){
   $('status').textContent='サーバー更新データを取得できません：'+(e.message||e)+'｜手動更新または次回サーバー更新をお待ちください';
   $('news').innerHTML='<div class="empty">最新のサーバーニュースを取得できません。古い情報を最新として表示しません。</div>';
   console.error(e);
  }finally{$('refresh').disabled=false;}
 }
-$('forecasts').addEventListener('click',e=>{if(e.target.closest('details,a,button'))return;const c=e.target.closest('[data-asset]');if(c)openPriceForecast(c.dataset.asset);});$('dailyScoreBody').addEventListener('click',e=>{const c=e.target.closest('[data-daily-index]');if(c)openDailyScoreDetail(Number(c.dataset.dailyIndex));});$('dailyScoreBody').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-daily-index]');if(c){e.preventDefault();openDailyScoreDetail(Number(c.dataset.dailyIndex));}}});$('forecasts').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-asset]');if(c){e.preventDefault();openPriceForecast(c.dataset.asset);}}});$('closeForecastModal').addEventListener('click',closePriceForecast);$('priceForecastModal').addEventListener('click',e=>{if(e.target.dataset.closeForecast)closePriceForecast();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closePriceForecast();});loadYearEndScenarios();loadUSMarketReview();$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',validateSavedForecasts);renderValidation();loadRemoteHistory();renderMarketSession(true);update();setInterval(autoSaveAndValidate,60000);setInterval(()=>renderMarketSession(),60000);
+$('forecasts').addEventListener('click',e=>{if(e.target.closest('details,a,button'))return;const c=e.target.closest('[data-asset]');if(c)openPriceForecast(c.dataset.asset);});$('dailyScoreBody').addEventListener('click',e=>{const c=e.target.closest('[data-daily-index]');if(c)openDailyScoreDetail(Number(c.dataset.dailyIndex));});$('dailyScoreBody').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-daily-index]');if(c){e.preventDefault();openDailyScoreDetail(Number(c.dataset.dailyIndex));}}});$('forecasts').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-asset]');if(c){e.preventDefault();openPriceForecast(c.dataset.asset);}}});$('closeForecastModal').addEventListener('click',closePriceForecast);$('priceForecastModal').addEventListener('click',e=>{if(e.target.dataset.closeForecast)closePriceForecast();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closePriceForecast();});loadYearEndScenarios();loadUSMarketReview();$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',loadRemoteHistory);renderValidation();loadRemoteHistory();loadYearEndScenarios();loadUSMarketReview();renderMarketSession(true);update();
 </script></body></html>
 <!-- deploy-sync: 2026-11-13 risk model update -->
