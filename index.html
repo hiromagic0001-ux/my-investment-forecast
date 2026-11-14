@@ -483,9 +483,10 @@ function renderAsset(asset,quotes,news,f){
  const reason=[...(f.positives||[]).map(x=>'<li class="good">上昇要因：'+x.name+'</li>'),...(f.negatives||[]).map(x=>'<li class="bad">下落要因：'+x.name+'</li>')];
  if(!reason.length)reason.push('<li class="neutral">方向感を示す材料が不足。中立寄りの推定です。</li>');
  const conf=Math.round((Number(f.quality)||0)*100);
+ const macroScore=Number(f.macroScore)||0,macroLabel=macroScore>.12?'追い風':macroScore<-.12?'逆風':'中立';
  const er=f.earningsRisk||{label:'未確認',pricedInScore:0,events:[]};const earningsLine='<div class="confidence">決算警戒：'+er.label+'｜織り込み代理 '+Math.round((er.pricedInScore||0)*100)+'/100'+(er.events?.length?'｜'+er.events.map(e=>e.symbol).join(', '):'')+'</div>';
  const reasonDetails='<details class="card-detail"><summary>予測の根拠・重要リスクを確認</summary><ul class="reasons">'+reason.join('')+'</ul>'+earningsLine+((f.news||[]).length?'<div class="confidence">関連材料：'+(f.news||[]).slice(0,3).map(n=>esc(n.category)).join(' / ')+'</div>':'')+'</details>';
- return '<article class="card'+(limited?' data-limited':'')+'" data-asset="'+asset.id+'" tabindex="0"><h2>'+asset.name+'</h2><div class="price">'+(own?fmt(own.price):'価格取得不可')+'</div><div class="change">'+(own?'前日比 '+pct(own.day):'最新価格を取得でき次第、予測を更新')+'</div><div class="probrow">'+p+'</div><div class="meter"><i style="width:'+conf+'%"></i></div><div class="confidence">データ充足度 '+conf+'%｜'+(limited?'低信頼・参考値':'参考推定')+'</div>'+reasonDetails+'</article>';
+ return '<article class="card'+(limited?' data-limited':'')+'" data-asset="'+asset.id+'" tabindex="0"><h2>'+asset.name+'</h2><div class="price">'+(own?fmt(own.price):'価格取得不可')+'</div><div class="change">'+(own?'前日比 '+pct(own.day):'最新価格を取得でき次第、予測を更新')+'</div><div class="probrow">'+p+'</div><div class="meter"><i style="width:'+conf+'%"></i></div><div class="confidence">データ充足度 '+conf+'%｜公式マクロ '+(f.macroSignalsUsed||0)+'指標・'+macroLabel+'｜'+(limited?'低信頼・参考値':'参考推定')+'</div>'+reasonDetails+'</article>';
 }
 function renderTechnicalChart(q){
  const rows=(q.series||[]).slice(-90),keys=['price','sma25','sma75','bbUpper','bbLower'];
