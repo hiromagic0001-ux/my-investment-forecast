@@ -459,7 +459,7 @@ function newsSignal(asset,news){
   if(n.category==='oil')rel=asset.id==='fang'?.65:asset.id==='nikkei'?.75:.65;
   if(n.category==='aviation')rel=.08; // 航空管制ニュースは主要指数への直接影響が小さいため低ウェイト
   if(n.cats.includes('global'))rel=.3;
-  const sourceWeight=n.source==="X"?(n.verifiedForSignal?Number(n.trustScore||0):0):1;
+  const sourceWeight=n.source==="X"?(n.verifiedForSignal?Number(n.trustScore||0):0):n.source==="NEWS"?Number(n.sourceWeight||0):1;
   const impact=n.score*rel*sourceWeight;total+=impact;weight+=rel*sourceWeight;
   if(Math.abs(impact)>.12)items.push({text:n.title,impact,category:n.label});
  }
@@ -628,7 +628,7 @@ function renderNews(news){
  if(!news.length)return '<div class="empty">ニュース取得不可。ニュース要因は予測に反映していません。</div>';
  const ranked=[...news].sort((a,b)=>Math.abs(Number(b.score)||0)-Math.abs(Number(a.score)||0));
  const priority=ranked.slice(0,3),rest=ranked.slice(3,18);
- const row=n=>'<details class="news-detail"><summary>'+esc(n.title)+'<span class="impact">'+esc(n.label)+'｜'+(n.score>0?'強気':n.score<0?'弱気':'中立')+'</span></summary><div class="news-detail-body"><small>'+esc(n.date)+'</small><p>'+esc(n.category||'市場材料')+'｜予測への方向性：'+(n.score>0?'上昇方向':n.score<0?'下落方向':'中立')+'</p><a href="'+esc(n.link)+'" target="_blank" rel="noopener">元記事を開く</a></div></details>';
+ const row=n=>'<details class="news-detail"><summary>'+esc(n.title)+'<span class="impact">'+esc(n.label)+'｜'+(n.score>0?'強気':n.score<0?'弱気':'中立')+'</span></summary><div class="news-detail-body"><small>'+esc(n.date)+(n.publisher?'｜情報元 '+esc(n.publisher):'')+'</small><p>'+esc(n.category||'市場材料')+'｜予測への方向性：'+(n.score>0?'上昇方向':n.score<0?'下落方向':'中立')+'</p><a href="'+esc(n.link)+'" target="_blank" rel="noopener">元記事を開く</a></div></details>';
  return '<div class="priority-news"><b>重要度の高いニュース '+priority.length+'件</b>'+priority.map(row).join('')+'</div>'+(rest.length?'<details class="more-news"><summary>その他のニュース '+rest.length+'件</summary>'+rest.map(row).join('')+'</details>':'');
 }
 function renderXSignals(data){
@@ -670,7 +670,7 @@ async function update(){
   if(nr.ok){
    const nd=await nr.json(),age=Date.now()-Date.parse(nd.generatedAt||'');
    if(Array.isArray(nd.items)&&Number.isFinite(age)&&age>=0&&age<36*60*60*1000){
-    const cached=nd.items.map(n=>({...n,source:'NEWS',cats:classify(n.title)}));
+    const cached=nd.items.map(n=>({...n,score:n.signalEligible?n.score:0,source:'NEWS',sourceWeight:Number(n.sourceWeight||0),cats:classify(n.title)}));
     news=[...cached,...news];
     serverNewsStatus='自動収集 '+cached.length+'件（'+new Date(nd.generatedAt).toLocaleString('ja-JP')+'）';
    }else serverNewsStatus='キャッシュが古い／形式不正';
