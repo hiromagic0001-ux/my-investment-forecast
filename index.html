@@ -87,7 +87,7 @@ header p{font-size:13px}
 <body><main>
 <header><h1>AI INVESTMENT FORECAST</h1><p>世界経済の変化を先読みし、資産配分の判断材料を提供</p></header>
 <div class="bar"><span id="status">市場データを確認しています…</span><button id="refresh">最新情報に更新</button></div>
-<section class="panel" id="macroOutlook"><h3>世界経済の先行シグナル｜投資判断ダッシュボード</h3><div id="macroRegime" class="empty">サーバーのマクロ分析を読み込んでいます…</div><div id="macroScenario" class="factorgrid"></div><div id="macroAllocation" class="factorgrid" style="margin-top:8px"></div><div id="macroDrivers" class="factorgrid" style="margin-top:8px"></div><div id="macroLimitations" class="legend"></div></section>
+<section class="panel" id="macroOutlook"><h3>世界経済の先行シグナル｜投資判断ダッシュボード</h3><div id="macroRegime" class="empty">サーバーのマクロ分析を読み込んでいます…</div><div id="macroScenario" class="factorgrid"></div><div id="macroAllocation" class="factorgrid" style="margin-top:8px"></div><div id="macroDrivers" class="factorgrid" style="margin-top:8px"></div><h4>公式マクロ統計（FRED）</h4><div id="macroOfficial" class="factorgrid"></div><div id="macroLimitations" class="legend"></div></section>
 <div class="forecast-heading" id="marketSessionHeading"><b id="marketSessionTitle">日本市場｜翌営業日の予測</b><span id="marketSessionNote">市場時間に合わせて日本市場・米国市場を自動切替</span></div>
 <div class="cards" id="forecasts">
 <article class="card forecast-loading"><h2>NYSE FANG+（参考）</h2><div class="price">予測を計算中</div><div class="change">市場価格・ニュースを取得しています</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>—</b></div></div></article>
@@ -552,7 +552,7 @@ function renderXSignals(data){
   return '<div class="news"><a href="'+esc(p.url)+'" target="_blank" rel="noopener">'+esc(p.title)+'</a><span class="impact">'+esc(p.author)+'｜'+esc(p.sourceClass)+'｜'+trust+'</span><small>'+esc(p.createdAt)+'｜信頼スコア '+Math.round((p.trustScore||p.sourceScore||0)*100)+'%｜独立投稿 '+(p.independentPosts||0)+'件｜'+esc(p.eventType)+'｜'+impact+'</small></div>';
  }).join('');
 }
-function renderMacroOutlook(m){
+function renderMacroOutlook(m,md){
  if(!m||!Array.isArray(m.components)){ $('macroRegime').textContent='マクロ分析データ未取得';return; }
  const color=m.regimeKey==="risk-on"?"good":m.regimeKey==="risk-off"||m.regimeKey==="inflation"?"bad":"neutral";
  $('macroRegime').innerHTML='<b class="'+color+'" style="font-size:18px">'+esc(m.regime)+'</b><div class="legend">市場環境スコア '+(Number(m.score)*100).toFixed(0)+'｜分析充足度 '+Math.round((m.quality||0)*100)+'%｜取得 '+(m.coverage||0)+'指標</div>';
@@ -560,6 +560,7 @@ function renderMacroOutlook(m){
  $('macroAllocation').innerHTML=(m.allocation||[]).map(x=>'<div class="factor"><b>'+esc(x.asset)+'</b><span>'+esc(x.bias)+'</span></div>').join('');
  $('macroDrivers').innerHTML=(m.components||[]).map(x=>'<div class="factor"><b>'+esc(x.label)+'</b><span>'+esc(x.detail)+'｜シグナル '+(x.value*100).toFixed(0)+'</span></div>').join('');
  $('macroLimitations').innerHTML='<b>読み方・注意：</b>'+(m.limitations||[]).map(esc).join('／');
+ $('macroOfficial').innerHTML=(md?.signals||[]).map(x=>'<div class="factor"><b>'+esc(x.label)+'</b><span>'+esc(x.detail)+'｜観測日 '+esc(x.observationDate||'不明')+'</span></div>').join('')||'<div class="legend">公式マクロ統計は未取得です。市場価格だけで景気を断定しません。</div>';
 }
 async function update(){
  $('refresh').disabled=true;$('status').textContent='サーバー側の最新市場データを取得中…';
@@ -575,7 +576,7 @@ async function update(){
   const quotes=snapshot.quotes||{},unique=snapshot.news||[];
   latestQuotes=quotes;latestNews=unique;latestEarningsCalendar=snapshot.earningsCalendar||null;latestForecasts=Object.fromEntries((snapshot.forecasts||[]).map(f=>[f.id,f]));
   latestXSignals=snapshot.xSignals||null;
-  renderMacroOutlook(snapshot.macroOutlook);
+  renderMacroOutlook(snapshot.macroOutlook,snapshot.macroData);
   renderRiskBrief(quotes,unique);
   renderEarningsCalendar(latestEarningsCalendar,quotes);
   renderTechnicalDashboard(quotes);
