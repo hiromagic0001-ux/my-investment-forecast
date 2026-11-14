@@ -23,16 +23,15 @@ jobs:
         run: |
           node --check scripts/news-intelligence.mjs
           node -e 'const d=require("./market-news.json"); if(!d.generatedAt || !Array.isArray(d.items)) throw Error("invalid news cache"); console.log("News cache valid:",d.items.length)'
-      - name: Publish news cache
+      - name: Publish cache on isolated data branch (no app redeploy)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B news-cache
           git add market-news.json
           if git diff --cached --quiet; then
             echo "No news cache changes."
           else
             git commit -m "Refresh global economic news cache"
-            git fetch origin restore-world-market-japan-heatmap
-            git rebase FETCH_HEAD
-            git push origin HEAD:restore-world-market-japan-heatmap
+            git push --force origin news-cache
           fi
