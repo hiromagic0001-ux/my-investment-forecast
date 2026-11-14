@@ -1,5 +1,10 @@
 name: Global economic news collector
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/news-intelligence.yml
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
