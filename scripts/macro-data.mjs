@@ -1,5 +1,14 @@
 import fs from "node:fs/promises";
 
+const CACHE_MAX_AGE_MS=6*60*60*1000;
+try{
+ const cached=JSON.parse(await fs.readFile("macro-data.json","utf8"));
+ const age=Date.now()-Date.parse(cached.generatedAt||"");
+ if(cached.status==="ok"&&Array.isArray(cached.signals)&&cached.signals.length>=6&&age>=0&&age<CACHE_MAX_AGE_MS){
+  console.log(JSON.stringify({status:"cached",signals:cached.signals.length,ageMinutes:Math.round(age/60000)}));
+  process.exit(0);
+ }
+}catch{}
 const series = [
   ["CPIAUCSL","米国CPI","monthly","inflation"],
   ["CPILFESL","米国コアCPI","monthly","inflation"],
