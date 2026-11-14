@@ -52,7 +52,36 @@ const curve=latest("T10Y2Y");if(curve)add("macro_curve","米国イールドカ�
 const hy=latest("BAMLH0A0HYM2");if(hy)add("macro_hy","ハイイールド債信用スプレッド",clamp((4.5-hy.value)/3),`スプレッド ${hy.value.toFixed(2)}%`,"BAMLH0A0HYM2");
 const nf=latest("NFCI");if(nf)add("macro_nfci","米国金融環境指数",clamp(-nf.value/0.7),`指数 ${nf.value.toFixed(3)}`,"NFCI");
 const ten=change("DGS10",63,false);if(ten!==null)add("macro_10y","米国10年金利の約3か月変化",clamp(-ten/1.2),`約3か月 ${ten>=0?"+":""}${ten.toFixed(2)}pt`,"DGS10");
-const result={schemaVersion:1,source:"FRED public data export",generatedAt:new Date().toISOString(),status:error?"degraded":signals.length>=6?"ok":"partial",seriesCount:series.length,signalCount:signals.length,signals,series:series.map(([id,label,frequency,category])=>({id,label,frequency,category,latest:latest(id)})),error};
+
+let oecd={status:"unavailable",source:"OECD Key Short-Term Economic Indicators / Composite Leading Indicators",signals:[],series:[],error:null};
+try{
+ const oecdUrl="https://sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI,4.0/.M.LI...AA...H?startPeriod=2023-01&dimensionAtObservation=AllDimensions&format=csvfile";
+ const response=await fetch(oecdUrl,{headers:{"User-Agent":"Mozilla/5.0 (compatible; MacroResearchBot/1.0)","Accept-Language":"en","Accept":"text/csv"},signal:AbortSignal.timeout(25000)});
+ if(!response.ok)throw new Error("OECD CLI HTTP "+response.status);
+ const lines=(await response.text()).trim().split(/\r?\n/);
+ const headers=csvLine(lines.shift()||"");
+ const ix={area:headers.indexOf("REF_AREA"),period:headers.indexOf("TIME_PERIOD"),value:headers.indexOf("OBS_VALUE")};
+ if(Object.values(ix).some(v=>v<0))throw new Error("OECD CSV schema changed: "+headers.join(","));
+ const wanted={JPN:["日本","macro_cli_JPN"],CHN:["中国","macro_cli_CHN"],EA20:["ユーロ圏","macro_cli_EA"],DEU:["ドイツ","macro_cli_DEU"],GBR:["英国","macro_cli_GBR"]};
+ const rows={};
+ for(const line of lines){
+  const row=csvLine(line),area=row[ix.area],period=row[ix.period],value=Number(row[ix.value]);
+  if(wanted[area]&&period&&Number.isFinite(value)){(rows[area]??=[]).push({date:period,value});}
+ }
+ for(const [area,[name,id]] of Object.entries(wanted)){
+  const a=(rows[area]||[]).sort((x,y)=>x.date.localeCompare(y.date));
+  if(a.length<4)continue;
+  const last=a.at(-1),prior3=a.at(-4),delta=last.value-prior3.value;
+  const score=clamp(delta/0.8);
+  const signal={id,label:name+" 景気先行指数（OECD CLI）",value:score,detail:"CLI "+last.value.toFixed(2)+"｜3か月 "+(delta>=0?"+":"")+delta.toFixed(2)+"pt",source:"OECD",seriesId:"DF_CLI",observationDate:last.date};
+  signals.push(signal);oecd.signals.push(signal);oecd.series.push({area,label:name,latest:last,threeMonthChange:delta});
+ }
+ oecd.status=oecd.signals.length>=2?"ok":"partial";
+ if(!oecd.signals.length)throw new Error("OECD CLI returned no usable target-country observations");
+}catch(e){oecd.error=String(e.message||e);console.log("OECD CLI unavailable (FRED remains primary):",oecd.error);}
+
+const result={schemaVersion:2,source:"FRED public data export + OECD Key Short-Term Economic Indicators",generatedAt:new Date().toISOString(),status:error?"degraded":signals.length>=6?"ok":"partial",seriesCount:series.length+oecd.series.length,signalCount:signals.length,signals,series:[...series.map(([id,label,frequency,category])=>({id,label,frequency,category,latest:latest(id)})),...oecd.series],oecd,error};
+
 await fs.writeFile("macro-data.json",JSON.stringify(result,null,2)+"\n");
 console.log(JSON.stringify({status:result.status,signals:signals.length,series:series.length,error}));
 if(signals.length<6)throw new Error("Insufficient official macro series; refusing to publish a new forecast.");
