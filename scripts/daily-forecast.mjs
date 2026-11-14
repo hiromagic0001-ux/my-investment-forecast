@@ -1,6 +1,8 @@
 import fs from "node:fs/promises";
 import { fetchFreeXSignals } from "./free-x-signals.mjs";
 import { fetchEarningsCalendar } from "./earnings-calendar.mjs";
+let macroData={status:"missing",signals:[],series:[],error:"macro-data.json not found"};
+try{macroData=JSON.parse(await fs.readFile("macro-data.json","utf8"));}catch{}
 
 const assets = [
   {id:"fang",name:"NYSE FANG+（参考）",ticker:"^NYFANG",exp:{us:.22,nasdaq:.34,semi:.42,nvda:.28,fx:.08,rates:-.34,oil:-.14,risk:.22,japan:.02}},
@@ -322,6 +324,7 @@ function buildMacroOutlook(){
  add("gold","金価格・逃避需要 proxy",valid("gold")?clamp(-((q.gold.week*.6+q.gold.month*.4)/8),-1,1):null,.04,valid("gold")?"金 5日 "+q.gold.week.toFixed(2)+"%":"未取得");
  const oil=valid("oil")?q.oil:valid("brent")?q.brent:null;
  add("energy","エネルギー価格圧力",oil?clamp(-((oil.week*.6+oil.month*.4)/8),-1,1):null,.12,oil?"原油 5日 "+oil.week.toFixed(2)+"%":"未取得");
+ for(const s of (macroData.signals||[]))add(s.id,s.label,s.value,.035,(s.detail||"")+"｜官方統計 "+(s.observationDate||"日付不明"));
  const used=components.reduce((s,x)=>s+x.weight,0),score=used?components.reduce((s,x)=>s+x.value*x.weight,0)/used:0;
  const breadth=components.filter(x=>["us","nasdaq","semi"].includes(x.id)),positive=breadth.filter(x=>x.value>.12).length,negative=breadth.filter(x=>x.value<-.12).length;
  const stress=components.find(x=>x.id==="volatility")?.value??0,rates=components.find(x=>x.id==="rates")?.value??0,energy=components.find(x=>x.id==="energy")?.value??0;
@@ -346,6 +349,7 @@ const marketSnapshot={
  quotes,
  forecasts:liveResults,
  macroOutlook,
+ macroData:{status:macroData.status,generatedAt:macroData.generatedAt,signalCount:(macroData.signals||[]).length,signals:macroData.signals||[],series:macroData.series||[],error:macroData.error||null},
  news:signalNews,
  xSignals:{status:xSignals.status,reason:xSignals.reason,attention:xSignals.attention,usage:xSignals.usage,posts:xSignals.posts},
  earningsCalendar,
