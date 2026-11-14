@@ -14,7 +14,7 @@ const indicators = [
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const jstDate=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Tokyo",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 const dayName=new Intl.DateTimeFormat("en-US",{timeZone:"Asia/Tokyo",weekday:"short"}).format(new Date());
-if(["Sat","Sun"].includes(dayName)) process.exit(0);
+// Run on weekends too so server-side quotes/news snapshots remain fresh; daily forecast history is still weekday-only.
 
 function buildTechnicalSeries(closes){
  const mean=a=>a.reduce((s,v)=>s+v,0)/a.length;
@@ -281,6 +281,20 @@ function forecast(a){
  const sigma=(own.vol/Math.sqrt(252))/100,rangePct=Math.max(.003,sigma*1.5*(1+attentionHeat*.2+earningsRisk.score*.8));
  return {id:a.id,name:a.name,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,coverage,newsCoverage,missingFeeds,modelVersion:"2.3.0",source:"GitHub Actions daily model"};
 }
+const liveResults=assets.map(forecast);
+const marketSnapshot={
+ schemaVersion:1,
+ generatedAt:new Date().toISOString(),
+ date:jstDate,
+ status:assets.every(a=>quotes[a.id])?"ok":"partial",
+ quotes,
+ forecasts:liveResults,
+ news:signalNews,
+ xSignals:{status:xSignals.status,reason:xSignals.reason,attention:xSignals.attention,usage:xSignals.usage,posts:xSignals.posts},
+ earningsCalendar,
+ source:"server-side GitHub Actions market collector"
+};
+await fs.writeFile("market-snapshot.json",JSON.stringify(marketSnapshot,null,2)+"\\n");
 const path="forecast-history.json";
 let history=[];
 try{history=JSON.parse(await fs.readFile(path,"utf8"));if(!Array.isArray(history))history=[];}catch{}
@@ -294,7 +308,7 @@ for(const day of history){
   }
  }
 }
-if(!history.some(x=>x.date===jstDate)){
+if(!["Sat","Sun"].includes(dayName)&&!history.some(x=>x.date===jstDate)){
  const results=assets.map(forecast);
  const age=date=>Math.round((Date.parse(jstDate+"T00:00:00Z")-Date.parse(date+"T00:00:00Z"))/86400000);
  const maxAge=dayName==="Mon"?3:1;
