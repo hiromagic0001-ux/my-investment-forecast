@@ -305,7 +305,34 @@ function forecast(a){
  const relatedNews=signalNews.filter(n=>relFor(a,n.category)>0).slice(0,8).map(n=>({title:n.title,category:n.category,score:n.score,link:n.link}));
  return {id:a.id,name:a.name,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",probs:[probability],rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,coverage,newsCoverage,missingFeeds,positives,negatives,news:relatedNews,modelVersion:"2.3.1",source:"GitHub Actions server-side model"};
 }
+function buildMacroOutlook(){
+ const q=quotes, valid=id=>q[id]&&Number.isFinite(q[id].week)&&Number.isFinite(q[id].day);
+ const components=[];
+ const add=(id,label,value,weight,detail)=>{if(Number.isFinite(value))components.push({id,label,value:clamp(value,-1,1),weight,detail});};
+ add("us","米国株トレンド",valid("us")?clamp((q.us.week*.65+q.us.month*.35)/5,-1,1):null,.18,valid("us")?"S&P 500 5日 "+q.us.week.toFixed(2)+"%":"未取得");
+ add("nasdaq","成長株・NASDAQ",valid("nasdaq")?clamp((q.nasdaq.week*.65+q.nasdaq.month*.35)/6,-1,1):null,.16,valid("nasdaq")?"NASDAQ 5日 "+q.nasdaq.week.toFixed(2)+"%":"未取得");
+ add("semi","半導体サイクル",valid("semi")?clamp((q.semi.week*.6+q.semi.month*.4)/8,-1,1):null,.18,valid("semi")?"SOXX 5日 "+q.semi.week.toFixed(2)+"%":"未取得");
+ add("volatility","市場ストレス",valid("risk")?clamp(-((q.risk.price-18)/18)*.65-(q.risk.week/20)*.35,-1,1):null,.16,valid("risk")?"VIX "+q.risk.price.toFixed(1)+"｜5日 "+q.risk.week.toFixed(2)+"%":"未取得");
+ add("rates","金利圧力",valid("rates")?clamp(-((q.rates.price-3.5)/2)*.55-(q.rates.week/1.2)*.45,-1,1):null,.12,valid("rates")?"米10年金利 "+q.rates.price.toFixed(2)+"｜5日 "+q.rates.week.toFixed(2)+"%":"未取得");
+ add("fx","ドル高圧力",valid("fx")?clamp(-((q.fx.week*.6+q.fx.month*.4)/4),-1,1):null,.08,valid("fx")?"ドル円 5日 "+q.fx.week.toFixed(2)+"%":"未取得");
+ const oil=valid("oil")?q.oil:valid("brent")?q.brent:null;
+ add("energy","エネルギー価格圧力",oil?clamp(-((oil.week*.6+oil.month*.4)/8),-1,1):null,.12,oil?"原油 5日 "+oil.week.toFixed(2)+"%":"未取得");
+ const used=components.reduce((s,x)=>s+x.weight,0),score=used?components.reduce((s,x)=>s+x.value*x.weight,0)/used:0;
+ const breadth=components.filter(x=>["us","nasdaq","semi"].includes(x.id)),positive=breadth.filter(x=>x.value>.12).length,negative=breadth.filter(x=>x.value<-.12).length;
+ const stress=components.find(x=>x.id==="volatility")?.value??0,rates=components.find(x=>x.id==="rates")?.value??0,energy=components.find(x=>x.id==="energy")?.value??0;
+ let regime="方向感が定まらない局面",regimeKey="mixed";
+ if(score>.28&&positive>=2&&stress>-.35){regime="景気・リスク選好が優位";regimeKey="risk-on";}
+ else if(score<-.28&&(negative>=2||stress<-.45)){regime="景気減速・リスク回避が優位";regimeKey="risk-off";}
+ else if(energy<-.45&&rates<-.2){regime="インフレ再燃・金利圧力に警戒";regimeKey="inflation";}
+ const raw={soft:Math.max(.05,.42+score*.34+stress*.08),slow:Math.max(.05,.30-score*.28-stress*.10),stag:Math.max(.05,.18-energy*.22-rates*.10)},sum=raw.soft+raw.slow+raw.stag;
+ const scenarios=[{id:"soft",name:"景気軟着陸・リスク選好",probability:Math.round(raw.soft/sum*100)},{id:"slow",name:"景気減速・リスク回避",probability:Math.round(raw.slow/sum*100)},{id:"stag",name:"インフレ再燃・金利上昇",probability:0}];
+ scenarios[2].probability=100-scenarios[0].probability-scenarios[1].probability;
+ const allocation=regimeKey==="risk-on"?[{asset:"成長株・半導体",bias:"相対的に追い風"},{asset:"日本株",bias:"米国株・為替を併せて確認"},{asset:"現金・短期債",bias:"急変への備えは維持"}]:regimeKey==="risk-off"?[{asset:"成長株・半導体",bias:"慎重・急落耐性を優先"},{asset:"日本株",bias:"外需・円相場の影響に注意"},{asset:"現金・短期債",bias:"待機資金の選択肢を重視"}]:regimeKey==="inflation"?[{asset:"成長株・半導体",bias:"金利上昇による評価圧縮に注意"},{asset:"日本株",bias:"円安メリットと輸入コストを比較"},{asset:"資源・エネルギー",bias:"価格上昇の持続性を確認"}]:[{asset:"成長株・半導体",bias:"方向確認まで追いかけ買いを抑制"},{asset:"日本株",bias:"米国株・円相場の確認を優先"},{asset:"現金・短期債",bias:"次の転換に備え選択肢を確保"}];
+ const catalysts=signalNews.filter(n=>Math.abs(Number(n.score||0))>=.3).slice(0,5).map(n=>({title:n.title,category:n.category,score:n.score,link:n.link}));
+ return {generatedAt:new Date().toISOString(),model:"Market Regime v1.0",regime,regimeKey,score:Number(score.toFixed(3)),quality:Number(Math.min(1,used/.92).toFixed(2)),coverage:components.length,components,scenarios,allocation,catalysts,limitations:["市場価格を使った先行シグナルであり、GDP・CPI・PMI・信用スプレッド等の確定マクロ統計を直接代替しません","シナリオ比率は暫定モデル値で、統計的に校正された発生確率ではありません","データ不足時は信頼度を下げ、売買指示ではなく判断材料として表示します"]};
+}
 const liveResults=assets.map(forecast);
+const macroOutlook=buildMacroOutlook();
 const marketSnapshot={
  schemaVersion:1,
  generatedAt:new Date().toISOString(),
@@ -313,6 +340,7 @@ const marketSnapshot={
  status:assets.every(a=>quotes[a.id])?"ok":"partial",
  quotes,
  forecasts:liveResults,
+ macroOutlook,
  news:signalNews,
  xSignals:{status:xSignals.status,reason:xSignals.reason,attention:xSignals.attention,usage:xSignals.usage,posts:xSignals.posts},
  earningsCalendar,
