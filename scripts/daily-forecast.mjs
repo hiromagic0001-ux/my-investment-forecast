@@ -128,7 +128,10 @@ async function newsItems(){
  }
  return all;
 }
-const earningsCalendar=await fetchEarningsCalendar();
+let earningsCalendar;
+try{earningsCalendar=await fetchEarningsCalendar();}
+catch(e){console.log("Earnings calendar unavailable:",String(e));earningsCalendar={asOfDate:jstDate,status:"unavailable",events:[],error:String(e)};}
+if(!Array.isArray(earningsCalendar.events))earningsCalendar.events=[];
 const eventTickers=[...new Set(earningsCalendar.events.map(e=>e.symbol))];
 const quoteJobs=[...indicators.map(async ([id,t])=>[id,await quote(t)]),...assets.map(async a=>[a.id,await quote(a.ticker)]),...eventTickers.map(async ticker=>[ticker,await quote(ticker)])];
 const settled=await Promise.allSettled(quoteJobs),quotes={},errors=[];
@@ -178,7 +181,11 @@ try{
  }
 }catch{}
 const news=[...new Map([...cachedNews,...liveNews].map(n=>[n.link||n.title,n])).values()];
-const xSignals=await fetchFreeXSignals(news);
+let xSignals;
+try{xSignals=await fetchFreeXSignals(news);}
+catch(e){console.log("X signals unavailable:",String(e));xSignals={status:"unavailable",reason:String(e),attention:{posts:0,authors:0,engagement:0,crediblePosts:0},usage:null,posts:[]};}
+if(!Array.isArray(xSignals.posts))xSignals.posts=[];
+if(!xSignals.attention)xSignals.attention={posts:0,authors:0,engagement:0,crediblePosts:0};
 const trustedX=xSignals.posts.filter(p=>p.verifiedForSignal).map(p=>({title:p.title,category:p.category,score:p.impactScore,date:p.createdAt,link:p.url,source:"X",trustScore:p.trustScore,label:"X "+p.sourceClass,verifiedForSignal:true}));
 signalNews=[...news,...trustedX];
 const faaGroundStopNews={title:"【速報】米FAAが全国の航空機地上待機命令を解除。管制通信障害は復旧したが、遅延・欠航の影響は残る見通し",category:"aviation",score:0,date:"2026-11-14T01:55:00.000Z",link:"https://apnews.com/article/f81b0904331dafad6133f291e5f531a8",domain:"apnews.com"};
