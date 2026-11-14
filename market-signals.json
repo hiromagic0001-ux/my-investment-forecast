@@ -1,10 +1,10 @@
 {
   "date": "2026-11-14",
-  "generatedAt": "2026-11-14T02:05:41.402Z",
+  "generatedAt": "2026-11-14T02:06:49.512Z",
   "status": "free-indexed",
   "reason": "",
   "attention": {
-    "posts": 292,
+    "posts": 293,
     "authors": 16,
     "engagement": 0,
     "crediblePosts": 1,
@@ -14,7 +14,7 @@
     "maxPosts": 30,
     "maxDisplay": 30,
     "requests": 3,
-    "searchHits": 292,
+    "searchHits": 293,
     "estimatedUsd": 0,
     "method": "Google News RSSの公開検索インデックス。X公式API不使用。"
   },
@@ -273,11 +273,11 @@
       "rssCorroborated": false
     },
     {
-      "id": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9CNnZnbkRxSFUtWVptTHhxTVU5RFQ4VWRRMW54empRdDVoWUZoV25xNk9nLVY3bTR4OHpNcXM1bGZJVWRkNU5JckNCNk1jSGhDU3J3cHp0UDFyQ3FzRXhGeU1IMjRycFU?oc=5",
+      "id": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5uR25vUVRGR3JnU1VFNGlYUFBYQUJuUHo2N2pMb0E1ejAwR2RwZHQzemJHN2R1MExLMDBTdUdyME5Na19UT2VlVElzbG1rd1RrN2RSSzRTbmpaSm9k?oc=5",
       "title": "イラン、ウクライナの戦争を縛り始めた世界経済の限界 戦争にブレーキをかけたのは「油」だった 《松本 太》 11月第2週、世界は奇妙な静けさの中にある。 10月末に1バレル117ドル台をつけた北海ブレント原油先物は、11月10日には90ドル近辺まで下げた。 7営業日で2割を超え - X",
       "author": "X",
       "createdAt": "Sat, 14 Nov 2026 00:00:12 GMT",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9CNnZnbkRxSFUtWVptTHhxTVU5RFQ4VWRRMW54empRdDVoWUZoV25xNk9nLVY3bTR4OHpNcXM1bGZJVWRkNU5JckNCNk1jSGhDU3J3cHp0UDFyQ3FzRXhGeU1IMjRycFU?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5uR25vUVRGR3JnU1VFNGlYUFBYQUJuUHo2N2pMb0E1ejAwR2RwZHQzemJHN2R1MExLMDBTdUdyME5Na19UT2VlVElzbG1rd1RrN2RSSzRTbmpaSm9k?oc=5",
       "category": "oil",
       "sourceClass": "X関連検索結果・投稿者未確認",
       "sourceScore": 0.35,
@@ -471,7 +471,7 @@
       "eventType": "原油関連・方向未確定",
       "engagement": 0,
       "independentPosts": 0,
-      "copyClusterPosts": 5,
+      "copyClusterPosts": 6,
       "coordinationFlag": true,
       "verifiedForSignal": false,
       "confidence": "同文・類似投稿の集中",
@@ -678,7 +678,7 @@
       "eventType": "原油関連・方向未確定",
       "engagement": 0,
       "independentPosts": 0,
-      "copyClusterPosts": 6,
+      "copyClusterPosts": 7,
       "coordinationFlag": true,
       "verifiedForSignal": false,
       "confidence": "同文・類似投稿の集中",
