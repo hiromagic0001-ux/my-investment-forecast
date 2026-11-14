@@ -131,6 +131,7 @@ async function newsItems(){
 let earningsCalendar;
 try{earningsCalendar=await fetchEarningsCalendar();}
 catch(e){console.log("Earnings calendar unavailable:",String(e));earningsCalendar={asOfDate:jstDate,status:"unavailable",events:[],error:String(e)};}
+if(!earningsCalendar||typeof earningsCalendar!=="object")earningsCalendar={asOfDate:jstDate,status:"unavailable",events:[]};
 if(!Array.isArray(earningsCalendar.events))earningsCalendar.events=[];
 const eventTickers=[...new Set(earningsCalendar.events.map(e=>e.symbol))];
 const quoteJobs=[...indicators.map(async ([id,t])=>[id,await quote(t)]),...assets.map(async a=>[a.id,await quote(a.ticker)]),...eventTickers.map(async ticker=>[ticker,await quote(ticker)])];
@@ -184,6 +185,7 @@ const news=[...new Map([...cachedNews,...liveNews].map(n=>[n.link||n.title,n])).
 let xSignals;
 try{xSignals=await fetchFreeXSignals(news);}
 catch(e){console.log("X signals unavailable:",String(e));xSignals={status:"unavailable",reason:String(e),attention:{posts:0,authors:0,engagement:0,crediblePosts:0},usage:null,posts:[]};}
+if(!xSignals||typeof xSignals!=="object")xSignals={status:"unavailable",reason:"No X signal response",posts:[],attention:{posts:0,authors:0,engagement:0,crediblePosts:0},usage:null};
 if(!Array.isArray(xSignals.posts))xSignals.posts=[];
 if(!xSignals.attention)xSignals.attention={posts:0,authors:0,engagement:0,crediblePosts:0};
 const trustedX=xSignals.posts.filter(p=>p.verifiedForSignal).map(p=>({title:p.title,category:p.category,score:p.impactScore,date:p.createdAt,link:p.url,source:"X",trustScore:p.trustScore,label:"X "+p.sourceClass,verifiedForSignal:true}));
