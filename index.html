@@ -113,7 +113,6 @@ header p{font-size:13px}
  
  <p class="legend">毎営業日7:00（日本時間）にGitHub Actionsが予測を作成し、サーバー公開ファイルへ保存します。翌営業日以降の新しい終値で自動検証します。アプリを閉じていても定期処理されます。端末では市場データの取得・予測計算・終値照合を行わず、起動時にサーバーの最新データを読み込みます。</p>
  <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
-  <button id="saveForecast">今日の予測を手動保存</button>
   <button id="validateForecast" style="background:#26364a;color:#eef4ff;border:1px solid #49617e">サーバー検証結果を再読込</button>
  </div>
  <div id="validationStatus" class="legend">予測記録はまだありません。</div>
@@ -239,27 +238,6 @@ function renderValidation(){
  }).join('')||'<div class="empty">保存された予測はありません。</div>';
  renderDailyScoreboard();
 }
-function saveTodayForecast(){
- const date=jstDate(),rows=readHistory();
- if(rows.some(r=>r.date===date)){ $('validationStatus').textContent='本日の予測はすでに保存されています。重複保存はしません。';return; }
- if(!assets.every(a=>latestQuotes[a.id])){$('validationStatus').textContent='3指数すべての価格が取得できていません。更新後に再度保存してください。';return;}
- const stale=assets.filter(a=>quoteIsStale(latestQuotes[a.id]));
- if(stale.length){$('validationStatus').textContent='価格データが古いため保存を保留しました：'+stale.map(a=>a.name).join('・');return;}
- const weakNews=assets.filter(a=>forecast(a,latestQuotes[a.id],latestQuotes,latestNews).quality<.7||!latestNews.some(n=>n.category==='geo')||!latestNews.some(n=>n.category==='oil'));
- if(weakNews.length){$('validationStatus').textContent='戦争・原油など重要ニュースの取得不足で保存を保留しました。ニュースが揃ってから再計算します。';return;}
- const forecasts=assets.map(a=>{
-  const q=latestQuotes[a.id],f=forecast(a,q,latestQuotes,latestNews);
-  const prob=f.probs[0];
-  const sigma=(q.vol/Math.sqrt(252))/100;
-  const rangePct=Math.max(.003,sigma*1.5);
-  return {id:a.id,name:a.name,basePrice:q.price,baseDate:q.dateISO,probability:prob,direction:prob>=50?'上昇':'下落',rangeLow:q.price*(1-rangePct),rangeHigh:q.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null};
- });
- rows.push({date,savedAt:new Date().toLocaleString('ja-JP'),forecasts,results:forecasts.map(x=>({...x}))});
- writeHistory(rows);renderValidation();
- $('validationStatus').textContent='本日の予測を端末内に保存しました。基準日・基準価格を固定して、後から書き換えません。';
-}
-
-
 const assets=[
  {id:'fang',name:'NYSE FANG+（参考）',ticker:'^NYFANG',exp:{us:.22,nasdaq:.34,semi:.42,nvda:.28,fx:.08,rates:-.34,oil:-.14,risk:.22,japan:.02},queries:['FANG+ index technology stocks','Nasdaq AI semiconductor stocks']},
  {id:'nikkei',name:'日経225',ticker:'^N225',exp:{us:.23,nasdaq:.20,semi:.34,nvda:.10,fx:.32,rates:-.10,oil:-.18,risk:.14,japan:.20},queries:['Japan economy BOJ yen Nikkei','Japan stocks semiconductor exporters']},
@@ -644,6 +622,6 @@ async function update(){
   console.error(e);
  }finally{$('refresh').disabled=false;}
 }
-$('forecasts').addEventListener('click',e=>{if(e.target.closest('details,a,button'))return;const c=e.target.closest('[data-asset]');if(c)openPriceForecast(c.dataset.asset);});$('dailyScoreBody').addEventListener('click',e=>{const c=e.target.closest('[data-daily-index]');if(c)openDailyScoreDetail(Number(c.dataset.dailyIndex));});$('dailyScoreBody').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-daily-index]');if(c){e.preventDefault();openDailyScoreDetail(Number(c.dataset.dailyIndex));}}});$('forecasts').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-asset]');if(c){e.preventDefault();openPriceForecast(c.dataset.asset);}}});$('closeForecastModal').addEventListener('click',closePriceForecast);$('priceForecastModal').addEventListener('click',e=>{if(e.target.dataset.closeForecast)closePriceForecast();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closePriceForecast();});loadYearEndScenarios();loadUSMarketReview();$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',loadRemoteHistory);renderValidation();loadRemoteHistory();loadYearEndScenarios();loadUSMarketReview();renderMarketSession(true);update();
+$('forecasts').addEventListener('click',e=>{if(e.target.closest('details,a,button'))return;const c=e.target.closest('[data-asset]');if(c)openPriceForecast(c.dataset.asset);});$('dailyScoreBody').addEventListener('click',e=>{const c=e.target.closest('[data-daily-index]');if(c)openDailyScoreDetail(Number(c.dataset.dailyIndex));});$('dailyScoreBody').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-daily-index]');if(c){e.preventDefault();openDailyScoreDetail(Number(c.dataset.dailyIndex));}}});$('forecasts').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-asset]');if(c){e.preventDefault();openPriceForecast(c.dataset.asset);}}});$('closeForecastModal').addEventListener('click',closePriceForecast);$('priceForecastModal').addEventListener('click',e=>{if(e.target.dataset.closeForecast)closePriceForecast();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closePriceForecast();});$('refresh').addEventListener('click',update);$('validateForecast').addEventListener('click',loadRemoteHistory);renderValidation();loadRemoteHistory();loadYearEndScenarios();loadUSMarketReview();renderMarketSession(true);update();
 </script></body></html>
 <!-- deploy-sync: 2026-11-13 risk model update -->
