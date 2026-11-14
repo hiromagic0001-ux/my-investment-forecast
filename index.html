@@ -657,45 +657,35 @@ async function autoSaveAndValidate(){
  try{await validateSavedForecasts();}finally{autoValidationRunning=false;}
 }
 async function update(){
- $('refresh').disabled=true;$('status').textContent='市場価格・ニュース・決算日程を収集中…';
- try{const er=await fetch('./earnings-calendar.json?ts='+Date.now(),{cache:'no-store'});if(er.ok)latestEarningsCalendar=await er.json();}catch(e){latestEarningsCalendar=null;}
- const qjobs=[...indicators.map(async x=>{try{return [x.id,await quote(x.ticker)]}catch(e){throw Error(x.name+' ('+x.ticker+'): '+(e.message||e))}}),...assets.map(async x=>{try{return [x.id,await quote(x.ticker)]}catch(e){throw Error(x.name+' ('+x.ticker+'): '+(e.message||e))}})];
- const settled=await Promise.allSettled(qjobs),quotes={},quoteErrors=[];
- settled.forEach(x=>{if(x.status==='fulfilled')quotes[x.value[0]]=x.value[1];else quoteErrors.push(String(x.reason?.message||x.reason))});
- const feedsResult=await Promise.allSettled(feeds.map(loadFeed));
- let news=feedsResult.filter(x=>x.status==='fulfilled').flatMap(x=>x.value);
- let serverNewsStatus='未取得';
+ $('refresh').disabled=true;$('status').textContent='サーバー側の最新市場データを取得中…';
  try{
-  const nr=await fetch('https://raw.githubusercontent.com/hiromagic0001-ux/my-investment-forecast/news-cache/market-news.json?ts='+Date.now(),{cache:'no-store'});
-  if(nr.ok){
-   const nd=await nr.json(),age=Date.now()-Date.parse(nd.generatedAt||'');
-   if(Array.isArray(nd.items)&&Number.isFinite(age)&&age>=0&&age<36*60*60*1000){
-    const cached=nd.items.map(n=>({...n,score:n.signalEligible?n.score:0,source:'NEWS',sourceWeight:Number(n.sourceWeight||0),cats:classify(n.title)}));
-    news=[...cached,...news];
-    serverNewsStatus='自動収集 '+cached.length+'件（'+new Date(nd.generatedAt).toLocaleString('ja-JP')+'）';
-   }else serverNewsStatus='キャッシュが古い／形式不正';
-  }else serverNewsStatus='未公開';
- }catch(e){serverNewsStatus='取得エラー';}
- news=[...new Map(news.map(n=>[n.link||n.title,n])).values()];
- let xSnapshot=null;
- try{const xr=await fetch('./market-signals.json?ts='+Date.now(),{cache:'no-store'});if(xr.ok)xSnapshot=await xr.json();}catch(e){console.warn('X signals unavailable',e)}
- latestXSignals=xSnapshot;
- const xNews=(xSnapshot?.posts||[]).filter(p=>p.verifiedForSignal).map(p=>({title:p.title,link:p.url,date:p.createdAt,category:p.category,label:'X '+p.sourceClass,score:p.impactScore,cats:[],source:'X',trustScore:p.trustScore,verifiedForSignal:true}));
- const manualNews=[{title:'【速報】米FAAが全国の航空機地上待機命令を解除。管制通信障害は復旧したが、遅延・欠航の影響は残る見通し',link:'https://apnews.com/article/f81b0904331dafad6133f291e5f531a8',date:'2026-11-14T10:55:00+09:00',category:'aviation',label:'航空・交通インフラ',score:0,cats:[]}].filter(n=>Date.now()-Date.parse(n.date)<72*60*60*1000);
- const unique=[...new Map([...news,...xNews,...manualNews].map(n=>[n.link,n])).values()];
- latestQuotes=quotes;latestNews=unique;
- renderRiskBrief(quotes,unique);
- renderEarningsCalendar(latestEarningsCalendar,quotes);
- renderTechnicalDashboard(quotes);
- renderMarketSession(true);
- $('indicators').innerHTML=indicators.map(x=>{const q=quotes[x.id];return '<div class="factor"><b>'+x.name+'</b><span>'+(q?fmt(q.price)+' ('+pct(q.week)+' / 5日)':'取得不可')+'</span></div>'}).join('');
- $('news').innerHTML=renderNews(unique);
- $('xSignals').innerHTML=renderXSignals(xSnapshot);
- const count=Object.keys(quotes).length,total=assets.length+indicators.length;
- $('status').textContent='最終更新 '+new Date().toLocaleString('ja-JP')+'｜市場データ '+count+'/'+total+'｜ニュース '+unique.length+'件｜世界ニュース '+serverNewsStatus+(quoteErrors.length?'｜株価取得エラー：'+quoteErrors.slice(0,3).join(' / '):'')+(xSnapshot?'｜X関連検索結果 '+(xSnapshot.posts?.length||0)+'件':'｜X速報未取得');
- $('refresh').disabled=false;
- await autoSaveAndValidate();
+  const url='https://raw.githubusercontent.com/hiromagic0001-ux/my-investment-forecast/news-cache/market-snapshot.json?ts='+Date.now();
+  const response=await fetch(url,{cache:'no-store'});
+  if(!response.ok)throw Error('サーバーデータ未公開（HTTP '+response.status+'）');
+  const snapshot=await response.json();
+  const generated=Date.parse(snapshot.generatedAt||'');
+  const age=Date.now()-generated;
+  if(!Number.isFinite(generated)||age<0||age>30*60*1000)throw Error('サーバーデータが30分以上更新されていません');
+  const quotes=snapshot.quotes||{},unique=snapshot.news||[];
+  latestQuotes=quotes;latestNews=unique;latestEarningsCalendar=snapshot.earningsCalendar||null;
+  latestXSignals=snapshot.xSignals||null;
+  renderRiskBrief(quotes,unique);
+  renderEarningsCalendar(latestEarningsCalendar,quotes);
+  renderTechnicalDashboard(quotes);
+  renderMarketSession(true);
+  $('indicators').innerHTML=indicators.map(x=>{const q=quotes[x.id];return '<div class="factor"><b>'+x.name+'</b><span>'+(q?fmt(q.price)+' ('+pct(q.week)+' / 5日)':'取得不可')+'</span></div>'}).join('');
+  $('news').innerHTML=renderNews(unique);
+  $('xSignals').innerHTML=renderXSignals(snapshot.xSignals||null);
+  const count=Object.keys(quotes).length,total=assets.length+indicators.length;
+  const stamp=new Date(generated).toLocaleString('ja-JP');
+  $('status').textContent='サーバー更新 '+stamp+'｜データ '+count+'/'+total+'｜ニュース '+unique.length+'件｜更新間隔5分（サーバー側）'+(snapshot.status!=='ok'?'｜一部データ不足':'');
+  await autoSaveAndValidate();
+ }catch(e){
+  $('status').textContent='サーバー更新データを取得できません：'+(e.message||e)+'｜手動更新または次回サーバー更新をお待ちください';
+  $('news').innerHTML='<div class="empty">最新のサーバーニュースを取得できません。古い情報を最新として表示しません。</div>';
+  console.error(e);
+ }finally{$('refresh').disabled=false;}
 }
-$('forecasts').addEventListener('click',e=>{if(e.target.closest('details,a,button'))return;const c=e.target.closest('[data-asset]');if(c)openPriceForecast(c.dataset.asset);});$('dailyScoreBody').addEventListener('click',e=>{const c=e.target.closest('[data-daily-index]');if(c)openDailyScoreDetail(Number(c.dataset.dailyIndex));});$('dailyScoreBody').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-daily-index]');if(c){e.preventDefault();openDailyScoreDetail(Number(c.dataset.dailyIndex));}}});$('forecasts').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-asset]');if(c){e.preventDefault();openPriceForecast(c.dataset.asset);}}});$('closeForecastModal').addEventListener('click',closePriceForecast);$('priceForecastModal').addEventListener('click',e=>{if(e.target.dataset.closeForecast)closePriceForecast();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closePriceForecast();});loadYearEndScenarios();loadUSMarketReview();$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',validateSavedForecasts);renderValidation();loadRemoteHistory();renderMarketSession(true);update();setInterval(update,300000);setInterval(autoSaveAndValidate,60000);setInterval(()=>renderMarketSession(),60000);
+$('forecasts').addEventListener('click',e=>{if(e.target.closest('details,a,button'))return;const c=e.target.closest('[data-asset]');if(c)openPriceForecast(c.dataset.asset);});$('dailyScoreBody').addEventListener('click',e=>{const c=e.target.closest('[data-daily-index]');if(c)openDailyScoreDetail(Number(c.dataset.dailyIndex));});$('dailyScoreBody').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-daily-index]');if(c){e.preventDefault();openDailyScoreDetail(Number(c.dataset.dailyIndex));}}});$('forecasts').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-asset]');if(c){e.preventDefault();openPriceForecast(c.dataset.asset);}}});$('closeForecastModal').addEventListener('click',closePriceForecast);$('priceForecastModal').addEventListener('click',e=>{if(e.target.dataset.closeForecast)closePriceForecast();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closePriceForecast();});loadYearEndScenarios();loadUSMarketReview();$('refresh').addEventListener('click',update);$('saveForecast').addEventListener('click',saveTodayForecast);$('validateForecast').addEventListener('click',validateSavedForecasts);renderValidation();loadRemoteHistory();renderMarketSession(true);update();setInterval(autoSaveAndValidate,60000);setInterval(()=>renderMarketSession(),60000);
 </script></body></html>
 <!-- deploy-sync: 2026-11-13 risk model update -->
