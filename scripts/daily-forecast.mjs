@@ -14,6 +14,14 @@ const indicators = [
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const jstDate=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Tokyo",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 const dayName=new Intl.DateTimeFormat("en-US",{timeZone:"Asia/Tokyo",weekday:"short"}).format(new Date());
+// Always publish a fresh, explicit degraded-state heartbeat before external providers run.
+// The completed snapshot below replaces this placeholder when collection succeeds.
+await fs.writeFile("market-snapshot.json",JSON.stringify({
+ schemaVersion:1,generatedAt:new Date().toISOString(),date:jstDate,status:"collecting",
+ quotes:{},forecasts:[],news:[],xSignals:{status:"pending",posts:[]},
+ source:"server-side GitHub Actions market collector",
+ note:"Collection is in progress; this placeholder is not a completed forecast."
+},null,2)+"\n");
 // Run on weekends too so server-side quotes/news snapshots remain fresh; daily forecast history is still weekday-only.
 
 function buildTechnicalSeries(closes){
