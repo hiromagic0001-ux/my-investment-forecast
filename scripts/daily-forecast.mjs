@@ -162,7 +162,16 @@ function earningsRiskForAsset(assetId){
  return {score,pricedInScore:avgPriceIn,label:earningsCalendar.status==="unavailable"?"決算日程データ未取得":score>=.35?"非常に高い":score>=.18?"高い":score>=.07?"注意":relevant.length?"決算予定あり":"通常",
   dataStatus:earningsCalendar.status,events:relevant.map(e=>({symbol:e.symbol,name:e.name,date:e.date,reportTime:e.reportTime,epsForecast:e.epsForecast,estimateCount:e.estimateCount,dayDiff:e.dayDiff,relativeStrength:e.relativeStrength,pricedInScore:e.pricedInScore,risk:e.risk,sourceUrl:e.sourceUrl}))};
 }
-const news=await newsItems();
+const liveNews=await newsItems();
+let cachedNews=[];
+try{
+ const cached=JSON.parse(await fs.readFile("market-news.json","utf8"));
+ const age=Date.now()-Date.parse(cached.generatedAt||"");
+ if(Array.isArray(cached.items)&&Number.isFinite(age)&&age>=0&&age<36*60*60*1000){
+  cachedNews=cached.items.map(n=>({...n,score:n.signalEligible?n.score:0,source:"NEWS",sourceWeight:Number(n.sourceWeight||0)}));
+ }
+}catch{}
+const news=[...new Map([...cachedNews,...liveNews].map(n=>[n.link||n.title,n])).values()];
 const xSignals=await fetchFreeXSignals(news);
 const trustedX=xSignals.posts.filter(p=>p.verifiedForSignal).map(p=>({title:p.title,category:p.category,score:p.impactScore,date:p.createdAt,link:p.url,source:"X",trustScore:p.trustScore,label:"X "+p.sourceClass,verifiedForSignal:true}));
 signalNews=[...news,...trustedX];
@@ -248,7 +257,7 @@ function forecast(a){
   if(shockPenalty>0)parts.push(-shockPenalty);
  }
  let total=0,weight=0;
- for(const n of signalNews){const rel=relFor(a,n.category),sourceWeight=n.source==="X"?(n.verifiedForSignal?Number(n.trustScore||0):0):1;total+=n.score*rel*sourceWeight;weight+=rel*sourceWeight;}
+ for(const n of signalNews){const rel=relFor(a,n.category),sourceWeight=n.source==="X"?(n.verifiedForSignal?Number(n.trustScore||0):0):n.source==="NEWS"?Number(n.sourceWeight||0):1;total+=n.score*rel*sourceWeight;weight+=rel*sourceWeight;}
  const ns=weight?clamp(total/Math.max(2,weight),-1,1):0;
  parts.push(ns*.28);
  const rawScore=clamp(parts.reduce((s,v)=>s+v,0),-.85,.85);
