@@ -264,8 +264,10 @@ function forecast(a){
  const fxRisk=fxInterventionRisk(quotes.fx);
  const earningsRisk=earningsRiskForAsset(a.id);
  const macroWeights=a.id==="fang"
-  ?{macro_cpi:-.25,macro_core_cpi:-.45,macro_unemployment:.25,macro_payrolls:.25,macro_claims:.20,macro_indpro:.18,macro_sentiment:.12,macro_curve:.18,macro_10y:-.25,macro_hy:.35,macro_nfci:.25}
-  :{macro_cpi:-.12,macro_core_cpi:-.20,macro_unemployment:.15,macro_payrolls:.18,macro_claims:.12,macro_indpro:.20,macro_sentiment:.10,macro_curve:.12,macro_10y:-.12,macro_hy:.18,macro_nfci:.15};
+  ?{macro_cpi:-.25,macro_core_cpi:-.45,macro_unemployment:.25,macro_payrolls:.25,macro_claims:.20,macro_indpro:.18,macro_sentiment:.12,macro_curve:.18,macro_10y:-.25,macro_hy:.35,macro_nfci:.25,macro_cli_JPN:.06,macro_cli_CHN:.12,macro_cli_EA:.10,macro_cli_DEU:.06,macro_cli_GBR:.05}
+  :a.id==="nikkei"
+  ?{macro_cpi:-.12,macro_core_cpi:-.20,macro_unemployment:.15,macro_payrolls:.18,macro_claims:.12,macro_indpro:.20,macro_sentiment:.10,macro_curve:.12,macro_10y:-.12,macro_hy:.18,macro_nfci:.15,macro_cli_JPN:.25,macro_cli_CHN:.12,macro_cli_EA:.06,macro_cli_DEU:.04,macro_cli_GBR:.03}
+  :{macro_cpi:-.12,macro_core_cpi:-.20,macro_unemployment:.15,macro_payrolls:.18,macro_claims:.12,macro_indpro:.20,macro_sentiment:.10,macro_curve:.12,macro_10y:-.12,macro_hy:.18,macro_nfci:.15,macro_cli_JPN:.28,macro_cli_CHN:.12,macro_cli_EA:.06,macro_cli_DEU:.04,macro_cli_GBR:.03};
  const macroById=Object.fromEntries((macroData.signals||[]).map(s=>[s.id,s.value]));
  const macroKeys=Object.keys(macroWeights).filter(k=>Number.isFinite(macroById[k]));
  const macroDen=macroKeys.reduce((sum,k)=>sum+Math.abs(macroWeights[k]),0);
