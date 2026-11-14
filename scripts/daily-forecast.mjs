@@ -78,6 +78,7 @@ const feeds=[
  ["ipo","Anthropic IPO index inclusion Nasdaq 100 S&P 500 passive inflows listing pricing demand"],
  ["ipo","Anthropic IPO valuation pricing range bookbuilding oversubscribed delay withdrawal investor demand"],
  ["japan","Japan economy BOJ yen Nikkei stocks"],
+ ["aviation","FAA nationwide ground stop lifted air traffic control communications outage flight delays November 13 2026"],
  ["geo","Iran war"],
  ["geo","Strait of Hormuz"],
  ["geo","Houthi attack"],
@@ -95,6 +96,7 @@ function sentimentFor(title,category){
  }
  const relief=["ceasefire","truce","de-escalation","deescalation","peace deal","talks resume","tensions ease","easing tensions","停戦","和平","緊張緩和","協議再開","攻撃停止"];
  const escalation=["airstrike","air strike","missile attack","tanker hit","tanker attack","pipeline attack","oil facility attack","military escalation","blockade tightened","strait closure","shipping disrupted","attack","attacks","strike","strikes","explosion","explosions","爆発","攻撃","空爆","ミサイル","タンカー被害","石油施設","パイプライン攻撃","封鎖強化","航行停止"];
+ if(category==="aviation")return 0; // 航空管制の復旧は主要指数に対して中立扱い
  if(category==="geo"){
   if(relief.some(w=>s.includes(w)))return .85;
   if(escalation.some(w=>s.includes(w)))return -.9;
@@ -164,6 +166,8 @@ const news=await newsItems();
 const xSignals=await fetchFreeXSignals(news);
 const trustedX=xSignals.posts.filter(p=>p.verifiedForSignal).map(p=>({title:p.title,category:p.category,score:p.impactScore,date:p.createdAt,link:p.url,source:"X",trustScore:p.trustScore,label:"X "+p.sourceClass,verifiedForSignal:true}));
 signalNews=[...news,...trustedX];
+const faaGroundStopNews={title:"【速報】米FAAが全国の航空機地上待機命令を解除。管制通信障害は復旧したが、遅延・欠航の影響は残る見通し",category:"aviation",score:0,date:"2026-11-14T01:55:00.000Z",link:"https://apnews.com/article/f81b0904331dafad6133f291e5f531a8",domain:"apnews.com"};
+if(Date.now()-Date.parse(faaGroundStopNews.date)<72*60*60*1000)signalNews.push(faaGroundStopNews);
 xAttention=xSignals.attention||xAttention;
 await fs.writeFile("market-signals.json",JSON.stringify({date:jstDate,generatedAt:new Date().toISOString(),status:xSignals.status,reason:xSignals.reason,attention:xSignals.attention,usage:xSignals.usage,posts:xSignals.posts},null,2)+"\n");
 function attachEarningsReactions(){
@@ -218,6 +222,7 @@ function relFor(asset,cat){
  if(cat==="rates")return asset.id==="fang"?1:asset.id==="nikkei"?.75:.7;
  if(cat==="japan")return asset.id==="fang"?.15:asset.id==="nikkei"?.8:1;
  if(cat==="geo")return 1.0;if(cat==="oil")return asset.id==="fang"?.65:asset.id==="nikkei"?.75:.65;
+ if(cat==="aviation")return .08;
  return .3;
 }
 function forecast(a){
