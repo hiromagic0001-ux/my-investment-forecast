@@ -24,15 +24,14 @@ jobs:
           fetch-depth: 0
       - name: Collect global economic news
         run: node scripts/news-intelligence.mjs
-      - name: Generate server-side market snapshot
-        continue-on-error: true
+      - name: Generate server-side macro and market snapshot
         run: node scripts/daily-forecast.mjs
       - name: Validate generated data
         run: |
           node --check scripts/news-intelligence.mjs
           node --check scripts/daily-forecast.mjs
           node -e 'const d=require("./market-news.json"); if(!d.generatedAt || !Array.isArray(d.items)) throw Error("invalid news cache"); console.log("News cache valid:",d.items.length)'
-          if [ -f market-snapshot.json ]; then node -e 'const d=require("./market-snapshot.json"); if(!d.generatedAt || !d.quotes || !Array.isArray(d.forecasts)) throw Error("invalid market snapshot"); console.log("Market snapshot valid:",Object.keys(d.quotes).length,"quotes")'; fi
+          node -e 'const d=require("./market-snapshot.json"); if(!d.generatedAt || d.status==="collecting" || Object.keys(d.quotes||{}).length<8 || !Array.isArray(d.forecasts) || d.forecasts.length<3 || !d.macroOutlook || !Array.isArray(d.macroOutlook.components) || d.macroOutlook.components.length<5) throw Error("incomplete market/macro snapshot; refusing to publish"); console.log("Macro snapshot valid:",Object.keys(d.quotes).length,"quotes",d.macroOutlook.components.length,"macro signals")'
       - name: Publish cache on isolated data branch (no app redeploy)
         run: |
           git config user.name "github-actions[bot]"
