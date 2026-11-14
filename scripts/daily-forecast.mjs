@@ -165,9 +165,13 @@ function earningsRiskForAsset(assetId){
 const liveNews=await newsItems();
 let cachedNews=[];
 try{
- const newsResponse=await fetch("https://raw.githubusercontent.com/hiromagic0001-ux/my-investment-forecast/news-cache/market-news.json",{signal:AbortSignal.timeout(12000)});
- if(!newsResponse.ok)throw new Error("news cache HTTP "+newsResponse.status);
- const cached=await newsResponse.json();
+ let cached;
+ try{cached=JSON.parse(await fs.readFile("market-news.json","utf8"));}
+ catch{
+  const newsResponse=await fetch("https://raw.githubusercontent.com/hiromagic0001-ux/my-investment-forecast/news-cache/market-news.json",{signal:AbortSignal.timeout(12000)});
+  if(!newsResponse.ok)throw new Error("news cache HTTP "+newsResponse.status);
+  cached=await newsResponse.json();
+ }
  const age=Date.now()-Date.parse(cached.generatedAt||"");
  if(Array.isArray(cached.items)&&Number.isFinite(age)&&age>=0&&age<36*60*60*1000){
   cachedNews=cached.items.map(n=>({...n,score:n.signalEligible?n.score:0,source:"NEWS",sourceWeight:Number(n.sourceWeight||0)}));
