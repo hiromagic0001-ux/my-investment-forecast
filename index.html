@@ -663,7 +663,20 @@ async function update(){
  const settled=await Promise.allSettled(qjobs),quotes={},quoteErrors=[];
  settled.forEach(x=>{if(x.status==='fulfilled')quotes[x.value[0]]=x.value[1];else quoteErrors.push(String(x.reason?.message||x.reason))});
  const feedsResult=await Promise.allSettled(feeds.map(loadFeed));
- const news=feedsResult.filter(x=>x.status==='fulfilled').flatMap(x=>x.value);
+ let news=feedsResult.filter(x=>x.status==='fulfilled').flatMap(x=>x.value);
+ let serverNewsStatus='未取得';
+ try{
+  const nr=await fetch('./market-news.json?ts='+Date.now(),{cache:'no-store'});
+  if(nr.ok){
+   const nd=await nr.json(),age=Date.now()-Date.parse(nd.generatedAt||'');
+   if(Array.isArray(nd.items)&&Number.isFinite(age)&&age>=0&&age<36*60*60*1000){
+    const cached=nd.items.map(n=>({...n,source:'NEWS',cats:classify(n.title)}));
+    news=[...cached,...news];
+    serverNewsStatus='自動収集 '+cached.length+'件（'+new Date(nd.generatedAt).toLocaleString('ja-JP')+'）';
+   }else serverNewsStatus='キャッシュが古い／形式不正';
+  }else serverNewsStatus='未公開';
+ }catch(e){serverNewsStatus='取得エラー';}
+ news=[...new Map(news.map(n=>[n.link||n.title,n])).values()];
  let xSnapshot=null;
  try{const xr=await fetch('./market-signals.json?ts='+Date.now(),{cache:'no-store'});if(xr.ok)xSnapshot=await xr.json();}catch(e){console.warn('X signals unavailable',e)}
  latestXSignals=xSnapshot;
@@ -679,7 +692,7 @@ async function update(){
  $('news').innerHTML=renderNews(unique);
  $('xSignals').innerHTML=renderXSignals(xSnapshot);
  const count=Object.keys(quotes).length,total=assets.length+indicators.length;
- $('status').textContent='最終更新 '+new Date().toLocaleString('ja-JP')+'｜市場データ '+count+'/'+total+'｜ニュース '+unique.length+'件'+(quoteErrors.length?'｜株価取得エラー：'+quoteErrors.slice(0,3).join(' / '):'')+(xSnapshot?'｜X関連検索結果 '+(xSnapshot.posts?.length||0)+'件':'｜X速報未取得');
+ $('status').textContent='最終更新 '+new Date().toLocaleString('ja-JP')+'｜市場データ '+count+'/'+total+'｜ニュース '+unique.length+'件｜世界ニュース '+serverNewsStatus+(quoteErrors.length?'｜株価取得エラー：'+quoteErrors.slice(0,3).join(' / '):'')+(xSnapshot?'｜X関連検索結果 '+(xSnapshot.posts?.length||0)+'件':'｜X速報未取得');
  $('refresh').disabled=false;
  await autoSaveAndValidate();
 }
