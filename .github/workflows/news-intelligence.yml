@@ -11,7 +11,7 @@ on:
   schedule:
     # Server-side refresh every five minutes; no client-side polling.
     - cron: "*/5 * * * *"
-  workflow_dispatch:
+  workflow_dispatch
 permissions:
   contents: write
 concurrency:
@@ -56,3 +56,4 @@ jobs:
             git commit -m "Refresh global economic news cache"
             git push --force origin news-cache
           fi
+# Trigger the collector from the current deployment branch after the macro-data partial-coverage fix.
