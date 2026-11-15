@@ -5,7 +5,11 @@ on:
       - main
     paths:
       - .github/workflows/news-intelligence.yml
+      - scripts/news-intelligence.mjs
+      - scripts/macro-data.mjs
+      - scripts/daily-forecast.mjs
   schedule:
+    # Server-side refresh every five minutes; no client-side polling.
     - cron: "*/5 * * * *"
   workflow_dispatch:
 permissions:
