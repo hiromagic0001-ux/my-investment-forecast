@@ -1,10 +1,12 @@
 import fs from "node:fs/promises";
 
-const CACHE_MAX_AGE_MS=6*60*60*1000;
+const COMPLETE_CACHE_MAX_AGE_MS=6*60*60*1000;
+const PARTIAL_CACHE_MAX_AGE_MS=60*60*1000;
 try{
  const cached=JSON.parse(await fs.readFile("macro-data.json","utf8"));
  const age=Date.now()-Date.parse(cached.generatedAt||"");
- if(["ok","partial"].includes(cached.status)&&Array.isArray(cached.signals)&&cached.signals.length>=3&&age>=0&&age<CACHE_MAX_AGE_MS){
+ const cacheLimit=cached.status==="ok"?COMPLETE_CACHE_MAX_AGE_MS:PARTIAL_CACHE_MAX_AGE_MS;
+ if(["ok","partial"].includes(cached.status)&&Array.isArray(cached.signals)&&cached.signals.length>=3&&age>=0&&age<cacheLimit){
   console.log(JSON.stringify({status:"cached",signals:cached.signals.length,ageMinutes:Math.round(age/60000)}));
   process.exit(0);
  }
