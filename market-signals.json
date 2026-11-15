@@ -1,10 +1,10 @@
 {
   "date": "2026-11-16",
-  "generatedAt": "2026-11-15T23:09:40.029Z",
+  "generatedAt": "2026-11-15T23:18:49.170Z",
   "status": "free-indexed",
   "reason": "",
   "attention": {
-    "posts": 274,
+    "posts": 276,
     "authors": 9,
     "engagement": 0,
     "crediblePosts": 0,
@@ -14,7 +14,7 @@
     "maxPosts": 30,
     "maxDisplay": 30,
     "requests": 3,
-    "searchHits": 274,
+    "searchHits": 276,
     "estimatedUsd": 0,
     "method": "Google News RSSの公開検索インデックス。X公式API不使用。"
   },
