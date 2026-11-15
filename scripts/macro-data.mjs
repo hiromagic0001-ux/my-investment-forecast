@@ -27,16 +27,27 @@ const series = [
 const clamp=(x,a=-1,b=1)=>Math.max(a,Math.min(b,x));
 const csvLine=line=>{const out=[];let s="",q=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'){if(q&&line[i+1]==='"'){s+='"';i++;}else q=!q;}else if(c===","&&!q){out.push(s);s="";}else s+=c;}out.push(s);return out;};
 const start=new Date();start.setUTCFullYear(start.getUTCFullYear()-5);
-const url="https://fred.stlouisfed.org/graph/fredgraph.csv?id="+series.map(x=>x[0]).join(",")+"&cosd="+start.toISOString().slice(0,10);
-let observations={},error=null;
-try{
- const response=await fetch(url,{headers:{"User-Agent":"Mozilla/5.0 (compatible; MacroResearchBot/1.0)"} ,signal:AbortSignal.timeout(25000)});
- if(!response.ok)throw new Error("FRED CSV HTTP "+response.status);
- const lines=(await response.text()).trim().split(/\r?\n/);
- const headers=csvLine(lines.shift()||"");
- for(const id of headers.slice(1))observations[id]=[];
- for(const line of lines){const row=csvLine(line);if(row.length<2)continue;const date=row[0];for(let i=1;i<headers.length;i++){const v=Number(row[i]);if(Number.isFinite(v))observations[headers[i]]?.push({date,value:v});}}
-}catch(e){error=String(e.message||e);}
+let observations={},fredErrors=[];
+const fredResults=await Promise.allSettled(series.map(async ([id])=>{
+ const url="https://fred.stlouisfed.org/graph/fredgraph.csv?id="+encodeURIComponent(id)+"&cosd="+start.toISOString().slice(0,10);
+ const response=await fetch(url,{headers:{"User-Agent":"Mozilla/5.0 (compatible; MacroResearchBot/1.0)"},signal:AbortSignal.timeout(25000)});
+ if(!response.ok)throw new Error(id+" HTTP "+response.status);
+ const lines=(await response.text()).trim().split(/\\r?\\n/);
+ if(lines.length<2)throw new Error(id+" returned no observations");
+ const header=csvLine(lines.shift()||"");
+ const dateIndex=header.findIndex(v=>/^(observation_date|date)$/i.test(v));
+ const valueIndex=header.findIndex(v=>v===id);
+ if(dateIndex<0||valueIndex<0)throw new Error(id+" CSV columns not recognized: "+header.join(","));
+ const rows=[];
+ for(const line of lines){const row=csvLine(line),value=Number(row[valueIndex]);if(row[dateIndex]&&Number.isFinite(value))rows.push({date:row[dateIndex],value});}
+ if(!rows.length)throw new Error(id+" returned no numeric observations");
+ return [id,rows];
+}));
+for(let i=0;i<fredResults.length;i++){
+ const result=fredResults[i],id=series[i][0];
+ if(result.status==="fulfilled")observations[result.value[0]]=result.value[1];
+ else fredErrors.push(String(result.reason?.message||result.reason));
+}
 const latest=id=>observations[id]?.at(-1)||null;
 const prior=(id,n)=>{const a=observations[id]||[];return a.length>n?a[a.length-1-n]:null;};
 const change=(id,n,percent=false)=>{const a=latest(id),b=prior(id,n);if(!a||!b||!b.value)return null;return percent?(a.value/b.value-1)*100:a.value-b.value;};
@@ -82,7 +93,9 @@ try{
  if(!oecd.signals.length)throw new Error("OECD CLI returned no usable target-country observations");
 }catch(e){oecd.error=String(e.message||e);console.log("OECD CLI unavailable (FRED remains primary):",oecd.error);}
 
-const result={schemaVersion:2,source:"FRED public data export + OECD Key Short-Term Economic Indicators",generatedAt:new Date().toISOString(),status:error?"degraded":signals.length>=6?"ok":"partial",seriesCount:series.length+oecd.series.length,signalCount:signals.length,signals,series:[...series.map(([id,label,frequency,category])=>({id,label,frequency,category,latest:latest(id)})),...oecd.series],oecd,error};
+const fredSuccessCount=Object.keys(observations).length;
+const error=fredSuccessCount===0?fredErrors.join("; "):null;
+const result={schemaVersion:2,source:"FRED public data export (one request per series) + OECD Key Short-Term Economic Indicators",generatedAt:new Date().toISOString(),status:fredSuccessCount===0?"degraded":signals.length>=6?"ok":"partial",seriesCount:series.length+oecd.series.length,signalCount:signals.length,fredSuccessCount,fredErrors,signals,series:[...series.map(([id,label,frequency,category])=>({id,label,frequency,category,latest:latest(id)})),...oecd.series],oecd,error};
 
 await fs.writeFile("macro-data.json",JSON.stringify(result,null,2)+"\n");
 console.log(JSON.stringify({status:result.status,signals:signals.length,series:series.length,error}));
