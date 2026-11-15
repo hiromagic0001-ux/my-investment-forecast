@@ -61,4 +61,4 @@ jobs:
             git commit -m "Refresh global economic news cache"
             git push --force origin news-cache
           fi
-# Trigger a full server-side refresh after independent FRED-series and trusted-news scoring fixes.
+# Trigger a full server-side refresh after restoring the complete macro collector.
