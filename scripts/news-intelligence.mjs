@@ -26,7 +26,7 @@ function field(xml,name){const m=xml.match(new RegExp("<"+name+"(?:\\s[^>]*)?>([
 function sourceWeight(name,link){
  const s=(name+" "+link).toLowerCase();
  if(/federal reserve|bls\.gov|bea\.gov|boj\.or\.jp|ecb\.europa|iea\.org|eia\.gov|imf\.org|worldbank\.org|oecd\.org|treasury\.gov|meti\.go\.jp|stat\.go\.jp/.test(s))return 1;
- if(/reuters|associated press|apnews|bloomberg|financial times|wall street journal|nikkei|cnbc|bbc|nhk/.test(s))return .92;
+ if(/reuters|associated press|apnews|\bap news\b|bloomberg|financial times|wall street journal|\bwsj\b|nikkei|cnbc|bbc|nhk|\biea\b|international energy agency|federal reserve|bureau of labor statistics|\bbls\.gov\b|\bbea\.gov\b|\boecd\b/.test(s))return .92;
  if(/yahoo finance|marketwatch|investing\.com|the economist/.test(s))return .82;
  return .55;
 }
@@ -38,8 +38,8 @@ function classify(id,title){
 }
 function score(title,category){
  const s=title.toLowerCase();
- const positive=["ceasefire","peace deal","tensions ease","rate cut","inflation cools","inflation slows","jobs growth","strong demand","earnings beat","upgrade","stimulus","利下げ","インフレ鈍化","停戦","緊張緩和","需要増","上方修正","景気回復"];
- const negative=["attack","airstrike","missile","sanction","war escalates","oil disruption","inflation rises","hot inflation","rate hike","recession","default","bank failure","downgrade","layoffs","tariff hike","急騰するインフレ","インフレ加速","利上げ","景気後退","銀行破綻","攻撃","制裁","供給障害","関税引き上げ"];
+ const positive=["ceasefire","peace deal","tensions ease","rate cut","inflation cools","inflation slows","cooler inflation","inflation falls","yields fall","yield falls","jobs growth","strong demand","earnings beat","beat estimates","revenue beat","upgrade","stimulus","oil supply increases","supply restored","利下げ","インフレ鈍化","物価鈍化","停戦","緊張緩和","需要増","上方修正","景気回復"];
+ const negative=["attack","airstrike","missile","sanction","war escalates","oil disruption","supply disruption","hot inflation","hotter inflation","inflation surge","inflation accelerates","producer-price surge","rate hike","hike fully on the table","yields jump","yield surge","recession","default","bank failure","downgrade","layoffs","tariff hike","oil supply cut","shipping disrupted","急騰するインフレ","インフレ加速","物価上昇加速","利上げ","金利急騰","景気後退","銀行破綻","攻撃","制裁","供給障害","関税引き上げ"];
  const p=positive.filter(w=>s.includes(w)).length,n=negative.filter(w=>s.includes(w)).length;
  let v=clamp((p-n)*.38,-.76,.76);
  if(category==="geo"&&/iran|hormuz|houthi|war|missile|attack|タンカー|ホルムズ|イラン|攻撃/.test(s)&&!positive.some(w=>s.includes(w)))v=Math.min(v,-.35);
