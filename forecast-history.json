@@ -56,5 +56,1363 @@
       }
     ],
     "newsCount": 5
+  },
+  {
+    "date": "2026-11-16",
+    "savedAt": "2026-11-15T22:18:23.050Z",
+    "modelVersion": "2.3.0",
+    "fxInterventionRisk": {
+      "score": 0.82,
+      "label": "非常に高い"
+    },
+    "earningsCalendarStatus": "ok",
+    "earningsRisk": [
+      {
+        "id": "fang",
+        "score": 0.06999999999999999,
+        "pricedInScore": 0,
+        "label": "決算予定あり",
+        "dataStatus": "ok",
+        "events": [
+          {
+            "symbol": "NVDA",
+            "name": "NVIDIA Corporation",
+            "date": "2026-11-17",
+            "reportTime": "time-after-hours",
+            "epsForecast": 2.49,
+            "estimateCount": 13,
+            "dayDiff": 2,
+            "relativeStrength": -19.130783588341785,
+            "pricedInScore": 0,
+            "risk": 0.06999999999999999,
+            "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/earnings"
+          }
+        ]
+      },
+      {
+        "id": "nikkei",
+        "score": 0.01925,
+        "pricedInScore": 0,
+        "label": "決算予定あり",
+        "dataStatus": "ok",
+        "events": [
+          {
+            "symbol": "NVDA",
+            "name": "NVIDIA Corporation",
+            "date": "2026-11-17",
+            "reportTime": "time-after-hours",
+            "epsForecast": 2.49,
+            "estimateCount": 13,
+            "dayDiff": 2,
+            "relativeStrength": -19.130783588341785,
+            "pricedInScore": 0,
+            "risk": 0.01925,
+            "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/earnings"
+          }
+        ]
+      },
+      {
+        "id": "topix",
+        "score": 0.01575,
+        "pricedInScore": 0,
+        "label": "決算予定あり",
+        "dataStatus": "ok",
+        "events": [
+          {
+            "symbol": "NVDA",
+            "name": "NVIDIA Corporation",
+            "date": "2026-11-17",
+            "reportTime": "time-after-hours",
+            "epsForecast": 2.49,
+            "estimateCount": 13,
+            "dayDiff": 2,
+            "relativeStrength": -19.130783588341785,
+            "pricedInScore": 0,
+            "risk": 0.01575,
+            "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/earnings"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "id": "fang",
+        "name": "NYSE FANG+（参考）",
+        "macroScore": 0,
+        "macroSignalsUsed": 0,
+        "basePrice": 17396.76953125,
+        "baseDate": "2026-11-13",
+        "technical": {
+          "sma5": 17437.523828125,
+          "sma25": 18132.64453125,
+          "sma75": 18543.616614583334,
+          "sma200": 16975.56480957031,
+          "bbMiddle": 17864.85478515625,
+          "bbUpper": 19119.509581332786,
+          "bbLower": 16610.199988979715,
+          "bbPercentB": 0.3134605409660471,
+          "bbWidth": 14.046067670463428,
+          "bbWidthPercentile": 0.8166666666666667,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.39999999999999997
+        },
+        "fxInterventionRisk": {
+          "score": 0.82,
+          "label": "非常に高い"
+        },
+        "earningsRisk": {
+          "score": 0.06999999999999999,
+          "pricedInScore": 0,
+          "label": "決算予定あり",
+          "dataStatus": "ok",
+          "events": [
+            {
+              "symbol": "NVDA",
+              "name": "NVIDIA Corporation",
+              "date": "2026-11-17",
+              "reportTime": "time-after-hours",
+              "epsForecast": 2.49,
+              "estimateCount": 13,
+              "dayDiff": 2,
+              "relativeStrength": -19.130783588341785,
+              "pricedInScore": 0,
+              "risk": 0.06999999999999999,
+              "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/earnings"
+            }
+          ]
+        },
+        "probability": 52.6,
+        "direction": "上昇",
+        "probs": [
+          52.6
+        ],
+        "rangeLow": 16822.277619713554,
+        "rangeHigh": 17971.261442786446,
+        "actual": null,
+        "actualUp": null,
+        "actualDate": null,
+        "hit": null,
+        "quality": 0.8341555200000002,
+        "score": 0.17939506630462027,
+        "coverage": 1,
+        "newsCoverage": 0.8999999999999999,
+        "missingFeeds": [
+          "japan"
+        ],
+        "positives": [
+          {
+            "name": "上昇要因 1",
+            "value": 0.24
+          },
+          {
+            "name": "上昇要因 2",
+            "value": 0.0549507398155381
+          },
+          {
+            "name": "上昇要因 3",
+            "value": 0.06599937522779425
+          },
+          {
+            "name": "上昇要因 4",
+            "value": 0.17639999999999997
+          },
+          {
+            "name": "上昇要因 5",
+            "value": 0.1428
+          },
+          {
+            "name": "上昇要因 6",
+            "value": 0.0924
+          }
+        ],
+        "negatives": [
+          {
+            "name": "下落要因 1",
+            "value": -0.18
+          },
+          {
+            "name": "下落要因 2",
+            "value": -0.072
+          },
+          {
+            "name": "下落要因 3",
+            "value": -0.11760000000000001
+          },
+          {
+            "name": "下落要因 4",
+            "value": -0.09847753664625084
+          },
+          {
+            "name": "下落要因 5",
+            "value": -0.05439709872340491
+          },
+          {
+            "name": "下落要因 6",
+            "value": -0.0718830703012913
+          }
+        ],
+        "news": [
+          {
+            "title": "US December FOMC, expectations for 0.5% rate hike rise｜大橋ひろこ - note",
+            "category": "rates",
+            "score": 0.45,
+            "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1HM2lrXzFmZnlmMVdKRzJOaW5NTDNzcU94ZmdaU1R3cXZ5U3BTRVNKd0V0VFJYaU5YT0U1b1AzNHB6d0MwNmYtVk9FU3lra293SHVVemJRXzRCX2tjOTI5U09R?oc=5"
+          },
+          {
+            "title": "今日のFX予想：ドル円一時160円乗せ ドル高地合いが続く？ 2026/11/13 - 外為どっとコム",
+            "category": "rates",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9QSGlMZzJOZGlqNE1XY3dCWmRfY096OW1JLWJZZzctc3M2TnBJbTUtdWJrZHpnTEw5VHFiVUg2T0F6RDVaYjc2SVZDckdWbm4tM0NmbUFYYnVsRE10S3F1U2MyMA?oc=5"
+          },
+          {
+            "title": "Wall St ends lower as hot inflation data fuels interest rate worries - Reuters",
+            "category": "rates",
+            "score": -0.45,
+            "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE84MW5wcHJDWnVhNEw0VjBwSHlVaVdFS0tPMXROR19ZUWdwcVFvc3d0bVBaX2RPSEx0d3Y5c0UwcDc3ckxsMllKZnFEZkdoX3lVTk1vVVdwQ3ZtSm9sZ2xIc0t5ZnJIY1Vud2JZTGlRMHlGdTRNVVJHS2pIWXhTdw?oc=5"
+          },
+          {
+            "title": "The U.S. October CPI data and comments by Fed Governor Waller led markets to price in a significant rate hike in December, triggering a rebound in the dollar to JPY 158.85 and $1.1146. - 富途牛牛",
+            "category": "rates",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQWWxsQUJtNVpvd1BGdW5scW91bUExYjBVcUpmNXhISDBCQ0h6SXJ3RVdFdlZpVlYyc1FIM3pxQzJzSU9ZTk9nRUJhSDdFeGtxamFvVWVjLU5EdWU1Y0M0OUhzVkRKR0FyRVloUHRHNnNqaG9EdGRBNmdYaVdEbTF1eUVFckNmVXRMajJnNnBBMlVYV1BMNGNNXzUzbw?oc=5"
+          },
+          {
+            "title": "USD/JPY Breaks Above Range, Approaches 160 Yen｜大橋ひろこ - note",
+            "category": "rates",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBDWmVfX0RjOUVEWkYzbmdvVENBV1J3cTl6akRkdElmSWxKWHlNZF9CQjR5NWViZGh6ekt4MTdIVk81ZndKYkRKQXdRX2ZGR19JMEtta0dic3NqcDZiMUNlTk9n?oc=5"
+          },
+          {
+            "title": "Beyond the $330 Billion Nvidia Wipeout: Why Jensen Huang’s Governance Crisis and SpaceX’s “Terafab” Create a Generational Buying Opportunity in Japanese Semiconductor Stocks - さっつーのAIエージェント",
+            "category": "tech",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPODA1UnFTRy1KbzRTMDZEdzVkRW9rRGxhRFM3dVMzcnAwQUJWamE3Vk1OMU5QVUlIWFQ2MGNSYzZaQXFTRWtzR0hYZFE1X1A3QnZpU29XV0tnQ1d3OGZqOHF6S1NkeVpINkp4Vy1HVDk0bzJHSV9pcmlWdkF4cUQ2eHlLRDI5UmJ0X2N5X0cxWVVrRzlQOEY0Mm9BX1g0dUJ2Uk5KN0huTk5tVWxRZmc?oc=5"
+          },
+          {
+            "title": "トランプ氏、イラン戦争に「我々は勝った」と発言 退役軍人の日の式典で - BBC",
+            "category": "geo",
+            "score": -0.35,
+            "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFAwaVZhaUVjTU03Y25xOFEzZnZGVG56aXZoWTRuU29OdDU5MllKRWNWRXRHd1JuWXI5dE15eGduMHBBdUNLZ2xaeDNRSjR3eUlYNXIxRnBsT3dHME5O?oc=5"
+          },
+          {
+            "title": "Trump defends Iran war in Veterans Day address - 時事通信ニュース",
+            "category": "geo",
+            "score": -0.35,
+            "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5BaGtub2U1VHAyU1JjTHAtUlNUX1k2YVNRc0VfRjFFdldLN3k4QUt0Q2w0RGRJWURfbVVPcWR2WGl2MVFQb0pQWlNpMVlSRkhHN2c?oc=5"
+          }
+        ],
+        "modelVersion": "2.3.1",
+        "source": "GitHub Actions server-side model"
+      },
+      {
+        "id": "nikkei",
+        "name": "日経225",
+        "macroScore": 0,
+        "macroSignalsUsed": 0,
+        "basePrice": 61142.3515625,
+        "baseDate": "2026-11-13",
+        "technical": {
+          "sma5": 60489.07578125,
+          "sma25": 63445.990625,
+          "sma75": 65028.35104166667,
+          "sma200": 62128.7680078125,
+          "bbMiddle": 62406.4486328125,
+          "bbUpper": 66438.80962475401,
+          "bbLower": 58374.08764087099,
+          "bbPercentB": 0.343255964329739,
+          "bbWidth": 12.922898451303148,
+          "bbWidthPercentile": 0.5333333333333333,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6000000000000001
+        },
+        "fxInterventionRisk": {
+          "score": 0.82,
+          "label": "非常に高い"
+        },
+        "earningsRisk": {
+          "score": 0.01925,
+          "pricedInScore": 0,
+          "label": "決算予定あり",
+          "dataStatus": "ok",
+          "events": [
+            {
+              "symbol": "NVDA",
+              "name": "NVIDIA Corporation",
+              "date": "2026-11-17",
+              "reportTime": "time-after-hours",
+              "epsForecast": 2.49,
+              "estimateCount": 13,
+              "dayDiff": 2,
+              "relativeStrength": -19.130783588341785,
+              "pricedInScore": 0,
+              "risk": 0.01925,
+              "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/earnings"
+            }
+          ]
+        },
+        "probability": 51.9,
+        "direction": "上昇",
+        "probs": [
+          51.9
+        ],
+        "rangeLow": 59261.32616459921,
+        "rangeHigh": 63023.37696040079,
+        "actual": null,
+        "actualUp": null,
+        "actualDate": null,
+        "hit": null,
+        "quality": 0.7866459144192001,
+        "score": 0.143165824566971,
+        "coverage": 1,
+        "newsCoverage": 0.8999999999999999,
+        "missingFeeds": [
+          "japan"
+        ],
+        "positives": [
+          {
+            "name": "上昇要因 1",
+            "value": 0.24
+          },
+          {
+            "name": "上昇要因 2",
+            "value": 0.057448500716244376
+          },
+          {
+            "name": "上昇要因 3",
+            "value": 0.038823161898702496
+          },
+          {
+            "name": "上昇要因 4",
+            "value": 0.1428
+          },
+          {
+            "name": "上昇要因 5",
+            "value": 0.042
+          },
+          {
+            "name": "上昇要因 6",
+            "value": 0.058800000000000005
+          },
+          {
+            "name": "上昇要因 7",
+            "value": 0.084
+          }
+        ],
+        "negatives": [
+          {
+            "name": "下落要因 1",
+            "value": -0.18
+          },
+          {
+            "name": "下落要因 2",
+            "value": -0.10800000000000001
+          },
+          {
+            "name": "下落要因 3",
+            "value": -0.09839999999999999
+          },
+          {
+            "name": "下落要因 4",
+            "value": -0.042
+          },
+          {
+            "name": "下落要因 5",
+            "value": -0.03517054880223244
+          },
+          {
+            "name": "下落要因 6",
+            "value": -0.07354135893648452
+          }
+        ],
+        "news": [
+          {
+            "title": "US December FOMC, expectations for 0.5% rate hike rise｜大橋ひろこ - note",
+            "category": "rates",
+            "score": 0.45,
+            "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1HM2lrXzFmZnlmMVdKRzJOaW5NTDNzcU94ZmdaU1R3cXZ5U3BTRVNKd0V0VFJYaU5YT0U1b1AzNHB6d0MwNmYtVk9FU3lra293SHVVemJRXzRCX2tjOTI5U09R?oc=5"
+          },
+          {
+            "title": "今日のFX予想：ドル円一時160円乗せ ドル高地合いが続く？ 2026/11/13 - 外為どっとコム",
+            "category": "rates",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9QSGlMZzJOZGlqNE1XY3dCWmRfY096OW1JLWJZZzctc3M2TnBJbTUtdWJrZHpnTEw5VHFiVUg2T0F6RDVaYjc2SVZDckdWbm4tM0NmbUFYYnVsRE10S3F1U2MyMA?oc=5"
+          },
+          {
+            "title": "Wall St ends lower as hot inflation data fuels interest rate worries - Reuters",
+            "category": "rates",
+            "score": -0.45,
+            "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE84MW5wcHJDWnVhNEw0VjBwSHlVaVdFS0tPMXROR19ZUWdwcVFvc3d0bVBaX2RPSEx0d3Y5c0UwcDc3ckxsMllKZnFEZkdoX3lVTk1vVVdwQ3ZtSm9sZ2xIc0t5ZnJIY1Vud2JZTGlRMHlGdTRNVVJHS2pIWXhTdw?oc=5"
+          },
+          {
+            "title": "The U.S. October CPI data and comments by Fed Governor Waller led markets to price in a significant rate hike in December, triggering a rebound in the dollar to JPY 158.85 and $1.1146. - 富途牛牛",
+            "category": "rates",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQWWxsQUJtNVpvd1BGdW5scW91bUExYjBVcUpmNXhISDBCQ0h6SXJ3RVdFdlZpVlYyc1FIM3pxQzJzSU9ZTk9nRUJhSDdFeGtxamFvVWVjLU5EdWU1Y0M0OUhzVkRKR0FyRVloUHRHNnNqaG9EdGRBNmdYaVdEbTF1eUVFckNmVXRMajJnNnBBMlVYV1BMNGNNXzUzbw?oc=5"
+          },
+          {
+            "title": "USD/JPY Breaks Above Range, Approaches 160 Yen｜大橋ひろこ - note",
+            "category": "rates",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBDWmVfX0RjOUVEWkYzbmdvVENBV1J3cTl6akRkdElmSWxKWHlNZF9CQjR5NWViZGh6ekt4MTdIVk81ZndKYkRKQXdRX2ZGR19JMEtta0dic3NqcDZiMUNlTk9n?oc=5"
+          },
+          {
+            "title": "Beyond the $330 Billion Nvidia Wipeout: Why Jensen Huang’s Governance Crisis and SpaceX’s “Terafab” Create a Generational Buying Opportunity in Japanese Semiconductor Stocks - さっつーのAIエージェント",
+            "category": "tech",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPODA1UnFTRy1KbzRTMDZEdzVkRW9rRGxhRFM3dVMzcnAwQUJWamE3Vk1OMU5QVUlIWFQ2MGNSYzZaQXFTRWtzR0hYZFE1X1A3QnZpU29XV0tnQ1d3OGZqOHF6S1NkeVpINkp4Vy1HVDk0bzJHSV9pcmlWdkF4cUQ2eHlLRDI5UmJ0X2N5X0cxWVVrRzlQOEY0Mm9BX1g0dUJ2Uk5KN0huTk5tVWxRZmc?oc=5"
+          },
+          {
+            "title": "トランプ氏、イラン戦争に「我々は勝った」と発言 退役軍人の日の式典で - BBC",
+            "category": "geo",
+            "score": -0.35,
+            "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFAwaVZhaUVjTU03Y25xOFEzZnZGVG56aXZoWTRuU29OdDU5MllKRWNWRXRHd1JuWXI5dE15eGduMHBBdUNLZ2xaeDNRSjR3eUlYNXIxRnBsT3dHME5O?oc=5"
+          },
+          {
+            "title": "Trump defends Iran war in Veterans Day address - 時事通信ニュース",
+            "category": "geo",
+            "score": -0.35,
+            "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5BaGtub2U1VHAyU1JjTHAtUlNUX1k2YVNRc0VfRjFFdldLN3k4QUt0Q2w0RGRJWURfbVVPcWR2WGl2MVFQb0pQWlNpMVlSRkhHN2c?oc=5"
+          }
+        ],
+        "modelVersion": "2.3.1",
+        "source": "GitHub Actions server-side model"
+      },
+      {
+        "id": "topix",
+        "name": "TOPIX（1306連動ETF参考）",
+        "macroScore": 0,
+        "macroSignalsUsed": 0,
+        "basePrice": 415.5,
+        "baseDate": "2026-11-13",
+        "technical": {
+          "sma5": 411.25999755859374,
+          "sma25": 418.8319982910156,
+          "sma75": 423.66266560872396,
+          "sma200": 406.8603991699219,
+          "bbMiddle": 416.1999984741211,
+          "bbUpper": 433.4587323293986,
+          "bbLower": 398.94126461884366,
+          "bbPercentB": 0.47972045690051973,
+          "bbWidth": 8.293480979601966,
+          "bbWidthPercentile": 0.9166666666666666,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.39999999999999997
+        },
+        "fxInterventionRisk": {
+          "score": 0.82,
+          "label": "非常に高い"
+        },
+        "earningsRisk": {
+          "score": 0.01575,
+          "pricedInScore": 0,
+          "label": "決算予定あり",
+          "dataStatus": "ok",
+          "events": [
+            {
+              "symbol": "NVDA",
+              "name": "NVIDIA Corporation",
+              "date": "2026-11-17",
+              "reportTime": "time-after-hours",
+              "epsForecast": 2.49,
+              "estimateCount": 13,
+              "dayDiff": 2,
+              "relativeStrength": -19.130783588341785,
+              "pricedInScore": 0,
+              "risk": 0.01575,
+              "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/earnings"
+            }
+          ]
+        },
+        "probability": 53.4,
+        "direction": "上昇",
+        "probs": [
+          53.4
+        ],
+        "rangeLow": 403.47016247558105,
+        "rangeHigh": 427.52983752441895,
+        "actual": null,
+        "actualUp": null,
+        "actualDate": null,
+        "hit": null,
+        "quality": 0.7871432245248001,
+        "score": 0.2505720572195146,
+        "coverage": 1,
+        "newsCoverage": 0.8999999999999999,
+        "missingFeeds": [
+          "japan"
+        ],
+        "positives": [
+          {
+            "name": "上昇要因 1",
+            "value": 0.24
+          },
+          {
+            "name": "上昇要因 2",
+            "value": 0.0672
+          },
+          {
+            "name": "上昇要因 3",
+            "value": 0.042
+          },
+          {
+            "name": "上昇要因 4",
+            "value": 0.0546
+          },
+          {
+            "name": "上昇要因 5",
+            "value": 0.1344
+          }
+        ],
+        "negatives": [
+          {
+            "name": "下落要因 1",
+            "value": -0.09420018824244639
+          },
+          {
+            "name": "下落要因 2",
+            "value": -0.072
+          },
+          {
+            "name": "下落要因 3",
+            "value": -0.06559999999999999
+          },
+          {
+            "name": "下落要因 4",
+            "value": -0.07804127725856702
+          }
+        ],
+        "news": [
+          {
+            "title": "US December FOMC, expectations for 0.5% rate hike rise｜大橋ひろこ - note",
+            "category": "rates",
+            "score": 0.45,
+            "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1HM2lrXzFmZnlmMVdKRzJOaW5NTDNzcU94ZmdaU1R3cXZ5U3BTRVNKd0V0VFJYaU5YT0U1b1AzNHB6d0MwNmYtVk9FU3lra293SHVVemJRXzRCX2tjOTI5U09R?oc=5"
+          },
+          {
+            "title": "今日のFX予想：ドル円一時160円乗せ ドル高地合いが続く？ 2026/11/13 - 外為どっとコム",
+            "category": "rates",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9QSGlMZzJOZGlqNE1XY3dCWmRfY096OW1JLWJZZzctc3M2TnBJbTUtdWJrZHpnTEw5VHFiVUg2T0F6RDVaYjc2SVZDckdWbm4tM0NmbUFYYnVsRE10S3F1U2MyMA?oc=5"
+          },
+          {
+            "title": "Wall St ends lower as hot inflation data fuels interest rate worries - Reuters",
+            "category": "rates",
+            "score": -0.45,
+            "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE84MW5wcHJDWnVhNEw0VjBwSHlVaVdFS0tPMXROR19ZUWdwcVFvc3d0bVBaX2RPSEx0d3Y5c0UwcDc3ckxsMllKZnFEZkdoX3lVTk1vVVdwQ3ZtSm9sZ2xIc0t5ZnJIY1Vud2JZTGlRMHlGdTRNVVJHS2pIWXhTdw?oc=5"
+          },
+          {
+            "title": "The U.S. October CPI data and comments by Fed Governor Waller led markets to price in a significant rate hike in December, triggering a rebound in the dollar to JPY 158.85 and $1.1146. - 富途牛牛",
+            "category": "rates",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQWWxsQUJtNVpvd1BGdW5scW91bUExYjBVcUpmNXhISDBCQ0h6SXJ3RVdFdlZpVlYyc1FIM3pxQzJzSU9ZTk9nRUJhSDdFeGtxamFvVWVjLU5EdWU1Y0M0OUhzVkRKR0FyRVloUHRHNnNqaG9EdGRBNmdYaVdEbTF1eUVFckNmVXRMajJnNnBBMlVYV1BMNGNNXzUzbw?oc=5"
+          },
+          {
+            "title": "USD/JPY Breaks Above Range, Approaches 160 Yen｜大橋ひろこ - note",
+            "category": "rates",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBDWmVfX0RjOUVEWkYzbmdvVENBV1J3cTl6akRkdElmSWxKWHlNZF9CQjR5NWViZGh6ekt4MTdIVk81ZndKYkRKQXdRX2ZGR19JMEtta0dic3NqcDZiMUNlTk9n?oc=5"
+          },
+          {
+            "title": "Beyond the $330 Billion Nvidia Wipeout: Why Jensen Huang’s Governance Crisis and SpaceX’s “Terafab” Create a Generational Buying Opportunity in Japanese Semiconductor Stocks - さっつーのAIエージェント",
+            "category": "tech",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPODA1UnFTRy1KbzRTMDZEdzVkRW9rRGxhRFM3dVMzcnAwQUJWamE3Vk1OMU5QVUlIWFQ2MGNSYzZaQXFTRWtzR0hYZFE1X1A3QnZpU29XV0tnQ1d3OGZqOHF6S1NkeVpINkp4Vy1HVDk0bzJHSV9pcmlWdkF4cUQ2eHlLRDI5UmJ0X2N5X0cxWVVrRzlQOEY0Mm9BX1g0dUJ2Uk5KN0huTk5tVWxRZmc?oc=5"
+          },
+          {
+            "title": "トランプ氏、イラン戦争に「我々は勝った」と発言 退役軍人の日の式典で - BBC",
+            "category": "geo",
+            "score": -0.35,
+            "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFAwaVZhaUVjTU03Y25xOFEzZnZGVG56aXZoWTRuU29OdDU5MllKRWNWRXRHd1JuWXI5dE15eGduMHBBdUNLZ2xaeDNRSjR3eUlYNXIxRnBsT3dHME5O?oc=5"
+          },
+          {
+            "title": "Trump defends Iran war in Veterans Day address - 時事通信ニュース",
+            "category": "geo",
+            "score": -0.35,
+            "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5BaGtub2U1VHAyU1JjTHAtUlNUX1k2YVNRc0VfRjFFdldLN3k4QUt0Q2w0RGRJWURfbVVPcWR2WGl2MVFQb0pQWlNpMVlSRkhHN2c?oc=5"
+          }
+        ],
+        "modelVersion": "2.3.1",
+        "source": "GitHub Actions server-side model"
+      }
+    ],
+    "newsCount": 30,
+    "xCount": 30,
+    "xAttention": {
+      "posts": 269,
+      "authors": 11,
+      "engagement": 0,
+      "crediblePosts": 0,
+      "coordinationFlags": 77
+    },
+    "marketContext": {
+      "us": {
+        "price": 7561.669921875,
+        "day": -0.40474660007389085,
+        "week": 2.5052673091114697,
+        "avg60": 7670.464851888021,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 7568.86396484375,
+          "sma25": 7640.0148046875,
+          "sma75": 7677.95068359375,
+          "sma200": 7340.317463378906,
+          "bbMiddle": 7613.261987304688,
+          "bbUpper": 7830.781161702761,
+          "bbLower": 7395.742812906615,
+          "bbPercentB": 0.3814080055874263,
+          "bbWidth": 5.714217499957101,
+          "bbWidthPercentile": 0.8833333333333333,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.39999999999999997
+        }
+      },
+      "nasdaq": {
+        "price": 25136.26953125,
+        "day": -0.9060139497874764,
+        "week": 2.2654709683243235,
+        "avg60": 26336.03359375,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 25257.51171875,
+          "sma25": 25911.70234375,
+          "sma75": 26345.887109375,
+          "sma200": 25137.41115234375,
+          "bbMiddle": 25689.81748046875,
+          "bbUpper": 27011.25788962544,
+          "bbLower": 24368.37707131206,
+          "bbPercentB": 0.29055130092017856,
+          "bbWidth": 10.287658992994748,
+          "bbWidthPercentile": 0.9,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6000000000000001
+        }
+      },
+      "semi": {
+        "price": 149.3000030517578,
+        "day": -3.6712060389321066,
+        "week": 9.353258907666051,
+        "avg60": 171.60694376627603,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 150.60799865722657,
+          "sma25": 160.34839904785156,
+          "sma75": 172.86404378255207,
+          "sma200": 160.38748321533203,
+          "bbMiddle": 156.83099822998048,
+          "bbUpper": 179.24193638172628,
+          "bbLower": 134.42006007823468,
+          "bbPercentB": 0.3319794752180866,
+          "bbWidth": 28.579730288883194,
+          "bbWidthPercentile": 0.8833333333333333,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6000000000000001
+        }
+      },
+      "nvda": {
+        "price": 162.85000610351562,
+        "day": -2.009745645841854,
+        "week": -12.746460224995193,
+        "avg60": 215.24800084431965,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 170.06600036621094,
+          "sma25": 203.25080200195313,
+          "sma75": 215.80186767578124,
+          "sma200": 204.19080017089843,
+          "bbMiddle": 198.68850173950196,
+          "bbUpper": 237.43265509401633,
+          "bbLower": 159.9443483849876,
+          "bbPercentB": 0.03749801540300626,
+          "bbWidth": 38.99989482563148,
+          "bbWidthPercentile": 1,
+          "squeeze": false,
+          "bbState": "下限寄り",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6700000000000002
+        }
+      },
+      "fx": {
+        "price": 159.59500122070312,
+        "day": -0.1751360621090714,
+        "week": 0.8231582853961861,
+        "avg60": 157.6271504720052,
+        "dateISO": "2026-11-15",
+        "technical": {
+          "sma5": 159.17839965820312,
+          "sma25": 158.1701202392578,
+          "sma75": 157.84134745279948,
+          "sma200": 158.72860527038574,
+          "bbMiddle": 158.17524948120118,
+          "bbUpper": 159.8506312235673,
+          "bbLower": 156.49986773883506,
+          "bbPercentB": 0.9237099234162764,
+          "bbWidth": 2.118386723411148,
+          "bbWidthPercentile": 0.5,
+          "squeeze": false,
+          "bbState": "上限寄り",
+          "trend": "上昇トレンド",
+          "crossState": "5日線＞25日線",
+          "midCross": "25日線＞75日線",
+          "score": 0.6700000000000002
+        }
+      },
+      "dxy": {
+        "price": 103.41100311279297,
+        "day": 0.0009664932290931461,
+        "week": 1.7324166851740985,
+        "avg60": 101.12818349202475,
+        "dateISO": "2026-11-15",
+        "technical": {
+          "sma5": 103.02620239257813,
+          "sma25": 102.14524108886718,
+          "sma75": 100.82521352132161,
+          "sma200": 99.88505527496338,
+          "bbMiddle": 102.1540512084961,
+          "bbUpper": 103.33340734318983,
+          "bbLower": 100.97469507380237,
+          "bbPercentB": 1.0328975138723835,
+          "bbWidth": 2.308975749354613,
+          "bbWidthPercentile": 0.6833333333333333,
+          "squeeze": false,
+          "bbState": "+2σ上抜け",
+          "trend": "上昇トレンド",
+          "crossState": "5日線＞25日線",
+          "midCross": "25日線＞75日線",
+          "score": 0.81
+        }
+      },
+      "rates": {
+        "price": 5.1539998054504395,
+        "day": 0.9994050515209407,
+        "week": 6.071199566793606,
+        "avg60": 5.00303332010905,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 5.020399951934815,
+          "sma25": 5.026160011291504,
+          "sma75": 4.938239981333415,
+          "sma200": 4.583039984703064,
+          "bbMiddle": 4.991000008583069,
+          "bbUpper": 5.183876147037834,
+          "bbLower": 4.798123870128304,
+          "bbPercentB": 0.922550446554068,
+          "bbWidth": 7.728957648690608,
+          "bbWidthPercentile": 0.4,
+          "squeeze": false,
+          "bbState": "上限寄り",
+          "trend": "上昇トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＞75日線",
+          "score": 0.55
+        }
+      },
+      "oil": {
+        "price": 88.55999755859375,
+        "day": -0.20284010537402475,
+        "week": -2.499178935043056,
+        "avg60": 93.8373338063558,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 87.34399871826172,
+          "sma25": 95.87959991455078,
+          "sma75": 91.42746693929037,
+          "sma200": 87.77730003356933,
+          "bbMiddle": 95.73199996948242,
+          "bbUpper": 108.79346763078696,
+          "bbLower": 82.67053230817787,
+          "bbPercentB": 0.22545189419500716,
+          "bbWidth": 27.28756876586366,
+          "bbWidthPercentile": 0.8666666666666667,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＞75日線",
+          "score": -0.22999999999999998
+        }
+      },
+      "brent": {
+        "price": 95.83999633789062,
+        "day": 0.020868965904918824,
+        "week": -2.5223793375013015,
+        "avg60": 102.18949928283692,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 93.69599914550781,
+          "sma25": 105.47359954833985,
+          "sma75": 99.18133280436199,
+          "sma200": 93.99469993591309,
+          "bbMiddle": 105.13299942016602,
+          "bbUpper": 123.39461875081825,
+          "bbLower": 86.87138008951378,
+          "bbPercentB": 0.24555917210811012,
+          "bbWidth": 34.7400329703699,
+          "bbWidthPercentile": 1,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＞75日線",
+          "score": -0.22999999999999998
+        }
+      },
+      "risk": {
+        "price": 19.299999237060547,
+        "day": 3.2085478590471395,
+        "week": -24.72699026329743,
+        "avg60": 16.940333382288614,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 18.973999786376954,
+          "sma25": 18.857200050354002,
+          "sma75": 16.611600036621095,
+          "sma200": 18.453450045585633,
+          "bbMiddle": 19.381500053405762,
+          "bbUpper": 25.06929828792705,
+          "bbLower": 13.693701818884474,
+          "bbPercentB": 0.49283546875392326,
+          "bbWidth": 58.69306523074632,
+          "bbWidthPercentile": 0.9166666666666666,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "上昇トレンド",
+          "crossState": "5日線＞25日線",
+          "midCross": "25日線＞75日線",
+          "score": 0.6000000000000001
+        }
+      },
+      "japan": {
+        "price": 415.5,
+        "day": 0.2896481396062578,
+        "week": 6.922283446727162,
+        "avg60": 424.1366658528646,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 411.25999755859374,
+          "sma25": 418.8319982910156,
+          "sma75": 423.66266560872396,
+          "sma200": 406.8603991699219,
+          "bbMiddle": 416.1999984741211,
+          "bbUpper": 433.4587323293986,
+          "bbLower": 398.94126461884366,
+          "bbPercentB": 0.47972045690051973,
+          "bbWidth": 8.293480979601966,
+          "bbWidthPercentile": 0.9166666666666666,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.39999999999999997
+        }
+      },
+      "gold": {
+        "price": 3886.300048828125,
+        "day": 0.025738037923273005,
+        "week": -4.628330953777504,
+        "avg60": 4247.134981282552,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 3983.360009765625,
+          "sma25": 4061.243994140625,
+          "sma75": 4271.729326171875,
+          "sma200": 4472.245495605469,
+          "bbMiddle": 4035.2049926757813,
+          "bbUpper": 4200.554865477285,
+          "bbLower": 3869.855119874278,
+          "bbPercentB": 0.04972767343337652,
+          "bbWidth": 8.195364205864463,
+          "bbWidthPercentile": 0.36666666666666664,
+          "squeeze": false,
+          "bbState": "下限寄り",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.8300000000000001
+        }
+      },
+      "copper": {
+        "price": 6.0904998779296875,
+        "day": -1.488071319569062,
+        "week": -2.0504994942136534,
+        "avg60": 6.525841657320658,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 6.21909990310669,
+          "sma25": 6.448599987030029,
+          "sma75": 6.534786669413249,
+          "sma200": 6.227097492218018,
+          "bbMiddle": 6.409224987030029,
+          "bbUpper": 6.725982626201752,
+          "bbLower": 6.092467347858307,
+          "bbPercentB": -0.0031056392732371706,
+          "bbWidth": 9.884428766745632,
+          "bbWidthPercentile": 1,
+          "squeeze": false,
+          "bbState": "-2σ下抜け",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6500000000000001
+        }
+      },
+      "hyg": {
+        "price": 76.94000244140625,
+        "day": -0.05196273549361585,
+        "week": -0.37550291715908735,
+        "avg60": 77.9196667989095,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 77.19200134277344,
+          "sma25": 77.16920013427735,
+          "sma75": 78.24826680501302,
+          "sma200": 79.33215023040772,
+          "bbMiddle": 77.20250053405762,
+          "bbUpper": 77.72272403816342,
+          "bbLower": 76.68227702995182,
+          "bbPercentB": 0.24770642754543387,
+          "bbWidth": 1.3476856332556364,
+          "bbWidthPercentile": 0.35,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "下降トレンド",
+          "crossState": "5日線＞25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.55
+        }
+      },
+      "lqd": {
+        "price": 102.80999755859375,
+        "day": -0.23290197579471927,
+        "week": -1.6454618203284532,
+        "avg60": 104.06233342488606,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 103.6739990234375,
+          "sma25": 103.7,
+          "sma75": 104.49893341064453,
+          "sma200": 107.34735000610351,
+          "bbMiddle": 103.89049949645997,
+          "bbUpper": 105.02866471471395,
+          "bbLower": 102.75233427820598,
+          "bbPercentB": 0.02533168272187684,
+          "bbWidth": 2.1910862374721196,
+          "bbWidthPercentile": 0.2833333333333333,
+          "squeeze": false,
+          "bbState": "下限寄り",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.8300000000000001
+        }
+      },
+      "fang": {
+        "price": 17396.76953125,
+        "day": -0.9962017488050146,
+        "week": 3.3410266432630342,
+        "avg60": 18582.303776041666,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 17437.523828125,
+          "sma25": 18132.64453125,
+          "sma75": 18543.616614583334,
+          "sma200": 16975.56480957031,
+          "bbMiddle": 17864.85478515625,
+          "bbUpper": 19119.509581332786,
+          "bbLower": 16610.199988979715,
+          "bbPercentB": 0.3134605409660471,
+          "bbWidth": 14.046067670463428,
+          "bbWidthPercentile": 0.8166666666666667,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.39999999999999997
+        }
+      },
+      "nikkei": {
+        "price": 61142.3515625,
+        "day": 0.53106805270422,
+        "week": 6.45529191029961,
+        "avg60": 65012.265299479164,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 60489.07578125,
+          "sma25": 63445.990625,
+          "sma75": 65028.35104166667,
+          "sma200": 62128.7680078125,
+          "bbMiddle": 62406.4486328125,
+          "bbUpper": 66438.80962475401,
+          "bbLower": 58374.08764087099,
+          "bbPercentB": 0.343255964329739,
+          "bbWidth": 12.922898451303148,
+          "bbWidthPercentile": 0.5333333333333333,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6000000000000001
+        }
+      },
+      "topix": {
+        "price": 415.5,
+        "day": 0.2896481396062578,
+        "week": 6.922283446727162,
+        "avg60": 424.1366658528646,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 411.25999755859374,
+          "sma25": 418.8319982910156,
+          "sma75": 423.66266560872396,
+          "sma200": 406.8603991699219,
+          "bbMiddle": 416.1999984741211,
+          "bbUpper": 433.4587323293986,
+          "bbLower": 398.94126461884366,
+          "bbPercentB": 0.47972045690051973,
+          "bbWidth": 8.293480979601966,
+          "bbWidthPercentile": 0.9166666666666666,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.39999999999999997
+        }
+      },
+      "NVDA": {
+        "price": 162.85000610351562,
+        "day": -2.009745645841854,
+        "week": -12.746460224995193,
+        "avg60": 215.24800084431965,
+        "dateISO": "2026-11-13",
+        "technical": {
+          "sma5": 170.06600036621094,
+          "sma25": 203.25080200195313,
+          "sma75": 215.80186767578124,
+          "sma200": 204.19080017089843,
+          "bbMiddle": 198.68850173950196,
+          "bbUpper": 237.43265509401633,
+          "bbLower": 159.9443483849876,
+          "bbPercentB": 0.03749801540300626,
+          "bbWidth": 38.99989482563148,
+          "bbWidthPercentile": 1,
+          "squeeze": false,
+          "bbState": "下限寄り",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6700000000000002
+        }
+      }
+    },
+    "newsContext": [
+      {
+        "title": "US December FOMC, expectations for 0.5% rate hike rise｜大橋ひろこ - note",
+        "category": "rates",
+        "score": 0.45,
+        "date": "Tue, 10 Nov 2026 17:55:20 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1HM2lrXzFmZnlmMVdKRzJOaW5NTDNzcU94ZmdaU1R3cXZ5U3BTRVNKd0V0VFJYaU5YT0U1b1AzNHB6d0MwNmYtVk9FU3lra293SHVVemJRXzRCX2tjOTI5U09R?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "今日のFX予想：ドル円一時160円乗せ ドル高地合いが続く？ 2026/11/13 - 外為どっとコム",
+        "category": "rates",
+        "score": 0,
+        "date": "Fri, 13 Nov 2026 00:30:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9QSGlMZzJOZGlqNE1XY3dCWmRfY096OW1JLWJZZzctc3M2TnBJbTUtdWJrZHpnTEw5VHFiVUg2T0F6RDVaYjc2SVZDckdWbm4tM0NmbUFYYnVsRE10S3F1U2MyMA?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "Wall St ends lower as hot inflation data fuels interest rate worries - Reuters",
+        "category": "rates",
+        "score": -0.45,
+        "date": "Wed, 11 Nov 2026 00:56:15 GMT",
+        "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE84MW5wcHJDWnVhNEw0VjBwSHlVaVdFS0tPMXROR19ZUWdwcVFvc3d0bVBaX2RPSEx0d3Y5c0UwcDc3ckxsMllKZnFEZkdoX3lVTk1vVVdwQ3ZtSm9sZ2xIc0t5ZnJIY1Vud2JZTGlRMHlGdTRNVVJHS2pIWXhTdw?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "The U.S. October CPI data and comments by Fed Governor Waller led markets to price in a significant rate hike in December, triggering a rebound in the dollar to JPY 158.85 and $1.1146. - 富途牛牛",
+        "category": "rates",
+        "score": 0,
+        "date": "Tue, 10 Nov 2026 22:00:11 GMT",
+        "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQWWxsQUJtNVpvd1BGdW5scW91bUExYjBVcUpmNXhISDBCQ0h6SXJ3RVdFdlZpVlYyc1FIM3pxQzJzSU9ZTk9nRUJhSDdFeGtxamFvVWVjLU5EdWU1Y0M0OUhzVkRKR0FyRVloUHRHNnNqaG9EdGRBNmdYaVdEbTF1eUVFckNmVXRMajJnNnBBMlVYV1BMNGNNXzUzbw?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "USD/JPY Breaks Above Range, Approaches 160 Yen｜大橋ひろこ - note",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 11 Nov 2026 21:04:13 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBDWmVfX0RjOUVEWkYzbmdvVENBV1J3cTl6akRkdElmSWxKWHlNZF9CQjR5NWViZGh6ekt4MTdIVk81ZndKYkRKQXdRX2ZGR19JMEtta0dic3NqcDZiMUNlTk9n?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "Beyond the $330 Billion Nvidia Wipeout: Why Jensen Huang’s Governance Crisis and SpaceX’s “Terafab” Create a Generational Buying Opportunity in Japanese Semiconductor Stocks - さっつーのAIエージェント",
+        "category": "tech",
+        "score": 0,
+        "date": "Mon, 09 Nov 2026 19:46:22 GMT",
+        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPODA1UnFTRy1KbzRTMDZEdzVkRW9rRGxhRFM3dVMzcnAwQUJWamE3Vk1OMU5QVUlIWFQ2MGNSYzZaQXFTRWtzR0hYZFE1X1A3QnZpU29XV0tnQ1d3OGZqOHF6S1NkeVpINkp4Vy1HVDk0bzJHSV9pcmlWdkF4cUQ2eHlLRDI5UmJ0X2N5X0cxWVVrRzlQOEY0Mm9BX1g0dUJ2Uk5KN0huTk5tVWxRZmc?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "トランプ氏、イラン戦争に「我々は勝った」と発言 退役軍人の日の式典で - BBC",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Thu, 12 Nov 2026 07:48:19 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFAwaVZhaUVjTU03Y25xOFEzZnZGVG56aXZoWTRuU29OdDU5MllKRWNWRXRHd1JuWXI5dE15eGduMHBBdUNLZ2xaeDNRSjR3eUlYNXIxRnBsT3dHME5O?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "Trump defends Iran war in Veterans Day address - 時事通信ニュース",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Thu, 12 Nov 2026 08:25:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5BaGtub2U1VHAyU1JjTHAtUlNUX1k2YVNRc0VfRjFFdldLN3k4QUt0Q2w0RGRJWURfbVVPcWR2WGl2MVFQb0pQWlNpMVlSRkhHN2c?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "原油相場が下げ拡大、イランがホルムズ海峡巡る要求で譲歩と一部報道 - Bloomberg.com",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Mon, 09 Nov 2026 13:11:28 GMT",
+        "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9LaUZSejFhNVBqM09HUmtNczZubzlJT096eHg1bTd4MmkwbElYa3hZanVrTXFZNW5BR253UmtFeTdNQ0QzYVFlaXNkeEJLSjVZTTI1QzFhT0dzQmFlb2dmcnF6dlhpRU02NzJXWEJrV3pXWUV1QU1J?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "米副大統領、イラン強硬派との直接会談を検討 戦争終結に向け - WSJ",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Wed, 11 Nov 2026 21:18:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNYWNHZnRVdThSN0xCWjNhZlVmUERadF9ScEwwRFNnSjBlcE01UndIM1dia3FOOWZ0YXhacFlCbkVkRmhkd1lMRC1ObHB2Vmp1Qk5HNHEwYWEyeUtHRzFvM2cxZGNLMGNXaEptU0ZGbnZnRTdzSUc3bUR4X2l0bGg4U2htbU91amdpUEh3RkI1OVVGUXZLQy1ZMHRSSklDd1hMVVAyU2VPREg?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "イラン戦争の陰で消えた船員たち 「息子はどこへ」真相を問い続ける家族 - Reuters",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Wed, 11 Nov 2026 06:03:58 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE53VVQxNHRoWGpwYUpjZG1LanpyY1VHemFiLVQ1VXhzeV90VVExZUU5UHVxSmpQRmk4UDNzRUgtS2ZWNUZ6WTlXNVJCMC1oTndPTDJ0TUh5N3B2SFJGcVJCWExQb2lCVmRybG93U0N0XzNXN0VXekMzUVlR?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "エミレーツ航空、イラン戦争の影響で業績が悪化するも、上半期の利益は9億300万ドルを計上 - internationalfinance.com",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Thu, 12 Nov 2026 05:00:49 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQdWZ2ZmdYUVBtVTJlQmR0MzhtcEpTVGNQdHYwWUFERFRBaXhIYk9aTmUycGJrWXRFWVJjTXFFeG5kRzZqR214RWtCWEVUOHlLWDYxVVM1MGVYWFdWUjdsYkxoc3pxVzc1SkF2d0h0TzdBbjB3ZVYyMnN1Y2tyWGVhTThSQlR0Q29QRUlEMEJ1OEQwWE5teXkzWS1pSlFGT3UzaGZhU0dfSkI4WTZsMjd1QklyWDNnRHBmN1JV?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "日本政府が「継戦能力」強化を検討 ウクライナ戦争とイラン軍事衝突が示した、長期戦に耐える国の条件 - 合同会社ロケットボーイズ",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Mon, 09 Nov 2026 02:20:22 GMT",
+        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQb2Nsd2VVUDZES250a2lGZjZ3UTdZRG1vUFJucnRSOEhGX1pfdEFRVzBBYjVYbUxIaFY0Wlh5Y3BZcFVQQTN0LWF4YzFwT1ZqS0pjdVRZTjJFWGo4cmFKeXpPeDRsQ056S1ZKVzIwek1zeW1Rdkg3SFJMc3d2bm5Pb2RuaVV3dWNlZ1BVOHRsNjJsRHUyY3Vxdndwc0RMb1JxQjdsaHlXemU0SU54NTZuZQ?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "ホルムズ海峡の再開提案で原油4.6％安―ビットコインも7万3600ドルに下落 - BeInCrypto",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Mon, 09 Nov 2026 13:12:40 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5sTHJjOEYxclJoM3g1Q0VVZE9XcTBCeDk1VE1Md3dYdVNVdU1GZEFwN0MxcVBPMDREMUpmWG8yLVh5TlB6cWI5ZjhGOGRGdUtRVXRwV1FtYW5LbkNlVkZVak5XOWYzT3hRWlE?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "Global Sumud Flotilla activists who where detained by Israel return in Turkey - Reuters",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Wed, 11 Nov 2026 11:45:40 GMT",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNUFBDLUZhcTZGSWJtVl8wMXRINFRsWndfQWdJSVFaTFppLThmMnNnTlVFYlh3TEpnZkZrRFk5a3RuTHptNE9xWVR1bHVRTVBLUnJycC1lUjFmLTJnNlJrSE5NQTFVcE9Ed2NZQ2pNU1NkVEhoSm9ySmRETlZycjVoRUFtQi1EYUFIaXhCSFhfWDF1TWpfb2stcQ?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "ホルムズ海峡でガス運搬船が機雷に接触とイラン側発表 爆発の独立確認なく船名も不明 - NOVAIST",
+        "category": "geo",
+        "score": -0.9,
+        "date": "Fri, 13 Nov 2026 09:29:20 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE0wQlJ6R01mbzRiVUhacHo1dk5ieW5RM25wN29lMmswdVFzSUdjak5mYktlYngwODZORUthMlZLNTNmcjV4OHQwZ0FrMmlpNDhwYjNULVJrSHRUNTRseDhoMHotUDJ0U3BX?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "【映画ちいかわ入場者特典第6弾】2週間ペース崩れたね、予約は注意！動くLINEスタンプ第2弾も登場！！『映画ちいかわ人魚の島のひみつ』情報【ちいかわ】 Iran Imposes New Rules For Strait Of Hormuz In Bid To Secure Wartime Gains (beoLk5XOJh) - Unisba Media",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Tue, 10 Nov 2026 11:20:05 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1JQktYcmFueTZGVElPUnN1WkNFQlNiRGkwb3E0dHhRN1c3bUJZREsydWtVRGVsZHkwNGpBV0NMRzVobEx4UGZCUjRBN2ZIZDBjSE95b3lzZVdnbThOb3RZNy12czk0Zw?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "【プチセレブ奥様のSFC修行第19.20レグ】 / 伊丹→羽田を飛んで、ついにブロンズ獲得！ 10 Maggio (YiF0VMQqpf) - Unisba Media",
+        "category": "geo",
+        "score": 0,
+        "date": "Sat, 14 Nov 2026 21:42:19 GMT",
+        "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBNR1RmYUlkYWtHbkZTc3FRb1pXamlqTDV1anNJWDFmb2NvbzdLaXZPUFpqbVVLNnhTclctdkJicHFDQUpDcnp3ZG1rejA0RUFJOUduZ0JEbzZzUWdEMXExcktCbi1aLUlVbE9V?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "【シンクロムービー】世界でいちばんダサい × 水戸黄門 Timberwolves Schedule (XmrdciZ7IJ) - Unisba Media",
+        "category": "geo",
+        "score": 0,
+        "date": "Tue, 10 Nov 2026 01:41:19 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5SWUtzemJJQWlFS1kwQWQxVy1YeFkyUUN5SlFISWxhWVpPSl9JaDJvN0dDYUVuYW14VXJSMDByTlZCV2RuS1NqTXFpbmRGa1ZnTkRqZjk3NkoyX09vTDZ0OThCR1Y4UQ?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "【Mステ2026春】コブクロ「桜」＜ミュージックステーションDREAM LIVE2026春の3時間半SP＞2026年4月3日 LIVE Strait Of Hormuz Oil Tankers (IexQc6AIlt) - Unisba Media",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Wed, 11 Nov 2026 03:40:14 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBVWXZ5UjEycUs1OGIwTXBXbDVYMDJjc19GZE4yWGpUTlVSS0pfd3hnMDN3U01oNnJBcnNhR0dpR0JtQVlKeXJ3dzBaNEJpTDFiQXM5SnNrT25zM2xaSnBScE5QLWhCZw?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "サウジ首都リヤドのアラムコ・タワーに損傷 フーシ派が攻撃を主張、死傷者報告なし - NOVAIST",
+        "category": "geo",
+        "score": -0.9,
+        "date": "Mon, 09 Nov 2026 05:02:01 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBMb3pjWGkyVmE5SjJmci1ES1djcWx1NkJLUXRTcUp1SGtwcXE5M2pGVWVVaUlVXy11Qm44NUtjTHF4QlcyLXhBRVlIaGVHVmZrYXZEWkJYM2hpSUNTS0E?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "フーシ派の攻撃、リヤド金融街のアラムコビルを損傷 - IDNFinancials",
+        "category": "geo",
+        "score": -0.9,
+        "date": "Mon, 09 Nov 2026 03:40:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNRFMyREJ1MmMxUDVFYmlHWHB5b2lBREhpclJMZjllUHpWM3VQNmtfdUJRMGJ2ZnlDTTVjSGZORy1rMHJBQnBiWFdQVmlEQ01mOWdtQ2s2eE9LenpXaXRCMThIVlU2aDNaeG9tSXRaaFhBN0VFdDdjYzJjNGl3Sl9fSnl2a19URWRnRFRaeXpmTWVGb1B3V2VsaDlfM2xNcEVfUEsyR2NBM0RkRXZzVUFN?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "フーシ派、サウジ東西パイプラインのポンプ場攻撃 ヤンブーとリヤドも標的に - NOVAIST",
+        "category": "geo",
+        "score": -0.9,
+        "date": "Fri, 13 Nov 2026 03:01:54 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5UZElJMGVBWmJZa05TWEVsZ3ZhOTJYVlRteFdsb1VMR1BQUnlfTUNnRGViS25NX2YzRXBDVU5uZjRReXFpbnc3VldjcDRZUGpLYy04enVqRDNrU0R6VzNMUDJiVm5GN2xST1E?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "ニュース・分析 - HF Markets",
+        "category": "oil",
+        "score": 0,
+        "date": "Fri, 13 Nov 2026 11:05:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPOFFmWUxTOV9UZmxzWVV2eHhPZUlYV0RGdFhTNU83SXhDMnRCUjJSV0hZTG1RbFFIamIwcGU3cmFLZkhpYW5uT0VGakxQNWRsLVQwbmhFYTZtLUdUcXN1eGc1YVdjSXl6bjJwZExibWdaMnZ2MVNvZ2oxUnZrTWdVSkQ1d1djNG1iQ0lySncxYkQ3SzZtU2l5a1BVbTNEVzBqRUdURW5sTDhlcXo0TTRUbGh5RjQwWlh5VFhIaW1sZWllLU4tQzhaTzdPY2xCaVA5NllISlNuSWt3ekU?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "米・イラン核協議に進展報道、ブレント原油が一時約8%急落し91ドル割れ - BigGo ファイナンス",
+        "category": "oil",
+        "score": 0.45,
+        "date": "Mon, 09 Nov 2026 21:05:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1oTzJST0xNVDRYaVRtTEViRmJEdWFjeWdXczR6RWxrVHYxNW1kRjNSNjlJcEZ4al9oUW1jVExPWFo3NXA1c0R0ZUQ4ZThGck1EY1hiYjgxNVhjbnJFeFZzSXFDT1R0NXVVSFJuQUNKMWlPcHVk?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "原油価格見通し：米イランの協議示唆で原油4%下落、テクニカル分析はブレント原油の88ドル試しを示唆 - TradingKey",
+        "category": "oil",
+        "score": 0.45,
+        "date": "Mon, 09 Nov 2026 00:46:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQaUY4U2k1ckxTaVQ5Z0dnbmJXMUsyNTN0VmhiVS1vZkVrTENOWjM1WmEtdnRZZnQ1UWhvMmRBWVM0TTZ3dG56UTU1VF9rSlUzTk1ILXFyVnNtTDF4dklVN2tmbnhNWlNkSG9Kby1WaVJuQ29ENG1sX20zY0QwbU1hZjRDeWZLVEg1RnV2MW9NdmVXdzRCZlJHQmRwOXh4YkVqZzlaVDBDVXBYZlZDOGNidVYyRGRLZFFpTkpaN2dYOWNkRGtSWHE0dUNhcVI1bl96bVR3cjRibw?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "今日、ブレント原油価格が4%上昇したのはなぜですか？ - Traders Union",
+        "category": "oil",
+        "score": -0.45,
+        "date": "Thu, 12 Nov 2026 21:10:41 GMT",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPMmp6VG1NQ2E4ZzdOS1JOeXVMaVlqcXpqeDV4ZDkyTFhqNjAyaFRWTkpJU2JxQlBnMG9OMjhfaHA1bDZETHFFOHg2dHRyUWRYVHRvOUUtcWc2ZEtQZXlrc0lwSkxibWtvVEdUMThRMndTdWdseTdKRTZ3VDZYdVR2aXczRmVib01tUW94ZGhrdXc2VDhjT3FTZw?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "トランプ大統領の一言でイラン和平交渉に水差し 金価格は3,900ドル割れ、原油は89ドル台へ急騰 - BigGo ファイナンス",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 12 Nov 2026 23:35:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE16akdKOTFncFhBcF9sZV90Zzc4LTFLZU9zZ0RBNUNtSTVlRkhwMjRBTFh4eGtKWTItUWsyYnNfeDd3LVZOMk1Sczg2MzFFeHRYa0ZMZEQtOGZRUGQ0Rkd2dG1BTjVmOFdmUDFxeVVJQWtMVkxL?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "中東情勢の緊迫化で供給不安高まり、ブレント原油が95ドル台に急騰 - VT Markets",
+        "category": "oil",
+        "score": 0,
+        "date": "Fri, 13 Nov 2026 13:59:14 GMT",
+        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPYkNfd21ranVKMnRYM3VpMVFoeGROWEJSN214YmJUU1FyNEpFQUdqNGxtUGh6SjkyWDhSLU0ybUU1VlNHM1FzbEJRdVZ4cVVFOXF4eVpXLXNsbHRkVFBiRUJaSUExRTNBWlNfcmVtZjdkcE9YS3Y3bllJS04tUVg0N2EySXBmOGNSTUY5Vklva1FfRmRUQmNPSGk3aU1aLUs1akplVGw5eEhZX2JkUUZXeg?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "原油価格見通し：ブレント原油が90ドル割れで8月下旬以来の安値、次のターゲットは80ドル視野か - TradingKey",
+        "category": "oil",
+        "score": 0,
+        "date": "Mon, 09 Nov 2026 17:15:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNWjVjb1FrenhhWXRpeTZTUE1PYnNlUUphSzJMeUZVVVF6NldVTzF6aUpDNnRONEVVdEp4UW5McDlMTm83OGpqVVZ5MTlIYVdtMTktdU1NVzRBU0E4VFU4NTVWa005Z09nVzhPd1psT0pYVFpqNlJwMGY5NGtRLUJ1Uno2aFhsTERfbXE4R2p0WlpsdTlZdTlNajdBU0RGT0lXS1NYMFpudDFuMThIcGtlRXZxQnFIWElZTDdaOXNsNHV3bVZlc0gwS0MxZS1xQjhzYUVwNnVTSGxTTHpoV1g0WmtPeTJQeUU?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "【速報】米FAAが全国の航空機地上待機命令を解除。管制通信障害は復旧したが、遅延・欠航の影響は残る見通し",
+        "category": "aviation",
+        "score": 0,
+        "date": "2026-11-14T01:55:00.000Z",
+        "link": "https://apnews.com/article/f81b0904331dafad6133f291e5f531a8",
+        "source": "RSS",
+        "trustScore": 1
+      }
+    ]
   }
 ]
