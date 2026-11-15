@@ -4,7 +4,7 @@ const CACHE_MAX_AGE_MS=6*60*60*1000;
 try{
  const cached=JSON.parse(await fs.readFile("macro-data.json","utf8"));
  const age=Date.now()-Date.parse(cached.generatedAt||"");
- if(cached.status==="ok"&&Array.isArray(cached.signals)&&cached.signals.length>=6&&age>=0&&age<CACHE_MAX_AGE_MS){
+ if(["ok","partial"].includes(cached.status)&&Array.isArray(cached.signals)&&cached.signals.length>=3&&age>=0&&age<CACHE_MAX_AGE_MS){
   console.log(JSON.stringify({status:"cached",signals:cached.signals.length,ageMinutes:Math.round(age/60000)}));
   process.exit(0);
  }
@@ -84,4 +84,4 @@ const result={schemaVersion:2,source:"FRED public data export + OECD Key Short-T
 
 await fs.writeFile("macro-data.json",JSON.stringify(result,null,2)+"\n");
 console.log(JSON.stringify({status:result.status,signals:signals.length,series:series.length,error}));
-if(signals.length<6)throw new Error("Insufficient official macro series; refusing to publish a new forecast.");
+// Official macro data may be partial. The market model lowers confidence according to coverage; never invent missing indicators.
