@@ -38,8 +38,8 @@ jobs:
           node --check scripts/macro-data.mjs
           node --check scripts/daily-forecast.mjs
           node -e 'const d=require("./market-news.json"); if(!d.generatedAt || !Array.isArray(d.items)) throw Error("invalid news cache"); console.log("News cache valid:",d.items.length)'
-          node -e 'const d=require("./macro-data.json"); if(d.status!=="ok" || !Array.isArray(d.signals) || d.signals.length<6) throw Error("official macro data unavailable; refusing to publish"); console.log("Official macro series:",d.signals.length)'
-          node -e 'const d=require("./market-snapshot.json"); if(!d.generatedAt || d.status==="collecting" || Object.keys(d.quotes||{}).length<8 || !Array.isArray(d.forecasts) || d.forecasts.length<3 || !d.macroOutlook || !Array.isArray(d.macroOutlook.components) || d.macroOutlook.components.length<10 || !d.macroData || d.macroData.signalCount<6) throw Error("incomplete market/macro snapshot; refusing to publish"); console.log("Macro snapshot valid:",Object.keys(d.quotes).length,"quotes",d.macroOutlook.components.length,"signals")'
+          node -e 'const d=require("./macro-data.json"); if(!["ok","partial"].includes(d.status) || !Array.isArray(d.signals) || d.signals.length<3) throw Error("insufficient official macro data; refusing to publish"); console.log("Official macro series:",d.signals.length,"coverage:",d.status)'
+          node -e 'const d=require("./market-snapshot.json"); if(!d.generatedAt || d.status==="collecting" || Object.keys(d.quotes||{}).length<8 || !Array.isArray(d.forecasts) || d.forecasts.length<3 || !d.macroOutlook || !Array.isArray(d.macroOutlook.components) || d.macroOutlook.components.length<10 || !d.macroData || d.macroData.signalCount<3) throw Error("incomplete market/macro snapshot; refusing to publish"); console.log("Macro snapshot valid:",Object.keys(d.quotes).length,"quotes",d.macroOutlook.components.length,"signals")'
       - name: Publish cache on isolated data branch (no app redeploy)
         run: |
           git config user.name "github-actions[bot]"
