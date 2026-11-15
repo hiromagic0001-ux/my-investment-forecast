@@ -26,10 +26,15 @@ jobs:
         with:
           ref: restore-world-market-japan-heatmap
           fetch-depth: 0
-      - name: Restore cached official macro series
+      - name: Restore only verified official macro cache
         run: |
           git fetch origin news-cache || true
-          if git rev-parse --verify origin/news-cache >/dev/null 2>&1; then git show origin/news-cache:macro-data.json > macro-data.json || true; fi
+          if git show FETCH_HEAD:macro-data.json > macro-data.json 2>/dev/null; then
+            node -e 'const fs=require("fs"); const d=JSON.parse(fs.readFileSync("macro-data.json","utf8")); if(!Number(d.fredSuccessCount||0)){fs.unlinkSync("macro-data.json"); console.log("Discarding legacy cache without verified FRED series.");} else {console.log("Restored verified FRED cache:",d.fredSuccessCount,"series.");}'
+          else
+            rm -f macro-data.json
+            echo "No prior official macro cache; fetching all series."
+          fi
       - name: Collect global economic news
         run: node scripts/news-intelligence.mjs
       - name: Collect official macroeconomic data (6-hour cache)
