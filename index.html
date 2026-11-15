@@ -591,6 +591,7 @@ async function update(){
  }catch(e){
   $('status').textContent='サーバー更新データを取得できません：'+(e.message||e)+'｜手動更新または次回サーバー更新をお待ちください';
   $('news').innerHTML='<div class="empty">最新のサーバーニュースを取得できません。古い情報を最新として表示しません。</div>';
+  $('forecasts').innerHTML=assets.map(a=>'<article class="card forecast-loading"><h2>'+esc(a.name)+'</h2><div class="price">最新予測を取得できません</div><div class="change">'+esc(e.message||'サーバーの最新データを確認できません')+'</div><div class="probrow"><div class="prob"><small>翌営業日</small><b>未取得</b></div></div></article>').join('');
   console.error(e);
  }finally{$('refresh').disabled=false;}
 }
