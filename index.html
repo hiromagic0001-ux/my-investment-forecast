@@ -479,14 +479,14 @@ function renderAsset(asset,quotes,news,f){
  if(missingNews.length)reasons.push('重要ニュース未取得：'+missingNews.map(id=>id==='geo'?'戦争・地政学':'原油・供給リスク').join('・'));
  const limited=!own||!Number.isFinite(f.quality)||f.quality<.7||quoteIsStale(own)||missingNews.length>0;
  if(limited&&!reasons.length)reasons.push('データ充足度が基準未満');
- const nextProb=own?(f.probability??f.probs?.[0]??null):null,signal=own&&nextProb!==null?probabilitySignal(nextProb):null;const p=own&&nextProb!==null?'<div class="prob"><small>翌営業日</small><b style="color:'+signal.color+'">'+signal.label+'</b><small style="color:var(--muted);margin-top:3px">上昇 '+nextProb.toFixed(1)+'% ／ 下落 '+(100-nextProb).toFixed(1)+'%</small></div>':'<div class="prob"><small>翌営業日</small><b>—</b><small>予測データ未取得</small></div>';
+ const freshQuote=Boolean(own&&!quoteIsStale(own));const nextProb=freshQuote?(f.probability??f.probs?.[0]??null):null,signal=nextProb!==null?probabilitySignal(nextProb):null;const p=nextProb!==null?'<div class="prob"><small>翌営業日</small><b style="color:'+signal.color+'">'+signal.label+'</b><small style="color:var(--muted);margin-top:3px">上昇 '+nextProb.toFixed(1)+'% ／ 下落 '+(100-nextProb).toFixed(1)+'%</small></div>':'<div class="prob"><small>翌営業日</small><b>—</b><small>'+(own?'価格データが古いため予測を停止':'予測データ未取得')+'</small></div>';
  const reason=[...(f.positives||[]).map(x=>'<li class="good">上昇要因：'+x.name+'</li>'),...(f.negatives||[]).map(x=>'<li class="bad">下落要因：'+x.name+'</li>')];
  if(!reason.length)reason.push('<li class="neutral">方向感を示す材料が不足。中立寄りの推定です。</li>');
  const conf=Math.round((Number(f.quality)||0)*100);
  const macroScore=Number(f.macroScore)||0,macroLabel=macroScore>.12?'追い風':macroScore<-.12?'逆風':'中立';
  const er=f.earningsRisk||{label:'未確認',pricedInScore:0,events:[]};const earningsLine='<div class="confidence">決算警戒：'+er.label+'｜織り込み代理 '+Math.round((er.pricedInScore||0)*100)+'/100'+(er.events?.length?'｜'+er.events.map(e=>e.symbol).join(', '):'')+'</div>';
  const reasonDetails='<details class="card-detail"><summary>予測の根拠・重要リスクを確認</summary><ul class="reasons">'+reason.join('')+'</ul>'+earningsLine+((f.news||[]).length?'<div class="confidence">関連材料：'+(f.news||[]).slice(0,3).map(n=>esc(n.category)).join(' / ')+'</div>':'')+'</details>';
- return '<article class="card'+(limited?' data-limited':'')+'" data-asset="'+asset.id+'" tabindex="0"><h2>'+asset.name+'</h2><div class="price">'+(own?fmt(own.price):'価格取得不可')+'</div><div class="change">'+(own?'前日比 '+pct(own.day):'最新価格を取得でき次第、予測を更新')+'</div><div class="probrow">'+p+'</div><div class="meter"><i style="width:'+conf+'%"></i></div><div class="confidence">データ充足度 '+conf+'%｜公式マクロ '+(f.macroSignalsUsed||0)+'指標・'+macroLabel+'｜'+(limited?'低信頼・参考値':'参考推定')+'</div>'+reasonDetails+'</article>';
+ return '<article class="card'+(limited?' data-limited':'')+'" data-asset="'+asset.id+'" tabindex="0"><h2>'+asset.name+'</h2><div class="price">'+(own?fmt(own.price):'価格取得不可')+'</div><div class="change">'+(own?(quoteIsStale(own)?'最終基準日 '+esc(own.dateISO)+'｜古い価格のため予測停止':'前日比 '+pct(own.day)):'最新価格を取得でき次第、予測を更新')+'</div><div class="probrow">'+p+'</div><div class="meter"><i style="width:'+conf+'%"></i></div><div class="confidence">データ充足度 '+conf+'%｜公式マクロ '+(f.macroSignalsUsed||0)+'指標・'+macroLabel+'｜'+(limited?'低信頼・参考値':'参考推定')+'</div>'+reasonDetails+'</article>';
 }
 function renderTechnicalChart(q){
  const rows=(q.series||[]).slice(-90),keys=['price','sma25','sma75','bbUpper','bbLower'];
@@ -572,7 +572,7 @@ async function update(){
   const snapshot=await response.json();
   const generated=Date.parse(snapshot.generatedAt||'');
   const age=Date.now()-generated;
-  if(!Number.isFinite(generated)||age<0||age>30*60*1000)throw Error('サーバーデータが30分以上更新されていません');
+  if(!Number.isFinite(generated)||age<0)throw Error('サーバーデータの更新日時が不正です');const snapshotStale=age>30*60*1000;
   if(snapshot.status==='collecting'||!snapshot.forecasts?.length||!Object.keys(snapshot.quotes||{}).length)throw Error('サーバー側の市場データ収集中です。少し待って再読み込みしてください');
   const quotes=snapshot.quotes||{},unique=snapshot.news||[];
   latestQuotes=quotes;latestNews=unique;latestEarningsCalendar=snapshot.earningsCalendar||null;latestForecasts=Object.fromEntries((snapshot.forecasts||[]).map(f=>[f.id,f]));
@@ -587,7 +587,7 @@ async function update(){
   $('xSignals').innerHTML=renderXSignals(snapshot.xSignals||null);
   const count=Object.keys(quotes).length,total=assets.length+indicators.length;
   const stamp=new Date(generated).toLocaleString('ja-JP');
-  $('status').textContent='サーバー更新 '+stamp+'｜データ '+count+'/'+total+'｜ニュース '+unique.length+'件｜更新間隔5分（サーバー側）'+(snapshot.status!=='ok'?'｜一部データ不足':'');
+  $('status').textContent=(snapshotStale?'⚠ サーバーデータが30分以上未更新｜最終更新 ':'サーバー更新 ')+stamp+'｜データ '+count+'/'+total+'｜ニュース '+unique.length+'件'+(snapshot.status!=='ok'?'｜一部データ不足':'');if(snapshotStale)$('news').innerHTML='<div class="empty">サーバー更新が遅れています。以下のニュース・市場情報は最終取得時点の情報です。最新情報として扱わないでください。</div>'+$('news').innerHTML;
  }catch(e){
   $('status').textContent='サーバー更新データを取得できません：'+(e.message||e)+'｜手動更新または次回サーバー更新をお待ちください';
   $('news').innerHTML='<div class="empty">最新のサーバーニュースを取得できません。古い情報を最新として表示しません。</div>';
