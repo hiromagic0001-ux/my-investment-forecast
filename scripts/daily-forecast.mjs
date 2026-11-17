@@ -66,21 +66,44 @@ function fxInterventionRisk(q){
  const score=Math.min(1,base+pace);
  return {score,label:score>=.8?"非常に高い":score>=.6?"高い":score>=.35?"警戒":"通常"};
 }
+const criticalIndexTickers=new Set(["^NYFANG","^N225","1306.T"]);
+function quoteDateIsFresh(dateISO){
+ const age=Math.round((Date.parse(jstDate+"T00:00:00Z")-Date.parse(dateISO+"T00:00:00Z"))/86400000);
+ const maxAge=dayName==="Mon"?3:1;
+ return Number.isFinite(age)&&age>=0&&age<=maxAge;
+}
 async function quote(ticker){
- const url="https://query1.finance.yahoo.com/v8/finance/chart/"+encodeURIComponent(ticker)+"?range=1y&interval=1d";
- const r=await fetch(url,{headers:{"User-Agent":"Mozilla/5.0"}});
- if(!r.ok)throw new Error("Yahoo HTTP "+r.status+" "+ticker);
- const j=await r.json(),x=j.chart?.result?.[0];
- if(!x)throw new Error("No Yahoo data: "+ticker);
- const q=x.indicators.quote[0],pairs=x.timestamp.map((t,i)=>({t,c:q.close[i]})).filter(v=>v.c!=null);
- if(pairs.length<25)throw new Error("Insufficient history: "+ticker);
- const c=pairs.map(v=>v.c),last=c.at(-1),prev=c.at(-2),w=c.at(-6),m=c.at(-22);
- const daily=c.slice(1).map((v,i)=>Math.log(v/c[i]));
- const vol=Math.sqrt(daily.slice(-20).reduce((s,v)=>s+v*v,0)/Math.min(20,daily.length))*Math.sqrt(252)*100;
- const avg60=c.slice(-Math.min(60,c.length)).reduce((s,v)=>s+v,0)/Math.min(60,c.length);
- const technical=buildTechnicalSeries(c);
- const series=pairs.map((v,i)=>({dateISO:new Date(v.t*1000).toISOString().slice(0,10),price:v.c,...technical.rows[i]}));
- return {price:last,day:(last/prev-1)*100,week:(last/w-1)*100,month:(last/m-1)*100,vol,avg60,technical:technical.current,series,dateISO:series.at(-1).dateISO};
+ const now=Math.floor(Date.now()/1000),period1=now-370*86400,period2=now+86400;
+ const hosts=criticalIndexTickers.has(ticker)?["query1.finance.yahoo.com","query2.finance.yahoo.com"]:["query1.finance.yahoo.com"];
+ let best=null,lastError=null;
+ for(const host of hosts){
+  try{
+   const url="https://"+host+"/v8/finance/chart/"+encodeURIComponent(ticker)+"?period1="+period1+"&period2="+period2+"&interval=1d&events=div%2Csplits&includeAdjustedClose=true&_="+Date.now();
+   const r=await fetch(url,{headers:{"User-Agent":"Mozilla/5.0","Cache-Control":"no-cache"}});
+   if(!r.ok)throw new Error("Yahoo HTTP "+r.status+" "+host+" "+ticker);
+   const j=await r.json(),x=j.chart?.result?.[0];
+   if(!x)throw new Error("No Yahoo data: "+host+" "+ticker);
+   const q=x.indicators?.quote?.[0];
+   if(!q||!Array.isArray(x.timestamp)||!Array.isArray(q.close))throw new Error("Invalid Yahoo chart payload: "+host+" "+ticker);
+   const pairs=x.timestamp.map((t,i)=>({t,c:q.close[i]})).filter(v=>Number.isFinite(v.t)&&Number.isFinite(v.c)&&v.c>0).sort((a,b)=>a.t-b.t);
+   if(pairs.length<25)throw new Error("Insufficient history: "+host+" "+ticker);
+   const c=pairs.map(v=>v.c),last=c.at(-1),prev=c.at(-2),w=c.at(-6),m=c.at(-22);
+   const daily=c.slice(1).map((v,i)=>Math.log(v/c[i]));
+   const vol=Math.sqrt(daily.slice(-20).reduce((s,v)=>s+v*v,0)/Math.min(20,daily.length))*Math.sqrt(252)*100;
+   const avg60=c.slice(-Math.min(60,c.length)).reduce((s,v)=>s+v,0)/Math.min(60,c.length);
+   const technical=buildTechnicalSeries(c);
+   const series=pairs.map((v,i)=>({dateISO:new Date(v.t*1000).toISOString().slice(0,10),price:v.c,...technical.rows[i]}));
+   const result={price:last,day:(last/prev-1)*100,week:(last/w-1)*100,month:(last/m-1)*100,vol,avg60,technical:technical.current,series,dateISO:series.at(-1).dateISO,source:"Yahoo Finance "+host};
+   if(!best||result.dateISO>best.dateISO)best=result;
+   if(!criticalIndexTickers.has(ticker)||quoteDateIsFresh(result.dateISO))return result;
+   console.log("Yahoo quote is stale; trying alternate host",JSON.stringify({ticker,host,dateISO:result.dateISO}));
+  }catch(e){
+   lastError=e;
+   console.log("Yahoo quote source failed",JSON.stringify({ticker,host,error:String(e)}));
+  }
+ }
+ if(best)return best;
+ throw lastError||new Error("No valid Yahoo quote source: "+ticker);
 }
 const feeds=[
  ["rates","Federal Reserve interest rates inflation CPI Treasury yields"],
@@ -397,5 +420,5 @@ if(!["Sat","Sun"].includes(dayName)&&!history.some(x=>x.date===jstDate)){
 }
 history=history.slice(-365);
 await fs.writeFile(path,JSON.stringify(history,null,2)+"\n");
-console.log(JSON.stringify({date:jstDate,quotes:Object.keys(quotes),earningsCalendarStatus:earningsCalendar.status,earningsEvents:earningsCalendar.events.length,news:news.length,xStatus:xSignals.status,xSearchHits:xSignals.posts.length,xCredible:xSignals.attention.crediblePosts,xUsage:xSignals.usage,newsCoverage:[...new Set(signalNews.map(n=>n.category))],errors,validated:changed,days:history.length}));
+console.log(JSON.stringify({date:jstDate,quotes:Object.keys(quotes),indexQuotes:Object.fromEntries(assets.map(a=>[a.id,{price:quotes[a.id]?.price??null,dateISO:quotes[a.id]?.dateISO??null,source:quotes[a.id]?.source??null}])),earningsCalendarStatus:earningsCalendar.status,earningsEvents:earningsCalendar.events.length,news:news.length,xStatus:xSignals.status,xSearchHits:xSignals.posts.length,xCredible:xSignals.attention.crediblePosts,xUsage:xSignals.usage,newsCoverage:[...new Set(signalNews.map(n=>n.category))],errors,validated:changed,days:history.length}));
 if(!assets.every(a=>quotes[a.id]))throw new Error("Not all three index prices were available; no daily forecast was recorded.");
