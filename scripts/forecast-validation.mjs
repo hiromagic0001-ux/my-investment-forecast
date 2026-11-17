@@ -69,7 +69,7 @@ function summarize(samples) {
     samples: n,
     directionAccuracy: Number((samples.filter(s => s.hit).length / n * 100).toFixed(1)),
     brierScore: Number((samples.reduce((sum, s) => sum + s.brier, 0) / n).toFixed(4)),
-    meanAbsoluteReturnPct: Number((samples.reduce((sum, s) => sum + s.absReturnPct, 0) / n).toFixed(3)),
+    meanAbsoluteMovePct: Number((samples.reduce((sum, s) => sum + s.absReturnPct, 0) / n).toFixed(3)),
     meanReturnPct: Number((samples.reduce((sum, s) => sum + s.returnPct, 0) / n).toFixed(3)),
     calibration,
     reliability: n < 30 ? "標本不足：参考値" : "集計可能"
