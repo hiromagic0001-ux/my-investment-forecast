@@ -37,7 +37,7 @@ jobs:
           }
           if (!scripts.length) throw new Error("No inline scripts found");
           for (const [index, match] of scripts.entries()) {
-            new Function(match[1]);
+            new Function(match);
             console.log(`Inline script ${index + 1} syntax OK`);
           }
           NODE
