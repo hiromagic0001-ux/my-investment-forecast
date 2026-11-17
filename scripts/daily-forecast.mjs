@@ -375,12 +375,18 @@ function buildMacroOutlook(){
  return {generatedAt:new Date().toISOString(),model:"Market Regime v1.0",regime,regimeKey,score:Number(score.toFixed(3)),quality:Number(Math.min(1,used/.92).toFixed(2)),coverage:components.length,components,scenarios,allocation,catalysts,limitations:["市場価格を使った先行シグナルであり、GDP・CPI・PMI・信用スプレッド等の確定マクロ統計を直接代替しません","シナリオ比率は暫定モデル値で、統計的に校正された発生確率ではありません","データ不足時は信頼度を下げ、売買指示ではなく判断材料として表示します"]};
 }
 const liveResults=assets.map(forecast);
+const indexQuoteHealth=Object.fromEntries(assets.map(a=>{
+ const q=quotes[a.id],fresh=Boolean(q&&quoteDateIsFresh(q.dateISO));
+ return [a.id,{price:q?.price??null,dateISO:q?.dateISO??null,source:q?.source??null,status:fresh?"fresh":q?"stale":"missing"}];
+}));
+const staleIndexQuotes=assets.filter(a=>indexQuoteHealth[a.id].status!=="fresh").map(a=>({id:a.id,...indexQuoteHealth[a.id]}));
 const macroOutlook=buildMacroOutlook();
 const marketSnapshot={
  schemaVersion:1,
  generatedAt:new Date().toISOString(),
  date:jstDate,
- status:assets.every(a=>quotes[a.id])?"ok":"partial",
+ status:staleIndexQuotes.length?"partial":"ok",
+ quoteHealth:{status:staleIndexQuotes.length?"partial":"ok",indices:indexQuoteHealth,staleIndices:staleIndexQuotes.map(x=>x.id)},
  quotes,
  forecasts:liveResults,
  macroOutlook,
@@ -420,5 +426,5 @@ if(!["Sat","Sun"].includes(dayName)&&!history.some(x=>x.date===jstDate)){
 }
 history=history.slice(-365);
 await fs.writeFile(path,JSON.stringify(history,null,2)+"\n");
-console.log(JSON.stringify({date:jstDate,quotes:Object.keys(quotes),indexQuotes:Object.fromEntries(assets.map(a=>[a.id,{price:quotes[a.id]?.price??null,dateISO:quotes[a.id]?.dateISO??null,source:quotes[a.id]?.source??null}])),earningsCalendarStatus:earningsCalendar.status,earningsEvents:earningsCalendar.events.length,news:news.length,xStatus:xSignals.status,xSearchHits:xSignals.posts.length,xCredible:xSignals.attention.crediblePosts,xUsage:xSignals.usage,newsCoverage:[...new Set(signalNews.map(n=>n.category))],errors,validated:changed,days:history.length}));
+console.log(JSON.stringify({date:jstDate,quotes:Object.keys(quotes),indexQuotes:Object.fromEntries(assets.map(a=>[a.id,{price:quotes[a.id]?.price??null,dateISO:quotes[a.id]?.dateISO??null,source:quotes[a.id]?.source??null}])),staleIndexQuotes,earningsCalendarStatus:earningsCalendar.status,earningsEvents:earningsCalendar.events.length,news:news.length,xStatus:xSignals.status,xSearchHits:xSignals.posts.length,xCredible:xSignals.attention.crediblePosts,xUsage:xSignals.usage,newsCoverage:[...new Set(signalNews.map(n=>n.category))],errors,validated:changed,days:history.length}));
 if(!assets.every(a=>quotes[a.id]))throw new Error("Not all three index prices were available; no daily forecast was recorded.");
