@@ -48,7 +48,7 @@ function summarize(samples) {
   const n = samples.length;
   if (!n) return {
     samples: 0, directionAccuracy: null, brierScore: null,
-    meanAbsoluteReturnPct: null, meanReturnPct: null,
+    meanAbsoluteMovePct: null, meanReturnPct: null,
     calibration: [], reliability: "検証データなし"
   };
   const bins = Array.from({ length: 5 }, (_, i) => ({
@@ -93,7 +93,7 @@ const report = {
   byAsset,
   samples: all
 };
-await fs.writeFile(outputPath, JSON.stringify(report, null, 2) + "\\n");
+await fs.writeFile(outputPath, JSON.stringify(report, null, 2) + "\n");
 console.log(JSON.stringify({
   validationSamples: all.length,
   overall: report.overall,
