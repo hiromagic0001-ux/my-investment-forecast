@@ -596,5 +596,81 @@ async function update(){
  }finally{$('refresh').disabled=false;}
 }
 $('forecasts').addEventListener('click',e=>{if(e.target.closest('details,a,button'))return;const c=e.target.closest('[data-asset]');if(c)openPriceForecast(c.dataset.asset);});$('dailyScoreBody').addEventListener('click',e=>{const c=e.target.closest('[data-daily-index]');if(c)openDailyScoreDetail(Number(c.dataset.dailyIndex));});$('dailyScoreBody').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-daily-index]');if(c){e.preventDefault();openDailyScoreDetail(Number(c.dataset.dailyIndex));}}});$('forecasts').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-asset]');if(c){e.preventDefault();openPriceForecast(c.dataset.asset);}}});$('closeForecastModal').addEventListener('click',closePriceForecast);$('priceForecastModal').addEventListener('click',e=>{if(e.target.dataset.closeForecast)closePriceForecast();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closePriceForecast();});$('refresh').addEventListener('click',update);$('validateForecast').addEventListener('click',loadRemoteHistory);renderValidation();loadRemoteHistory();loadYearEndScenarios();loadUSMarketReview();renderMarketSession(true);update();
-</script></body></html>
+</script>
+<script>
+/* Server-side validation report is the sole source for the validation dashboard. */
+let serverValidationRequest = null;
+async function loadServerValidation(){
+ if(serverValidationRequest) return serverValidationRequest;
+ serverValidationRequest = (async()=>{
+  const status=document.getElementById('validationStatus');
+  const summary=document.getElementById('validationSummary');
+  const history=document.getElementById('validationHistory');
+  status.textContent='サーバー検証レポートを取得しています…';
+  summary.replaceChildren(); history.replaceChildren();
+  try{
+   const response=await fetch('./forecast-validation.json?ts='+Date.now(),{cache:'no-store'});
+   if(!response.ok) throw new Error('検証レポート未公開（HTTP '+response.status+'）');
+   const report=await response.json();
+   if(!report || report.schemaVersion!==1 || !report.overall || !report.byAsset) throw new Error('検証レポートの形式が不正です');
+   const fmt=(v,d=1)=>Number.isFinite(Number(v))?Number(v).toFixed(d):'—';
+   const overall=report.overall;
+   status.textContent='サーバー集計｜生成 '+(report.generatedAt?new Date(report.generatedAt).toLocaleString('ja-JP'):'日時不明')+'｜検証 '+(overall.samples||0)+'件'+((overall.samples||0)<30?'｜標本不足・参考値':'');
+   const cards=[
+    ['全体 方向的中率',overall.directionAccuracy==null?'—':fmt(overall.directionAccuracy)+'%'],
+    ['全体 Brierスコア',overall.brierScore==null?'—':fmt(overall.brierScore,4)],
+    ['平均絶対変動率',overall.meanAbsoluteMovePct==null?'—':fmt(overall.meanAbsoluteMovePct,3)+'%'],
+    ['平均リターン',overall.meanReturnPct==null?'—':fmt(overall.meanReturnPct,3)+'%']
+   ];
+   for(const [id,label] of [['fang','FANG+'],['nikkei','日経225'],['topix','TOPIX']]){
+    const item=report.byAsset[id]||{};
+    cards.push([label+'｜検証件数',String(item.samples||0)+'件']);
+    cards.push([label+'｜方向的中率',item.directionAccuracy==null?'—':fmt(item.directionAccuracy)+'%']);
+    cards.push([label+'｜Brierスコア',item.brierScore==null?'—':fmt(item.brierScore,4)]);
+   }
+   for(const [label,value] of cards){
+    const node=document.createElement('div');node.className='factor';
+    const b=document.createElement('b');b.textContent=label;
+    const span=document.createElement('span');span.textContent=value;
+    node.append(b,span);summary.append(node);
+   }
+   const note=document.createElement('div');note.className='legend';
+   note.textContent='集計元：サーバー保存履歴。30件未満は参考値です。検証結果は診断専用で、予測確率やモデルの重みは変更しません。';
+   summary.append(note);
+   const calibration=overall.calibration||[];
+   if(calibration.length){
+    const heading=document.createElement('div');heading.className='news';heading.textContent='確率帯別の校正状況';history.append(heading);
+    for(const row of calibration){
+     const line=document.createElement('div');line.className='news';
+     line.textContent=row.range+'｜予測平均 '+fmt(row.predictedUpMean)+'%｜実績上昇率 '+fmt(row.observedUpRate)+'%｜'+row.count+'件';
+     history.append(line);
+    }
+   }
+   const sampleList=Array.isArray(report.samples)?report.samples:[];
+   const tail=sampleList.slice(-15).reverse();
+   if(tail.length){
+    const heading=document.createElement('div');heading.className='news';heading.textContent='直近の検証記録（最大15件）';history.append(heading);
+    const names={fang:'FANG+',nikkei:'日経225',topix:'TOPIX'};
+    for(const s of tail){
+     const line=document.createElement('div');line.className='news';
+     line.textContent=(names[s.id]||s.id)+'｜予測日 '+s.forecastDate+'｜実績日 '+s.actualDate+'｜上昇確率 '+fmt(s.probabilityUp)+'%｜'+(s.hit?'的中':'外れ')+'｜変動 '+(Number(s.returnPct)>=0?'+':'')+fmt(s.returnPct,3)+'%';
+     history.append(line);
+    }
+   }
+   if(!overall.samples) history.textContent='有効な検証記録はまだありません。';
+  }catch(error){
+   status.textContent='サーバー検証レポートを表示できません：'+(error.message||error);
+   summary.replaceChildren();history.replaceChildren();
+   const note=document.createElement('div');note.className='empty';
+   note.textContent='サーバー集計を取得できないため、端末内の履歴から的中率を代用表示しません。';
+   summary.append(note);
+  }finally{serverValidationRequest=null;}
+ })();
+ return serverValidationRequest;
+}
+renderValidation=function(){loadServerValidation();};
+document.getElementById('validateForecast')?.addEventListener('click',()=>{serverValidationRequest=null;loadServerValidation();});
+loadServerValidation();
+</script>
+</body></html>
 <!-- deploy-sync: 2026-11-13 risk model update -->
