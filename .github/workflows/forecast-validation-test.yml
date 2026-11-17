@@ -1,0 +1,52 @@
+name: Forecast validation test
+on:
+  pull_request:
+    branches: [restore-world-market-japan-heatmap]
+    paths:
+      - "scripts/forecast-validation.mjs"
+      - "forecast-history.json"
+      - ".github/workflows/forecast-validation-test.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check script syntax
+        run: node --check scripts/forecast-validation.mjs
+      - name: Run historical validation report
+        run: node scripts/forecast-validation.mjs
+      - name: Verify report structure and metric ranges
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const report = JSON.parse(fs.readFileSync("forecast-validation.json", "utf8"));
+          if (!Number.isInteger(report.overall.samples) || report.overall.samples < 1) {
+            throw new Error("No historical validation samples were collected");
+          }
+          if (report.overall.directionAccuracy !== null &&
+              (report.overall.directionAccuracy < 0 || report.overall.directionAccuracy > 100)) {
+            throw new Error("Direction accuracy is outside 0-100");
+          }
+          if (report.overall.brierScore !== null &&
+              (report.overall.brierScore < 0 || report.overall.brierScore > 1)) {
+            throw new Error("Brier score is outside 0-1");
+          }
+          for (const id of ["fang", "nikkei", "topix"]) {
+            if (!report.byAsset[id]) throw new Error("Missing asset summary: " + id);
+          }
+          if (!report.methodology.learning.includes("does not alter")) {
+            throw new Error("Report must remain diagnostics-only");
+          }
+          console.log(JSON.stringify({
+            samples: report.overall.samples,
+            accuracy: report.overall.directionAccuracy,
+            brier: report.overall.brierScore,
+            reliability: report.overall.reliability
+          }, null, 2));
+          NODE
