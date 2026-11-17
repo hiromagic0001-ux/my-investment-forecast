@@ -3,7 +3,6 @@ import fs from "node:fs/promises";
 const historyPath = "forecast-history.json";
 const outputPath = "forecast-validation.json";
 const assets = ["fang", "nikkei", "topix"];
-const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
 
 let history = [];
 try {
@@ -16,14 +15,19 @@ try {
 function collect(rows) {
   const samples = [];
   for (const day of rows) {
-    for (const result of day.results || []) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(day?.date || "")) continue;
+    for (const result of Array.isArray(day.results) ? day.results : []) {
       const p = Number(result.probability);
       const base = Number(result.basePrice);
       const actual = Number(result.actual);
-      if (!Number.isFinite(p) || p < 0 || p > 100 ||
+      const actualDate = result.actualDate;
+      if (!assets.includes(result.id) ||
+          !Number.isFinite(p) || p < 0 || p > 100 ||
           !Number.isFinite(base) || base <= 0 ||
           !Number.isFinite(actual) || actual <= 0 ||
-          !result.actualDate || actual === base) continue;
+          !/^\d{4}-\d{2}-\d{2}$/.test(actualDate || "") ||
+          actualDate < day.date) continue;
+      // A flat close is not an upward outcome for a binary up-probability forecast.
       const observedUp = actual > base ? 1 : 0;
       const predictedUp = p >= 50 ? 1 : 0;
       const probability = p / 100;
@@ -31,7 +35,7 @@ function collect(rows) {
       samples.push({
         id: result.id,
         forecastDate: day.date,
-        actualDate: result.actualDate,
+        actualDate,
         probabilityUp: p,
         observedUp,
         hit: predictedUp === observedUp,
@@ -83,9 +87,10 @@ const report = {
   generatedAt: new Date().toISOString(),
   source: historyPath,
   methodology: {
-    direction: "probability >= 50 means up; actual direction is actual > basePrice",
+    direction: "probability >= 50 means up; actual direction is actual > basePrice; flat is not up",
     brier: "mean((probabilityUp / 100 - observedUp) ^ 2); lower is better",
     returnError: "absolute percentage change from saved basePrice to actual",
+    dateGuard: "actualDate must be on or after the forecast target date",
     minimumSamplesForReliability: 30,
     learning: "diagnostics only; does not alter forecast weights or future probabilities"
   },
