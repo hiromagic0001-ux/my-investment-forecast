@@ -24,7 +24,17 @@ jobs:
           node --input-type=module <<'NODE'
           import fs from "node:fs";
           const html = fs.readFileSync("index.html", "utf8");
-          const scripts = html.split("<script>").slice(1).map(part => part.split("</script>")[0]);
+          const scripts = [];
+          let cursor = 0;
+          while (true) {
+            const start = html.indexOf("<script>", cursor);
+            if (start < 0) break;
+            const contentStart = start + "<script>".length;
+            const end = html.indexOf("</script>", contentStart);
+            if (end < 0) throw new Error("Unclosed inline script");
+            scripts.push(html.slice(contentStart, end));
+            cursor = end + "</script>".length;
+          }
           if (!scripts.length) throw new Error("No inline scripts found");
           for (const [index, match] of scripts.entries()) {
             new Function(match[1]);
