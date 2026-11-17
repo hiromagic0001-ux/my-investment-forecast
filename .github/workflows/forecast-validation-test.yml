@@ -4,6 +4,7 @@ on:
     branches: [restore-world-market-japan-heatmap]
     paths:
       - "scripts/forecast-validation.mjs"
+      - "index.html"
       - "forecast-history.json"
       - ".github/workflows/forecast-validation-test.yml"
   workflow_dispatch:
@@ -17,8 +18,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Check script syntax
-        run: node --check scripts/forecast-validation.mjs
+      - name: Check script and app syntax
+        run: |
+          node --check scripts/forecast-validation.mjs
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const html = fs.readFileSync("index.html", "utf8");
+          const scripts = [...html.matchAll(/<script>([\\s\\S]*?)<\\/script>/g)];
+          if (!scripts.length) throw new Error("No inline scripts found");
+          for (const [index, match] of scripts.entries()) {
+            new Function(match[1]);
+            console.log(`Inline script ${index + 1} syntax OK`);
+          }
+          NODE
       - name: Run historical validation report
         run: node scripts/forecast-validation.mjs
       - name: Verify report structure and metric ranges
