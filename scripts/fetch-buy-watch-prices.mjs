@@ -25,6 +25,6 @@ for (const [code, fallbackName] of stocks) {
     console.error(`FAILED ${code}: ${error.message || error}`);
   }
 }
-fs.writeFileSync("stock-prices.json", JSON.stringify(output, null, 2) + "\\n");
+fs.writeFileSync("stock-prices.json", JSON.stringify(output, null, 2) + "\n");
 console.log(`Saved stock-prices.json; failures=${failures}/${stocks.length}`);
 if (failures === stocks.length) process.exitCode = 1;
