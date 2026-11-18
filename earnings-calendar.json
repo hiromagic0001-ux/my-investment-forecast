@@ -1,11 +1,11 @@
 {
-  "asOfDate": "2026-11-16",
-  "generatedAt": "2026-11-17T04:16:23.038Z",
+  "asOfDate": "2026-11-17",
+  "generatedAt": "2026-11-18T03:15:11.233Z",
   "status": "ok",
   "source": "Nasdaq public earnings calendar",
   "window": {
-    "from": "2026-11-14",
-    "to": "2026-11-22"
+    "from": "2026-11-15",
+    "to": "2026-11-23"
   },
   "events": [
     {
@@ -13,7 +13,7 @@
       "symbol": "NVDA",
       "name": "NVIDIA Corporation",
       "reportTime": "time-after-hours",
-      "marketCap": 3924684960000,
+      "marketCap": 3762974100000,
       "epsForecast": 2.49,
       "actualEPS": null,
       "surprise": null,
