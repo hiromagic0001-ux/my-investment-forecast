@@ -38,13 +38,25 @@ async function refresh(){
  $("status").textContent="保存済み株価データを読み込んでいます…";
  shell();
  try{
-  const res=await fetch("./stock-prices.json?ts="+Date.now(),{cache:"no-store"});
-  if(!res.ok)throw Error("保存データの読込に失敗（HTTP "+res.status+"）");
-  let data=await res.json();
+  let data=null,errors=[];
+  const sources=[
+   "./stock-prices.json?ts="+Date.now(),
+   "https://raw.githubusercontent.com/hiromagic0001-ux/my-investment-forecast/world-market-jp225-purple-only/stock-prices.json?ts="+Date.now()
+  ];
+  for(const url of sources){
+   try{
+    const res=await fetch(url,{cache:"no-store"});
+    if(!res.ok)throw Error("HTTP "+res.status);
+    const candidate=await res.json();
+    if(!candidate||!candidate.stocks||typeof candidate.stocks!=="object")throw Error("JSON形式が不正です");
+    data=candidate;break;
+   }catch(err){errors.push(String(err.message||err))}
+  }
   try{
    const saved=JSON.parse(localStorage.getItem("buyWatchLatestPrices")||"null");
-   if(saved?.generatedAt&&new Date(saved.generatedAt)>new Date(data.generatedAt||0))data=saved;
+   if(saved?.stocks&&saved?.generatedAt&&(!data||new Date(saved.generatedAt)>new Date(data.generatedAt||0)))data=saved;
   }catch{}
+  if(!data)throw Error("保存データ読込失敗："+errors.join("／"));
   showResults(data,"保存データ");
  }catch(e){
   $("status").textContent=String(e.message||e);
@@ -52,7 +64,7 @@ async function refresh(){
    const card=$("s"+code);
    card.querySelector(".price").textContent="—";
    card.querySelector(".signal").textContent="データ未取得";
-   card.querySelector(".reason").textContent="株価保存データを読み込めません。";
+   card.querySelector(".reason").textContent="保存データを読み込めません。上のエラー内容をご確認ください。";
   }
  }finally{btn.disabled=false}
 }
