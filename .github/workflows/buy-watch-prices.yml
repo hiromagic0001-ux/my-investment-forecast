@@ -1,5 +1,10 @@
 name: Refresh buy-watch stock prices
 on:
+  push:
+    branches: [world-market-jp225-purple-only]
+    paths:
+      - scripts/fetch-buy-watch-prices.mjs
+      - .github/workflows/buy-watch-prices.yml
   schedule:
     # 09:00-16:00 JST, weekdays (00:00-07:00 UTC, Sunday-Thursday)
     - cron: "0 0-7 * * 0-4"
