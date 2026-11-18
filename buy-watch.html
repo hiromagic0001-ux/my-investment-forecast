@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080b12"><title>13銘柄 買い水準監視｜AI投資アプリ</title>
+<style>
+:root{color-scheme:dark;--bg:#080b12;--panel:#111a29;--line:#28364a;--gold:#e7c477;--muted:#9eacbf;--green:#54d6a0;--red:#ff7e89;--purple:#c69aff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#20314b 0,var(--bg) 55%);color:#f2f5fa;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:14px 12px 40px}main{max-width:1000px;margin:auto}header{text-align:center;padding:10px 0 15px}h1{font-size:clamp(21px,5vw,28px);color:var(--gold);margin:0}header p{font-size:12px;color:var(--muted);line-height:1.6}.top{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:10px 0}.btn{border:0;border-radius:9px;padding:11px 14px;background:linear-gradient(135deg,#f0d798,#b98b3d);font-weight:800;color:#1a160e}.back{color:#b9d7ff;text-decoration:none;font-size:13px}.notice,.method{background:#111a29;border:1px solid var(--line);border-radius:12px;padding:12px;font-size:12px;line-height:1.7;color:#bdc9d9;margin:10px 0}.summary{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.pill{background:#111a29;border:1px solid var(--line);padding:8px 11px;border-radius:9px;font-size:12px}.pill b{color:var(--gold);font-size:16px;margin-right:5px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stock{min-width:0;background:linear-gradient(150deg,#172337,#0f1724);border:1px solid var(--line);border-radius:13px;padding:12px}.stock.buy{border:2px solid #b88aff;box-shadow:0 0 15px #9d69e744}.stock.candidate{border:1px solid #a184cf}.name{font-size:14px;font-weight:800}.code{font-size:11px;color:var(--muted);margin-left:5px}.price{font-size:23px;font-weight:850;margin:9px 0 2px}.change{font-size:12px;color:var(--muted)}.signal{display:inline-block;border-radius:7px;padding:6px 9px;font-size:12px;font-weight:850;margin:9px 0}.signal.buy{background:#3a2355;color:#ead8ff;border:1px solid #c69aff}.signal.candidate{background:#2c2541;color:#d7c3ff}.signal.wait{background:#26364a;color:#d0deee}.chart{height:230px;margin-top:8px}.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.metric{background:#0a111c;border-radius:7px;padding:7px;font-size:11px;color:var(--muted)}.metric b{display:block;color:#f2f5fa;font-size:13px;margin-top:3px}.reason{font-size:11px;color:#bdc9d9;line-height:1.6;margin-top:8px}.error{color:#ffb4b4}.foot{font-size:11px;color:var(--muted);line-height:1.7;margin-top:14px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.chart{height:250px}.price{font-size:25px}}
+</style>
+<script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-advanced-chart.js"></script></head>
+<body><main><header><h1>13銘柄｜買い水準監視</h1><p>株価・日足チャート・テクニカル指標を確認し、条件に達した銘柄を表示します。</p></header>
+<div class="top"><a class="back" href="./index.html">← 投資予測トップへ戻る</a><button class="btn" id="refresh">株価を再取得</button></div>
+<div class="notice" id="status">株価データを取得しています…</div>
+<div class="summary"><div class="pill"><b id="buyCount">—</b>買い水準</div><div class="pill"><b id="candidateCount">—</b>買い候補</div><div class="pill"><b id="watchCount">13</b>監視銘柄</div></div>
+<div class="grid" id="stocks"></div>
+<div class="method"><b style="color:#e7c477">買い水準の判定ルール（初期設定）</b><br>日足終値がボリンジャーバンド（20日・±2σ）の下限付近（下限＋2%以内）、RSI（14日）が40以下、かつ終値が200日移動平均線より上、の3条件をすべて満たした場合に「買い水準」と表示します。2条件成立は「買い候補」です。これは機械的な監視条件であり、利益を保証するものではありません。</div>
+<div class="foot">株価・テクニカル計算はYahoo Financeの日足データを利用します。チャートはTradingViewの公開チャートです。データ取得に失敗した銘柄、最新取引日を確認できない銘柄は買い判定を行わず「データ未取得」とします。表示は取引所のリアルタイム配信を保証せず、遅延・休場の可能性があります。投資判断はご自身でご確認ください。</div>
+</main>
+<script>
+const stocks=[
+["9989","サンドラッグ"],["4097","高圧ガス工業"],["4206","アイカ工業"],["4958","長谷川香料"],["8725","MS&ADインシュアランスグループHD"],["6785","鈴木"],["7723","愛知時計電機"],["2169","CDS"],["9757","船井総研HD"],["4641","アルプス技研"],["3817","SRAホールディングス"],["3901","マークラインズ"]
+];
+const $=id=>document.getElementById(id),fmt=n=>Number(n).toLocaleString("ja-JP",{maximumFractionDigits:2}),mean=a=>a.reduce((s,x)=>s+x,0)/a.length,sd=a=>Math.sqrt(mean(a.map(x=>(x-mean(a))**2)));
+function rsi(a){let gains=0,loss=0;for(let i=a.length-14;i<a.length;i++){let d=a[i]-a[i-1];if(d>0)gains+=d;else loss-=d}if(loss===0)return 100;return 100-100/(1+(gains/14)/(loss/14))}
+function renderShell(){ $("stocks").innerHTML=stocks.map(([code,name])=>'<article class="stock" id="s'+code+'"><div class="name">'+name+'<span class="code">'+code+'</span></div><div class="price">取得中…</div><div class="signal wait">判定中</div><div class="chart"><tv-advanced-chart symbol="TSE:'+code+'" interval="D" timezone="Asia/Tokyo" theme="dark" locale="ja" chart-type="candlestick" autosize transparent></tv-advanced-chart></div><div class="metrics"></div><div class="reason">日足データを取得しています。</div></article>').join("")}
+async function loadOne([code,name]){
+ const card=$("s"+code);try{
+  const url="https://query1.finance.yahoo.com/v8/finance/chart/"+code+".T?range=1y&interval=1d";
+  const res=await fetch(url,{cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);
+  const json=await res.json(),result=json.chart?.result?.[0];if(!result)throw Error("価格データなし");
+  const q=result.indicators.quote[0],closes=result.timestamp.map((t,i)=>({t,c:q.close[i]})).filter(x=>Number.isFinite(x.c));
+  if(closes.length<200)throw Error("日足データ不足（200日未満）");
+  const vals=closes.map(x=>x.c),last=vals.at(-1),prev=vals.at(-2),sma20=mean(vals.slice(-20)),sma25=mean(vals.slice(-25)),sma200=mean(vals.slice(-200)),lower=sma20-2*sd(vals.slice(-20)),r=rsi(vals);
+  const day=new Date(closes.at(-1).t*1000).toLocaleDateString("ja-JP",{timeZone:"Asia/Tokyo"});
+  const fresh=(Date.now()/1000-closes.at(-1).t)<5*86400;
+  const nearLower=last<=lower*1.02,trend=last>sma200,oversold=r<=40;
+  const score=[nearLower,trend,oversold].filter(Boolean).length;
+  let label=fresh?(score===3?"買い水準":score===2?"買い候補":"監視中"):"データが古いため判定保留";
+  card.className="stock"+(fresh&&score===3?" buy":fresh&&score===2?" candidate":"");
+  card.querySelector(".price").textContent=fmt(last)+" 円";
+  card.querySelector(".change").textContent="前日比 "+(last>=prev?"+":"")+fmt(last-prev)+" 円（"+fmt((last/prev-1)*100)+"%）｜基準日 "+day;
+  const sig=card.querySelector(".signal");sig.textContent=label;sig.className="signal "+(score===3?"buy":score===2?"candidate":"wait");
+  card.querySelector(".metrics").innerHTML='<div class="metric">RSI（14日）<b>'+fmt(r)+'</b></div><div class="metric">25日移動平均<b>'+fmt(sma25)+' 円</b></div><div class="metric">BB下限（20日）<b>'+fmt(lower)+' 円</b></div><div class="metric">200日移動平均<b>'+fmt(sma200)+' 円</b></div>';
+  card.querySelector(".reason").textContent=(fresh?"判定："+label+"。条件："+(nearLower?"BB下限付近 ✓":"BB下限未達")+"／"+(oversold?"RSI40以下 ✓":"RSI条件未達")+"／"+(trend?"200日線上 ✓":"200日線下"):"最終データが5日以上前のため、買い判定を停止。")+"　最終更新："+day;
+  return {score,fresh};
+ }catch(e){card.querySelector(".price").textContent="—";card.querySelector(".signal").textContent="データ未取得";card.querySelector(".signal").className="signal wait";card.querySelector(".reason").innerHTML='<span class="error">'+String(e.message||e)+'</span>。取得できない場合は買い判定しません。';return {score:0,fresh:false,error:true}}
+}
+async function refresh(){ $("refresh").disabled=true;$("status").textContent="13銘柄の日足株価を取得中…";renderShell();const results=await Promise.all(stocks.map(loadOne));const buy=results.filter(x=>x.fresh&&x.score===3).length,candidate=results.filter(x=>x.fresh&&x.score===2).length,errors=results.filter(x=>x.error).length;$("buyCount").textContent=buy;$("candidateCount").textContent=candidate;$("watchCount").textContent=stocks.length;$("status").textContent="取得完了｜買い水準 "+buy+"銘柄・買い候補 "+candidate+"銘柄｜取得失敗 "+errors+"銘柄｜"+new Date().toLocaleString("ja-JP");$("refresh").disabled=false}
+$("refresh").addEventListener("click",refresh);renderShell();refresh();
+</script></body></html>
