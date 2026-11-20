@@ -7087,10 +7087,10 @@
         ],
         "rangeLow": 16242.537664402591,
         "rangeHigh": 17355.142023097407,
-        "actual": null,
-        "actualUp": null,
-        "actualDate": null,
-        "hit": null,
+        "actual": 16380.9306640625,
+        "actualUp": false,
+        "actualDate": "2026-11-19",
+        "hit": true,
         "quality": 0.878416,
         "score": -0.844475,
         "coverage": 1,
@@ -7254,10 +7254,10 @@
         ],
         "rangeLow": 57309.95449196157,
         "rangeHigh": 60971.78769553843,
-        "actual": null,
-        "actualUp": null,
-        "actualDate": null,
-        "hit": null,
+        "actual": 56775.0390625,
+        "actualUp": false,
+        "actualDate": "2026-11-20",
+        "hit": true,
         "quality": 0.83593800576,
         "score": -0.848480625,
         "coverage": 1,
@@ -7425,10 +7425,10 @@
         ],
         "rangeLow": 389.7167994267728,
         "rangeHigh": 412.4832127802585,
-        "actual": null,
-        "actualUp": null,
-        "actualDate": null,
-        "hit": null,
+        "actual": 389.5,
+        "actualUp": false,
+        "actualDate": "2026-11-20",
+        "hit": true,
         "quality": 0.83601327744,
         "score": -0.848756875,
         "coverage": 1,
@@ -9888,6 +9888,2960 @@
         "score": -0.45,
         "date": "Tue, 17 Nov 2026 14:40:06 GMT",
         "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1zZEt1RGcxWHRLMVlwdDJpc1A2UmlWY1FyaVVnSi0yVGhxZGtmei1RZ1ZFb3l4T1A1MWw0LXltY3ljN3pmY3pkUzVSMEZXaXE0YVBFRlItc2o2VklncUIwQkdpRDZ6aWNCYUFzRkpvX3NFSFpEaEV3YjZyQTlLNHM?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      }
+    ]
+  },
+  {
+    "date": "2026-11-20",
+    "savedAt": "2026-11-20T02:46:20.052Z",
+    "modelVersion": "2.3.0",
+    "fxInterventionRisk": {
+      "score": 0.62,
+      "label": "高い"
+    },
+    "earningsCalendarStatus": "ok",
+    "earningsRisk": [
+      {
+        "id": "fang",
+        "score": 0.020000000000000004,
+        "pricedInScore": 0,
+        "label": "決算予定あり",
+        "dataStatus": "ok",
+        "events": [
+          {
+            "symbol": "NVDA",
+            "name": "NVIDIA Corporation",
+            "date": "2026-11-17",
+            "reportTime": "time-not-supplied",
+            "epsForecast": 2.47,
+            "estimateCount": 14,
+            "dayDiff": -2,
+            "relativeStrength": -23.65998451553542,
+            "pricedInScore": 0,
+            "risk": 0.020000000000000004,
+            "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/earnings"
+          }
+        ]
+      },
+      {
+        "id": "nikkei",
+        "score": 0.0055000000000000005,
+        "pricedInScore": 0,
+        "label": "決算予定あり",
+        "dataStatus": "ok",
+        "events": [
+          {
+            "symbol": "NVDA",
+            "name": "NVIDIA Corporation",
+            "date": "2026-11-17",
+            "reportTime": "time-not-supplied",
+            "epsForecast": 2.47,
+            "estimateCount": 14,
+            "dayDiff": -2,
+            "relativeStrength": -23.65998451553542,
+            "pricedInScore": 0,
+            "risk": 0.0055000000000000005,
+            "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/earnings"
+          }
+        ]
+      },
+      {
+        "id": "topix",
+        "score": 0.0045,
+        "pricedInScore": 0,
+        "label": "決算予定あり",
+        "dataStatus": "ok",
+        "events": [
+          {
+            "symbol": "NVDA",
+            "name": "NVIDIA Corporation",
+            "date": "2026-11-17",
+            "reportTime": "time-not-supplied",
+            "epsForecast": 2.47,
+            "estimateCount": 14,
+            "dayDiff": -2,
+            "relativeStrength": -23.65998451553542,
+            "pricedInScore": 0,
+            "risk": 0.0045,
+            "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/earnings"
+          }
+        ]
+      }
+    ],
+    "results": [
+      {
+        "id": "fang",
+        "name": "NYSE FANG+（参考）",
+        "macroScore": 0,
+        "macroSignalsUsed": 0,
+        "basePrice": 16380.9306640625,
+        "baseDate": "2026-11-19",
+        "technical": {
+          "sma5": 16816.9560546875,
+          "sma25": 17702.6750390625,
+          "sma75": 18473.0644921875,
+          "sma200": 17006.424462890624,
+          "bbMiddle": 17463.452392578125,
+          "bbUpper": 18693.52414556091,
+          "bbLower": 16233.38063959534,
+          "bbPercentB": 0.05997618598645489,
+          "bbWidth": 14.087383471844998,
+          "bbWidthPercentile": 0.85,
+          "squeeze": false,
+          "bbState": "下限寄り",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6700000000000002
+        },
+        "fxInterventionRisk": {
+          "score": 0.62,
+          "label": "高い"
+        },
+        "earningsRisk": {
+          "score": 0.020000000000000004,
+          "pricedInScore": 0,
+          "label": "決算予定あり",
+          "dataStatus": "ok",
+          "events": [
+            {
+              "symbol": "NVDA",
+              "name": "NVIDIA Corporation",
+              "date": "2026-11-17",
+              "reportTime": "time-not-supplied",
+              "epsForecast": 2.47,
+              "estimateCount": 14,
+              "dayDiff": -2,
+              "relativeStrength": -23.65998451553542,
+              "pricedInScore": 0,
+              "risk": 0.020000000000000004,
+              "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/earnings"
+            }
+          ]
+        },
+        "probability": 37.3,
+        "direction": "下落",
+        "probs": [
+          37.3
+        ],
+        "rangeLow": 15844.773365444118,
+        "rangeHigh": 16917.08796268088,
+        "actual": null,
+        "actualUp": null,
+        "actualDate": null,
+        "hit": null,
+        "quality": 0.876832,
+        "score": -0.83895,
+        "coverage": 1,
+        "newsCoverage": 1,
+        "missingFeeds": [],
+        "positives": [
+          {
+            "name": "上昇要因 1",
+            "value": 0.05310961633633609
+          }
+        ],
+        "negatives": [
+          {
+            "name": "下落要因 1",
+            "value": -0.24
+          },
+          {
+            "name": "下落要因 2",
+            "value": -0.18
+          },
+          {
+            "name": "下落要因 3",
+            "value": -0.12060000000000003
+          },
+          {
+            "name": "下落要因 4",
+            "value": -0.0924
+          },
+          {
+            "name": "下落要因 5",
+            "value": -0.1428
+          },
+          {
+            "name": "下落要因 6",
+            "value": -0.17639999999999997
+          },
+          {
+            "name": "下落要因 7",
+            "value": -0.11760000000000001
+          },
+          {
+            "name": "下落要因 8",
+            "value": -0.07612690327014225
+          },
+          {
+            "name": "下落要因 9",
+            "value": -0.0924
+          },
+          {
+            "name": "下落要因 10",
+            "value": -0.16164581841374712
+          },
+          {
+            "name": "下落要因 11",
+            "value": -0.10309629946070709
+          }
+        ],
+        "news": [
+          {
+            "title": "American Century Inflation-Adjusted Bond Fund Q3 2026 Commentary (ACITX) - Seeking Alpha",
+            "category": "rates",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOVVhlaUNUeHZNMDJrS1d5SkNyWnUwOW02TUo2ZnhZMmhROWlQRlpkSXlPYU1qcjBYMWoyeDBIeGVOMUJfRXRWWHhVZHZhbmlsT0tKNDdQUWV4Sk5YUEhwbThUbjZQUjJfU05od0tIbVBvQWE5WHBkNzA5akhzel9yYjgwMEc4U3BjZ2Q2cHpWd1dGM0VmNk8tVVZCUkxBY3dhMURnbVlWa0ExRENfTEszd055bkhpZEdlVDdJMnhCLXFWcGtDTk01X1d3?oc=5"
+          },
+          {
+            "title": "Japan Core Inflation Tops 2% Again as December BOJ Hike Bets Firm Up - BigGo Finance",
+            "category": "japan",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE82ZW05SGhNbGJsSVZjYzFuclNiaUNJdFd3cEJ0RVludHVJTVNQd3QzMDBBSnFXaWRva09aQUFaR3R0Wkd2aGtHUkJRTEhmdlVCdjBrSC1qM2ZwQXRxREc4WkZUcVM5empDTlVFU3dtekpadmtIV1E?oc=5"
+          },
+          {
+            "title": "Iran war could cut global oil demand by over 4% by 2035 - IEA - Iran International",
+            "category": "geo",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1jaVc1Q1l6ZjVWYkNjOThHaFVTMHNWNW5ucElpMHNKYlA0c25XX0JUVU11RGItMUhqQVd6cHlYQXNKMlUwdzFkODV1dDR4LTV1Mmc?oc=5"
+          },
+          {
+            "title": "Gold and Bitcoin Prices Drop Amid Rising US Bond Yields and ETF Outflows - KuCoin",
+            "category": "rates",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOdkxXdi01SXpjSko4ZkZGaDRZeTdzQ2dzaEpfRXVmZlROazNGVEF6OFZsMTYwWGVGLUdfdFROanJLc2dvaWg2a1dtOVY2b2pEZzFDZVdSaUlJS2wzQVJIUWlKV28wR211b1lDNktFcWpKVGxVOWdXWGR4OU05RXFSeVdFM3QzQnpfZ3IwVEZaaUhGb202MVE4dmY4V0NqVGxNSkdIV1JiNVdUUQ?oc=5"
+          },
+          {
+            "title": "Euro breaks below $1.10 as French election risk builds; three banks see $1.08 next - investingLive",
+            "category": "fx",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNS2dqeW1lSU10eUJ0VWlTTlRZNXp4Qzc3YmhJRjgtS3lPMUNPTGVpX2M0aldhbk54WnZvb1d4aUVvS2h0elZTNkdTYmtBUHdwSzRxQTN0bFBFY1Q5bUYyT1U4clFvV3VmVEJxbmU1dnpSSUNlS0JwT1cyNHp4UG9nRm1aVVVXdU9Eak9iVFV5TlpIM1JfcThLNElmdks1VmlicGRXN1lpUUR0T21IY0gtNS1R?oc=5"
+          },
+          {
+            "title": "Closing The 1998 Chapter: What Indonesia's Fiscal-Monetary Synergy Must Still Prove - OpEd - Eurasia Review",
+            "category": "credit",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNQi1CX0ZhSDZTR2ZNQ2xQTUFRajJ4WHRRdmFETi1BQjl2QXowSnhTel96Sk1vV0xobmdHNW43aHJHaUdPb2c0Ry1SUlJENnR6UzViVnAxYVIweGRkajZxbFhUSkZRcVdjZ3gzeENJQUJnNnR6OXNvclUzNUJtLVJONzJkNl83UXZ1RFRHVkNadnBaWGVGNlJJemJOVElYX0pKUHBlV09icXRMMzJidFdzemd0TnFnTUF6VURMY2paU1FjV1Vk?oc=5"
+          },
+          {
+            "title": "The Shenzhen Summit: A New Yalta Or A Nothingburger? The Dates We Need To Watch (SPY) - Seeking Alpha",
+            "category": "trade",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPaTNEc1VEZlVJMUc5azN1Um9vLUF1aGFoLW11TkJWaWJvSFFLRVUtaEFnb3N0UUk5UFhQZjRLYmNlRTJ0U1laUjdRellXc2xpcHN0cURGckpJNnoyWlV1aWdhUmJvUS1iYVYxQTlTclEtXzFEQTFON3Rnd3puR0huWHN6eVNqNl9DRWs0THdRaTE3cVg4TTF3VFFPYmdINUtndFRxUUdUUEc3dw?oc=5"
+          },
+          {
+            "title": "Martel: the Trump-Putin-Xi Summit Is a Nightmare for Iran - Breitbart News",
+            "category": "geo",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOSmxwQXFUb2tLckNMUGFNaWg5cHBTNmtEeUNLWWI4ZXRDaS1PQ1MyQTh5cGhRdk52elktM2Y2WWozX0tsX1pWeUhPNmpqd1NkYTFNLXM0MmFTM2QtWG5RV2pLR01fOG5oY1NsNW9sdU9nMXBDMWN2MzZvUVkxX3JuTDVGNnlnYjYwM1pBWFMzS3BLYkhDS2RkYkZOaEl3LTJnWkk2cHNIOUpQUQ?oc=5"
+          }
+        ],
+        "modelVersion": "2.3.1",
+        "source": "GitHub Actions server-side model"
+      },
+      {
+        "id": "nikkei",
+        "name": "日経225",
+        "macroScore": 0,
+        "macroSignalsUsed": 0,
+        "basePrice": 56775.0390625,
+        "baseDate": "2026-11-20",
+        "technical": {
+          "sma5": 58753.19609375,
+          "sma25": 61675.798125,
+          "sma75": 64742.445677083335,
+          "sma200": 62266.664140625,
+          "bbMiddle": 61002.4732421875,
+          "bbUpper": 65272.18640995121,
+          "bbLower": 56732.76007442379,
+          "bbPercentB": 0.00495103375976313,
+          "bbWidth": 13.99849199822574,
+          "bbWidthPercentile": 0.7666666666666667,
+          "squeeze": false,
+          "bbState": "下限寄り",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6700000000000002
+        },
+        "fxInterventionRisk": {
+          "score": 0.62,
+          "label": "高い"
+        },
+        "earningsRisk": {
+          "score": 0.0055000000000000005,
+          "pricedInScore": 0,
+          "label": "決算予定あり",
+          "dataStatus": "ok",
+          "events": [
+            {
+              "symbol": "NVDA",
+              "name": "NVIDIA Corporation",
+              "date": "2026-11-17",
+              "reportTime": "time-not-supplied",
+              "epsForecast": 2.47,
+              "estimateCount": 14,
+              "dayDiff": -2,
+              "relativeStrength": -23.65998451553542,
+              "pricedInScore": 0,
+              "risk": 0.0055000000000000005,
+              "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/earnings"
+            }
+          ]
+        },
+        "probability": 37.8,
+        "direction": "下落",
+        "probs": [
+          37.8
+        ],
+        "rangeLow": 54870.33101151992,
+        "rangeHigh": 58679.74711348008,
+        "actual": null,
+        "actualUp": null,
+        "actualDate": null,
+        "hit": null,
+        "quality": 0.83552401152,
+        "score": -0.84696125,
+        "coverage": 1,
+        "newsCoverage": 1,
+        "missingFeeds": [],
+        "positives": [
+          {
+            "name": "上昇要因 1",
+            "value": 0.0682837924324321
+          }
+        ],
+        "negatives": [
+          {
+            "name": "下落要因 1",
+            "value": -0.24
+          },
+          {
+            "name": "下落要因 2",
+            "value": -0.18
+          },
+          {
+            "name": "下落要因 3",
+            "value": -0.12060000000000003
+          },
+          {
+            "name": "下落要因 4",
+            "value": -0.0744
+          },
+          {
+            "name": "下落要因 5",
+            "value": -0.0966
+          },
+          {
+            "name": "下落要因 6",
+            "value": -0.084
+          },
+          {
+            "name": "下落要因 7",
+            "value": -0.1428
+          },
+          {
+            "name": "下落要因 8",
+            "value": -0.042
+          },
+          {
+            "name": "下落要因 9",
+            "value": -0.058800000000000005
+          },
+          {
+            "name": "下落要因 10",
+            "value": -0.084
+          },
+          {
+            "name": "下落要因 11",
+            "value": -0.0577306494334811
+          }
+        ],
+        "news": [
+          {
+            "title": "American Century Inflation-Adjusted Bond Fund Q3 2026 Commentary (ACITX) - Seeking Alpha",
+            "category": "rates",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOVVhlaUNUeHZNMDJrS1d5SkNyWnUwOW02TUo2ZnhZMmhROWlQRlpkSXlPYU1qcjBYMWoyeDBIeGVOMUJfRXRWWHhVZHZhbmlsT0tKNDdQUWV4Sk5YUEhwbThUbjZQUjJfU05od0tIbVBvQWE5WHBkNzA5akhzel9yYjgwMEc4U3BjZ2Q2cHpWd1dGM0VmNk8tVVZCUkxBY3dhMURnbVlWa0ExRENfTEszd055bkhpZEdlVDdJMnhCLXFWcGtDTk01X1d3?oc=5"
+          },
+          {
+            "title": "Japan Core Inflation Tops 2% Again as December BOJ Hike Bets Firm Up - BigGo Finance",
+            "category": "japan",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE82ZW05SGhNbGJsSVZjYzFuclNiaUNJdFd3cEJ0RVludHVJTVNQd3QzMDBBSnFXaWRva09aQUFaR3R0Wkd2aGtHUkJRTEhmdlVCdjBrSC1qM2ZwQXRxREc4WkZUcVM5empDTlVFU3dtekpadmtIV1E?oc=5"
+          },
+          {
+            "title": "Iran war could cut global oil demand by over 4% by 2035 - IEA - Iran International",
+            "category": "geo",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1jaVc1Q1l6ZjVWYkNjOThHaFVTMHNWNW5ucElpMHNKYlA0c25XX0JUVU11RGItMUhqQVd6cHlYQXNKMlUwdzFkODV1dDR4LTV1Mmc?oc=5"
+          },
+          {
+            "title": "Gold and Bitcoin Prices Drop Amid Rising US Bond Yields and ETF Outflows - KuCoin",
+            "category": "rates",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOdkxXdi01SXpjSko4ZkZGaDRZeTdzQ2dzaEpfRXVmZlROazNGVEF6OFZsMTYwWGVGLUdfdFROanJLc2dvaWg2a1dtOVY2b2pEZzFDZVdSaUlJS2wzQVJIUWlKV28wR211b1lDNktFcWpKVGxVOWdXWGR4OU05RXFSeVdFM3QzQnpfZ3IwVEZaaUhGb202MVE4dmY4V0NqVGxNSkdIV1JiNVdUUQ?oc=5"
+          },
+          {
+            "title": "Euro breaks below $1.10 as French election risk builds; three banks see $1.08 next - investingLive",
+            "category": "fx",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNS2dqeW1lSU10eUJ0VWlTTlRZNXp4Qzc3YmhJRjgtS3lPMUNPTGVpX2M0aldhbk54WnZvb1d4aUVvS2h0elZTNkdTYmtBUHdwSzRxQTN0bFBFY1Q5bUYyT1U4clFvV3VmVEJxbmU1dnpSSUNlS0JwT1cyNHp4UG9nRm1aVVVXdU9Eak9iVFV5TlpIM1JfcThLNElmdks1VmlicGRXN1lpUUR0T21IY0gtNS1R?oc=5"
+          },
+          {
+            "title": "Closing The 1998 Chapter: What Indonesia's Fiscal-Monetary Synergy Must Still Prove - OpEd - Eurasia Review",
+            "category": "credit",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNQi1CX0ZhSDZTR2ZNQ2xQTUFRajJ4WHRRdmFETi1BQjl2QXowSnhTel96Sk1vV0xobmdHNW43aHJHaUdPb2c0Ry1SUlJENnR6UzViVnAxYVIweGRkajZxbFhUSkZRcVdjZ3gzeENJQUJnNnR6OXNvclUzNUJtLVJONzJkNl83UXZ1RFRHVkNadnBaWGVGNlJJemJOVElYX0pKUHBlV09icXRMMzJidFdzemd0TnFnTUF6VURMY2paU1FjV1Vk?oc=5"
+          },
+          {
+            "title": "The Shenzhen Summit: A New Yalta Or A Nothingburger? The Dates We Need To Watch (SPY) - Seeking Alpha",
+            "category": "trade",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPaTNEc1VEZlVJMUc5azN1Um9vLUF1aGFoLW11TkJWaWJvSFFLRVUtaEFnb3N0UUk5UFhQZjRLYmNlRTJ0U1laUjdRellXc2xpcHN0cURGckpJNnoyWlV1aWdhUmJvUS1iYVYxQTlTclEtXzFEQTFON3Rnd3puR0huWHN6eVNqNl9DRWs0THdRaTE3cVg4TTF3VFFPYmdINUtndFRxUUdUUEc3dw?oc=5"
+          },
+          {
+            "title": "Martel: the Trump-Putin-Xi Summit Is a Nightmare for Iran - Breitbart News",
+            "category": "geo",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOSmxwQXFUb2tLckNMUGFNaWg5cHBTNmtEeUNLWWI4ZXRDaS1PQ1MyQTh5cGhRdk52elktM2Y2WWozX0tsX1pWeUhPNmpqd1NkYTFNLXM0MmFTM2QtWG5RV2pLR01fOG5oY1NsNW9sdU9nMXBDMWN2MzZvUVkxX3JuTDVGNnlnYjYwM1pBWFMzS3BLYkhDS2RkYkZOaEl3LTJnWkk2cHNIOUpQUQ?oc=5"
+          }
+        ],
+        "modelVersion": "2.3.1",
+        "source": "GitHub Actions server-side model"
+      },
+      {
+        "id": "topix",
+        "name": "TOPIX（1306連動ETF参考）",
+        "macroScore": 0,
+        "macroSignalsUsed": 0,
+        "basePrice": 389.5,
+        "baseDate": "2026-11-20",
+        "technical": {
+          "sma5": 401.8,
+          "sma25": 413.3199987792969,
+          "sma75": 422.685332438151,
+          "sma200": 407.4473992919922,
+          "bbMiddle": 410.4749984741211,
+          "bbUpper": 428.94354743500026,
+          "bbLower": 392.00644951324193,
+          "bbPercentB": -0.06785723985547529,
+          "bbWidth": 8.998623073041333,
+          "bbWidthPercentile": 0.95,
+          "squeeze": false,
+          "bbState": "-2σ下抜け",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6500000000000001
+        },
+        "fxInterventionRisk": {
+          "score": 0.62,
+          "label": "高い"
+        },
+        "earningsRisk": {
+          "score": 0.0045,
+          "pricedInScore": 0,
+          "label": "決算予定あり",
+          "dataStatus": "ok",
+          "events": [
+            {
+              "symbol": "NVDA",
+              "name": "NVIDIA Corporation",
+              "date": "2026-11-17",
+              "reportTime": "time-not-supplied",
+              "epsForecast": 2.47,
+              "estimateCount": 14,
+              "dayDiff": -2,
+              "relativeStrength": -23.65998451553542,
+              "pricedInScore": 0,
+              "risk": 0.0045,
+              "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/earnings"
+            }
+          ]
+        },
+        "probability": 37.8,
+        "direction": "下落",
+        "probs": [
+          37.8
+        ],
+        "rangeLow": 377.7582643750704,
+        "rangeHigh": 401.2417356249296,
+        "actual": null,
+        "actualUp": null,
+        "actualDate": null,
+        "hit": null,
+        "quality": 0.83567455488,
+        "score": -0.8475137500000001,
+        "coverage": 1,
+        "newsCoverage": 1,
+        "missingFeeds": [],
+        "positives": [
+          {
+            "name": "上昇要因 1",
+            "value": 0.05690316036036008
+          }
+        ],
+        "negatives": [
+          {
+            "name": "下落要因 1",
+            "value": -0.24
+          },
+          {
+            "name": "下落要因 2",
+            "value": -0.18
+          },
+          {
+            "name": "下落要因 3",
+            "value": -0.11700000000000002
+          },
+          {
+            "name": "下落要因 4",
+            "value": -0.0496
+          },
+          {
+            "name": "下落要因 5",
+            "value": -0.058800000000000005
+          },
+          {
+            "name": "下落要因 6",
+            "value": -0.042
+          },
+          {
+            "name": "下落要因 7",
+            "value": -0.0672
+          },
+          {
+            "name": "下落要因 8",
+            "value": -0.0546
+          },
+          {
+            "name": "下落要因 9",
+            "value": -0.1344
+          }
+        ],
+        "news": [
+          {
+            "title": "American Century Inflation-Adjusted Bond Fund Q3 2026 Commentary (ACITX) - Seeking Alpha",
+            "category": "rates",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOVVhlaUNUeHZNMDJrS1d5SkNyWnUwOW02TUo2ZnhZMmhROWlQRlpkSXlPYU1qcjBYMWoyeDBIeGVOMUJfRXRWWHhVZHZhbmlsT0tKNDdQUWV4Sk5YUEhwbThUbjZQUjJfU05od0tIbVBvQWE5WHBkNzA5akhzel9yYjgwMEc4U3BjZ2Q2cHpWd1dGM0VmNk8tVVZCUkxBY3dhMURnbVlWa0ExRENfTEszd055bkhpZEdlVDdJMnhCLXFWcGtDTk01X1d3?oc=5"
+          },
+          {
+            "title": "Japan Core Inflation Tops 2% Again as December BOJ Hike Bets Firm Up - BigGo Finance",
+            "category": "japan",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE82ZW05SGhNbGJsSVZjYzFuclNiaUNJdFd3cEJ0RVludHVJTVNQd3QzMDBBSnFXaWRva09aQUFaR3R0Wkd2aGtHUkJRTEhmdlVCdjBrSC1qM2ZwQXRxREc4WkZUcVM5empDTlVFU3dtekpadmtIV1E?oc=5"
+          },
+          {
+            "title": "Iran war could cut global oil demand by over 4% by 2035 - IEA - Iran International",
+            "category": "geo",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1jaVc1Q1l6ZjVWYkNjOThHaFVTMHNWNW5ucElpMHNKYlA0c25XX0JUVU11RGItMUhqQVd6cHlYQXNKMlUwdzFkODV1dDR4LTV1Mmc?oc=5"
+          },
+          {
+            "title": "Gold and Bitcoin Prices Drop Amid Rising US Bond Yields and ETF Outflows - KuCoin",
+            "category": "rates",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOdkxXdi01SXpjSko4ZkZGaDRZeTdzQ2dzaEpfRXVmZlROazNGVEF6OFZsMTYwWGVGLUdfdFROanJLc2dvaWg2a1dtOVY2b2pEZzFDZVdSaUlJS2wzQVJIUWlKV28wR211b1lDNktFcWpKVGxVOWdXWGR4OU05RXFSeVdFM3QzQnpfZ3IwVEZaaUhGb202MVE4dmY4V0NqVGxNSkdIV1JiNVdUUQ?oc=5"
+          },
+          {
+            "title": "Euro breaks below $1.10 as French election risk builds; three banks see $1.08 next - investingLive",
+            "category": "fx",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNS2dqeW1lSU10eUJ0VWlTTlRZNXp4Qzc3YmhJRjgtS3lPMUNPTGVpX2M0aldhbk54WnZvb1d4aUVvS2h0elZTNkdTYmtBUHdwSzRxQTN0bFBFY1Q5bUYyT1U4clFvV3VmVEJxbmU1dnpSSUNlS0JwT1cyNHp4UG9nRm1aVVVXdU9Eak9iVFV5TlpIM1JfcThLNElmdks1VmlicGRXN1lpUUR0T21IY0gtNS1R?oc=5"
+          },
+          {
+            "title": "Closing The 1998 Chapter: What Indonesia's Fiscal-Monetary Synergy Must Still Prove - OpEd - Eurasia Review",
+            "category": "credit",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNQi1CX0ZhSDZTR2ZNQ2xQTUFRajJ4WHRRdmFETi1BQjl2QXowSnhTel96Sk1vV0xobmdHNW43aHJHaUdPb2c0Ry1SUlJENnR6UzViVnAxYVIweGRkajZxbFhUSkZRcVdjZ3gzeENJQUJnNnR6OXNvclUzNUJtLVJONzJkNl83UXZ1RFRHVkNadnBaWGVGNlJJemJOVElYX0pKUHBlV09icXRMMzJidFdzemd0TnFnTUF6VURMY2paU1FjV1Vk?oc=5"
+          },
+          {
+            "title": "The Shenzhen Summit: A New Yalta Or A Nothingburger? The Dates We Need To Watch (SPY) - Seeking Alpha",
+            "category": "trade",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPaTNEc1VEZlVJMUc5azN1Um9vLUF1aGFoLW11TkJWaWJvSFFLRVUtaEFnb3N0UUk5UFhQZjRLYmNlRTJ0U1laUjdRellXc2xpcHN0cURGckpJNnoyWlV1aWdhUmJvUS1iYVYxQTlTclEtXzFEQTFON3Rnd3puR0huWHN6eVNqNl9DRWs0THdRaTE3cVg4TTF3VFFPYmdINUtndFRxUUdUUEc3dw?oc=5"
+          },
+          {
+            "title": "Martel: the Trump-Putin-Xi Summit Is a Nightmare for Iran - Breitbart News",
+            "category": "geo",
+            "score": 0,
+            "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOSmxwQXFUb2tLckNMUGFNaWg5cHBTNmtEeUNLWWI4ZXRDaS1PQ1MyQTh5cGhRdk52elktM2Y2WWozX0tsX1pWeUhPNmpqd1NkYTFNLXM0MmFTM2QtWG5RV2pLR01fOG5oY1NsNW9sdU9nMXBDMWN2MzZvUVkxX3JuTDVGNnlnYjYwM1pBWFMzS3BLYkhDS2RkYkZOaEl3LTJnWkk2cHNIOUpQUQ?oc=5"
+          }
+        ],
+        "modelVersion": "2.3.1",
+        "source": "GitHub Actions server-side model"
+      }
+    ],
+    "newsCount": 209,
+    "xCount": 30,
+    "xAttention": {
+      "posts": 297,
+      "authors": 12,
+      "engagement": 0,
+      "crediblePosts": 0,
+      "coordinationFlags": 84
+    },
+    "marketContext": {
+      "us": {
+        "price": 7175.830078125,
+        "day": -2.0181222570294644,
+        "week": -5.486668636752867,
+        "avg60": 7646.737679036459,
+        "dateISO": "2026-11-19",
+        "technical": {
+          "sma5": 7363.64990234375,
+          "sma25": 7567.25037109375,
+          "sma75": 7660.7012109375,
+          "sma200": 7348.020361328125,
+          "bbMiddle": 7534.895971679687,
+          "bbUpper": 7839.183614580578,
+          "bbLower": 7230.608328778796,
+          "bbPercentB": -0.09001063949159074,
+          "bbWidth": 8.07675763659041,
+          "bbWidthPercentile": 1,
+          "squeeze": false,
+          "bbState": "-2σ下抜け",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6500000000000001
+        }
+      },
+      "nasdaq": {
+        "price": 23879.19921875,
+        "day": -2.2541315031164966,
+        "week": -5.861725769162474,
+        "avg60": 26214.451432291666,
+        "dateISO": "2026-11-19",
+        "technical": {
+          "sma5": 24456.698046875,
+          "sma25": 25483.343984375,
+          "sma75": 26251.36765625,
+          "sma200": 25157.078759765624,
+          "bbMiddle": 25268.80703125,
+          "bbUpper": 26757.456908891654,
+          "bbLower": 23780.157153608343,
+          "bbPercentB": 0.03326573515679899,
+          "bbWidth": 11.782510158082559,
+          "bbWidthPercentile": 1,
+          "squeeze": false,
+          "bbState": "下限寄り",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6700000000000002
+        }
+      },
+      "semi": {
+        "price": 137.9499969482422,
+        "day": -2.749389487108933,
+        "week": -10.994262817594025,
+        "avg60": 169.5611104329427,
+        "dateISO": "2026-11-19",
+        "technical": {
+          "sma5": 142.3560028076172,
+          "sma25": 154.54253234863282,
+          "sma75": 171.09497741699218,
+          "sma200": 160.90819995880128,
+          "bbMiddle": 151.82183227539062,
+          "bbUpper": 174.99118714319988,
+          "bbLower": 128.65247740758136,
+          "bbPercentB": 0.20064260730838251,
+          "bbWidth": 30.521769524928686,
+          "bbWidthPercentile": 0.9666666666666667,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6700000000000002
+        }
+      },
+      "nvda": {
+        "price": 145.97999572753906,
+        "day": -3.2988942533417775,
+        "week": -12.160783691541644,
+        "avg60": 211.2918342590332,
+        "dateISO": "2026-11-19",
+        "technical": {
+          "sma5": 154.2780029296875,
+          "sma25": 191.85760192871095,
+          "sma75": 212.73506774902344,
+          "sma200": 203.57715019226075,
+          "bbMiddle": 185.72850189208984,
+          "bbUpper": 233.69084714457878,
+          "bbLower": 137.7661566396009,
+          "bbPercentB": 0.08562799676181308,
+          "bbWidth": 51.647802856187965,
+          "bbWidthPercentile": 1,
+          "squeeze": false,
+          "bbState": "下限寄り",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6700000000000002
+        }
+      },
+      "fx": {
+        "price": 159.19900512695312,
+        "day": -0.1141864970805262,
+        "week": -0.4228271293491015,
+        "avg60": 157.6413833618164,
+        "dateISO": "2026-11-20",
+        "technical": {
+          "sma5": 159.47739868164064,
+          "sma25": 158.3641192626953,
+          "sma75": 157.92884053548178,
+          "sma200": 158.83404525756836,
+          "bbMiddle": 158.4939987182617,
+          "bbUpper": 160.26532173991473,
+          "bbLower": 156.7226756966087,
+          "bbPercentB": 0.6990056020480946,
+          "bbWidth": 2.2351925448000265,
+          "bbWidthPercentile": 0.5,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "上昇トレンド",
+          "crossState": "5日線＞25日線",
+          "midCross": "25日線＞75日線",
+          "score": 0.6700000000000002
+        }
+      },
+      "dxy": {
+        "price": 103.87200164794922,
+        "day": -0.026948871528853502,
+        "week": 0.44676333959856596,
+        "avg60": 101.44503351847331,
+        "dateISO": "2026-11-20",
+        "technical": {
+          "sma5": 103.73440093994141,
+          "sma25": 102.41288116455078,
+          "sma75": 101.03522684733073,
+          "sma200": 100.00891025543213,
+          "bbMiddle": 102.570601272583,
+          "bbUpper": 104.23273821558314,
+          "bbLower": 100.90846432958287,
+          "bbPercentB": 0.8914841014896171,
+          "bbWidth": 3.2409616837147706,
+          "bbWidthPercentile": 0.8333333333333334,
+          "squeeze": false,
+          "bbState": "上限寄り",
+          "trend": "上昇トレンド",
+          "crossState": "5日線＞25日線",
+          "midCross": "25日線＞75日線",
+          "score": 0.8300000000000001
+        }
+      },
+      "rates": {
+        "price": 5.052000045776367,
+        "day": -0.2763509476314985,
+        "week": -0.9994143957722135,
+        "avg60": 5.029649988810221,
+        "dateISO": "2026-11-19",
+        "technical": {
+          "sma5": 5.099199962615967,
+          "sma25": 5.010400009155274,
+          "sma75": 4.960466651916504,
+          "sma200": 4.599424982070923,
+          "bbMiddle": 4.990499997138977,
+          "bbUpper": 5.170733721839228,
+          "bbLower": 4.810266272438727,
+          "bbPercentB": 0.6706119338644072,
+          "bbWidth": 7.223072830521078,
+          "bbWidthPercentile": 0.26666666666666666,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "上昇トレンド",
+          "crossState": "5日線＞25日線",
+          "midCross": "25日線＞75日線",
+          "score": 0.8300000000000001
+        }
+      },
+      "oil": {
+        "price": 82.91000366210938,
+        "day": -0.36052809237353545,
+        "week": -6.379848749144534,
+        "avg60": 93.85266723632813,
+        "dateISO": "2026-11-20",
+        "technical": {
+          "sma5": 84.22200164794921,
+          "sma25": 93.43000030517578,
+          "sma75": 91.79840047200521,
+          "sma200": 88.28790008544922,
+          "bbMiddle": 91.52050018310547,
+          "bbUpper": 105.64445055777237,
+          "bbLower": 77.39654980843856,
+          "bbPercentB": 0.19518101194832463,
+          "bbWidth": 30.865107481731535,
+          "bbWidthPercentile": 0.8833333333333333,
+          "squeeze": false,
+          "bbState": "下限寄り",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＞75日線",
+          "score": -0.43000000000000005
+        }
+      },
+      "brent": {
+        "price": 90.01000213623047,
+        "day": -2.141771198962039,
+        "week": -6.083049274236307,
+        "avg60": 102.30349947611491,
+        "dateISO": "2026-11-20",
+        "technical": {
+          "sma5": 91.90400085449218,
+          "sma25": 102.48719970703125,
+          "sma75": 99.77239959716798,
+          "sma200": 94.58564990997314,
+          "bbMiddle": 100.25649948120117,
+          "bbUpper": 119.37163111368136,
+          "bbLower": 81.14136784872099,
+          "bbPercentB": 0.23197941970852062,
+          "bbWidth": 38.13245371900185,
+          "bbWidthPercentile": 0.9666666666666667,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＞75日線",
+          "score": -0.43000000000000005
+        }
+      },
+      "risk": {
+        "price": 28.440000534057617,
+        "day": 15.798050295138122,
+        "week": 52.08555814832563,
+        "avg60": 17.6128333568573,
+        "dateISO": "2026-11-19",
+        "technical": {
+          "sma5": 24.133999633789063,
+          "sma25": 20.35959999084473,
+          "sma75": 17.118933359781902,
+          "sma200": 18.566400036811828,
+          "bbMiddle": 20.876999950408937,
+          "bbUpper": 28.125412253964384,
+          "bbLower": 13.62858764685349,
+          "bbPercentB": 1.021700495702964,
+          "bbWidth": 69.43921368753432,
+          "bbWidthPercentile": 1,
+          "squeeze": false,
+          "bbState": "+2σ上抜け",
+          "trend": "上昇トレンド",
+          "crossState": "5日線＞25日線",
+          "midCross": "25日線＞75日線",
+          "score": 0.6500000000000001
+        }
+      },
+      "japan": {
+        "price": 389.5,
+        "day": -3.157635957627458,
+        "week": -6.257521058965098,
+        "avg60": 422.0999994913737,
+        "dateISO": "2026-11-20",
+        "technical": {
+          "sma5": 401.8,
+          "sma25": 413.3199987792969,
+          "sma75": 422.685332438151,
+          "sma200": 407.4473992919922,
+          "bbMiddle": 410.4749984741211,
+          "bbUpper": 428.94354743500026,
+          "bbLower": 392.00644951324193,
+          "bbPercentB": -0.06785723985547529,
+          "bbWidth": 8.998623073041333,
+          "bbWidthPercentile": 0.95,
+          "squeeze": false,
+          "bbState": "-2σ下抜け",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6500000000000001
+        }
+      },
+      "gold": {
+        "price": 3540.10009765625,
+        "day": -3.9451879621150487,
+        "week": -8.908214672623338,
+        "avg60": 4168.709985351563,
+        "dateISO": "2026-11-20",
+        "technical": {
+          "sma5": 3736.939990234375,
+          "sma25": 3975.5519921875,
+          "sma75": 4241.459986979166,
+          "sma200": 4444.803995361328,
+          "bbMiddle": 3943.389990234375,
+          "bbUpper": 4240.81358254558,
+          "bbLower": 3645.96639792317,
+          "bbPercentB": -0.17797226414397593,
+          "bbWidth": 15.084665379166706,
+          "bbWidthPercentile": 1,
+          "squeeze": false,
+          "bbState": "-2σ下抜け",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.81
+        }
+      },
+      "copper": {
+        "price": 5.521999835968018,
+        "day": -1.8311140272352477,
+        "week": -9.170167681649888,
+        "avg60": 6.454166658719381,
+        "dateISO": "2026-11-20",
+        "technical": {
+          "sma5": 5.755999946594239,
+          "sma25": 6.278139991760254,
+          "sma75": 6.478926671346029,
+          "sma200": 6.224012494087219,
+          "bbMiddle": 6.223374962806702,
+          "bbUpper": 6.867364857147327,
+          "bbLower": 5.579385068466077,
+          "bbPercentB": -0.04455445108872029,
+          "bbWidth": 20.69584102482521,
+          "bbWidthPercentile": 1,
+          "squeeze": false,
+          "bbState": "-2σ下抜け",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6500000000000001
+        }
+      },
+      "hyg": {
+        "price": 76.52999877929688,
+        "day": -0.15655935315476155,
+        "week": -0.5845733411444232,
+        "avg60": 77.70983352661133,
+        "dateISO": "2026-11-19",
+        "technical": {
+          "sma5": 76.69600067138671,
+          "sma25": 77.09800048828124,
+          "sma75": 78.0973334757487,
+          "sma200": 79.24870021820068,
+          "bbMiddle": 77.14250030517579,
+          "bbUpper": 77.81364366409906,
+          "bbLower": 76.47135694625251,
+          "bbPercentB": 0.04368800813170686,
+          "bbWidth": 1.7400093496275864,
+          "bbWidthPercentile": 0.5166666666666667,
+          "squeeze": false,
+          "bbState": "下限寄り",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.8300000000000001
+        }
+      },
+      "lqd": {
+        "price": 103.08000183105469,
+        "day": -0.06786203954312064,
+        "week": 0.029110896078088366,
+        "avg60": 103.82950019836426,
+        "dateISO": "2026-11-19",
+        "technical": {
+          "sma5": 102.91600036621094,
+          "sma25": 103.71919982910157,
+          "sma75": 104.31106679280599,
+          "sma200": 107.20265003204345,
+          "bbMiddle": 103.79949989318848,
+          "bbUpper": 105.05998303500884,
+          "bbLower": 102.53901675136812,
+          "bbPercentB": 0.2145943336081777,
+          "bbWidth": 2.4286882752179313,
+          "bbWidthPercentile": 0.35,
+          "squeeze": false,
+          "bbState": "バンド内",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.8300000000000001
+        }
+      },
+      "fang": {
+        "price": 16380.9306640625,
+        "day": -2.4877264357215934,
+        "week": -6.777269669610386,
+        "avg60": 18471.357958984376,
+        "dateISO": "2026-11-19",
+        "technical": {
+          "sma5": 16816.9560546875,
+          "sma25": 17702.6750390625,
+          "sma75": 18473.0644921875,
+          "sma200": 17006.424462890624,
+          "bbMiddle": 17463.452392578125,
+          "bbUpper": 18693.52414556091,
+          "bbLower": 16233.38063959534,
+          "bbPercentB": 0.05997618598645489,
+          "bbWidth": 14.087383471844998,
+          "bbWidthPercentile": 0.85,
+          "squeeze": false,
+          "bbState": "下限寄り",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6700000000000002
+        }
+      },
+      "nikkei": {
+        "price": 56775.0390625,
+        "day": -4.490213315820412,
+        "week": -7.142859880905483,
+        "avg60": 64337.689192708334,
+        "dateISO": "2026-11-20",
+        "technical": {
+          "sma5": 58753.19609375,
+          "sma25": 61675.798125,
+          "sma75": 64742.445677083335,
+          "sma200": 62266.664140625,
+          "bbMiddle": 61002.4732421875,
+          "bbUpper": 65272.18640995121,
+          "bbLower": 56732.76007442379,
+          "bbPercentB": 0.00495103375976313,
+          "bbWidth": 13.99849199822574,
+          "bbWidthPercentile": 0.7666666666666667,
+          "squeeze": false,
+          "bbState": "下限寄り",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6700000000000002
+        }
+      },
+      "topix": {
+        "price": 389.5,
+        "day": -3.157635957627458,
+        "week": -6.257521058965098,
+        "avg60": 422.0999994913737,
+        "dateISO": "2026-11-20",
+        "technical": {
+          "sma5": 401.8,
+          "sma25": 413.3199987792969,
+          "sma75": 422.685332438151,
+          "sma200": 407.4473992919922,
+          "bbMiddle": 410.4749984741211,
+          "bbUpper": 428.94354743500026,
+          "bbLower": 392.00644951324193,
+          "bbPercentB": -0.06785723985547529,
+          "bbWidth": 8.998623073041333,
+          "bbWidthPercentile": 0.95,
+          "squeeze": false,
+          "bbState": "-2σ下抜け",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6500000000000001
+        }
+      },
+      "NVDA": {
+        "price": 145.97999572753906,
+        "day": -3.2988942533417775,
+        "week": -12.160783691541644,
+        "avg60": 211.2918342590332,
+        "dateISO": "2026-11-19",
+        "technical": {
+          "sma5": 154.2780029296875,
+          "sma25": 191.85760192871095,
+          "sma75": 212.73506774902344,
+          "sma200": 203.57715019226075,
+          "bbMiddle": 185.72850189208984,
+          "bbUpper": 233.69084714457878,
+          "bbLower": 137.7661566396009,
+          "bbPercentB": 0.08562799676181308,
+          "bbWidth": 51.647802856187965,
+          "bbWidthPercentile": 1,
+          "squeeze": false,
+          "bbState": "下限寄り",
+          "trend": "下降トレンド",
+          "crossState": "5日線＜25日線",
+          "midCross": "25日線＜75日線",
+          "score": -0.6700000000000002
+        }
+      }
+    },
+    "newsContext": [
+      {
+        "title": "American Century Inflation-Adjusted Bond Fund Q3 2026 Commentary (ACITX) - Seeking Alpha",
+        "category": "rates",
+        "score": 0,
+        "date": "Fri, 20 Nov 2026 00:50:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOVVhlaUNUeHZNMDJrS1d5SkNyWnUwOW02TUo2ZnhZMmhROWlQRlpkSXlPYU1qcjBYMWoyeDBIeGVOMUJfRXRWWHhVZHZhbmlsT0tKNDdQUWV4Sk5YUEhwbThUbjZQUjJfU05od0tIbVBvQWE5WHBkNzA5akhzel9yYjgwMEc4U3BjZ2Q2cHpWd1dGM0VmNk8tVVZCUkxBY3dhMURnbVlWa0ExRENfTEszd055bkhpZEdlVDdJMnhCLXFWcGtDTk01X1d3?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Japan Core Inflation Tops 2% Again as December BOJ Hike Bets Firm Up - BigGo Finance",
+        "category": "japan",
+        "score": 0,
+        "date": "Fri, 20 Nov 2026 00:05:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE82ZW05SGhNbGJsSVZjYzFuclNiaUNJdFd3cEJ0RVludHVJTVNQd3QzMDBBSnFXaWRva09aQUFaR3R0Wkd2aGtHUkJRTEhmdlVCdjBrSC1qM2ZwQXRxREc4WkZUcVM5empDTlVFU3dtekpadmtIV1E?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Iran war could cut global oil demand by over 4% by 2035 - IEA - Iran International",
+        "category": "geo",
+        "score": 0,
+        "date": "Fri, 20 Nov 2026 00:04:03 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1jaVc1Q1l6ZjVWYkNjOThHaFVTMHNWNW5ucElpMHNKYlA0c25XX0JUVU11RGItMUhqQVd6cHlYQXNKMlUwdzFkODV1dDR4LTV1Mmc?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Gold and Bitcoin Prices Drop Amid Rising US Bond Yields and ETF Outflows - KuCoin",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 23:14:03 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOdkxXdi01SXpjSko4ZkZGaDRZeTdzQ2dzaEpfRXVmZlROazNGVEF6OFZsMTYwWGVGLUdfdFROanJLc2dvaWg2a1dtOVY2b2pEZzFDZVdSaUlJS2wzQVJIUWlKV28wR211b1lDNktFcWpKVGxVOWdXWGR4OU05RXFSeVdFM3QzQnpfZ3IwVEZaaUhGb202MVE4dmY4V0NqVGxNSkdIV1JiNVdUUQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Euro breaks below $1.10 as French election risk builds; three banks see $1.08 next - investingLive",
+        "category": "fx",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 22:52:29 GMT",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNS2dqeW1lSU10eUJ0VWlTTlRZNXp4Qzc3YmhJRjgtS3lPMUNPTGVpX2M0aldhbk54WnZvb1d4aUVvS2h0elZTNkdTYmtBUHdwSzRxQTN0bFBFY1Q5bUYyT1U4clFvV3VmVEJxbmU1dnpSSUNlS0JwT1cyNHp4UG9nRm1aVVVXdU9Eak9iVFV5TlpIM1JfcThLNElmdks1VmlicGRXN1lpUUR0T21IY0gtNS1R?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Closing The 1998 Chapter: What Indonesia's Fiscal-Monetary Synergy Must Still Prove - OpEd - Eurasia Review",
+        "category": "credit",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 22:37:32 GMT",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNQi1CX0ZhSDZTR2ZNQ2xQTUFRajJ4WHRRdmFETi1BQjl2QXowSnhTel96Sk1vV0xobmdHNW43aHJHaUdPb2c0Ry1SUlJENnR6UzViVnAxYVIweGRkajZxbFhUSkZRcVdjZ3gzeENJQUJnNnR6OXNvclUzNUJtLVJONzJkNl83UXZ1RFRHVkNadnBaWGVGNlJJemJOVElYX0pKUHBlV09icXRMMzJidFdzemd0TnFnTUF6VURMY2paU1FjV1Vk?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "The Shenzhen Summit: A New Yalta Or A Nothingburger? The Dates We Need To Watch (SPY) - Seeking Alpha",
+        "category": "trade",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 22:15:09 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPaTNEc1VEZlVJMUc5azN1Um9vLUF1aGFoLW11TkJWaWJvSFFLRVUtaEFnb3N0UUk5UFhQZjRLYmNlRTJ0U1laUjdRellXc2xpcHN0cURGckpJNnoyWlV1aWdhUmJvUS1iYVYxQTlTclEtXzFEQTFON3Rnd3puR0huWHN6eVNqNl9DRWs0THdRaTE3cVg4TTF3VFFPYmdINUtndFRxUUdUUEc3dw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Martel: the Trump-Putin-Xi Summit Is a Nightmare for Iran - Breitbart News",
+        "category": "geo",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 21:54:10 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOSmxwQXFUb2tLckNMUGFNaWg5cHBTNmtEeUNLWWI4ZXRDaS1PQ1MyQTh5cGhRdk52elktM2Y2WWozX0tsX1pWeUhPNmpqd1NkYTFNLXM0MmFTM2QtWG5RV2pLR01fOG5oY1NsNW9sdU9nMXBDMWN2MzZvUVkxX3JuTDVGNnlnYjYwM1pBWFMzS3BLYkhDS2RkYkZOaEl3LTJnWkk2cHNIOUpQUQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "USD/JPY Price Forecast — USD/JPY (159.91) 161.35 Upside Target on 2.2-Point Fed-BoJ Yield Gap - TradingNEWS",
+        "category": "fx",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 21:38:21 GMT",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPRmM1am5KZGxHUTVncGx3c19RUV9remxkeE5zNmctX1JJdldERWk5RjV0cVhLY2JTeTY4N2RyY1lfVXp3dlFQY29PcDVTRUJLbkxKdU5VM0VHeHBReEVURkdzVGNmR3pDb2NvR2hOYzQ3THVoVnpDaTEzZ3piRWJhbmRCLXUySmI0WWlrd1dyenBxLVgwMFhWYWFRWXVrRHBFcEd3SWdFT2ZJYTkxcDZQRHlJS0QwQmp6bUJDUG50UWZzNmF5?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Forecasts from All Wall Street Banks on the Fed’s December Interest Rate Decision Have Been Updated - Cryptonews.net",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 21:14:05 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE85NG5PSGxsX3dBQmJldk9zRkhmbEJMTzhsazVkM2FhZGdRNU95Wk9oX2xuay1iSFRRUU82TWRaQ1VyU3BwUkNoMk9GRUIzX3pDT1R3Q0YxSlU?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Economic and event calendar in Asia Friday, November 20, 2026: Fed's Paulson, Japan CPI and China’s LPR - investingLive",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 21:04:41 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPX2REYlZTWTBVV0p0Mmszc3JqbzlTRVlUams4bFpBd3laMEx6Nk0zSDBxS2lkT1M2UXJlSkI4SGxtbWhoaHRmZWlhRGRlMHNOZ1NldnlRb1Z3TkJpNVh2OVNlLXJjMFJnMW5Eci1STUUyV1EwWUNlU1RhMGxONUdRbmNfMkthZEZKWTAxS0Iwc0hhZklfTGFWakc2ZUNTeHNBWkUwXzdzd0lvdWs1QWh5Ylp3N2ZtQVRyY1FCdzJGcmRKVE1URURRR1czTGVESXFwRTFManBjbw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Illinois Adds 11,700 Jobs in October as Unemployment Rate Falls for Fourth Straight Month - Vermilion County First",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 19:44:35 GMT",
+        "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNOHRRZWZiNFhiR015MXhoTXc2eUVyNHFkVnUta0VleG1KU0RMbTktaGc4Nkx2VVhWaGtFSkJGWk0zd0k3X2JGbHh1RTA2YnhYclc2ZWNsa2Mzbm14aVlhdkY0TmN3SHM1RG5lUExuUDVsbWFybU1lSTBFeFAxZXpjZDhkOUl2b3daLV80LV9tbGZzOFh6d0tSaUZQamd4dkJNRFpiTGxkT1dhLTdCVEx4ZkpGcHd3X1VaNmlzQXBBcm5qY2V6cmsySy1lV3BFZw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "The average US 30-year mortgage rate rises to 7.28% this week, ending a four-week slide - The Washington Post",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 19:35:08 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNaWFyU3l6d3lJdVV5OG1QbTFQSFo2Q1FuTmlGTkhSZTRnazN5eDU2SmQ0NUF5V0FHemhCZThhcVpzalp4am15RVlGZ1BxcjVYa3ljc3N3dllEMjFmNG14ejJzNnQwOTZzMWU1MF9NMWNuNEFncmM4WG9vYkdaRnJCM1FNd1FPUjkxUjZqRDRjMXVXQmdyZF9mR19FSm8yajFmWm1jWXRWZHgxeFBRVElIeEx4WEtBVmFTM3YySk1qU3VSNGdCQVhfNFBqWG9qS1REOHhrOWRsY1JwUWRlTXJkNzJ2cw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Strait of Hormuz Watch: Peace Negotiations Stall, Vessel Attacks Persist - IndustryWeek",
+        "category": "geo",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 19:07:33 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQMzdGVkRCRkxtektNWVpJYUlyU2dMRFBSeVNxOVNsaHlDblpiblVTQ2d1SWotMmhUSk52YlNoalZKaGJkV1N4LUdjbXFFLVN4dk9JX1dYYnhZbHU1anY4QjBMNFF4N1JpVHNHNGUxcjk0YzRfSHFjWExic3NLTFFiVUhRVVhZaW1iZEt4eldXVFBfMnlaSmw0T1BMMnhfOGM2WmpROTF0OTZuc2t1Z1llRklEaVRwQ3FPT0tPdGo4Z052c3ZvQTMyVnRrVk9xM1JKRGJsUjhVMA?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Nvidia: The CEO Is Gone, The Earnings Engine Isn't (Strong Buy) (Rating Upgrade) - Seeking Alpha",
+        "category": "tech",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 19:06:21 GMT",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOenFpOHhaV2JnT3hLQUpub1NsajVxTmRneVJjcmhOaW5lYTdLWkFFTS10T1M0bVo2emw4VWdYLUJZa0FDVlJKbFNRMmg2LWE3aGhramFwUmNoU2EwalRkUWhPeHZZVmlSZmhsRGpTVkl4Vks4Z3RuQkdMekRfSE16c0lhWUo0SWdERTBWNHg2WGh2UkdSSlpJZDZpRm15RHM5?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "US Dollar Hits 19-Month High as Vietnam's Central Rate Rises to 25,656 Dong - BigGo Finance",
+        "category": "fx",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 18:55:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBieGdCWWNrR1ptVDd6LWQ1TmRuaXhyZXJLLXdxdVdHNi03YmMtQWQ3d09CLUVpSFZWNklSRVpHSzZtNk5rVWlMSGZJUmJSWUgtTmpJRWZGMFF1b3pXT1UxTTk0WEZGeXNBNjI4azRCNVdISk1NVEE?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Iran war live: Houthi attack damages Saudi PIF headquarters in Riyadh - Arabian Business",
+        "category": "geo",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 18:24:09 GMT",
+        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNeGVzSjhrbUhOTTctX0ViTkJTRnFEZnkwNTJQR3gySTJRQlk3aXNwenJ2Qk1DejVYcF84dmF4WDFPd2xKRzEwazEtOEdOb05OOFhJaXZQVTd3R2lDRHdGbTgtM1JSSEMxeFN5OTlLc0tLNE55MHlHRDZNU3lOVFBDaTJwQQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Tanker loads Iranian crude in Persian Gulf as Tehran weighs resuming exports - Iran International",
+        "category": "geo",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 18:21:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE4yWENjZWFSREZyOXpvWlZuQjdBZExBRUNtWWRLUEJNMXlQSEUzb20yOC1BYUYzd2dmYWd4ZUEzV1hJSkdoUVNCaFRvWEN5VE1YLXc?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "How America Can Break China’s Grip on Critical Minerals and Energy Supply Chains - The National Interest",
+        "category": "trade",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 18:02:07 GMT",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQTzZoNDI2bFVkU24wTHVWNnl1Y3BzdzFTUUNvNHBuMmVkWGFtNkFUdE5Sd19zd0hQekktY1BaVkJPTE1DUzN1RTlLOXo2cV9CQktzWDIyTnlXcXN4TE1Ud25fWFlvRFhMaDgwMmZBMUo0VzV5ckxTVXZoN1J1R0RvTWpBTTdYZDU3cndQLVh3QlhwRk4xOGVWaC1qS3hncklleFMwdE9Ka3VHX2ctdjJUZUNNRjZ6NTd4emhZS1hLaUplSFhm?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Euro yields idle near 1-month peaks on hawkish Fed and ECB rhetoric trap - StreetInsider",
+        "category": "fx",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 17:51:46 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOcE5ZVFJwREZ5Y2JVbjFKSjkzS29NeUlobkVLbVF3RklLalpXbGZNLUFDOW5Ka3Jlb0htMWg1czVIendrYUxJcktsal82ekNVS2MtM29pTmFkSXRlNjVRTzlFLXVhaXREcHBUeVZxRDN6dkJFQzIycmVIN2ZyN1BQN25JUTA2N3lHWVdWMEozTjRwZmxxOHFJSXdPUDBDbnNhelJzNmFCTFRfTC1USWpXdnNCeUhSZ1VNV1J1Y04wcXJBbkdJcS1rRg?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Australian Dollar Technical Outlook: AUD/USD 6% Plunge Tests Make-or-Break Support at Yearly Low - FOREX.com",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 17:12:48 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQWXI1YkE1ZDRpZ21QbldFbENTNzRCcXNKSU9HTThDSWRPZ2otb0tIOE5FVHlkUFREQlBTbGMtQ0N6aHdTRnVFVHpoY2xSdDBOLUF1ZVdyUFZPSXNsd3YtMFRNc01hUkZBQUlKN19Gay1zb0tCZU0zWGk5emx5LVk3V3RIQzlJaG9ZOElMeF9Qb3hyc2Vzbi1Dc2I1S3l1dWJ1TUxHM0cySy1mQXJ3Q2RvSGxaX2cwWWJkM3FXT2tZeTBEbks1WU9KVUtOdkNYZ3NiU3h4LW1XSnpLUExNUnUxZHlPR1Z0a2hYUTdv?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "US weekly jobless claims edge up, but labor market remains resilient - Reuters",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 17:06:57 GMT",
+        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPUjdpV0lCY3lUWlhjZzVkdTNNa1hrazREdFRCMjFSRlpzYmpXNlpYeXdOeXJyZk44NGQwT0FuN1cxdWRyUWtLenNCTGNDSVM0NERhNW5PemtfbTI1UkFtcDdvUklKdjZZM2c4NTZlUVBlYVF5SVBubVFnbkhueHNTWDhLd1c4MVJLM2g1ekQ3bHo?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Closed Board Meeting -- November 19, 2026 - Federal Reserve (.gov)",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 17:05:44 GMT",
+        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNWl9jbUFzVFpQXzFvNTFVcG5PMVk3ZFZfQUxCT2pwUm5SZU9zQ25zeHE0b0FLVkNKX0RDN05iRGhoNXBOdnNHTHZYcmlmTzJFQWkzVUJUTjJKUHhhQkg1WDh4RjJxdncxS0d4a0lROU5oNGRkd1lqOTh3U2Vjb3paQg?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "U.S. Treasury yields edge higher as investors assess economy, Fed outl… - Rich Picks Daily",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 17:00:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNWG51RGdwa05OV3F4eTdpYVpVWGNodldZUER6MTg5T2QybFJ6TkUxMUE0WUlmQ21ROFNkcFUtSC0tbkgwXy1hMjBBYmRrRGg0LXdKaDh4RUswamV3alZqeVoxMjdFTk5jLVVtSjhReHhGd2pnT1lJbTZYR3Y1bWRKa3hwUjhKdlF0dENxQnYwOG5tQWVudzVqbw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "New Jersey Employment Report: October 2026 - Insider NJ",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 16:43:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQUW5CTkVYdklEcVRYaEx0YmxvV3BKeW9vZGJJbXppckNnQkoyYkhhNVZ1em50X0FEbWFTeGZOOUZ5R1IwTThod1lOVTZYd24xYjIxU1lQcmRTUkI5WGVlaDFDaXpXQ1FiV2lhMFdjWU4yc2VsY1Y4Zk0wT1diTGVpUVhtLVgxak1OWkE?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "OPINION: Trump’s ‘Little War’ With Iran Just Got a Lot Bigger - EnergyNow.com",
+        "category": "geo",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 16:18:50 GMT",
+        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOdHowOEh3MDJSdVJ2TlQ3S1lYTHA3OEhUdGcwUTViaHRHdmJUc01CaUxGTTZ2Q0NXVXlQWFVZa19OUlFOeGRyRERtX2pxLXdJSFo5REhPamlVWWRkcUVNQjkzTE1CWktMY1QyY1BkQl9PLWlMU3RSWmNJRXZDS0l4bVNmVW1nUXJtMXVaTXZPdXF1dw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Consumer prices up 22.0 percent over 5 years ending October 2026 - Bureau of Labor Statistics (.gov)",
+        "category": "global",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 16:04:35 GMT",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQVlRYYTBsWEFobVhVN082TS01LWVMLUdSYXZ4SXMtVWpMUFBGbTc2VEF0TXJxWTdiTEtVZDRFUjg3QWlHck80eVhUbmFxbzE2NnpzMmFUdHlyQUtTbnNmdU44WDNjYzI4RzFJMTF1UXVxeE53TlI3Nk0wZXBnNmd6ZmNlMkYzQ2hyZXlURlpuZFhzSUhzWGpqQ2JGc2pxTlZBbWx0Yw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Federal Reserve Board issues enforcement action with former employee of First Security Bancorp - Federal Reserve (.gov)",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 16:01:43 GMT",
+        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOdHltQlpGeEZsRHhwWXZrVjJjdVhpVjdGay1PQi1wODdSOVZvWUkwUm9YTkJDVzdxUWZfQUJ0Nm1nZGd3V3FVY3pIN2hZOFN3Nno3MmtTRkJWQlBhQkN5azJPVnZaZldBRGttQTZNQUVIX0pGYUNVNFdtc01RQUU1T1FLMlVTY2M?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "US Jobless Claims Rise to 203000 as Labor Market Cools - Peradaban.id",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 15:58:47 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5LRlE0TjZDeVJsZGZocUhEaFgtTTZXV1RxQ1ljWEF0MUNud2VZSWpYem03RWpkOXUwTWNnd0NINkVISkl5RDRjcFdnd01Odl96M0lhMnpRdTVDMXZPTWxHZjh0cTJ1QQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "US Jobless Claims Rise to 203000 as Labor Market Cools - Limapagi",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 15:55:08 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1DUjFmcDhPX0pfNm8xTzY4OEhIeDR0UjhxQ2VIQVo0akU3NUtDbk5fTl9teF9tcXpwNEg2ZGtXUjI0c1BxaHhHUVlYLTF4d0VrU3VORkM0MERGWmdGckRZSFdDbTVWWW1k?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Global Stock Market Update: How AI Shocks, Fed Rate Hike Warnings, and Geopolitics Are Reshaping the Economy - News Talk Florida",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 15:48:48 GMT",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQZUMxbnZFb25DTy1mczFaeUYxaW1VeEdKR3JDMzFxenEtSXlZN1FiUF9OYzZWTzVwNmFEUjYycWZPS3R0MUd2X0UzWUoyUHV0UG9YY3RHOWJ3QW0tMW1xVnQ4MGozbEVpME1CaXdFZnhaTE5FeFlZa2tkRHo0Z3gtMWp6REk4bzNQcGRCSmI2Z1piWWxOTWlWSlZEWWs2dw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Dollar Slips as Stocks Rally - TradingView",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 15:35:11 GMT",
+        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQcXkzeXRNSHlCQVNNN0dNbFJjLWMzc2pQVXRuaEZuR0R0eDcwTllJdGNBY2VHX1ZMSjRXU1owdkxhODZTVmRZWGJFTkNfbEVValZqT0V6S2NXUGx0aFdGbzZ5YXUxc0FwckdaaDlwVUJ5aWt0bmNtZTZQUzVEWm94YnVnaEFKX2hDTUM0eFY5ank?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Modi presses India Inc to raise wages, create jobs - PRESS Insider",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 15:06:02 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNMjJxd19qS3JLaE9NZ3FtUFJLWXNxNk1kRTdTc21GQllESzFTcmJ2LWdkSjEzZndOZVZRd1pqajhFdXZYVnZRajI5bC1yT0NWVmtaVEIxUFE4SkpIdi1Nc0RpMDRTVXpGcGRxZTJ1U0RkQkdoOVlrVXlHOWVVMjI3UExESXh6MjB4bnc?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Speech by Vice Chair Jefferson on economic shocks - Federal Reserve (.gov)",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 14:26:43 GMT",
+        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBoUjJpS1JhZHlJUmZLTWlud0xDUDZVX0xfUkVfUzZoRnNGaUhTREdmUEY4T1hEWTFaeTdNZDN5bFlKb2FJR2lZbGY4VklUdHpGQzZKLWNVazhZa3lJY0NOOGw3MDFJYkg4NE44aUpIU1RlaDlUTmk1ZGZlWQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Schiff Says AI Could Cut Employer Payroll Taxes - Wisevoter",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 14:24:03 GMT",
+        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9OQktmalB4aGdiekdHSjJ3RVAtSFM0ZjJWeVdsWVBMemxieVJYdW03VEFfTllmZmY0TVByYkFiYko4SERJZTZieThOQ3k0V0wtVU1RZVI0dVo5aDVhQVdjMm84a1R5aUhvMGhocFM2R2N6bF9Nc2pGQ01OaGk?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Fear or Fundamentals – Unpacking AI - Funds Global MENA",
+        "category": "tech",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 14:23:34 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1qWlU0VE9pZk4yLWFaYl9sVUhxeGQtcnNfNDdyOVQybnVlYTlQT0x5VkJoQWdmSWFNb0NqVnI2M0tWUzFiT2ZxRzcxV1pmSjBZM2ZBWVczNDVqYXRxTzNuWlJ2X3JRWGx4blMwTldsSzEwWXQ5?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "JPMorgan Warns: “Three Interest Rate Hikes from the Fed May Be Coming!” Points to 2028 for a Rate Cut! How Will Bitcoin (BTC) Be... - Cryptonews.net",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 14:18:23 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1DUHlncnNKcmJhbmtvOU9uSERtV2RDdmRTV0dxcHp2RVU3UFNwa3lNRWx3Rk9DLUtSeXY0MENEVjZBLUJ5T0s2M0F4cWpMbjhEU1RZTGtNSFo?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Fed Rate Hike December 2026: What It Means for Investors - Intellectia AI",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 14:02:07 GMT",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOU2ZlOEd2UVo3TFdmSGtzY3o3bWFVV0poaDR4aDFnVUpJdl92OC1tb1NKOHYyaHFSUDRFWFBiRk9tOTM4aWRhRHMzSDRpY0hXcFp2R2M0bzdoQjBCMHZGLWFEYWV3MTEzVWU1MUR5Y3FwWHI2dGd6dVJVZkd2WVZ4TE9xaV90Q29qTFRBSE1yNVdkX0ktcDJiag?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Putin’s ‘New Yalta’ Fails to Materialise as Shenzhen Summit Exposes Great Power Divisions - EU Today",
+        "category": "geo",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 13:57:38 GMT",
+        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFAxcFNLOE9YUkplUXFQVE41aUxYc2lYSTN3MVdnSE4tdUF2cnBIWjNDeExUbTdqOF9qcUNmTHpRYWN0blZfS1hnd3JzWXk0T2JiT21xZloyQmpKX0dFeFMxMUZ1LUNDeW83ai1WTHg3X3phb3BiUWI1R3lhbmE5R1U?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "The Iran War at Six Months: Energy, Markets, and National Security - CSIS | Center for Strategic and International Studies",
+        "category": "geo",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 13:45:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOdlJ1eUlkblN4SDJBbkNhQ3lZblNyTVQxb0RQY0hvNUJaVlpnLVBYeVBZclZBZkljeXlIWEJOT1NXdVFuQ1VoNEMzT0xVRjZ4c0prWXUtdENxa1lmTWtmVXBNWVp5dkVTT1o5eW5JUDc2VktrTjg3MWtWZlhlZnI3ZnlqempReW1HMnkwRzZINA?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Oil prices steady as supply surplus outlook offsets Middle East tensions - grafa.com",
+        "category": "geo",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 13:10:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPZGxlaXQyQ3NGWWVPckRZNzdKTi02SHFnb2JEWW5SSmdrMTlNbV9iMjJrQUkyVXBoMGtjR2xkeUFhRTlJYnNBQnhFVnlVaUludjRTWFZPbWt5cUg4YWhvQlNDQ0FqUm1qcU91VFlOVFhLYm5WOGpmcm1sX0VackRUeVVrWENjNnNQN1pkRjJPT0NZa2FnWmRfRFZibjJZX04yeHNXMXg2U1k4SW9sZ1E?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Mortgage Rates Forecast For 2026: Experts Predict Whether Interest Rates Will Drop - Forbes",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 13:01:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9kMlJHRWhRY2owbnpsZWhWOHVVZFR1ZmM3NzhqTUVEVnpHR2xlMHp0QnR2eXFwV2wzQ2FMbXZTN3lTLUJ5OHgxdnk0S3Z2Q3hEQ2pEYW9xcWhrRktVS3B0RXB0NkdnM0hPMzBReG5neWZ1TTdvVWs4bWgxdWFNUkk?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "INDIA BONDS-India bonds end choppy session little changed as fresh cues on interest rates eyed - bfsi.economictimes.indiatimes.com",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 13:00:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPT1c2djdLbFhmRFRIUHVlOGVNcDRGOFF5ZXVod3lGODM5YU03amc2X2dFX2Qwa3lJd01Od0Rtc29jeTBVTzUwTWVXcWd5QUVJb3NOV3JZdEpzQTJaamJPV2xNcXI1WlNpcW1aS0dJTFFCVnBiaER0QW9TRE5rLUkyNHNQZ3NrZVZmYVNfdXJIQ3g0T2N0NDNzNUN5MnloU0hNMjBIOWdicXNCQ2RrQzBpWm9jR3oyRThsaXhqM2FIbkNhTUk0eW9aY1ZIUnhiMWYtUjdsYUdkdlZuLUxMeUp2Y2lQOVJjOFRVd2440gHwAUFVX3lxTE03WEt2MnVQVzFDTTl3QUZqQ0Qwd2E3ZTFvTVc5eVJXaUNkbkxIS094Zy1ncVpzSm4yTXMyT2R5M1V1alFVZ1pDVDVJMzFaR0FkSlRpVHN2VnRQRklPX2RxX0dCMHB0cDNKYmZNbTk1elVzWElLY2swQnJNNkxFQTVXVjlrN1FRVGRVLU5FQlRTcDNuZ3F5WGs5THR5YW9IbG1lX1MxYnZIWW8wYkV4NVk3V1lLSW4wRm1LNUhBcW9fRUd3Tlc4ZWpQMnNkNDVtR0h2eng2R0FxdnhnNVdRMzVSbnduMUkzS0tYMmZQUjZJRg?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Corporate Debt Market Development Fund (CDMDF) 2023: Liquidity Runs, Moral Hazard and Corporate Treasury Maturity Profiling - IMPRI Impact and Policy Research Institute",
+        "category": "credit",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 12:59:42 GMT",
+        "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNT3R3blZfSVhBYzN5TFFCY1c5TnRHcFQ0ZDJybm5rbHlnNi1UX01LN0VlWGJiSW9CT2VuNDBObFRtdjZ3d1cyRGszYzRmX3Z4dG0wR0VKaUdtSGtoRGhGY0Z1WUZlSThxejlZMFVuOHZPbEZzWGlmX21xUGlSM0t3TzBZbFBpX3Znd3JWeXd3TQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Nuclear risks, supply of petroleum: What China, Russia and US’ ‘peace declaration’ says - The Financial Express",
+        "category": "geo",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 12:16:58 GMT",
+        "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOY1dsQzZpOWtqcjVCU29PY05rODZNNDBXRFJaVDFrUnZ1N3hZb2Q2WG1MRXEyRHpfcVBrMWhTVkJ6czRMdlFBQTdRek4xUjkyR183eVVwVEk3VnNKMUl3WWk4MG1lNEJjNW5BZDlZb1NkdTBhM3BvdWVCY3l5ZnJSNVhaYjUzZndwWXhFX1QyLU1oVVF1cENMcW9VYkJrTXdlbE0tUFpxdHJVSXlIMjE4dm0tdDBMVHBuZF8xbFQ0OExUUUdkWWU3Mm80dDdKS3fSAdYBQVVfeXFMUEh0MVE3VzZjT0ZLZGpqaXFVdzEybnVUaUVjTVBkRFZjSV9pVmFZR2dQYzBDcXdqTS1SR2xOZmtyMnhmMlNRdENubUVlWXo0bzJpRGp5aHNXUnY1MkVKakhrdEhMWmp4LU9xMmkxZ3hxZWh3Q1hFY3BEMEFPV1k4ajFCQy1SemRERlJpZ3BCdUswamYtd1hNZVdjNWZCMVFPT256bmRaYS1WeUEyN0VKVTRqdDNvWDN2VHBaTmZyTjYxRkhWQUtaVDJRdUg4cVFUYTFqQTZXdw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "US Treasury yields rise as Fed minutes flag AI inflation risks, Waller backs bigger December rate hike | Hindustan Times - Hindustan Times",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 11:59:15 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiggJBVV95cUxPOU1qMGxDcnlJbjg4eEJzbU82Z1pWSndxeUJSMXlPR1pRVmVMRlZUSUFfSFNlRU42RUxna3RPTUtuM1RURURWZlVaZHBmOFJPTVJDdU1KeWJYZUdhb0dLMmE5U2w1NzlPRWx1QjNNNUNvMUdnQ3JkblRhTXVuNnJEdnJZcWpZLUtJY3RPbWlZWURFNm5SV29QbkFQbTVqMTZTcWdOaVE4Wl9Rck9tYXIzOFQ2ZnlMZm5BY2d4YmtsZTBneXY3a3lGMHZTLU9kbjFKRC1ySlJtTkxqX2pSVnJfc29odEd0czVvRlJmNXVJcjJ6RjMtSHl5NGJJYnFfOGlwdUHSAYcCQVVfeXFMTXRtYTJOalJZLWhaaDFhUFJGdFh6d0xTV1VCcDV3amU0eUNYV0RFVWpjT01jTXZZOUxQbk91Y1MzanhvUmxQeVI5blN2LU9XVzU3UXRTS1VObjdJZ2xpNHlHMG03UlY2U1hwZGphbmREQlBsWm0tSnlDczZESU1GX3ZfaW5aSG1XU3FOWVk5c0F4U0hIQ3J3S3pVSmZra2ZSNk1FbTdZaGs3a3FGa2NlTmMydms4aTVlZE1IUEhXMEtMYm5jUDhYTVBnUmhDLW9QdGp4S19yNUt6NnZGdkhWeXJnUnFLV3NkTExINllKcWxZX2hMVzVfeDI5bUQ3ejRyMTFYWjNhSWM?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Democratic Congress Brings Budget Gridlock and a Tug of War for Gold - StoneX",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 11:57:05 GMT",
+        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPZWR2VVR4azNiNkdHMW95YmNrQWZQUEptNUViNjlUcFREQlFIaENKVFFpQzJYZkRBLTRxVjdRRnRjdXpQcG9rTGRLWHJodGdiWUVjbmpBbi1GZG1lVVBNWFZXXzVzRmMyQ2ZUeXNtTnRJYW01UXAwM3F6MThBVFVlM3dMaWNqYXA0QVJtSHpFei1UVVpMZHdZZ2YtMVJ4TVR6aEg0Umt3dw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Anthropic IPO: Inside the $1.5 Trillion Valuation - CryptoRank",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 11:55:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxON3g1QU5KTS1PQy02ak1TNVpPTVJpLS1ydzg0V0toZ3pkTTlTUlY2ZWk1WXNXbHdsalpWX0dfd2k1bVVXWk0ybE9NQkZMODNhbDFieXUxY3VKSmNSNlJkdEt5V0RCeVpncU9lN1U2TkNJTDFRYWtpQjVmY2VpMjlzZWVXcl9BdlRzUVo0Q1UzQmJXQQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Looking for Trouble: Assessing the Systemic Risks of Private Credit Funds for Canada - C.D. Howe Institute",
+        "category": "credit",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 11:44:23 GMT",
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNOFFkc1lBWnE2TnFjQU0zZFAtMXJhcUlCaUV3VElUMUl6U2lheFpWSF8tSVdlNzVIcDdyYWtzRWxIeUFDTFhqLU5aUUZLbjFMcDVoYVg0Qi1CY21oSHRRNEVtVGJsTW5fUUI3Qkd6bDUwTjR4VVdpX2RTRXNGaHIzTWkxZm83QldGZlYycUZxRzF0YVhfT3hfU25ZY2xqS0k0WVJGRlJFbExBNFBXQW9ycTNKQmlqdw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "World Energy Outlook 2026 GPT - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 11:32:20 GMT",
+        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNbEdXM2hFM1lVanRPdUJXZkw1azVfeWxfOV9MQXppTGJKVVA3YmRIeU1vYnNmYjR6NXhJd0pmc0YzMHVHRG1pcjlxQlFlVnVIbFA5VHJPQlpRU1h2cTFybUp4eUM3bFJaSC1NZVJzem83NnowYnlQNUdGYkRMVVN1ZXB4cUNrUk0?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Dollar idles near 19-month peak on hawkish Fed minutes By Investing.com - Investing.com India",
+        "category": "fx",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 11:30:24 GMT",
+        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNQ0VfaHo3SzhuT1JHS3B1TGhxMW9SZlplZXZ5UVlzT3hZbXlpVnhENF9SZVNpck9peTM1WVg0NTFlWm1iNDUyYkZ0NVRJVkEzWmpYWlJLU1lMaXVVYXA4RjRQQmlnVEhyR3dmcnplb1pCNDVUVmpPVUxpQnJCUmc5V1J1ZWVHdDVrWnpJRENtZlZON1BudGpWQzl5RFBNdGtkRk45ajViaXVxNVh4a1d6NjFJeXRuQjRocl80ZU9zTmJKUVJYUnc?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Elevated costs in SA's fragile economy: What to expect from today’s MPC decision - thenational.co.za",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 10:51:02 GMT",
+        "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNNGFBTmsxc0UxbUVJaDU1ZVZKdHdrQUV1VF9WaFdQcUQ4N01MSHdXNlAwZmRMbUpoa0N2bk1waXA4M2kxVUFocmlHM0dyWWhnZXdxWG52X3ExZU4wNTAwT3d1MkpSWVdmczRVSFJvQW1mRm13dUNqOV9GMkFTbDRWQ1E0S19BUzlHTHo2Y2JpemRCQVVxV0pBVDMwZVA3akZ1QlNrNUpNSmplaWQ5WWdPcGVZQXBzMGNTYXl6NDJqNA?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Oil Market Report – December 2026 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 10:50:04 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE42aEtkcDJNRjJYMkRMT21TTkI0VmtZd1NCbS03c0M4UlVmSnVSclpES3U4WjJ1VGxoZF9VdHdiOXJXOW5OaGM0UWJsVy0zTGt3ZU1Bdm1MS21iTTlzODJOSGE1b2lJa1d4Z0E?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Growth in energy needs per country/region, 2015-2035 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 10:35:57 GMT",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNTjNMcjdqeWpmMWhnVmZ5VzlQNzlBSlVnOWQtRl94T1RMQ0ZnSFVmYnJNZy1ISkhEeEZWeGpTWnplQlRYaE5UOU90SEJmRm9YcG1HUVBIMUlHMFdwaXlISHhTTDBQZGJhWnZGTHpXQkhNV2ZXbWhFVTBHQjRMRE1uQ1FWaklUYnkyc0RzYTE4NmFzY2JfZlNCeEJtTE1hVWM?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "No more N1,355: Naira crashes against dollar, euro, appreciates against pound - Legit News",
+        "category": "fx",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 10:34:03 GMT",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxORlR5Z3RiYkVDTFJJd25XYjgxd0VsQ2h3RVhaYzNtc0xZel9iUTdHQkVjVzgyZ3E2NXFmUnlfMnRXajJScFEzNkhwTnNXRDh6cTJKVXNpby0wRXA1Wk1GM043TWx5MDhQYlMxT2pPV0htRGVUZmJySWo0MGNDbTZLTGxLZURvMWN1OExHR3llM2JaeE9uNEpjaHlTSnFCRkdOY0lnSQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Papers by Germar Knöchlein - European Central Bank",
+        "category": "global",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 10:02:47 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPQTJhemR6cnRpRDJHX1JENUs3ZTBCU0k0WlpkTWMtWC1wQ2lCZ0NFVzd4SkpXaEtWUkZ3V3JtXzI1RWJDZmMwV25zbFhwS1lKOGZCTl9NSVJYNjdjUDRXQzFPNU9TWlQzWmJXSWNTRjdidnpjUTVMdGVpVkdWVC1KS3Q2bjdUSFVq?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Livestream of the launch of World Energy Outlook 2026 from Paris, with IEA Executive Director Fatih Birol - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 10:00:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQZV94Qjl3MVZENlNQQ2JKblExRW53VUNONVFvNlN4MGFSdnlHVFNUdHY5QUlHSzlhcWxVemlVUDdsM0UtMDhoODFNVTNKZFNfbHlGNWdSejJlQ0dkaXBXTkNzZm5LZ2VJVkl1UGo4TjZVandlMnNRZ1YxeWJIN2kwRlhIQW5QR1VydXczYUxremk0bmRlR2RPbTFvSUFDQkJsUWo0TTlhWEJqZjU5V3kyOE42clZDSG9YWU0wRzl2c1p4V1E3NUphdndTTQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Qatar and Oman Run US-Iran Channel That Excludes Saudi Arabia - https://houseofsaud.com/",
+        "category": "geo",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 09:52:06 GMT",
+        "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9jcV9RdVRHd3JvTUZCcndydnlfaEJGN2RKMDc1dEN6bFJYSXo2dkZSVnBGUm5qTU5tc0pxam5vaE5NVUF1RHAxVnp1d1hZWUsyQjUyQVlsMjBKT3BwWFZscjY4VXdtMEEzZ1JnRlNB?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "This Is The Problem With AI's Most Bullish Chart | Odd Lots｜Odd Lots (Video) - finance.biggo.com",
+        "category": "tech",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 09:49:02 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1ETGpNRTZySG94M1ZJODMwWXhscno0ellGaFFsS1ItT01PUW1UYjF0eUNhTE5yV3BCNkt5SDlIWkMzQVhQQVd3RHo5WXlpTEFmc2FHVWkwQWkzSmtxNzJZ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Eurozone faces dual threat of sovereign debt shifts and AI market turmoil - The Brussels Times",
+        "category": "credit",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 09:14:50 GMT",
+        "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOOVZRTHdZYzVPb3pDZThrRHRXV0RVUmhVSEVtM1JtUXJTOHRKd0tRRV9vR3RfS1l5UDM1THFFMnBSenRvWHZSa2VVcVJ4b2lHWEt1aXlnUWh5LTI1dDFSYjU2aDk5RXN6S3RjOGY1X0hjUGhocjlzb3V1NTJKTTlkaDFrcUVnWG4yR0F6YmRSNlZCNC1TeVQwU3pnX29oU2FFdUwwcVYxbVFtN2FXU00yQTdPbHVlUWxoc3ZGSjJxRQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Euro area monthly balance of payments: September 2026 - European Central Bank",
+        "category": "global",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 09:03:03 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOeTNMY2lkLUp3bjJQdzhaQ0JLWVdpREp2dEgzdVFKVGlMRjU3cDBKR0NfN2NlTnl1OEViOUxrSUNCWllVdE5OamE3NG01cnVwbUFEaE94U3FHQmlhS25JVExaMWNJRDg5M3o5ang1RjFJTlBkYnVtc0xQdWVwZFo3ZzQwNnJYYm5IU2FR?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Global average temperature in selected IEA scenarios - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 09:01:38 GMT",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPSnlUektqTlcyYVBMYmhvZ2xuNlRoc2RveGp2b3cxRnNpMmhzcHZuQjJXZkpGam9FZjRxSFJZdG5fT0ZrQW1CLTFHV3F4c25oOFRIRFZvUjZ0VXNBZTYzcDFneXk0cUl3cVBNOERiUlpBejZKRmRtN0gtWEJrU2dOQW9UcndGVGlhWWM3RDcxZE96U2VZajBVSm9SY1pVN3NX?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Bitcoin Slides 12.7% as Fed Hike Fears Drain Demand - Serrari Group",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 09:01:16 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQZ0ZnN29QZktsRFp6REdYSzhZdFFBZTVReWNKR0VWcjFWd0xpRU9IbFI5c3lSZm4yb3ZCcEJnRmFySHlzTVN6Z2Z1NEFzcDJaM2Vsdm9hZXY5TEU1aFVNUHFTbkRiaW5ZU3AzcEVBZmxFV2FRUzk0bXVfb2RnYUhRN0pB?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Xi Pitches Open Trade at APEC as US-China Rift Deepens - Serrari Group",
+        "category": "trade",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 09:01:16 GMT",
+        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPLUt4ay12VHg5VnNtSkJ4bWNEcmFaNjQ0NTNGeXJDVUo2NTNPeFZCYTNwSTRrajFQRVJuSTdMeTF1Z0VwbVl1aDVXUklNcklZbGI3SGlOZ05iY2VYdzZIZWFIRmpkaE5YZ041OW1hMk83dlBBbFRyNnkzSk1rUEY2YlVpMnFpOGs?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Net oil exports per region in the Stated Policies Scenario and the Low Hormuz Case, 2025-2035 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 08:51:49 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxObWFFVEhxVUtzR1VmX2c1Q1k4ODU1QjZmM3VMaExWWXU4bFFuOXczZnB3WEwxcExDd2czUHNKUEYtRGdzdDRwQ0cwQjhZX2VwOXRTN0RvdTNWQVd2RmtIWGRqYVlkLXVSaTNtTUFERzZyT0kzeWdsaVdYcnJFb29MVTVTV3JnM1pzX3Y5OGZockc3c2RVM0puRGFLQzBnMHBQR1FLYzB0WmtpZEgxMEltVm1NQ0h4Q2k1SlFjZEZIa1V6TmdVb3ViVjg0REdraUc0NWdGNEdR?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Million people gaining access to clean cooking by fuel type in sub-Saharan Africa annually, 2010-2040 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 08:51:48 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNQnlwNVk2U1NfYkZXaXl3TnVrSUFvb3Z1YWtJMGduM3F1eGxjSGoyaWF5NU54aDNJVjh0Y04yZ0JTVWp3V0dsdFhiRG52S0hrMjlnZ1VfdGJockpMZjVPaEZVSGU5alpIUmM1NEw4NGJDNjZYU2RGUmVKYWhNYWVCOWZ4SmlVblBQTGFqWDRnVDdCaF8wVTZ5Z1ZUNUNKOHlJamxZalFOZGZNdEh4SnRiRVUwbEZsdDNRY0o5Wml6MGM3S19PeWhjblZRSEZ5YkU1RkdCcmNvbVFpUDJIbEVSYQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Electricity as share of final energy by region and scenario, 2025-2035 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 08:51:47 GMT",
+        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPNzdPeERnbHRBNXluVE8tTUFqcTNQYWphRDVsdjNvMEhYS2RwWFg5VF9HbU8wNzdlNWdWclk5QWdJNzR0RlFERHQ2dEZnSHdUZ2pVX1ZYWEFwcWY1V3gxNXI4bkM5eW5EcWxDVWRscFFFUk9oVFFXVnlGTjZSeHJmeEttTnQwSGw3Q2xhUEhBWWw5ak44dUl2ZzNSMmF1TGZMbGdBSlJLcUQ4U20wQ2tydmNBR2RhSmM?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Projected drivers of growth in LNG demand in selected regions in the Stated Policies Scenario, 2025-2035 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 08:51:47 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPZmxKVUpQcjFXbkpVcnlqTWROektaTVdMZ3hydy1CbWRDNU9wVjQ1Zk0yVFZGRkhfR3hfZjd4dlhjdlNfVy1KbjZncExaNUpuOFBIMHkxT1pzdVI2NzJhLUZyZkdBd3J4bWZaRHVDYUk1ZmxWSTRHR1RQbVlJSzV5RVYwbEFQVmEtNVlSNEMyeklOTXMwQm92czRCSWdQSHZLYUF1dUhLRm5uc2tWeVN6blhodWJDM2dDMW9xYXpXc1ZoNzd6REVlQy1hbElOVWVOZkdDOFRaTUpkNGs1TzZuNkZUWmI?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Deaths by cause in emerging market and developing economies, 2025 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 08:51:45 GMT",
+        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOajMzdmJIVHdBS1h1VEI4U3hMUzBLZ1k0TzlHaTJFNUktWWFudDdWRTl4N2dzTk9ZQi1IaEJNN3lUUXh3dzBxaDYyb2cxSGF2YXNhWFo5SnZUTG1lMV85TmdBLU5YMXdiU013YlBSOHNqdlVObThPQWNyeW5fY09YU2hMUVMtMlQtN2hFVGFiUVMzU3F5UENwQXhpV0d6aFZlTS00bklvblA5bjh1bGRlZA?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Levers driving the decline in imports between STEPS and ARC scenarios, 2035 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 08:51:45 GMT",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPeFdJVmNwcnR0MF9HaEh4Z2xIZnJfa2V0NkJod1JFSHA5T3RISlV2REhoUnR2dEdQamhkd3huUG1pbzBvMWUxUXJUXzFaVHhjUTQxT1g2eDZPSGRWYTRORWpBdUpkRGxNa0NxOWtUeEFnQ294bTdCbFVfNkRhcU04NkdMTGFrNE84aWNRVXc1X0k5ek1rMUNXamlkbW01VkRtNWdCajh6Vmh3cnZCejhPOUdSSkY2ajFqMUNOUlpB?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Global LNG capacity and exports, 2015-2035 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 08:51:44 GMT",
+        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPWkp2NFJ0LXJNRTZBb2I5enY2VjIzZmYxVmpJdlhMOUxFRFVvS0JtZ1VWTjhjN01WdW41U1Vvb1dnQmZqRUlmdXM4SzQyclpMeDlPNjdNdE9meWhmUHJhZ2cyODlPNVNwbDFtZHVVSFdJNG9Rbk1RbmEzdnp2ZGpRU3NBajFQMlBhMW16aWl6R0trdw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Historical drivers of growth in LNG demand in selected regions in the Stated Policies Scenario, 2025-2035 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 08:51:44 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPemRGaXBvOXJmckN4S2ZIQndxcmZzMTdXYWFiekhQbFV1QU1pSVJVNkl2WXJNd0FrbjFtREVlaS1MU1hTc3RxcmJNRGRQS291Y2dFOEFXWWsybUROa1lmZ01HM05sNjd3SEloNm9XM2FDYmZCMks3RzJqNXpEOUR0UE5nbFhQVlkyVUJ2SFpnUTV6a2hFYkVrSzRkNXprNEZIS1hRSUFocG5rd0VBdUZGSHFXZzhfbHpmdFpVTmlBOGFJQkUzSC1pTEJKTDJQY0t4d2FrTmVIZVdJeDRCbFV6ZkhDRXRvdw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Energy related CO2 emissions by scenario, 2000-2050 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 08:51:43 GMT",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPTkxwd3NDdDVyWnVlb2hLNnJvNkxrUUY1U1NSWHJSRVVta3Z6LWNIRjEyN0V3WkFSMkg5czNLbG5UN0dkcnNKZXF3aUxSYm0tZE02Vms4Z0M3UUZVVDlvXzU0SmFBc0dMOV9mVkV5bU9Ta1VsYXRTTGRxT0V6bE40NHRJMEZmQk5NeEdUeHRpZmo1VEMzUkNHS0lNUGN2Zw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Cumulative loss in oil supply during selected crises, 1956-2026 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 08:51:42 GMT",
+        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPN3NVQ1llQ0pJQ0NhTHZNQnJvRTRfdFlSbmFUb2swUkMxajdtMVZPS1U2T2czSGhGSmkxeWstdWc0cWExZXRTN1VKYnhDM2xOc0lFOW9jTW1NcWd4Sk1qYlZoaWhvblU2NXhmMjNaUFZCTzBrZG1qY3FTay1xSnUxbURjbXM1MGZ4OExnWWg2dG1pNXF1OVdzX0hUaEFkQkpGOUE2NkIyWldHQk1mZUE?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Change in electricity generation by source, 2025-2035 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 08:51:42 GMT",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQOFdzYUdYaDM4OC14VFdiOGtMR3Z3VHpZajBxVzRVa3VnbVNIM3dTd2hVUmNyc1lvUERqMFotcHB6WkxzNFFPdnNXSVJkVXNIUjhHaXh5eDBMcXBKUE1pa0J6V1l2cTNvQVF2Q05nbXFYTmpkSkJfazc3aEdpd3RoTmFzRzZHZjFXQTZPcnUwQ1QwNzVpQ3lzTnNqZlZGTUpX?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Change in energy needs per country/region, 2015-2035 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 08:51:40 GMT",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOOHl0TDBWMk1wcFA2Zl9jZnBJVUhnay15bjdKLUdFZ25QMlVacUxiYzBsNHh0NGJvZVdpM3loaXB1dE9LV0VMdU92R2NBQlJndS1vaUpOc2pDSXRGeEpIM3lCUC1JNHFNQ1p4YWRlc2ZacklwLXBQa2stekpWNUJ5emxEUndZZnBpMGNqblpJOXRHQWN2dkxwVVBPOHZhUQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "World Energy Outlook 2026 Free Dataset - Commercial usage - Buy-once - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 08:21:29 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQeUJMbFdoUDhxZ3hlY3BGaG9DLWljUHBwVkNhNE9WWFpkLTBZSnM1V3VUMzJmX1RYTFBkY0RpbS1ObmFKN29NTkJWLUlqclM3SnVIVGxZTzlPbkJnMFZST1N0dkdfdG1lVkg0dGVteXVBNmhtVDZBck4xbGtjZXEwbnhDSU9nX1J5NXEzbzVmRUlyLVVkWDdadlVkZEdiRmtYb3dpWDM3NWMyOVF3RjNCMEpDVFdxTHFt?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Precious metals crash: 3 reasons why gold and silver prices drop to 14-month low - The Financial Express",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 08:17:40 GMT",
+        "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPN19reWZZTzloaGdBaGowb2Vfc2xwdk5vWjdPUU9FNVUzSld2WjhRTUtaOWR5LXBiOWpKSnpzQ3NKMFkzZVk4SV9zb3dEWVV3Z1loTlZBbGlWWGY3THotSlJKOTRhdkZhZGl5SnhWazJEMm5KRlVfVEJKX0IwZXNRQ1FOU19xM3o2aHVWV3ZsYmQ4WDhLOWZrRF8tMnY0eEVZNW4tUlhqZTV5SnpLbWh0a1BDUTJIX24xMjlkY0FvRDE1bG00dU9JbVpCWEVwZ9IB1AFBVV95cUxOWEl2R0pvNDJTNGlXdzhPcXd0c3ZibTVoNnBrRVdqcUhhWENKSWRXeTY4MVd0VmY2RG1YOUV0eWsyanRHeFBGcGFpS0dDeENJSnZLMzN2U2xqWnpVRUNfUTlSaDl2bmJTMzNLNGtzTF9mdGtqbXVPT1FVTjFha3g3MzFjYkkyZk1sc3NhQUxGU3o5WndCeGxMR2FzbjRkdUh1T1YwOTFyMkhBTktrOHlNVUhuc24yWkh5QzJ2YVN2cVpnZjVjdDUyY3M3T2FZTHo0T0hIcA?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Oil prices rise on Hormuz shipping risks as surplus outlook caps gains - Anadolu Ajansı",
+        "category": "geo",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 08:12:28 GMT",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPQ3pXdXB0VElUVVRGZ0tUZUVjZW1Ld1NGcWhxSExLa29fc1FldkxaSjUzWnpWUDNYTk9oM3JEVTNkZWxiMGFVTkw1bE9HVEJoVWkwUFgtOUhhMTlFLWtBOE8wR3k2WFBJWlFqTG43LTNpZUJDWUQ2X3NZd3JHc0gzbzByQ2RpekluZ20xQkltSTRZajdUTnhMbHNVZ1Z6VTh1Tk03LWtNSzhNZmVvQ1d4cHZR0gG6AUFVX3lxTE16R3I3RFN3UFJDa0V5eEE4RDNPYTdqV2k4WkRGdDFRNDZuTllsRGJqVnpTUk1tR0R5MmVnOWg1ZWpTYm96Nm1Bb1V0M0RYa2dsT2V0cW0wT3hZNlZqMnRwNXJTQ002ZXVuZzg2VWQzclVzRmRLLWdYb1dOUjBuQjBWN3JlZ3pObmdHRzVKQ1BGbkk4ZENzWHRlZk9qc1hEeG5ON2x6S1N5Q3hrVFl3YnQ1ZGpKakNXM1dXZw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "APEC Summit 2026: Key Trade Priorities, Economic Trends & Impact on Global Trade Data - TradeImeX",
+        "category": "trade",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 08:05:07 GMT",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQZll6andhMEN0MUdLbkhqX2h5T1dXMW9fTzl5Y3VoZlVodXJiblJ2elRZZEh5YjY1bkpZUUh2OUt6Q2NoQi1RNTBDSG5zNlVvQm81MXBEZHJMeFdHLVgzRGRrSUx1TUZRZ18wNHg2R1dnXzJvM1QtY3JUT2hZM2NnSHRTUkhCNGpMOXRvR3JnMWFoSzl5UHpPT1liSmZPYVE?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "WEO Data Explorer - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 07:34:08 GMT",
+        "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBVMWx2QVNPOF9fMWRtUkRiZ0VpTndzRTgtM2JRdDN0ZnA1clcyUExpM0hWelhrMXY4MjZuUnlMV0NEVDZ0aVY4bmM3UDl4VVlqaWp0RnRDbDNfQUxSelF3aFhyQmlpNkV3X3FRMWNzYzEwekhyUVU4?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Share of oil and gas imports in energy demand of today’s importing countries by scenario, 1971-2050 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 07:16:04 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNU0xCbkNHTGtHU0VBVzhWSXgzWU9JTEk3Ulg2Um8xcTlNSkI4dVhtT2w2bEdrWE9HcWthMHVyelhkOEtBa3lzUTNvNWd4ZlBJS0pMVXZ0Q1E4TWJocXJWV015cUd6WDQxaFVRVDhWVHo5V3dCUVJCNE9qOVNud1JLUFRCWFhjems3UnFoQTdEUzN2cUJJRFpDY0lfSmlib3BscVQwZlk3bTcyRmtIR01ncG4yY0tWd0E0ZHBHT1BEN3l3ZnJqME1RTWQ2UzROQUVnVUZKOTJ1VTdwcmJB?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Oil prices steady as Middle East shipping attacks counter supply surplus outlook - Arab News",
+        "category": "geo",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 07:06:26 GMT",
+        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQQWRIQ2pBc2RZeE9Kb3BDdERYZXliUVpSMktDdC14SVV3cXE5R2VySFJOajRUUjBtel8zOG5VbC1ERWFLRjhCYjJ5WGxGS2loaklVZmplODluT1hIVXVUUnlBeVBoQUtfSGZqNUVHN2xPa2xYcTM4VXhXTTJKLVRDOXJDdnBReVNWUnhUNjEwWTlkWFNtUVVCN1E3Qk0yWDhNM0JCNkZIdE1xZkZDR2pzeEhzZmw3X1RFZ1dSOQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Anthropic pulls ahead in the global AI capital race, CN tech firms decline - FXStreet",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 06:59:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPbmFnT0x4a1FJZWJIcjVCcnQtelBYX0pTRjBlZmNYMnA0UXlWaDQyRFN3QnlnV05RNXg0QU9IVFFFQ3RXRWlZdDRpdFA1bk1CdUNMTzNrUm9sVHY2WGl1amc5a2YwSUE5Z3Q2QThLYkpXM0UtdEQ2ZzNoeF8wRnZ5NDdZY2RYakJmS2xCbGMtakU1cEk0REJ2OWtLWVlCbmgwZ3RGSnRvVmlYMElZOEZaU2o1Tjh2czRfMEN6cA?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "AI is Worsening Inflation and Making Things More Expensive, IMF Warns - BeInCrypto",
+        "category": "rates",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 05:56:58 GMT",
+        "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE40THZyMmJTSlhhZnl1bUZyU2RpWUxRSmdOTDA0cDRESGFqd2hhSGI5OG1GaHFSbl84ZmV1endZTmdQa2cybHBma0hCWjVCcXhSYkhZMmlJY0lJUV9DVkMwSXNKdmxPbTdLaF9PZHZ6NWx3Zw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Setting the scene - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 05:33:11 GMT",
+        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE52T1BVMFdMWC1FSWVvSThNcXZuVGJQNHJsV2pBakZ4aV9qbWFaazQ3OGJxd0trRVVkRWs3U2lqYXJwbmZ4VXY0RWNnWTBMZFNkSWxERHBxaVhwTXp4UzVhNEhtZGdLbnhCMGF6T2dyS2JNRTA5ZGd2NmFMRQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "A U.S. regional envoy said U.S. President Donald Trump's call for Southeast Asian leaders to \"get magnets\" aims to secure supply channels for critical minerals as the global superpower pushes to win the \"super intelligence\" race. Link to the full story in the co - Facebook",
+        "category": "trade",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 05:33:02 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNeUF2UWZUT25EZGJ2NkNWZ2hqRzhqXzB4SHgwVHN3MWhuTU5YdEhwN01UbjA3Z3lnaFhQUm5MMWo0VzhSV25HVlh2LTFGQjloTFlEeW1GeFJlbzg5cEpmQ1RjMmJ5anZ6ZXQ5Und1VmVXTERWVVBjQU1EZGtnUnNaZmFxenVYVVNxNUdCTk1tSHpCdFB1SWJYajU3RENhUW4tNFRwS180dF8tMnVudlFlUEtpTTZ3c0kwd2cxaWtub1ZCQWJBQUUycWhMZUJqbWNpcWF5bFcxOA?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Executive summary - World Energy Outlook 2026 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 05:31:40 GMT",
+        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE83dzR3Z1piODFrZl91c1FoQkh3S1RkS1NRSUhOUmNGdGs5M0tNZ3J6MGVUcnBWZUJmXy1fN2VuTWp2U2pFQ3FRSWF0cWFhdEdHbVVqU0FZX2wzVTFFUnptMm80bjVmOURCVG9fN3pJX24xUkxlNkFueEN5WQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "As an unprecedented shock reshapes the energy world, its duration will determine the scale of the change - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 05:00:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNYk1Nbk91b25zX0pyZEk1WVBuM3JCZmw4VmZKaS1vQXdnX096MFc3Skl3UVN2ekNNMnRmdnhjOGoyVnFnQ05FZy04VzNnX2ZaemljQnlfUHF6NUttUU0xa0pMdDhiUzdta0lCMWhZc0Z0Q0JCSFdSWWZzcEgtY3RLU3hsekwtX1V4YndYX2ZKZlc4Tkp6NnNlb2FnN0xKUVc0QlZ4QnpOQXdPWVVjSUQ2ek1vN3pfWUNKS1lHOUJ2UVo3cktvRFpz?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "World Energy Outlook 2026 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 05:00:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5jbGVDcGZ1Nkx3Yk0xbEVTeVlXWmZYWlQ1UUR1Vk1Nam5RMG9TZTNTT1NoUTRrYjBlNkhMTnp6MElQQzM5b2hVVTJFdGpwdGNYTjI0MnBzVEcyUGZrSzA0ODVPZw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Tokyo’s mixed blessing after America’s ‘blue tsunami’ - The Japan Times",
+        "category": "trade",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 04:24:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQTm1LVGE5LTJEa09kbXZhWnBaWmNoWXRpTTB3cGRrNXdaWGlDaXFmVTdvQ05NNzFjUTlCaV9abWhKV2RiSzNoVFZyMElXcmJxdkQtMmtENlpFVzZ4V0xEVEc5VjJReFpXSUJ3TlBPNUhkQWNiX2tRUEJQaHNCdjRzdWJZMVpoNHlKcno4M1l3?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "AI Giants Cross Borders to Issue Debt, Reshaping Swiss Franc Bond Market as Single-Deal Sizes Surge Tenfold, Raising Crowding-Out Concerns - BigGo Finance",
+        "category": "credit",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 04:06:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1YOXZ1d2g2XzlyVGcwTVViVVU2SG5lT2JzeGQ2bkRONHRmWGpxbkFTcVVGY0lnM2h1d05wTnpBOTF2YUVxN2kwQnZSUkw0YTFJMDI1NUdzUlp5V0l4U0dTQ3d3WFhCVHY4VS1Va1E1T2ZvOWtBN3c?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "h-China relations, rare earths, Iran war among 5 things to watch - The Business Times",
+        "category": "trade",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 04:04:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNcHUyWnFGNTI2OWw5d0VhRmFwenotcVhVc2VQMWN2MnlaOE1nTXJPYlYyMnl4RDhxX0s1QWo3cGJ6NlhYVDRDS1ctbzFhbmM5dEZEeEUyeC1URWk4QWFBQ1VLMWVjLW5hRWFjcFBfQU9sMFFZb2M5eU9IcXYtX3B2aU5BV0RNYXdXVm1LY1BxQ0U2R3F0cDQ2YWRxOFdZTE5yZDJkQTV2NHR6WWswWXJjZEhUSTlVdnZGMHA3Z1VWM3A5NGxWVC12dW5zb3N6U3hhU1Fn?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "USD exchange rate today, November 19th: Black market USD price reverses and stabilizes, banks slightly increase, what should buyers of US dollars be aware of? - Vietnam.vn",
+        "category": "fx",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 03:53:10 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOd3NvNVhGY0hlN2k0T3JTUGtqX0J0VS1udEZnR1BUQ1ZROUdQcGtiazc1QTljTGZ4anM4MGJBb0NrTUJJWUhYZ0NEbTZNZnVnOC1EcS1YX0lRTjZEa3h0blpuMW5rSXBPdzhQNDN0bU1MNzJoTm1yeTdIclNCVm15SllDZGMxTlh2c0xlZUR2SnF4YXZsMEJibTgtU0pDQmFnVmF0S1J1bHVvbmx0TFExNVR0b1FCZWlRaVhrVjB5Z2VSWnVjOGViQjJySTlfckpJYndVTVUzZno?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Nvidia delivered another huge beat and strong outlook — so why isn’t the NAS100 surging? - Mitrade",
+        "category": "tech",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 03:43:45 GMT",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQalJLSDBWYVF0R0t3eGVtU0NNZFI1aWQzNFplbnJpMWQ2b3Y1aG5XWG9aVUxld3JKQXhsWDRHeUFRdmZTajZNRVBlMzZOMjUzRFRZU1JDZk1JLWhRMVB4bGZPT0l3RW5BSTItc3JTTzk4QVVxODRhYk45eHlYbmhUNHlvQ202MmljS1pVN2s0Y1lqUXFaYUhnNnJR?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Today's USD exchange rate (November 19): The US dollar maintains its upward trend. - Vietnam.vn",
+        "category": "fx",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 03:26:16 GMT",
+        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxORF9XdWJEUFdKcU9PZFZTbWFwQkxCZ29CVVNjbkI2OHk1T284VE9FMjJfczVDeTlVYmRZczU4REo0X2ZMclNPSUxPdmNSbjQwSU5Qd0E2elByV3k1Ym5aZmo3WXlWa0szN2k3ZlMxSGMxTVlCRkpUV0VLUVpvNzNTRQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Tokyo FX Morning: Dollar Index Retreats from Near 20-Month High; Yen Weakens for First Time in Five Sessions - BigGo Finance",
+        "category": "fx",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 01:56:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBhYTZ5Q0hjT1dzUGJFdHJBbUc5UW5MVmtEdWdPRjQtRUhDSFVMQVFjWmFuQ1lDNG5UekpsTnl2TldzSFpmMUFndjl4blF4TjFsM1ZmYjdrdHg2Z1dCN0VpNE5uQmFIN1NTbUFWYmFydWo1b1dtdXc?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Bessent's relocation linked to Iran chemical threat – NYT - Iran International",
+        "category": "geo",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 01:42:23 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5kNnRQM19TV2dxWUtsQzdfQ0RfczhIUzN5QkFUNHdBS20ybEFlSU5vekpUZVJHTTkzZ0ZscU5QNnR3cFFJeTZkaTVYeDkzcFVTdkE?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Yen approaches the 160 red line; Bank of Japan may raise interest rates three times in a single year for the first time in 37 years - Moomoo",
+        "category": "japan",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 00:50:33 GMT",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPWDJycnZFNjZFcjRoaEp5U2pNSGZ5d2pubmMzdmtOQ2dCY3RsS1M1R1BmYTRoWkUzM2pkMGI4MGUxQTlqRGlKbk5RU0sydkhGd2dnRXJ4OEZKOUNBOXQ4VzNkWTc4UmpOZVVoOHNjdV9NSWJYMkhFOGR1cmptNjViNm9mYXl3dExGREdyeUlDdnhfdGQwZXVSUw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Yen Stuck in 159 Range as Hawkish Fed Minutes, Falling Oil Pull in Opposite Directions - BigGo Finance",
+        "category": "fx",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 00:05:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9fYXBRNVRlTmRSV3VGZzczZlJQaURHcDNIcE9RSDlxRU1VblVRQnB1V1lmM2RLbmhId1lOSmhGYUprVTV2ZjlaZmVkMW1GU3FIdUU5aHNXblFkOW9mQ0JhZUpPRU1laDFaT2t1NV9xcXhJQ1VXS1E?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "World Energy Outlook 2026 Free Dataset - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 23:26:54 GMT",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNdmI2ZDlfRVp4QUZsZlNHSk5XdzVicjY3Z1RLT2k0bE4yVG5YX2xTaDdOaGpBSXBBZTUyQXAtWjZBY1MzUlV6aHZiNmF3Zmt5ekN3MFJuV1czcTFSZ3pCeHhkNmFLODc3VUpqUmJDVEVLQmF3Zm9hOG1hRVlPTFFDNmZwTkFYaGlkcC1VYnp2RTRtM0xtZWRZMA?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "FOMC Meeting Explained: Statement, Conference, and Reaction for AMEX:SPY by ClearStreet - TradingView",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 23:19:48 GMT",
+        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOWHZnSkJHREZNaXJBR0lyMWlNZ21kZUpZODNuSWRXV24yQm0yUGoyUkFhZWlmVTJwZzFZcXlzTWhnWm1pVldZRnViZXFzMm1WUndEQXFndmpKUXJ1WHgzaEwwOTRVblNkc1lvR0lnaDVlS0xwcXFPSGpPOTBNdGVCQzMtdVlfVXc0Ry1MbDVFNW9aOXJVb18wdm1aLUtJMU90d0N0X3J5dw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Tehran threatens oil routes, wider missile strikes amid US sanctions - Iran International",
+        "category": "geo",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 23:16:10 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1DSEVVUmJnOUlvaHpJLWFZUWN1ZHdfZUh0ZVNwZlBLMXNCbzVaLXlXUDBaZjQ2dE5YbnJLOExKbTdqYm41cHQ3bFkteTJPMmlDTkE?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Oil Slips on Weaker Demand Outlook and Higher US stocks Amid Supply Disruptions - EnergyNow",
+        "category": "oil",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 22:47:33 GMT",
+        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPQVhqWXlVbE5vWlBsdGJHaVdhWmpLUkwyR19ERElPeFV2ZTNleVNibGFMZHlmWVo0V1NHa0hVNGk0dndETzRBa0tEMkVySGRoWHYzci12WThjamo5OUFZOTl1SGxpUXBhdmJZa2tpb2IxQ1hKdVVuR21IaVdkeng5blV1Z3YxaUxLc1JjTkI4d3dCQzZjSV9qb2k0LWVnQ0FpMU00YnhQZmJYUkhwY3c?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "BOJ tipped to hike to 1.50% in December, its first three-hike year in 37 years - investingLive",
+        "category": "japan",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 22:26:25 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPWlNOZUJVaWRlU19qc1ptTXM0QmkwNEVyM2F5dXJERjdMRlY5ZTZMcm1fY3N3T1dURDJIM1hoRy1NdEZRRnpvY3F6ekVScG0tY21ibUxVdmJMUmM3Vk4zSG9kX3RMbXUzcWVvaFp2WVBlaS02ZlBrZjdYM1J3eDlmVU8tUktOZUxyUHhFOW5oblFPSnhTcWhKYWdSeHhJdElxcERTWnFDdlhuX2xkYlhvVVdIQmRGbE5f?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "What to Look Out for in Economic Data This Week (November 16-20) - Kiplinger",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 22:12:03 GMT",
+        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1MeVNwMVVnVmhvRWo4b0N4WkhCRXQxTVRtb2ZmTWhCSmd4eERsN3Nfdllwejg0eG5ueFFCRUdPTzVUaXh4dEFZaWJqN3FFZnlFWTBlZ2ZvVkFFRzVScTR3TXRhZGl6MHp2RUF1clppVDRvR1lveC1FaXNCeXQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Australia Unemployment Rate expected to remain at 4.7% - www.tmgm.com",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 20:49:07 GMT",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNazRJUjFnQTRObVc5VlByYnowdHdzREQ2UnZGc0RQM0xIMTZjRVlreW9ZZXhNVlp2eU9odnU3Y1d0OUpPaEU1ZDlBbThLbGd4dVVyaUFTcFVEcU91Y2UtenN2OXJzZTVTbFpPT0xQX0VubVViTEFKb0I5OEdKVFRjeG1WcUVXbDJmN0h1YUpXOEtRdU1TenBVYTIzX1BRQ19pSExvV055ZUpVUm5IRHcyNTJuOWtvbVlaTXVfUkFR?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "ECB Warns Hedge Funds Pose Risks to European Sovereign Debt and Insurers - Beinsure",
+        "category": "credit",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 20:25:18 GMT",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPaV9yQmhNNmZETHVuTS0xMzNMR2gyUWRIVU03MHhJZ3cyWl9HV2R4d0NLOWh0VzZvNkVpRy1BMzdLYUNUZ2luUkdwbFJNaDVWdk1qYmRmemxmY2Rhdl9KMldYYklsQXV1Y2FtQUhKSGFnRXZ2N25WR2pSTFJwV0VTV3hzd1ZDaXUycmZFemkyNjBOQV91SkxCZnFB?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "2027 investment outlook: Beyond concentration - Invesco",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 20:05:14 GMT",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOYXFZenpHMFdndFpGdzVvS01pMS1ONGRUYWVPSHZZN2oyWlJCN2NRbGRMWXFVVFhaTTlEVVdwZ1lGVGRRdjV4MlV5REhhcGhnY0gySF9yczNmZV9aVVNQVGN5cEFQMjFMb3RoNThzeElNYVhpQTZmajNqMnhrYlVTUnBXT0VrRTFIOTZ1NUhuMldOcEpsQ09uMQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "BoC official downplays need for more forward guidance on rate path - Investment Executive",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 19:13:47 GMT",
+        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPVFBqUE9KUFphTkdoaDN4ajdSeVktSXhHSHhHZmVVSHNLVlI1aVQ0MGo1YXRJb28xQ2Y0b21iNHBHSHRVV2tsMXk0RXFteHMzdzZTRkhONk1SZktXZ0tZT0UzU00xRkpSNUUybEVLS1dYSElXZ2lKRmhJS0dlcXQwLV9tZVlwN3RWblRneDYzclVDb3FlUU82VXh2UWpXS3d2a1ZHSm9jQk9ScVdia2RDdS13VXJYbTQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "FOMC Minutes, October 27-28, 2026 - Federal Reserve (.gov)",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 19:02:30 GMT",
+        "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFA2SzktTy05dU8zSHJESEk3VVJMQ2t6SXpjVVRseHZPN3A3VUxOclpKek1FbGVNYjlQLUY4Mkc4YlNOTDBGS3hYRGphYmswempKbWF6bVlTSGZDSWVDTG1ZR2dMYWJmN3NTcVB1UDMwRkEzV2dJODJqQw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Minutes of the Federal Open Market Committee, October 27-28, 2026 - Federal Reserve (.gov)",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 19:01:43 GMT",
+        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPUVBkdTdsNVhzTkJSN3NwLXNCX3ZDeGhmWnRzcjRrRE95RXJyUHgtZ05tcFBlYkRiaERDRGdCd2NhTUhxUXpZU1JTTmJiZG8zakt3dFVBRmxHYVo1OE9PdGdQMTk3NDVlT3YxbEp0QzdsTVpEOVhtbm1UemxQNWo5NlVLMA?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Financial Accounts Guide - Federal Reserve (.gov)",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 18:59:18 GMT",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQcnVyR0J0TlJ1MlNPYXVRdms1NmJKVjFOWHEwMF9rbURNeFNicktUQnZnSU96NldPTm1PY1pSSGFtY21hVUprZlRmR24zNFhId2Jsa1hkMzBZZVRKb2pyckZ2Vm9RVDRyWjZMbjBjOThMSGg3a01lTXFCRlVIRks5TVFvMU45YzJDMjJuVHZMQ29JZV85MjhlRUZrekRvMlltZ0pzSm1TcExpT2hBODNr?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Above mid-$83.00s: WTI edges down on surplus concerns amid Middle East unease - www.tmgm.com",
+        "category": "oil",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 18:48:45 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxObUtMOENrWkZwWXN5eExJYm83WUw5cjEyWWNIMkVhMF82RmtjdTItWGlCczgxdTFlWVc3TU1hZUgxY1Q2UHowMWRfZzNGd1Mwb1Q1QU9WQTgzdnNpU1JUSnZ5Y01DaXJRQ1hKNGxNaTFjajJFXzdYUF8zdTAwSURfSHZjdUxmZ28zMktVMmFTUXRyTlU0Uk1CaEtiMFZ0VjdYNU9pZWRuN0VvUUsxZGFpOF9CbXpMU2c4VEh0UjNUVElpUEJoWHdQa1NaQ3ZHa3ZaVUNnbVdVTXo4Q28?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "WTI Slides to $84.77, Brent $92.53 on 5.28M-Barrel API Build; Hormuz Attacks Keep $88.56 and $95.84 Alive - TradingNEWS",
+        "category": "oil",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 18:48:26 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPMW1PSjhuQTlCNWg4TDh5cDljLUt4U25nU0FkeVZLUDBYMGYzWWpaajBxNFgxTXJKejJuNXJ0TW01TFpsdy03alR4eGZfN3UxYnRtb2VlcHVleV8tblpfaUNKaFdwaG5WR21NVWprSmRxRmRJeTJXRW1adVpqcTB6aVdVYXluRmV0U1B1V3Q1MExjZFVjR1hiMjFuSTJrSy1VbVNzLTViUHJMdFJTdnhLRHN0ZVZDYk1oTXRfUm1SM0xlZw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "U.S. expands Iran oil blockade to target offshore cargo transfers - Oil & Gas 360",
+        "category": "geo",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 18:38:01 GMT",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPa1k0U1JNMllsb2g2LTIxWlpVWEUyT3hNSWJkd2pjdEJRZ3RtY3R2UU1WYko0dlBFOXVaeXNZdnBzalpIM0RRODdYbnFzeC1GTUdOX2xYVFNZMTRhd1llVXQ3TklVZHMyWldzaGZQR1o3bXpjMzlZcTZQdGNENXVBMFVucWJwdUo1dTA4MWpLWmtTMTRJY3E5cU9B?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Speech by Governor Barr on community development investments - Federal Reserve (.gov)",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 18:36:43 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1YWkJsUmdjdmE4UVF5UnVVZW1jT1RxUkk3QWd5Qkpvb05MZkd6emRqc2h6QnAySHFTbHFEd1ZmUXBBZWhhM2ZwektyTlZMS0tWMkJTMmxIdkVBUm1BZlRtT0NCMUt5Mkl3X3llckgyVWRJc3NQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Japanese Yen edges lower ahead of FOMC Minutes as intervention risk draws attention - www.tmgm.com",
+        "category": "fx",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 18:23:33 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNS1NkcGh1NDBnT09TczFIcmVqOWxIaHFHTi1WWXhyVHpwZlV5ckZkcV9hbm5VY3h3TmROMjlnUnMySkJ2V09JSzZQZmtoa3BxZlhoejBGbTh3M2N5QXYwdF9FMWJXakxEdGtudkRVMmR0Zl9zbHU3TmJXNGl4cFVJOTNKTE15Mnc0bG9RYU9UYTFnaGdvM0F1OXlCNVRDbjQ4WUdmWWkxaUFtSzhEeUU5aWJCV2lKX3BTQXdJTkRQclhGUy1JSHlrTUFGRXpDRnNtd0syLQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Gold and silver weather a perfect storm as demand holds firm - Kitco",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 18:22:49 GMT",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQYXBiSnI5YkVSWEZJZTJlV3A2ZnR0azV0NTNGY3c3WlN2Y2o4NFlPUUFQeldxdTFMYlVzNDNTSWh6bVFzRXhqVEd5cjAwMlpMTXowOGhFUEpDbVdKcnZmb0gtUXBPREJFclFxTVJCT0RIYng4amRxNUxlRV9vSjY0RFBFdXE5RWFnSVVFWHR5QWZQVS12MklMejlzSkQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Xi, Putin and Trump expected to meet for about an hour, Kremlin says - CBC",
+        "category": "trade",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 17:44:35 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1HMFNZblJKMnYwdnFFSWpkZ1NXTnJuQ1JoWXJRZ2Z6RGNxRWpIY0kyamttYjhOSER3djVWem83VVQ1aDZzWW5PSDlPMTlfaE50RmdYTzFLVjEyRGVEWTdmRUFMaGNjd0tka2dNY3ZtZ0ZtR2JyeVE?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "USDCAD trades to the highest level for the year and going back to April 2025 - investingLive",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 17:18:51 GMT",
+        "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOcHYteTVjUnVYRUdBM1ZpUHVBbGFiQk9DMjlXcXpLNnFOd2VCZWNOeWJZUEMzS0tvWDhhVDJ0ZW5GeGhDZFhHcjVIam9SSkYwalduLW4wbDFGODJpYV96dlJxUWI1djRsdnYzSWxMQTJ4U2g4NGg1LUxxbXB5cUphZHBGczN6OEo2QW5NMGVLLTRQR2VqbzhySTNfR2s3cnc4Vi02TEdEOHhwUG04SjZrQklMeGRfcVVaTkloTVZYTQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Gold Price Forecast — XAU-USD ($3,770) $4,050 Upside Target on 97.8% Fed Hike Odds - TradingNEWS",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 17:16:15 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQcExwU3VQMl93LTQyc00zNTJSZ01XbzJjS3Nyd09DbzB3QWk4MXRkY1Nta0poWjJKMDRWWnd1LWJORWtHM0VmTTZyY1ZucWVEdFkxRFg3N1RyYklCZENBYWpubUg4eTFiMjh6MmJXWDFTaXN0R1o2Rm92YmMzcXNJTHZOdmF1NUlXY0U2Z3g2V3AtUkRmb1MzUE9iNDlnMFF4d1V4ZW5vT0N0ZTVXZVhJZmlWZjNJSGFVWXAxb0FpTWU?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Bitcoin Price Risks New Lows as AI Bubble Fears Hit Markets - CoinMarketCap",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 17:03:03 GMT",
+        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPMjN1V09WTF8tc0lSRldOcnBhSzk2RkpsRE81eFZycG1pMkJleWs5djRKNXF2NkdwOXFmdk93aWhOZVpsT29QaGhXNlNZRWo5NjBQSFh4Sk5LM2pUdmZNQW93RTlVR3JNQ2pUdGlVbXotU2NvMDdiZ0I5Rk1Qc0RNbTJIeEJ3T3M?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Nvidia’s Next Problem: An Avalanche of Wafers｜RiskReversal Media - finance.biggo.com",
+        "category": "tech",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 16:41:45 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE42X1h0ZWU4VkZsX0NCNFFld2NCUDBYbVVoOGQ1ZWFRc0tkbkZuUzhPY24yZ0lXcWhBTUkwMnc1TnZhYlR6dXFwUGNGZ0dib2NHV1pSZUJKelplcExJbFNN?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Consumer Expenditures in the Northeast Region — 2025 - Bureau of Labor Statistics (.gov)",
+        "category": "global",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 16:41:20 GMT",
+        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPcUtWRGdJQm5PRDFPOGpmdmthQVFGUWNYMkpBcVE3OXlUZnpDZWVuZGpqbXRsSEREMllYLTNSRG1teTJpUUppcTRDeHZhTy1iQkJTLTVqSXRvR2lEQjB2MHRfSlBJendEUG8tUVBpRmNBWUpjUVpJbHRrdWZtTmN0cXFYbTBUSzlTTTlBWW5B?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "WTI drifts lower on surplus fears; holds above mid-$83.00s amid Mideast jitters - www.tmgm.com",
+        "category": "oil",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 16:33:29 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxORjNDMFVuV3BjazM1S2FUTnZpU2RwLWszaXIyOUpId01ZY19Ka0p1b3NONUFhLV9tNTlUWVVhY3BlOTdYNGxYZm01d21XUWhONEt3ZUxwYTZ0US1MeUxEMDEyZVItaWZpTk9DZkd5ekpJRlNTQlVYX0Z4TjBmSGJEMmpaRzczdnpoTDhRdWI0azRMTkhYaGdxUzg1dWNrWUJaNXZQYUFrcUxnN1pKdzltZ2ViTFBHcWJsbDZIS0FfYi1IME0yNWR5S09uTEozUFBORVNTaGVUMm1Hdw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Fed Official Waller Warns of a 50-Basis-Point Rate Hike: Risks Increase for Bitcoin - Kriptofoni",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 16:27:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOb2pSMFFucFJnR003aEY0RzBtTUtURml4Mjc4S2c3UnNIWGlLeHpWZUw0MkhuQk11V01kY3hMdjljQUVSVXk3ZTU0NFc0Q2VqOXRUSW5rZEVuNURSckt4WlIwcDdRb1NJS25fWVNEWFJ2N0hIb3l0YkhpZk9yb1pYdFNUU3FQenk4R0FrV1BlOWJadGdzVWRsc3psNlAydmNRaERpQ3ZraDc2WTUzVm1RRnRQWQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "E.C.B. Says A.I. Debt Boom Has ‘Historical Parallels’ to Subprime - www.trendingtopics.eu",
+        "category": "credit",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 16:14:15 GMT",
+        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5DLXd1NERta05aYUp3VXFhVDlFclhHTlNwclNnWG9CQ1lUcTlGQWVLQmRtQkRrSnJEcmpDN3N4M3pQM3NFcHMxZEtIcFpKbVY3VUV2aW55SGI0dkRnYkE5S2JWQXhWY0thd0VrR2hwTDNxTHJmQlpTV2dJZw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Payroll employment increased by 885,000 from October 2025 to October 2026 - Bureau of Labor Statistics (.gov)",
+        "category": "global",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 16:11:27 GMT",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxObjRlNmI0NVBvek9rbV9NOEpoNTFPNlBtb2R4T01zSFQ2LWF4TjhkcVUzekVwVWo5UEhMY3VJU2UwWFh5aVZhbEl1MnoxNFMzN2NXRlhlTUFuS1d3R0s5aHRHOGM2aklDeXJyNk5OaTdwOG03RFNleXlPbFU5eTZBSFJNQXE0blc1NlJiMFpfMFlic3YyNUgwOVh2OVE4bnlmOXNsaDA3MEVtRkp4MzBJ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "From Hormuz to the Red Sea: Is Iran Putting Global Trade at Risk? - TV7 Israel News",
+        "category": "geo",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 16:04:11 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1aZ0t6WHp1N19QdUZ3QU9YRkUyUFM2UXNzYURyYlVYZnhhMUxzNEJJQU5DbjF2U05ZX1hCRnFtb2tVSEt0RXB5bXlWUmxUSm1TTk9UUGR5SGlDSzIyUXNXbUlYOTg5Tk14TjRjX2p1SXNQSFVtVXVCRHR3?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Supply chain, costs, alternatives: Why Trump can't simply stop Asian countries from doing business with C - The Economic Times",
+        "category": "trade",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 15:54:57 GMT",
+        "link": "https://news.google.com/rss/articles/CBMitgJBVV95cUxOMmtpeVVJOHJNNVZJblBSeXRFNklJd0NUUGdjVUZXQk9pN084R3V2VDZUYlhENjExclM1X1F4cm45ZkpNMXh6cnJiQ3FUck1IdWhVaDVRelZGamlyWHJqRmU5dXBCT0JhOG1wWUwxeVJFVXJwRkdySjlnVU5NbkNqRkczZmRiNU9jWEtXOGNVdTRVY0N1eElEQ2VGNl9QeE1WTjlhNHFwMVM4amJpZVI2ZXpGSFVFc3I1SVNYdnFnUjF1NUpxQy1zSzV3UzI2TVp4MS03VUJwNmlTU194TXpGQTRVeVkxR3ZPaTZEZDFtNVFPSG5qMFpTb2xHUm9fTVBkc193NjdJUUZ0d0tGRi0wRzBSNWpxTHZuNHdpdnVlby0wZXBmVVJmdXJ5T2I3RTJLVUR5U1RR0gG7AkFVX3lxTE5wOEhkcnB0ckRQd0s4eHJ6YlJjcXE2cTQtU3ZXTnhOWWUxNWdzZFZBbU1qRWRYVzN3ME9pd1cweFQ1WHJoRFhuLUllNTF4RjA3QlRtb1ZUYl9yVFFkajBpcjZ0Zk1zdXJfeVRWWkJvbklucG9YSFpXeno0dFJvZ21pU2lOaFBhUVU5SnlKbWFZQjNsSkY3M3lSTUk3M01kSThsREwxX1VoRzNuSmROSlFHYW44bWROWmRzcDVyeG9ZWjMyNEV2MjQ0V2I5UU1GTnRTMVRRVVFYXzNqYVlTVUM1dTJueG1ZUGY1UVRIWm9FeTFOb01aZGhHLW9jWVhiRTl3UkFlWklBcmltbk9WU0hwRlNadUI0amlPYzBYVm1meWxJWlhLSENIc2ViVzJETkNSSFp0ZVBqMjQ2Zw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Energy Efficiency 2026 - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 15:41:42 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBHS05oZTRXYlVZRlZHZGRRSzZsVWJaOS1OVDJTTWNWeDdmLU9sU3NhYlJSQUN0OXc1aF81U210ODRLd3YyWXoxa1gwLTc4bHVYaXhLOG9rZWk1Qk1Td1E?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "WTI holds above mid-$83.00s amid Mideast jitters despite edging lower on surplus concerns - www.tmgm.com",
+        "category": "oil",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 15:39:38 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNUTZRRnhIb1BaMzN2ZDdydEdaaTJNdHB5dzFyLWlJdF9QTFpnWEdSTjNSRVd4cks2S1lvVU42MzE3eEw4aTNDSk14eHpGblo3aUlEMDl0dmFPQkFSNk12ZDRlaEhGVTg5M3dSRzB6cW1FcG1zMTZ4NGJsNHFQa2VKOGdVMElNWjA1eWpqSEtKY3RBWElsRjdJLWtHVFNuNmtlT2toYzlxTlFERTZUbFFfUzJFLV9uSEdmWWJPSWxfa2dmTjlzcHdXakR6OWlvWmRndTRIUnFPRjF1UVphRkE?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "China Pushes Back Against Protectionism as APEC Becomes a Test of Global Trade Rules - kalkine.ca",
+        "category": "trade",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 15:37:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNdHlyazNPRVBrT1hfQ2VlTlZiS3ZSZEVYNnozd1R0b0F5V25wTURsNW5Wd0RMR2g5ZkJfSXkyX2R1Z2RRS3hnRlBwN04yV3dhWDJLRWk5NmQ1S1lVZThTa1laMFo5RE1hdEQ5YjlZOFZDaExMRHpJX2oyR1JBOVZJMm9QaFZ1cUhNWW0zNnE0LUtXT2k0dHlQRF9TSml5b01fNVY1Q01fLV8wazFPSmxxb05hdmxOX2ZLdDVHRXBwSQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Fund Managers Dump Tech Stocks at Fastest Pace Since 2006 - State Street Technology Select Sector SPDR ET - Benzinga",
+        "category": "tech",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 15:17:48 GMT",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNVnIyQldBRVJMZmNKRHhQSlVvbkJnRDBqRUVaVGt6c1FXUnB1QnQxV1dmVlQ0QmZpY3lxREFWWnJDVGZDbi0yNThFcjB5SUhsQ3lvUHpjY3RUeDRSeVJIX3RjMlZMSVBuZElTdjhOcVRJNFAwZU1Qal9IWF9VTFg3SzdxU3p2UmtZTzJ0aGhjYUlhQnMxRmZKM00zWGNKcE91?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "If AI Takes the Jobs, Who Will Pay the Taxes? - RAND",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 14:58:52 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9GUG4tUnVpYksyNDVBYk5nb3Z4eXM5X2ppYXpEbU4xMTV3amNSN2FyenNNUGM5VjlTbkpoUFhERHNXd3RTMUhHSWNjZDdCNVpWQWVvcENFbTdrM3JjLWtmeGVyZ3NRc1U?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Introducing CCHP: Actively Managed Exposure to China's Semiconductor Supply Chain - Global X ETFs",
+        "category": "trade",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 14:38:15 GMT",
+        "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOWW80bzdIc1Iyd0RtbFpibjgyOENKc0JVaEtNaGljZFUtYWpUQlpEUzU5a3ZrdWlHTlpoYi1STTVISFRnbTkyVVNFNnJCMkZfSlZMOUx3SC0wVHptRzhvMTB5RW04RFBpMmM3dVlFRHZpOEhlNVItSUZLVFdaVm84MWJPN1I4XzFPYXd5N2ppQkJ6ODJiWi1FcXg0X1M2dGxuWkN1UlJsR0Z4ck1fRGtYd2RpRURCLWprQm5uT0trZjN4dnlPVzlROWxyTEpnZw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Nvidia’s Q3 results beat expectations amid leadership concerns - MoneyWeek",
+        "category": "tech",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 14:30:43 GMT",
+        "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5WUTA5LU95WXBYWjVrYV9YVnBvdlNZdXNrazlZUjg3OElhaW5LUkFhZ2dSeWNjR1dKVnB2WVJRNXg0NElkSVF5anM4TmNVdlRkVFIwM0t5eWJ0RzA2UzlmeUxWR2ppSDJxQ2k5SjRkR0w?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Apple’s haven status makes it one of priciest stocks in market - Moneycontrol.com",
+        "category": "tech",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 14:21:55 GMT",
+        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQX1lsV1RqX0xCZklKaUt4RlZMTGRSdld3V1lTOThXZTNJM2ZReWVWcUxMamh0bkhtZHRLZnFvYTRJUGdkRnhWdTRUYnkyemdrZkVOMUxWSFpYTUx2Tzl6Zlk5UnU4M01DeTVMeHc4T21KeklDSkFpVGhHYkV6VDJzckNLcS1yc0QyY3NHV053bVBOWEM5aGxMQzBYcW5sLXU5SWE3RlI1SHRWNkYxRmJEXzU1VEdQc2gxaUpwRmNOVm1uRURBeEHSAcsBQVVfeXFMTlFYaVdzTGJoRmloQTdQTWl4WDd5Znotelo3VE5HdXQ0NnRZckNqNEsxZXBRazBTSEpveGNhUktfV0RyZTNvaGUxMjk4RDBjRkY2R0VKWGVWSmN0SDRodzZfWWJSVjdzb1g5bjZhN1F1Z2pta3NKUUFrcFNlUHZLSUVPMWFTWTJQcEIwbWIycWhfbGZUbEJadkM4U0Z5SVA2M3AxNkRXVDdQUUxfM0lVVzFfNGt2MUd0YnUyQlhlZ0ZORHl1MGVValJoZ28?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Who will foot the bill for proposed buyers' club meant to curb China's export strength? - Global Times",
+        "category": "trade",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 14:20:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5VdVIxX2dtSnVMR0k4c3FySDJMTE9UR2RhVFRMeVVHV1p6aVhBNWdxOTgxcWZjdG45dG5YV0NLLU9lLU9EVUViWVBJQjdfUU9vZEdIQkMyUWZfU2JwWEtSRFJ3?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Can the US and Iran sustain a ‘frozen war’? - Al Jazeera",
+        "category": "geo",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 14:16:55 GMT",
+        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPQWRMWlROUjlhcXR4ZjB3eUtJS25pcTVBeHp1ejhXUXZ6Wk1mOEMzM0lHUzRKTHZnMXhrNFNHNGhtMUZWeUs2cmJWVjRkbjVFR1lVTFhfRUpyaWo1eDN5bmNYS3E1a2o0WUJvQ0RJLVBOWkJ3eEpzZHMwbjJUbWl1STNob1TSAYoBQVVfeXFMTTk4dXJEcWl2VmJaMUlzNUUtMVBTQ3h6dVNtSGNDalVBeHRMcGJrZTV2TzVFNHZvSk0waEVBM0tqUVNkNUhnd3VuWFEyRjVpZ3pXX0htZjFCSWYzbk9YMWZrWFU0YzhBN0huZE9ENW1ac2xTUGxoZ21CeVpieDZOb0g4UkVMSTFYc0R3?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Extreme weather poses growing risks to global oil and natural gas shipping, new IEA report finds - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 13:35:54 GMT",
+        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPVzEyaDRXMTFMbnlVbjRuODlwSndsb01TWWRZV2F3b0ZzeWZrejlqYThKZjdBNUVNcURXdk1RV0xiNlRMbUxVbHhsN2RicmhEYzFnTWFkS3NyalY4UTlUU1QyS1k1OUNXNmlTX1FOdEFvX191X0pQOUxQVGlJclFmM295VVAwWWNGZG9sbWNIbnFWYjdTMFF6VFJncWJwWFh6MktUZW16X0ZMaU9hOEs1Ymp3S3Y1TXlIS2E2cA?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Fitch Warns of AI Investment Return Gap: $1 Trillion in Capex Won't Be Covered by $500 Billion in Revenue - BigGo Finance",
+        "category": "tech",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 13:35:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFA4bGp0ZTEtQll2T1k4LUEtcWxlcHlPQk1rc1NZX1FTQ1hFWGl5enkzWDg3VmpkakNUTWFTMHJEVU9UTlkwZXJOblNSQW1PU3VweDRScldIZ29xa1pvZF9lOUZHWTVpSGM1cU9ZY2U5RWtIcFN3clE?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Dollar-yen firms in mid-159 range, climbs to 159.48 on rising U.S. long-term yields - BigGo Finance",
+        "category": "fx",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 13:26:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE52RDBkMnlFa2daX3JLLVpIZGlFN09uZ1hMR2V3Y05SdmVBUFB3TDBiUnIwUlRCU3M1UC0wODhrZFAzRU9GVmtReVhaNUlIOVdDSl9WUFVOUkJtczNnV2NCbWNuRVRYWDZudDMwZjBmT2tObnVSeVE?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "WTI rebounds to near $84.50 amid Middle East shipping risks - www.tmgm.com",
+        "category": "oil",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 13:23:36 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNVnhnN2JYcnF0dE9LSkZNczRuSDRKT1U1RkVUdHNiRkpZaW5wVlZydWNtU0Vfc1AwcVlQdDA2bTdnTzF5MzlaTEMxeUQwaXJ3NVpKaXZjRXYyS1IzU3Z4WWNyQlFjcmtKeTlNYkZ2RFlkNHd4X1NDVVpqcVJ0RlpVd2pyeWZiWk1aa3E0aUNzdGREOXo4MFZyOHNZLWphekFhd3dDRmxjVTY4WF9tdGJzR3NKQkxLejk3UGFPdTFBYlo?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Fed Governor Waller Pushes for 50bp Rate Hike - TheBull.com.au",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 13:14:27 GMT",
+        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQTVdweVlPSWktTG5WYUFrYnNZQndRTEVrVWlVWG9DVmNMNEprQVNrT1FPNlJPZVZYMHBKNFlBLWVROHBfVGRwWXMzY09tdTQ5NGszckJBaC11cW81MmVYQWNBWExJNWtKZlVvT1c5QlkzNDhjQl93cEpUQ0l6YWlNSjRrOA?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "PCE Report 25 November 2026: Time, Forecast, What to Watch - Admirals",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 12:51:52 GMT",
+        "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNc2xnRHA4RlUxZmgxa0NGZ3lVWVFQTmNEOEd5WFIzZ2U4d0pQOEZSakxTbkJlUFBDSzNnSTV3dkMtZzQtMzNjY2RXX3MxOVNvOGd1b2lPQzRGU3I3QmJxRHVkMHpwdjNpV0o3cDRaZkZNVDkzcTVQMlVSRV9iYlV3dElReFdZdHhrXzJrag?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Japanese Yen weakens as FOMC Minutes approach; intervention risk under scrutiny - www.tmgm.com",
+        "category": "fx",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 12:48:56 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQckRuNmo2RWZXa3cxZVplb3VUcFpLNGt0LXJ4QWlmTmFpMTdqZnJIWHQ3empkVk1NRlAwRGphd21WRTA2QTI4OThqQ0JLQmZLbUhnYWVCQUxTREp4MndmQjI1VmxzU2g3Z0NRSzdqa1pSUnhpODFzR0JPeG9JUkMxN1lDeUR4M0VVZFBobXZyZ3dueGxaUHlITDNTeHRZWDVSWDBKS3dSS3hPdGQtV0NfRWxJNGp2bjVSRnZRdnZyM0xyQnF1X3dBYjhMb3c5TG5SYU9ycQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Xi greets Trump with a hug at Shenzhen airport as Trump meets Carney before Thursday's talks with Xi and Putin - MLQ.ai",
+        "category": "trade",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 12:46:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPLW42dTRCb1YxQWh5MWVFakxJT05BZVRwencwQjg4dFN4R21pSDNScnkxMDB6RVpTdnBYSXZtWHJ4RDZYWGd6MzZyemM4bzJ5dEhVdU14QXJJZkxfZk9YT0tQTUgwdm9tdGhrQlVBSlhCSUduem5zU3dLNUVDa0IxZEZoNnVodzJIRU53dHFjZUI2T0VoY0duVW9lel93OEdTZ3dzcE1pYVp0MjNoWjB4ZlkyWUpvOUtVMDdjdzRVdw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Xi Welcomes Trump in Show of US-China Warmth and Cooperation - Bloomberg.com",
+        "category": "trade",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 12:00:01 GMT",
+        "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5vcUk1U2RBTkh5eFZCSGZSeVdsSlRyTk8xcmR5YXlwYUhvaW1uVWt5cUJWQTdFOGdWWGJrbWdYQzdUbVF6MzNFTzFPYUhSRTBNM1djVGdYQUp0WVU0OW5RbVpiZW04T01YUXZzSzAwVnFJWkVIS1RlNHRoOW03dw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Trump Arrives in Shenzhen for Xi Talks Amid Chip Rift - https://streamlinefeed.co.ke/",
+        "category": "trade",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 11:55:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQRU5vcWhPZUR2VUVMaUJxRW0zY05SM0dWbGZhT2lOenFZQ0xCZU1TR0w4dFZTUkN0V1JqNVlEMlhtVDQtNllTcjdXN3BhQUpxOUVhZER4YXZtdXE1cnB0dG55QUFFbXZaazNKaUF4c1Y0YWFzV0szNXIyVXpGR3JLcEw3UXJrcHNkWm5paEJ0RlA?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Japanese Yen holds firm against weakening USD as intervention risks persist - www.tmgm.com",
+        "category": "fx",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 11:54:30 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPd2RCbUFNWkRBWXRfeWdQOWlnRGsyR2RTNkNrQUpzOFJEekRhWEdYZWZxZmZFb0ZMcjJ4TWZQcHp4WWZxazdwV2hKVG90MEFoR0VRZ3k5OGRiOWxKS0t0bGozWENlbmhzd1ZuLVY4ZFk3NjRfWFZTSF9yRVR4T0xHYjV4WmsyaGF0Q1FPMS1zRk8yTWZESTVUTTFzVjNQdmR6bGkzSHVBenB4RFRScmNvTXFyRWQwc2o3bWd1Tzh1TDRjQTY3UVRtaTA3SXFFc25KSm91N1hXRVoyVkYxRWc?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Down 36% in a month at 48x P/E: Is Marvell a dip or a trap? - Investing.com",
+        "category": "tech",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 11:33:57 GMT",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQcU5mS20wZE9QcUI5MUZzcG0zVHFxUVkyTWdyZV9QTU9acFVIRE5zUy1HSW41aU9HNmpoZ3h5ckYtZkRQOVhpQ09iYVRLRDk0eUQ4US15b2U1Tm1GMGpuMnlzRzRJemR6cFpYbURudkJ2aUI4MWRUbjV6dHM1WjFvX3g1MWh2Z3Y3cjlnekNUZzhlbjkwajRxUGY2eVRLRVNoMGJfTURkZHhnMTkxc3B1UXVn?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "SMH ETF: Another Buy The Dip Moment (NASDAQ:SMH) - Seeking Alpha",
+        "category": "tech",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 11:29:28 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQMTJ0WjRLUHlXR0dQaXM2ZDRtbHdhYjY1U241bXBVNnI3bFpkRm9McnctNmd2MUVlY0NaNmdGZzlvVUZjWm9OWGdkSV9waFFPbTU5S1VIZnVmZk00NGppRW5aOVJGS1hfMEdPQ0dOMGw0aWsyeDZpQ1RIdXRld0tLR0tkNVVNLWxkdUFpRUNRQXJmdlVYdHBJMWpzalZtVGRFemtsRno5YnF1VzRQMGlMWnE2UQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "​‘Support Free and Open Trade’: Xi Jinping and Vladimir Putin Blast Protectionism and Western Sanctions at APEC Summit Ahead of Historic Trilateral Meet With Donald Trump - Pragativadi",
+        "category": "trade",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 11:28:05 GMT",
+        "link": "https://news.google.com/rss/articles/CBMimwJBVV95cUxQdWhSOGp0MU43RHRaVUxLWnYyTjVobk02RWdQMGg4S0czRnZ6WDNyTDlHZlZiZGppODBpdzZzYzlqWXJlR0xqcDhJN182Q2JfbGVxdzBxVkxRRTVIbk1OeXVicEpiaVZqSW9CVHBYUjZib1ZpelllT1F2UmZCUU00dTNpRzE0azBEbWtCQ3hJM3Mzb0FYcnBVRXotUElmYzN1aldQS0xGQV9RUEc1YTJlSXdDb3lYdzQ2NEtQU3dJekFNUWE1TjR4WFFqREJSWldGekRkanlrdWRhRGJpeGdrRUx1OXlsUThxV3NYU00xTFdFS2R5eWkzMl9mSEVrZU9SdWxGbU43QnBGWDlMMTJRdHRLcFBEcTZVZU9r?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Is China Replacing the US As the Champion of Free Trade? Xi's Message Challenges Trump - International Business Times, Singapore Edition",
+        "category": "trade",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 11:26:32 GMT",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNYkdSOEZVVi1ha0FGU3dLVUVmaW1fcHRURnVTT1VNUGctVHpLRTdETkZvVHBKMUZ2OS1XOE5jNG9fZktRUlpYMmN3UmF6cTh4QWhxYjdXNklQalk0STAxZW9FZUxhOTI3ZEpRX0VhZmFVTGR1M0tlbTFrcUduallXRHg5b2VwbFBvVGhHZDh1X0JPVmtRSTRLS3BzQ24?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "UK Jobs Data Decoded: What It Means for the FTSE 100 - Kalkine Media",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 11:26:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNU2FZNDJyeWs3b3JPdGkySE5wSVZrSG4taHlqSGdGQVNEWERuekVLYXMxVFpkV25ONHdkUFYyMVdZanhxN0hNT0JEcTJpaHdab01XYk04c3J2MHl1dC1lVy1yQzg4aXZPZXpyeEhyS3R0RlByQmx4UGhPMThJTnBqSWpjTTVRZ25VSzJDU2l6ZjR1WFFjZEdFaTJBWQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Executive summary - IEA - International Energy Agency",
+        "category": "oil",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 11:22:20 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQaXgzSFQwRWdHTFBHRjJEZDNXcC1SRlYyci1EM1AyVGhwTTdoSTFFMzA0THAtNjVnZ0tLOEt2aHJWbTBmN3A3bVl1cGZFUWtqQWtGaDNzVGVqX1lOX3R6NTVtWFhHcE9TQVo3a0h4WnNLeEVublZQai1yeURJcElhTUlBeDZDWE03d3F0UVhodUQ0QlpkV2V3ZlFxekFndm1QV1BRLXVfT0lsQ2s1UHYzVmFVVQ?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "US Treasury yields hold steady as traders price in 95% chance of Fed rate hike after strong US retail sales | Hindustan Times - Hindustan Times",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 11:10:11 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxOMnVmbGZ3S1E0UFRET2V3aDlacEozZE9GOGhhTmUxWnMyUWdkcUFFTC0zdXJpZHB6WEJrZ0ptTV9tYnNMaElMbUpZNGg5aTdlS0ZuNXBfTk5sZzNuNmRJXzhwdW9BSlRiUnVjZTB5SmI3VS1oNnN4dlpKZ2xzeTNMMzBVTnhLblpJa2hlc3VSaS0wRWhGdURUUXE0V1VSeUpSZ0ZaS295NXR5YTVJNThycktROFlQMEQ1RDc1aUFJeExqbmJSOS1JNk80THRuUWp4NFNwUko4SU9DX3NEa2hWUE5ENF83NG1CMzZWRUlxY3hRQ2xzNjJFVE1XNGNMX0Z3bmhyWEtXWkLSAY4CQVVfeXFMTzZQMkdESkdHZkhldElkZEVlZk1uRWh0T0tyVi1CT3dvNDR2ZDJDZWtpdU9NV0NQSm85dE5mQWNzMnEzNzZDVVhUSGgwSllmTGhMT2NfQUw4SFpDMHRPQjJhdGNmNEh6STNieHpIX1l6dnVqazhtcmRUNExqUUtiX215M0RHOFRNeUlBTllLem40NWI3QUwxWE9nWjlCNC1KMnB6TUZmTHZrRklDUzNwMmlXRm1oUHRoaGJLb2NwTzVkaVB0WUVzLTdxVW1OU3RqNnhyZmZIOWRoQ1p4Vktnb2xqSUpldzctSUM3bmd1NWYwdWhVNWpsLXlKMmVnNi01cWxEVDkyM3VMVjN4WlpB?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Labour warned over jobs for young people as UK workforce shrinks by 1,000 a day and vacancies slump - This is Money",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 11:05:08 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPU0tYT1huWkFWN1RZbTYxZ1lRMDNKSUZtQjdoME5xS0RPOV9pZzg4N1gzb2F1Z0dQcFNmQnNfbDZXNDF6UTFHMnRqQlV0RnRjR3ZRN2FvRE5xcjBUZ2djbzgwbjFoYUdOU2R3enVwdm01T3E2ZGRwd0JsM1FYQUtYemVOaVVhMENkem1lNndMR2xBdjRpeGJoUEhxYmRHZndUU3d0ZTlsYW14QTlUYTZPQTd4RjBpUVd2VEpySU5DSFNEdHJtMnRSWEdqcEVMY3Z3WTV5Y0MyNURsdzNG?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Dollar-Yen Stuck in 159 Range as December Rate Hike Fully Priced In; Nvidia Earnings and Anthropic IPO in Focus - BigGo Finance",
+        "category": "fx",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 10:55:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9kVnlzZ0gwdWRWX2Z1MzB6cWF1MHlZdVJrMTJqQ3NDcl84U1pnU0pxVmNGVEZRb1BfVjVCSUVqLVZBZDA0UVBXeEwxbTdHc0FpRnBBOUxqeW4xa3BZVjdqTUhIb29QeG1naExweFJzcW1temRqVXc?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "AUD/JPY Price Forecast: Slips below 107.50 as bearish technicals sustain downside bias - www.tmgm.com",
+        "category": "fx",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 10:48:58 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOTkFrNDh2bl9rOE5ZbEVQcTF5QzlyalVDbUlRMGhMTlhMNF9Iak44ZGI5dDgtVmVRclFvUHVsbm9STTdxR3lxUkF5OWR4QUFTb25LdlBrZ1BRaEplTXh0RFlrV0lEZndIZW80Nm85ZVVKVHpKeUpWUndsdnBnc1JHeHJNQkQ1LW5pdTMxWldaYTUzVmNpbDBxaDQyYUxOY0YxNnB3ckRZaHVCc2NLT2ZZUVZMUUJaSElpOEJIT2xLSE9YaWpycVgyUmVPWXM1b1ZqM19Fc1c2V0NsMF9BUlBzTnlzMA?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Agency Reports Suggest Oil Market Approaching Turning Point - Rigzone",
+        "category": "oil",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 10:45:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOcldjYzg2SUl1ZC16aWxrQXVtRWN0UlNOZ24yZ0ZmZHAtczYzV18zbUVpUHQ3c1RlTXdJSHJzbkVwQjFNaVpncExBSV9VblZraElLLUp1aHBYOXdRemdkWWxvdFNUZTlHZWpsdGloZkR4ZXY4blkxWmJMbmpVNFpaWlZ1UWRITVhabWVPejBuZGVDX3c0NlI4VVZnZzlJVHlXT0lLRHo4eXgyZThkdnBRRkVhVHFSbWc?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Gold Slides to $3,790 as Fed Tightening Expectations Push Prices Towards 14-Month Lows - Yahoo Finance UK",
+        "category": "rates",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 10:29:34 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9pUFFOLTd6X0prV3VHaTBGWE5kZy1vcGFnZnBwTE01eGFMVG5FdGU2SFBnSVlXZFN5cHQ2akVkSHU1blRkVG9jcm53Q0xnTklLbDBWYldnbDZJZkloZ0wtRERDWTRpRTNiTjEySW5oQ0NSOW9vZzV3Q193?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Oil Prices Decline as Rising US Inventories Offset Supply Risks From Iran Conflict - Yahoo Finance",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Wed, 18 Nov 2026 10:23:55 GMT",
+        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQSnYzbHEtdkFjbUppQWZGU3NXd2QyRXZIMlc1cHQ0S3RyZkhIREk3TlFJQk96LWZOQmsxWURyLVZ3V2ZHajRyb09QNnhGN3RZYkk4RUFFMTFDR0k2dElEeVRoVy1vVGVxanR3RUNpUnhaY1NXUXVnQkJhVGNSa3JRS0hmZGZIbkhZem1lTDV3?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Tokyo stocks mixed on robust Nvidia earnings, risk-off amid AI uncertainty - 毎日新聞",
+        "category": "fx",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 10:20:18 GMT",
+        "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFAwYW9WSDUwQkF5RDVIdTdRYnRCa3YtT2RwSk42WkVMTUoxTXpqd3kzYm4ydW1nb21hRnAycmVGdnZZRXdmeTA3dTNwMTFOazE0cnBIbnhpd1d6VGE1ZG5BWVF5OS1xQXU0eWh0dmRPdzZHY0E?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Xi, Putin take aim at Trump's tariffs, sanctions ahead of trilateral talks in China - NewsDrum",
+        "category": "trade",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 10:15:58 GMT",
+        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQcE1EM2hIMU5ELVZ5eHUyTzVKNGNsRFlxZG1VSk9rTlAxaEExMXBpeXVuVkNJMUItdjVKbDEtX0hoRnRmM1BxbWowQmFKZGxXalViYnBieTZKYUp6QnBoVThMdFNwQTF3RXBicmlDR0EteDZsRU1rakNMaERDbUVwSWJfUzRQX2owUXJoRm5Yel9XRlJrQnlKalQ3M0taRkR4TUpvR3lnR2d2elRHSTFDbXFvVnFYanM0LWVnbmNEamxIcFJIU2fSAcYBQVVfeXFMUHBNRDNoSDFORC1WeXh1Mk81SjRjbERZcWRtVUpPa05QMWhBMTFwaXl1blZDSTFCLXY1SmwxLV9IaEZ0ZjNQcW1qMEJhSmRsV2pVYmJwYnk2SmFKekJwaFU4THRTcEExd0VwYnJpQ0dBLXg2bEVNa2pDTGhEQ21FcEliX1M0UF9qMFFyaEZuWHpfV0ZSa0J5SmpUNzNLWkZEeE1Kb0d5Z0dndnpUR0kxQ21xb1ZxWGpzNC1lZ25jRGpsSHBSSFNn?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Papers by Lara Coulier - European Central Bank",
+        "category": "global",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 09:23:59 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPWmhPRjFnNVpBSnNUMnlGcW5saHNpamwyR3hHd1lRdVlRcGtoaGpUNy1TUUxUUHpYdnVMR3V1ejBBTTJYblp4dHFxZ1JVVGJpTHlzS2FuRHpRSk5ET0g0RTkzQ0VhdVprTHZaeWFMNUF2RXp5QWdqUzMzRjUtV1F5Z1ln?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Papers by Urban Rupnik - European Central Bank",
+        "category": "global",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 09:05:35 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQOWdwNjVpTkJ6bV9EZGRIVWhtcHZWekxJOEIzeFVhTWVkamV3YWE2TFFqZERQZGF5NG1TckktUWI5UGxFdU43c25HZ3ZxSXp5Sk1paWVvZVI5ZDdtWUtQU1BGLWVLbHR2TkdtbGtOdlVGU3hGNkZKSjQ0TUdRTnFSSnFn?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Yen Sticks Near 159.3 Per Dollar as Oil Slump, Fed Rate-Hike Bets Pull in Opposite Directions - BigGo Finance",
+        "category": "fx",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 09:05:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9rUko2c2hnelZFUXloUGhyQUZCMUpYeUktc1I4Q0tlSENINGtrWC1tM0RiYXgtYWtOUFZXWUxpMDJjdXVMYU0wVElIZlhmR0RULVB2WjJDNWdtSDhBRU1hMGtyUkhNWU1scG0xdXBrX3Fka281Znc?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Bank reliance on credit protection providers via synthetic risk transfers - European Central Bank",
+        "category": "global",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 09:03:18 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPeGg2S1QzazhQendiU3VVV0RUbnZqeVFqR2lzT1dQaTVURzM4OW0wT28xZW9pTG95WXZFenZwbmotRjFaLUxUcDVmSlU0ZDgta2RweHIzSktqYWVkZ2VZcGJDaDA5aHlDNGIwRE1WSWFpVDdKTEV4RDNjVm5wSnZlUnlDRlUwLWNlQnE1VkQ0STNBVkpQcHl0NktfQVRyM1VFZ0xfSV9ZN1UweHhHWWVVYTdJSHZ6c1p2WFV3d09qOU8?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "The footprint of hedge funds in euro area sovereign bond markets via repo markets - European Central Bank",
+        "category": "global",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 09:03:17 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOS0tndktJRUcxOVo5b0U4U3RJeWY5Z1FqZjl6T1REWVhiRjZYWkZUbVlOTnlRWlhSZnZPYnF5dWhGNVkwdThoWWQ3eVNiOTRkbFJsSlRkNVEwX2FBaDNXN3VZcXhPelNobXhrcWFzUW1Vb1J6bFNMOVpDMF9nY0RoWm9oZGRQajlKOFBJb2JoSkg0WkN0UThTcUZaR1ZKS0NJRU9hUVlLUm9ra0Nac0dkM0UzQ3IwRHFjX2k0M0FtdnM?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "The effects of oil supply shocks on corporate resilience, bank asset quality and lending - European Central Bank",
+        "category": "oil",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 09:03:13 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPcllvR2pfangzUlZ5VEJ5OXFJNU4yb1F5cS1ZU2ZlMWJOYWFWcnhsMHBERzRBOExhZ04wckk4YkFNMFNZbFRLRGtZczBsYm4ycDNhN25UZHhwel9QdVpBNVZWSUc5YTdCdlhNZUNiZmZmMmVSNFdvUnNCNTB4WGY0LW5fenVFV2swU2hzZnhENVlQZkNCUWxlcV9wSUVpQ1BxYm05Ul9QclY4U2ExYzJzYUdUWUZNYVNaSEFUUHNfRFo?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Financial stability implications of AI adoption in the financial industry and the real economy - European Central Bank",
+        "category": "global",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 09:03:10 GMT",
+        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNMkpTN1dlUXE4S0NYTGVyUW5WOHZ1bWlZU1NuZ3JLOGJpdlpnaFVDaDZXR0JHUnRTUUJhYjRJMlJocDAyb2RlNy1oMTdYcV8yQy15N3dNSjlwUFJOc00yM0JOa25OTVFXOEU4elM4WWFNaFBWZHhtMXBOcWdRVWlvckY1UWFQQWlLYzFUZ0FZcFp1UHJaV1l4MkZSYURjdVVQUHlZbXFCdXpCUEIyc3l4X05GUndIV1djdGdEZg?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Diverging developments in euro area residential real estate markets: risks and policy considerations - European Central Bank",
+        "category": "global",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 09:03:10 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPdmItTVJhTVpJb3VrZ2J6SmpzRmhvUEsyUVdTMTNEQUNMZXg5MGU1eWJBVExBdGlhTTJ0MHZLb19WeURDRjNud2xyb0d4VFUzempKLVBXUm9tT0t6Q0tvUVdHR2cyTTdIR2xDdnVIZnZMMVhjTkFHcGlvdjY0U0laYnUyaTRYVFlpdlo5V3NUaWxrTGE1R2lKc2tqUlQ3QXVwQnJWN2g2dkxfZXZubnFlbm9wNEpGT1RXMDZOR0RhdEU?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Risks from AI valuations, fiscal imbalances and geoeconomic tensions weigh on financial stability outlook - European Central Bank",
+        "category": "global",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 09:03:04 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQMWtZOXhELTFrT1hpVlZVb05tNXlyZlJZWGkydklhb2dNYjFVaTV6V29fNDAxZzh2N01renNqV3pUSUtTYnVVZmJzSU42aXFkb0Z2dTFwV2JxSC04NFk2aFE3NktlcTFqWU5wVlZuQjU1ZGQ0ZE5OWldOZ1lFTTlwSWpaVGYtak1l?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Financial stability risks from large IPOs, equity issuance and passive investing - European Central Bank",
+        "category": "global",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 09:03:04 GMT",
+        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPN3J1eHVUSHk0UHRNZzhSUmFBc1pmYWpQSWJHdWpxeWZvVk9vQ2J6d0pyTnhmemRxbjVwTmxHcmNBMGtrTl9WQjdDQTVfaDZJV2ZXbm0tbDB4RVpCR3pjNHJyVGpaOU1ROFRlNlNMNzBRUmlhdVNWUWpkWVZwdi01OE13WmpUUjllZHNLdHNOdUdHMGtqckk1eDM1eEVYcUNpU1Z3RTBwSmtZOG4wLVZHbFdEOHFTZU5hbjB3dA?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Financial Stability Review - November 2026 - European Central Bank",
+        "category": "global",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 09:03:03 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOZlhrbWpxd3Y5NEZwc082TzZQUkcxR2RoZVVwTGc4cm1TQ3lQNUc4eVBKVmhKbHM3TmhLZk5hV1dJVExoWEh4V2gxaEhra013d3ZTSWdGd1RYbjFGckNITlgxVWVVTEEyZVRpeGdmUjBqR01LY0dXZmtwbDlLa3NrTzdCRVlTVXdu?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Market Take | Three Reasons the Chip Selloff Looks Overdone. Two Risks Still Loom - Moomoo",
+        "category": "tech",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 09:01:40 GMT",
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPTmRQM0RWM0hSODQ3WW1zQktvZmlaRFFROVQxUVBHa3p1aENDd0Vxb2JINHBWLXhwenhWMTJ6cmJtUjNJZ3VUS2RaaEJJeHU5X0F0MHFUNTJzVTJJNHhPQTJhT2h3TElWZ1ZqZnJFVlpHRVd4cTFhd25ib0FPLWZ2WDZCanFESHctbmlXc2xhNENXYzBsZXlkNEpXRWlPaFdfZG5EbGFRVUttQldXT01IeDc3Y1AwZw?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "Financial Stability Review, November 2026 - Zprávy Kurzy.cz",
+        "category": "credit",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 09:00:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5CTDZneGxDV0lPVlI1cnBkajJkTGUyZGFCekM2aHdVaGRSNDl4VFByM2tBT3UzcWRFZnVlZ3l0RGFJbWlaWDc3WG9OSDU1SGp4djA3WTE1Rnl4cDZwUGpFV29XZjlEYzFiTGxBMzcyRlFjYnZhZ0wyS04xRlY?oc=5",
+        "source": "NEWS",
+        "trustScore": 1
+      },
+      {
+        "title": "ニュース・分析 - HF Markets",
+        "category": "rates",
+        "score": 0,
+        "date": "Fri, 13 Nov 2026 18:20:41 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOZVhjdWN2eHlaNEJPWDkxTlo0cUZnd2dQMTZOM09ZUmo1TjhKMDAtZ0c4NGVuVlUzbkk5eUI4RldHZ0F1Zm1WT251SzdER25ZZ3dNMzlIYWZiTFU1TzdocTNuUE5FdzZUZmQ4c3l1ejByTW1Xc2JBaFFQeGhvUHMtbU1ULVhIOEFlNE0zVzk5WVJZekNVZVM1RFpER1VCc1FrdHBfRjdHWVR3XzJhbG90VS1FVnNVUzR2aFpncFlmVXY5LWNzYTVhZVFtc2dxdzFX?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "ニュース・分析 - HF Markets",
+        "category": "rates",
+        "score": 0,
+        "date": "Fri, 13 Nov 2026 04:30:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPR2dKSUNsMWNxUnlzd1FJYkxxZDQ3UHRWMmFUWFp6YnRha2tiMHFCVXNoSXR1SGh2Sm9vazVhV3ZTSGtTTnl4WmZfNWtOdnpEUm51SC1GSzZpY0F5aU14amd0dk9FMTlzRzk5anVzY0psb1VMSVlfNFFqOGhRWFUxTnZLZmlMdDFXeVlONDgyakZlYVhKUDh6MndCdXFBblgyd2pJbERBWUtxaWt2Z3Y3T1U1QmxTMXYyWUI1dnlQTWExRlJrTWx0Sg?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "ニュース・分析 - HF Markets",
+        "category": "rates",
+        "score": 0,
+        "date": "Mon, 16 Nov 2026 11:20:06 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxONzEycEhKeTBrZ0VzTWNLYXRZQ2JPX2VqOWFqV29yWGxPWlNuZjJLS0hlV0R1eS1MWURXQ0l2NWVCMFVHano1dnU4UXlid1B2MnhnMW5sTFZfWkc0MkZnTFMwdDFMLVRQOENneHdIRnY1UG5IM3J4TmRBTEZzcUJuU1M0Uk1kakJhX1ZheDU2RlhfQzliWEQ0RmZNU3N4UDJUeTRBQm1vNS1CbmdoMjVFMnBGQVhCbEFnTU1uQkNzOU11azR0bHNqMnp6NFNtWnhDNXg4?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "トランプ氏、膠着状態でイラン戦争から手を引く恐れ－湾岸諸国が警戒 - TBS NEWS DIG",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Fri, 13 Nov 2026 18:10:23 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBYSkoySjBPWUFuaV9QRHRZaVNBWXNZSGsyYTZBQXVrVzhHSUczZXAwb1duUG9MTUtKcE5PQnE1c0lNQTVZbW5RT0xOVGJJZUVjdEtBYkFKT19QQnhDZVBUTzVGdzQwNlk?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "Vance says Trump won't allow Iran conflict to become 'forever war' - Reuters",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Tue, 17 Nov 2026 09:48:41 GMT",
+        "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9HTHhWd3Z0RVVfV2J1RHoycnhBM2Y3SkZ3M3g4eHVXRFExTHNlakthNWxXbDY4dWxxSmU1NlBwVXMyTjE3ZU9lS3YxZnBuYnNyUklSX3Zicmk1MkFEVGkzRGpncERfaFZaRDlZ?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "イラン、バーレーンの米軍レーダーを攻撃と発表 - 日本経済新聞",
+        "category": "geo",
+        "score": -0.9,
+        "date": "Fri, 13 Nov 2026 08:22:57 GMT",
+        "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1RZ3F6OGw3Vm5yVkdabmVCN2VaZXNrV3dwUTkwMUdVRnh5aTVZSHZ5ODhodld0R29qSkgyd19DY2ZyY3NIc2E4dlBFcE8yTk1NYVoxS3ZhOUxscTRMeXUxVjBua1FtOUM1TndUNQ?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "ビットコイン6万2000ドル割れ 米上院がイラン戦争権限決議を否決 - BeInCrypto",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Fri, 20 Nov 2026 00:44:10 GMT",
+        "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFAwdHNSTFc1c2pkU3c5WU9rcmxfeTVEMGQzVm5qbnF4S1JlTkc3RC1lZndER1hWV3k3OWVHRU9SN1NKLW9YOHlKTGltc2M2TXQ5VHRLZU9jY0ZQT3VDaGNqQVl0SEpTNVVnQkJ3YTJvZU1VVHp5eGgxNw?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "ヘグセス米国防長官、自身と側近らを叱責した衛兵に勲章授与 - BBC",
+        "category": "geo",
+        "score": 0,
+        "date": "Fri, 13 Nov 2026 04:33:44 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBHQlN2LXBUMmJCWDJ6S3VGZTNHakx5YjI0RWlVb1VHYThFb3VndXhkUzBEYVFaY2NaMzhxWDNVV0FLVHFnc2NXSDU2UndlamtkbzZZWGViVHhjWXpNUjdsS9IBZkFVX3lxTE5Oc2JpazVqX1E0Y0VJRDZpUm96YWROOEhsLTVJT042Q2NTQVdzNEVsTWZCOVc1eHBJWVJ1U0hxbWVTeUY4ZzdHek5Iem5KQWl4NUtQSkpvUThhcmpSU1NfalphSW5Sdw?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "イラン戦争による混乱の中、湾岸国営石油会社が戦略を適応 - ニュースと統計 - IndexBox",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Mon, 16 Nov 2026 13:00:35 GMT",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOcm45Rlo5aE1DaXlZa2dWek9TQ2lwTDNJYkFEQWlFN040VXV0LTRnaG1rZXFfbUphRGJsT25JM0RnbEF5eGNHeDNSeEk5Ung0eXNtMjdBQW5HV2MxWl81YTZfZjZJOTVCcXFjQjdBN1BwYjdZc0dZQzB4ZlFpVk9VSUNiVTY0MThyUXhIRFZUYV92QjdaZXBKQUZGSC1MVXM?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "イラン戦争がもたらすのは「ドル覇権の崩壊」と「世界の脱アメリカ」…真の勝者は中国とイラン？ - ニューズウィーク日本版",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Sat, 14 Nov 2026 14:06:12 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5zUDdSNWJvT3hhM3A4Mm92c19rZHRrMkRKX2hvbnQ4UUM5Mm1QWTN5VHNBYlpEb0MzOXJmeWZxLWdXS3JLcGk1MVQwVjRSckQxdUsxSTdmbVVKWHQwQWQxVGVFV0ZJN1hf?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "WTI、1バレル85.72ドルと約2カ月ぶり安値…供給過剰懸念が拡大 - BigGo ファイナンス",
+        "category": "geo",
+        "score": -0.45,
+        "date": "Tue, 17 Nov 2026 01:25:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5sNFlicjlXTWVFNDNISDVCS3l4b2RnR1JZN2JxaVhERWVkbmdDaE9qcEN4Qi00U2pza3VDQnZzZjZFakpDQjJMNjRFbU51ZEZCQ3A3ZVp2VHlpMmhBNzRMeFZ1NVhyTlFHYjZMRGRVSkZ3N3Ba?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "ホルムズ海峡の逼迫により、米国の石油企業は1,300億ドルの異常収益を計上 - Moomoo",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Tue, 17 Nov 2026 03:21:47 GMT",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQai1jWHRtTEgxajJBQWVuZEpMemZVdVhnN1FxVDlWenVtRFdLd2lKV0c0dnF0T0pvcFFVbm1oeU8xVTlVcjFxMDBvdUkxYmQwX1RGZWx5dUc2Q2NjZlpKUW9YWG1lNWVob0ZfeXgwN0pkYmVyYXlxRDdMZ2U5VWFycEpxaHM5RWlMeENRbDlGWGpzYzBCckZUakVYd1ZlQUhu?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "韓国のガソリンスタンド価格、26週連続下落も…国際原油急落の割に週間下げ幅1ウォン未満 - BigGo ファイナンス",
+        "category": "geo",
+        "score": -0.9,
+        "date": "Sat, 14 Nov 2026 06:25:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5qUGRGcHNmRjdySFFvZmNQTFNwN29rdTVyeEMzd3lLQkRQOEJwNnA5X1RRYjl6N1MwRTlrcGxpVnBHd1Q5SW81SUpsbERReDQwUUJ3eXlCNFlReXRreEwweEhCZVkxZEFacFFjNldoUFpBTGo2?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "チャンス学校チェンジ科STAGE｜SBI証券 Presents TGC 北九州 2026 Strait Of Hormuz Oil Tankers (kLp9kfkyo4) - Unisba Media",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Sun, 15 Nov 2026 07:09:39 GMT",
+        "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1lVkxrWHR2amFGQXhoNllzaGJMandrdnhET2JsVDR3SUJ1ZWlIekYwSDRIZXVJZUtVeGx4d1pja210RUxrWnBGSklwalc5ZWpOMTFPRUxXN3lBVDV0Z1VRYXBJcWRIQVExUVBJ?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "米原油在庫が528万バレル急増で原油安…ホルムズ・リスクが下値を支える - BigGo ファイナンス",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Wed, 18 Nov 2026 04:05:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1LUkdqZkptYldrWElEY1NLWlh2WlpVdDNTSU1VSTc5bXlnbmhWekJtYVBfcHg1VUQ0d2VVN0F6X0RaUUtKelVFR3plT1F6MjNpUWJiUWw4Z1E3TEtGWVRicnFqWjVGYm5OUWlwZDVxLUNoWEpl?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "【自然栽培362】1分で効果抜群イノシシ対策！ Strait Of Hormuz Oil Tankers (3GooW7MctD) - Unisba Media",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Sun, 15 Nov 2026 20:44:55 GMT",
+        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQaERXUGxTTTBvZDJMMVF5WWNzQ3VfVmFGUjI2b1UyYTJxWVNPUTU0bXBsQlE5OEMtQVNYaU8wSXg1SWV0ak5ERHdIQjlTM2FIdGpqMnlodVhGM3hFQUlDUHEzMnRBZ2U2OFNhdnNiVjdFbEFXa0FDbm9RN1J2NktISDh6TGI?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "JR京都線・琵琶湖線接近メロディー10分耐久！ Bitcoin Atm (2QSwbyHwcL) - Unisba Media",
+        "category": "geo",
+        "score": 0,
+        "date": "Mon, 16 Nov 2026 04:09:49 GMT",
+        "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1XVzlRQnROWHcybFVKTXRvSHFtQm1YRTM3S2JNV1NrZEktaXZDRzFza0kyTjNGdnpvQmZNNk1MdjNRQ0g5TW0xem9XZ05rYUx4eXZ1NXlnclo3cmNQUVlMbGpSUGJuMlA5MzhZ?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "サウジ首都の最高層ビルに被害、フーシ派攻撃で 政府系ファンド入居 - WSJ",
+        "category": "geo",
+        "score": -0.9,
+        "date": "Thu, 19 Nov 2026 22:43:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOYUNVTTlpS2xrUkJ0OW05RmdHSHVLSDN6UjBmMGtfQmZ4VG0yYmhhTkFSS2NTaHg3Q2FRZDROX0QtYVFMYklEUGtYNm5PZEJweGl4SXJWdkxxMzFwVU54WHgtMFdaTno0SGRpRjg1Vlh2RW9TZHhYMVpNd29fb01tZUpZMlVucjEzUnBZYXhFdXc?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "Houthi video said to show clashes with pro-government forces in Yemen - Reuters",
+        "category": "geo",
+        "score": -0.35,
+        "date": "Mon, 16 Nov 2026 14:00:34 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4zOWd5VVpFZUVJa3BJQkFINHpKUlcyN3dldnVRNzQ5dm5VWUFvQXgwdG05bUlmZkxrbXRtY3p3SDd3NWY5WS1VNlh5M3p5THhXc2pyUDlhcEc3cUZENFFiZA?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "フーシ派、サウジ東西パイプラインのポンプ場攻撃 ヤンブーとリヤドも標的に - NOVAIST",
+        "category": "geo",
+        "score": -0.9,
+        "date": "Fri, 13 Nov 2026 03:01:54 GMT",
+        "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5UZElJMGVBWmJZa05TWEVsZ3ZhOTJYVlRteFdsb1VMR1BQUnlfTUNnRGViS25NX2YzRXBDVU5uZjRReXFpbnc3VldjcDRZUGpLYy04enVqRDNrU0R6VzNMUDJiVm5GN2xST1E?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "Houthi strike damages Riyadh’s tallest skyscraper - Reuters",
+        "category": "geo",
+        "score": -0.9,
+        "date": "Thu, 19 Nov 2026 22:52:15 GMT",
+        "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBTY19ZYmZ0eXlLOVRQdjdIbm5oTExFM09QTFJWVG9nNjQ2YWh3dW9sWDF1bmN3U3pybmVrZ0hRdFZISEtIYzkzU05uQ3hUSHlWcGZSTXUtTXFfTkZucTVnLS1EbDlqeTA2STdGNGx0VmlDZHYzMzlfVDYxSVAtQQ?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "フーシ派の反政府勢力は、リヤド国際空港に向けて弾道ミサイル2発を発射したと発表した - Informat.ro",
+        "category": "geo",
+        "score": -0.9,
+        "date": "Sun, 15 Nov 2026 20:05:41 GMT",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxObXZjWTZsd053bzltRHNDVXdFRWR6d3NnZ3o2UEJ1dmt2TkJwdHdFTi1ZM0xhdmtTTEd0ZnpWSFBYRHN2VDEzNmxPeTMtN2lScjBZTmJkTEZJQVFWUVZyTmJlc0tTOTNweUFZbFNBa2xSRGVSWWhlUmNWLXlJOUU2MElidWhQdFJJajI3d2dNZTBQZnFoM2ZHLXpn?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "ニュース・分析 - HF Markets",
+        "category": "oil",
+        "score": 0,
+        "date": "Fri, 13 Nov 2026 11:05:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPOFFmWUxTOV9UZmxzWVV2eHhPZUlYV0RGdFhTNU83SXhDMnRCUjJSV0hZTG1RbFFIamIwcGU3cmFLZkhpYW5uT0VGakxQNWRsLVQwbmhFYTZtLUdUcXN1eGc1YVdjSXl6bjJwZExibWdaMnZ2MVNvZ2oxUnZrTWdVSkQ1d1djNG1iQ0lySncxYkQ3SzZtU2l5a1BVbTNEVzBqRUdURW5sTDhlcXo0TTRUbGh5RjQwWlh5VFhIaW1sZWllLU4tQzhaTzdPY2xCaVA5NllISlNuSWt3ekU?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "原油続落、市場は供給過剰を織り込み－湾岸戦争ではなく - BigGo ファイナンス",
+        "category": "oil",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 18:05:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5MUGhaWXo0S2dJYXJGLWpOZGFMd0t2dE1PaVdOdnRueUw4VTFhN040OXJyTDR5bDZmdzZBbllUVDlxNUVRNlEtcTUxSTdLbHNvR1ljMTBIU3pXT1FNbDZPdjJjZGdpM2trcVVrRXQ1X1ZfdUxt?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "WTI、供給回復で下落続く 原油価格に下押し圧力 - Traders Union",
+        "category": "oil",
+        "score": 0.45,
+        "date": "Mon, 16 Nov 2026 14:33:40 GMT",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNSDBldDhpMGNaZjhkLVJ2bFpYcDdhMk9XRUlaT1RvV0I2cWJJMGFSSTRGUjR3VE1HYktUUURGQnM2SVA5NDFNNWRVaXdGTVBIbkNndENadWY4a013RklUaTVXT2hWNkVLU0dkX0ZzYVRCX2ZrMktrUVR6Q1JjV0xNNnpFSTRsTlRqcXE0NFBfeVQzY0RlWnp0TlVvN21PNXNEUjdQcA?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "米・イランの交戦が油価を下支え、ホルムズ海峡リスク未解決もAPI在庫が530万バレル急増でNY原油を圧迫 - BigGo ファイナンス",
+        "category": "oil",
+        "score": 0,
+        "date": "Wed, 18 Nov 2026 03:05:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9ZUTA2MFBidS0xaTdKSzNZUS1DYnNQRE1xc2NsYml6MUtvNi1oRXB6c3Z0d3Zhc0dzZEVLbVc0UHpaYTJsSTM3Zm8xR3E1MG1LWm1OUzVvXzhNUEx4MDBLdHZaNFZjbVhSMGRCMk9SM3l4MTdx?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "米在庫増加とイラン情勢の緊張続くなか、原油価格まちまち - Traders Union",
+        "category": "oil",
+        "score": 0,
+        "date": "Fri, 13 Nov 2026 14:05:33 GMT",
+        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNQmNOa3p3ZHhEdWJzMWhGby1yMmJ1RHcwcG5WTl9pMmlwdkpwTUl5ZVFkSVpnSE5iVFlTYzB5RVV0RC10bWlDOWE3Tjg1X1FXVER0aEROalBCYWtsb1JabUNWdGhRaW8xRFNSN05ySUpxMk1aVUZCbDFxNTlUXzlVLWYwMA?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "トランプ氏、イランへの再軍事攻撃を検討か 国際原油価格が下げ止まり反発 - BigGo ファイナンス",
+        "category": "oil",
+        "score": -0.45,
+        "date": "Thu, 19 Nov 2026 03:05:00 GMT",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBMaFMtSTd6VHBTLWViX2pVa2p4QjVyNHdSUTVJNmNkalNOajF1SVNWT3dRMDZINkR4bS1oZ0I0N28tVy1WY1FTUkc4a0dSV2l0ZkRtZXVjRlB5YkZwY1pHalZKQm1LdG90SWI3Rk5UZlNsWDg2?oc=5",
+        "source": "RSS",
+        "trustScore": 1
+      },
+      {
+        "title": "ブレント原油価格予測：供給リスクとテクニカルサポートを背景に、もみ合いが続く見通し - Traders Union",
+        "category": "oil",
+        "score": 0,
+        "date": "Thu, 19 Nov 2026 09:17:36 GMT",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQNlBQS3k1VGFoWlhzU1pRdGl3VGNDV1J1RXBpYTU1MWhVU0tpMUl0OUdiZ3JQcG5JYjRfSHl5VnRFRVNfMHEzUkgxNWdXV1A2S0RKdGpOMkJQdUVUUGdCUDlyeWZvN3dWU1Z0bGRkNC1NbTdwQUpwUTlKNUVUdjE0SXBtNVBWd3BhZ09YLVBRQ3JUNXcxYzFv?oc=5",
         "source": "RSS",
         "trustScore": 1
       }
