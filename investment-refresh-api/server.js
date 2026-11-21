@@ -7,6 +7,8 @@ const REPO=process.env.GITHUB_REPOSITORY||"hiromagic0001-ux/my-investment-foreca
 const WORKFLOW=process.env.GITHUB_WORKFLOW_FILE||"daily-forecast.yml";
 const REF=process.env.GITHUB_REF||"main";
 const API_PIN=process.env.API_PIN||"";
+// Set AUTH_REQUIRED=true in Render to re-enable PIN protection without changing code.
+const AUTH_REQUIRED=String(process.env.AUTH_REQUIRED||"false").toLowerCase()==="true";
 const GITHUB_TOKEN=process.env.GITHUB_TOKEN||"";
 const sessionSecret=crypto.createHash("sha256").update("investment-refresh-session-v1:"+GITHUB_TOKEN).digest();
 const sessions=new Map();
@@ -46,7 +48,7 @@ const server=http.createServer(async(req,res)=>{
  const url=new URL(req.url,"http://localhost");
  const pathname=url.pathname.replace(/\/+$/,"")||"/";
  console.log("HTTP request",req.method,pathname);
- if(pathname==="/health"&&req.method==="GET")return json(res,200,{ok:true,configured:Boolean(API_PIN&&GITHUB_TOKEN&&API_PIN!=="CHANGE_ME"&&GITHUB_TOKEN!=="CHANGE_ME")});
+ if(pathname==="/health"&&req.method==="GET")return json(res,200,{ok:true,authRequired:AUTH_REQUIRED,configured:Boolean(GITHUB_TOKEN&&GITHUB_TOKEN!=="CHANGE_ME"&&(!AUTH_REQUIRED||(API_PIN&&API_PIN!=="CHANGE_ME")))});
  if(pathname==="/api/login"&&req.method==="POST"){
   const origin=req.headers.origin;if(origin!==ORIGIN)return json(res,403,{error:"Origin not allowed"});
   const ip=String(req.headers["x-forwarded-for"]||req.socket.remoteAddress||"").split(",")[0].trim();
@@ -61,7 +63,7 @@ const server=http.createServer(async(req,res)=>{
  }
  if(pathname.startsWith("/api/")){
   if(req.headers.origin!==ORIGIN)return json(res,403,{error:"Origin not allowed"});
-  if(!validToken(req))return json(res,401,{error:"ログイン期限が切れました。もう一度暗証番号を入力してください（30日間有効）。"});
+  if(AUTH_REQUIRED&&!validToken(req))return json(res,401,{error:"ログイン期限が切れました。もう一度暗証番号を入力してください（30日間有効）。"});
   if(!GITHUB_TOKEN||GITHUB_TOKEN==="CHANGE_ME")return json(res,503,{error:"GitHub連携設定が未完了です。"});
   if(pathname==="/api/refresh"&&req.method==="POST"){
    if(Date.now()-lastDispatchAt<60*1000)return json(res,429,{error:"更新開始の間隔を1分以上空けてください。"});
