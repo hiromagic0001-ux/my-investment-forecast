@@ -113,7 +113,7 @@ header p{font-size:13px}
 </details>
 <details class="panel disclosure" id="validationPanel"><summary>予測記録・的中率・バックテスト</summary>
  
- <p class="legend">毎営業日7:00（日本時間）にGitHub Actionsが予測を作成し、サーバー公開ファイルへ保存します。翌営業日以降の新しい終値で自動検証します。アプリを閉じていても定期処理されます。端末では市場データの取得・予測計算・終値照合を行わず、起動時にサーバーの最新データを読み込みます。</p>
+ <p class="legend">アプリ上部の「一括更新を実行」から、ニュース・公式マクロ統計・市場データの取得、翌営業日予測、過去予測の検証、履歴保存をまとめて実行します。更新はサーバー側で処理され、アプリを閉じても完了します。端末では予測計算を行わず、保存済みの最新データを読み込みます。</p>
  <div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
   <button id="validateForecast" style="background:#26364a;color:#eef4ff;border:1px solid #49617e">サーバー検証結果を再読込</button>
  </div>
