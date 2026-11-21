@@ -1,26 +1,34 @@
 {
-  "asOfDate": "2026-11-16",
-  "generatedAt": "2026-11-16T22:07:20.050Z",
+  "asOfDate": "2026-11-19",
+  "generatedAt": "2026-11-20T02:46:15.773Z",
   "status": "ok",
   "source": "Nasdaq public earnings calendar",
   "window": {
-    "from": "2026-11-14",
-    "to": "2026-11-22"
+    "from": "2026-11-17",
+    "to": "2026-11-25"
   },
   "events": [
     {
       "date": "2026-11-17",
       "symbol": "NVDA",
       "name": "NVIDIA Corporation",
-      "reportTime": "time-after-hours",
-      "marketCap": 3924684960000,
-      "epsForecast": 2.49,
-      "actualEPS": null,
-      "surprise": null,
+      "reportTime": "time-not-supplied",
+      "marketCap": 3638135880000,
+      "epsForecast": 2.47,
+      "actualEPS": 2.68,
+      "surprise": 8.5,
       "estimateCount": 14,
       "fiscalQuarter": "Oct/2026",
       "source": "Nasdaq earnings calendar",
-      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/earnings"
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/nvda/earnings",
+      "reaction": {
+        "responseDate": "2026-11-17",
+        "stockPct": -0.43550190754408913,
+        "marketPct": -0.740027270705379,
+        "excessPct": 0.30452536316128986,
+        "surprisePct": 8.502024291497978,
+        "label": "決算後の株価反応を確認"
+      }
     }
   ],
   "errors": [],
