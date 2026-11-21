@@ -87,7 +87,7 @@ header p{font-size:13px}
 <body><main>
 <header><h1>AI INVESTMENT FORECAST</h1><p>世界経済の変化を先読みし、資産配分の判断材料を提供</p></header>
 <div style="max-width:1000px;margin:0 auto 12px"><a href="./buy-watch.html" style="display:block;text-align:center;padding:13px;border:1px solid #9a7be8;border-radius:10px;background:#211a38;color:#e8d9ff;text-decoration:none;font-weight:800">📈 指定銘柄｜株価・チャート・買い水準を監視</a></div>
-<div class="bar"><span id="status">市場データを確認しています…</span><button id="refresh">最新情報に更新</button></div>
+<div class="bar"><span id="status">市場データを確認しています…</span><button id="refresh">一括更新を実行</button></div>
 <section class="panel" id="macroOutlook"><h3>世界経済の先行シグナル｜投資判断ダッシュボード</h3><div id="macroRegime" class="empty">サーバーのマクロ分析を読み込んでいます…</div><div id="macroScenario" class="factorgrid"></div><div id="macroAllocation" class="factorgrid" style="margin-top:8px"></div><div id="macroDrivers" class="factorgrid" style="margin-top:8px"></div><h4>公式マクロ統計（FRED・OECD）</h4><div id="macroOfficial" class="factorgrid"></div><div id="macroLimitations" class="legend"></div></section>
 <div class="forecast-heading" id="marketSessionHeading"><b id="marketSessionTitle">日本市場｜翌営業日の予測</b><span id="marketSessionNote">市場時間に合わせて日本市場・米国市場を自動切替</span></div>
 <div class="cards" id="forecasts">
@@ -567,7 +567,7 @@ function renderMacroOutlook(m,md){
 async function update(){
  $('refresh').disabled=true;$('status').textContent='サーバー側の最新市場データを取得中…';
  try{
-  const url='https://raw.githubusercontent.com/hiromagic0001-ux/my-investment-forecast/news-cache/market-snapshot.json?ts='+Date.now();
+  const url='https://raw.githubusercontent.com/hiromagic0001-ux/my-investment-forecast/world-market-jp225-purple-only/market-snapshot.json?ts='+Date.now();
   const response=await fetch(url,{cache:'no-store'});
   if(!response.ok)throw Error('サーバーデータ未公開（HTTP '+response.status+'）');
   const snapshot=await response.json();
@@ -596,6 +596,6 @@ async function update(){
   console.error(e);
  }finally{$('refresh').disabled=false;}
 }
-$('forecasts').addEventListener('click',e=>{if(e.target.closest('details,a,button'))return;const c=e.target.closest('[data-asset]');if(c)openPriceForecast(c.dataset.asset);});$('dailyScoreBody').addEventListener('click',e=>{const c=e.target.closest('[data-daily-index]');if(c)openDailyScoreDetail(Number(c.dataset.dailyIndex));});$('dailyScoreBody').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-daily-index]');if(c){e.preventDefault();openDailyScoreDetail(Number(c.dataset.dailyIndex));}}});$('forecasts').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-asset]');if(c){e.preventDefault();openPriceForecast(c.dataset.asset);}}});$('closeForecastModal').addEventListener('click',closePriceForecast);$('priceForecastModal').addEventListener('click',e=>{if(e.target.dataset.closeForecast)closePriceForecast();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closePriceForecast();});$('refresh').addEventListener('click',update);$('validateForecast').addEventListener('click',loadRemoteHistory);renderValidation();loadRemoteHistory();loadYearEndScenarios();loadUSMarketReview();renderMarketSession(true);update();
+$('forecasts').addEventListener('click',e=>{if(e.target.closest('details,a,button'))return;const c=e.target.closest('[data-asset]');if(c)openPriceForecast(c.dataset.asset);});$('dailyScoreBody').addEventListener('click',e=>{const c=e.target.closest('[data-daily-index]');if(c)openDailyScoreDetail(Number(c.dataset.dailyIndex));});$('dailyScoreBody').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-daily-index]');if(c){e.preventDefault();openDailyScoreDetail(Number(c.dataset.dailyIndex));}}});$('forecasts').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-asset]');if(c){e.preventDefault();openPriceForecast(c.dataset.asset);}}});$('closeForecastModal').addEventListener('click',closePriceForecast);$('priceForecastModal').addEventListener('click',e=>{if(e.target.dataset.closeForecast)closePriceForecast();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closePriceForecast();});$('refresh').addEventListener('click',()=>{const url='https://github.com/hiromagic0001-ux/my-investment-forecast/actions/workflows/daily-forecast.yml';$('status').textContent='GitHub Actionsを開きます。「Run workflow」を押すと一括更新が始まります。';const opened=window.open(url,'_blank');if(!opened)window.location.href=url;});$('validateForecast').addEventListener('click',loadRemoteHistory);renderValidation();loadRemoteHistory();loadYearEndScenarios();loadUSMarketReview();renderMarketSession(true);update();
 </script></body></html>
 <!-- deploy-sync: 2026-11-13 risk model update -->
