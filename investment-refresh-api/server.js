@@ -44,8 +44,10 @@ const server=http.createServer(async(req,res)=>{
  cors(req,res);
  if(req.method==="OPTIONS"){res.writeHead(204);return res.end();}
  const url=new URL(req.url,"http://localhost");
- if(url.pathname==="/health"&&req.method==="GET")return json(res,200,{ok:true,configured:Boolean(API_PIN&&GITHUB_TOKEN&&API_PIN!=="CHANGE_ME"&&GITHUB_TOKEN!=="CHANGE_ME")});
- if(url.pathname==="/api/login"&&req.method==="POST"){
+ const pathname=url.pathname.replace(/\/+$/,"")||"/";
+ console.log("HTTP request",req.method,pathname);
+ if(pathname==="/health"&&req.method==="GET")return json(res,200,{ok:true,configured:Boolean(API_PIN&&GITHUB_TOKEN&&API_PIN!=="CHANGE_ME"&&GITHUB_TOKEN!=="CHANGE_ME")});
+ if(pathname==="/api/login"&&req.method==="POST"){
   const origin=req.headers.origin;if(origin!==ORIGIN)return json(res,403,{error:"Origin not allowed"});
   const ip=String(req.headers["x-forwarded-for"]||req.socket.remoteAddress||"").split(",")[0].trim();
   const now=Date.now(),a=attempts.get(ip)||{count:0,start:now};
@@ -57,11 +59,11 @@ const server=http.createServer(async(req,res)=>{
   if(got.length!==expected.length||!crypto.timingSafeEqual(got,expected))return json(res,401,{error:"暗証番号が違います。"});
   attempts.delete(ip);const expires=Date.now()+2*60*60*1000;return json(res,200,{token:tokenFor(expires),expiresAt:expires});
  }
- if(url.pathname.startsWith("/api/")){
+ if(pathname.startsWith("/api/")){
   if(req.headers.origin!==ORIGIN)return json(res,403,{error:"Origin not allowed"});
   if(!validToken(req))return json(res,401,{error:"ログイン期限が切れました。もう一度暗証番号を入力してください。"});
   if(!GITHUB_TOKEN||GITHUB_TOKEN==="CHANGE_ME")return json(res,503,{error:"GitHub連携設定が未完了です。"});
-  if(url.pathname==="/api/refresh"&&req.method==="POST"){
+  if(pathname==="/api/refresh"&&req.method==="POST"){
    if(Date.now()-lastDispatchAt<60*1000)return json(res,429,{error:"更新開始の間隔を1分以上空けてください。"});
    try{
     const current=await gh("/repos/"+REPO+"/actions/workflows/"+WORKFLOW+"/runs?branch="+encodeURIComponent(REF)+"&per_page=10");
@@ -72,7 +74,7 @@ const server=http.createServer(async(req,res)=>{
     return json(res,202,{accepted:true,message:"一括更新を開始しました。"});
    }catch(e){return json(res,502,{error:e.message});}
   }
-  if(url.pathname==="/api/status"&&req.method==="GET"){
+  if(pathname==="/api/status"&&req.method==="GET"){
    try{const run=await latestRun();if(!run||Date.parse(run.created_at)<lastDispatchAt-5000)return json(res,200,{status:"not_found"});
     return json(res,200,{status:run.status,conclusion:run.conclusion,runId:run.id,htmlUrl:run.html_url,createdAt:run.created_at,updatedAt:run.updated_at});
    }catch(e){return json(res,502,{error:e.message});}
