@@ -28,7 +28,7 @@ jobs:
       - name: Checkout deployment branch
         uses: actions/checkout@v4
         with:
-          ref: restore-world-market-japan-heatmap
+          ref: world-market-jp225-purple-only
           fetch-depth: 0
       - name: Validate JavaScript syntax
         run: |
@@ -48,7 +48,7 @@ jobs:
             echo "No forecast changes to save."
           else
             git commit -m "Save daily investment forecast and validation"
-            git fetch origin restore-world-market-japan-heatmap
+            git fetch origin world-market-jp225-purple-only
             git rebase FETCH_HEAD
-            git push origin HEAD:restore-world-market-japan-heatmap
+            git push origin HEAD:world-market-jp225-purple-only
           fi
