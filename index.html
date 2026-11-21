@@ -87,7 +87,7 @@ header p{font-size:13px}
 <body><main>
 <header><h1>AI INVESTMENT FORECAST</h1><p>世界経済の変化を先読みし、資産配分の判断材料を提供</p></header>
 <div style="max-width:1000px;margin:0 auto 12px"><a href="./buy-watch.html" style="display:block;text-align:center;padding:13px;border:1px solid #9a7be8;border-radius:10px;background:#211a38;color:#e8d9ff;text-decoration:none;font-weight:800">📈 指定銘柄｜株価・チャート・買い水準を監視</a></div>
-<div class="bar"><span id="status">市場データを確認しています…</span><button id="refresh">一括更新の実行画面へ</button></div>
+<div class="bar"><span id="status">市場データを確認しています…</span><button id="refresh">一括更新を実行</button></div>
 <section class="panel" id="macroOutlook"><h3>世界経済の先行シグナル｜投資判断ダッシュボード</h3><div id="macroRegime" class="empty">サーバーのマクロ分析を読み込んでいます…</div><div id="macroScenario" class="factorgrid"></div><div id="macroAllocation" class="factorgrid" style="margin-top:8px"></div><div id="macroDrivers" class="factorgrid" style="margin-top:8px"></div><h4>公式マクロ統計（FRED・OECD）</h4><div id="macroOfficial" class="factorgrid"></div><div id="macroLimitations" class="legend"></div></section>
 <div class="forecast-heading" id="marketSessionHeading"><b id="marketSessionTitle">日本市場｜翌営業日の予測</b><span id="marketSessionNote">市場時間に合わせて日本市場・米国市場を自動切替</span></div>
 <div class="cards" id="forecasts">
@@ -596,6 +596,46 @@ async function update(){
   console.error(e);
  }finally{$('refresh').disabled=false;}
 }
-$('forecasts').addEventListener('click',e=>{if(e.target.closest('details,a,button'))return;const c=e.target.closest('[data-asset]');if(c)openPriceForecast(c.dataset.asset);});$('dailyScoreBody').addEventListener('click',e=>{const c=e.target.closest('[data-daily-index]');if(c)openDailyScoreDetail(Number(c.dataset.dailyIndex));});$('dailyScoreBody').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-daily-index]');if(c){e.preventDefault();openDailyScoreDetail(Number(c.dataset.dailyIndex));}}});$('forecasts').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-asset]');if(c){e.preventDefault();openPriceForecast(c.dataset.asset);}}});$('closeForecastModal').addEventListener('click',closePriceForecast);$('priceForecastModal').addEventListener('click',e=>{if(e.target.dataset.closeForecast)closePriceForecast();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closePriceForecast();});$('refresh').addEventListener('click',()=>{const url='https://github.com/hiromagic0001-ux/my-investment-forecast/actions/workflows/daily-forecast.yml';$('status').textContent='GitHubの実行画面を開きました。画面の「Run workflow」を押すと、ニュース・公式マクロ統計・市場価格・予測・検証・保存を順番に一括実行します。';const opened=window.open(url,'_blank');if(!opened)window.location.href=url;});$('validateForecast').addEventListener('click',loadRemoteHistory);renderValidation();loadRemoteHistory();loadYearEndScenarios();loadUSMarketReview();renderMarketSession(true);update();
+$('forecasts').addEventListener('click',e=>{if(e.target.closest('details,a,button'))return;const c=e.target.closest('[data-asset]');if(c)openPriceForecast(c.dataset.asset);});$('dailyScoreBody').addEventListener('click',e=>{const c=e.target.closest('[data-daily-index]');if(c)openDailyScoreDetail(Number(c.dataset.dailyIndex));});$('dailyScoreBody').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-daily-index]');if(c){e.preventDefault();openDailyScoreDetail(Number(c.dataset.dailyIndex));}}});$('forecasts').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('[data-asset]');if(c){e.preventDefault();openPriceForecast(c.dataset.asset);}}});$('closeForecastModal').addEventListener('click',closePriceForecast);$('priceForecastModal').addEventListener('click',e=>{if(e.target.dataset.closeForecast)closePriceForecast();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closePriceForecast();});const REFRESH_API='https://invest-forecast-refresh-api.onrender.com';
+async function runFullRefresh(){
+ const button=$('refresh');button.disabled=true;
+ try{
+  let token=sessionStorage.getItem('investmentRefreshSession')||'';
+  if(!token){
+   const pin=window.prompt('一括更新用の暗証番号を入力してください。RenderのAPI設定で登録した番号です。');
+   if(!pin)throw Error('更新をキャンセルしました。');
+   $('status').textContent='安全にログインしています…';
+   const login=await fetch(REFRESH_API+'/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pin})});
+   const lj=await login.json();if(!login.ok)throw Error(lj.error||'ログインできません');
+   token=lj.token;sessionStorage.setItem('investmentRefreshSession',token);
+  }
+  $('status').textContent='ニュース・公式統計・市場価格・予測・検証を一括更新しています…';
+  let start=await fetch(REFRESH_API+'/api/refresh',{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:'{}'});
+  let sj=await start.json();
+  if(start.status===401){sessionStorage.removeItem('investmentRefreshSession');throw Error(sj.error||'再ログインしてください');}
+  if(start.status===409){$('status').textContent='一括更新はすでに実行中です。完了まで確認します…';}
+  else if(!start.ok)throw Error(sj.error||'更新を開始できません');
+  let finished=false;
+  for(let i=0;i<180;i++){
+   await new Promise(resolve=>setTimeout(resolve,8000));
+   const response=await fetch(REFRESH_API+'/api/status',{headers:{'Authorization':'Bearer '+token},cache:'no-store'});
+   const state=await response.json();
+   if(response.status===401){sessionStorage.removeItem('investmentRefreshSession');throw Error(state.error||'再ログインしてください');}
+   if(!response.ok)throw Error(state.error||'更新状況を確認できません');
+   if(state.status==='completed'){
+    if(state.conclusion!=='success')throw Error('一括更新に失敗しました。GitHub実行ログで失敗工程を確認してください。');
+    finished=true;break;
+   }
+   $('status').textContent='一括更新中… '+(state.status==='in_progress'?'データ取得・予測計算':'実行待ち')+'｜完了までお待ちください。';
+  }
+  if(!finished)throw Error('更新処理が長時間続いています。更新状況を再確認してください。');
+  $('status').textContent='一括更新が完了しました。公開データを読み直しています…';
+  await update();await loadRemoteHistory();
+  $('status').textContent='一括更新・保存が完了しました。最新の市場データと予測を表示しています。';
+ }catch(e){$('status').textContent='一括更新：'+(e.message||e);console.error(e);}
+ finally{button.disabled=false;}
+}
+$('refresh').textContent='一括更新を実行';
+$('refresh').addEventListener('click',runFullRefresh);$('validateForecast').addEventListener('click',loadRemoteHistory);renderValidation();loadRemoteHistory();loadYearEndScenarios();loadUSMarketReview();renderMarketSession(true);update();
 </script></body></html>
 <!-- deploy-sync: 2026-11-13 risk model update -->
