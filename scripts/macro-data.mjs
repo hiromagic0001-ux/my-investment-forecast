@@ -6,7 +6,7 @@ try{
  const cached=JSON.parse(await fs.readFile("macro-data.json","utf8"));
  const age=Date.now()-Date.parse(cached.generatedAt||"");
  const cacheLimit=cached.status==="ok"?COMPLETE_CACHE_MAX_AGE_MS:PARTIAL_CACHE_MAX_AGE_MS;
- if(["ok","partial"].includes(cached.status)&&Number(cached.fredSuccessCount||0)>0&&Array.isArray(cached.signals)&&cached.signals.length>=3&&age>=0&&age<cacheLimit){
+ if(process.env.FORCE_REFRESH!=="true"&&["ok","partial"].includes(cached.status)&&Number(cached.fredSuccessCount||0)>0&&Array.isArray(cached.signals)&&cached.signals.length>=3&&age>=0&&age<cacheLimit){
   console.log(JSON.stringify({status:"cached",signals:cached.signals.length,ageMinutes:Math.round(age/60000)}));
   process.exit(0);
  }
