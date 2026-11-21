@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "source": "FRED public data export (one request per series) + OECD Key Short-Term Economic Indicators",
-  "generatedAt": "2026-11-20T17:14:45.173Z",
+  "generatedAt": "2026-11-21T03:05:33.316Z",
   "status": "ok",
   "seriesCount": 15,
   "signalCount": 13,
@@ -56,11 +56,11 @@
     {
       "id": "macro_curve",
       "label": "米国イールドカーブ",
-      "value": 0.18666666666666668,
-      "detail": "10年-2年 0.28pt",
+      "value": 0.19333333333333333,
+      "detail": "10年-2年 0.29pt",
       "source": "FRED",
       "seriesId": "T10Y2Y",
-      "observationDate": "2026-11-19"
+      "observationDate": "2026-11-20"
     },
     {
       "id": "macro_hy",
@@ -83,11 +83,11 @@
     {
       "id": "macro_10y",
       "label": "米国10年金利の約3か月変化",
-      "value": -0.2750000000000001,
-      "detail": "約3か月 +0.33pt",
+      "value": -0.2833333333333332,
+      "detail": "約3か月 +0.34pt",
       "source": "FRED",
       "seriesId": "DGS10",
-      "observationDate": "2026-11-18"
+      "observationDate": "2026-11-19"
     },
     {
       "id": "macro_cli_JPN",
@@ -203,8 +203,8 @@
       "frequency": "daily",
       "category": "rates",
       "latest": {
-        "date": "2026-11-19",
-        "value": 0.28
+        "date": "2026-11-20",
+        "value": 0.29
       }
     },
     {
@@ -213,8 +213,8 @@
       "frequency": "daily",
       "category": "rates",
       "latest": {
-        "date": "2026-11-18",
-        "value": 5.07
+        "date": "2026-11-19",
+        "value": 5.04
       }
     },
     {
