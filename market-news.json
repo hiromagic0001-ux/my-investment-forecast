@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-21T05:13:57.578Z",
+  "generatedAt": "2026-11-21T05:58:23.494Z",
   "status": "ok",
   "sources": {
     "queries": 18,
@@ -8,6 +8,17 @@
     "failed": 0
   },
   "items": [
+    {
+      "title": "Executive summary - World Energy Outlook 2026 - IEA - International Energy Agency",
+      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE83dzR3Z1piODFrZl91c1FoQkh3S1RkS1NRSUhOUmNGdGs5M0tNZ3J6MGVUcnBWZUJmXy1fN2VuTWp2U2pFQ3FRSWF0cWFhdEdHbVVqU0FZX2wzVTFFUnptMm80bjVmOURCVG9fN3pJX24xUkxlNkFueEN5WQ?oc=5",
+      "date": "Sat, 21 Nov 2026 05:50:41 GMT",
+      "category": "oil",
+      "label": "原油・エネルギー",
+      "publisher": "IEA - International Energy Agency",
+      "sourceWeight": 0.92,
+      "score": 0,
+      "signalEligible": false
+    },
     {
       "title": "The chip war’s next battleground - Financial Times",
       "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOZ19qYnp1MlBaZldnRnozZXUxWjlTLXhWMFk3NXNmcEU5MWtXbzlDUFBiUlNLUkpFcU1OMTBySDRraFp0V2hKNUlpTzkwWEU4VlVHOGdHWWVHOUxGSVNXU1d6SU5yNllsdGZBUUpQQ2I2VlhWRnZnWlZVWThfTDc0RWRjOEI?oc=5",
@@ -31,14 +42,14 @@
       "signalEligible": false
     },
     {
-      "title": "Executive summary - World Energy Outlook 2026 - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE83dzR3Z1piODFrZl91c1FoQkh3S1RkS1NRSUhOUmNGdGs5M0tNZ3J6MGVUcnBWZUJmXy1fN2VuTWp2U2pFQ3FRSWF0cWFhdEdHbVVqU0FZX2wzVTFFUnptMm80bjVmOURCVG9fN3pJX24xUkxlNkFueEN5WQ?oc=5",
-      "date": "Sat, 21 Nov 2026 03:07:23 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
+      "title": "Iran hardliners push tanker convoy to defy US blockade - Iran International",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1hcEdHM3RmVUI1OWxtSmVnVmxIci16eWg4VTJQRm1ndDNCYjVMZjhOODNFa2daVGIwUnZDNm1fWDN3UFhDalhpNUk4dmtELWRKTlE?oc=5",
+      "date": "Sat, 21 Nov 2026 02:29:43 GMT",
+      "category": "geo",
+      "label": "地政学",
+      "publisher": "Iran International",
+      "sourceWeight": 0.55,
+      "score": -0.35,
       "signalEligible": false
     },
     {
@@ -350,17 +361,6 @@
       "signalEligible": false
     },
     {
-      "title": "Ex- ZRP Cop Fambi Tears Into Mthuli Ncube’s Budget, Demands Better Salaries And Money In People’s Pockets… - ZimEye",
-      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPQlBEckdLMDBnRk1Ia1JPSWIwMFR5VGE4RmVrTWhnNFBqYjNzSjBxTUlrclpPVjNwb3RneWhUNDN2QjBjV3hKVW4zQ3FVNV9CSllNZmJkSE96cndfSWhudUdnM19jRUxxOXR2XzBYWE90WTJGXzJXbHNidkoydDVzanlzM1NyQ2xMdHhJN1NsZDlTblNZWDc0SjRfZk1vbkVBb2hRcnBxN1hELUU4VkgwUEQ3WFN3czhLaU5vSkRjWWJMLXNGdkREV0pYdHRhZFBzQmc?oc=5",
-      "date": "Fri, 20 Nov 2026 16:47:34 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "ZimEye",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
       "title": "SP500: Liquidity Shock, It's A Tactical Buying Opportunity (SPX) - Seeking Alpha",
       "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNTHMwN0VzVVljLS1pc1FHRDQyZVd2LWJQMG0tUk16WkdEQ25WdHV1bG5QM09NZkdlRnV5eFNKU1Y4bXU1dkVDekR0YW8wUDNGZHc1V3F2YU1BM2RRR01Od29vY3hSQ1YzeFB1U1Vlejg1MTdLQ25KZ0NHWEFwQ3pOMnlmUWJHdC1OQ0NjMDNxTzM1Qm53?oc=5",
       "date": "Fri, 20 Nov 2026 16:44:34 GMT",
@@ -522,17 +522,6 @@
       "label": "金利・インフレ",
       "publisher": "Federal Reserve (.gov)",
       "sourceWeight": 1,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Asure Software Salutes Small Business Saturday with Recruiting and HR Milestones - StreetInsider",
-      "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNZGFLX0ZjNVl3R0ljaGhYQUJnSUNWUm8xYzJZSFRhVGxRVGN0VXBlM0c4Z2ZldTJwaTFTUk55U1RCSllJUkRkMFZfNTBxZ2ZJWVg2VzE0LWFGQmVlUGNHaXlRWXlWVGZQWmk0ekh5WW9ZMWMwbFNINXpDaWk0OTlCbmhjQUlPOWhkWWExVmZhSjVqR3dlNHA4SjVYNFYwTzJOdWo5TEJDODF1bnlBdUxwN2pQMDdPMWI5WTRoQ0ZGcmNCa0h2Q0k4MDJIMWMtMnc2bHI4bk9n?oc=5",
-      "date": "Fri, 20 Nov 2026 13:24:04 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "StreetInsider",
-      "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
     },
@@ -873,6 +862,17 @@
       "category": "oil",
       "label": "原油・エネルギー",
       "publisher": "www.tmgm.com",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Gold is down nearly 9% and silver over 18% in a week. What is behind the selloff? - The Financial Express",
+      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPTXhTcl9lLWFHc3NyaVlxaWRwaF9pVnRuMGpuQU5uTEJRUmxkQkVCRVNDQ0JUYW54VW1qWTY1bE9BSG0zQmxTVUEwNllQaHp3eHZqcHFoRUlGU1VRcm5pM2lzLVFGbnkzN2hNYWZ1WG15bE5GTDEtSldxcTZkLWI1ckNWLUs3RUpYcWUwb20yRDNRX0J3dy16TW9wNGJHR2pNN1FsNXdmdHN0VVpWcTllOEcxcElJMzJLOFF6RFdrNTFpT0Z0dm13U3Rzam9uTEQxVmRuX9IB2wFBVV95cUxPaHpWcTZJVmNNcUtRdG1YZkRrRkxDcjNUamUwR21sRzlFZFV0dGNvTmxqekNpcENsaGFqR3pna1k0TUhfOGJFdFVzVUloeUFCUkFtcHFpWjRiTFRVVnRWM2FiWnpBZjhRcWY3TUZnVFdEN0hJeC1la3NxeVdHaUpERWJGal9pR0p0b1p3Vl9JZS1rSXZHR2pPLXB0MnlMVFhYOF9ES2xMVXJTZFoyVmEzWFVTTlRNYTd1RUZ5SlhJaUZ3TXlab09mdEVhWmF4aE13UF80Q1FaWlN6ZUk?oc=5",
+      "date": "Fri, 20 Nov 2026 08:29:51 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "The Financial Express",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -1296,17 +1296,6 @@
       "signalEligible": false
     },
     {
-      "title": "When will mortgage rates go down? A reverse in a 4-week trend - Yahoo Finance",
-      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQd1FPbW9lTjl0c2tjSjdyZl9iUGtQdTl5NDB5OW5rOWRheEdkSVVDbGhvLU5ZMUdDN3owYWZEeDZxQU4zYm5Tcm0talRpUk9LV0t1SWlmTkJYdjhYVmJFYTlOZEVkNldvREM0ZGJmZjZWMDJiX21kQ1g0WEpyR05taEFDbnI1LTJzcmtDdU5kUFR1N3dvUVFRR0g0Uldwc3FXSGhGTE5IS3NIT0FSWFZKWGpQNFJFM28tVHhmWERYQS1HR1hkVk1LQUFsV1Z6ajlvbXc?oc=5",
-      "date": "Thu, 19 Nov 2026 19:16:11 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Yahoo Finance",
-      "sourceWeight": 0.82,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
       "title": "Nvidia: The CEO Is Gone, The Earnings Engine Isn't (Strong Buy) (Rating Upgrade) - Seeking Alpha",
       "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOenFpOHhaV2JnT3hLQUpub1NsajVxTmRneVJjcmhOaW5lYTdLWkFFTS10T1M0bVo2emw4VWdYLUJZa0FDVlJKbFNRMmg2LWE3aGhramFwUmNoU2EwalRkUWhPeHZZVmlSZmhsRGpTVkl4Vks4Z3RuQkdMekRfSE16c0lhWUo0SWdERTBWNHg2WGh2UkdSSlpJZDZpRm15RHM5?oc=5",
       "date": "Thu, 19 Nov 2026 19:06:21 GMT",
@@ -1450,17 +1439,6 @@
       "signalEligible": false
     },
     {
-      "title": "WTI Oil seeks to regain ground above $83.00 as geopolitical tensions intensify - www.tmgm.com",
-      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQaE9lNWJZd21KZndtVHlMWVVneGxUYy1yU2RkWGhGamxuRUhuTk5uazVrVmhNYVhBYUU5aWh3VGhxNTdBWV9xREJ4NHNCTzNkQXUyVEtRUkR2MEY0VndGY3Vlc05PVzlVYktuNWlUZDl5Mmg4MUtqQXFTeVBDVjhySUdWUjVrMWtsYkctMzhQdzZ0T002Y3dpNDdyYXZQd0tTRzhKM1p5U0czZjBFQnVqSEdqdlRocnpEcUxMMlpjcHNMbi1TUHFrVWRUU3RKRXVCOGc?oc=5",
-      "date": "Thu, 19 Nov 2026 16:02:46 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "www.tmgm.com",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
       "title": "Federal Reserve Board issues enforcement action with former employee of First Security Bancorp - Federal Reserve (.gov)",
       "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOdHltQlpGeEZsRHhwWXZrVjJjdVhpVjdGay1PQi1wODdSOVZvWUkwUm9YTkJDVzdxUWZfQUJ0Nm1nZGd3V3FVY3pIN2hZOFN3Nno3MmtTRkJWQlBhQkN5azJPVnZaZldBRGttQTZNQUVIX0pGYUNVNFdtc01RQUU1T1FLMlVTY2M?oc=5",
       "date": "Thu, 19 Nov 2026 16:01:43 GMT",
@@ -1472,34 +1450,12 @@
       "signalEligible": false
     },
     {
-      "title": "US Jobless Claims Rise to 203000 as Hiring Signals Weaken - Demokratis.co.id",
-      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFA5ZFJITUhiSF84OGFZZ0o0anNQb0l3SnVuN2hYYmVuYzRka2tmcV9oUi1RcWJmU3hRSEFTZ1RJc0NwWWllS1ZWRmcyYVpRYmlGd3JzZFh3YldZRWhRaDNuNkhJX1I3MTFMbjdB?oc=5",
-      "date": "Thu, 19 Nov 2026 15:58:59 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Demokratis.co.id",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
       "title": "US Jobless Claims Rise to 203000 as Labor Market Cools - Peradaban.id",
       "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5LRlE0TjZDeVJsZGZocUhEaFgtTTZXV1RxQ1ljWEF0MUNud2VZSWpYem03RWpkOXUwTWNnd0NINkVISkl5RDRjcFdnd01Odl96M0lhMnpRdTVDMXZPTWxHZjh0cTJ1QQ?oc=5",
       "date": "Thu, 19 Nov 2026 15:58:47 GMT",
       "category": "rates",
       "label": "金利・インフレ",
       "publisher": "Peradaban.id",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "US Jobless Claims Rise to 203000 as Labor Market Cools - Limapagi",
-      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1DUjFmcDhPX0pfNm8xTzY4OEhIeDR0UjhxQ2VIQVo0akU3NUtDbk5fTl9teF9tcXpwNEg2ZGtXUjI0c1BxaHhHUVlYLTF4d0VrU3VORkM0MERGWmdGckRZSFdDbTVWWW1k?oc=5",
-      "date": "Thu, 19 Nov 2026 15:55:08 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Limapagi",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -1612,28 +1568,6 @@
       "publisher": "Intellectia AI",
       "sourceWeight": 0.55,
       "score": -0.38,
-      "signalEligible": false
-    },
-    {
-      "title": "US jobless claims edge up, but labour market remains stable - The Economic Times",
-      "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNZXUwVEFwbUUwdmR1R3hLLWFhLXlyU2ZuV0xNMUFKcEJWTXFwXzAxSlhnUUkyZW91aXNOeFRmOUVSN0NjZVgzTE5INUVqXzdZbDVmUlRZUFBQRnBzTGpZTkhyYkxhUFBqLWI4M2VzakZhZ1hLZ0EySVF2ZmRMY2NlRmZ4QTF1UEVsb09OR2pTZzFqMDkwWlhGQkEyMk9ZQk51NGNlbUZHQTZ4OHk4ZnplTHgwOXZ2MFQ3ZWZ2QmIzYVd5cXBkc3BkMTdIS2piSTRaRl85U0FfTGl6alBfMFREOE9ub9IB3AFBVV95cUxOWnBrcktFMTZvdmJDR2d6d2tfUHRlWFE3bGt2cy1xbXoxaG5xM0lfQ3N2ZncwN0o3am83akw4cTFMVV9na1JsNHlzd1VyWEdFQWpBclNzbnpLelp0VVFESGhXTk1qeEZRaE51bDZOZy1KYWFLVG1Namt6amRMYXI1UlA2Vlpqd05fZnhzR3A3TmVXbkxwcHRiYXRaRWplUW1VdkxKN0ZWRld3UU50UzdKa2dGYmpSX0hQSm9DVHMySVBhLXA3emFOWUFIQU9fdTZHRUZIcmUyaVVYS1BX?oc=5",
-      "date": "Thu, 19 Nov 2026 13:59:11 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "The Economic Times",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "US jobless claims edge up, but labour market remains stable - inkl",
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNTmRTLXlJVlRXVDNraDdhblNZcDhZaTk2d3R4TWFUbWdZTDlkS3VYX0h2NGxGMGphajY5Z01UemhxM28zTHNFbURSSF93QjRrLTh3NnFQZy03YV84Q3o4ZnRRaUV4Y3MzTGt3NEsxUTRTWVRsY2Jlci1xZGw4TzFjcEdtYTdpdFo2SDRMXw?oc=5",
-      "date": "Thu, 19 Nov 2026 13:59:00 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "inkl",
-      "sourceWeight": 0.55,
-      "score": 0,
       "signalEligible": false
     },
     {
@@ -1835,6 +1769,17 @@
       "signalEligible": false
     },
     {
+      "title": "Historical drivers of growth in LNG demand in selected regions in the Stated Policies Scenario, 2015-2025 - IEA - International Energy Agency",
+      "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOWWhTaDFhQWR0NjJ5TWppVjAzMXRlalhMQjdaZWlaZFBpQXpndl9UZmtaXzZsMXdIRERsUlN0a2RMQmhjYV9NZnJFS1BXV2xJX0k0OWJzbWJMR2ZwU1NHUUZWWVViTzR3WDZGZHZsQkpYZ2VQMWctdTBPbTBZSUZ3NUU1Qjl1V0dNS2owM0hJZDIwc1VDbGx6VDFVYS1aR2piQmlrNS1DQld2c0d1UVBMQ0ZCSi1EVktrMW4ySG5JdlllSWFWRGIzVmZqc3loY3V1cDdsNmlEMEFvOUNkMjI5WW5jREx4QQ?oc=5",
+      "date": "Thu, 19 Nov 2026 09:03:40 GMT",
+      "category": "oil",
+      "label": "原油・エネルギー",
+      "publisher": "IEA - International Energy Agency",
+      "sourceWeight": 0.92,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "Euro area monthly balance of payments: September 2026 - European Central Bank",
       "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOeTNMY2lkLUp3bjJQdzhaQ0JLWVdpREp2dEgzdVFKVGlMRjU3cDBKR0NfN2NlTnl1OEViOUxrSUNCWllVdE5OamE3NG01cnVwbUFEaE94U3FHQmlhS25JVExaMWNJRDg5M3o5ang1RjFJTlBkYnVtc0xQdWVwZFo3ZzQwNnJYYm5IU2FR?oc=5",
       "date": "Thu, 19 Nov 2026 09:03:03 GMT",
@@ -1882,17 +1827,6 @@
       "title": "Net oil exports per region in the Stated Policies Scenario and the Low Hormuz Case, 2025-2035 - IEA - International Energy Agency",
       "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxObWFFVEhxVUtzR1VmX2c1Q1k4ODU1QjZmM3VMaExWWXU4bFFuOXczZnB3WEwxcExDd2czUHNKUEYtRGdzdDRwQ0cwQjhZX2VwOXRTN0RvdTNWQVd2RmtIWGRqYVlkLXVSaTNtTUFERzZyT0kzeWdsaVdYcnJFb29MVTVTV3JnM1pzX3Y5OGZockc3c2RVM0puRGFLQzBnMHBQR1FLYzB0WmtpZEgxMEltVm1NQ0h4Q2k1SlFjZEZIa1V6TmdVb3ViVjg0REdraUc0NWdGNEdR?oc=5",
       "date": "Thu, 19 Nov 2026 08:51:49 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Million people gaining access to clean cooking by fuel type in sub-Saharan Africa annually, 2010-2040 - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNQnlwNVk2U1NfYkZXaXl3TnVrSUFvb3Z1YWtJMGduM3F1eGxjSGoyaWF5NU54aDNJVjh0Y04yZ0JTVWp3V0dsdFhiRG52S0hrMjlnZ1VfdGJockpMZjVPaEZVSGU5alpIUmM1NEw4NGJDNjZYU2RGUmVKYWhNYWVCOWZ4SmlVblBQTGFqWDRnVDdCaF8wVTZ5Z1ZUNUNKOHlJamxZalFOZGZNdEh4SnRiRVUwbEZsdDNRY0o5Wml6MGM3S19PeWhjblZRSEZ5YkU1RkdCcmNvbVFpUDJIbEVSYQ?oc=5",
-      "date": "Thu, 19 Nov 2026 08:51:48 GMT",
       "category": "oil",
       "label": "原油・エネルギー",
       "publisher": "IEA - International Energy Agency",
@@ -1956,9 +1890,9 @@
       "signalEligible": false
     },
     {
-      "title": "Historical drivers of growth in LNG demand in selected regions in the Stated Policies Scenario, 2025-2035 - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPemRGaXBvOXJmckN4S2ZIQndxcmZzMTdXYWFiekhQbFV1QU1pSVJVNkl2WXJNd0FrbjFtREVlaS1MU1hTc3RxcmJNRGRQS291Y2dFOEFXWWsybUROa1lmZ01HM05sNjd3SEloNm9XM2FDYmZCMks3RzJqNXpEOUR0UE5nbFhQVlkyVUJ2SFpnUTV6a2hFYkVrSzRkNXprNEZIS1hRSUFocG5rd0VBdUZGSHFXZzhfbHpmdFpVTmlBOGFJQkUzSC1pTEJKTDJQY0t4d2FrTmVIZVdJeDRCbFV6ZkhDRXRvdw?oc=5",
-      "date": "Thu, 19 Nov 2026 08:51:44 GMT",
+      "title": "Energy related CO2 emissions by scenario, 2000-2050 - IEA - International Energy Agency",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPTkxwd3NDdDVyWnVlb2hLNnJvNkxrUUY1U1NSWHJSRVVta3Z6LWNIRjEyN0V3WkFSMkg5czNLbG5UN0dkcnNKZXF3aUxSYm0tZE02Vms4Z0M3UUZVVDlvXzU0SmFBc0dMOV9mVkV5bU9Ta1VsYXRTTGRxT0V6bE40NHRJMEZmQk5NeEdUeHRpZmo1VEMzUkNHS0lNUGN2Zw?oc=5",
+      "date": "Thu, 19 Nov 2026 08:51:43 GMT",
       "category": "oil",
       "label": "原油・エネルギー",
       "publisher": "IEA - International Energy Agency",
@@ -1978,9 +1912,75 @@
       "signalEligible": false
     },
     {
-      "title": "Change in electricity generation by source, 2025-2035 - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQOFdzYUdYaDM4OC14VFdiOGtMR3Z3VHpZajBxVzRVa3VnbVNIM3dTd2hVUmNyc1lvUERqMFotcHB6WkxzNFFPdnNXSVJkVXNIUjhHaXh5eDBMcXBKUE1pa0J6V1l2cTNvQVF2Q05nbXFYTmpkSkJfazc3aEdpd3RoTmFzRzZHZjFXQTZPcnUwQ1QwNzVpQ3lzTnNqZlZGTUpX?oc=5",
-      "date": "Thu, 19 Nov 2026 08:51:42 GMT",
+      "title": "World Energy Outlook 2026 Free Dataset - Commercial usage - Buy-once - IEA - International Energy Agency",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQeUJMbFdoUDhxZ3hlY3BGaG9DLWljUHBwVkNhNE9WWFpkLTBZSnM1V3VUMzJmX1RYTFBkY0RpbS1ObmFKN29NTkJWLUlqclM3SnVIVGxZTzlPbkJnMFZST1N0dkdfdG1lVkg0dGVteXVBNmhtVDZBck4xbGtjZXEwbnhDSU9nX1J5NXEzbzVmRUlyLVVkWDdadlVkZEdiRmtYb3dpWDM3NWMyOVF3RjNCMEpDVFdxTHFt?oc=5",
+      "date": "Thu, 19 Nov 2026 08:21:29 GMT",
+      "category": "oil",
+      "label": "原油・エネルギー",
+      "publisher": "IEA - International Energy Agency",
+      "sourceWeight": 0.92,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Precious metals crash: 3 reasons why gold and silver prices drop to 14-month low - The Financial Express",
+      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPN19reWZZTzloaGdBaGowb2Vfc2xwdk5vWjdPUU9FNVUzSld2WjhRTUtaOWR5LXBiOWpKSnpzQ3NKMFkzZVk4SV9zb3dEWVV3Z1loTlZBbGlWWGY3THotSlJKOTRhdkZhZGl5SnhWazJEMm5KRlVfVEJKX0IwZXNRQ1FOU19xM3o2aHVWV3ZsYmQ4WDhLOWZrRF8tMnY0eEVZNW4tUlhqZTV5SnpLbWh0a1BDUTJIX24xMjlkY0FvRDE1bG00dU9JbVpCWEVwZ9IB1AFBVV95cUxOWEl2R0pvNDJTNGlXdzhPcXd0c3ZibTVoNnBrRVdqcUhhWENKSWRXeTY4MVd0VmY2RG1YOUV0eWsyanRHeFBGcGFpS0dDeENJSnZLMzN2U2xqWnpVRUNfUTlSaDl2bmJTMzNLNGtzTF9mdGtqbXVPT1FVTjFha3g3MzFjYkkyZk1sc3NhQUxGU3o5WndCeGxMR2FzbjRkdUh1T1YwOTFyMkhBTktrOHlNVUhuc24yWkh5QzJ2YVN2cVpnZjVjdDUyY3M3T2FZTHo0T0hIcA?oc=5",
+      "date": "Thu, 19 Nov 2026 08:17:40 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "The Financial Express",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Oil prices rise on Hormuz shipping risks as surplus outlook caps gains - Anadolu Ajansı",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPQ3pXdXB0VElUVVRGZ0tUZUVjZW1Ld1NGcWhxSExLa29fc1FldkxaSjUzWnpWUDNYTk9oM3JEVTNkZWxiMGFVTkw1bE9HVEJoVWkwUFgtOUhhMTlFLWtBOE8wR3k2WFBJWlFqTG43LTNpZUJDWUQ2X3NZd3JHc0gzbzByQ2RpekluZ20xQkltSTRZajdUTnhMbHNVZ1Z6VTh1Tk03LWtNSzhNZmVvQ1d4cHZR0gG6AUFVX3lxTE16R3I3RFN3UFJDa0V5eEE4RDNPYTdqV2k4WkRGdDFRNDZuTllsRGJqVnpTUk1tR0R5MmVnOWg1ZWpTYm96Nm1Bb1V0M0RYa2dsT2V0cW0wT3hZNlZqMnRwNXJTQ002ZXVuZzg2VWQzclVzRmRLLWdYb1dOUjBuQjBWN3JlZ3pObmdHRzVKQ1BGbkk4ZENzWHRlZk9qc1hEeG5ON2x6S1N5Q3hrVFl3YnQ1ZGpKakNXM1dXZw?oc=5",
+      "date": "Thu, 19 Nov 2026 08:12:28 GMT",
+      "category": "geo",
+      "label": "地政学",
+      "publisher": "Anadolu Ajansı",
+      "sourceWeight": 0.55,
+      "score": -0.35,
+      "signalEligible": false
+    },
+    {
+      "title": "APEC Summit 2026: Key Trade Priorities, Economic Trends & Impact on Global Trade Data - TradeImeX",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQZll6andhMEN0MUdLbkhqX2h5T1dXMW9fTzl5Y3VoZlVodXJiblJ2elRZZEh5YjY1bkpZUUh2OUt6Q2NoQi1RNTBDSG5zNlVvQm81MXBEZHJMeFdHLVgzRGRrSUx1TUZRZ18wNHg2R1dnXzJvM1QtY3JUT2hZM2NnSHRTUkhCNGpMOXRvR3JnMWFoSzl5UHpPT1liSmZPYVE?oc=5",
+      "date": "Thu, 19 Nov 2026 08:05:07 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "TradeImeX",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "LIVE – Bitcoin Price, Gold and Oil Fall: Should the US Repeat Its $2.2T 2020 Rescue? - TradingView",
+      "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOZUNUSnUzcHcwNlNwYVZQR2UwbktJVGU2Vmk1OHZVbmRhcHNENTZhdDBaQ3VnUmZJVThZUWFEeTZJNkltN3ZVellmNVhUUEdQbDFEcE5kSjN3ZWU2cVg0OEVneFVKa2N2RVAtWmNMWXhfd3dFLUMzcnllTW1ZZlN1Mmp5TUxjRnNmT2hvVURSUmZZRlZkMzktQ04xS2t0aE1xdGpDTmRHLWRKNDNWcEtiZlBadzBxNlROcnJQaFFxVnJrUTVjRmlGWUl3c1hBX05mcGZGUWh3?oc=5",
+      "date": "Thu, 19 Nov 2026 07:59:00 GMT",
+      "category": "credit",
+      "label": "金融システム",
+      "publisher": "TradingView",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Asia's trade map is being redrawn. What Apec means for global business - Firstpost",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQVHJRMm9XVjcxUjh4RTBCYnFGRlk5SkhJVFd2R3BRYWRlSXY5OXVBRVR4QnR6RXJIT1k0WXE4MzRXZkRnaFd4UjdVVTlQWjU1VmJtMXVrcV9sODdwaFRBemlWWV9vaWQ1OEZOUEhqTUVyNmhtbDZ5UWwwZzBidlZmWUl0MnJVZXlYNWp6WndUU1o4SE1xWUFWMF9pT1ZpZnBVUDd6UHZlM3dPd9IBrwFBVV95cUxNNEktUE1nWTV6bHNHYVBLVHN1TWxGaHVxaEwtN0FvdDdHWGFlMnlnLTRDTXVmMTdTYlNRdnRjNzF1ekYyQWgzYjRPbGVFZTA1THBweGxPbHJrSnE3d3JiY2hnbU11TjlxenNTX1hyN2RwQlNOZU5TZm1oNmRMSDRXRVlfLXZvODBsR1Vhb2Mxa2NXUkpQMWtoWFNYY3NvWE5EWTMzWG5ILV85RzFWNHZr?oc=5",
+      "date": "Thu, 19 Nov 2026 07:57:40 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "Firstpost",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "WEO Data Explorer - IEA - International Energy Agency",
+      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBVMWx2QVNPOF9fMWRtUkRiZ0VpTndzRTgtM2JRdDN0ZnA1clcyUExpM0hWelhrMXY4MjZuUnlMV0NEVDZ0aVY4bmM3UDl4VVlqaWp0RnRDbDNfQUxSelF3aFhyQmlpNkV3X3FRMWNzYzEwekhyUVU4?oc=5",
+      "date": "Thu, 19 Nov 2026 07:34:08 GMT",
       "category": "oil",
       "label": "原油・エネルギー",
       "publisher": "IEA - International Energy Agency",
