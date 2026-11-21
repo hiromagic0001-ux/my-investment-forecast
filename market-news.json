@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-21T05:58:23.494Z",
+  "generatedAt": "2026-11-21T06:22:12.509Z",
   "status": "ok",
   "sources": {
     "queries": 18,
@@ -42,6 +42,17 @@
       "signalEligible": false
     },
     {
+      "title": "Revised Total Factor Productivity 2025 - Bureau of Labor Statistics (.gov)",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNOTN1UGJOWkpMNEtSZ2dlbUwyOW5oX2xVWld5NHkyZVNqR0lMZUM2bEdObk1oemxyQ3JUR3lfTklfM3JTZTFNRXdjS2xhQVRtNjRhOXpaeEZ5ZzdGSl9YREhRYWI3Y3JQV28zRlpteGJ3aktBSm1fS0pSLXNlNi1WX0dhMXdZMGJyXy15VVg5M0E0dw?oc=5",
+      "date": "Sat, 21 Nov 2026 04:11:33 GMT",
+      "category": "global",
+      "label": "世界景気",
+      "publisher": "Bureau of Labor Statistics (.gov)",
+      "sourceWeight": 0.92,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "Iran hardliners push tanker convoy to defy US blockade - Iran International",
       "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1hcEdHM3RmVUI1OWxtSmVnVmxIci16eWg4VTJQRm1ndDNCYjVMZjhOODNFa2daVGIwUnZDNm1fWDN3UFhDalhpNUk4dmtELWRKTlE?oc=5",
       "date": "Sat, 21 Nov 2026 02:29:43 GMT",
@@ -50,6 +61,17 @@
       "publisher": "Iran International",
       "sourceWeight": 0.55,
       "score": -0.35,
+      "signalEligible": false
+    },
+    {
+      "title": "Why Trump Is Pointing At India To Bash The Fed Over High Interest Rates - ИФЗ РАН",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE94dGRqZm5EWm1aTG9lR0hybkVXc0x1NEhjRy1OWk1kQ3Exekw5VFhSWVFXWUFrOTJvZktrN1BRdnhqbUNsa0ZFUVRiYVFvMnhpTFNHS3g4OXlqVzRfMC12eEdqaW1DcFBoblpZaEZSTHlGZHdWTVZhUHc2WkZ6SVU?oc=5",
+      "date": "Sat, 21 Nov 2026 01:54:01 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "ИФЗ РАН",
+      "sourceWeight": 0.55,
+      "score": 0,
       "signalEligible": false
     },
     {
@@ -191,6 +213,17 @@
       "category": "credit",
       "label": "金融システム",
       "publisher": "TradingKey",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Gold Price Crash: Why Are Gold Prices Falling So Sharply? 6 Major Reasons Behind the Sudden Downfall - theopenpress.in",
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPVDl2LVlQeS0wVkVtQ0wzTi1rcWhYd1dBZlNPdVpHSDBpMU1xSkwzUnk0d2NlMmFEX1ZvcTFzOXBhbDZIMlA4dGpiOWZibF9kcVh6S3phX1BadEZfY1BTWVl1eGxBR3lSQm5RV08yYkhuVGxWSmRlaExadnhNeXV1UTdYZWpOMDQ?oc=5",
+      "date": "Fri, 20 Nov 2026 21:02:25 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "theopenpress.in",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -405,17 +438,6 @@
       "signalEligible": false
     },
     {
-      "title": "Why the price of capital is rising | 2027 Global Market Outlook - T. Rowe Price",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPRWlRNzhURk1rdVhFeG56RTFvMWxyX0NxV3JNWUpnQWsxNnk3ckRCQlA2TGxyTmdHSmQ1TzdmaDhNOFFvUEd5dVJBS2RZQ3lQcHZRdXdHcDhCaEUwRDR0T0tuRjBuaUIzOFlyNE1hdkpSQUUxX2NGbjVRR3hLVmpsVVo4RlZNMTI1Yk5zVFAwNi1SWHR3SF9GMGRvWTdnb1ZWTjNnM1p6Q0ZvOEJ6VXFJUmhRQWNiNXRLOHc?oc=5",
-      "date": "Fri, 20 Nov 2026 15:40:51 GMT",
-      "category": "credit",
-      "label": "金融システム",
-      "publisher": "T. Rowe Price",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
       "title": "Nvidia Stock: 5 Reasons the AI Trade Has Only Begun - I/O Fund",
       "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOT1NLaWJHLWN3X1FGazdDLUliSW9zUVZwa2l4RV96bDJYLUNxYVZwQ2FGX00zaG00aHBqb3cyaHpZd0Y2Nld5UnoxbnBtQ21Xcm9tVEdta0N5OUZuZ0dPTGN4X2VaU3MyNkh0SjE4bWJQWHNwMURQWGhsMDhDNmZUdVJB?oc=5",
       "date": "Fri, 20 Nov 2026 15:37:07 GMT",
@@ -471,17 +493,6 @@
       "signalEligible": false
     },
     {
-      "title": "Gold Price Forecast: $3,500 Support at Risk as Fed Outlook Weighs - FXEmpire",
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPbDBMVGpsT3RvVnkzSVZRbnpSdFlDOXNPYjVEc2N5NEFrNEUzYUtFeHN0cDI3eTJkZUZzVWdWREFneVllZXJPaVpMbXBXeGRNa1I1OVlfSVpab0ltT2FOU1lvS0x0RzJiQW9BM2o3YnpCTzN3OExISi1QR2ktTzF4T2pTdFRvVzJCbmVqb3FHdzd1YmNhNjBPeHhrR2dRSEV3WGtHSWRhdDR3dU5RZkVJN1d4OA?oc=5",
-      "date": "Fri, 20 Nov 2026 14:36:49 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "FXEmpire",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
       "title": "Iran readies tankers to run US blockade, threatens Persian Gulf oil if fired on - Iran International",
       "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9ZaWw0bk5fcTFTLWw0RktEcTZraU1OUF9PbHpfZUE5NHQ5TjNqYWlhLXFneWxuZDllNHdMNGVRYy1ka1FwZ1gxZElVeUxqekpVcVE?oc=5",
       "date": "Fri, 20 Nov 2026 14:13:03 GMT",
@@ -499,6 +510,17 @@
       "category": "global",
       "label": "世界景気",
       "publisher": "European Central Bank",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Major Drop In India Forex Reserves Slumped By Over 14 Billion In A Week - Zoom News",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxORnltcFl6UTBJbFZ6TXJPbEFrUHNFNEN0QUMzUlJkeEJTUGxRNWhlaElCNWJLZXR5WExCaEVoTHU2UU5XSTdPOVdRUWFaMldYRl9fejBvMXQxT2xuQnRWZ0U1MThxSWR3OE9jM3pQNEtKMkh3WHVDcWhEWnAxMWI4Ymd3eTE5cXlVMnlZeTQyYVNVa3ExV1hlNlFGMmFJX095QnB5eTlENVFEamsyTjBtV2RfOVpWZ9IBuwFBVV95cUxQNEQ0SkJxcTdfYTlCSm9UQ3ZGZGxKbXVwb1VKWDhBUmJxbjE3dW5vNU1BUUJ3SEZBY0c3cVpqMzltZUJSTkZTX0VtQ1lldlFkemlaU2RVT3JONURBUFBpZzVFMXBCdHFLTTF5RGtXamlSdlNpTVVGc01WRjYzNkZESmZSdllVUThWNTRYcmtqY0JjY1JxNjJSbHFnTlV5RkpBeGFjR0NqbFNMY0pkcG5RVHJlYWNBUnR2Q3Nz?oc=5",
+      "date": "Fri, 20 Nov 2026 13:59:04 GMT",
+      "category": "fx",
+      "label": "為替",
+      "publisher": "Zoom News",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -534,6 +556,17 @@
       "publisher": "Moneycontrol.com",
       "sourceWeight": 0.55,
       "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "U.S. Treasury yields fall as equity sell-off boosts safe-haven demand - Rich Picks Daily",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNd2RueGV0UjhvM2pMalg3RlZBMVlSRWlrOU1PdHVGNkFZT1AwZWJqcHJIRmxJVldKcTllX2JlQkZwbERpYWxXb29NclZiNDZQTmdCbUtWMTZpZFlxbDIxVzlwQldCTEloUFRJYlBnbzhrQ3BOdEVrLV9lakNURWNPUnBkVldGMjctNzhtQkREV2VuMFpw?oc=5",
+      "date": "Fri, 20 Nov 2026 13:00:00 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Rich Picks Daily",
+      "sourceWeight": 0.55,
+      "score": 0.38,
       "signalEligible": false
     },
     {
@@ -625,6 +658,17 @@
       "signalEligible": false
     },
     {
+      "title": "Markets rebound on value buying; Sensex climbs nearly 333 pts, Nifty ends above 23,200 - DD News",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPdHlyZkptMS00Z08tREVfemRYVXp2bVhJUDEtZ09GYTg1cWc3ZGM5R1Q4SHlULXk2LVUtZGZFUDZLVEtXVGRpdWRUUU04ZEJpYXkwVVFFSWNBUnhkakZReTZLSzl3WmhPcDI4SExqb2hRR1RfSUtlREx5emhoOWtFYzhxT3ZqN2ROaVpNYVJzZ0Y2Rkxxb3JQSHhuaTVHODhTRUY1SGpCWkZTbXA3ZWc?oc=5",
+      "date": "Fri, 20 Nov 2026 11:40:29 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "DD News",
+      "sourceWeight": 0.92,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "China’s Solar Exports Jump 21% Ahead of U.S. Tariffs - NewzTodays",
       "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9YdHJjTjVzUmlKN2E4cVRtMHgtZ0xYU2ZXMjdwUHl1a3lKZm1jbGtIeTF4MWVVQXlHeFZ0bWNZMTJhSjRrYWFaQ3g3SmZBNlRpMGowb0JQWmpLTVlnNTdOV0toX2JmajJmQTBkUWtHeDNya2tIRHZ1R3ZER1Judw?oc=5",
       "date": "Fri, 20 Nov 2026 11:39:08 GMT",
@@ -633,6 +677,39 @@
       "publisher": "NewzTodays",
       "sourceWeight": 0.55,
       "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Treasury Yields Fall as Investors Seek Safe Havens - SuaraGarut.ID",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9xMDhST3YyNHRXdl85WEd0YXBHS2xLSE92X2c5cDNRNTU5Vmk2V2xxSGY3bnF4NEhpLXJZOF9jZmItTWxhNEVQWWZVN18teWU2S1lmU1RzeUdZVzBNbTZEaVkwX3lveFM1WmNxQkhRZw?oc=5",
+      "date": "Fri, 20 Nov 2026 11:36:09 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "SuaraGarut.ID",
+      "sourceWeight": 0.55,
+      "score": 0.38,
+      "signalEligible": false
+    },
+    {
+      "title": "Treasury Yields Fall as Investors Seek Safe Haven Assets - Demokratis.co.id",
+      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5jSVd4SnlNY2tUR1g1dVg1d2dJb1ItTnhnMWxsWHdqanBYdC0wM0V6Q3VsMVVuSkZhOHprcmJwWVk4clRYak5TOEdnLTVxUjg4N2tBNEdKWkx6WHplSFoweTJORnJXWVBvZk5V?oc=5",
+      "date": "Fri, 20 Nov 2026 11:34:43 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Demokratis.co.id",
+      "sourceWeight": 0.55,
+      "score": 0.38,
+      "signalEligible": false
+    },
+    {
+      "title": "Treasury Yields Fall as Investors Seek Safe Haven Assets - Limapagi",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE4wWkdVV2xRZkNRMWVGbGVHZERJZHFnZEMwWkY0bkh1RXREOENLRU4wTVQtNnJ3SFdIdERPVUNyeHBqUFVlOEpPR1VRUEE5aFJLT25SdExfM21xeUVRd21xLVpJWGdRUzVYSmJlUHlObw?oc=5",
+      "date": "Fri, 20 Nov 2026 11:34:26 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Limapagi",
+      "sourceWeight": 0.55,
+      "score": 0.38,
       "signalEligible": false
     },
     {
@@ -655,6 +732,17 @@
       "publisher": "Firstpost",
       "sourceWeight": 0.55,
       "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Treasury Yields Fall as Investors Seek Safe Haven Assets - bsinews.id",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE90VTBpajNWTEdoOGNkZ014RUJtRUxCVnRvdUR1V2tUTDBKUWV4b0JQRnZVUUtqa3FRTnBWZk9JMHR6U1JQVV9qOHBaVjVvNFFiU3pZeEs5QndudEkyaFhrVWlDaEVNdm05?oc=5",
+      "date": "Fri, 20 Nov 2026 11:28:43 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "bsinews.id",
+      "sourceWeight": 0.55,
+      "score": 0.38,
       "signalEligible": false
     },
     {
@@ -845,6 +933,17 @@
       "signalEligible": false
     },
     {
+      "title": "Gold heads for worst weekly decline in eight months as dollar strengthens, Fed rate hike looms - Profit by Pakistan Today",
+      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPTUstNEY3VkF5bkZDVWt5eXNvYUVYTmhEVGtvUTNONjhnbUN5eTM4b1pyLVlKOVozVmxyZEFlWW5yLWs4TjI1NXh5MHFaaHpMbm83c0FqSTR6S1FuNWFid2o1RWFhWVg0dFV4ZVNwLXRWdTdSMXduQng4MkthcW9fT1hOdDZKdUZfS1JGaVZuVU45QUd2WDRabWlMRC1JRFRqcWJ5RDhNek5YZVZKaDJDUUpTSnFSczFUSmh2YUtENndfNTVMTzFVR1ZLYk5VdWZTTm1Yb2NxNA?oc=5",
+      "date": "Fri, 20 Nov 2026 08:43:40 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Profit by Pakistan Today",
+      "sourceWeight": 0.55,
+      "score": -0.38,
+      "signalEligible": false
+    },
+    {
       "title": "Acting in time - European Central Bank",
       "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQbERjaF92cXl0RkJwZFRlWF9VT2FVZWhwZXJJUTRLMmlvQlhJZjNrMWM2eG1ZVGxyamQ1MHZVTnFHWnNUdFlNWjJkYmlRaWZUZ3VOVnFuaW1VVHhZX2JsLW9BeWN0RFd5bzZJQnBWUmhBakFucXZia0pmSWNjdlBScXlYRFBXNDFVM1E?oc=5",
       "date": "Fri, 20 Nov 2026 08:33:30 GMT",
@@ -878,6 +977,28 @@
       "signalEligible": false
     },
     {
+      "title": "Gold prices experienced their sharpest weekly decline since March as the Fed maintained its hawkish stance. - Vietnam.vn",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPVzJmWFdpWktvNHdBNTlxQWk0Nmd2TFFrb1VVTEx6V3FaMlVIeGo4MlY0bG52cXRudHdpRE5WVEdDdVZZNVRoSkpxU3RobHZZcTd3Qnc1MlUwRXE0NWhtQXJVLXUzdmZ4NHIyOW5NNERZaVFrREthSlBCMjF6RThZTW1zdXotdmM4cm5JSVQ1SXBjNWlfeHBLdFhra2ZlTHJCa2c?oc=5",
+      "date": "Fri, 20 Nov 2026 08:03:40 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Vietnam.vn",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "30-year mortgage rate rises to 7.28% - Northwest Arkansas Democrat-Gazette",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNd2hSOHFFNklmQjR5UXRMa1JZeFpaaU91RDA2NFN1YnJXUGtMNm5OU255MkpvX2E5RGIxemNVWERMb0E3YVlCbUlfNmRpSnlKNGg1TGF6cWtBQUdjZlZHT0Jnb1MzaDVhcUJ6S21taDZ3YmQ2ak5XS2d0Zk5SNW43TFZJOS0?oc=5",
+      "date": "Fri, 20 Nov 2026 07:59:00 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Northwest Arkansas Democrat-Gazette",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "WTI faces upward pressure amid Middle East attacks despite record supply projections - www.tmgm.com",
       "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQWEw4YXc0Y3JjVy1Dbm12ZVFRY1Rqb2hZbS14eWNyRWotbDYzbklCbzJCVnBhSUdOd2RSTTZxMUdoNU1acXRBWWhjRmFLel9wMkV3RFFSMEhyU2tqU0tjUTMyanJjbWFBTUlOMGtFQ0lNRGhRNE9nSVlkTkdYUWZYaXhkWVB4T3prb0VyNnRiRjgzOFNKNVFNbkdjWmR5VVY1cGltT0RCaWhBWkZLLTlGZjk4SXBMdUxvdzlSSWJXdnRMMGZYdkt6N1pWV0JXZXRQcGlQSTlaNTFYaFlyWEhsX1BiMVU?oc=5",
       "date": "Fri, 20 Nov 2026 07:50:46 GMT",
@@ -906,6 +1027,17 @@
       "category": "geo",
       "label": "地政学",
       "publisher": "Anadolu Ajansı",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Gold price crash today: Rates below ₹1.25 lakh/10 gm on MCX | 3 reasons why? ₹1 lakh or ₹1.5 lakh - What's next? - Livemint",
+      "link": "https://news.google.com/rss/articles/CBMikAJBVV95cUxPRTNvTUdkZWxoYmpYa1BVRnQzUGdCWTBWTC1oQ19USl9zUnNNZmNEdTlGM0dkeUJVQXNLUWR3RDhnTDVkZ1ZqVUxRRFRXaEFPMF9LNGIxVk5fYlg0QklFMEdyNFpvMVlSZE81OFZZcmt2WVp3aDZ1dVRWWEFCWjZYdVNGcWZqLWtBV3I5RTVSX1lscG44UERYbFpTRlE0emc3RGxzaldhXzB3ZXctVjNZbFh1RUhfSTROMmgxOG4tb0xST2lIcWV5RFhoLXdJWWR3ZmtrSEJkYlloUTJHbEl6aGlnY0ZVdHhTT2VtY0dEd2Z5dVRFcUpueUxGZ3UzWmllRzZMcmQ1TmhOVDAwWnQwatIBlgJBVV95cUxQUUl2MTUzSGpCZTVHLVdxb2h2X3RLUG1NM0k4WDFMQlR4MEdKV2VaUUJFM3lkZ2VvZkpPcUtmTEZmbS1iZ0RPaUhBY3FiZWtXM3dMcFFkUTN3ZFZJRmxub2dBbzkwQU9oM0ZOX0hJSlJ0SGl0RkJaTUI2MTdVQUNfUE9JbzJnU19VSnRMYlF2aUVKb0s1YTVxaEJYd0dFVEhOQTlDamNyYmxwMVRHSE4zTm11ZHBHMERxR1RsQnN3b0xRQVhPM05HZE5RNlZnVEt4UWVCS1FUdW00TG9rZkdOSjlaTGlSTHlKUUFPZmp1MmNUbXVlSnhqMzk3NG5MNmF6RHVDc2g0bHhDTFgyakxQTzdqSlhSZw?oc=5",
+      "date": "Fri, 20 Nov 2026 07:43:10 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Livemint",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -988,6 +1120,39 @@
       "signalEligible": false
     },
     {
+      "title": "Gold Price Forecast 2026: Will Gold Rate Decrease In Coming Days? - Crowdwisdom360",
+      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5MVFBZM1VReDlFX2RwVlFoWGlRaGlINHRyVUI3dm95bnFFN3Z6a3NSRjRqVDBRU0VWZ21lVGNIR3A5VkNiZDZCWnlUNmR6S3ROVzVLalkzeHhIbGx3V0RUS0xTcXdXRHBzTWxpM253?oc=5",
+      "date": "Fri, 20 Nov 2026 05:21:00 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Crowdwisdom360",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "​‘Support Free and Open Trade’: Xi Jinping and Vladimir Putin Blast Protectionism and Western Sanctions at APEC Summit Ahead of Historic Trilateral Meet With Donald Trump - Pragativadi",
+      "link": "https://news.google.com/rss/articles/CBMimwJBVV95cUxQdWhSOGp0MU43RHRaVUxLWnYyTjVobk02RWdQMGg4S0czRnZ6WDNyTDlHZlZiZGppODBpdzZzYzlqWXJlR0xqcDhJN182Q2JfbGVxdzBxVkxRRTVIbk1OeXVicEpiaVZqSW9CVHBYUjZib1ZpelllT1F2UmZCUU00dTNpRzE0azBEbWtCQ3hJM3Mzb0FYcnBVRXotUElmYzN1aldQS0xGQV9RUEc1YTJlSXdDb3lYdzQ2NEtQU3dJekFNUWE1TjR4WFFqREJSWldGekRkanlrdWRhRGJpeGdrRUx1OXlsUThxV3NYU00xTFdFS2R5eWkzMl9mSEVrZU9SdWxGbU43QnBGWDlMMTJRdHRLcFBEcTZVZU9r?oc=5",
+      "date": "Fri, 20 Nov 2026 05:20:56 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "Pragativadi",
+      "sourceWeight": 0.55,
+      "score": -0.38,
+      "signalEligible": false
+    },
+    {
+      "title": "Gold falls by nearly ₹4,000 per pavan: 5 reasons behind the sudden fall and what buyers should know - Mathrubhumi English",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNdjZQUFRfZDJDLVVwejJ6SGhFRWJ1ZDFFMVJ0YTZqekR4MHdpWkJYT2F6VkxWbWw5bmJQUTQ0OTVjY3BMRGZsRk5NazhGa3BBUWtVN0ROVmFaMDhKbjNqcVROa0IwY0NVZ2JNakFTbzJhSG5iajVuR1pFMGQwVGQ4WkJrdVJaaVBXRFVocEJ2TGRTVnhsSk9VWGVWajdOZkRQOFZka2RkOWHSAagBQVVfeXFMTXY2UFBUX2QyQy1VcHoyekhoRUVidWQxRTFSdGE2anpEeDB3aVpCWE9helZMVm1sOW5iUFE0NDk1Y2NwTERmbEZOTWs4RmtwQVFrVTdETlZhWjA4Sm4zanFUTmtCMGNDVWdiTWpBU28yYUhuYmo1bkdaRTBkMFRkOFpCa3VSWmlQV0RVaHBCdkxkU1Z4bEpPVVhlVmo3TmZEUDhWZGtkZDlh?oc=5",
+      "date": "Fri, 20 Nov 2026 04:47:59 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Mathrubhumi English",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "No Job Creation, No Pay Hike For Employees Despite Tax Cuts: Modi's Big Question To India Inc - Oneindia",
       "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNODRIZWpTM1JyTUFuRVZSR3IwVjQ1VjhzN0dDVlU1MjNpa1MtdkpvSDBXOHNkamJfT2NaT1h6allhY0VMYVc0NTdUZ1hfNGlwR0FnSkVDdVhzZVY2YkFHMVdOWk9UaGN3SDdtRGdHMWpvbWFVYXJKYkRiRW82RXFBeTlLSEd5a3BxckJsd2wzOGpUT0lnM2pucUhzU0VyMjU3aVlVRUpXdUtiOWFEZjJvVG5iLTM1VU5vYUVwX25mNXBUVWtqUkVqYWhkZFpJYUFLS3kxM2tldVk?oc=5",
       "date": "Fri, 20 Nov 2026 04:39:49 GMT",
@@ -1010,6 +1175,17 @@
       "signalEligible": false
     },
     {
+      "title": "Gold Hits 15-Month Low, Silver Drops Near Rs 1.48 Lakh | Three Reasons Why Precious Metals Are Crashing? - NDTV Profit",
+      "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQeXk5Wjg0XzJIZ01meVQ4MHlGRVNydjdvQjlZUll3OG9TSUppUHFOZXhpXzE0eWJoWTVXa3BKMm8xdWhLekh1eDlKUnRxSjBGWnJPdFR1QjVzUHFyT3VQV2ZJRkcxZy1SWmsydThCVDJvZC12d2lzc01DUl92V1dVOW1EclI5V3hhd0tfR0E0RXdWcUM1cEtrNG9tbjhPS2pwTUdDcEZXcF9sd0xOdWNfbGhISmlsQS1WRTJjQ1NIMG10RUtheWVxTDA2bkxReThiczVTSUM2WFRjZ2FhM1V1Tm9ESUFNTS1VazZKMWdqTWU1TWhHVTZQMU1KLS0wQdIBhgJBVV95cUxQbG83Z1EyUERTOURWMmJSZ1Vodi1EWlFZMGhZVV9XYXpONjNHMDlKTHBSWTRxaEM0dkdjQ2oycklCWi1oaEVZdVotZ09GYk1BTjB1bDFCb0lxd3YzcjNxUFByZUJYd0VScWNIdkwwVzJiV1JsVTJaTHp5UUVtNjNHUnJET1BxRFFyRldxUkxYeW8tdGV4X3pDNXhwWm5rbFR4LW8yeFFvbzhxa1hGQXJ3amJjUUpMRnYwdmVBZjhCb19QS0pncGMyYUlDTFFhRGlqVGEyN1d4WFc4alhfOHRyOWlwbmp0SF9TRl9YVkZaZjFvNjVKMHg1ZFN2ZU9oYWJ0TENoWGdB?oc=5",
+      "date": "Fri, 20 Nov 2026 04:22:15 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "NDTV Profit",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "Rate hikes ahead? Weaker rand raises inflation fears as Reserve Bank keeps door open - IOL",
       "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPVGUzblJ1OFg5LWxCbzZfR2s2ZFdyVzBOSTkzQzhFM0R4S09IVjVkME5YY1U4eTJ2YnlNZ2VxUEp5d2xNX1hWSVYtMjNLeHJrYVBnMUNvclp2N2taZEZvNTg5ZmtRODh5aGt6MmRQa1g2clotRUZOT2J2SXJXTS00b0I2MC1TMXVQN3VmUjhqb2xGV3RTRGdyX1lpQWpNRFU3by1nRmU2UGpzUQ?oc=5",
       "date": "Fri, 20 Nov 2026 04:20:37 GMT",
@@ -1022,7 +1198,7 @@
     },
     {
       "title": "Should You Invest In Fixed Deposits Now Or Wait? - Rediff",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNeUtROUVmU2NHV3FZdlBhZUVxMTlNQ1RqeEROSE5QQlZzOElaaVVQLVZCZC0tajlBbUVoYnFtclhPRHZteFVZZ3ZZSzRmUFo4WGpqRFRMUFZGbW5zdFFLU0FEVmtVbGVwSXIxc280VjE3TGNvMmZxS2JrWkdlVWRFSXJ4YVVycURXVklWSGVQY203N3l0dDZoWG1VY0RfX0ZN0gGjAUFVX3lxTE9HZ1hleUp2MnVpRzJQZDVtb3dUQnhlNVVvU3Vlb2o4TXJwS0tGM1FSblU4MzU3aEhFbk9CWkVDX0QxTkREOUZMT1dJWUpDa05OUVE0b0NWN1NZNzE4SlBhSjZCOEE2dy1NZ254bUxRZWhOQlE2NHVCQWJRWXJDTDJLNzh0dTdMYUc3TjBQME53OVZyRUdhb3ZseWxBZksyUm04RUk?oc=5",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPR2dYZXlKdjJ1aUcyUGQ1bW93VEJ4ZTVVb1N1ZW9qOE1ycEtLRjNRUm5VODM1N2hIRW5PQlpFQ19EMU5ERDlGTE9XSVlKQ2tOTlFRNG9DVjdTWTcxOEpQYUo2QjhBNnctTWdueG1MUWVoTkJRNjR1QkFiUVlyQ0wySzc4dHU3TGFHN04wUDBOdzlWckVHYW92bHlsQWZLMlJtOEVJ0gGjAUFVX3lxTE9HZ1hleUp2MnVpRzJQZDVtb3dUQnhlNVVvU3Vlb2o4TXJwS0tGM1FSblU4MzU3aEhFbk9CWkVDX0QxTkREOUZMT1dJWUpDa05OUVE0b0NWN1NZNzE4SlBhSjZCOEE2dy1NZ254bUxRZWhOQlE2NHVCQWJRWXJDTDJLNzh0dTdMYUc3TjBQME53OVZyRUdhb3ZseWxBZksyUm04RUk?oc=5",
       "date": "Fri, 20 Nov 2026 04:15:00 GMT",
       "category": "credit",
       "label": "金融システム",
@@ -1127,6 +1303,17 @@
       "label": "為替",
       "publisher": "Moomoo",
       "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Gold Set for Worst Week Since March on Hawkish Fed, AI Selloff - Yahoo Finance UK",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBMSU9vdHJJbTA0TnFCM2JkUVNCZWs2RmJiZlhtT3dZZWEyMXhVUjdzeEtSdU1qUmlPbnNrNTdORldQQWJrdnVkajBZNGFpM1ZIbTJEZlplRjh0c0M3UzBhaldMMzAxamxSSV9hV0FDZEF0VE5KRkFOU0cwaDVTcEE?oc=5",
+      "date": "Thu, 19 Nov 2026 23:56:03 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Yahoo Finance UK",
+      "sourceWeight": 0.82,
       "score": 0,
       "signalEligible": false
     },
@@ -1417,6 +1604,17 @@
       "signalEligible": false
     },
     {
+      "title": "Why is gold falling? Yellow metal falls below Rs 1.3 lakh mark amid hawkish US Fed; check reasons - India.com",
+      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQdm85bkhnU0MwUUZfSWVIVHBoWWtWVnMyRjBHYnlHOXBfVDdRbnpHWXdlM2FpMzRncXg3bEc5QWphSW9NOF9uY0Faek9kLXhkZWlHN3c1MlFJeXFDclhzYnhRY3hEampadmlnNDV6YzBaaEl0YVpqOFVVb082T2dHNXlINDl2SWEzZzBMYW9XeXplSmRBZHJmU3o0cnZoZ0c2X19NMkxVamJ3S29yU3hqTDN3UGgzVTBHRFVoTkRZanQySUxDdE4tSDNHTWxZWXht0gHWAUFVX3lxTE1DLWg2bFdHWEpMU1BZM1h0aHBzVUhzZU5tUC00VEhMREpHLWZzYnQ4SUgxSW9QRGRNeVZCQ0JwdTJuZUpMYnVjX3ZPcDZDbkJVakdjY0JJV1FwQi1SNDNIY3pPaDNjZ0JyOExBQVZsZXZRZ2sxc0tCZkJNWWhVZ1BQODcyVEVfOVR0NE8zcklNRmVkaXk4WlpPMml4OWZ3QW4tbVFqQVF1VEY0RmkxVDJUenliWG9IN3VzWllnMVZGZFo1c2gwZ0RwUi1tWGJidnFFZTluYUE?oc=5",
+      "date": "Thu, 19 Nov 2026 16:39:36 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "India.com",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "OPINION: Trump’s ‘Little War’ With Iran Just Got a Lot Bigger - EnergyNow.com",
       "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOdHowOEh3MDJSdVJ2TlQ3S1lYTHA3OEhUdGcwUTViaHRHdmJUc01CaUxGTTZ2Q0NXVXlQWFVZa19OUlFOeGRyRERtX2pxLXdJSFo5REhPamlVWWRkcUVNQjkzTE1CWktMY1QyY1BkQl9PLWlMU3RSWmNJRXZDS0l4bVNmVW1nUXJtMXVaTXZPdXF1dw?oc=5",
       "date": "Thu, 19 Nov 2026 16:18:50 GMT",
@@ -1435,6 +1633,17 @@
       "label": "世界景気",
       "publisher": "Bureau of Labor Statistics (.gov)",
       "sourceWeight": 0.92,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "WTI Oil seeks to regain ground above $83.00 as geopolitical tensions intensify - www.tmgm.com",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQaE9lNWJZd21KZndtVHlMWVVneGxUYy1yU2RkWGhGamxuRUhuTk5uazVrVmhNYVhBYUU5aWh3VGhxNTdBWV9xREJ4NHNCTzNkQXUyVEtRUkR2MEY0VndGY3Vlc05PVzlVYktuNWlUZDl5Mmg4MUtqQXFTeVBDVjhySUdWUjVrMWtsYkctMzhQdzZ0T002Y3dpNDdyYXZQd0tTRzhKM1p5U0czZjBFQnVqSEdqdlRocnpEcUxMMlpjcHNMbi1TUHFrVWRUU3RKRXVCOGc?oc=5",
+      "date": "Thu, 19 Nov 2026 16:02:46 GMT",
+      "category": "geo",
+      "label": "地政学",
+      "publisher": "www.tmgm.com",
+      "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
     },
@@ -1582,6 +1791,17 @@
       "signalEligible": false
     },
     {
+      "title": "Crypto market update: Bitcoin struggles below $64,000 amid $306M ETF outflows and Fed fears; Ethereum recl - The Economic Times",
+      "link": "https://news.google.com/rss/articles/CBMipwJBVV95cUxNTDN0Q0kzTGl3bmEwdXNRMGVobl9oUFVoOExGNWJBY0xzcDJCQVlZa05hOVJxUThIaHc2cnprcDltdlR1VVB6SGdTNGtqbmY3SWpWNkFmU1prcmhyanplV3M3eHg0dGVaRDJZdEhVMHNDakxTSWFpNVFDd3NjOHpGMlBPSGpfTVRndFVFUFQzMGh1Y0F0eWFfOGVVd1lyWDZpRjhJWnl1R253Z3pOb0o2b2w2U1ZqSGlyWDZCNnJEajUtWjNJMk9vYTNpUjV6QzliSVZLTjhBWmQwajk4ZzhvY1FDZUVST2xWd0p6SWE0c21HM0FkM0VJRzNDb2hIUWFQNVZWS2h4Y2NJZWVIeEN5WUp2dGxIQ2lsWERpSjRqYWpzREU5YkFF0gGsAkFVX3lxTFAtZ2FqQ3Z1THFidEh3aFpPUDFBZlAtelRmc1JmWDFEeXpwQ05mYkhkdnRxdzU5bE5FSi02Vl92NVJNdEJwWkxSNVNjME8zbVpjNmM2NlNUTUZjNF9aaXFMUXZMV2lBVGVzR01Za2FmYk9kOUdxbEQ2bUNlUkJHVEZiWDhtenBNMjdISE5ReE80VWw0emhxWHUxYXRlOW41eUk1UUJVal9Qb2loWFlSb25RRFRicmdGQUtIRll1eFBGeG5EVmtfY2RJTUZFTkNIdjdGRmpjSy1QVlpfbThtSGViS1NnQ0pETDdaeHVWMG40eE9hV05DaWlFMTQ5U3JMd1Ywdkx0aGQtMlBwQlk5WjhRNktQMUM0NTdBWmdhSlFnMHVBSlhOQm1tV1ZCNw?oc=5",
+      "date": "Thu, 19 Nov 2026 13:40:35 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "The Economic Times",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "APEC bets on openness to unlock trade boom - The Express Tribune",
       "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOQ1d5b3FuYk9SQ3d0QUpuTU1PZG1QclNBT2syLWx5M3AyZ01ybjJlNUtaQ0pialUtMWttR3hKdGF2aHNNU2JpdG44UzdjZFdnaGU0ZHJsclRic3JzNW90am9USUFZN05hWkh0WWlLUjRBQjNRY3FnLTRoVWNpUmUxVmZQQTE2Z9IBjgFBVV95cUxNSkJWQ3pSLUIwbjB3a0tXeVdSbWtwNDA0enJfRW10VlhybzB2MERDY1RkWi1NQmctbTdnNlZ0M3lmV3BKZ3RROUUyY3d5cGQybHlIdGJDQlgxY1lBRUpsRE5pTktFVHZTeDhEQ1pFX0ZrQVQzMnZjcXpObElwOTdxOThMaFJPc3JyeFlIQnVR?oc=5",
       "date": "Thu, 19 Nov 2026 13:16:39 GMT",
@@ -1616,7 +1836,7 @@
     },
     {
       "title": "INDIA BONDS-India bonds end choppy session little changed as fresh cues on interest rates eyed - bfsi.economictimes.indiatimes.com",
-      "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPT1c2djdLbFhmRFRIUHVlOGVNcDRGOFF5ZXVod3lGODM5YU03amc2X2dFX2Qwa3lJd01Od0Rtc29jeTBVTzUwTWVXcWd5QUVJb3NOV3JZdEpzQTJaamJPV2xNcXI1WlNpcW1aS0dJTFFCVnBiaER0QW9TRE5rLUkyNHNQZ3NrZVZmYVNfdXJIQ3g0T2N0NDNzNUN5MnloU0hNMjBIOWdicXNCQ2RrQzBpWm9jR3oyRThsaXhqM2FIbkNhTUk0eW9aY1ZIUnhiMWYtUjdsYUdkdlZuLUxMeUp2Y2lQOVJjOFRVd2440gHwAUFVX3lxTE03WEt2MnVQVzFDTTl3QUZqQ0Qwd2E3ZTFvTVc5eVJXaUNkbkxIS094Zy1ncVpzSm4yTXMyT2R5M1V1alFVZ1pDVDVJMzFaR0FkSlRpVHN2VnRQRklPX2RxX0dCMHB0cDNKYmZNbTk1elVzWElLY2swQnJNNkxFQTVXVjlrN1FRVGRVLU5FQlRTcDNuZ3F5WGs5THR5YW9IbG1lX1MxYnZIWW8wYkV4NVk3V1lLSW4wRm1LNUhBcW9fRUd3Tlc4ZWpQMnNkNDVtR0h2eng2R0FxdnhnNVdRMzVSbnduMUkzS0tYMmZQUjZJRg?oc=5",
+      "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNN1hLdjJ1UFcxQ005d0FGakNEMHdhN2Uxb01XOXlSV2lDZG5MSEtPeGctZ3Fac0puMk1zMk9keTNVdWpRVWdaQ1Q1STMxWkdBZEpUaVRzdlZ0UEZJT19kcV9HQjBwdHAzSmJmTW05NXpVc1hJS2NrMEJyTTZMRUE1V1Y5azdRUVRkVS1ORUJUU3AzbmdxeVhrOUx0eWFvSGxtZV9TMWJ2SFlvMGJFeDVZN1dZS0luMEZtSzVIQXFvX0VHd05XOGVqUDJzZDQ1bUdIdnp4NkdBcXZ4ZzVXUTM1Um53bjFJM0tLWDJmUFI2SUbSAfABQVVfeXFMTTdYS3YydVBXMUNNOXdBRmpDRDB3YTdlMW9NVzl5UldpQ2RuTEhLT3hnLWdxWnNKbjJNczJPZHkzVXVqUVVnWkNUNUkzMVpHQWRKVGlUc3ZWdFBGSU9fZHFfR0IwcHRwM0piZk1tOTV6VXNYSUtjazBCck02TEVBNVdWOWs3UVFUZFUtTkVCVFNwM25ncXlYazlMdHlhb0hsbWVfUzFidkhZbzBiRXg1WTdXWUtJbjBGbUs1SEFxb19FR3dOVzhlalAyc2Q0NW1HSHZ6eDZHQXF2eGc1V1EzNVJud24xSTNLS1gyZlBSNklG?oc=5",
       "date": "Thu, 19 Nov 2026 13:00:00 GMT",
       "category": "rates",
       "label": "金利・インフレ",
@@ -1632,6 +1852,50 @@
       "category": "credit",
       "label": "金融システム",
       "publisher": "IMPRI Impact and Policy Research Institute",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "India bonds end choppy session little changed as fresh cues on interest rates eyed - The Economic Times",
+      "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQYWtTRndvT3NicUxaU0Vzal9pWVBJTENmYkR3RUMzVGpKallSMmZTQlJtanRROEF0aXNodWxxQTQwNi1sN0hvZFFzNGtzZlQzaGRCRGYtTjc4b29UZzlLTU9YUEt0VVY3X2htRTd5Rk9jbU9iN1ZQR2pkT1JFQWJpaGppS2N2Y0RqTzhvelpOYkNDRmhzNE54aF9UN21uT1lBNF96QzlpS1Z6ZU9LY2owVmpFVEdZQlNjdnMwWXdGeUMwX2Y1c2pMejN2RXo5cjFzMlpzWURiWUs1NlNBekxQWFJWS2zSAeoBQVVfeXFMTldxcXNsdW84a3BjRG9mbUhGZlJxVGY0a0FJWGN3U2FzQmRKc0dkMWxiNC1hRE1VWk1HNzRXdC1UdUhLMlhqZFlLeVVZc2dYWDRRTllBU1RpX0lBTjVsSnUxVWNxa2Y0SHI1MzVxZjlCbkJFMlFnMGdzcHNHTHNoY1YwY3dYNG95SkVSVWJ5RmdhTklJOG42cFF5dzRod3pLS1l5aElFX0dFQU82ZTVzeGcteWxFYzBaaFJlTDhpY2J4VzNPbF9lOThTSzBfZUtHM3VnYUZyUndlcFdMLU5FRVpocHFEU0g4LXJR?oc=5",
+      "date": "Thu, 19 Nov 2026 12:30:52 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "The Economic Times",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "US Fed Rate Hike: Officials Signal Further Tightening As AI Spending Fuels Inflation - Free Press Journal",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNUnVzb0RucXZxT3BrRlVaUmxGSV9sVTJWZ25vVHdmbEJQREc1YnRBclVCYmRHWHJ6RVZydk44Z09NTTBYWkM0empVN2pKUkt6c2xCeF9KMUlTcFVvZUMtMUJFZURZRm1pZ08tREZIeGxadFdZU3BLMmNxV3gwR0h5b2pSTXpRUV9uTnprUmdNbHBWZjRzaVQ4VV81emZjOExvbGQzTTVQQlZKMl9IOXdCTFd3M0dvNTR2M2hVOXlhR3QzUdIBxwFBVV95cUxNb3V0cFZZeVB6Q2FwVExUQUhqM1NXQWFBMkFQUnAzY0ZXRGJYVGhMc09EU3lnczhtTkE5bWc4Sk41MVhsVkFNSEpIcGU1b2huWWloOXJrNzQ4VE45RE1GbkpOQmJ3Vi03c1YyQnRaX3h2Sm9kREhFYzU4TDNrZFpqeVBBTEZlQlpzbnQ3NWd5bnFYcmh2NS1zejRURXZSX3R2UTlzaUN1YWFhVTJfNXU4ZVJlSllud3MwYWRXS09tRFhEdHlyV0FF?oc=5",
+      "date": "Thu, 19 Nov 2026 12:28:00 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Free Press Journal",
+      "sourceWeight": 0.55,
+      "score": -0.38,
+      "signalEligible": false
+    },
+    {
+      "title": "US Treasury yields rise as Fed minutes flag AI inflation risks, Waller backs bigger December rate hike | Hindustan Times - Hindustan Times",
+      "link": "https://news.google.com/rss/articles/CBMiggJBVV95cUxPOU1qMGxDcnlJbjg4eEJzbU82Z1pWSndxeUJSMXlPR1pRVmVMRlZUSUFfSFNlRU42RUxna3RPTUtuM1RURURWZlVaZHBmOFJPTVJDdU1KeWJYZUdhb0dLMmE5U2w1NzlPRWx1QjNNNUNvMUdnQ3JkblRhTXVuNnJEdnJZcWpZLUtJY3RPbWlZWURFNm5SV29QbkFQbTVqMTZTcWdOaVE4Wl9Rck9tYXIzOFQ2ZnlMZm5BY2d4YmtsZTBneXY3a3lGMHZTLU9kbjFKRC1ySlJtTkxqX2pSVnJfc29odEd0czVvRlJmNXVJcjJ6RjMtSHl5NGJJYnFfOGlwdUHSAYcCQVVfeXFMTXRtYTJOalJZLWhaaDFhUFJGdFh6d0xTV1VCcDV3amU0eUNYV0RFVWpjT01jTXZZOUxQbk91Y1MzanhvUmxQeVI5blN2LU9XVzU3UXRTS1VObjdJZ2xpNHlHMG03UlY2U1hwZGphbmREQlBsWm0tSnlDczZESU1GX3ZfaW5aSG1XU3FOWVk5c0F4U0hIQ3J3S3pVSmZra2ZSNk1FbTdZaGs3a3FGa2NlTmMydms4aTVlZE1IUEhXMEtMYm5jUDhYTVBnUmhDLW9QdGp4S19yNUt6NnZGdkhWeXJnUnFLV3NkTExINllKcWxZX2hMVzVfeDI5bUQ3ejRyMTFYWjNhSWM?oc=5",
+      "date": "Thu, 19 Nov 2026 11:59:15 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Hindustan Times",
+      "sourceWeight": 0.55,
+      "score": -0.38,
+      "signalEligible": false
+    },
+    {
+      "title": "Anthropic IPO: Inside the $1.5 Trillion Valuation - CryptoRank",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxON3g1QU5KTS1PQy02ak1TNVpPTVJpLS1ydzg0V0toZ3pkTTlTUlY2ZWk1WXNXbHdsalpWX0dfd2k1bVVXWk0ybE9NQkZMODNhbDFieXUxY3VKSmNSNlJkdEt5V0RCeVpncU9lN1U2TkNJTDFRYWtpQjVmY2VpMjlzZWVXcl9BdlRzUVo0Q1UzQmJXQQ?oc=5",
+      "date": "Thu, 19 Nov 2026 11:55:00 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "CryptoRank",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -1681,6 +1945,17 @@
       "signalEligible": false
     },
     {
+      "title": "Elevated costs in SA's fragile economy: What to expect from today’s MPC decision - thenational.co.za",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNNGFBTmsxc0UxbUVJaDU1ZVZKdHdrQUV1VF9WaFdQcUQ4N01MSHdXNlAwZmRMbUpoa0N2bk1waXA4M2kxVUFocmlHM0dyWWhnZXdxWG52X3ExZU4wNTAwT3d1MkpSWVdmczRVSFJvQW1mRm13dUNqOV9GMkFTbDRWQ1E0S19BUzlHTHo2Y2JpemRCQVVxV0pBVDMwZVA3akZ1QlNrNUpNSmplaWQ5WWdPcGVZQXBzMGNTYXl6NDJqNA?oc=5",
+      "date": "Thu, 19 Nov 2026 10:51:02 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "thenational.co.za",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "Oil Market Report – December 2026 - IEA - International Energy Agency",
       "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE42aEtkcDJNRjJYMkRMT21TTkI0VmtZd1NCbS03c0M4UlVmSnVSclpES3U4WjJ1VGxoZF9VdHdiOXJXOW5OaGM0UWJsVy0zTGt3ZU1Bdm1MS21iTTlzODJOSGE1b2lJa1d4Z0E?oc=5",
       "date": "Thu, 19 Nov 2026 10:50:04 GMT",
@@ -1710,281 +1985,6 @@
       "label": "為替",
       "publisher": "Legit News",
       "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Livestream of the launch of World Energy Outlook 2026 from Paris, with IEA Executive Director Fatih Birol - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQZV94Qjl3MVZENlNQQ2JKblExRW53VUNONVFvNlN4MGFSdnlHVFNUdHY5QUlHSzlhcWxVemlVUDdsM0UtMDhoODFNVTNKZFNfbHlGNWdSejJlQ0dkaXBXTkNzZm5LZ2VJVkl1UGo4TjZVandlMnNRZ1YxeWJIN2kwRlhIQW5QR1VydXczYUxremk0bmRlR2RPbTFvSUFDQkJsUWo0TTlhWEJqZjU5V3kyOE42clZDSG9YWU0wRzl2c1p4V1E3NUphdndTTQ?oc=5",
-      "date": "Thu, 19 Nov 2026 10:00:00 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Treasury yields tick lower as investors weigh the state of the U.S. economy - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQNkZZT1lIeU1WR19KR0NSTzF2YzA4dnQwalkwYTZKRUpJOW9DWldwNHdfZ1d1eXFmcHU0WHNlTXVocTNaQks3Tm9UalRQUFFGOXp3VkNNdDRHV1Y5czJQZ29fblFmcENfSnZUQWJsU3FjeWNfVTFVM1kxZzlUUWhuOTBB0gGHAUFVX3lxTE0ydXg2dUZCNEs4WnNRc2ZhUmFxR19LRkRzREFLOFc0aWxWSDJFTFJXaEQxdTJtQkg5Smo4azh3bXdRc1VveW9aYk5Rbzc0bGRxZng5dVhQWXhCV0syX09tVHRxclg1b2hiMnJjSzZjSm9LUWh1azA2bjZVbkNkY3cwRmpYT2ZiSQ?oc=5",
-      "date": "Thu, 19 Nov 2026 09:52:58 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "CNBC",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Qatar and Oman Run US-Iran Channel That Excludes Saudi Arabia - https://houseofsaud.com/",
-      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9jcV9RdVRHd3JvTUZCcndydnlfaEJGN2RKMDc1dEN6bFJYSXo2dkZSVnBGUm5qTU5tc0pxam5vaE5NVUF1RHAxVnp1d1hZWUsyQjUyQVlsMjBKT3BwWFZscjY4VXdtMEEzZ1JnRlNB?oc=5",
-      "date": "Thu, 19 Nov 2026 09:52:06 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "https://houseofsaud.com/",
-      "sourceWeight": 0.55,
-      "score": -0.35,
-      "signalEligible": false
-    },
-    {
-      "title": "EUR/JPY remains flat as support levels anchor intraday moves - Traders Union",
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOSmdCWF9mZzFnekJzZTh6R1hJYm13TFlwblBHYm9IcjRwMmFCbDNYeTJ0TUFyNDFFQmFYS1o4XzhacW80LWxpVjdhM19ORHRqXzl4RnFhc3lTLUJqN3pwcGlaVXpEN0ptaFEzdkI5aktMYVpxVmUxS1BtQ1A2QXk4T09semY5dENGNHVVOA?oc=5",
-      "date": "Thu, 19 Nov 2026 09:19:24 GMT",
-      "category": "fx",
-      "label": "為替",
-      "publisher": "Traders Union",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Eurozone faces dual threat of sovereign debt shifts and AI market turmoil - The Brussels Times",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOOVZRTHdZYzVPb3pDZThrRHRXV0RVUmhVSEVtM1JtUXJTOHRKd0tRRV9vR3RfS1l5UDM1THFFMnBSenRvWHZSa2VVcVJ4b2lHWEt1aXlnUWh5LTI1dDFSYjU2aDk5RXN6S3RjOGY1X0hjUGhocjlzb3V1NTJKTTlkaDFrcUVnWG4yR0F6YmRSNlZCNC1TeVQwU3pnX29oU2FFdUwwcVYxbVFtN2FXU00yQTdPbHVlUWxoc3ZGSjJxRQ?oc=5",
-      "date": "Thu, 19 Nov 2026 09:14:50 GMT",
-      "category": "credit",
-      "label": "金融システム",
-      "publisher": "The Brussels Times",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Historical drivers of growth in LNG demand in selected regions in the Stated Policies Scenario, 2015-2025 - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOWWhTaDFhQWR0NjJ5TWppVjAzMXRlalhMQjdaZWlaZFBpQXpndl9UZmtaXzZsMXdIRERsUlN0a2RMQmhjYV9NZnJFS1BXV2xJX0k0OWJzbWJMR2ZwU1NHUUZWWVViTzR3WDZGZHZsQkpYZ2VQMWctdTBPbTBZSUZ3NUU1Qjl1V0dNS2owM0hJZDIwc1VDbGx6VDFVYS1aR2piQmlrNS1DQld2c0d1UVBMQ0ZCSi1EVktrMW4ySG5JdlllSWFWRGIzVmZqc3loY3V1cDdsNmlEMEFvOUNkMjI5WW5jREx4QQ?oc=5",
-      "date": "Thu, 19 Nov 2026 09:03:40 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Euro area monthly balance of payments: September 2026 - European Central Bank",
-      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOeTNMY2lkLUp3bjJQdzhaQ0JLWVdpREp2dEgzdVFKVGlMRjU3cDBKR0NfN2NlTnl1OEViOUxrSUNCWllVdE5OamE3NG01cnVwbUFEaE94U3FHQmlhS25JVExaMWNJRDg5M3o5ang1RjFJTlBkYnVtc0xQdWVwZFo3ZzQwNnJYYm5IU2FR?oc=5",
-      "date": "Thu, 19 Nov 2026 09:03:03 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "European Central Bank",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Global average temperature in selected IEA scenarios - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPSnlUektqTlcyYVBMYmhvZ2xuNlRoc2RveGp2b3cxRnNpMmhzcHZuQjJXZkpGam9FZjRxSFJZdG5fT0ZrQW1CLTFHV3F4c25oOFRIRFZvUjZ0VXNBZTYzcDFneXk0cUl3cVBNOERiUlpBejZKRmRtN0gtWEJrU2dOQW9UcndGVGlhWWM3RDcxZE96U2VZajBVSm9SY1pVN3NX?oc=5",
-      "date": "Thu, 19 Nov 2026 09:01:38 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Bitcoin Slides 12.7% as Fed Hike Fears Drain Demand - Serrari Group",
-      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQZ0ZnN29QZktsRFp6REdYSzhZdFFBZTVReWNKR0VWcjFWd0xpRU9IbFI5c3lSZm4yb3ZCcEJnRmFySHlzTVN6Z2Z1NEFzcDJaM2Vsdm9hZXY5TEU1aFVNUHFTbkRiaW5ZU3AzcEVBZmxFV2FRUzk0bXVfb2RnYUhRN0pB?oc=5",
-      "date": "Thu, 19 Nov 2026 09:01:16 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Serrari Group",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Xi Pitches Open Trade at APEC as US-China Rift Deepens - Serrari Group",
-      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPLUt4ay12VHg5VnNtSkJ4bWNEcmFaNjQ0NTNGeXJDVUo2NTNPeFZCYTNwSTRrajFQRVJuSTdMeTF1Z0VwbVl1aDVXUklNcklZbGI3SGlOZ05iY2VYdzZIZWFIRmpkaE5YZ041OW1hMk83dlBBbFRyNnkzSk1rUEY2YlVpMnFpOGs?oc=5",
-      "date": "Thu, 19 Nov 2026 09:01:16 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Serrari Group",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Net oil exports per region in the Stated Policies Scenario and the Low Hormuz Case, 2025-2035 - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxObWFFVEhxVUtzR1VmX2c1Q1k4ODU1QjZmM3VMaExWWXU4bFFuOXczZnB3WEwxcExDd2czUHNKUEYtRGdzdDRwQ0cwQjhZX2VwOXRTN0RvdTNWQVd2RmtIWGRqYVlkLXVSaTNtTUFERzZyT0kzeWdsaVdYcnJFb29MVTVTV3JnM1pzX3Y5OGZockc3c2RVM0puRGFLQzBnMHBQR1FLYzB0WmtpZEgxMEltVm1NQ0h4Q2k1SlFjZEZIa1V6TmdVb3ViVjg0REdraUc0NWdGNEdR?oc=5",
-      "date": "Thu, 19 Nov 2026 08:51:49 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Electricity as share of final energy by region and scenario, 2025-2035 - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPNzdPeERnbHRBNXluVE8tTUFqcTNQYWphRDVsdjNvMEhYS2RwWFg5VF9HbU8wNzdlNWdWclk5QWdJNzR0RlFERHQ2dEZnSHdUZ2pVX1ZYWEFwcWY1V3gxNXI4bkM5eW5EcWxDVWRscFFFUk9oVFFXVnlGTjZSeHJmeEttTnQwSGw3Q2xhUEhBWWw5ak44dUl2ZzNSMmF1TGZMbGdBSlJLcUQ4U20wQ2tydmNBR2RhSmM?oc=5",
-      "date": "Thu, 19 Nov 2026 08:51:47 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Projected drivers of growth in LNG demand in selected regions in the Stated Policies Scenario, 2025-2035 - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPZmxKVUpQcjFXbkpVcnlqTWROektaTVdMZ3hydy1CbWRDNU9wVjQ1Zk0yVFZGRkhfR3hfZjd4dlhjdlNfVy1KbjZncExaNUpuOFBIMHkxT1pzdVI2NzJhLUZyZkdBd3J4bWZaRHVDYUk1ZmxWSTRHR1RQbVlJSzV5RVYwbEFQVmEtNVlSNEMyeklOTXMwQm92czRCSWdQSHZLYUF1dUhLRm5uc2tWeVN6blhodWJDM2dDMW9xYXpXc1ZoNzd6REVlQy1hbElOVWVOZkdDOFRaTUpkNGs1TzZuNkZUWmI?oc=5",
-      "date": "Thu, 19 Nov 2026 08:51:47 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Deaths by cause in emerging market and developing economies, 2025 - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOajMzdmJIVHdBS1h1VEI4U3hMUzBLZ1k0TzlHaTJFNUktWWFudDdWRTl4N2dzTk9ZQi1IaEJNN3lUUXh3dzBxaDYyb2cxSGF2YXNhWFo5SnZUTG1lMV85TmdBLU5YMXdiU013YlBSOHNqdlVObThPQWNyeW5fY09YU2hMUVMtMlQtN2hFVGFiUVMzU3F5UENwQXhpV0d6aFZlTS00bklvblA5bjh1bGRlZA?oc=5",
-      "date": "Thu, 19 Nov 2026 08:51:45 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Levers driving the decline in imports between STEPS and ARC scenarios, 2035 - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPeFdJVmNwcnR0MF9HaEh4Z2xIZnJfa2V0NkJod1JFSHA5T3RISlV2REhoUnR2dEdQamhkd3huUG1pbzBvMWUxUXJUXzFaVHhjUTQxT1g2eDZPSGRWYTRORWpBdUpkRGxNa0NxOWtUeEFnQ294bTdCbFVfNkRhcU04NkdMTGFrNE84aWNRVXc1X0k5ek1rMUNXamlkbW01VkRtNWdCajh6Vmh3cnZCejhPOUdSSkY2ajFqMUNOUlpB?oc=5",
-      "date": "Thu, 19 Nov 2026 08:51:45 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Global LNG capacity and exports, 2015-2035 - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPWkp2NFJ0LXJNRTZBb2I5enY2VjIzZmYxVmpJdlhMOUxFRFVvS0JtZ1VWTjhjN01WdW41U1Vvb1dnQmZqRUlmdXM4SzQyclpMeDlPNjdNdE9meWhmUHJhZ2cyODlPNVNwbDFtZHVVSFdJNG9Rbk1RbmEzdnp2ZGpRU3NBajFQMlBhMW16aWl6R0trdw?oc=5",
-      "date": "Thu, 19 Nov 2026 08:51:44 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Energy related CO2 emissions by scenario, 2000-2050 - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPTkxwd3NDdDVyWnVlb2hLNnJvNkxrUUY1U1NSWHJSRVVta3Z6LWNIRjEyN0V3WkFSMkg5czNLbG5UN0dkcnNKZXF3aUxSYm0tZE02Vms4Z0M3UUZVVDlvXzU0SmFBc0dMOV9mVkV5bU9Ta1VsYXRTTGRxT0V6bE40NHRJMEZmQk5NeEdUeHRpZmo1VEMzUkNHS0lNUGN2Zw?oc=5",
-      "date": "Thu, 19 Nov 2026 08:51:43 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Cumulative loss in oil supply during selected crises, 1956-2026 - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPN3NVQ1llQ0pJQ0NhTHZNQnJvRTRfdFlSbmFUb2swUkMxajdtMVZPS1U2T2czSGhGSmkxeWstdWc0cWExZXRTN1VKYnhDM2xOc0lFOW9jTW1NcWd4Sk1qYlZoaWhvblU2NXhmMjNaUFZCTzBrZG1qY3FTay1xSnUxbURjbXM1MGZ4OExnWWg2dG1pNXF1OVdzX0hUaEFkQkpGOUE2NkIyWldHQk1mZUE?oc=5",
-      "date": "Thu, 19 Nov 2026 08:51:42 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "World Energy Outlook 2026 Free Dataset - Commercial usage - Buy-once - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQeUJMbFdoUDhxZ3hlY3BGaG9DLWljUHBwVkNhNE9WWFpkLTBZSnM1V3VUMzJmX1RYTFBkY0RpbS1ObmFKN29NTkJWLUlqclM3SnVIVGxZTzlPbkJnMFZST1N0dkdfdG1lVkg0dGVteXVBNmhtVDZBck4xbGtjZXEwbnhDSU9nX1J5NXEzbzVmRUlyLVVkWDdadlVkZEdiRmtYb3dpWDM3NWMyOVF3RjNCMEpDVFdxTHFt?oc=5",
-      "date": "Thu, 19 Nov 2026 08:21:29 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Precious metals crash: 3 reasons why gold and silver prices drop to 14-month low - The Financial Express",
-      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPN19reWZZTzloaGdBaGowb2Vfc2xwdk5vWjdPUU9FNVUzSld2WjhRTUtaOWR5LXBiOWpKSnpzQ3NKMFkzZVk4SV9zb3dEWVV3Z1loTlZBbGlWWGY3THotSlJKOTRhdkZhZGl5SnhWazJEMm5KRlVfVEJKX0IwZXNRQ1FOU19xM3o2aHVWV3ZsYmQ4WDhLOWZrRF8tMnY0eEVZNW4tUlhqZTV5SnpLbWh0a1BDUTJIX24xMjlkY0FvRDE1bG00dU9JbVpCWEVwZ9IB1AFBVV95cUxOWEl2R0pvNDJTNGlXdzhPcXd0c3ZibTVoNnBrRVdqcUhhWENKSWRXeTY4MVd0VmY2RG1YOUV0eWsyanRHeFBGcGFpS0dDeENJSnZLMzN2U2xqWnpVRUNfUTlSaDl2bmJTMzNLNGtzTF9mdGtqbXVPT1FVTjFha3g3MzFjYkkyZk1sc3NhQUxGU3o5WndCeGxMR2FzbjRkdUh1T1YwOTFyMkhBTktrOHlNVUhuc24yWkh5QzJ2YVN2cVpnZjVjdDUyY3M3T2FZTHo0T0hIcA?oc=5",
-      "date": "Thu, 19 Nov 2026 08:17:40 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "The Financial Express",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Oil prices rise on Hormuz shipping risks as surplus outlook caps gains - Anadolu Ajansı",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPQ3pXdXB0VElUVVRGZ0tUZUVjZW1Ld1NGcWhxSExLa29fc1FldkxaSjUzWnpWUDNYTk9oM3JEVTNkZWxiMGFVTkw1bE9HVEJoVWkwUFgtOUhhMTlFLWtBOE8wR3k2WFBJWlFqTG43LTNpZUJDWUQ2X3NZd3JHc0gzbzByQ2RpekluZ20xQkltSTRZajdUTnhMbHNVZ1Z6VTh1Tk03LWtNSzhNZmVvQ1d4cHZR0gG6AUFVX3lxTE16R3I3RFN3UFJDa0V5eEE4RDNPYTdqV2k4WkRGdDFRNDZuTllsRGJqVnpTUk1tR0R5MmVnOWg1ZWpTYm96Nm1Bb1V0M0RYa2dsT2V0cW0wT3hZNlZqMnRwNXJTQ002ZXVuZzg2VWQzclVzRmRLLWdYb1dOUjBuQjBWN3JlZ3pObmdHRzVKQ1BGbkk4ZENzWHRlZk9qc1hEeG5ON2x6S1N5Q3hrVFl3YnQ1ZGpKakNXM1dXZw?oc=5",
-      "date": "Thu, 19 Nov 2026 08:12:28 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "Anadolu Ajansı",
-      "sourceWeight": 0.55,
-      "score": -0.35,
-      "signalEligible": false
-    },
-    {
-      "title": "APEC Summit 2026: Key Trade Priorities, Economic Trends & Impact on Global Trade Data - TradeImeX",
-      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQZll6andhMEN0MUdLbkhqX2h5T1dXMW9fTzl5Y3VoZlVodXJiblJ2elRZZEh5YjY1bkpZUUh2OUt6Q2NoQi1RNTBDSG5zNlVvQm81MXBEZHJMeFdHLVgzRGRrSUx1TUZRZ18wNHg2R1dnXzJvM1QtY3JUT2hZM2NnSHRTUkhCNGpMOXRvR3JnMWFoSzl5UHpPT1liSmZPYVE?oc=5",
-      "date": "Thu, 19 Nov 2026 08:05:07 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "TradeImeX",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "LIVE – Bitcoin Price, Gold and Oil Fall: Should the US Repeat Its $2.2T 2020 Rescue? - TradingView",
-      "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOZUNUSnUzcHcwNlNwYVZQR2UwbktJVGU2Vmk1OHZVbmRhcHNENTZhdDBaQ3VnUmZJVThZUWFEeTZJNkltN3ZVellmNVhUUEdQbDFEcE5kSjN3ZWU2cVg0OEVneFVKa2N2RVAtWmNMWXhfd3dFLUMzcnllTW1ZZlN1Mmp5TUxjRnNmT2hvVURSUmZZRlZkMzktQ04xS2t0aE1xdGpDTmRHLWRKNDNWcEtiZlBadzBxNlROcnJQaFFxVnJrUTVjRmlGWUl3c1hBX05mcGZGUWh3?oc=5",
-      "date": "Thu, 19 Nov 2026 07:59:00 GMT",
-      "category": "credit",
-      "label": "金融システム",
-      "publisher": "TradingView",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Asia's trade map is being redrawn. What Apec means for global business - Firstpost",
-      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQVHJRMm9XVjcxUjh4RTBCYnFGRlk5SkhJVFd2R3BRYWRlSXY5OXVBRVR4QnR6RXJIT1k0WXE4MzRXZkRnaFd4UjdVVTlQWjU1VmJtMXVrcV9sODdwaFRBemlWWV9vaWQ1OEZOUEhqTUVyNmhtbDZ5UWwwZzBidlZmWUl0MnJVZXlYNWp6WndUU1o4SE1xWUFWMF9pT1ZpZnBVUDd6UHZlM3dPd9IBrwFBVV95cUxNNEktUE1nWTV6bHNHYVBLVHN1TWxGaHVxaEwtN0FvdDdHWGFlMnlnLTRDTXVmMTdTYlNRdnRjNzF1ekYyQWgzYjRPbGVFZTA1THBweGxPbHJrSnE3d3JiY2hnbU11TjlxenNTX1hyN2RwQlNOZU5TZm1oNmRMSDRXRVlfLXZvODBsR1Vhb2Mxa2NXUkpQMWtoWFNYY3NvWE5EWTMzWG5ILV85RzFWNHZr?oc=5",
-      "date": "Thu, 19 Nov 2026 07:57:40 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Firstpost",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "WEO Data Explorer - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBVMWx2QVNPOF9fMWRtUkRiZ0VpTndzRTgtM2JRdDN0ZnA1clcyUExpM0hWelhrMXY4MjZuUnlMV0NEVDZ0aVY4bmM3UDl4VVlqaWp0RnRDbDNfQUxSelF3aFhyQmlpNkV3X3FRMWNzYzEwekhyUVU4?oc=5",
-      "date": "Thu, 19 Nov 2026 07:34:08 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
       "score": 0,
       "signalEligible": false
     }
