@@ -1,11 +1,11 @@
 {
-  "asOfDate": "2026-11-20",
-  "generatedAt": "2026-11-21T04:29:08.085Z",
+  "asOfDate": "2026-11-21",
+  "generatedAt": "2026-11-21T05:14:15.571Z",
   "status": "ok",
   "source": "Nasdaq public earnings calendar",
   "window": {
-    "from": "2026-11-18",
-    "to": "2026-11-26"
+    "from": "2026-11-19",
+    "to": "2026-11-27"
   },
   "events": [],
   "errors": [],
