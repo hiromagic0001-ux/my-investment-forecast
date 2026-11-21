@@ -8,7 +8,7 @@ const WORKFLOW=process.env.GITHUB_WORKFLOW_FILE||"daily-forecast.yml";
 const REF=process.env.GITHUB_REF||"main";
 const API_PIN=process.env.API_PIN||"";
 const GITHUB_TOKEN=process.env.GITHUB_TOKEN||"";
-const sessionSecret=crypto.randomBytes(32);
+const sessionSecret=crypto.createHash("sha256").update("investment-refresh-session-v1:"+GITHUB_TOKEN).digest();
 const sessions=new Map();
 const attempts=new Map();
 let lastDispatchAt=0;
@@ -57,11 +57,11 @@ const server=http.createServer(async(req,res)=>{
   if(!API_PIN||API_PIN==="CHANGE_ME"||!GITHUB_TOKEN||GITHUB_TOKEN==="CHANGE_ME")return json(res,503,{error:"サーバー設定が未完了です。Renderの環境変数を設定してください。"});
   const got=Buffer.from(String(input.pin||"")),expected=Buffer.from(API_PIN);
   if(got.length!==expected.length||!crypto.timingSafeEqual(got,expected))return json(res,401,{error:"暗証番号が違います。"});
-  attempts.delete(ip);const expires=Date.now()+2*60*60*1000;return json(res,200,{token:tokenFor(expires),expiresAt:expires});
+  attempts.delete(ip);const expires=Date.now()+30*24*60*60*1000;return json(res,200,{token:tokenFor(expires),expiresAt:expires});
  }
  if(pathname.startsWith("/api/")){
   if(req.headers.origin!==ORIGIN)return json(res,403,{error:"Origin not allowed"});
-  if(!validToken(req))return json(res,401,{error:"ログイン期限が切れました。もう一度暗証番号を入力してください。"});
+  if(!validToken(req))return json(res,401,{error:"ログイン期限が切れました。もう一度暗証番号を入力してください（30日間有効）。"});
   if(!GITHUB_TOKEN||GITHUB_TOKEN==="CHANGE_ME")return json(res,503,{error:"GitHub連携設定が未完了です。"});
   if(pathname==="/api/refresh"&&req.method==="POST"){
    if(Date.now()-lastDispatchAt<60*1000)return json(res,429,{error:"更新開始の間隔を1分以上空けてください。"});
