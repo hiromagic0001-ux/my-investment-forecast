@@ -601,16 +601,20 @@ async function runFullRefresh(){
  const button=$('refresh');button.disabled=true;
  try{
   let token=localStorage.getItem('investmentRefreshSession')||'';
-  if(!token){
-   const pin=window.prompt('初回のみ一括更新用の暗証番号を入力してください。認証はこのブラウザで30日間有効です。');
+  const healthResponse=await fetch(REFRESH_API+'/health',{cache:'no-store'});
+  const health=await healthResponse.json();
+  if(!healthResponse.ok||!health.ok)throw Error('更新APIに接続できません。');
+  if(health.authRequired&&!token){
+   const pin=window.prompt('一括更新用の暗証番号を入力してください。認証はこのブラウザで30日間有効です。');
    if(!pin)throw Error('更新をキャンセルしました。');
    $('status').textContent='安全にログインしています…';
    const login=await fetch(REFRESH_API+'/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pin})});
    const lj=await login.json();if(!login.ok)throw Error(lj.error||'ログインできません');
    token=lj.token;localStorage.setItem('investmentRefreshSession',token);
   }
+  const authHeaders=token?{'Authorization':'Bearer '+token}:{};
   $('status').textContent='ニュース・公式統計・市場価格・予測・検証を一括更新しています…';
-  let start=await fetch(REFRESH_API+'/api/refresh',{method:'POST',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:'{}'});
+  let start=await fetch(REFRESH_API+'/api/refresh',{method:'POST',headers:{...authHeaders,'Content-Type':'application/json'},body:'{}'});
   let sj=await start.json();
   if(start.status===401){localStorage.removeItem('investmentRefreshSession');throw Error(sj.error||'再ログインしてください');}
   if(start.status===409){$('status').textContent='一括更新はすでに実行中です。完了まで確認します…';}
@@ -618,7 +622,7 @@ async function runFullRefresh(){
   let finished=false;
   for(let i=0;i<180;i++){
    await new Promise(resolve=>setTimeout(resolve,8000));
-   const response=await fetch(REFRESH_API+'/api/status',{headers:{'Authorization':'Bearer '+token},cache:'no-store'});
+   const response=await fetch(REFRESH_API+'/api/status',{headers:authHeaders,cache:'no-store'});
    const state=await response.json();
    if(response.status===401){localStorage.removeItem('investmentRefreshSession');throw Error(state.error||'再ログインしてください');}
    if(!response.ok)throw Error(state.error||'更新状況を確認できません');
