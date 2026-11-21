@@ -18,7 +18,7 @@ const tokenFor=exp=>{const payload=Buffer.from(JSON.stringify({exp})).toString("
 function validToken(req){
  const raw=String(req.headers.authorization||"").replace(/^Bearer\s+/i,"");
  const [payload,signature]=raw.split(".");
- if(!payload||!signature||!crypto.timingSafeEqual(Buffer.from(signature),Buffer.from(sign(payload))))return false;
+ if(!payload||!signature)return false;const got=Buffer.from(signature),expected=Buffer.from(sign(payload));if(got.length!==expected.length||!crypto.timingSafeEqual(got,expected))return false;
  try{return JSON.parse(Buffer.from(payload,"base64url").toString()).exp>Date.now();}catch{return false;}
 }
 function cors(req,res){
@@ -73,7 +73,7 @@ const server=http.createServer(async(req,res)=>{
    }catch(e){return json(res,502,{error:e.message});}
   }
   if(url.pathname==="/api/status"&&req.method==="GET"){
-   try{const run=await latestRun();if(!run)return json(res,200,{status:"not_found"});
+   try{const run=await latestRun();if(!run||Date.parse(run.created_at)<lastDispatchAt-5000)return json(res,200,{status:"not_found"});
     return json(res,200,{status:run.status,conclusion:run.conclusion,runId:run.id,htmlUrl:run.html_url,createdAt:run.created_at,updatedAt:run.updated_at});
    }catch(e){return json(res,502,{error:e.message});}
   }
