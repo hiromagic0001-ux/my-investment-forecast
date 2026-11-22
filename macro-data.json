@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "source": "FRED public data export (one request per series) + OECD Key Short-Term Economic Indicators",
-  "generatedAt": "2026-11-21T07:35:36.384Z",
+  "generatedAt": "2026-11-22T13:14:37.082Z",
   "status": "ok",
   "seriesCount": 15,
   "signalCount": 13,
