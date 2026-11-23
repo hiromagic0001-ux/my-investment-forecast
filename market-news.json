@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-23T13:48:55.369Z",
+  "generatedAt": "2026-11-23T13:50:46.293Z",
   "status": "ok",
   "sources": {
     "queries": 18,
@@ -11,7 +11,7 @@
     {
       "title": "Executive summary - World Energy Outlook 2026 - IEA - International Energy Agency",
       "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE83dzR3Z1piODFrZl91c1FoQkh3S1RkS1NRSUhOUmNGdGs5M0tNZ3J6MGVUcnBWZUJmXy1fN2VuTWp2U2pFQ3FRSWF0cWFhdEdHbVVqU0FZX2wzVTFFUnptMm80bjVmOURCVG9fN3pJX24xUkxlNkFueEN5WQ?oc=5",
-      "date": "Mon, 23 Nov 2026 13:45:48 GMT",
+      "date": "Mon, 23 Nov 2026 13:47:48 GMT",
       "category": "oil",
       "label": "原油・エネルギー",
       "publisher": "IEA - International Energy Agency",
@@ -174,6 +174,17 @@
       "signalEligible": false
     },
     {
+      "title": "BIS Buys A New Toaster: Replacing The AI Diffusion Rule And Telling Chip Sellers To Know Thy Customer’s Customer – Part I - Legal 500",
+      "link": "https://news.google.com/rss/articles/CBMilgJBVV95cUxQeG1MZHNjNE9QVEg0RHVXYlFjYWg1NVQwZEJQTzBUeENyRlJWaF85X3ZUTVVNREVXV09WZVNpOWZvQjI3RHRGNG1NVE9GQmxVMUhBZU5pNUlxeFFzQy16aXJvVWZEME1OOVRfUU5YLWh0ME52LWc1RlVwUjhiVlp5VURZMFhna2lDbVFyTE9yakxKWlVXUHVUbGIzZzFOcHg0RlVlRV9YVEloRFJzbFgzRXd5Z0l5Y3Z0OHNUMm84MXVKcVh3cmJLR3lMTWRlNEFBMTY2c2dVZDNlVno3WWNSVUhCQnZTVzU2YXNrSGo0RDQzaEt5R0g3X2Fjb2g5WWNMWFJTQzBBVjF5N19xMFNPNWhzTHlUZw?oc=5",
+      "date": "Mon, 23 Nov 2026 10:30:14 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "Legal 500",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "Energy Efficiency 2026 - IEA - International Energy Agency",
       "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBHS05oZTRXYlVZRlZHZGRRSzZsVWJaOS1OVDJTTWNWeDdmLU9sU3NhYlJSQUN0OXc1aF81U210ODRLd3YyWXoxa1gwLTc4bHVYaXhLOG9rZWk1Qk1Td1E?oc=5",
       "date": "Mon, 23 Nov 2026 10:12:50 GMT",
@@ -218,23 +229,34 @@
       "signalEligible": false
     },
     {
-      "title": "Market outlook for the week of 23rd - 27th November - investingLive",
-      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOMlh1SjVSenlsb1lGUDZUT2ZUbEtZS0JrT3RpVktjUkh1ZlNEb0RQdThobnplUHY3REZCc3NxQ1FGUTg5ZDZKaDZjVGx0ZDRka2Y4emMxalhJekpMNzJxUVVjYlp2STZacVdCMjZ2cXo0bUdudV9uZkxDTk5MMjN5emxBTjlKTDZEaFE?oc=5",
-      "date": "Mon, 23 Nov 2026 09:49:07 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "investingLive",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
       "title": "Yen retreats as uncertainty over Bank of Japan policy weighs on sentiment - Economies.com",
       "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQWWRhSXJDRUJvTVRDamlVUmZVVU84MDRYU3JOcmM1X1hHZnU0UHpCWXRuSlEzb1lpQmtVOVR4dUFPUW5RTUFHOTZKTVlvUU1WMnZmd2VxQzh0SnhIaEZ4LVBUdDZxY3VPZ1dmdVo2V1hNMDFnd3l0WDQxeXpSNXpNRE1UQmN5OG53dGkzZE9IM1I3Y19JWHZVdURpZ2NEM3dROENlTHdaSXcwSnRBNVFDRHZKTTVoRzdmeVI0c2RfZ1U4S0U?oc=5",
       "date": "Mon, 23 Nov 2026 08:48:00 GMT",
       "category": "fx",
       "label": "為替",
       "publisher": "Economies.com",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "KOSPI plunges on AI fears as broader financial markets remain calm - Chosunbiz",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQNXpZU1BXZFBTR0hkZU9paDRmX3ZiVGtEVjIwSHRKUTVNWkpxN2RyZjdzaE9xT1F4LUpDTC1YS196S2pSbGRGUTYwX000X3JSV1R4WUJ0SU1TVHlMYXotQ2NmbV9xc0RYRXlzWEUzM1djMTRMdDl0S3czYXNOQ1BQaNIBlAFBVV95cUxPc3ViWDNuanRVNWMwckIxWEtENmVfRUlRMFMybE45ejl3RmhHN2Ffc0lMU3VIQm53SDJ2ZktvQm1CZUZZb25QNjBsRXlyb2ZpNkVHVWNGZzhUNW4zSE03Vld6eFdpRzhHU1dDNm9NLW1QaGNsYUxrdUV3R3lrOUZDN3k1UEZLVEQ1OWhBTEtKNU1oVHBY?oc=5",
+      "date": "Mon, 23 Nov 2026 08:37:00 GMT",
+      "category": "credit",
+      "label": "金融システム",
+      "publisher": "Chosunbiz",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "BIS Extends Suspension Of The Affiliates Rule Through January 10, 2027 - Legal 500",
+      "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQMTN2VjFDRk1ySVpWS2NKcm9ubGs5TlZkQ3ZJX3JtYjhFNmtkck9iNUlSWTVtbWhLZk1falVjTWdEdTVMTDR5UFVqY0ZKN0F5VmZJUFhFcUw5MHhWWDlnRGtaUW1XN3FrZ05tbFh3dHU3eW92RldhdFdFMnVpQ3lEdWNCRm5iVjY1OHF4aGVuVEdCNF9Ld19lNTBkOS1GcDNwSndKd3N2OVE2QnpQcDBIdDNJSm1NbVRMQ1VDaTVlbU1kczhfaHBia1o1Wm5oN3dMX094dG1GRG9oV3oyMWpB?oc=5",
+      "date": "Mon, 23 Nov 2026 08:35:43 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "Legal 500",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -334,6 +356,17 @@
       "category": "rates",
       "label": "金利・インフレ",
       "publisher": "FXStreet",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Export Controls Are Easy to Implement, Harder to Enforce - The Dispatch",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQOWd6cl9ZRjctVFJkQjdfemlPVG91b3NORFRCV3hlOUhvTjg3WklhelIzZ1A4djZwbC04YlNiWk5UR19TMFFCT2V0Sll5eEVYRzlqLTlmUEhWLWRNdmt0VkNGanpvRktRX25jU1RtT1ZqcGE3TDN0NVJpNXRqbFNNb1ItU25keXA5Y09aeGhxVlNNUDJTN09NUkhfQmx4WElW?oc=5",
+      "date": "Mon, 23 Nov 2026 06:05:17 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "The Dispatch",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -460,6 +493,17 @@
       "signalEligible": false
     },
     {
+      "title": "Thailand Business News | Morning Briefing - Thailand Business News",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPaHlvTFEzOHUwX2VmbnNmV2ZGQ2NFejlDck9GTjFHcEIwRnlmS3d2WmR3YVVZdFgxYnllSzh6NkRUZHEwYUhQYkJrOWlZZ29meXZmVmwtVlZvQzJqQ3liUHhjbDFvUmIzR1RtMnpPMGpoMGJxRUp0Qld0Vlk5RUFSRG9oLTdya1VOVDFObEMxd3A1bW5xcjRraQ?oc=5",
+      "date": "Mon, 23 Nov 2026 02:55:56 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "Thailand Business News",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "Spot Gold Rebounds Over 2% to Reclaim $3,600 as Fed Rate Hike Expectations Cool - TradingKey",
       "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQLW9kU3MzVExfQ3NnTm42aThSSGw4cHBKMEV6Znl2d0JkSzVhdl9tMGZfbUdvVHZEU0o4UXBtajI1ZkU0YjRJcWItWldQTENnWjdRcnhBN2w4MDV4M3FERHdCU0plUGl5ZnB4UTZkdFg3azhwSEo1R2hoLWR1V1ZLdDk5ckxsSGFjMDExYjJUVGdha1pobFQ2emJVZVNnRDNEdE5XNWZqa1VhMUpzWmV0THF4WlpUcGViRk41RUplMl9hLUZodmRiWXFFM2JHaUVLY3FCUg?oc=5",
       "date": "Mon, 23 Nov 2026 02:26:42 GMT",
@@ -488,6 +532,17 @@
       "category": "rates",
       "label": "金利・インフレ",
       "publisher": "Eurasia Review",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Nvidia's China Chip Sales Controversy Draws Pressure From Congress and Treasury Alike… Trump's 'State Capitalism' Put to the Test - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0tN0YzYnBQSTRCbWd2clh1U3RLd3BpUmZhWWZ4ZXRkNThsV1BKVUVuRkVSYU50anRGajd4di1mOGRadU5PdGdiRTk4NkQwYms1WDFuenZZMklBSEE3dnNjZDk2Z0VvWnFTWThJQ3YwR282cDY5RXc?oc=5",
+      "date": "Mon, 23 Nov 2026 01:05:00 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "BigGo Finance",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -537,12 +592,56 @@
       "signalEligible": true
     },
     {
+      "title": "COMMENTARY: AI bust hurts Chinese stocks far more than GDP - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPcUFLdUZQYzFtXzVMTHBnR1lTMnhES0gzd2dKY0p5dlVkWUNiX0hFYUZvdGxSaDI0ak5GZkdQZWtpZU41eGpuWHBKX3ZnbE1abnJzME1Xa3RRcVo2dGVKcWJLZ3JLUkNqMHp3RXBOOGF2VzZWYU5oTHZibUlHX3M5VXRGYldyVDMxNzJ2c052VEdpTHRHZU9ucEM5R1dHYk5qNHp5eW9kTDNyZ0RTTE9HUTNOVU1aN1FnajAtczlZUG5aZnhlbElTVWt3ZDVyaDR4a0E?oc=5",
+      "date": "Sun, 22 Nov 2026 23:00:00 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "Reuters",
+      "sourceWeight": 0.92,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "APEC leaders adopt Shenzhen Outlook to accelerate digital trade and strengthen Asia-Pacific supply chains - Thailand Business News",
+      "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxPY1pGODFMakJ3OEF5a0FEQ1pDanZfY0JRMkwwR0JPNkN5SEk1emNNRkdISGpBTjNUUmhsVENmNVFuUkprSW8xNGVpMzN1VU1oYVg4MXJxdnA4QkxSaTlhbFl3WUhMZ1BPbTFTcWZQbk9ueEp0cUJuazBMTi1LRGFRelhNZWkzOExDWE5jeUxKRV8zdzFMcXY0R3Z2M1NpLVF0dzdEWjBzUjFQZE5ZTXpYR0VCU1A2WjRTRXowNmh2Tmh4TTRCVVhTUmo5ZkRHdG1BX2t4eWo1ZkJfUnhqNDFPY0VqcmtPUEgybmxjV1dNY19LUQ?oc=5",
+      "date": "Sun, 22 Nov 2026 22:18:00 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "Thailand Business News",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "Exclusive | Danny Quah on how Asean charts its own course amid fierce US-China rivalry - South China Morning Post",
       "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPS0drT3lqVDZDLWtDM2loWlVJNzlXTEdYLWRPZjlmV2s1QzB4TURrN3BpT28tTXBtdDRTalc1azdIdmMzcE1HcW1FQXFfSUh0MGVTWUdFM19Xc1VkMnlWTmRFb0lheUFMYXNxeTg5NnJmenFBNXk0QnBIbldweFlnbkFDZmloX1RDNG0xanIwXzdSYTFrVFV6Qk5IQUZibm1EQ0xYMUN4NzJabldVVjlhb0lUYV8wZEMwMnk2NWtQamtVSW9BakdkZmNsUdIBywFBVV95cUxPS0drT3lqVDZDLWtDM2loWlVJNzlXTEdYLWRPZjlmV2s1QzB4TURrN3BpT28tTXBtdDRTalc1azdIdmMzcE1HcW1FQXFfSUh0MGVTWUdFM19Xc1VkMnlWTmRFb0lheUFMYXNxeTg5NnJmenFBNXk0QnBIbldweFlnbkFDZmloX1RDNG0xanIwXzdSYTFrVFV6Qk5IQUZibm1EQ0xYMUN4NzJabldVVjlhb0lUYV8wZEMwMnk2NWtQamtVSW9BakdkZmNsUQ?oc=5",
       "date": "Sun, 22 Nov 2026 22:00:12 GMT",
       "category": "trade",
       "label": "貿易・政策",
       "publisher": "South China Morning Post",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Raw materials alliance against Beijing + China’s AI industry faces a rude awakening - Table.Briefings",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOQmtzVkF0NENMLTdwUlRwUjEwbzctSHdObVVvR0J4dTYybldRazlTazdDOTVjaWJZODRSWlFIcm1JQnppRzdJUVhXM002X1ZEYV9ONE5VOHhiRHFYazZfWXFxN0tWb2lYdE9uVmM3UnRGWUMwUGdDUE5HdWNSQVhxdzJadVJIcEZaQ3ZRNzJZeURjd3BTOGZobFZldGxMVVJFcGdOVjNJLWxJaHNwNElKV3JDdFp4TTlPbkVWQzZlZEs3MGpJa2xDTGh6LXpjODdoNmc?oc=5",
+      "date": "Sun, 22 Nov 2026 21:00:53 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "Table.Briefings",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Tungsten challenges China’s critical minerals dominance - The Manila Times",
+      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNdG5OVzNZc2hnaGNaMEFadlRSMlFIbklrRzQ5bmMwQU91RU8zNjFxZ3JqdDhrMERpRGRsMEMwdDNta0FVa0gtanNPeHFaT3R5ZjktQUR6clpvWk05STBrYzkwSFFPZjBIUFJRbEZmMzRSRWI4R01pQUNVNmExVDdPTElxcC1rODRSU1U5Qm8tSWFWU2pEc3Rzcm1lYWVKWTNpa182UFBoU2s3VUU3WFh6S0lGa01oMU9yY21ITXZWeHVuUWNnOElFTk1KY9IBywFBVV95cUxNdG5OVzNZc2hnaGNaMEFadlRSMlFIbklrRzQ5bmMwQU91RU8zNjFxZ3JqdDhrMERpRGRsMEMwdDNta0FVa0gtanNPeHFaT3R5ZjktQUR6clpvWk05STBrYzkwSFFPZjBIUFJRbEZmMzRSRWI4R01pQUNVNmExVDdPTElxcC1rODRSU1U5Qm8tSWFWU2pEc3Rzcm1lYWVKWTNpa182UFBoU2s3VUU3WFh6S0lGa01oMU9yY21ITXZWeHVuUWNnOElFTk1KYw?oc=5",
+      "date": "Sun, 22 Nov 2026 20:58:15 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "The Manila Times",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -570,12 +669,34 @@
       "signalEligible": false
     },
     {
+      "title": "Op-Ed: The West challenges China's critical minerals dominance with unglamorous tungsten - Mining.com",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNaFRxUlVIWWJhVmxyNFhCcWoyMHRJOTFFS3U4ZTU3YTd0bDVjVEJaNVpLYmg1a2lQUUtvUTBUY1ppaE1tQmxUZVk4ME5nbUxXWHE1QVZIVzRZZGdYSmhFeV9abmpyZWN6aEU0YzVBMGhxM05QdkNJeGgzblYxSW44dUZMVzY0Y1d1Yk9kQVI2cnZ5bzB4a0VZUWZva2hHclBsNkk4UUhKbXlpT3BGZXhkSjZMZG4?oc=5",
+      "date": "Sun, 22 Nov 2026 19:07:34 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "Mining.com",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "British Pound Technical Outlook: GBP/USD Tests Pivotal Support—Breakdown Risk Rises - StoneX",
       "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOd0dfRG5aRWE3NGFXSDFpUTA3ZEVleWpuVTJTX0M1aTkxNF9qSTlLZVdPd2JwSlZveWVkMm9GMEgzWVF6Sk5pV2QzWmlnbTlWWTJNMWRmZVpEcHJlY1NDM2xyR2JMU01EOUlYM1gyOE54WVBja0FFXzJORk1NSXNZZENVdG5UY1VkejI0SVJKSk5kXzhHX3NLajV6UktOa3ozQ3pQQ3QwYjd6MjA3QmdTWm5YbFFua2xQanNWZU4wLUc2cEZmNDdyV05n?oc=5",
       "date": "Sun, 22 Nov 2026 18:47:16 GMT",
       "category": "rates",
       "label": "金利・インフレ",
       "publisher": "StoneX",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "The Week Ahead: October CPI and PPI Due as CoreWeave, Cisco and Applied Materials Report Earnings - TradingKey",
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPRzZ2c2pZOXhWd0VsakEtVmtQdHpaRURaTEtqVTRMazl6bzBzSXFkdEhiWHEyTWJOcXJnRE1yUVF1VTA4eGZrNGlyZGxNaEFpM2ZKMWVsdTFYQy1pUEV1eVBVUk9kVFFhaU4xNTVqc0s0RVpZbDZBUWFMc295S005M2hPT1FrVXRyR1FGMHRwS3ZWdnVQTzV1Y3AwOWp4NFlYVVhhWGsyUGJHM2lMdHNPS2tYVVMyTmJkWnlqRkhYWjc2TVJreE9oTHVSTTZzZjQ?oc=5",
+      "date": "Sun, 22 Nov 2026 18:31:01 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "TradingKey",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -658,6 +779,17 @@
       "signalEligible": false
     },
     {
+      "title": "Connector Inserts Market To 2035: Electrification and 5G Drive Forward Growth - News and Statistics - IndexBox",
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxON19kM1RWUnkza1RQZTN1bm0zSTdVQ0tmUTVUVTEwN3BFYVRrX3BtXzlMdmRfUllEaU94dUlrTkpmYW5OTks2b2RvSGtmaDFRa20yMTFzcjRLcFlIUTVNOTZJZkd1UDZMUi1vY0llYkZjek1COHFRQzNMaXluVTdPT1pTVU5ETkhqcFFDUTZLa0pMYWVyNUhIUVl5bGxObXZBNXdUUENwaW9mVDB0VHd1RnVFTDMyRERUbWkwOXZra0RqdXJQcFYwb1JR?oc=5",
+      "date": "Sun, 22 Nov 2026 16:36:04 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "IndexBox",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "Hormuz Escape Route Suggests Ships Navigate on Iran’s Terms - EnergyNow.com",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQcHVkVnBoNG90NW9mNExtbzNvNHZ1Z1NTdkNsN1FzMllEVmFRTlB2N05TbFQya3Zwc0dxd2NPXzd5WWNWcEpQLXJOR2hDbTJZOUQxWkh0aVdlcVFTN2I4OFNpelhfUkVoby14cDRGcnZnUWNpV09vVFc0eGhiUDZVTWZva0tIRE5iWUE4YVFTTElWZ0E?oc=5",
       "date": "Sun, 22 Nov 2026 16:26:49 GMT",
@@ -666,17 +798,6 @@
       "publisher": "EnergyNow.com",
       "sourceWeight": 0.55,
       "score": -0.35,
-      "signalEligible": false
-    },
-    {
-      "title": "Tungsten challenges China’s critical minerals dominance - The Manila Times",
-      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQQm9TUFVuT3dKbXlFOGhNcl9tNXNMNXlSTFZ5M3VjTnExM2pDc3ExVlQ3TEh4U2V2b01kSWI0LUdLV0VuVUdHek54YWdiVGFGcUUwYXEtMmtUSzdFOExsWFdVT3FxUlpucTQxQTlPNy1DODRmaUljMjNvT0lqXzhlUmR5cUJhR1hadlg4ZDFIeFpmdjhzcGRITXF6NmNVQjhVSnVVRGVWQlctRVRxbzdiWHJseWc0V2dQUWlVVllOUE9hTmpfOGfSAcsBQVVfeXFMTXRuTlczWXNoZ2hjWjBBWnZUUjJRSG5Ja0c0OW5jMEFPdUVPMzYxcWdyanQ4azBEaURkbDBDMHQzbWtBVWtILWpzT3hxWk90eWY5LUFEenJab1pNOUkwa2M5MEhRT2YwSFBSUWxGZjM0UkViOEdNaUFDVTZhMVQ3T0xJcXAtazg0UlNVOUJvLUlhVlNqRHN0c3JtZWFlSlkzaWtfNlBQaFNrN1VFN1hYektJRmtNaDFPcmNtSE12Vnh1blFjZzhJRU5NSmM?oc=5",
-      "date": "Sun, 22 Nov 2026 16:01:00 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "The Manila Times",
-      "sourceWeight": 0.55,
-      "score": 0,
       "signalEligible": false
     },
     {
@@ -724,6 +845,17 @@
       "signalEligible": false
     },
     {
+      "title": "Xi needs Trump more than ever - Financial Times",
+      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE0zUjdpdDU0ZDNuSXN6NmFuNUhKcEcxTnEzay1jVjM1NTNiSmhQUWprT0JFaDRzek1hemg1U2c2VnluNFNoclJZYVIya1NyWUNwV2lXZE1CS04wX181ZmZ6aDZuUkRsbUpQSU9TTmlGNlg?oc=5",
+      "date": "Sun, 22 Nov 2026 13:00:06 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "Financial Times",
+      "sourceWeight": 0.92,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "Will gold prices fall or rise? Watch these eight dates - The Financial Express",
       "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPYnR6RVpKLVRnTDdUbFJIRmVLWEl5UmxNZmI1ZHRzX0JsWG9jZmNUNUQ5X19vWll2QjJFekJ5NXhqdjUxc0dxWUM0MjY5SXNRYzlDcURkMXJMZmlyQW1RbTNrQmtESVF3QUlxWGItSjBGdDB4TFVKWW4wZHRTaFZiTU5TOFlyY0t5MVNqQVR0SVRPb3d1VlgxQm9JU1lLY1BPbkxMWDM0eng?oc=5",
       "date": "Sun, 22 Nov 2026 11:27:19 GMT",
@@ -763,6 +895,17 @@
       "category": "rates",
       "label": "金利・インフレ",
       "publisher": "Mathrubhumi English",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "CNN: Trump and Xi promoted cooperation in the field of artificial intelligence, now comes the harsh reality - Gazeta Express",
+      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPc0lKSjBCV296MFRnUEFtMVVfZkZqTlBPNEFISldNRERoWGZsQ3JRWHBJOU1ZT3pSQU9wOXUxNmtCX1VURFdHNVVSc093aGRETVk5YTRabkJ6SDdYQ2ZfSlBpa0NKV2NZazNZU0xZMlJFOXR1V3lCY1AtRUpFMmhXLWxUQ1ZrbTNoWVhPQ2NSOE82QXJPQWlJNmxUc1hJV0RmSXdUTGxOS2pkMW9PV3NmT2NId250WTZkZ1BGUUNtTjhwbmg3TUE?oc=5",
+      "date": "Sun, 22 Nov 2026 10:09:00 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "Gazeta Express",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -834,6 +977,17 @@
       "signalEligible": false
     },
     {
+      "title": "EU and Indonesia Sign Trade Pact to Diversify Supply Chains and Reduce Tariff Exposure - Sri Lanka Guardian",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPNkRNeHdyME1lTTlWSFNDQzV2cUlwLURmWWRJQmJ3c0NhMUVXTkRlcVFPVm1WbEpfdEZaNVV6ZkVKZV9xY2gyZ190ZWFVMHZtRDM5Nm5JNmhBZzdTemlCOVBKLW5wcl9GQlZkQUFqR1FxOHA5YkhyNnNrUGtnTWFuM2FiOUVlTXBrZDdKeTRpQXZmWkY3Y2ZqN0lxZmc1YXhjazBURk5uUWU0d2p3MjhJ?oc=5",
+      "date": "Sun, 22 Nov 2026 06:28:28 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "Sri Lanka Guardian",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "Coordinated interventions - Trinidad Guardian",
       "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPdnJtSmV2QTdhbUMtUGVIS2hLLVN4MTMteFdMaTUzdXZYNnZhejVoRTBwX2tOaUluRnVVWWU4dWhUUHZCM3RtOVFpRHpNQXdKR3ZZcFoyLWZyanUyT1hCRXBRaG94N0tzRWNKLU91bUpDSXpXeGZKbnlidWhXTVZmV3lpNEdNZ1BWeHlJ?oc=5",
       "date": "Sun, 22 Nov 2026 05:36:45 GMT",
@@ -856,6 +1010,17 @@
       "signalEligible": false
     },
     {
+      "title": "\"If you hesitate, all Korean cars will be ruined\"...\"Shocking Chinese Car\" Wave Attack, Fear Becomes Real [車] - 매일경제",
+      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE16c0dzZVBMSlZicElPaWNRQUpkUVBpck1LQ3VxcF9xZlFXVTNBR0VJWWdYdWhnb2sxc1AtOW9mUVc4TWRVakluNVEwTmcwaVU1b3RR?oc=5",
+      "date": "Sun, 22 Nov 2026 04:30:43 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "매일경제",
+      "sourceWeight": 0.55,
+      "score": -0.38,
+      "signalEligible": false
+    },
+    {
       "title": "How Interest Rates Affect Your Stocks, Mortgage and Savings as the Fed Holds Steady After Its First Hike - International Business Times Australia",
       "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOOEljWjhIaUhGa3RmQ3hxUENoU2QzcWJjaTJma0FVY1haVmFfa2N3Wjk2alNQb2N5QUdyM1VXb3VRdGk2bUJFbW0xMXU2ZlEwSm9NM29iYWJIVmdpR2kteWJxd2g0c1pZaXFRbm5lLWxaM1ZIVmV5MS1melRqcmdVTGE3MS1ZYkttWmc?oc=5",
       "date": "Sun, 22 Nov 2026 04:28:59 GMT",
@@ -873,6 +1038,17 @@
       "category": "rates",
       "label": "金利・インフレ",
       "publisher": "Upstox",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "United States President Donald Trump warns firms against offshore data centre expansion - The Mt Kenya Times",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxObUZWcU53TjZKNWZmYVVIem1taHowb2xGejk1c1VIZERXOTdTYUlvZDgxdTdCZXF6Q280bUNLNHE3R1RjNzNwWUVIV3VnRGtQaC1tVDZnTmJLUjRWWVNndjZqY0JDbDBtd1lyNnhBWkxRN0xvaHljMjB6MTVPSzJyc2luRWRIcGZJVnpsdEQtM0lVOXJ6dkQtMTRFOVpXd1dLaTN5b1c3SkVTR3FmeGZ3eGdLUmI4cjhfTEE?oc=5",
+      "date": "Sun, 22 Nov 2026 03:59:38 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "The Mt Kenya Times",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -933,6 +1109,39 @@
       "signalEligible": false
     },
     {
+      "title": "Sen. Andy Kim Warns Trump’s Efforts to Distance America From Canada Are Threatening U.S. National Security — “We Need to Invest in Our Alliances, Not Alienate Our Partners” - NewsBreak: Local News & Alerts",
+      "link": "https://news.google.com/rss/articles/CBMizAJBVV95cUxQc25CWWhJald3d1hNbGZ1ZWlXSFcxMmZIQzNhSlNKZGsxaGFtWXg0MVpfNnczYlBvb3pBdEQ2MDdUX1VJOWdlVnE3REZYUmhzaEIyc1czOGlfS0g2bzRfSUMyaV9QNDJNTlo3emNicndoNWx5MlJjSElHd0lteGNhbDVDSDRSRU9XMG9nMDd0eEJMZkRGZUo4NXJXMk5GRDVReEdLRlpNRDc5eUF6eUp5eGJfYmlNNTdSOHVqTEJJN05JLWlseE9EczRERGlHTnNpUzVEVjhQQi1KcmVUaHpiUnljbGd1VXpaWG5fV3dWWGNtNjAtSlhDa3U0Zm1OSTBPSlBHdm9kNTR2OEJyOGZhNWE2UWNzdmo4dWd3ZXJ1WTRMbDVyMFRJSFh1MmJJWUxROTByRGZNZnNhV1U3cUlzMllicUVGS2lfNFhIOQ?oc=5",
+      "date": "Sun, 22 Nov 2026 01:01:17 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "NewsBreak: Local News & Alerts",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Court Of International Trade Finds Tariffs Imposed Pursuant To IEEPA Unlawful - Legal 500",
+      "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOa0FNem9hYnd0Y1pwb19Ca29mMmRGQTQ1RVZKd2VUUENzSnJYVTBKbG53SG1ZSkJrdWlhdmtEYk5uRkd1WWF1Q2l5eDAtTXRRdEFMSUZ2amFmb2JXRmtfTjdaT2JqX1pNS2NiWm12elZobjJDdXdJSjRuNFZLM0tEcTk4dVpidlpYeW8zUEVvMHM1M3FZU0ZxaThneV85QmJkd1RmX2oxY3RGZVBwMjd1MjRRUWlVc2xWWXFBZ3UyUXNEVkFDeTdDSkszVFVfWlphOTNyTXJ3UW5rOU5nNWQzcQ?oc=5",
+      "date": "Sat, 21 Nov 2026 23:32:28 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "Legal 500",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Food Irradiation Equipment Market To 2035: Regulatory Compliance and RTE Safety Drive Adoption - News and Statistics - IndexBox",
+      "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNaDl2ZmxaUUJMbGtUVkViUWt0UnB0dC1GMXJzamk1SGxBRUU4aUs5am5uelFBTERtNl9lS19ZNjZ6WXBvVHZEWVdQd00xMC12RDQwZDhuY0tNZ2psOFYtSWFoQnhHVjAybU0waUFQSFpwdGtLV05RR3ZQZ0R1TDZiZUFpd1RsQ3ExODYzVnd1YjF3dWZqNGhndUNOMGNuV2Y3dWlab3RpZzZlQ2hoVXVIdzRUeFVJc2FDeFFqdWJKMi12MmFIX1NGTkYteTJnVk5ObkVlazFXM1ZSbzY0V0NOaEFQM0FUQQ?oc=5",
+      "date": "Sat, 21 Nov 2026 22:56:04 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "IndexBox",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "Peru and Japan Agree to Strengthen Mineral Supply Chains - JournalArta",
       "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPWGxHVTJsdzA1R3pOTVJTTHdLdFJHZTVyY3Z1bDMtS1A1S08tZ1gxa0QtalpvZ1pScUJKX24wQjdhYWdfd2JtNXVmRC11Zlh2dk9SZmtPV1hQYWp2QU5fcnBvb2E1U28yb0hrdUIwa3pkX3k3NGVhdlViSnZMYTh0ZnJhdklxRjFM?oc=5",
       "date": "Sat, 21 Nov 2026 22:41:33 GMT",
@@ -955,14 +1164,25 @@
       "signalEligible": false
     },
     {
-      "title": "USD/JPY, USD/CAD Outlook: Fed hawks put dollar bulls on alert - StoneX",
-      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQTEZMVEp4NHR6alg1TnZ0LUMxaGgxUnlvVkhBY2dSb3Rlc0hoYzIzbUJidzVsbzlQeUxSOG9ZZ2NJR05qeWVnWElkZGZON0xmOTluaFpSeVZFSWd4UXk0TmF5VHhSek9fNkpRbWJBTnFTY0pjNHlVWXpwQ1NlU05XOTIyaVluUmZ6aEMtWnZpbnpFemFsSDBRTV8tMUdHUWZpZzVIRTFoU1ZWMlE?oc=5",
-      "date": "Sat, 21 Nov 2026 21:35:39 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "StoneX",
+      "title": "\"The Tech Cold War Between China and the United States\" - The Country Today",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQajNhcnZYRDlBMjJ4MndiWlV6Mmt4MlFQdnlCaE9OVXBNMEYyN2pUVGdCWFRsSk5pbjY2S2NRbWhicDFpQ190dXNmUklqTkMzalgxaTA1LVMyUGxfS2xFOFRTb2hqZW84RGphMEQ4WktFbENjeUdnT0owSTRtX1V5VHlDSC1LQ1hvZ1pGVW1qT3NTdTJVRmxlYjEwV2hpZw?oc=5",
+      "date": "Sat, 21 Nov 2026 22:22:44 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "The Country Today",
       "sourceWeight": 0.55,
       "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Tabletop Chains Market To 2035: Food Processing Automation and Packaging Upgrades Fuel Forward Growth - News and Statistics - IndexBox",
+      "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPLXctY3JwQU5TV05tYTZkcWh5S0lWbE1DRXV4RjBtbXNsZERQZWkwdGNPTUZXYV9Eek95SXhtbnFyTnE0YlBVRlc1T0Zra3JaRGdyb1FBeFlBOEVNU0ZMM0wtZ0tGMW9BOGNYTHhSNjBNMmVBWDJ6N2lLY1I5YXdiTzFfdXZMZm8zZENacEdpNHVNcHhUX3VpdVJScXZEQk5DUWctcm5ab2ZSdG0zcndxTENYVFVPRHZyR1JfVFZzUmlBaFM4bVdmaVY2eWcyZzFDY3V4WXJlZEI?oc=5",
+      "date": "Sat, 21 Nov 2026 21:01:04 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "IndexBox",
+      "sourceWeight": 0.55,
+      "score": 0.38,
       "signalEligible": false
     },
     {
@@ -983,6 +1203,17 @@
       "category": "trade",
       "label": "貿易・政策",
       "publisher": "news.lavx.hu",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Spend the Lead on Safety: Biden AI Advisors Ben Buchanan & Tantum Collins on the Fate of the World - finance.biggo.com",
+      "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBzZUhWdm9ycHJyMlFMLW14bWd0d3Y2d0Z3NTA5ZzlmSXFBSk1PMG4zVDdBZEhVYkZURGg3V2liNDFKZkxMTXJHQW91UWJUT090dkk2QU9CZ0Y5U3RTNDZV?oc=5",
+      "date": "Sat, 21 Nov 2026 19:43:28 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "finance.biggo.com",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -1027,6 +1258,17 @@
       "category": "rates",
       "label": "金利・インフレ",
       "publisher": "AOL.com",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "FX Weekly: Tightening Tremors Are Rattling the Currency Markets - The Dark Side Of The Boom",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPOHU3NDBkaFFwZmQweW53V1hJTHpBY05mSnRaRzk5dTRlMzNLaFpoOWJHSTNlZ1BEUFlzYXIwTjcyYllpMlg1VnBfbV9uYWNjaUlyM0FfVmszbmpYSzJBUHRRSElqdUFfTm9qOHRpQzRiWFlLVTlET1Jrdk0xZFJSWVhvZ20?oc=5",
+      "date": "Sat, 21 Nov 2026 16:31:19 GMT",
+      "category": "fx",
+      "label": "為替",
+      "publisher": "The Dark Side Of The Boom",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -1742,248 +1984,6 @@
       "category": "oil",
       "label": "原油・エネルギー",
       "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "World Energy Outlook 2026 - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5jbGVDcGZ1Nkx3Yk0xbEVTeVlXWmZYWlQ1UUR1Vk1Nam5RMG9TZTNTT1NoUTRrYjBlNkhMTnp6MElQQzM5b2hVVTJFdGpwdGNYTjI0MnBzVEcyUGZrSzA0ODVPZw?oc=5",
-      "date": "Thu, 19 Nov 2026 05:00:00 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Global Energy and Climate Model - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1aNlpVUTVvdEdBamFzT3JuSXozcXd2blgyQV81aUU5NkR5eXBJVHlzZERUTDRBaFFZUG15WGlTb1hhNmdTU1lwak9FanZhOVI0NTZJTFBBai1rblM4U3R0Y1k4YkJIT1pPUjJr?oc=5",
-      "date": "Thu, 19 Nov 2026 05:00:00 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "World Energy Outlook 2026 Free Dataset - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNdmI2ZDlfRVp4QUZsZlNHSk5XdzVicjY3Z1RLT2k0bE4yVG5YX2xTaDdOaGpBSXBBZTUyQXAtWjZBY1MzUlV6aHZiNmF3Zmt5ekN3MFJuV1czcTFSZ3pCeHhkNmFLODc3VUpqUmJDVEVLQmF3Zm9hOG1hRVlPTFFDNmZwTkFYaGlkcC1VYnp2RTRtM0xtZWRZMA?oc=5",
-      "date": "Wed, 18 Nov 2026 23:26:54 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Young Economist Prize – 2026 - European Central Bank",
-      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNQjBPVTlHRmtZTFdIcWgzYmZsOTlqejVJZDk5TG1qdkFTRUF1WEJGdzdtbTh4SGpESHRXR3lGZHBMLWpnSHJZamdsMnVyTUJrV1pfNkY4ekN5dGxEUkgwRTlaTVVELTd5RklOZ3ZFLU1PUHR4ZXBXSmQ2c1dYNXI0MjFTMFdqOW9RcGx1eUxqcm9kZlFZNlZDVzUteU9ENnUtQWVDNnpjMTk?oc=5",
-      "date": "Wed, 18 Nov 2026 21:13:09 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "European Central Bank",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "FOMC Minutes, October 27-28, 2026 - Federal Reserve (.gov)",
-      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFA2SzktTy05dU8zSHJESEk3VVJMQ2t6SXpjVVRseHZPN3A3VUxOclpKek1FbGVNYjlQLUY4Mkc4YlNOTDBGS3hYRGphYmswempKbWF6bVlTSGZDSWVDTG1ZR2dMYWJmN3NTcVB1UDMwRkEzV2dJODJqQw?oc=5",
-      "date": "Wed, 18 Nov 2026 19:02:30 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Federal Reserve (.gov)",
-      "sourceWeight": 1,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Minutes of the Federal Open Market Committee, October 27-28, 2026 - Federal Reserve (.gov)",
-      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPUVBkdTdsNVhzTkJSN3NwLXNCX3ZDeGhmWnRzcjRrRE95RXJyUHgtZ05tcFBlYkRiaERDRGdCd2NhTUhxUXpZU1JTTmJiZG8zakt3dFVBRmxHYVo1OE9PdGdQMTk3NDVlT3YxbEp0QzdsTVpEOVhtbm1UemxQNWo5NlVLMA?oc=5",
-      "date": "Wed, 18 Nov 2026 19:01:43 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Federal Reserve (.gov)",
-      "sourceWeight": 1,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Financial Accounts Guide - Federal Reserve (.gov)",
-      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQcnVyR0J0TlJ1MlNPYXVRdms1NmJKVjFOWHEwMF9rbURNeFNicktUQnZnSU96NldPTm1PY1pSSGFtY21hVUprZlRmR24zNFhId2Jsa1hkMzBZZVRKb2pyckZ2Vm9RVDRyWjZMbjBjOThMSGg3a01lTXFCRlVIRks5TVFvMU45YzJDMjJuVHZMQ29JZV85MjhlRUZrekRvMlltZ0pzSm1TcExpT2hBODNr?oc=5",
-      "date": "Wed, 18 Nov 2026 18:59:18 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Federal Reserve (.gov)",
-      "sourceWeight": 1,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Speech by Governor Barr on community development investments - Federal Reserve (.gov)",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1YWkJsUmdjdmE4UVF5UnVVZW1jT1RxUkk3QWd5Qkpvb05MZkd6emRqc2h6QnAySHFTbHFEd1ZmUXBBZWhhM2ZwektyTlZMS0tWMkJTMmxIdkVBUm1BZlRtT0NCMUt5Mkl3X3llckgyVWRJc3NQ?oc=5",
-      "date": "Wed, 18 Nov 2026 18:36:43 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Federal Reserve (.gov)",
-      "sourceWeight": 1,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Consumer Expenditures in the Northeast Region — 2025 - Bureau of Labor Statistics (.gov)",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPcUtWRGdJQm5PRDFPOGpmdmthQVFGUWNYMkpBcVE3OXlUZnpDZWVuZGpqbXRsSEREMllYLTNSRG1teTJpUUppcTRDeHZhTy1iQkJTLTVqSXRvR2lEQjB2MHRfSlBJendEUG8tUVBpRmNBWUpjUVpJbHRrdWZtTmN0cXFYbTBUSzlTTTlBWW5B?oc=5",
-      "date": "Wed, 18 Nov 2026 16:41:20 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "Bureau of Labor Statistics (.gov)",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Payroll employment increased by 885,000 from October 2025 to October 2026 - Bureau of Labor Statistics (.gov)",
-      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxObjRlNmI0NVBvek9rbV9NOEpoNTFPNlBtb2R4T01zSFQ2LWF4TjhkcVUzekVwVWo5UEhMY3VJU2UwWFh5aVZhbEl1MnoxNFMzN2NXRlhlTUFuS1d3R0s5aHRHOGM2aklDeXJyNk5OaTdwOG03RFNleXlPbFU5eTZBSFJNQXE0blc1NlJiMFpfMFlic3YyNUgwOVh2OVE4bnlmOXNsaDA3MEVtRkp4MzBJ?oc=5",
-      "date": "Wed, 18 Nov 2026 16:11:27 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "Bureau of Labor Statistics (.gov)",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Extreme weather poses growing risks to global oil and natural gas shipping, new IEA report finds - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPVzEyaDRXMTFMbnlVbjRuODlwSndsb01TWWRZV2F3b0ZzeWZrejlqYThKZjdBNUVNcURXdk1RV0xiNlRMbUxVbHhsN2RicmhEYzFnTWFkS3NyalY4UTlUU1QyS1k1OUNXNmlTX1FOdEFvX191X0pQOUxQVGlJclFmM295VVAwWWNGZG9sbWNIbnFWYjdTMFF6VFJncWJwWFh6MktUZW16X0ZMaU9hOEs1Ymp3S3Y1TXlIS2E2cA?oc=5",
-      "date": "Wed, 18 Nov 2026 13:35:54 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Executive summary - Extreme Weather Risks to International Oil and Natural Gas Shipping - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQaXgzSFQwRWdHTFBHRjJEZDNXcC1SRlYyci1EM1AyVGhwTTdoSTFFMzA0THAtNjVnZ0tLOEt2aHJWbTBmN3A3bVl1cGZFUWtqQWtGaDNzVGVqX1lOX3R6NTVtWFhHcE9TQVo3a0h4WnNLeEVublZQai1yeURJcElhTUlBeDZDWE03d3F0UVhodUQ0QlpkV2V3ZlFxekFndm1QV1BRLXVfT0lsQ2s1UHYzVmFVVQ?oc=5",
-      "date": "Wed, 18 Nov 2026 11:22:20 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Papers by Urban Rupnik - European Central Bank",
-      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQOWdwNjVpTkJ6bV9EZGRIVWhtcHZWekxJOEIzeFVhTWVkamV3YWE2TFFqZERQZGF5NG1TckktUWI5UGxFdU43c25HZ3ZxSXp5Sk1paWVvZVI5ZDdtWUtQU1BGLWVLbHR2TkdtbGtOdlVGU3hGNkZKSjQ0TUdRTnFSSnFn?oc=5",
-      "date": "Wed, 18 Nov 2026 09:05:35 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "European Central Bank",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Papers by Andrea Sante - European Central Bank",
-      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNSEgzajE3bEROaFl0V01BZXdLdUlGZG84MTkxT3JsMk5FQkF2bXAyOURzRDFFRkVnYmdiWjJjQkVFYU9uakpzbmlKQTZvVHM1UUh2alZjc19tNm9FZkM0NWpjRF9rN1RGQ0s5QVUzb3duY1NOUWtsY0tFOGMtOE5lSkdB?oc=5",
-      "date": "Wed, 18 Nov 2026 09:05:35 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "European Central Bank",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Bank reliance on credit protection providers via synthetic risk transfers - European Central Bank",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPeGg2S1QzazhQendiU3VVV0RUbnZqeVFqR2lzT1dQaTVURzM4OW0wT28xZW9pTG95WXZFenZwbmotRjFaLUxUcDVmSlU0ZDgta2RweHIzSktqYWVkZ2VZcGJDaDA5aHlDNGIwRE1WSWFpVDdKTEV4RDNjVm5wSnZlUnlDRlUwLWNlQnE1VkQ0STNBVkpQcHl0NktfQVRyM1VFZ0xfSV9ZN1UweHhHWWVVYTdJSHZ6c1p2WFV3d09qOU8?oc=5",
-      "date": "Wed, 18 Nov 2026 09:03:18 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "European Central Bank",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "The footprint of hedge funds in euro area sovereign bond markets via repo markets - European Central Bank",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOS0tndktJRUcxOVo5b0U4U3RJeWY5Z1FqZjl6T1REWVhiRjZYWkZUbVlOTnlRWlhSZnZPYnF5dWhGNVkwdThoWWQ3eVNiOTRkbFJsSlRkNVEwX2FBaDNXN3VZcXhPelNobXhrcWFzUW1Vb1J6bFNMOVpDMF9nY0RoWm9oZGRQajlKOFBJb2JoSkg0WkN0UThTcUZaR1ZKS0NJRU9hUVlLUm9ra0Nac0dkM0UzQ3IwRHFjX2k0M0FtdnM?oc=5",
-      "date": "Wed, 18 Nov 2026 09:03:17 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "European Central Bank",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "The effects of oil supply shocks on corporate resilience, bank asset quality and lending - European Central Bank",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPcllvR2pfangzUlZ5VEJ5OXFJNU4yb1F5cS1ZU2ZlMWJOYWFWcnhsMHBERzRBOExhZ04wckk4YkFNMFNZbFRLRGtZczBsYm4ycDNhN25UZHhwel9QdVpBNVZWSUc5YTdCdlhNZUNiZmZmMmVSNFdvUnNCNTB4WGY0LW5fenVFV2swU2hzZnhENVlQZkNCUWxlcV9wSUVpQ1BxYm05Ul9QclY4U2ExYzJzYUdUWUZNYVNaSEFUUHNfRFo?oc=5",
-      "date": "Wed, 18 Nov 2026 09:03:13 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "European Central Bank",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Diverging developments in euro area residential real estate markets: risks and policy considerations - European Central Bank",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPdmItTVJhTVpJb3VrZ2J6SmpzRmhvUEsyUVdTMTNEQUNMZXg5MGU1eWJBVExBdGlhTTJ0MHZLb19WeURDRjNud2xyb0d4VFUzempKLVBXUm9tT0t6Q0tvUVdHR2cyTTdIR2xDdnVIZnZMMVhjTkFHcGlvdjY0U0laYnUyaTRYVFlpdlo5V3NUaWxrTGE1R2lKc2tqUlQ3QXVwQnJWN2g2dkxfZXZubnFlbm9wNEpGT1RXMDZOR0RhdEU?oc=5",
-      "date": "Wed, 18 Nov 2026 09:03:10 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "European Central Bank",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Financial Stability Review, November 2026 - European Central Bank",
-      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNM1k5cldKRUxEeDl2MmFyWk0xWVZ4ajFKUV90Si0ydVJTM1NtN3EzbF82dWM4Rjg0alF1Q3gwVjFMdm1keUtONkZDWHpQbzJ5TXp2WUJLS1AtZ3BjTzQ1UThYaUhFM1JWN2dpZC1IZEtkN1NTelJPek5vbVVkUXl5VHhMZnpWMWVWT1Jxb0lhMndvVXF2R1pCa3J0emRQMFBTTGI2WExBYzVBQQ?oc=5",
-      "date": "Wed, 18 Nov 2026 09:03:04 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "European Central Bank",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Risks from AI valuations, fiscal imbalances and geoeconomic tensions weigh on financial stability outlook - European Central Bank",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQMWtZOXhELTFrT1hpVlZVb05tNXlyZlJZWGkydklhb2dNYjFVaTV6V29fNDAxZzh2N01renNqV3pUSUtTYnVVZmJzSU42aXFkb0Z2dTFwV2JxSC04NFk2aFE3NktlcTFqWU5wVlZuQjU1ZGQ0ZE5OWldOZ1lFTTlwSWpaVGYtak1l?oc=5",
-      "date": "Wed, 18 Nov 2026 09:03:04 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "European Central Bank",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Financial Stability Review - November 2026 - European Central Bank",
-      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNeUtaSGUwTTFVZVpiNTd6V1B4b0xuT2tvaTRpZGlXVld3MkhaUFBOdGEza1FiV1J6RWtrZnRTVG5aaEVFTDZTdU5nMTlkYllUeWxyd1VVajQ3RDQxZXhZLV9CcHk4eUxvemRVaDVuVFRuZzlvQ1NZR1NxUkthYUw3N001UEtoejA4LVByRWw5ZjFNdDZhaWFVNWlkTTN2VERUYnJzTFBCcUtTZU0zM0lOUHZ3YnQ?oc=5",
-      "date": "Wed, 18 Nov 2026 09:03:03 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "European Central Bank",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Employer-Reported Workplace Injuries and Illnesses, 2025 - 2025 A01 Results - Bureau of Labor Statistics (.gov)",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5WWUlkY2xLTFBwT3NFQVVlVHNYdmVkaXFELWdfWEpRVnVrck0tN3czQXVPUzVOV1RYVU8xbG5LZl9GLTZqbXFneDdraW5ybXlYajNibjZYQQ?oc=5",
-      "date": "Wed, 18 Nov 2026 08:00:00 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "Bureau of Labor Statistics (.gov)",
       "sourceWeight": 0.92,
       "score": 0,
       "signalEligible": false
