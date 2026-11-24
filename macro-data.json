@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "source": "FRED public data export (one request per series) + OECD Key Short-Term Economic Indicators",
-  "generatedAt": "2026-11-23T13:50:48.020Z",
+  "generatedAt": "2026-11-24T07:38:28.946Z",
   "status": "ok",
   "seriesCount": 15,
   "signalCount": 13,
@@ -60,16 +60,16 @@
       "detail": "10年-2年 0.29pt",
       "source": "FRED",
       "seriesId": "T10Y2Y",
-      "observationDate": "2026-11-20"
+      "observationDate": "2026-11-23"
     },
     {
       "id": "macro_hy",
       "label": "ハイイールド債信用スプレッド",
-      "value": 0.32666666666666666,
-      "detail": "スプレッド 3.52%",
+      "value": 0.24666666666666673,
+      "detail": "スプレッド 3.76%",
       "source": "FRED",
       "seriesId": "BAMLH0A0HYM2",
-      "observationDate": "2026-11-19"
+      "observationDate": "2026-11-20"
     },
     {
       "id": "macro_nfci",
@@ -83,11 +83,11 @@
     {
       "id": "macro_10y",
       "label": "米国10年金利の約3か月変化",
-      "value": -0.2833333333333332,
-      "detail": "約3か月 +0.34pt",
+      "value": -0.23333333333333356,
+      "detail": "約3か月 +0.28pt",
       "source": "FRED",
       "seriesId": "DGS10",
-      "observationDate": "2026-11-19"
+      "observationDate": "2026-11-20"
     },
     {
       "id": "macro_cli_JPN",
@@ -203,7 +203,7 @@
       "frequency": "daily",
       "category": "rates",
       "latest": {
-        "date": "2026-11-20",
+        "date": "2026-11-23",
         "value": 0.29
       }
     },
@@ -213,8 +213,8 @@
       "frequency": "daily",
       "category": "rates",
       "latest": {
-        "date": "2026-11-19",
-        "value": 5.04
+        "date": "2026-11-20",
+        "value": 4.92
       }
     },
     {
@@ -223,8 +223,8 @@
       "frequency": "daily",
       "category": "credit",
       "latest": {
-        "date": "2026-11-19",
-        "value": 3.52
+        "date": "2026-11-20",
+        "value": 3.76
       }
     },
     {
