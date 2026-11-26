@@ -333,7 +333,7 @@ function forecast(a){
  const positives=parts.filter(p=>p.value>.035).map(p=>({name:p.name,value:p.value}));
  const negatives=parts.filter(p=>p.value<-.035).map(p=>({name:p.name,value:p.value}));
  const relatedNews=signalNews.filter(n=>relFor(a,n.category)>0).slice(0,8).map(n=>({title:n.title,category:n.category,score:n.score,link:n.link}));
- return {id:a.id,name:a.name,macroScore:Number(macroScore.toFixed(3)),macroSignalsUsed:macroKeys.length,fundamentalAnalysis,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,trendScore,crossScore,newsScore:ns,reversalScore,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",probs:[probability],rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,coverage,newsCoverage,missingFeeds,positives,negatives,news:relatedNews,modelVersion:"2.5.0",source:"GitHub Actions server-side model"};
+ return {id:a.id,name:a.name,macroScore:Number(macroScore.toFixed(3)),macroSignalsUsed:macroKeys.length,fundamentalAnalysis,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,trendScore,crossScore,newsScore:ns,reversalScore,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",probs:[probability],rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,coverage,newsCoverage,missingFeeds,positives,negatives,news:relatedNews,modelVersion:"2.5.1",source:"GitHub Actions server-side model"};
 }
 function buildMacroOutlook(){
  const q=quotes, valid=id=>q[id]&&Number.isFinite(q[id].week)&&Number.isFinite(q[id].day);
