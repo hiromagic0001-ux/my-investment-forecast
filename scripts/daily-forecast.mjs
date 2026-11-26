@@ -38,6 +38,14 @@ function buildTechnicalSeries(closes){
    row.bbPercentB=sd?((closes[i]-row.bbLower)/(row.bbUpper-row.bbLower)):0.5;
    row.bbWidth=m?(row.bbUpper-row.bbLower)/m*100:0;
   }else{row.bbMiddle=null;row.bbUpper=null;row.bbLower=null;row.bbPercentB=null;row.bbWidth=null;}
+  if(i>=14){
+   let gains=0,losses=0;
+   for(let j=i-13;j<=i;j++){const d=closes[j]-closes[j-1];if(d>0)gains+=d;else losses-=d;}
+   const avgGain=gains/14,avgLoss=losses/14;
+   row.rsi14=avgLoss===0?100:100-100/(1+avgGain/avgLoss);
+  }else row.rsi14=null;
+  row.return1=i>=1?(closes[i]/closes[i-1]-1)*100:null;
+  row.return5=i>=5?(closes[i]/closes[i-5]-1)*100:null;
   rows.push(row);if(row.bbWidth!==null)widths.push(row.bbWidth);
  }
  const last=rows.at(-1),price=closes.at(-1);
@@ -50,12 +58,20 @@ function buildTechnicalSeries(closes){
  if(last.sma25!==null&&last.sma75!==null)score+=last.sma25>last.sma75 ? .12 : -.12;
  if(last.sma75!==null&&last.sma200!==null)score+=last.sma75>last.sma200 ? .08 : -.08;
  const p=last.bbPercentB;
- if(p!==null){if(p>1)score+=score>0 ? .05 : -.10;else if(p<0)score+=score<0 ? -.05 : .10;else if(p>=.5)score+=.07;else if(p<=.25)score-=.07;}
+ // Bollinger extremes are exhaustion warnings, not automatic continuation signals.
+ if(p!==null){if(p>1)score+=score>0 ? -.05 : -.10;else if(p<0)score+=.10;else if(p>=.5)score+=.04;else if(p<=.25)score+=.02;}
+ let reversalScore=0;
+ if(last.rsi14!==null&&p!==null){
+  if(last.rsi14<28&&p<.12)reversalScore=.45;
+  else if(last.rsi14<35&&p<.25)reversalScore=.25;
+  else if(last.rsi14>75&&p>.88)reversalScore=-.40;
+  else if(last.rsi14>68&&p>.75)reversalScore=-.20;
+ }
  const trend=score>.22?"上昇トレンド":score<-.22?"下降トレンド":"方向感が弱い";
  const crossState=last.sma5!==null&&last.sma25!==null?(last.sma5>last.sma25?"5日線＞25日線":"5日線＜25日線"):"短期線データ不足";
  const midCross=last.sma25!==null&&last.sma75!==null?(last.sma25>last.sma75?"25日線＞75日線":"25日線＜75日線"):"中期線データ不足";
  const bbState=p===null?"算出中":p>1?"+2σ上抜け":p<0?"-2σ下抜け":p>=.8?"上限寄り":p<=.2?"下限寄り":"バンド内";
- return {rows:rows.map(r=>({sma5:r.sma5,sma25:r.sma25,sma75:r.sma75,sma200:r.sma200,bbMiddle:r.bbMiddle,bbUpper:r.bbUpper,bbLower:r.bbLower})),current:{sma5:last.sma5,sma25:last.sma25,sma75:last.sma75,sma200:last.sma200,bbMiddle:last.bbMiddle,bbUpper:last.bbUpper,bbLower:last.bbLower,bbPercentB:p,bbWidth:last.bbWidth,bbWidthPercentile:rank,squeeze:rank!==null&&rank<=.2,bbState,trend,crossState,midCross,score:Math.max(-1,Math.min(1,score))}};
+ return {rows:rows.map(r=>({sma5:r.sma5,sma25:r.sma25,sma75:r.sma75,sma200:r.sma200,bbMiddle:r.bbMiddle,bbUpper:r.bbUpper,bbLower:r.bbLower})),current:{sma5:last.sma5,sma25:last.sma25,sma75:last.sma75,sma200:last.sma200,bbMiddle:last.bbMiddle,bbUpper:last.bbUpper,bbLower:last.bbLower,bbPercentB:p,bbWidth:last.bbWidth,bbWidthPercentile:rank,squeeze:rank!==null&&rank<=.2,bbState,trend,crossState,midCross,rsi14:last.rsi14,return1:last.return1,return5:last.return5,reversalScore,score:Math.max(-1,Math.min(1,score))}};
 }
 function fxInterventionRisk(q){
  if(!q)return {score:0,label:"データ不足"};
@@ -244,7 +260,7 @@ function factorValue(id){
  }
  const q=quotes[id];if(!q)return null;
  const trend=q.week*.65+q.day*.35;
- let raw=trend;if(id==="rates"||id==="risk")raw=-trend;
+ let raw=trend;if(id==="risk")raw=-trend;
  const scale=id==="rates"?1.4:id==="fx"?1.2:id==="risk"?2.2:id==="nvda"?3:2.5;
  const fxRisk=fxInterventionRisk(quotes.fx).score;
  return id==="fx" ? clamp((raw/scale)*(1-.65*fxRisk)-.10*fxRisk,-1,1) : clamp(raw/scale,-1,1);
@@ -272,32 +288,37 @@ function forecast(a){
  const macroKeys=Object.keys(macroWeights).filter(k=>Number.isFinite(macroById[k]));
  const macroDen=macroKeys.reduce((sum,k)=>sum+Math.abs(macroWeights[k]),0);
  const macroScore=macroDen?macroKeys.reduce((sum,k)=>sum+macroById[k]*macroWeights[k],0)/macroDen:0;
- const macroContribution=macroScore*(a.id==="fang"?.14:.09);
- const parts=[
-  macroContribution,
-  clamp(own.week/2.8,-1,1)*.24,
-  clamp(own.month/7,-1,1)*.18,
-  clamp((12-own.vol)/18,-.5,.5)*.05,
-  (own.technical?.score||0)*.18,
-  ...(a.id==="nikkei"?[-fxRisk.score*.12]:a.id==="topix"?[-fxRisk.score*.08]:[])
- ];
- for(const [id,exp] of Object.entries(a.exp)){const v=factorValue(id);if(v!==null&&Math.abs(exp)>.01)parts.push(v*exp*.42);}
- if(quotes.nvda&&a.exp.nvda)parts.push(clamp(quotes.nvda.day/4,-1,1)*a.exp.nvda*.7);
- if(a.id==="fang"){
-  const semi=quotes.semi,nasdaq=quotes.nasdaq,vix=quotes.risk,nvda=quotes.nvda;
-  const semiShock=semi?Math.max(0,-semi.day-1.5)*.025:0;
-  const nasdaqShock=nasdaq?Math.max(0,-nasdaq.day-1.0)*.02:0;
-  const nvdaShock=nvda?Math.max(0,-nvda.day-2.0)*.012:0;
-  const volatilityShock=vix?Math.max(0,vix.day-8.0)*.004:0;
-  const shockPenalty=clamp(semiShock+nasdaqShock+nvdaShock+volatilityShock,0,.25);
-  if(shockPenalty>0)parts.push(-shockPenalty);
+ const trendScore=clamp(
+  clamp(own.week/3.5,-1,1)*.45+
+  clamp(own.month/9,-1,1)*.20+
+  (own.technical?.score||0)*.35,-1,1);
+ let crossTotal=0,crossWeight=0;
+ for(const [id,exp] of Object.entries(a.exp)){
+  const v=factorValue(id);
+  if(v!==null&&Math.abs(exp)>.01){crossTotal+=v*exp;crossWeight+=Math.abs(exp);}
  }
+ const crossScore=crossWeight?clamp(crossTotal/crossWeight,-1,1):0;
  let total=0,weight=0;
- for(const n of signalNews){const rel=relFor(a,n.category),sourceWeight=n.source==="X"?(n.verifiedForSignal?Number(n.trustScore||0):0):n.source==="NEWS"?Number(n.sourceWeight||0):1;total+=n.score*rel*sourceWeight;weight+=rel*sourceWeight;}
- const ns=weight?clamp(total/Math.max(2,weight),-1,1):0;
- parts.push(ns*.28);
- const rawScore=clamp(parts.reduce((s,v)=>s+v,0),-.85,.85);
- const score=clamp(rawScore*(1-.65*earningsRisk.score)-.035*earningsRisk.pricedInScore*earningsRisk.score,-.85,.85);
+ for(const n of signalNews){
+  const rel=relFor(a,n.category);
+  const sourceWeight=n.source==="X"?(n.verifiedForSignal?Number(n.trustScore||0):0):n.source==="NEWS"?Number(n.sourceWeight||0):1;
+  total+=n.score*rel*sourceWeight;weight+=rel*sourceWeight;
+ }
+ const ns=weight?clamp(total/weight,-1,1):0;
+ const reversalScore=Number(own.technical?.reversalScore||0);
+ const components=[
+  {name:"価格トレンド",value:trendScore,weight:.42},
+  {name:"海外・関連市場",value:crossScore,weight:crossWeight?.28:0},
+  {name:"マクロ環境",value:macroScore,weight:macroKeys.length>=4?.12:macroKeys.length?.06:0},
+  {name:"ニュース",value:ns,weight:weight>.05?.10:0},
+  {name:"売られすぎ・過熱の反転警戒",value:reversalScore,weight:reversalScore!==0?.10:0}
+ ];
+ if(a.id==="nikkei")components.push({name:"為替介入リスク",value:-fxRisk.score,weight:.06});
+ if(a.id==="topix")components.push({name:"為替介入リスク",value:-fxRisk.score,weight:.04});
+ const totalWeight=components.reduce((sum,x)=>sum+x.weight,0)||1;
+ const rawScore=clamp(components.reduce((sum,x)=>sum+x.value*x.weight,0)/totalWeight,-.65,.65);
+ const score=clamp(rawScore*(1-.65*earningsRisk.score),-.65,.65);
+ const parts=components.filter(x=>x.weight>0).map(x=>({name:x.name,value:x.value*x.weight/totalWeight}));
  const coverage=Object.keys(a.exp).filter(id=>id==="oil"?(quotes.oil||quotes.brent):quotes[id]).length/Object.keys(a.exp).length;
  const coveredFeeds=new Set(signalNews.map(n=>n.category));
  const missingFeeds=["geo","oil","rates","tech","japan"].filter(id=>!coveredFeeds.has(id));
@@ -312,12 +333,12 @@ function forecast(a){
  const attentionRisk=attentionHeat*(.5+.5*authorConcentration);
  const quality=clamp(baseQuality*(1-attentionRisk*.12)*(a.id==="fang"?1:1-fxRisk.score*.08)*(1-earningsRisk.score*.18),.2,1);
  // Missing news feeds reduce quality and pull the forecast toward neutral; they do not silently erase a forecast.
- const probability=Math.round(clamp(50+score*.75*23*quality,28,72)*10)/10;
+ const probability=Math.round(clamp(50+score*16*quality,38,62)*10)/10;
  const sigma=(own.vol/Math.sqrt(252))/100,rangePct=Math.max(.003,sigma*1.5*(1+attentionHeat*.2+earningsRisk.score*.8));
  const positives=parts.filter(p=>p>.035).map((v,i)=>({name:"上昇要因 "+(i+1),value:v}));
  const negatives=parts.filter(p=>p<-.035).map((v,i)=>({name:"下落要因 "+(i+1),value:v}));
  const relatedNews=signalNews.filter(n=>relFor(a,n.category)>0).slice(0,8).map(n=>({title:n.title,category:n.category,score:n.score,link:n.link}));
- return {id:a.id,name:a.name,macroScore:Number(macroScore.toFixed(3)),macroSignalsUsed:macroKeys.length,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",probs:[probability],rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,coverage,newsCoverage,missingFeeds,positives,negatives,news:relatedNews,modelVersion:"2.3.1",source:"GitHub Actions server-side model"};
+ return {id:a.id,name:a.name,macroScore:Number(macroScore.toFixed(3)),macroSignalsUsed:macroKeys.length,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,trendScore,crossScore,newsScore:ns,reversalScore,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",probs:[probability],rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,coverage,newsCoverage,missingFeeds,positives,negatives,news:relatedNews,modelVersion:"2.4.0",source:"GitHub Actions server-side model"};
 }
 function buildMacroOutlook(){
  const q=quotes, valid=id=>q[id]&&Number.isFinite(q[id].week)&&Number.isFinite(q[id].day);
