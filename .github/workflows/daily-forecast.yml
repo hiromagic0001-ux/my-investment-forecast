@@ -1,11 +1,12 @@
 name: Daily investment forecast
 on:
   push:
-    branches: [main]
+    branches: [world-market-jp225-purple-only]
     paths-ignore:
       - forecast-history.json
       - market-signals.json
       - earnings-calendar.json
+      - macro-data.json
   schedule:
     # 07:00 JST Monday-Friday = 22:00 UTC Sunday-Thursday
     - cron: "0 22 * * 0-4"
@@ -25,27 +26,30 @@ jobs:
       - name: Checkout deployment branch
         uses: actions/checkout@v4
         with:
-          ref: restore-world-market-japan-heatmap
+          ref: world-market-jp225-purple-only
           fetch-depth: 0
       - name: Validate JavaScript syntax
         run: |
+          node --check scripts/macro-data.mjs
           node --check scripts/daily-forecast.mjs
           node --check scripts/free-x-signals.mjs
           node --check scripts/earnings-calendar.mjs
           node --check scripts/x-signals.mjs
           node --input-type=module -e 'import fs from "node:fs"; const html=fs.readFileSync("index.html","utf8"); const start=html.indexOf("<script>"); const end=html.indexOf("</script>",start+8); if(start<0 || end<0) throw new Error("inline script not found"); new Function(html.slice(start+8,end)); console.log("Inline app JavaScript syntax OK");'
+      - name: Refresh free fundamental macro data
+        run: node scripts/macro-data.mjs
       - name: Run daily forecast and validation
         run: node scripts/daily-forecast.mjs
       - name: Save forecast history to deployment branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add forecast-history.json market-signals.json earnings-calendar.json
+          git add forecast-history.json market-signals.json earnings-calendar.json macro-data.json
           if git diff --cached --quiet; then
             echo "No forecast changes to save."
           else
             git commit -m "Save daily investment forecast and validation"
-            git fetch origin restore-world-market-japan-heatmap
+            git fetch origin world-market-jp225-purple-only
             git rebase FETCH_HEAD
-            git push origin HEAD:restore-world-market-japan-heatmap
+            git push origin HEAD:world-market-jp225-purple-only
           fi
