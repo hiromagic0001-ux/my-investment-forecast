@@ -18,7 +18,10 @@ jobs:
           node-version: 22
       - name: Check forecast scripts
         run: |
+          node --check scripts/fundamental-analysis.mjs
+          node --check scripts/test-fundamental-analysis.mjs
           node --check scripts/daily-forecast.mjs
           node --check scripts/free-x-signals.mjs
           node --check scripts/earnings-calendar.mjs
           node --check scripts/x-signals.mjs
+          node scripts/test-fundamental-analysis.mjs
