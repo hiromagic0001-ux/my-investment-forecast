@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "source": "FRED public data export (one request per series) + OECD Key Short-Term Economic Indicators",
-  "generatedAt": "2026-11-25T08:22:51.659Z",
+  "generatedAt": "2026-11-26T00:49:04.100Z",
   "status": "ok",
   "seriesCount": 15,
   "signalCount": 13,
@@ -29,11 +29,11 @@
     {
       "id": "macro_claims",
       "label": "新規失業保険申請の4週変化",
-      "value": -0.27350427350427403,
-      "detail": "4週 +4.1%",
+      "value": 0.20512820512820515,
+      "detail": "4週 -3.1%",
       "source": "FRED",
       "seriesId": "ICSA",
-      "observationDate": "2026-11-14"
+      "observationDate": "2026-11-21"
     },
     {
       "id": "macro_indpro",
@@ -56,38 +56,38 @@
     {
       "id": "macro_curve",
       "label": "米国イールドカーブ",
-      "value": 0.18666666666666668,
-      "detail": "10年-2年 0.28pt",
+      "value": 0.16,
+      "detail": "10年-2年 0.24pt",
       "source": "FRED",
       "seriesId": "T10Y2Y",
-      "observationDate": "2026-11-24"
+      "observationDate": "2026-11-25"
     },
     {
       "id": "macro_hy",
       "label": "ハイイールド債信用スプレッド",
-      "value": 0.29000000000000004,
-      "detail": "スプレッド 3.63%",
+      "value": 0.25999999999999995,
+      "detail": "スプレッド 3.72%",
       "source": "FRED",
       "seriesId": "BAMLH0A0HYM2",
-      "observationDate": "2026-11-23"
+      "observationDate": "2026-11-24"
     },
     {
       "id": "macro_nfci",
       "label": "米国金融環境指数",
-      "value": 0.6828571428571428,
-      "detail": "指数 -0.478",
+      "value": 0.6342857142857143,
+      "detail": "指数 -0.444",
       "source": "FRED",
       "seriesId": "NFCI",
-      "observationDate": "2026-11-13"
+      "observationDate": "2026-11-20"
     },
     {
       "id": "macro_10y",
       "label": "米国10年金利の約3か月変化",
-      "value": -0.2166666666666665,
-      "detail": "約3か月 +0.26pt",
+      "value": -0.20000000000000018,
+      "detail": "約3か月 +0.24pt",
       "source": "FRED",
       "seriesId": "DGS10",
-      "observationDate": "2026-11-23"
+      "observationDate": "2026-11-24"
     },
     {
       "id": "macro_cli_JPN",
@@ -173,8 +173,8 @@
       "frequency": "weekly",
       "category": "labor",
       "latest": {
-        "date": "2026-11-14",
-        "value": 203000
+        "date": "2026-11-21",
+        "value": 189000
       }
     },
     {
@@ -203,8 +203,8 @@
       "frequency": "daily",
       "category": "rates",
       "latest": {
-        "date": "2026-11-24",
-        "value": 0.28
+        "date": "2026-11-25",
+        "value": 0.24
       }
     },
     {
@@ -213,8 +213,8 @@
       "frequency": "daily",
       "category": "rates",
       "latest": {
-        "date": "2026-11-23",
-        "value": 4.92
+        "date": "2026-11-24",
+        "value": 4.91
       }
     },
     {
@@ -223,8 +223,8 @@
       "frequency": "daily",
       "category": "credit",
       "latest": {
-        "date": "2026-11-23",
-        "value": 3.63
+        "date": "2026-11-24",
+        "value": 3.72
       }
     },
     {
@@ -233,8 +233,8 @@
       "frequency": "weekly",
       "category": "credit",
       "latest": {
-        "date": "2026-11-13",
-        "value": -0.478
+        "date": "2026-11-20",
+        "value": -0.444
       }
     },
     {
