@@ -29,18 +29,21 @@ jobs:
           fetch-depth: 0
       - name: Validate JavaScript syntax
         run: |
+          node --check scripts/macro-data.mjs
           node --check scripts/daily-forecast.mjs
           node --check scripts/free-x-signals.mjs
           node --check scripts/earnings-calendar.mjs
           node --check scripts/x-signals.mjs
           node --input-type=module -e 'import fs from "node:fs"; const html=fs.readFileSync("index.html","utf8"); const start=html.indexOf("<script>"); const end=html.indexOf("</script>",start+8); if(start<0 || end<0) throw new Error("inline script not found"); new Function(html.slice(start+8,end)); console.log("Inline app JavaScript syntax OK");'
+      - name: Refresh free fundamental macro data
+        run: node scripts/macro-data.mjs
       - name: Run daily forecast and validation
         run: node scripts/daily-forecast.mjs
       - name: Save forecast history to deployment branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add forecast-history.json market-signals.json earnings-calendar.json
+          git add forecast-history.json market-signals.json earnings-calendar.json macro-data.json
           if git diff --cached --quiet; then
             echo "No forecast changes to save."
           else
