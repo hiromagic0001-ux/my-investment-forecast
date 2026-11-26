@@ -11,7 +11,8 @@ const result=buildFundamentalAnalysis({
   {id:"macro_payrolls",label:"Payrolls",value:.8,source:"FRED",observationDate:"2026-11-27"}
  ],
  earningsEvents:[
-  {symbol:"NVDA",name:"NVIDIA",date:"2026-11-25",epsForecast:1,actualEPS:1.2,reaction:{excessPct:2.5},source:"Nasdaq"}
+  {symbol:"NVDA",name:"NVIDIA",date:"2026-11-25",epsForecast:1,actualEPS:1.2,reaction:{excessPct:2.5},source:"Nasdaq"},
+  {symbol:"MSFT",name:"Microsoft",date:"2026-11-25",epsForecast:3.5,actualEPS:null,reaction:{excessPct:-2},source:"Nasdaq"}
  ]
 });
 assert.equal(result.status,"available");
