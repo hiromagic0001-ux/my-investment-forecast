@@ -26,7 +26,7 @@ export function buildFundamentalAnalysis({assetId,macroSignals=[],earningsEvents
  const macroScore=macroWeight?clamp(usable.reduce((n,s)=>n+s.contribution,0)/usable.reduce((n,s)=>n+Math.abs(weights[s.id]),0)) :0;
  const relevant=(earningsEvents||[]).filter(e=>{
   const exposure=EARNINGS_EXPOSURE[assetId]?.[String(e.symbol||"").toUpperCase()]||0;
-  if(!exposure||!Number.isFinite(Number(e.actualEPS))||!Number.isFinite(Number(e.epsForecast))||Number(e.epsForecast)<=0)return false;
+  if(!exposure||e.actualEPS===null||e.actualEPS===undefined||e.actualEPS===""||e.epsForecast===null||e.epsForecast===undefined||e.epsForecast===""||!Number.isFinite(Number(e.actualEPS))||!Number.isFinite(Number(e.epsForecast))||Number(e.epsForecast)<=0)return false;
   const diff=ageDays(e.date,asOfDate);
   return diff>=0&&diff<=5;
  }).map(e=>{
