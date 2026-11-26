@@ -7,6 +7,8 @@ on:
       - scripts/fundamental-analysis.mjs
       - scripts/test-fundamental-analysis.mjs
       - .github/workflows/forecast-model-check.yml
+      - .github/workflows/daily-forecast.yml
+      - scripts/macro-data.mjs
   workflow_dispatch:
 permissions:
   contents: read
@@ -20,6 +22,7 @@ jobs:
           node-version: 22
       - name: Check forecast scripts
         run: |
+          node --check scripts/macro-data.mjs
           node --check scripts/fundamental-analysis.mjs
           node --check scripts/test-fundamental-analysis.mjs
           node --check scripts/daily-forecast.mjs
