@@ -335,8 +335,8 @@ function forecast(a){
  // Missing news feeds reduce quality and pull the forecast toward neutral; they do not silently erase a forecast.
  const probability=Math.round(clamp(50+score*16*quality,38,62)*10)/10;
  const sigma=(own.vol/Math.sqrt(252))/100,rangePct=Math.max(.003,sigma*1.5*(1+attentionHeat*.2+earningsRisk.score*.8));
- const positives=parts.filter(p=>p>.035).map((v,i)=>({name:"上昇要因 "+(i+1),value:v}));
- const negatives=parts.filter(p=>p<-.035).map((v,i)=>({name:"下落要因 "+(i+1),value:v}));
+ const positives=parts.filter(p=>p.value>.035).map(p=>({name:p.name,value:p.value}));
+ const negatives=parts.filter(p=>p.value<-.035).map(p=>({name:p.name,value:p.value}));
  const relatedNews=signalNews.filter(n=>relFor(a,n.category)>0).slice(0,8).map(n=>({title:n.title,category:n.category,score:n.score,link:n.link}));
  return {id:a.id,name:a.name,macroScore:Number(macroScore.toFixed(3)),macroSignalsUsed:macroKeys.length,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,trendScore,crossScore,newsScore:ns,reversalScore,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",probs:[probability],rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,coverage,newsCoverage,missingFeeds,positives,negatives,news:relatedNews,modelVersion:"2.4.0",source:"GitHub Actions server-side model"};
 }
