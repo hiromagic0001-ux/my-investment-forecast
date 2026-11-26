@@ -4,6 +4,8 @@ on:
     branches: [fix/forecast-direction-bias-20261126]
     paths:
       - scripts/daily-forecast.mjs
+      - scripts/fundamental-analysis.mjs
+      - scripts/test-fundamental-analysis.mjs
       - .github/workflows/forecast-model-check.yml
   workflow_dispatch:
 permissions:
