@@ -1,0 +1,24 @@
+name: Forecast model syntax check
+on:
+  push:
+    branches: [fix/forecast-direction-bias-20261126]
+    paths:
+      - scripts/daily-forecast.mjs
+      - .github/workflows/forecast-model-check.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check forecast scripts
+        run: |
+          node --check scripts/daily-forecast.mjs
+          node --check scripts/free-x-signals.mjs
+          node --check scripts/earnings-calendar.mjs
+          node --check scripts/x-signals.mjs
