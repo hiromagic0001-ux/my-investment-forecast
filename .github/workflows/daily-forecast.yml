@@ -1,11 +1,12 @@
 name: Daily investment forecast
 on:
   push:
-    branches: [main]
+    branches: [world-market-jp225-purple-only]
     paths-ignore:
       - forecast-history.json
       - market-signals.json
       - earnings-calendar.json
+      - macro-data.json
   schedule:
     # 07:00 JST Monday-Friday = 22:00 UTC Sunday-Thursday
     - cron: "0 22 * * 0-4"
@@ -25,7 +26,7 @@ jobs:
       - name: Checkout deployment branch
         uses: actions/checkout@v4
         with:
-          ref: restore-world-market-japan-heatmap
+          ref: world-market-jp225-purple-only
           fetch-depth: 0
       - name: Validate JavaScript syntax
         run: |
@@ -48,7 +49,7 @@ jobs:
             echo "No forecast changes to save."
           else
             git commit -m "Save daily investment forecast and validation"
-            git fetch origin restore-world-market-japan-heatmap
+            git fetch origin world-market-jp225-purple-only
             git rebase FETCH_HEAD
-            git push origin HEAD:restore-world-market-japan-heatmap
+            git push origin HEAD:world-market-jp225-purple-only
           fi
