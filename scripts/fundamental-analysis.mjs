@@ -15,7 +15,7 @@ export function buildFundamentalAnalysis({assetId,macroSignals=[],earningsEvents
  const weights=MACRO_WEIGHTS[assetId]||MACRO_WEIGHTS.topix;
  const usable=[],stale=[],future=[];
  for(const s of macroSignals){
-  const w=weights[s.id],date=String(s.observationDate||"").slice(0,10);
+  const w=weights[s.id],rawDate=String(s.observationDate||""),date=rawDate.length===7?rawDate+"-01":rawDate.slice(0,10);
   if(!Number.isFinite(w)||!Number.isFinite(s.value)||!date)continue;
   const age=ageDays(date,asOfDate);
   if(age<0){future.push({id:s.id,date});continue;}
