@@ -411,7 +411,7 @@ if(!["Sat","Sun"].includes(dayName)&&!history.some(x=>x.date===jstDate)){
  if(results.every(Boolean)&&!stale.length&&criticalOilAvailable){
   const marketContext=Object.fromEntries(Object.entries(quotes).map(([id,q])=>[id,{price:q.price,day:q.day,week:q.week,avg60:q.avg60,dateISO:q.dateISO,technical:q.technical||null}]));
   const newsContext=signalNews.map(n=>({title:n.title,category:n.category,score:n.score,date:n.date,link:n.link,source:n.source||"RSS",trustScore:n.trustScore??1}));
-  history.push({date:jstDate,savedAt:new Date().toISOString(),modelVersion:"2.3.0",fxInterventionRisk:fxInterventionRisk(quotes.fx),earningsCalendarStatus:earningsCalendar.status,earningsRisk:results.map(x=>({id:x.id,...x.earningsRisk})),results,newsCount:news.length,xCount:xSignals.posts.length,xAttention,marketContext,newsContext});
+  history.push({date:jstDate,savedAt:new Date().toISOString(),modelVersion:"2.4.0",fxInterventionRisk:fxInterventionRisk(quotes.fx),earningsCalendarStatus:earningsCalendar.status,earningsRisk:results.map(x=>({id:x.id,...x.earningsRisk})),results,newsCount:news.length,xCount:xSignals.posts.length,xAttention,marketContext,newsContext});
  }else{
   console.log("Forecast not saved: stale or missing critical data",JSON.stringify({stale,criticalOilAvailable}));
  }
