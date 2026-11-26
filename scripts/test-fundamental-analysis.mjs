@@ -6,6 +6,7 @@ const result=buildFundamentalAnalysis({
   {id:"macro_core_cpi",label:"Core CPI",value:.5,source:"FRED",observationDate:"2026-10-01"},
   {id:"macro_hy",label:"HY spread",value:.4,source:"FRED",observationDate:"2026-11-24"},
   {id:"macro_10y",label:"10y yield",value:-.3,source:"FRED",observationDate:"2026-11-24"},
+  {id:"macro_cli_JPN",label:"Japan CLI",value:.2,source:"OECD",observationDate:"2026-10"},
   {id:"macro_nfci",label:"NFCI",value:.2,source:"FRED",observationDate:"2026-08-01"},
   {id:"macro_payrolls",label:"Payrolls",value:.8,source:"FRED",observationDate:"2026-11-27"}
  ],
@@ -14,7 +15,7 @@ const result=buildFundamentalAnalysis({
  ]
 });
 assert.equal(result.status,"available");
-assert.equal(result.macro.signalCount,3);
+assert.equal(result.macro.signalCount,4);
 assert.equal(result.macro.stale.length,1);
 assert.equal(result.macro.future.length,1);
 assert.equal(result.earnings.eventCount,1);
