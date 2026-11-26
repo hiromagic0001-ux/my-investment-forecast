@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import { fetchFreeXSignals } from "./free-x-signals.mjs";
 import { fetchEarningsCalendar } from "./earnings-calendar.mjs";
+import { buildFundamentalAnalysis } from "./fundamental-analysis.mjs";
 let macroData={status:"missing",signals:[],series:[],error:"macro-data.json not found"};
 try{macroData=JSON.parse(await fs.readFile("macro-data.json","utf8"));}catch{}
 
@@ -279,15 +280,9 @@ function forecast(a){
  const own=quotes[a.id];if(!own)return null;
  const fxRisk=fxInterventionRisk(quotes.fx);
  const earningsRisk=earningsRiskForAsset(a.id);
- const macroWeights=a.id==="fang"
-  ?{macro_cpi:-.25,macro_core_cpi:-.45,macro_unemployment:.25,macro_payrolls:.25,macro_claims:.20,macro_indpro:.18,macro_sentiment:.12,macro_curve:.18,macro_10y:-.25,macro_hy:.35,macro_nfci:.25,macro_cli_JPN:.06,macro_cli_CHN:.12,macro_cli_EA:.10,macro_cli_DEU:.06,macro_cli_GBR:.05}
-  :a.id==="nikkei"
-  ?{macro_cpi:-.12,macro_core_cpi:-.20,macro_unemployment:.15,macro_payrolls:.18,macro_claims:.12,macro_indpro:.20,macro_sentiment:.10,macro_curve:.12,macro_10y:-.12,macro_hy:.18,macro_nfci:.15,macro_cli_JPN:.25,macro_cli_CHN:.12,macro_cli_EA:.06,macro_cli_DEU:.04,macro_cli_GBR:.03}
-  :{macro_cpi:-.12,macro_core_cpi:-.20,macro_unemployment:.15,macro_payrolls:.18,macro_claims:.12,macro_indpro:.20,macro_sentiment:.10,macro_curve:.12,macro_10y:-.12,macro_hy:.18,macro_nfci:.15,macro_cli_JPN:.28,macro_cli_CHN:.12,macro_cli_EA:.06,macro_cli_DEU:.04,macro_cli_GBR:.03};
- const macroById=Object.fromEntries((macroData.signals||[]).map(s=>[s.id,s.value]));
- const macroKeys=Object.keys(macroWeights).filter(k=>Number.isFinite(macroById[k]));
- const macroDen=macroKeys.reduce((sum,k)=>sum+Math.abs(macroWeights[k]),0);
- const macroScore=macroDen?macroKeys.reduce((sum,k)=>sum+macroById[k]*macroWeights[k],0)/macroDen:0;
+ const fundamentalAnalysis=buildFundamentalAnalysis({assetId:a.id,macroSignals:macroData.signals||[],earningsEvents:earningsCalendar.events||[],asOfDate:jstDate});
+ const macroScore=fundamentalAnalysis.macro.score;
+ const macroKeys=fundamentalAnalysis.macro.signals.map(x=>x.id);
  const trendScore=clamp(
   clamp(own.week/3.5,-1,1)*.45+
   clamp(own.month/9,-1,1)*.20+
@@ -307,11 +302,11 @@ function forecast(a){
  const ns=weight?clamp(total/weight,-1,1):0;
  const reversalScore=Number(own.technical?.reversalScore||0);
  const components=[
-  {name:"価格トレンド",value:trendScore,weight:.42},
-  {name:"海外・関連市場",value:crossScore,weight:crossWeight?.28:0},
-  {name:"マクロ環境",value:macroScore,weight:macroKeys.length>=4?.12:macroKeys.length?.06:0},
-  {name:"ニュース",value:ns,weight:weight>.05?.10:0},
-  {name:"売られすぎ・過熱の反転警戒",value:reversalScore,weight:reversalScore!==0?.10:0}
+  {name:"テクニカル・価格トレンド",value:trendScore,weight:.38},
+  {name:"ファンダメンタル（公式統計・決算）",value:fundamentalAnalysis.score,weight:fundamentalAnalysis.status==="available"?.30:0},
+  {name:"海外・関連市場",value:crossScore,weight:crossWeight?.17:0},
+  {name:"ニュース・市場心理",value:ns,weight:weight>.05?.10:0},
+  {name:"売られすぎ・過熱の反転警戒",value:reversalScore,weight:reversalScore!==0?.05:0}
  ];
  if(a.id==="nikkei")components.push({name:"為替介入リスク",value:-fxRisk.score,weight:.06});
  if(a.id==="topix")components.push({name:"為替介入リスク",value:-fxRisk.score,weight:.04});
@@ -326,7 +321,7 @@ function forecast(a){
  const broadCoverage=["rates","tech","japan"].filter(id=>coveredFeeds.has(id)).length/3;
  const newsCoverage=.7*criticalCoverage+.3*broadCoverage;
  const macroCoverage=clamp(macroKeys.length/8,0,1);
- const baseQuality=clamp((.2+.4*coverage+.4*newsCoverage)*(.88+.12*macroCoverage),.2,1);
+ const baseQuality=clamp((.18+.34*coverage+.30*newsCoverage+.18*fundamentalAnalysis.coverage)*(.88+.12*macroCoverage),.2,1);
  const xPosts=Number(xAttention.posts||0),xAuthors=Number(xAttention.authors||0),xEngagement=Number(xAttention.engagement||0);
  const attentionHeat=0; // RSS検索ヒット数はX上の実際の注目度ではないため、予測レンジに使わない
  const authorConcentration=0; // RSS検索結果では投稿者集中度を測定できない
@@ -338,7 +333,7 @@ function forecast(a){
  const positives=parts.filter(p=>p.value>.035).map(p=>({name:p.name,value:p.value}));
  const negatives=parts.filter(p=>p.value<-.035).map(p=>({name:p.name,value:p.value}));
  const relatedNews=signalNews.filter(n=>relFor(a,n.category)>0).slice(0,8).map(n=>({title:n.title,category:n.category,score:n.score,link:n.link}));
- return {id:a.id,name:a.name,macroScore:Number(macroScore.toFixed(3)),macroSignalsUsed:macroKeys.length,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,trendScore,crossScore,newsScore:ns,reversalScore,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",probs:[probability],rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,coverage,newsCoverage,missingFeeds,positives,negatives,news:relatedNews,modelVersion:"2.4.0",source:"GitHub Actions server-side model"};
+ return {id:a.id,name:a.name,macroScore:Number(macroScore.toFixed(3)),macroSignalsUsed:macroKeys.length,fundamentalAnalysis,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,trendScore,crossScore,newsScore:ns,reversalScore,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",probs:[probability],rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,coverage,newsCoverage,missingFeeds,positives,negatives,news:relatedNews,modelVersion:"2.5.0",source:"GitHub Actions server-side model"};
 }
 function buildMacroOutlook(){
  const q=quotes, valid=id=>q[id]&&Number.isFinite(q[id].week)&&Number.isFinite(q[id].day);
