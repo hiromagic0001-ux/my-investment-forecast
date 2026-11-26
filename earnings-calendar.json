@@ -1,13 +1,28 @@
 {
-  "asOfDate": "2026-11-25",
-  "generatedAt": "2026-11-26T00:49:06.050Z",
+  "asOfDate": "2026-11-26",
+  "generatedAt": "2026-11-26T12:19:49.393Z",
   "status": "ok",
   "source": "Nasdaq public earnings calendar",
   "window": {
-    "from": "2026-11-23",
-    "to": "2026-12-01"
+    "from": "2026-11-24",
+    "to": "2026-12-02"
   },
-  "events": [],
+  "events": [
+    {
+      "date": "2026-12-02",
+      "symbol": "CRM",
+      "name": "Salesforce, Inc.",
+      "reportTime": "time-after-hours",
+      "marketCap": 159052972000,
+      "epsForecast": 2.41,
+      "actualEPS": null,
+      "surprise": null,
+      "estimateCount": 13,
+      "fiscalQuarter": "Oct/2026",
+      "source": "Nasdaq earnings calendar",
+      "sourceUrl": "https://www.nasdaq.com/market-activity/stocks/crm/earnings"
+    }
+  ],
   "errors": [],
   "note": "発表予定日は変更される場合があります。Nasdaq掲載情報を取得できない日は「決算なし」と判断しません。"
 }
