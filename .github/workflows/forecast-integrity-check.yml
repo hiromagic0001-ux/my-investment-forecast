@@ -1,0 +1,28 @@
+name: Forecast integrity and historical backtests
+on:
+  pull_request:
+    paths:
+      - "scripts/daily-forecast.mjs"
+      - "scripts/backtest-forecast.mjs"
+      - "scripts/grouped-factor-backtest.mjs"
+      - "forecast-history.json"
+      - "market-snapshot.json"
+      - ".github/workflows/forecast-integrity-check.yml"
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check forecast engine syntax
+        run: node --check scripts/daily-forecast.mjs
+      - name: Check historical backtest syntax
+        run: node --check scripts/backtest-forecast.mjs
+      - name: Check grouped-factor backtest syntax
+        run: node --check scripts/grouped-factor-backtest.mjs
+      - name: Run historical validation backtest
+        run: node scripts/backtest-forecast.mjs
+      - name: Run grouped-factor shadow backtest
+        run: node scripts/grouped-factor-backtest.mjs

@@ -14,6 +14,13 @@ const indicators = [
   ["fx","JPY=X"],["dxy","DX-Y.NYB"],["rates","^TNX"],["oil","CL=F"],["brent","BZ=F"],["risk","^VIX"],["japan","1306.T"],["gold","GC=F"],["copper","HG=F"],["hyg","HYG"],["lqd","LQD"]
 ];
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const localDate=(value,timeZone)=>new Intl.DateTimeFormat("en-CA",{timeZone,year:"numeric",month:"2-digit",day:"2-digit"}).format(value instanceof Date?value:new Date(value));
+function marketSessionClosed(timeZone,at=new Date()){
+ const parts=new Intl.DateTimeFormat("en-GB",{timeZone,hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(at);
+ const minutes=Number(parts.find(x=>x.type==="hour")?.value||0)*60+Number(parts.find(x=>x.type==="minute")?.value||0);
+ return minutes >= (timeZone==="Asia/Tokyo"?15*60+45:16*60+15);
+}
+function exchangeTimeZone(ticker){return ticker.endsWith(".T")||ticker==="^N225"?"Asia/Tokyo":"America/New_York";}
 const jstDate=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Tokyo",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 const dayName=new Intl.DateTimeFormat("en-US",{timeZone:"Asia/Tokyo",weekday:"short"}).format(new Date());
 // Always publish a fresh, explicit degraded-state heartbeat before external providers run.
@@ -50,12 +57,23 @@ function buildTechnicalSeries(closes){
  if(last.sma25!==null&&last.sma75!==null)score+=last.sma25>last.sma75 ? .12 : -.12;
  if(last.sma75!==null&&last.sma200!==null)score+=last.sma75>last.sma200 ? .08 : -.08;
  const p=last.bbPercentB;
- if(p!==null){if(p>1)score+=score>0 ? .05 : -.10;else if(p<0)score+=score<0 ? -.05 : .10;else if(p>=.5)score+=.07;else if(p<=.25)score-=.07;}
+ // RSI(14) and Bollinger extremes are reversal warnings, not automatic
+ // confirmation of the existing trend.
+ const recent=closes.slice(-15);
+ const changes=recent.slice(1).map((v,i)=>v-recent[i]);
+ const avgGain=changes.reduce((sum,v)=>sum+Math.max(0,v),0)/Math.max(1,changes.length);
+ const avgLoss=changes.reduce((sum,v)=>sum+Math.max(0,-v),0)/Math.max(1,changes.length);
+ const rsi14=avgLoss===0?100:avgGain===0?0:100-(100/(1+avgGain/avgLoss));
+ let reversalScore=0;
+ if(p!==null){if(p>1)reversalScore-=.08;else if(p<0)reversalScore+=.08;else if(p>=.85)reversalScore-=.035;else if(p<=.15)reversalScore+=.035;}
+ if(rsi14<30)reversalScore+=.06;else if(rsi14<38)reversalScore+=.025;
+ if(rsi14>70)reversalScore-=.06;else if(rsi14>62)reversalScore-=.025;
+ score+=reversalScore;
  const trend=score>.22?"上昇トレンド":score<-.22?"下降トレンド":"方向感が弱い";
  const crossState=last.sma5!==null&&last.sma25!==null?(last.sma5>last.sma25?"5日線＞25日線":"5日線＜25日線"):"短期線データ不足";
  const midCross=last.sma25!==null&&last.sma75!==null?(last.sma25>last.sma75?"25日線＞75日線":"25日線＜75日線"):"中期線データ不足";
  const bbState=p===null?"算出中":p>1?"+2σ上抜け":p<0?"-2σ下抜け":p>=.8?"上限寄り":p<=.2?"下限寄り":"バンド内";
- return {rows:rows.map(r=>({sma5:r.sma5,sma25:r.sma25,sma75:r.sma75,sma200:r.sma200,bbMiddle:r.bbMiddle,bbUpper:r.bbUpper,bbLower:r.bbLower})),current:{sma5:last.sma5,sma25:last.sma25,sma75:last.sma75,sma200:last.sma200,bbMiddle:last.bbMiddle,bbUpper:last.bbUpper,bbLower:last.bbLower,bbPercentB:p,bbWidth:last.bbWidth,bbWidthPercentile:rank,squeeze:rank!==null&&rank<=.2,bbState,trend,crossState,midCross,score:Math.max(-1,Math.min(1,score))}};
+ return {rows:rows.map(r=>({sma5:r.sma5,sma25:r.sma25,sma75:r.sma75,sma200:r.sma200,bbMiddle:r.bbMiddle,bbUpper:r.bbUpper,bbLower:r.bbLower})),current:{sma5:last.sma5,sma25:last.sma25,sma75:last.sma75,sma200:last.sma200,bbMiddle:last.bbMiddle,bbUpper:last.bbUpper,bbLower:last.bbLower,bbPercentB:p,bbWidth:last.bbWidth,bbWidthPercentile:rank,squeeze:rank!==null&&rank<=.2,bbState,trend,crossState,midCross,score:Math.max(-1,Math.min(1,score)),rsi14:Number(rsi14.toFixed(1)),reversalScore:Number(reversalScore.toFixed(3))}};
 }
 function fxInterventionRisk(q){
  if(!q)return {score:0,label:"データ不足"};
@@ -67,19 +85,25 @@ function fxInterventionRisk(q){
  return {score,label:score>=.8?"非常に高い":score>=.6?"高い":score>=.35?"警戒":"通常"};
 }
 async function quote(ticker){
+ const timeZone=exchangeTimeZone(ticker);
  const url="https://query1.finance.yahoo.com/v8/finance/chart/"+encodeURIComponent(ticker)+"?range=1y&interval=1d";
  const r=await fetch(url,{headers:{"User-Agent":"Mozilla/5.0"}});
  if(!r.ok)throw new Error("Yahoo HTTP "+r.status+" "+ticker);
  const j=await r.json(),x=j.chart?.result?.[0];
  if(!x)throw new Error("No Yahoo data: "+ticker);
- const q=x.indicators.quote[0],pairs=x.timestamp.map((t,i)=>({t,c:q.close[i]})).filter(v=>v.c!=null);
- if(pairs.length<25)throw new Error("Insufficient history: "+ticker);
+ const q=x.indicators.quote[0];
+ let pairs=x.timestamp.map((t,i)=>({t,c:q.close[i]})).filter(v=>v.c!=null);
+ // Yahoo's current daily candle may still be an intraday quote. Exclude it
+ // until the exchange close plus a safety buffer has passed.
+ const today=localDate(new Date(),timeZone);
+ if(!marketSessionClosed(timeZone)&&pairs.length&&localDate(pairs.at(-1).t*1000,timeZone)===today)pairs=pairs.slice(0,-1);
+ if(pairs.length<25)throw new Error("Insufficient completed daily closes: "+ticker);
  const c=pairs.map(v=>v.c),last=c.at(-1),prev=c.at(-2),w=c.at(-6),m=c.at(-22);
  const daily=c.slice(1).map((v,i)=>Math.log(v/c[i]));
  const vol=Math.sqrt(daily.slice(-20).reduce((s,v)=>s+v*v,0)/Math.min(20,daily.length))*Math.sqrt(252)*100;
  const avg60=c.slice(-Math.min(60,c.length)).reduce((s,v)=>s+v,0)/Math.min(60,c.length);
  const technical=buildTechnicalSeries(c);
- const series=pairs.map((v,i)=>({dateISO:new Date(v.t*1000).toISOString().slice(0,10),price:v.c,...technical.rows[i]}));
+ const series=pairs.map((v,i)=>({dateISO:localDate(v.t*1000,timeZone),price:v.c,...technical.rows[i]}));
  return {price:last,day:(last/prev-1)*100,week:(last/w-1)*100,month:(last/m-1)*100,vol,avg60,technical:technical.current,series,dateISO:series.at(-1).dateISO};
 }
 const feeds=[
@@ -279,7 +303,7 @@ function forecast(a){
   clamp(own.month/7,-1,1)*.18,
   clamp((12-own.vol)/18,-.5,.5)*.05,
   (own.technical?.score||0)*.18,
-  ...(a.id==="nikkei"?[-fxRisk.score*.12]:a.id==="topix"?[-fxRisk.score*.08]:[])
+  // FX intervention risk is already reflected by factorValue("fx"); avoid a second bearish penalty.
  ];
  for(const [id,exp] of Object.entries(a.exp)){const v=factorValue(id);if(v!==null&&Math.abs(exp)>.01)parts.push(v*exp*.42);}
  if(quotes.nvda&&a.exp.nvda)parts.push(clamp(quotes.nvda.day/4,-1,1)*a.exp.nvda*.7);
@@ -317,7 +341,7 @@ function forecast(a){
  const positives=parts.filter(p=>p>.035).map((v,i)=>({name:"上昇要因 "+(i+1),value:v}));
  const negatives=parts.filter(p=>p<-.035).map((v,i)=>({name:"下落要因 "+(i+1),value:v}));
  const relatedNews=signalNews.filter(n=>relFor(a,n.category)>0).slice(0,8).map(n=>({title:n.title,category:n.category,score:n.score,link:n.link}));
- return {id:a.id,name:a.name,macroScore:Number(macroScore.toFixed(3)),macroSignalsUsed:macroKeys.length,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",probs:[probability],rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,coverage,newsCoverage,missingFeeds,positives,negatives,news:relatedNews,modelVersion:"2.3.1",source:"GitHub Actions server-side model"};
+ return {id:a.id,name:a.name,macroScore:Number(macroScore.toFixed(3)),macroSignalsUsed:macroKeys.length,basePrice:own.price,baseDate:own.dateISO,technical:own.technical,fxInterventionRisk:fxRisk,earningsRisk,probability,direction:probability>=50?"上昇":"下落",probs:[probability],rangeLow:own.price*(1-rangePct*(1+earningsRisk.pricedInScore*.2)),rangeHigh:own.price*(1+rangePct),actual:null,actualUp:null,actualDate:null,hit:null,quality,score,coverage,newsCoverage,missingFeeds,positives,negatives,news:relatedNews,modelVersion:"2.4.0",source:"GitHub Actions server-side model"};
 }
 function buildMacroOutlook(){
  const q=quotes, valid=id=>q[id]&&Number.isFinite(q[id].week)&&Number.isFinite(q[id].day);
@@ -372,12 +396,45 @@ const path="forecast-history.json";
 let history=[];
 try{history=JSON.parse(await fs.readFile(path,"utf8"));if(!Array.isArray(history))history=[];}catch{}
 let changed=0;
+function savedMarketSession(timeZone,savedAt,series){
+ const date=localDate(savedAt,timeZone);
+ const parts=new Intl.DateTimeFormat("en-GB",{timeZone,hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(savedAt);
+ const minutes=Number(parts.find(v=>v.type==="hour")?.value||0)*60+Number(parts.find(v=>v.type==="minute")?.value||0);
+ const isSessionDate=(series||[]).some(v=>v.dateISO===date);
+ const open=timeZone==="Asia/Tokyo"?9*60:9*60+30;
+ const closeBuffer=timeZone==="Asia/Tokyo"?15*60+45:16*60+15;
+ return {date,minutes,isSessionDate,beforeOpen:minutes<open,afterClose:minutes>=closeBuffer,
+  duringSession:minutes>=open&&minutes<closeBuffer,open,closeBuffer};
+}
 for(const day of history){
  for(const x of day.results||[]){
-  const q=quotes[x.id],firstNextClose=q?.series?.find(v=>v.dateISO>x.baseDate);
-  if(firstNextClose&&(x.actual===null||x.actual===undefined)){
+  const q=quotes[x.id],series=q?.series||[];
+  const firstNextClose=series.find(v=>v.dateISO>x.baseDate);
+  const timeZone=x.id==="fang"?"America/New_York":"Asia/Tokyo";
+  const savedAt=new Date(day.savedAt||"");
+  const session=Number.isFinite(savedAt.getTime())?savedMarketSession(timeZone,savedAt,series):null;
+  const sessionTimingValid=!!session&&(!session.isSessionDate||session.beforeOpen||session.afterClose);
+  const baseValid=!!session&&(!session.isSessionDate||
+   (session.beforeOpen&&x.baseDate<session.date)||
+   (session.afterClose&&x.baseDate===session.date));
+  const resultNotKnownAtSave=!!firstNextClose&&!!session&&
+   (firstNextClose.dateISO>session.date||
+    (firstNextClose.dateISO===session.date&&session.beforeOpen));
+  // A forecast saved during a trading session is not a clean next-session
+  // forecast. Also reject a same-day close already known at save time and a
+  // stale/intraday base price when the market had already closed.
+  if(firstNextClose&&sessionTimingValid&&baseValid&&resultNotKnownAtSave){
+   const changedValue=x.actual!==firstNextClose.price||x.actualDate!==firstNextClose.dateISO||x.hit===null||x.hit===undefined;
    x.actual=firstNextClose.price;x.actualDate=firstNextClose.dateISO;x.actualUp=x.actual>x.basePrice;
-   x.hit=(x.actualUp&&x.probability>=50)||(!x.actualUp&&x.probability<50);changed++;
+   x.hit=(x.actualUp&&x.probability>=50)||(!x.actualUp&&x.probability<50);
+   x.validationStatus="validated_completed_next_session_close";
+   if(changedValue)changed++;
+  }else{
+   x.actual=null;x.actualDate=null;x.actualUp=null;x.hit=null;
+   x.validationStatus=!session?"excluded_missing_save_time":
+    !sessionTimingValid?"excluded_intraday_forecast":
+    !baseValid?"excluded_incomplete_or_stale_base":
+    firstNextClose&&!resultNotKnownAtSave?"excluded_result_known_before_forecast":"result_waiting";
   }
  }
 }
@@ -390,7 +447,7 @@ if(!["Sat","Sun"].includes(dayName)&&!history.some(x=>x.date===jstDate)){
  if(results.every(Boolean)&&!stale.length&&criticalOilAvailable){
   const marketContext=Object.fromEntries(Object.entries(quotes).map(([id,q])=>[id,{price:q.price,day:q.day,week:q.week,avg60:q.avg60,dateISO:q.dateISO,technical:q.technical||null}]));
   const newsContext=signalNews.map(n=>({title:n.title,category:n.category,score:n.score,date:n.date,link:n.link,source:n.source||"RSS",trustScore:n.trustScore??1}));
-  history.push({date:jstDate,savedAt:new Date().toISOString(),modelVersion:"2.3.0",fxInterventionRisk:fxInterventionRisk(quotes.fx),earningsCalendarStatus:earningsCalendar.status,earningsRisk:results.map(x=>({id:x.id,...x.earningsRisk})),results,newsCount:news.length,xCount:xSignals.posts.length,xAttention,marketContext,newsContext});
+  history.push({date:jstDate,savedAt:new Date().toISOString(),modelVersion:"2.4.0",fxInterventionRisk:fxInterventionRisk(quotes.fx),earningsCalendarStatus:earningsCalendar.status,earningsRisk:results.map(x=>({id:x.id,...x.earningsRisk})),results,newsCount:news.length,xCount:xSignals.posts.length,xAttention,marketContext,newsContext});
  }else{
   console.log("Forecast not saved: stale or missing critical data",JSON.stringify({stale,criticalOilAvailable}));
  }
