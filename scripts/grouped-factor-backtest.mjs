@@ -56,8 +56,8 @@ function groupedForecast(day,x){
  const growth=growthDen?growthKeys.reduce((s,k)=>s+vals[k]*exp[k],0)/growthDen:0;
  const grouped=[];
  if(growthDen)grouped.push({name:"米国成長株・半導体（相関調整）",value:growth*budget.growth});
- for(const [key,name] of [["fx","為替"],["rates","金利"],["oil","原油"],["risk","市場ストレス"],["japan","日本株市場"]]){
-  if(vals[key]!==null)grouped.push({name,value:vals[key]*budget[key]});
+ for(const [key,budgetKey,name] of [["fx","fx","為替"],["rates","rates","金利"],["oil","energy","原油"],["risk","risk","市場ストレス"],["japan","japan","日本株市場"]]){
+  if(vals[key]!==null)grouped.push({name,value:vals[key]*budget[budgetKey]});
  }
  const own=q[id],technical=own?.technical?.score||0,rev=reversal(snapshot.quotes[id]?.series||[],x.baseDate);
  const momentum=.35*clamp((own?.week||0)/2.8,-1,1)+.25*clamp((own?.month||0)/7,-1,1)+.40*clamp(technical+rev,-1,1);
@@ -78,6 +78,7 @@ function groupedForecast(day,x){
 function metrics(rows,key){
  if(!rows.length)return {n:0,accuracy:null,brier:null,meanProbability:null};
  const hit=rows.filter(x=>(x[key]>=.5)===x.actualUp).length;
+ const values=rows.map(x=>x[key]);if(values.some(v=>!Number.isFinite(v)))throw new Error("Non-finite probability in metric "+key);
  return {n:rows.length,correct:hit,accuracy:Number((hit/rows.length*100).toFixed(1)),
   brier:Number((rows.reduce((s,x)=>s+(x[key]-(x.actualUp?1:0))**2,0)/rows.length).toFixed(5)),
   meanProbability:Number((rows.reduce((s,x)=>s+x[key],0)/rows.length*100).toFixed(1))};
