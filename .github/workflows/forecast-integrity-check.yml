@@ -1,12 +1,14 @@
-name: Forecast integrity syntax check
+name: Forecast integrity and historical backtest
 on:
   pull_request:
     paths:
       - "scripts/daily-forecast.mjs"
-      - "scripts/forecast-integrity.mjs"
+      - "scripts/backtest-forecast.mjs"
+      - "forecast-history.json"
+      - "market-snapshot.json"
       - ".github/workflows/forecast-integrity-check.yml"
 jobs:
-  syntax:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,3 +17,7 @@ jobs:
           node-version: 22
       - name: Check forecast engine syntax
         run: node --check scripts/daily-forecast.mjs
+      - name: Check backtest script syntax
+        run: node --check scripts/backtest-forecast.mjs
+      - name: Run historical backtest
+        run: node scripts/backtest-forecast.mjs
