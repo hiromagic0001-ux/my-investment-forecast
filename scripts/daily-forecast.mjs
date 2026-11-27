@@ -396,24 +396,45 @@ const path="forecast-history.json";
 let history=[];
 try{history=JSON.parse(await fs.readFile(path,"utf8"));if(!Array.isArray(history))history=[];}catch{}
 let changed=0;
+function savedMarketSession(timeZone,savedAt,series){
+ const date=localDate(savedAt,timeZone);
+ const parts=new Intl.DateTimeFormat("en-GB",{timeZone,hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(savedAt);
+ const minutes=Number(parts.find(v=>v.type==="hour")?.value||0)*60+Number(parts.find(v=>v.type==="minute")?.value||0);
+ const isSessionDate=(series||[]).some(v=>v.dateISO===date);
+ const open=timeZone==="Asia/Tokyo"?9*60:9*60+30;
+ const closeBuffer=timeZone==="Asia/Tokyo"?15*60+45:16*60+15;
+ return {date,minutes,isSessionDate,beforeOpen:minutes<open,afterClose:minutes>=closeBuffer,
+  duringSession:minutes>=open&&minutes<closeBuffer,open,closeBuffer};
+}
 for(const day of history){
  for(const x of day.results||[]){
-  const q=quotes[x.id],firstNextClose=q?.series?.find(v=>v.dateISO>x.baseDate);
+  const q=quotes[x.id],series=q?.series||[];
+  const firstNextClose=series.find(v=>v.dateISO>x.baseDate);
   const timeZone=x.id==="fang"?"America/New_York":"Asia/Tokyo";
-  const savedAt=Date.parse(day.savedAt||"");
-  const alreadyKnownAtSave=firstNextClose&&Number.isFinite(savedAt)&&
-   localDate(savedAt,timeZone)===firstNextClose.dateISO&&marketSessionClosed(timeZone,new Date(savedAt));
-  // If the next-session close was already known when the forecast was saved,
-  // exclude it: it is look-ahead contamination, not a valid forecast result.
-  if(firstNextClose&&!alreadyKnownAtSave){
+  const savedAt=new Date(day.savedAt||"");
+  const session=Number.isFinite(savedAt.getTime())?savedMarketSession(timeZone,savedAt,series):null;
+  const sessionTimingValid=!!session&&(!session.isSessionDate||session.beforeOpen||session.afterClose);
+  const baseValid=!!session&&(!session.isSessionDate||
+   (session.beforeOpen&&x.baseDate<session.date)||
+   (session.afterClose&&x.baseDate===session.date));
+  const resultNotKnownAtSave=!!firstNextClose&&!!session&&
+   (firstNextClose.dateISO>session.date||
+    (firstNextClose.dateISO===session.date&&session.beforeOpen));
+  // A forecast saved during a trading session is not a clean next-session
+  // forecast. Also reject a same-day close already known at save time and a
+  // stale/intraday base price when the market had already closed.
+  if(firstNextClose&&sessionTimingValid&&baseValid&&resultNotKnownAtSave){
    const changedValue=x.actual!==firstNextClose.price||x.actualDate!==firstNextClose.dateISO||x.hit===null||x.hit===undefined;
    x.actual=firstNextClose.price;x.actualDate=firstNextClose.dateISO;x.actualUp=x.actual>x.basePrice;
    x.hit=(x.actualUp&&x.probability>=50)||(!x.actualUp&&x.probability<50);
-   x.validationStatus="validated_completed_close";
+   x.validationStatus="validated_completed_next_session_close";
    if(changedValue)changed++;
   }else{
    x.actual=null;x.actualDate=null;x.actualUp=null;x.hit=null;
-   x.validationStatus=alreadyKnownAtSave?"excluded_known_before_forecast":"result_waiting";
+   x.validationStatus=!session?"excluded_missing_save_time":
+    !sessionTimingValid?"excluded_intraday_forecast":
+    !baseValid?"excluded_incomplete_or_stale_base":
+    firstNextClose&&!resultNotKnownAtSave?"excluded_result_known_before_forecast":"result_waiting";
   }
  }
 }
