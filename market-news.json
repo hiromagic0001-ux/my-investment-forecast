@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-27T01:55:18.689Z",
+  "generatedAt": "2026-11-27T15:29:54.624Z",
   "status": "ok",
   "sources": {
     "queries": 18,
@@ -9,23 +9,639 @@
   },
   "items": [
     {
+      "title": "US stocks rally sharply as AI shares rebound, but Fed rate hike clouds outlook - The Financial Express",
+      "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxORmpUU2UyOUlhdXB3Wkd4UmY0d291SXY5STVDaWdqc3N1TzRJNkxvczlNVC1WcTVsdVVROEhYR2ZoQmdBbHMzWHBXR000djI2bjUxU3A2cE1yUGlZMFBIejRxVGZLNExjQ1NhNTU0eWNpSEg2aW0xMk0tLU5YLWZvR2ZkX2QwUGlPcmg4SmlwYXE3RC1LbXJCbVZuU0tlT2kzN0NxdlRia2tvaElpUGozUm9qYUliSFZ6RXl6UGR1MXRRNGRHSDd4WVVaWGhZYWdlRjlvOTh6MnTSAd8BQVVfeXFMUHdBNE1jdTIyMlA1cUF3dXVMZlhSaVItR3ozVFpFc0ZMQjNDbHFkT3dNM1pTU1lRbFZpTDJzRnNLck94YzZsdTA0XzRYakNpdUZzUnUzMTFzTFJ4aUtJY0l2emo2amZPblE0bnNUMjlCSmZjZVJqZjVGdEt4cnJBMzlCNEdEV21JcGZoM2xrdloyUjFJSVc4c2haZ2w1Y3hOd0lmdXp1ai1jZWdsU1RoUTBlQ3VPUUx0QVNETFd5bXRMRlhjR2VzdXcxcUFoWWM3OVRYeFdQSllhTVRXYVRWaw?oc=5",
+      "date": "Fri, 27 Nov 2026 14:59:38 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "The Financial Express",
+      "sourceWeight": 0.55,
+      "score": -0.38,
+      "signalEligible": false
+    },
+    {
+      "title": "Nvidia Stock: 5 Reasons The AI Trade Has Only Begun (NASDAQ:NVDA) - Seeking Alpha",
+      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNN2o0b2xkdHNBUUlES1pQNVBVQ281SjNoQzlqcmRrVHRZY0xnX3poUnVaZWpiVWRpc2UtOUFuR0FfNEhoOU9wdDRRVVhBUGF1bG5jX1pfbUFMSXpaTDNLZ1hKakxlM2JvRGhXV1UyOGpjemdJQlRZZnUxb01ORVQ2eFpEandobGxJV1BLQl8zUGxzVi0wTGc?oc=5",
+      "date": "Fri, 27 Nov 2026 14:55:47 GMT",
+      "category": "tech",
+      "label": "AI・半導体",
+      "publisher": "Seeking Alpha",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Canada’s GDP, jobs data to test case for December rate hike - RBC",
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPemMyS2tGcGFPOWhDclUtUHZGMEt3cFdIa0FQSVZlWkhWZGhqNldLRE1fSTFKNGtqV0VXcFhKdjhIckVDaURZOWgzWl84dGF5c0ZEc2dfS253d1Y0dFp3TGNVT3hlTktFUmVsMHU5U2c5Ql9GS09kR2ZoS0JrY3Y3T0tNbzAyRGdQbno3a0Z1bnNPWWZjQ3VWZWpvWVVCUlJZR3R1enBHTy1XMHhB?oc=5",
+      "date": "Fri, 27 Nov 2026 14:37:42 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "RBC",
+      "sourceWeight": 0.55,
+      "score": -0.38,
+      "signalEligible": false
+    },
+    {
+      "title": "Yen Falls to Mid-159 Range in New York as Rising U.S. Long-Term Yields Weigh - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5aZGlMY1EtNTlXM0U3MHotcWVnZUpyZ09ZR3VlblZCbEp5RmwtaEttcWVkUkMxWk9Wb3V5eEpVR0xFdWEzMnVENDFwS1NIeFRqZmQ2OTNyaTNDS2VkSjlhdlBETWZGR1pDbVZvMnlDV3NwUlprbXc?oc=5",
+      "date": "Fri, 27 Nov 2026 14:35:00 GMT",
+      "category": "fx",
+      "label": "為替",
+      "publisher": "BigGo Finance",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Oil Isn't Balanced, It's Rerouted: Chokepoints, California, the East Coast and the Case for Home-Grown Energy - Energy News Beat",
+      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNTmFxTGp0eldFRXFQSGVWT0FEaFRuOWp0ZWhvXzRHeWxGTnozdGgydTdFZmdaZXBuWUFYN2o1Tmtra2hjQ3JnMk5RN2VlT2l3cGVRNk0tWEtWekF1SnNWUVpsTWJGSHNXR05xekphaWVGdEV6d2lvYnYwOEFXNG1td1FQbGFYN21LTXJzSVFCWFFPLW1PTTZ2QmxXXzBEZkd6WHFyQm1teDNpcVZxTnlOU0dLX2ZwUFZGRXNSNHQ5NTVxWHJKNGpHN2l4TnZsR1hkZkpycmRNcw?oc=5",
+      "date": "Fri, 27 Nov 2026 14:31:59 GMT",
+      "category": "oil",
+      "label": "原油・エネルギー",
+      "publisher": "Energy News Beat",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Decisions taken by the Governing Council of the ECB (in addition to decisions setting interest rates) - European Central Bank",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPUEpCSGlIZUp4eXAzUnkwYnA2TnlUdEZ4aUFPZXp3S1R1NmRla3ZzelBvekNzek1OZm1vME1jOXI1LVh3MjhTdGRKMGxoLVdVa0lxaE9pTW5iVU9mekQxRVdDaFN2VFZ4TlV6N0JNbEpZcW1ySDY0LWRjdjhYVWVTQ2hrdzZlbldMNE13UDRweFpXZzNY?oc=5",
+      "date": "Fri, 27 Nov 2026 14:03:45 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "European Central Bank",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "What To Expect From November 2026's Job Report (NYSEARCA:SPY) - Seeking Alpha",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPcmNkSkZyTnc4YUhmaUZHRVplaEpNeVp4V3F5YTJZWWZGbXI5bDJaeFNkeVBHZEg0S2xIcVBSMFotRFhOMXE3LXVVUnVta1ZPcmJweDcxRjQyVldwVGtDbS1vdEQ3bzBNRjlIMlFMZlF5Rlh3ODBMUWxtUEFVbFEtZ3ZRRmUxbEQwTkQ5RlBQdGh2U1F0dmthWmhlZ2dVc3JJWVpZNVhsRTlBREphdnRnM0VpUEJYQQ?oc=5",
+      "date": "Fri, 27 Nov 2026 14:00:00 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Seeking Alpha",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "CBN releases new dollar price as naira gains N19 in official market - Legit.ng",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNaFd5UzB2bHh1UjRYVTlIS3RldG9tNVo4M2RRLUt1MWZZRWFFcFlJTGoxY19NQ0lQd0R6R1dtRmEwWmk5cVc2OWRvWHhLeE01OUZpUl8zTmZpdFNiNW1PWnRoZjd2Um01QnV6YzRPeGs0N1dzTXAydXhLYU5jWkY1U1BObEczcnlVQ3ZPQ1FMZlBVN3RrZm9EWE90WS1aRXpPcVB0bk5tdU1RYzNkZXdwdFdvT3NkNm8?oc=5",
+      "date": "Fri, 27 Nov 2026 13:54:10 GMT",
+      "category": "fx",
+      "label": "為替",
+      "publisher": "Legit.ng",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Marvell Stock: From Overvalued To Significantly Undervalued (NASDAQ:MRVL) - Seeking Alpha",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNY09hdHlOWVM1dlNwYVlmZGwwdnd3TUx3clJYbUhuNF9pd3hYcmxlenBXQVA5Y1BkeVVUeENJWGhpaVdBa2tZU2tJRnMtdkFZVkV4b1dLbXJGaGUtTkl2b1NKbmhKRW9BMDMycFJ1Q2RRa3J6bzI2SmJ6RmFIcXdjUDVGUUtMeTdsU2Y0aXQ4VFc5UDVqRHpSMQ?oc=5",
+      "date": "Fri, 27 Nov 2026 13:45:55 GMT",
+      "category": "tech",
+      "label": "AI・半導体",
+      "publisher": "Seeking Alpha",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Jensen Huang’s Return Doesn’t Make Nvidia Stock (NVDA) a Buy - The Globe and Mail",
+      "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNeWtBVXR0NnZqMnUxSUl2LUZRSk43YXhSVFVHckpVejRwam8yYXpBeml6ek1uemw2M0pPY1ZpWXF1RkV3ejZCckZBQ3lOcnhFZEU0U1ZpbEJHaE5HaGZhbndpdnZleHg3cjc5YUprX2JaVENPM281X2U4UjlSQXp5U3RuemtGMG1HQmRJc2d2VERVU2RFYWRlTVlKdVdKV0cya1lJaEhNTzZzeWM2cVh3Z1pNemlEeHBNb25jZFdYV3Y3cjlmUkI0Qmk3ZG5jTmZja2ljenNDU1I?oc=5",
+      "date": "Fri, 27 Nov 2026 13:31:00 GMT",
+      "category": "tech",
+      "label": "AI・半導体",
+      "publisher": "The Globe and Mail",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Dollar set for flat week as haven bids counter yields - Kitco",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNMkpGYUtlQVBNUTVYWUZrWktyT0hCanptbVBUYWFyQ1I0R0QzTDYxWFhhcnVVU0MxRHFUOXB0RlRXbU1xZVRNSTNLUjZRbXV0c1A2X0dEZFFzVEJ1NTdnXzFJNFFQOVhCcDg1VFJQUVVFN1JPRTFDcnNnT211WDNLSm5GdDd6RDN4d2xjV2lkTVJBUDFpMlNWZjVjdFNidw?oc=5",
+      "date": "Fri, 27 Nov 2026 13:25:10 GMT",
+      "category": "fx",
+      "label": "為替",
+      "publisher": "Kitco",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "IRAN IN CONTROL: Iran Says Strait of Hormuz Will Remain Closed Until Conditions Are Met - EnergyNow.com",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPVnh1U08wWE5DdnNueUtJX29mYzNhVUxQUlV1TUxxX3NHWEliaEVaeV9vdC1MUjNSLUVBVUdjWUkwTlI4a2ZRTl9NYjBTOFYyRG1qaVpWdV8zQ3I5a0V5Smt4ZGN6UTBrNjE0RnZwS09qRWRZTmJjLVB0Um43MmNLdjRoOXNHNjIydFRQMWNBZWpIT3hqXzhGVUdqYnQxUG1iT0pfMDZoelJUOWdmQnlwc09MQTZYYTRa?oc=5",
+      "date": "Fri, 27 Nov 2026 13:02:57 GMT",
+      "category": "geo",
+      "label": "地政学",
+      "publisher": "EnergyNow.com",
+      "sourceWeight": 0.55,
+      "score": -0.35,
+      "signalEligible": false
+    },
+    {
+      "title": "India's forex reserves fall $4.44 billion to $700.90 billion as gold holdings decline - Moneycontrol.com",
+      "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQUXZNcU5SZVpqNm1zbVByV1hTT0VxMnNzb0NCanloZ1FNYkg5THZsZTBjajRoOUdUdE5XNkM4T2s2SGJNUXZhU3pFOXBtQUV4TDBIX0puTEVtdWFyVkFHbmppc2RLNTNXajFNdTdnamROcnpKOHI5bFIxT05ZSTFaUmVsMlpuNTRVY0N6RS1fM1N1X195aFNvS1BycmhMU1otQWJiYXJRdzV5WTlsRlhNTzB3dW9lUFEyaWYtQVZJYUhXS3FkWnpBVVJrMzR2RURuR2dFTGxoeGpBd3BGY3J3?oc=5",
+      "date": "Fri, 27 Nov 2026 12:56:06 GMT",
+      "category": "fx",
+      "label": "為替",
+      "publisher": "Moneycontrol.com",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Middle and smaller powers have ‘limited leverage’ against Trump’s tariffs: Expert - The Straits Times",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQbDlUS3I2Z0c5QnpJUThEQjdwYmwtVEVRbXhCeUpKUUh4WGt1TWI3MDlIOTlOQktQemR6bVFmS19xWFR4d2VsLThzQXE0dU1udXpCcEI2UzNFTmtlQWh5djZ2dGRBOE1yUHcxUExZUEdwSFpUVHVZYVl2VTREYXB5d2dfcWJ2NXAtWUpQb20zMmFIZllHamh2c3U3TVFnYmF4VDhKYk1qRGJZSm9kbHE0OWNSWl9NcHM?oc=5",
+      "date": "Fri, 27 Nov 2026 12:30:00 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "The Straits Times",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Forex reserves fall by $4.4 bn to $701 bn - CNBC TV18",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQNDc5NV9RaWpab093Y2l0c0VmTm5YSl9lcUExUjlNTW4tYlZFbElGVk5kMzVfMTFFRmhPTzc2ZWxzWVhDYThwWnEycUhlM2hCazhCRzVlWFJ5VE5HOUNLWlVWNWF5SGlmZ1pBVlNwOTQta3RrcmQ5TzJfeU1wY015R3lSdlNxZXdaZmp2SkZoVdIBlAFBVV95cUxQN1lTNDJReXVsQlJhbVBITFJTWThFd1IxR3Q1bVJCVHZHbGJRSVdxYnJZam5EdHhjd0swdDhLMDljX1hDaHVnYXNMZ3VlUzByT2dBOFNDaG04M1FTRmRMS3FuSkhCaU1OeE1WRHhDTkJOLXk1ZXZpNTJva3RUTlQzNUFqQXZBRUVqVVl0aEgxMWlYcTR0?oc=5",
+      "date": "Fri, 27 Nov 2026 12:05:33 GMT",
+      "category": "fx",
+      "label": "為替",
+      "publisher": "CNBC TV18",
+      "sourceWeight": 0.92,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "USD/JPY Forecast: Tokyo Inflation and BoJ Rate Hikes - Equiti Global",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQcVJZLVk0dll5MUJ0QU13R3Fmcm8zWjNJOWNWdmJ1cVpHdFY2SWl2dWN0QVM1TVVjU1VId2IyanRob280eE0yX19VMEdfYmdTanpWcUR1b0tEcVE4aV9MWXBsZ013cUVoSXNjVl9rUHNxaThnY3FNRmZBOWVtd1VxSVRtZTl6bk8zdEdnUnlOMXYyR3M0OEk4c0twNndtX3c?oc=5",
+      "date": "Fri, 27 Nov 2026 12:00:43 GMT",
+      "category": "fx",
+      "label": "為替",
+      "publisher": "Equiti Global",
+      "sourceWeight": 0.55,
+      "score": -0.38,
+      "signalEligible": false
+    },
+    {
+      "title": "The Week Ahead (30 Nov – 4 Dec): US Jobs, Euro Area Inflation, OPEC+, Nationwide HPI, US Software, MONY, Future, AJ Bell - Stockopedia",
+      "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOc0ltVm5lNlJDb1N5bjBlamhmVlZ1QVBUUkVZOWdNRVVycUduSzlJV2RxbWlwR1BneGs3Vk41TGdUVy1pOF83U21EYmg3QmN6RVNNMlFYZjN2LXlJMWlaREREV1p2bDJCRHljU01MRmxoR2hjbmF2d2gtTUhNTjhjeXJ5VmRnbVMzUTZPenNrN0hvdVBZS1RNT3d4dXpQRW9QR0pOUFVpakpIaHRzUk1oUF9QSVNmYVUtcWxYUUFSZ2N6aFBTUDFkanpqRzhFMmM4a3JpSnIzZWJYTHo3bjV5ck52dHQ0cms?oc=5",
+      "date": "Fri, 27 Nov 2026 11:53:07 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Stockopedia",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Why are Gold, Silver, and Bitcoin Prices Falling Together? - Analytics Insight",
+      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNWV9rY0NnUms1LWF1dmNKRUItdVNvanNDLVlxQmpxQ0Rzc2tQRmVfNXRWUk9mTngyd3BfbVRpSmw5QWxLcG5DU24tV1Judk5HY2lmUjBfZ1VsT3p5eklVWnhjREhoUU9DX0FfQU5ESzg2SlBxODRvWnVnM2dXREdPcjhOeWFmQ1duNzNjcUdpeUxWQ1hLTWJvTy1oLVhoYmFJZWRSLUxsM2FqakF0WGtVa2xOYlZ3aVdTOUJNQ3R30gHLAUFVX3lxTE9teGhkcGhEU3hab3BFTXVrRHNBbHdjNXZSN2tmeGo5MjRoNUY5WG1NZVVldTFuWlpuUU55dW5PbTY5T0JXX2ltUk9GSzN5M0M1LUNVOGt5SXppaC12Q2MzTWt4NG54WmsxT3RUelZ6eE9VOHBTeGV3MFJpeE00OHotb21mbEN2YTZnRFVZbjZlbmpDNHM2Z0xvWWV5QXJ5QmlPd0l4MHk2d3ZDVk9oWlVaTmhuS3FLVTg1MUpUakMzWFdnci04TDRnd2sw?oc=5",
+      "date": "Fri, 27 Nov 2026 11:45:00 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Analytics Insight",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Canadian payroll employment stabilises as job vacancies rebound in September - Wealth Professional",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNSHpFVTc2TnhERXY2M3RDUGhtNUxRQ2dtR2QwZkc3bnBLZGFNb1ZTTjVCbjR4Zm9IZGFTcjVlX0lEdDJQcEFOTnpuZ2pZakRhTkVhTjRDSW5oT2N5WlcxM1ZaNjFmNjF6OUVld3diaER6d0czTlRiOW5scDliSXVZZk9VNm0xaG9SMHhrUlBSVEZFbG5DRTVIa20wdWlHS3IzVVUtTGc0a25UX3JoUjJleTl5ZGI3eXBsbUpTRWpQS19VQUdTeG5zNFpRLTZ0c3J2UXc?oc=5",
+      "date": "Fri, 27 Nov 2026 11:38:13 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Wealth Professional",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Turkish banks remain sound as investors stay in lira assets: CBRT | Daily Sabah - Daily Sabah",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOcUdhOVhTU3ZQNlJrRHpYRjZIZWplYXhydExZTVhxaUVUUlJSSjZzNjRITTNmRXJZbEcxMGdfMXBfa3JBOXd2QWRHQzRJT1NSOUpTM203WU16cWVZOXJYdTJKc0lvRlhxQjFUU2pUdG0yc295QVFZMzd3WjR4Z3lKQ2tpTlJxak5qSHlka0lQWTdreUhtbFFqNElGUUs0OTA0Q2xPNmpiU1hJcXZTc1RfVUFn0gGyAUFVX3lxTE5xR2E5WFNTdlA2UmtEelhGNkhlamVheHJ0TFlNWHFpRVRSUlJKNnM2NEhNM2ZFcllsRzEwZ18xcF9rckE5d3ZBZEdDNElPU1I5SlMzbTdZTXpxZVk5clh1MkpzSW9GWHFCMVRTalR0bTJzb3lBUVkzN3daNHhneUpDa2lOUnFqTmpIeWRrSVBZN2t5SG1sUWo0SUZRSzQ5MDRDbE82amJTWElxdlNzVF9VQWc?oc=5",
+      "date": "Fri, 27 Nov 2026 11:35:47 GMT",
+      "category": "credit",
+      "label": "金融システム",
+      "publisher": "Daily Sabah",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "USD/JPY Holds Above 159 as Tokyo Inflation Firms, BoJ Meeting and Intervention Risks Loom - VT Markets",
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPbWRGTGdOd1hSTmY1OV9CTHg5VE5yeW1IbnVPYzQ4clliaTJPOUkzbUtiVi1vMy0yeHZVNFdkcXBjdVNQNWczOXBOVW01LUVBbFlOeTRRd0dQR1IyNG5mUGRjS0E4a1BLbHllS0dDb3BUY05OQV9xeXU4ZGVFU0EwSGRiMFVCUVZMTmc0MmNSYWdNVEdZTlZVbkFzTjNpZ0JFS0UzOEptcjlnOVphbk5EbHFCT0FwX1ByeEJXWVc3Q0R2TGJCdC03dklHem0zYzQ?oc=5",
+      "date": "Fri, 27 Nov 2026 11:25:10 GMT",
+      "category": "fx",
+      "label": "為替",
+      "publisher": "VT Markets",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Ethereum Captured Just 5.6% of November's $13.9B RWA DEX Volume - CryptoRank",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQZXJUZk9SZVhQd3JKdXRRRUktWEpwY251blo2cGtVYWFKUTVwUkdPT0ZHb1BTaGdZNTQ5LWMtV2swUFJrRDVPYVppeGJrM1pINktqOVplZXRvVXc0alNTWll5bmFNWEpaMTl6T0VkTXJ0MFVCZU1RSExiR3pOMjFCdGNyTloxdWltMmxUMUU3QktsenlqOUNIVm1MR3VqdVFCYlBj?oc=5",
+      "date": "Fri, 27 Nov 2026 10:58:00 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "CryptoRank",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "UK Jobs Market Shows Mixed Signals as Payroll Employment Falls - kalkine.co.uk",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQYjFIWUduTDNoV3JfaTNGdVJvNVpkcVRobkRUcmRLb08tTWpDal82OVJkMW5xalpTMmRxN2tZZ2RWSHBUVVYtTm1OX09rTVk1VHhkdU52eFN3UVIyYjc2dDFZbDRjZ2pmTS1US3pZeGczb0NMLVV2TEk2b1RXYWY0NlI1T0dQYmE3dlNQdVR3V0ZBRUZzT3pqRlNlOS12bEdPeDMwWG1B?oc=5",
+      "date": "Fri, 27 Nov 2026 10:57:00 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "kalkine.co.uk",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "The changing economics of gold: Why are prices falling, what lies ahead - The Farsight Nepal",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPRHRKMF96Q08tRjlDSWw5cENOZVJta3hQUlBkUWFKYmtPS0ZseF9YU0kyMGFOdlVVUnhZZE9QYVVmWVA4em12UnJWSDhtNW5vZTVwbmlKajhNRFRIWldGSElRd2R2RHk1U1ViTGZxLWprcDl5dmY0eWF3Q2NZeXhqOTFtYm9PNGZOSnVoX1B6akRudkZHMGxXRnNzVk1raW5rZ1Fz?oc=5",
+      "date": "Fri, 27 Nov 2026 10:45:39 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "The Farsight Nepal",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Treasury yields are higher as oil prices rise, investors look ahead to payroll data - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5VZE5oYjlVeWluQTU4R3YyeTNXclpnbDlnZklWOHQtaXFMZ2pKTGhlMUlfWlRGZWhuZERVaE5LampIR21EU1ZtT2FuOFMtdFU1MDlFWFBDbTM1S3ktYXVPLVBJYXlKaG9CR3dNaVZjNNIBdEFVX3lxTE05U3dmc0U2WGM1M3JZNkRBaWlWVXpxazVqZG5WTFFQVWZJUm5QcWtva0duRFNSVVRpWjRUb2EyYU5IOE82aHBxTkptb1pyWHV3Z2FySkRoQl8xcnJqWUxuZFdQaktvUU5DUGlKR0xkQVo4dm5L?oc=5",
+      "date": "Fri, 27 Nov 2026 10:22:41 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "CNBC",
+      "sourceWeight": 0.92,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Global Banking Sector Retains Stable Outlook for 2027 - Construction World",
+      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPUWhoOFJaa250d2hTZ0wxRVVCTUNaaWdhRmZKRkVRUGxaQUdybEFHb3FaMFlyNldjYnpodUZicHNMclpFSU5wRUFQbjB4Q1l5Qm1ySnd5RHpvRGlKZ00xNEdiUFhTbFZYQnAtYldkZWNaZjlqQ2NGX3NVTW13eERGN2g1MHN5ZlJEWVJsdE0wc04zZy1GbXpzMVhyYk9UTnFURjhGMDdFVnFkZkxNUGJZcklYZlJPbUp2TmZEZFhud3g0N0w3?oc=5",
+      "date": "Fri, 27 Nov 2026 10:18:45 GMT",
+      "category": "credit",
+      "label": "金融システム",
+      "publisher": "Construction World",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "AI, jobs and prices: what euro area consumers expect - European Central Bank",
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQU25TVUxEM2dsVUFURUtsOTk4Z1dCSmRUbHR0M2xDN2lFZWFtZkdITTdSaEEwSzlBNjFGaXJpcEVOcEltS3Ffc0dNUXhodFZLRFFvSGl0UzBhZl9WSk4yc3lfREFQTXA3Q1Z6RzFyWG5RaWl6bllRS1ZydGRPSzU4SVdIOTJfNnVuVEpUcEdrcnI?oc=5",
+      "date": "Fri, 27 Nov 2026 10:05:15 GMT",
+      "category": "global",
+      "label": "世界景気",
+      "publisher": "European Central Bank",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "The Strait of Hormuz: the geopolitics of energy - Atalayar",
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOWmVYZmNwY0hsNEtXNTJudG9oLWNNWFB4aEhZT3FIUm90Ui15VERTZUk1M3I3QmFMOTBTZWtUcE1zejlJSnZFcGVSUjNRRlhjTGIzWF9TR0JtbHRRa0RhREVaOG9FZXpKTnRfWTZGY1FZTy13TUVEeHlhZFlpdTJWanVydlBWeFR1bnViZnJlODJrVjAyV0szekd2U0tQM2Y1UW5YYU9kYlB3UHUx?oc=5",
+      "date": "Fri, 27 Nov 2026 10:00:00 GMT",
+      "category": "geo",
+      "label": "地政学",
+      "publisher": "Atalayar",
+      "sourceWeight": 0.55,
+      "score": -0.35,
+      "signalEligible": false
+    },
+    {
+      "title": "ECB Consumer Expectations Survey results – October 2026 - European Central Bank",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxObzk5MGQ5R1hXRVNSdElYVjl2R3NfQ3EwZHFYZXc3MEtsWjdlMXlsQkF5ZlJDZmNBRXhoUEhta3Z1bURNTS1MMDlVTTQ3VGdqQjNuM1REOWs1NFR6SzRsSWw4TU1vQlBELTkxOXBybXJlbUQ1QVhxcHJxMXM1ZGl2SzlBcld4eTJr?oc=5",
+      "date": "Fri, 27 Nov 2026 09:51:00 GMT",
+      "category": "global",
+      "label": "世界景気",
+      "publisher": "European Central Bank",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Jobless Growth: What A Shrinking Workforce Means For Investors - Real Investment Advice",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQY1ZmY2FYNi16d2otdHlCZUFYZy1wUmFwVnItUHdxLWZraVdZYXdMWXZPMy1nSDFCdDdwc1VGQWlDOFIxamRSVk1WTUpmS1hOTTE0Z0J6SGVxNkFzQmt4cnpmN2ZUcFY4WkF2R2lTZU1hTkZRVEpFVTJ2aFU3c0VVWTRaRlhpaG5pQXhYSDZNMktIRXd2RmJTZVJ0ZWlNblJQLUxUYlNxR1JuZHJ4c0Rn?oc=5",
+      "date": "Fri, 27 Nov 2026 09:33:44 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Real Investment Advice",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Nvidia: Sell The Rallies, The Parabolic Gains Are Gone - Seeking Alpha",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPNUlOcGlEbjFod2pCek1ZdXpoRFo5Unp4bFl0dl82LXFzU2kybDc5cDJrX2RHWDdyQlZnYjlBV0dhYktnaWlvSWctNlFHT1dGTV8yNVNGYTZTeURWeEVNS0s3YktWSUZmZkdCN3Bma3Vfb0g5SXlwV0h6ME9CS0E0dnJnYXlTVkM1TXd2ZUduVy1lSnhCOThJaA?oc=5",
+      "date": "Fri, 27 Nov 2026 09:25:19 GMT",
+      "category": "tech",
+      "label": "AI・半導体",
+      "publisher": "Seeking Alpha",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "ECB Consumer Expectations Survey results – October 2026 - European Central Bank",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQRHpKN1ZKWUh0Z3FpR2E2M2dqdkc1dWJRMVBaaXJESXhsck5PaUJ2Y0c1a0x6YjBSQm9pajVBTzNIMTI2eldVVlZJYWJjWU5EaEwzeW5RdEsxbndLTWxRalhibVRPVDZUR1U2WDFZSEE5b3U3cG1oc1VkMldwSEJQdkZWdXNld0VP?oc=5",
+      "date": "Fri, 27 Nov 2026 09:05:14 GMT",
+      "category": "global",
+      "label": "世界景気",
+      "publisher": "European Central Bank",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "ECB Consumer Expectations Survey results – October 2026 - European Central Bank",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNdTV4ZHFEQ3YzdUdhX3kyZW5KNDRTMEtBWTRucGw5RndBWmtGRExxaHBXOGhDaWdIcmZGd2Z0d3NKOEt6UmtzRnFaZzB5WVlyWTF5YWYwdjhNdFpmNTZCMVhXUm1fNEwzcldlMkNxeFMtWW0wSlZad21GVGpTVlVWZ2FNQkttQ3FY?oc=5",
+      "date": "Fri, 27 Nov 2026 09:05:06 GMT",
+      "category": "global",
+      "label": "世界景気",
+      "publisher": "European Central Bank",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Turkey renews Iranian gas deal for five years despite US pressure on Tehran - Business Upturn",
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPUTV0ZEZNcVBjWVBvU1B6NU9uTXNySkNOZWhUcThlUVB4TGxWdzFURGRzM1JnWXBwc3VUdEhxbVRNaUNkb0d2c2JBQWJwVEFaSVkzeGVuZ25GVWg3QkM5eXZUMXpqTjlGMjJacEdNdVNfY1o4RzVYV0poMEs4ck9kZmVUclY4SUwwZlFRY0FSR2pMUDNMeUYweFloa3JkbEJSMkhpVTFiU3hVaElZS2pzVXMwM0hVeWJ5M1BaNXpRSU1OZnZwQm41aE5R?oc=5",
+      "date": "Fri, 27 Nov 2026 08:26:23 GMT",
+      "category": "geo",
+      "label": "地政学",
+      "publisher": "Business Upturn",
+      "sourceWeight": 0.55,
+      "score": -0.35,
+      "signalEligible": false
+    },
+    {
+      "title": "Hedge funds like gilts, but not the risks - ing think",
+      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5UVk1BZFkyc2pvUmgydGN3Zkl0Tnk5Q04xQnJKNHEya2dPN1VqNlowX2NNTDJ3QzA1d0o5NVktV2xsRExhY3N1Nm9oemZiajl2YlRnYS1sLWZCblRnVDBuQlJETDBjX0h3aFkyUGdJQ29MYWZBVi15T19BZ1I?oc=5",
+      "date": "Fri, 27 Nov 2026 08:22:36 GMT",
+      "category": "credit",
+      "label": "金融システム",
+      "publisher": "ing think",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Gold price forecast: Fed rate hike in December may limit recovery to ₹1.30 lakh per 10 grams by 2026-end, says expert - Livemint",
+      "link": "https://news.google.com/rss/articles/CBMijwJBVV95cUxNSS1wSFJjclpDQzhXOXBYY2R0UTMxLTNVemdRRlAxaF9SME9weWNvQks3a0dhTER3Y1dMd25XX1AxMXlkOWZscV9HQlctUFV0bjJubzNvTDIwX1JjaG4wOFk0aDNQRDMwQVNzSXVvU0xNZDBrYlZqUlhyeHB4SzJoLXAxakc2dDg4MEFlX0RsUkhTWFhha21fUkZJdUNNZGpuUWptVFpQUHdxb19Nd3ZWdl9Sb2VvQUZBWk5jY2xVbVhQRDBqSlhXNHVFZkdydDNJTEZldkstWUtWSGN5Skl6RGlkR0NNV2Q2MzE5Z1hONnhRM0hfX28wSEJMTmFDczlsakJFRzdTc21TX3FxRERN0gGUAkFVX3lxTE1FVVNONG9GZlJqSVBzaEJWcXo2bFhBSFc4WEUyLWszZlhSeS1YSTlTYm9WUEZrbEtXVTlxcnVNOUtXd2lab2ZLdm1RTGxDWkNCX1RpMWFGeGp5ejlXRjJ3VV9yS1VJcmlvdlRjSVc1S0c3MVdDYnByNW11WFhDdlNfZVlMbHpGVU9sajJOdkZUWXRiLUotd3llMF9QNDhmNTRfYWpBTGxSYXBjT3U5endNTlFBeERELTlmcjg5TFUybWdjZjJyZE1sbmJtd1J5WUFzSFIyYk9wLWVBZU43dWpCeEJoTEo0M0U0V0U5SXFKSmxhRGJ6M3l0cXhrN2dpWjM5X3ZGZi1DVndaUUZVQV9YeXZxYw?oc=5",
+      "date": "Fri, 27 Nov 2026 08:13:47 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Livemint",
+      "sourceWeight": 0.55,
+      "score": -0.38,
+      "signalEligible": false
+    },
+    {
+      "title": "Spain inflation falls to 4.1% in November while retail sales remain weak - Business Upturn",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQVENIcUhMTXFYSWlGMzlLZzBwLWU1RkIzcTJoSTdLNGtOZDFxdWJ0S1phSkFWQXNtQi1COEpmbWRSc3hDLWNLTjJPTU0zR0tGdkFlall4QklwTWRoSkJPUVA4aUJScFE0OGljQ3ZhTXR2N2hod1VOMlhkQmRfRlcxbVVHRUhQRFdqM1IwcVQyUHdzaFo0RFUzMkMwZTB6Z19jZG5faG1PM1hZZVg1a2JCMg?oc=5",
+      "date": "Fri, 27 Nov 2026 08:10:00 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Business Upturn",
+      "sourceWeight": 0.55,
+      "score": 0.38,
+      "signalEligible": false
+    },
+    {
+      "title": "Is a US Fed rate hike confirmed in Dec meet? How will it impact Sensex, Nifty, Gold as US PCE inflation rises in October - Livemint",
+      "link": "https://news.google.com/rss/articles/CBMikgJBVV95cUxQLWZVZTZDVGdnZG5aSlZmYVpVNklETmV4R3NNR0ozc0YzNWUzbmFzV0hKZHJncjR0Y0wzUjIteGpFTy1mUjdRd1ZVMWZyVTFYclFXWlBvb0FldC1xWWxoRTh2VVRWTWxkb3FEUDFldHdjYmVfUmlKUEFIUE1aamxNRXQ0MkdCbFBXTlBZcEtoNVNPTEd2WmthUG9CV0oybVB2eGdfUUFJYVhDTy05Wm9wRDJtODJYMEQtU0ROSlROSTRiUGI4MGdKQnBVZ0t4RFdyVlNfVTc3UEt0NUFqNmlHOXJHRExOeWpvTEktcExZUDd4OWFOUmJET21FbkpPR3lKUW9idWxWTUFmdy1ucVRyYTdn0gGXAkFVX3lxTE9EMEQzcEppLTI3X1lWSkJ2WTdmR1JEbUJaX3VRU04xMU5xSXBZQVFBU1RkcVlqTDQyMVlGSXJQNm9MS2xOcWlkSDZXTm1CN25yWS1YS0tOWHVkbWdhbVB2eFZRaGFDUi0zWm9Na3NyRjVTWTk4S29iWl9FWnF1S3ZrU0dXMHpkQ0FQQ29VV1h2UW9PQndDNy1zX1RiTHBjSVpCUUEtNU80OUVwamdDZ0EwRXdDdUFaQ1o3ZnktUnRWek00eDRTZmh2M1JsS2hwb2ZwaFM3Y3hndjBUTjNUUjBJZjlDYmd2RjVFY2RQbTZlRUltMDI5YVdXWFJ0RGRDT1lwUnhjb080MDdSYzNLTlJCRVlsekp4SQ?oc=5",
+      "date": "Fri, 27 Nov 2026 08:01:40 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Livemint",
+      "sourceWeight": 0.55,
+      "score": -0.38,
+      "signalEligible": false
+    },
+    {
+      "title": "Trump Demands Probe Into ‘Fake’ Economic Figures - Time Magazine",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQZGRpUW5STmF4ZTFGU1puYVJKd0xyUHE4THZ6RWpIbnJobVJqd01KeDNUNDhHdUFLRmVBd2MteGhuVlRIQlBIaDN5U1ZsMXpXSmhNVzRZWVcwWUI2X01WRzZDUnRBOXVFNHJVYV85b2hnVkFRRGdxUUw0NDdjZ0FoSkExUEs3b2w1X01wLVNPVlltbUVHOEJDZ25lZ01WVjNlQkpQR3h1UjgwdktBTzAwbW9XSlJQaEk?oc=5",
+      "date": "Fri, 27 Nov 2026 08:00:00 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Time Magazine",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Brickwork Ratings Warns of Rising NBFC Funding Costs - Passionate In Marketing",
+      "link": "https://news.google.com/rss/articles/CBMilwJBVV95cUxPcHlWT0czQ29mMmlINzRwbDBCUGwyUTdYem9pTXVRcmJZYklsNzZrX3I2LVM4T0doMjd0eWtDRTlMYXNKYi1QMkdkM1VNZ3VMby1aYjdPeGVRS0lwSlBOeVF2OEltalRmSEEtRmlLcHg2NVNHUnpha1BKMU9uU2YtMEZvc1F4VV9ZeDUxUmFYZVN3ODNWWHBJMEswQ2JNaTI5bVYxRWtrM3QzamM4NnJLVVJMR3Y5WHlBRi13ekJSb1hCbkpIY3VJamxBVTJXaWU2SGp2cUtja21hVWZsaC1KekJ6QUpGMW44eDhSREh1a3JfV3dmRUItUmoxOHB1cUxzdF9TRjBIVUM2eEptaFdsekZORzlET1U?oc=5",
+      "date": "Fri, 27 Nov 2026 07:58:41 GMT",
+      "category": "credit",
+      "label": "金融システム",
+      "publisher": "Passionate In Marketing",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Oil up as tanker attacks and Saudi refinery strike fuel supply concerns - Anadolu Ajansı",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOYko0NnBieEdXMVExNWhHSThwU3BYYThTWGpuTTk3cmY1WGl4dmhkQVdfbE84Z002dTJOMjM3MlFQSXU4SWpUT21wY1BOR1lZVUZFeXVXNWhJMVlBcHhPX1VaVGZtMm82UUloZjBmRlQ2U1FhQkZwNlZkcE11Sm9tZENhd1lYQkZ0U0JpakFnQ0J1cndUN3NBaFFJdUM4NUpycFJHM0RxUHJuM1NoZTdyRVJmdw?oc=5",
+      "date": "Fri, 27 Nov 2026 07:39:08 GMT",
+      "category": "geo",
+      "label": "地政学",
+      "publisher": "Anadolu Ajansı",
+      "sourceWeight": 0.55,
+      "score": -0.38,
+      "signalEligible": false
+    },
+    {
+      "title": "Dollar Nears 22-Month High as AI and Fed Risks Mount - Serrari Group",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQbjhMVVVKNTBYeC1ySjhBTXNPZFhpZ244d3ppdzZFR0kzY2lNQlJFNWRKQk9LWVNCaENxTUotQ1pZZWtISVk1ZFBmSVh4ejgtTHhlSXdJUzg0ZWNtODNHdkRuWDNYSXZ4UGUyei1BbnhHai1rQThfcm9ZX2VCc0JyNGtWWlE?oc=5",
+      "date": "Fri, 27 Nov 2026 07:33:11 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Serrari Group",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "PSX: stocks slip lower, KSE-100 down over 300 points - Business Recorder",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQWHZqV0p0WEFaNm1lOTZyN09zMHltSGNGLVFWQWNURFBmTFd4bEY4eFI0Wm9DNjJLdUFpa0EwNG5RV2RQaThvaTlxQzBIdzVxQWRGZ3RkY3Q5RlVUbzhPb1B4WVJSMDYxemMybXpjYm9pZGp3dTdUeVFZNlhOLTdiMEZkSUszYlI3d01ORldfWTFhZEMxWFdUM0x0b0pHUdIBVkFVX3lxTE5qMVZfb05JazZiM0E2eHRqUEg4bGhCRTVkWnVNMGpQMWptSm41dlNOdko1R1JQNlcxeU9LOXRTZDJxNXFwVWNST0VLQ3VPT2otZkcza3d3?oc=5",
+      "date": "Fri, 27 Nov 2026 07:31:50 GMT",
+      "category": "geo",
+      "label": "地政学",
+      "publisher": "Business Recorder",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Yen stabilizes as Tokyo inflation accelerates to a 16-month high - Economies.com",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPU28zSHBpVE1IOVpiVzFXUjY5VTcyUG5xMC1kSGI4RTlJUTUyRDNneU1WTWVQR2QxaHk4RXloV0l5dm1UYW9fWl84LXhmZ0Fvd2NLQmViZWtkMGN4WFBsa2FkUGpaRXBwQlBiWm1vZkNQeFd5MUJkRFZhQU43UW1pa1dxemxoZld1SWFuYzA3cHdRVTJ3UGc3Nng5dDV3bF9XRE4yYThYOG1ObTM0RFVfRGtCX3I4SDVMamtjUmlMdw?oc=5",
+      "date": "Fri, 27 Nov 2026 07:24:00 GMT",
+      "category": "fx",
+      "label": "為替",
+      "publisher": "Economies.com",
+      "sourceWeight": 0.55,
+      "score": -0.38,
+      "signalEligible": false
+    },
+    {
+      "title": "Iran war live: Tehran denies involvement after two killed in Kuwait drone strike - Arabian Business",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNeGVzSjhrbUhOTTctX0ViTkJTRnFEZnkwNTJQR3gySTJRQlk3aXNwenJ2Qk1DejVYcF84dmF4WDFPd2xKRzEwazEtOEdOb05OOFhJaXZQVTd3R2lDRHdGbTgtM1JSSEMxeFN5OTlLc0tLNE55MHlHRDZNU3lOVFBDaTJwQQ?oc=5",
+      "date": "Fri, 27 Nov 2026 07:14:56 GMT",
+      "category": "geo",
+      "label": "地政学",
+      "publisher": "Arabian Business",
+      "sourceWeight": 0.55,
+      "score": -0.35,
+      "signalEligible": false
+    },
+    {
+      "title": "Tokyo inflation backs a Bank of Japan hike that may not rescue the yen - Startup Fortune",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPTTlVZkN6U29xOTNmQmxyWnNlVzZCaFlhLWlEU0JsR3h2M2FWcUlQMWpqMmpVb0xyaTN5YW1TbmU4Rzd2bGpSZ2F0bktoVW1ZODdtdlZ0VEcwd2loY0J2TkNJUVBoQk9QWVVLREZNVkN2eWVvLWltMW9laFhQM3ZseG1rbEw0NGJHal81TmJVYUdjQ0lRVGJlY0liTTZBd3c?oc=5",
+      "date": "Fri, 27 Nov 2026 06:58:15 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Startup Fortune",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Financial Accounts Guide - Federal Reserve (.gov)",
+      "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxOV29iY01XRVlFS3RaeW9JQml1Z0lRMTRZamdnWWQ2QTVXVWRHLXhrdkh5RldaX3lyQURfbmtsZy1BNmhUWTFMTzZDNG1DR1F0NWp1SFN6LUxPWVlVUXdZYnNHa1htd3lBWDZIZDhEblgxSzYtRDQ1LW5yTUkxaWM4QnRuZWhFMmNsM3RDbnhpZEhoQTRCQjl0VG1wSFloU2ZmaTBuMDdTcjZhT0luMTIzYmdWX2xJYjdSMWtpdTlFRHhOZnlWOGtQeGw3YTBvS1pSdEZPc0pTNGZNWEFjRExVUmFmWlVuSDJSS0JEZ3NDV0k?oc=5",
+      "date": "Fri, 27 Nov 2026 06:08:12 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Federal Reserve (.gov)",
+      "sourceWeight": 1,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Dollar Near 22-Month High Amid AI Market Volatility, Kiwi Rises Post-Election - KuCoin",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOaXViVnVZeVdlWGtIcWIwZVFnNUwxT3U0QVkzaGJfa1ZPNS1OUkpvcEVvc3AxMkdlZEF1R2JhbDl5ZzdydmRtWTk0ZTE5RFR4X1N4ZmM3QkVzckxpYVNUdWMycmxhQk1PNkFkblhleGhfZF9vM0FjeHdDQ1FKU3JrcW1jdE5KWmhDQm96bmpBWW9YUEttQ2R5OEJEeDBrS2ZkMFo5VFp3Y3NsTV9qQW9F?oc=5",
+      "date": "Fri, 27 Nov 2026 06:07:09 GMT",
+      "category": "fx",
+      "label": "為替",
+      "publisher": "KuCoin",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Trump proposes 15% tariffs on allies, up to 40% on China: Can steep tariffs unlock rare earth supplies? - https://economy.ac/",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE8xeEFjVkMzVUtEOEFVOFY3MWRlMWVjbjEzSTFTcXMyenhNVHhzRFpkNkNYa05oS2UtQXAtb3pGaEpsVVdlbUtmNEFIVkFHQ29sdVoyZGpaSQ?oc=5",
+      "date": "Fri, 27 Nov 2026 05:44:22 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "https://economy.ac/",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Is The Fed Making A Huge Mistake In Raising Interest Rates? - Gold Eagle",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOTUY4RXdMaUJ2akVzcU9rV2JGbVlZeU9sbV91UDlvRTJWTVdqX2xkOF9WdDVDRV83WmctTUU1OGk5ejhiaFBzcEZ3ZUt0T0tMNlhGbGQ4bTBNczdYZTB5TERqRms0UDFCNVh2ODZ2VUEtX0d5OXNUUk5ILUplS3FiTFdZc1JHUDB3?oc=5",
+      "date": "Fri, 27 Nov 2026 05:42:14 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Gold Eagle",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Will the Fed raise interest rates this year? Divided economists weigh in - ABC News - Breaking News, Latest News and Videos",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNX3NMLXhhYU1lOVVLWU9sY0k0SDUyQnEwMG9SZ1RzNHZobTIyYk9KWGJlOGhic3FKdlQ2NXlIVDF6SW1oRlNWZlY2NHlNLWlnNGoybzAwLWlkV3V1Q1ZtM21KS2FLTy02NEF6VjY4UmFNc2hYa21mRURlSkJYZWxtc1R3VmRYZFlKNUU3NzZiMkZGNGJZcG1xZUNCN0RQNkRndEVPb9IBqgFBVV95cUxOU1FSZ3pWOURaQUxBS296TzBtRFFGclJXTnpLYWwzZXU1Q01kcVZUczBxUDAwR3FaYmFZdzlXUWM2T0Q3TDVldm9nSVY4OERYRUtkdm5sdndPSU1ETU1yc3BuMEpXLTd2VFFZRTVQcWdMZFdEZ0EzYjhTS200RFBkZy1jbE01WVhVbEgyX1Z2dXc4MWxmbXd6cl9pSlp2TDRldkdkS2hwOVE0Zw?oc=5",
+      "date": "Fri, 27 Nov 2026 05:02:34 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "ABC News - Breaking News, Latest News and Videos",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Financial Accounts Guide - Federal Reserve (.gov)",
+      "link": "https://news.google.com/rss/articles/CBMikAJBVV95cUxPUDFlY3plUElrS3dvYUdXbjJkdmJPZUtxY1BMQkpiX0VQZlJjNGNOb0ZIQUNaWF9vMVZidDFMMXNJSEdLTllZdGc4dWhBbmV4QzNDcl84YkgyTjNERGdJQUdaQzR0M2RMYndZc0pSNEUtOE0tdnhFdkZsQWFEOG5YQUlSVF96TkgtaHRhWmpzWnRld0hveHB4d04xSHNaWDhua213Vnlkb1FOV1FUWlVCemV5U3laUmFtalZBRmRjdnMwc3pGdXBMdUtSM2R0cnFnQUxVOHlLQ3FCS0ZyYjdCMDJNTW9YMWJweDJXZFVFWDcwM05KTDRsSEZDeExIc1NHTjVUbC1RTnJ0SnBhU1BoVA?oc=5",
+      "date": "Fri, 27 Nov 2026 04:54:45 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Federal Reserve (.gov)",
+      "sourceWeight": 1,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "The Part of Inflation Cheaper Oil Cannot Reach - IndraStra Global",
+      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE80eFpISlY1alZhajFzT1Y4cmIxalNCam1SMHhpcUlFdWVzei1PMW1jSmJfVnNqTk9qMW05VUg0LVJPelpkUlNfQ015TXYtN01KQTdTbENTOWo4MGt6SVZRYTBZNjc0ZGNnWUtNS25sLUJhVWxHQ1lZNHNnX3E?oc=5",
+      "date": "Fri, 27 Nov 2026 04:32:00 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "IndraStra Global",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Australia sanctions two people over antisemitic attacks that it blames on Iran - Business Recorder",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNalF4Wl93MjJteEh6SE1jejJlMGxKQkZLdHg0S2hKQmVYVFg4TzE2Z0hsY01lc1pUbmNaSTl4M0VCWVUwOU9lN0dsNHF0SHZibkw4TjNQV3ZXVnFKZWxDWFZTQTRKOFZZTXh0LVo4czRfMVRKLTJUMFowcWxFekh3WktWUlNLQnhDeXJBV0l5dTFpZXVGSlBMNnFiWWtCellfbmw4YXdmejh3MnlsbjU2SkFQSENtRkhpbmfSAVZBVV95cUxOOTcyUjBORnlGXy1RSkZzQzJ6ZDRucV9xZUh1WjMtSGs3cmlWbW9SekEyYWJpaXVUZUhMTEFsYnpNRndBUkU5QVk0NVdiZHB3OGFYdlU4QQ?oc=5",
+      "date": "Fri, 27 Nov 2026 03:42:09 GMT",
+      "category": "geo",
+      "label": "地政学",
+      "publisher": "Business Recorder",
+      "sourceWeight": 0.55,
+      "score": -0.76,
+      "signalEligible": false
+    },
+    {
+      "title": "Market News Today Australia: WTI Oil Nears $85, Gold Holds $3,500 Ahead of Black Friday - Mitrade",
+      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNS3JuSXBMWG5OVm8tUlpYV0pfa1poUWVYckxCbXJBek9feHI3OFBYRjRiTElFZHVDdUxfRU9obWdFYWk1UDlDdGVUTS1acGlSTlJFS3FFeGtfQlhTWWlfckY4RE1nTENZdHVaV2tOYlpmYjVsd1loblhXWk1kV3VTRm9OcVNBZkxLRHBBdzAyUGhMczE5d2hkQXM1a2VKaHRuWFpWNlBiZXZ1QXM?oc=5",
+      "date": "Fri, 27 Nov 2026 03:41:05 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Mitrade",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "'Big concern': How the Iran war and Strait of Hormuz closure could drive up prices for helium, fertilizer and other goods - ABC News - Breaking News, Latest News and Videos",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPWUEwbGQzcGczbVRKcXRoNHB3QmtLMENVMzFfd0xnWmN3aWRILU5CRTRWR0pFdnhQdGFsLXJwa01WR2N1S0JCQUxxdFRkRGZHaWFlakYxMk1YdDBCRDFXQjhDeFNMZmlyWnFsVjFaY21FZUdNdDg1RXdKM1JSb19jVVFTVTJFREFfRFN3TTRVbzNpY21mYXdZVmhwYl9wM0JrTGRvLUJ30gGrAUFVX3lxTE13aGdnRGlNem9jTGFaMTYwZjc3SVZ3bGFhYVhQVnVXVVJQZ2lzVHFqT3VONnBFbWpGVUw2VE52U0xSTmozSGJSM2d6dEF6Z2FiZjF3VWdMdHRUcWRYYjhKRjltNGVNeElDNGY2UVlvLVZRUkJrZGxvTERNRDF0MUk1dTRUWWFMNnpTWTM0b1BHU0JLeTBBZVJON2s2dE5jblB5Nzl5dEFiMnNPcw?oc=5",
+      "date": "Fri, 27 Nov 2026 03:11:03 GMT",
+      "category": "geo",
+      "label": "地政学",
+      "publisher": "ABC News - Breaking News, Latest News and Videos",
+      "sourceWeight": 0.55,
+      "score": -0.35,
+      "signalEligible": false
+    },
+    {
+      "title": "Dollar set for flat week, still close to 22-month peak - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQWkt5OU9rSlNUam1waVVQSzc0cWNjMWk3N0xXSnk5Q1p4UlVHSG5JdGpkZGxVLWI5bW9QOVUwMGRsOExnNkc1VkZWUHllWWQxOV9QX0xTLUVxbGcxOFV3NHQxUnpUQUJRTFh6aXZ6MlpOb3d0eHRucTNQOERjNHlfS01YTlk3dTBwX2ZfWVFjdER1Tkl5V0NDODlzclpSckpUT3c?oc=5",
+      "date": "Fri, 27 Nov 2026 01:03:00 GMT",
+      "category": "fx",
+      "label": "為替",
+      "publisher": "Reuters",
+      "sourceWeight": 0.92,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "Japanese Yen softens after soft Tokyo core CPI inflation data - FXStreet",
       "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxON3RVdDJOaXpBZlMtUkhVSVA1dHlFbWhQbG9WT0tQWjlUaW5JT2FEVUFPdjUzQ0htV2ptbFVoQlFPNDM4a1NmRmNBVi1qMTVUcTVtT1FmMWZZRFlsejNHOENBYW5naDdsV0VDWE5oc2dEaV95X1hLa1NjdjVBY0tYVzRnZWxNWUlFTGRFdXZxZE9GdVRkbWQ2SE1xLVRpTGFpRDVuTzhlSQ?oc=5",
       "date": "Fri, 27 Nov 2026 00:27:57 GMT",
       "category": "fx",
       "label": "為替",
       "publisher": "FXStreet",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Nyrstar to halt production at Dutch zinc smelter - Mining.com",
-      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBWclRPU25GQkRuNjU4MV9nNjYtQ0hsdXR4TzhYMkV3bnYxU3pXdm5hbm4xbVFiYVhzeU4ydExsT05SOVZRSTJtZUh3OWlVZmlRcVByZUZ5OTd4ai14TXJ2OTRhcEVDdmZ0ZjdZNkU1ZGVkU2xJQ2ZxVFFzVlA?oc=5",
-      "date": "Fri, 27 Nov 2026 00:15:03 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Mining.com",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -42,34 +658,23 @@
       "signalEligible": false
     },
     {
-      "title": "US Export Controls Tighten Grip on Nvidia Chips, Threatening AI Cloud Access for Chinese Firms - Sri Lanka Guardian",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQVmppUVdoVHNlVHRLWEN2dHFSSXZrZFVTUm1fVlZwNVJtVFI4UE5TSFNaOHMzTThNY3JicXVXekNVdHljYmZqb0o0X2hhcXBJbW9xNjBXOTdQLTJfNGdBNTQyQ19RdDNDbng0Q01BOTlIaUxuLThZcU1nX2tENk9kSzh1YmIxcG1wNHRFVFZVMnNwMlpDaE9BMjNOakZ1Z1NISDNYbFlsMEZiSGg0a0NIVHd1MTNaWVNZ?oc=5",
-      "date": "Fri, 27 Nov 2026 00:13:40 GMT",
+      "title": "Benchmark launches all-origin and non-China prices for six critical minerals delivered into the US - Benchmark Mineral Intelligence",
+      "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOQlF3bWlDNGJCeEswdk05bU5RNGNCdFJyVWdqRVQ4d2VTMkNkZkswcVNnYnhoSEpuOGxmN2x3dzhDLW94RWtaNWdab21ZbjhoTjVwMzFkb2tYWW1xaTJzNk8ydDZlYnFEZnItX3dyRDVMVmZocXBXWjR1bmR6VFo4cm8zaWs5TlpLVnM1aDViU09McVNFV3BKOXN1bDFpOVhDeWNHWkV0NlF4bEpwMWhKdF85bktONFhISVNiX2NRcFVKLUxrT3prQy1wUUFQTVZoZ04xQTcwd0ZLRmM?oc=5",
+      "date": "Fri, 27 Nov 2026 00:00:00 GMT",
       "category": "trade",
       "label": "貿易・政策",
-      "publisher": "Sri Lanka Guardian",
+      "publisher": "Benchmark Mineral Intelligence",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
     },
     {
-      "title": "Why U.s. Tariffs On India Won't Sink Exports Or Force A Hast - ИФЗ РАН",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQYVotVTlnQ0RjY2hndjI5S1hoTmFvVExqSkJKckpJaGdua3hpbE41bEVWSjlab1dUeVFFX3ViS2ROVl9aakxaWEpPS3Z2dzlFZ2RUUTk5ai1IaHFsb19Hd3BuZks5ZUtiVkhTTGtnU3V2VWwxamxBejBoZHk5TGpRVQ?oc=5",
-      "date": "Thu, 26 Nov 2026 23:57:36 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "ИФЗ РАН",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Op-Ed: US midterms won’t change mining policy. They’ll change who gets subpoenaed - Mining.com",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOSi0zejRVUU9jYm53c0w5U0tEc29oMThkVG01YUFVMkN3Z3I4azltSk9yS0s5eldQTnlqeDgtS0ZySVFuUkFYSUdGV2VNem1MWnpxemhSVS1VTklBREU4RWpPdFdjVzl4RTN3bk9uZ0dlZ1dFTWx3YUtDYTQ2UHhpUkFuNGx1QTZoeS0tTTRwQ3RyY3ZVbTRsOHlxdTd3aTFIN2JJ?oc=5",
-      "date": "Thu, 26 Nov 2026 23:53:33 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Mining.com",
+      "title": "Forex Today: US Dollar steadies as Japan CPI could trigger Yen volatility - www.tmgm.com",
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPekZ6elBKajM4cWNkSV9PTTlsTlc5VXk0WnplelJFcWZDUi0zVlplaUNNdGwyUVRxUW1PUEdPaUhDOTZ1XzA4ZVdXWG0xeDR0RFBrZmJQdXNPWC1WSkNteklTc29rSVQ2cUFRdjJtOHM1X1BKZmpCazF5QkE2eWJzNTVHWUJLdmppN1M5QXdoMzZ2RkF1MkQ5emdhVG1fVXpEdUd3LUg1RzI0MWlGNVJkU2NieFY0UGgxWlBGMVpKX3BtTWtsandETFBwVXRzWVE?oc=5",
+      "date": "Thu, 26 Nov 2026 22:30:28 GMT",
+      "category": "fx",
+      "label": "為替",
+      "publisher": "www.tmgm.com",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -105,6 +710,17 @@
       "publisher": "ИФЗ РАН",
       "sourceWeight": 0.55,
       "score": -0.35,
+      "signalEligible": false
+    },
+    {
+      "title": "Australian Inflation Accelerates, RBA Cut Hopes Get Reality Check - FOREX.com",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNMHJJQlJvbzBCeDJ3eEo2Qmt3Wmo1SFpUUVY1NjRYeXgxOHdQZVVHVTFlTklLZHR0ZUIwSHBxa05qdWZhZEdqd3RKZ2dqcl8yQ1FPeHZWa2x6dFhob2JldkNhaXo3dTZJOVI1dUZRNVJwQjBpbE81cVR1RGtKSUl1VGZlemlLal9UOHBXdDBLR0JEWGhPY2dHaGpMOGY2YkZ4d0w0STJOYVNaYkRoNjBfSQ?oc=5",
+      "date": "Thu, 26 Nov 2026 21:26:15 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "FOREX.com",
+      "sourceWeight": 0.55,
+      "score": -0.38,
       "signalEligible": false
     },
     {
@@ -152,17 +768,6 @@
       "signalEligible": false
     },
     {
-      "title": "Trump-Xi summits unlikely to solve China's rare-earth licensing maze - Nikkei Asia",
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOYVdOT2kxa1lYRXdrZUZpU3NNLW1OelE4eDJ5N2IwQlpkREk1TnBwajE3ZFExOVBaU19BeXJWdWhtUllpVXdPQzI2SnNfVWZhcG9zNGQtQ3FHaVA2cUFxNW5hdFhXUWxHX0liQzk5M1lEZ1ltd1BtNm1ISzYyYTh3VWJqTmhCS1lkTHdBVGFlTkNEMEVoZmMwVzRnWmNMSEtYUFE?oc=5",
-      "date": "Thu, 26 Nov 2026 20:05:00 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Nikkei Asia",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
       "title": "China extends suspension period for its ban on export of critical minerals to US - VOA - Voice of America English News",
       "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOcHdQcW5kWW5acVB5V3dlOWZHTXZ3d19kb3Zjd0VnRGJZemVPZFJsUWs3TXBFV3VUZzZSVlR3Y1R2TXBvMmVhSm9NdGpIS0Z2RUxmVV9pUFJTOUlrbGttSzJpOUs1LUZ2RHFaNWhTdWZBSkNiY3YtUFIzLXNudjBnYTc4YW5vQVN6MHp6QXVMSUtwUDhWQXd2Vk4weUtjWnpfSXpJMEJaXzNuVEJKVlZFdTM3ajBudzNXRFNzejdXdWczODAwMTZN0gHKAUFVX3lxTFBlRUFKQi1ldTZNSGZRMkpadnkyUGpYSVo5X05wSVd3NWRVMjJZSE1pWHV2YzJWYjBSakZQcy1GVWszN2dzMHh0ZGF2UEVlV3VNdm9yWTd0UlVic0RSeEg2SU9XdUYtMV9PV1VmekYxalFzallhLU91M09HTmZVWm1jOVRPRHl2U1dWSVFoSzcxd0lkNmM3NTlQOElTZlhQR3JzdWc2VHFpMnkyRWE2QUVsR045QjBmb1lKOGN1OFI3MmpxNVA0c0pxQUE?oc=5",
       "date": "Thu, 26 Nov 2026 19:54:44 GMT",
@@ -185,45 +790,23 @@
       "signalEligible": false
     },
     {
+      "title": "Philippines declares national energy emergency as Asia risks energy crisis amid Iran war - ABC News - Breaking News, Latest News and Videos",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOeE1ldVFZSXdBWWRGcDlTNDdpaEE0aFNicTNidEJrLWlycTQ4NDlqdzFhdXk2cl9XWXRxdExqWFhtcDgzNzdNMTljVmVCQ28zQjhIM1hzUXd5TllON2dEaGZYTm8xSUNtT0xQUm5fOVQzX19RT1E5b3FYVmpXejZWYkFnenVmMllSOVAxNk8xMFRSUXgwblJ6TFdkUXgxbzU3ZFQ2cnNxXzVZeVVhY1VkUzdB0gG3AUFVX3lxTE5mSTJ3M2xnS2g1Nm80TzZ4WGtla3RQSWkzdjRXRXNacWtJQUZvSTdRbXltSy15ZW51cGhzTnBVRXZ0X0JMT1h3Y0ZBOWZrNlZHWGszR3RmVGxRTGFNaUdIMzJpSWRYM3pFY1U3aEtlYnlubVJtZTFyWDRHdExfYnlySWFibktCN2ZPTjROSjgtVnB0Ymk2UkxIdHJkTEVuQWxEM0NMMzBKXzI3dmE4ZENUdllMakRXSQ?oc=5",
+      "date": "Thu, 26 Nov 2026 18:59:59 GMT",
+      "category": "geo",
+      "label": "地政学",
+      "publisher": "ABC News - Breaking News, Latest News and Videos",
+      "sourceWeight": 0.55,
+      "score": -0.35,
+      "signalEligible": false
+    },
+    {
       "title": "Weekly Market Outlook | 30 November–4 December 2026 - FOREX.com",
       "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNVlh5ZDlkVkFJSWhWRUVoaE11emd0SzJzQUpiWEtUZktPWUlIeDN1LTJvSjJPUW1GVG5OTGZlRDhtWUpibjFzZFpMX28yZmdMamtpZ1laTWVVaG5VWGVHVGItUU9OVEp0ZXBXNkVKRkRCcm5FTDVidHBTYUZ1N2ZzaU5FNi1UUTJRaGlkRDdZVV9JSmpUZ1N2cA?oc=5",
       "date": "Thu, 26 Nov 2026 18:42:29 GMT",
       "category": "rates",
       "label": "金利・インフレ",
       "publisher": "FOREX.com",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "USTR Proposes Additional Section 301 Tariffs On 13 Countries And Members Of The European Union - Legal 500",
-      "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNdy1uMmhPZWY2Z24xU1ZlNG9NanlrbGU2NnZqcl9rQkJKQ1BsTmF6OWpVR0tfSmRNUFZFaktuUk0xbS1iMUd4NXZqb3ZqVHI1QlZvOVBtczRHOFduMmNUM3ZBVk42OWV6NF9iSmQ2bU9LU0dWUUUtWmVnZW1wRERqSHNyOEFReTE4ZkxFOE9acnRiVTlHMmtpazFHaTc1NUR4QUlCejZ0YVV5STluMzc3dzdzeG5LczE4aG5LUWQxMUUwcXJObHlQYzZpMHNhYVpnem5kc1JxRkpfei1BdHhBUFg3X3RhWmNjT09tWkdR?oc=5",
-      "date": "Thu, 26 Nov 2026 18:25:29 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Legal 500",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Mexico Calls for Tighter Origin Rules to Curb Chinese Transshipment - News and Statistics - IndexBox",
-      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPNl9MaTFTTldhTS1DZjd0N1BhVjVNZzJlNFN4Yk9QV252NjdFUUhPTVBRdlhfbmd5WWRnbHRXU2Zqa3ptMkVEck1qLS1fZkhLY2pwUXhkejloZjhHZFB1Q2dCRUEtS0dTT2t0aHoxckhMS0M2TktfYUtUczljQlFJYzR2NkprVDdMSHd3VVVXV1JTdDRlU2YwWFlab3UzZl9wYmhIRXJsVWROZlk?oc=5",
-      "date": "Thu, 26 Nov 2026 18:20:25 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "IndexBox",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "What Shenzhen Apec Reveals About China Shifting From Recogni - ИФЗ РАН",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQZVRDRnUybXR1bVl3UzBNemZTeFRLd19XRktsdUgyUnQxSFE0MlZxWVc3NE1yUVQ5UmJwakwwZ0otbEI4Tml1Y25RcXJrYnlRSXQwdlNNNUJ6WTJOanVCTkVYb2RzX1daT3BGNlI2b3JvVDBESGxMbUFrVjZsSlNnZXZnbzBBbk1OekdGcThMM1pOUQ?oc=5",
-      "date": "Thu, 26 Nov 2026 18:04:04 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "ИФЗ РАН",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -240,6 +823,17 @@
       "signalEligible": false
     },
     {
+      "title": "Federal debt tops $40 trillion. Here's what it means for your wallet - ABC News - Breaking News, Latest News and Videos",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPY0ZxQzFWdUZnWEdMeFFScDdLYVpfRkZpNEZidkdtWHIybHdNemE1c3RudTdwbWtnbHJnZmd6cHNvLUNXU1ZkRzA3NE1LeVJnYll5NmpqeTNRdGZ0a0c5R3F0bVhOWk4wS0M1bUpTNFk5S0hCWHRNY0lBREdsb0l0VlFmV0VnaDFRRm1kOFlXb3p1WTNQ0gGaAUFVX3lxTE9sZ3Fpb1FscnNRVVZGRmdQd0JIZ0tNaV9KZjFjSzVFb3ZCTWVEVDF4bHM5SmFtZk4tYkpDRXM1XzRhaHVFTTJxeWRfdFQ0SWZfSlVVd1E3RnJlRktMMS1jb2htSDYxTkpLemZ2VDluZUZmZ0xnS2ZkdU81WXdEeWQ1dUJUOGZxNkx0T0V5Ql9sZHgzRzN6aGdmcVE?oc=5",
+      "date": "Thu, 26 Nov 2026 17:52:19 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "ABC News - Breaking News, Latest News and Videos",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "What is China+1 strategy? How Trump’s tariffs threaten US push to reduce dependence on Beijing | Explained - Livemint",
       "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQNGlfUWZkVUNnYmh6bEg4d1JQLU9hNlFWcUFkSlRfaGFBM1VuZWlKZGlaNzN2UjFfWmNLNHRFN1QwcWJCNmNFcEQxN2RhOEstMzZNUkhONUIyT0xzR09CMjY3c20xSkJTRkZ6UDlYeVktS2x4ZzRDZEJoMG0tRDVjNlRJaGQ5TWlrWU5Zb1FvYU1yM0YxMXo4Qm83MWZwNWVxaG5ueHBXNFd6aTg1Zno5SXphR1Y0RjJsTUU5QjdjYXpIN0wxRmQtZVIxT0NQQjBWMXd4R0owSjFzdWZ6a3ZFdkluSFF4QUhPRUhpbnFqU0HSAfYBQVVfeXFMTUM2el9xOXVmSUN3YnZJVnd1U3RwSENlaTZvZVBDOEdGZFhvRG0tVlpiUUtaZ19Zc3l4eHpObUFLY2Y3eVpkeDdhbUVUbXBtcmh6WVZRYTg3bUg3RmR0OUtRNDhTRlhXaTZnbEFuLTFlM2RJTm1MekhaMkZ1QjFPM0dpX0RmNDZjS1kzYm81aGNReEZEMkh0czJ4YzVSU3JTVDVIbThpU1J2ODRVQzJrbi1tZkRNTWl4TGNSYW41MTE5SkdvZU9LU1BxRlhua09WUGZsV0xfbHRXaVZXcUNmVThsaFBYMEppYXVYNzJvWkJ2ai1TXzFR?oc=5",
       "date": "Thu, 26 Nov 2026 17:37:23 GMT",
@@ -251,6 +845,17 @@
       "signalEligible": false
     },
     {
+      "title": "Suspected Fake Iranian Oil Tanker Signals Hormuz Breakout, Exposing Gaps in US Maritime Blockade Monitoring - Business Upturn",
+      "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNVy1La09BNnEySzFHZThVU085N19fRFJ4UmN0eEZDajhYWWNCWFBVbWcyNTVDQXlweUc3UGJnWU5keDhad0g4UnJfZHBXVDdQb1F4UFlYMVVBYjc3WXcycFNLS2kzUVR2OUFqbjBkLTkzV0oxS1RzMmd5Q2hDQThpM1VnZ2xQUUk0SlR1dnJMbGV2ZW1ZUklRUkxuZTBaai11bFpITTNSTnBEcDgxcnlkVV9rSTBTWjlZX2paelpHZmxnTkhyQVYzdEExTUJOaUVNQndFdGtLM2xxc2YyWGVDcWhjYUR1X25FdzJxMWx2QVQ?oc=5",
+      "date": "Thu, 26 Nov 2026 17:30:15 GMT",
+      "category": "geo",
+      "label": "地政学",
+      "publisher": "Business Upturn",
+      "sourceWeight": 0.55,
+      "score": -0.35,
+      "signalEligible": false
+    },
+    {
       "title": "Hormuz Escape Route Suggests Ships Navigate on Iran’s Terms - EnergyNow.com",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQcHVkVnBoNG90NW9mNExtbzNvNHZ1Z1NTdkNsN1FzMllEVmFRTlB2N05TbFQya3Zwc0dxd2NPXzd5WWNWcEpQLXJOR2hDbTJZOUQxWkh0aVdlcVFTN2I4OFNpelhfUkVoby14cDRGcnZnUWNpV09vVFc0eGhiUDZVTWZva0tIRE5iWUE4YVFTTElWZ0E?oc=5",
       "date": "Thu, 26 Nov 2026 17:19:09 GMT",
@@ -259,17 +864,6 @@
       "publisher": "EnergyNow.com",
       "sourceWeight": 0.55,
       "score": -0.35,
-      "signalEligible": false
-    },
-    {
-      "title": "USD/JPY Forecast: Is Market Uncertainty Limiting Direction? - FOREX.com",
-      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPRUtuWmJkZzZYSmh4Mzh1Ujc0YTRISk9NRnVuTm1FX0lrcDgyVE9QNXdQem9xZFF6NVN1TXdJZzQ4YmxOTDVBTjJqZzhvMEVqUGN3S01KTEZscmwya1hyN3pkWGhtcUkxbld0V18xc0lhbmxaYW91OVpURUpOdTg4RTUtbTEwcWpCUHN6alFWcUd6QjUxQ1JSUktHeXl6X0RnTGxxMUo2Yw?oc=5",
-      "date": "Thu, 26 Nov 2026 17:16:48 GMT",
-      "category": "fx",
-      "label": "為替",
-      "publisher": "FOREX.com",
-      "sourceWeight": 0.55,
-      "score": 0,
       "signalEligible": false
     },
     {
@@ -306,52 +900,19 @@
       "signalEligible": false
     },
     {
-      "title": "Executive summary - World Energy Outlook 2026 - IEA - International Energy Agency",
-      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE83dzR3Z1piODFrZl91c1FoQkh3S1RkS1NRSUhOUmNGdGs5M0tNZ3J6MGVUcnBWZUJmXy1fN2VuTWp2U2pFQ3FRSWF0cWFhdEdHbVVqU0FZX2wzVTFFUnptMm80bjVmOURCVG9fN3pJX24xUkxlNkFueEN5WQ?oc=5",
-      "date": "Thu, 26 Nov 2026 15:25:33 GMT",
+      "title": "Gas Prices Were Already Down 32.5 Cents Before the Midterms. Diesel Is Still Near $6. - Energy News Beat",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQQXlfWnM0N2FSS1ZCX3BvalBGQXFhQlVoVEFyTGhxUktPRXlnSnptVEFSZFRoR0RlRlB1NXhCdGVRUnZKMWM3U241cHg1ZlFWNUphbkstRktjRUJCb2pEcmhPdVdObFNHemY2VldzZ2U0eUtjMlRkRHVpdWlJd2phejYwMEVKS25CRzNvRDRPSEg4aXdqbm4yUzNvY2dTZWZxQm9ONzNFaUp2OHdla2dNSEZjc1lNRlU?oc=5",
+      "date": "Thu, 26 Nov 2026 14:52:02 GMT",
       "category": "oil",
       "label": "原油・エネルギー",
-      "publisher": "IEA - International Energy Agency",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Iran war live: At least two killed following Iranian drone attack in Kuwait - Arabian Business",
-      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNeGVzSjhrbUhOTTctX0ViTkJTRnFEZnkwNTJQR3gySTJRQlk3aXNwenJ2Qk1DejVYcF84dmF4WDFPd2xKRzEwazEtOEdOb05OOFhJaXZQVTd3R2lDRHdGbTgtM1JSSEMxeFN5OTlLc0tLNE55MHlHRDZNU3lOVFBDaTJwQQ?oc=5",
-      "date": "Thu, 26 Nov 2026 14:40:24 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "Arabian Business",
-      "sourceWeight": 0.55,
-      "score": -0.38,
-      "signalEligible": false
-    },
-    {
-      "title": "Upgraded FTA to unlock China-ASEAN value chain potential amid US tech curbs: Malaysian think tank chief - Global Times",
-      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5HQjVGRHV6VlFlaXJ2U3FLR0IyWUhLMEdOTl9Rb0NfeGZqVUZCcFNmWnBYOElKMmdiV183NHB3OVFWWUdTVzZTZUUxclRCUUZpVlE3WDhjTnJ6UzdlV2NNTXdR?oc=5",
-      "date": "Thu, 26 Nov 2026 14:36:00 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Global Times",
-      "sourceWeight": 0.55,
-      "score": 0.38,
-      "signalEligible": false
-    },
-    {
-      "title": "Dollar again approaches 45 hryvnia mark: NBU lowers exchange rate - Курс України",
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQM0EwQlliX0pjX3dyLW1ZZVpwVjhLWG44eXZiNE1SbnAwVEFUNjdkRURIOWg1STA2cGRvUmpDS3J6eG5FWkZxdHF4VDlWQ0FvTTdMSi1OaTk1S3RIZDNKWFdoQjVTWEVKVko0c09XVjlvUzV2Wm0xbUhRZDg0NklMZkxRMVVSbGhveGtiWkg5X0FVclNpSXpBV1IxS1lNOU84RXc?oc=5",
-      "date": "Thu, 26 Nov 2026 14:27:00 GMT",
-      "category": "fx",
-      "label": "為替",
-      "publisher": "Курс України",
+      "publisher": "Energy News Beat",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
     },
     {
       "title": "The Atmanirbharta Test: Can India Build Its Own Machines Amid Global Pressures? - Outlook India",
-      "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPOFlyNHdwQUxlT1ZzNlNXM2ZqbXlLSVN2eURiVlRiNFFST3pxZ2hUMWJlamlZbVRyOEMtcFRNUE1SUDFUX2t6ZzhxN1pWOWh1V1ZNYm9BSVlmS2xidjFWdmRKNmdRY0xlU1lfamxHTjc5TnFxRkhxZTlfZHVIb0hEY1V4RGFxNktrS00wSl8zbnZHdUVFX1c0MTVKakdEN1hReHY4ZFROZnVSazVqSTNLMXdQcU1ac3QzSW54dVNGbkxpYU1RUXZyVkN2cTl6MFVUNkthaTVCaFhGSFnSAegBQVVfeXFMUC1BdjV1ckZoQTFuaTJYZWZMOHRyMVhacHp6eGN2enE5bTBwWm1TWXZPNEFFZnkyV3c1YTd0bjVFVl9kRnZwczNhMFU1VlFfUEU0S0tfeUlwREZISGFrVElXanBMTC13NTVvaHZlRDZVYjAxTDlRUkd4Sk9ENlhLREtvNFh4V0lzN1ZpLXVPVlFMdVpTWGFxeWV4cmNuMkxWenhlR1QwVjVNbWtBSzRtdWI4ZEd4aTQ1SVpFT19UZC0wcFd4eWpNUUM5SWNXU1JPM0pIZDVuSV9TNlYxTk1hU3dteS1ucWpZdw?oc=5",
+      "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPOFlyNHdwQUxlT1ZzNlNXM2ZqbXlLSVN2eURiVlRiNFFST3pxZ2hUMWJlamlZbVRyOEMtcFRNUE1SUDFUX2t6ZzhxN1pWOWh1V1ZNYm9BSVlmS2xidjFWdmRKNmdRY0xlU1lfamxHTjc5TnFxRkhxZTlfZHVIb0hEY1V4RGFxNktrS00wSl8zbnZHdUVFX1c0MTVKakdEN1hReHY4ZFROZnVSazVqSTNLMXdQcU1ac3QzSW54dVNGbkxpYU1RUXZyVkN2cTl6MFVUNkthaTVCaFhGSFk?oc=5",
       "date": "Thu, 26 Nov 2026 14:25:42 GMT",
       "category": "trade",
       "label": "貿易・政策",
@@ -369,28 +930,6 @@
       "publisher": "ODI: Think change",
       "sourceWeight": 0.55,
       "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "EU-Indonesia Trade Deal Opens New Markets, but Challenges Remain - Tempo.co English",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQUmlad200UEQ4SXFkRmJVYTRJT0lUUWRFVU0zeTdPVkU4RDI1OGE2TnU0akpxV0tKeTBqTFA3eDRsQnVLTnpUM1pWYktTbGVaMGxOZ0RfajgxSTdiX3NXWnlJbXVhSW5zaVFZSlZLbzR1WTN5cEQ4T3VJdmJRWGpTbEZsbE43bzRrR1hwUGRSeTRTSWZ3ZlRCbnRzOWw?oc=5",
-      "date": "Thu, 26 Nov 2026 14:22:37 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Tempo.co English",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Oil prices fall as Brent slips below $94 after Saudi refinery attack, Hormuz shipping fears | Hindustan Times - Hindustan Times",
-      "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxQY210Q2F4QTRZWnJDamFCRDlrMnFCLVFDMDBRbU54Ui14b3ZqVnh2d19LamhQN3hYRGtpVTVTS1lQS3BZUDNqWDcyMmN0dFowRnI3cDI2U1VXakV3SGtqSGtRQVY2blkwTXdnNUotZ09UTTFRNHdyUVBWQXI3aEZnaXZXX0VzMWMwdl9VLXk2VHRLV05fYUJBQzAwUFRPS2UxUW93ZzlNTGwwaXFQMmFDYW5relh4RGZldUF2TUYxOU5Ndk5HVHZ1bnQwRDNZbVc5MXZuaEZxVFM2N05tNm1kR2tOZTNqUGxmZFRMZmFVU182Z9IB9wFBVV95cUxOQlJPRkctX1hkdGZ4cGt1X2VRNDlxUGU5N2JaVnpvX0xxSTNDZnNFYmtMaGM5SDBZVHhKQ2JZNkhIeXM4U0M4VmwyeTJlSEstQkZiUUh1dEZOS1duNW1xeGsxX01FQnYxQ2FUcHR6aWhjTnRza3RVaWw4bTl6ckJBRlN1ZGxncGRIQkU0YjR0a3hiSVhDamdyN0l4bEMwTzlPVGNLZV9FdWN4R2RXd3g0T1lOU01DZVlnaWJJMUpMYTExcXg0elV1MjNnMHdOV1dKcl9PRHVua3Jsbjk5cXIzMF9IZWNrbW5aN3Q3V0xWNnhQMWliUk93?oc=5",
-      "date": "Thu, 26 Nov 2026 13:25:27 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "Hindustan Times",
-      "sourceWeight": 0.55,
-      "score": -0.38,
       "signalEligible": false
     },
     {
@@ -449,12 +988,23 @@
       "signalEligible": false
     },
     {
-      "title": "HK exports in October grow at the fastest pace in more than 70 years - chinadailyhk",
-      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9TSXczNHdtOUdiZEZNcW04OEJ5cDNfbUxVTkJJdHFBMmZEWkl3U0wtR2l0d0ZpQk5fOFdPVWlHWG9qTEdDazRyX1ZrWUJQYXFyUUdYajBwX18?oc=5",
-      "date": "Thu, 26 Nov 2026 12:21:11 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "chinadailyhk",
+      "title": "Oil: Brent Rebounds Amid Saudi Tensions Ahead of OPEC+ Meeting - Idéal Investisseur",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNc0t4SHpLQWYwOWlseV9MWmlqT3FIOXpfNmljN2ZNaUQ2cVJNcmFoREMxYXkxTzN1c1R1T3FfRktmUTNiVE9fc0ZnSlhKS29pdkJNY2hUbDB1Z2c2OTBia0Iwa3lFRnFIOVM3UXJqNFItNXBYVC1ScDg1SXg1RlBhQVYzc2RiX0dyb2N6M2VndUd2ZEpGMVR4M0Z3VTJfWF8wZUloeG53RktYZXQwY3lJczgxaG9VV0E?oc=5",
+      "date": "Thu, 26 Nov 2026 12:18:00 GMT",
+      "category": "oil",
+      "label": "原油・エネルギー",
+      "publisher": "Idéal Investisseur",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Oil touches three-month lows - The Daily Star",
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOckFnNU8ta1B5ai1hTjFjNVREMWlNQzc2a2pGTzEyblFmM0xTVlBqcG9TcU9xUEhSYXZaUXU2OTdyOFN6Nm8wTEtoTERXVGZnRDU3WVFrM1ZRbFh1UlVRRURVaW9TNnJKM1NOd2sxNFRFczhreXZ6N2RCQzNwWlJkT181aVpkbmR2SWJOZWpxWlg?oc=5",
+      "date": "Thu, 26 Nov 2026 12:14:46 GMT",
+      "category": "geo",
+      "label": "地政学",
+      "publisher": "The Daily Star",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -482,6 +1032,39 @@
       "signalEligible": false
     },
     {
+      "title": "BoJ Rate Decision December 2026: Date, Time and 1.5% Odds - Admirals",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPYkE2bDRraGNUeUt4blJuanpGUndxV3VwLVBTNXkxTEhacXpudHJfU3JHUUlSYzFsQ3ZBcHJFaUc4ZVZCZTN3RGtDVmJycHFBNkpzbkIxVUdFTEE0aGcxR2lReTBiWjNZNHVBR1JNNUFFUDFXZjZNeHFHVXJBNHZfQl9nWngxZEx1R0VRb004QnZpN28?oc=5",
+      "date": "Thu, 26 Nov 2026 11:55:28 GMT",
+      "category": "fx",
+      "label": "為替",
+      "publisher": "Admirals",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "USD/JPY, USD/CAD Outlook: Fed hawks put dollar bulls on alert - StoneX",
+      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQTEZMVEp4NHR6alg1TnZ0LUMxaGgxUnlvVkhBY2dSb3Rlc0hoYzIzbUJidzVsbzlQeUxSOG9ZZ2NJR05qeWVnWElkZGZON0xmOTluaFpSeVZFSWd4UXk0TmF5VHhSek9fNkpRbWJBTnFTY0pjNHlVWXpwQ1NlU05XOTIyaVluUmZ6aEMtWnZpbnpFemFsSDBRTV8tMUdHUWZpZzVIRTFoU1ZWMlE?oc=5",
+      "date": "Thu, 26 Nov 2026 11:36:27 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "StoneX",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Nvidia, AMD and Micron Stocks Plunge as AI Selloff Deepens - GuruFocus",
+      "link": "https://news.google.com/rss/articles/CBMiqgJBVV95cUxQTVpIdHJXeDRudHBya1Z0NnNweERzZlEyaEVHekk0SkpJcEp3b01qby1hdzdUdG1OOW80Z2M0Z2hQMEZfTWFTUk96SktjNUcwMkUwX1R3LVZnVE5mVGVscF9NMFk4LUhqMi0xeXVJM1ZtN2IwdXBoQTVaUTRKRjNJQUJobXFRTk5HMVU5d1dBbmpoUkFSSmZmMGFhOHpicF9XczktUHB3eXFfSHZBS29pZ1BYVHBsYllsVHFqOVhtTlNPaHZHSUQwNjNiZE5qaGpwM3lVMS05dFFnOFJRNFNmOVJLbmhrS1d3aTlkdzVpWkNpZlpUMC0xMl95YnB0N0dVa2ZnMGlMYUpNdzhNSDRFSm1MTDhLN0duLVNVa0JxV0llejVjX3FpbjF3?oc=5",
+      "date": "Thu, 26 Nov 2026 11:33:33 GMT",
+      "category": "tech",
+      "label": "AI・半導体",
+      "publisher": "GuruFocus",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "30.8% of Americans Say Jobs Are Plentiful in November, Up From 26.2% in October - Metaintro",
       "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQaXo0cFN2akNjU1ctbkxjZnhRbjFkYmZ1UGNVYWh1SVFaZllwZHFuaS1VdnQ4VmpDeVJUMmF0UXV3SEJleF9ad0NKRmdDdjR6R1BXdndCR0swancwa2lBMnpNZWVCTzI2ODYxLUIzMDJmU2U5UXVZQTNuYXRRaWEyWDhjcVdYT19RM3JhT0ROb1hSSkp5OHRqYg?oc=5",
       "date": "Thu, 26 Nov 2026 11:32:25 GMT",
@@ -499,17 +1082,6 @@
       "category": "rates",
       "label": "金利・インフレ",
       "publisher": "The Dark Side Of The Boom",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Nvidia Halts Server Shipments to Four Asian Countries, Including Malaysia - The Uttam Hindu",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOV1BRRkhXOERkeUsycFpaSE9RS2FLd2xMX0ZGYXdaVzFUY1QxRzFWNUhxQmJseDBKeHRPVHEtN2xsNFVWc3dxTUFneFNqcUdzRnNVelF6emlZeHE1clNod2gwZG5qQVAtazJZSE10UV83Yjh4T2RoUHU3Zk5OMnhDQW0tZGQwRUFBUWFoTU1NSVg0RTJ4Z0o0Mms1Yy10Yk1yNm12cThjR2VNbHVVTGF6S2Qtd0tyUdIBuwFBVV95cUxPMVNoWDlRY3k4d0ZCd0hKSWNybnpwdDAxVzlZYk1YUXJ5OUVGaWFDYXViSVlqTmY4NDBhQk9mVVBzVXhfRFJIbHMwQjlneno4c1FCVjlJTUtNWi0zX0xMOEhJQVAtYTJXbDRjNEh4cHE1ZmJvMnZlbHNNMi1RR3NrU000VXp3LS03N1hfckh2UThUNmJtNWZjbDZMVHdDR1AxRy1LQWNsTE1JUTRyWWY4MHpuMW9VaFBGTXlZ?oc=5",
-      "date": "Thu, 26 Nov 2026 11:31:02 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "The Uttam Hindu",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -537,9 +1109,20 @@
       "signalEligible": false
     },
     {
-      "title": "U.S. Strikes Iranian Launchers Near Strait of Hormuz, Sending Oil Prices Higher - EnergyNow.com",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQZ3lMX2xwQTg0NDVFSDJjdDllakhqR3BrOUhuZHJoQ0RFUWtKX2theG9mWkpmaVBQRkozWllaWS11RlY0Q3U4QTZhZjBrM3hDUkdIZEc4ejBGWThvMlRTejFTZVFNUHQ1VmFEemtfZVI5bUgwOF9MTEh1WVFVXzQzMGllZEYwdnFkT1IxUmVXNHJfODRsZ29WNVR0RlRya0ZmS1B5ZUk1YmRwdTZu?oc=5",
-      "date": "Thu, 26 Nov 2026 11:23:08 GMT",
+      "title": "Nvidia, AMD and Micron Stocks Plunge as AI Selloff Deepens - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQRWFIQXJMeDBwaG0td2VWYnY4VnZNOEVuc3A1elFaUEVKV2EteE5veDBxOWhCYzBRZFU3cFIxRlJCMHZSeExOVVdSVGh0bFZkS0RDaVlIU2JkczVJVzFYZ250Q3JCSVl3X3RyOVFlQk1DUEVWNW9leEhIempERURmT0duY2pNd2FrOEFxVlh1UTdTZ1BwalVJNl9PdWE?oc=5",
+      "date": "Thu, 26 Nov 2026 11:06:24 GMT",
+      "category": "tech",
+      "label": "AI・半導体",
+      "publisher": "Yahoo Finance",
+      "sourceWeight": 0.82,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Iran Prolongs Talks in Stalemate to Influence US Midterms, Officials Say - EnergyNow.com",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOREV5Y0R1OGwyT3RHWmhFUm9Ec0kxYS1lN055blBhamtzTzBsOW5sVHluZmI0cnhibFhOdnNwQ3Vsdjg4cEdGRjFGZkFkSTJNZHlvY3VlMEpXR2R1VHZuaEJyalhwbWFCU3Z5akhsdHA3bjdIbWlkcTVObzc2OFZFOTlWWDdEcjZzZXU1cmoyOEZWS2U1c19WbGZZRjREYlRoUGJKVA?oc=5",
+      "date": "Thu, 26 Nov 2026 10:49:00 GMT",
       "category": "geo",
       "label": "地政学",
       "publisher": "EnergyNow.com",
@@ -548,25 +1131,14 @@
       "signalEligible": false
     },
     {
-      "title": "Nvidia, AMD and Micron Stocks Plunge as AI Selloff Deepens - TradingView",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPNXI2ZHFBcjBOY2VTTTR5cWhjd0VHYUlmd3pJNjdIZkNKR1pKcEFESzBaM1NlcHRpQ1lnQy1SX3ozbDNMWkl3aTJReHl2NWlHdWd5WkZpWkNON2NBRVRSWENYZzBxOGhqbWNyd2Z0bjlHVnlVQ2FZcWc5aG1OQmZyNHFCdWxXRFpIWF9DSW9YZ3J0RktTajhvSkdEYUZjN2NyV3JfT1lQeDFleFZzN2lSX243VXdOZFVv?oc=5",
-      "date": "Thu, 26 Nov 2026 11:06:24 GMT",
+      "title": "Nvidia’s Crash = 1.5 Fed Rate Hikes｜RiskReversal Media - finance.biggo.com",
+      "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1JNXNPM19aU0JXM2ZncG1Yems0QkY4ZHBvaWY5ZUdFX1hYVHExNjhsakhoODByOGUwdHBFNWNLUDlqZmFJcEMyUzl6azZFQ1QyMnQ0LTQzNDljb1U2dG9n?oc=5",
+      "date": "Thu, 26 Nov 2026 10:39:16 GMT",
       "category": "tech",
       "label": "AI・半導体",
-      "publisher": "TradingView",
+      "publisher": "finance.biggo.com",
       "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Suspected Fake Iranian Oil Tanker Signals Hormuz Breakout, Exposing Gaps in US Maritime Blockade Monitoring - Business Upturn",
-      "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNVy1La09BNnEySzFHZThVU085N19fRFJ4UmN0eEZDajhYWWNCWFBVbWcyNTVDQXlweUc3UGJnWU5keDhad0g4UnJfZHBXVDdQb1F4UFlYMVVBYjc3WXcycFNLS2kzUVR2OUFqbjBkLTkzV0oxS1RzMmd5Q2hDQThpM1VnZ2xQUUk0SlR1dnJMbGV2ZW1ZUklRUkxuZTBaai11bFpITTNSTnBEcDgxcnlkVV9rSTBTWjlZX2paelpHZmxnTkhyQVYzdEExTUJOaUVNQndFdGtLM2xxc2YyWGVDcWhjYUR1X25FdzJxMWx2QVQ?oc=5",
-      "date": "Thu, 26 Nov 2026 10:59:41 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "Business Upturn",
-      "sourceWeight": 0.55,
-      "score": -0.35,
+      "score": -0.38,
       "signalEligible": false
     },
     {
@@ -581,67 +1153,23 @@
       "signalEligible": false
     },
     {
-      "title": "Who Pays for the US-China Economic Rivalry? - Investing.com",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPMTJXTXhNWW51ZkFnT2dHQTNqVFAtNVI3bGdtRnAwZDVuQUxsTHlQckRoRlFsVnhUWFpPY21PODk0cThpeE45S0JGLXBPR0lTUXF1ZVV3aG5CVEhoNVhyMzhhV29MWkRPUUdWSmNZLTNmdDJ3WmdTMjRzeEFwZ1VwSEg0VlJkajNaMDB4RXMzRQ?oc=5",
-      "date": "Thu, 26 Nov 2026 10:33:12 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Investing.com",
-      "sourceWeight": 0.82,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Govt sees fresh Trump tariffs as ‘leverage’, not ‘done deal’; will concentrate on finalising trade pact - The Statesman",
-      "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPUVFfYWxYbUpNNUZkZFhkb0txTmowNURVbERXbkMwX1dYQlBIa3F4ZVBrZ1dBTlNSam1Odm14dDhGTHViYXpsYWdBUTlMWHRXVEFVSG5PZmlSZWF1RENqNmhZWWpTcFhBLW0xeWlRTUliY0dUbnRTMzFHYVZkTUd6M3hrMk9pM1Z0VXRxYUpfclNMam5VTXB1X2VGT1lKZzdVbXhRTl9UVnVnbGFEVDl4NTQtX3ZrbjlCaVQ0X0RsVjRncHhnZG5Qa0F1eDgwWlNlS0tBNXEwdlpkUDFZNnNmbTB30gHnAUFVX3lxTE8wUUppeVZielNHMnNocXozSmtvRlNQc0tZS3ppbzZQeVhMYXNmWWhVUUVWZmJiRHppdTVsaFJCNERrU1dxQVhnN3pPUmpwcjVZaWxkbF9fZHp2WVpqeVVPQTZqNlpJZF9mZEtBem1MOXNreWFEbkVtb0FDckhMWGQxWms4RFZZZm1TQkRjU05HWXFLSERRemJra0NQTmtYYVdlTWVKSEhQQ3pRM1Y0QWxRR3FhelhMOWRkaXJQbHRWc1BLSnloQXlWcWpMZU5ZMFpoQmQ1bGNSN1Z5X2I2RlV2dktoS0Rwcw?oc=5",
-      "date": "Thu, 26 Nov 2026 10:05:00 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "The Statesman",
+      "title": "Silver Price Forecast: XAG/USD steady as US bond yields retreat - www.tmgm.com",
+      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOaEdDckJ3ODJvWno0S3JfLXVCTkZmTy12RUlPTHhYYThnbHZSSk9TRDY3VVkta1BvLVBpYzhMOEJMRUdVUnVvNE1mMkJNRWl0c2loVjdycEJIUUo4d1lJMWtxUWZyRzdvcWtSbEhOS3QzSFh2cGVJUVpfUC1NOEhoa05jX1hUczNHR2M5dlpGQjNXR2lPT1dhWkVibFltVlc4VFVmSDFWbm9FNFhSNjRkRlczd05zY3Fqb2FDMjc0dE9MVHluWWllT2VpaHlUUlVtTThldkZVYw?oc=5",
+      "date": "Thu, 26 Nov 2026 10:25:30 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "www.tmgm.com",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
     },
     {
-      "title": "Brent Climbs Above $95 as Middle East Supply Risks Offset Rising US Crude Stockpiles - Yahoo Finance UK",
-      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQM1RCSkxRV2lzeXNJX3pRcE1IbGVhN2I0N1RLekdQNXR4eGFGVnBZY0RGaU4yWkRUXzdENVY1Rk90T2lKZ2xNeWJTUWhndjZJU3A0YmhZLVpKSW9acVZrVjZzY25QcEM5YjNYUmpla0cxSUt1Zl9rNVJtMGFhVkthdFNaSQ?oc=5",
-      "date": "Thu, 26 Nov 2026 09:56:43 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "Yahoo Finance UK",
-      "sourceWeight": 0.82,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Oil prices edge higher amid geopolitical tensions, OPEC+ decision in focus - Anadolu Ajansı",
-      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOV1hwd3hHR2dTV1RPOTJNZlNXWVBGc2RKV2ctNHFza2JOUTY0aXJUVURlbmFSdU9YeGpIcjJqd3NvaXNWUHRjTnNfNlp1TWZUQVhtOEVBdm02X3VybGx6Y0hpeGtlcUxUYXkwQVpwMXFFbWJwUzdWQTBDcl9wcVJ2X2c4ZjdRX28wZUxBMkFxRUtPX2l4UXJvNk5EWkhiekJCeGNTY2ExUlRQRVR3MFl3bnBzWWTSAbwBQVVfeXFMUEZyTnlOQ1h0RHQzdVVjS3c4T280Sk9tdEp0bF92Y3g2cXZqMUxBczBIZW9IZWdKTS02U2pwUkoyd0xjNHZFellYZ3lNcWxieVEyaWNtT2tSWDRrekV5YkRKdUM0LUp2T1BJbVNlQmVBNGh5b0p6Yk1BUXdocHEwdGZualMtV1laSzg0NG5hbDk1ZnVFcUVaZ3hVcWU1MlZZNDMxc2hES1N1Y20tOWZfWnEwaVFFT0FzQXN5TEg?oc=5",
-      "date": "Thu, 26 Nov 2026 09:31:11 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "Anadolu Ajansı",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Gold price today in India ₹58,500 away from record high; right time to buy amid rebound from 14-month low? - Livemint",
-      "link": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNUGNRc2JzQW8xUF90NUFEckl0ZTNqSnFPeW14Vk1ZekhhWmpCSEIyYUxacUM5RmJlLTQxQUFpdm96eGFFMTBiQ3l3YzgtNEJsNi1XcGEwMXF4TlBuWFJOek1HRkpBa1JEanVTVGtJNUVlbGRyMFhFSkloQmk4WUF4ZlE4Zl9TdU1ocExWSTF0QTMxOGlWZGZURjdLWGNlVGU1TzlrZ3ExdlFLellIS2c5NE16TW81bzBsNjlJSFhXR0lSR2hHdU1mRm94d1FENk5Jc1BwcS1RajRRMnRiS0J0UnhYdDVSa1JoSldBbnpDd2Mtb2lsd2JlRGRJSTRMSXPSAYQCQVVfeXFMTkJvYkJIY0M5clk1ekMxVFdyTVJPQnQxdlFsbGlHa0xxaGNBRkwzQmpVeGxNOUVWdHExbEtRQ1g4dVVUUnhfRGNHTFY5MmVhYzVtUzJxT1ZLcXZlOFRldHhOUEg4d0VjWWtKWjE3YzR3N2NPaHg1X1FUdjVUY191cXJCY01sbWJVNlBqNXJ3anE4QnFXejJuOVNjc0E5NXdwazdQVHFWODJrYmE3dmhhNGxJaGUtTDI2czRSV3oxaHRwOGlZek50RHgzanJNWl80TEItVTZqNFBxc1laRGZ6N1Q4YkR6NE95RERzQ1ctZVJXaDUzY0pvWkdYaXBBcXMtdFFJUHk?oc=5",
-      "date": "Thu, 26 Nov 2026 09:29:23 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Livemint",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Is the Fed making a huge mistake in raising interest rates? - Investorideas.com",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQa2tvY0FhdExvdDJCOHY5WkFiMTFFenJQVVlVZHFDUXpfSFpiYm9yc19lZDBYMl9kOEdjLUd6c19WOTBXenRqM05DQlByWVYtYloxQXVySWpQMVZaTEV5cmxNUHN6U3BkRWlYZlBNQlNvVmN1dEJWU003aGlFbms1a0VSR3hOX21oSFJjaU05eHEtaGZUbmRjVXFMVGZ1aF8tWWlUN1FhbDYyR1dZaXpYSUExMEN5QQ?oc=5",
-      "date": "Thu, 26 Nov 2026 09:26:09 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Investorideas.com",
+      "title": "Mag 7 Weekly: Jensen Is Back. The Cash Question Is Not. - Money Morning",
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOS1U0SUdNV2ZKVWhvWlF0NU4zaHFvdUkyWUJOa2NvUFVRUTlEdDdwb0oyU3FCZlNUaDJ2a25YcHk2REMwZGNZbWtWRU1lT19YNm54NE85cTNjdlRfeldtMFRUNHRvY3BOcmgwWUVGcllHUVFuMnBVMjNLbzY3Wm5ZVWpTVGJkQVE?oc=5",
+      "date": "Thu, 26 Nov 2026 09:16:23 GMT",
+      "category": "tech",
+      "label": "AI・半導体",
+      "publisher": "Money Morning",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -669,17 +1197,6 @@
       "signalEligible": false
     },
     {
-      "title": "Asia Stocks Head for Worst Week Since 2020 as AI Faith Cracks; Taiwan Caps Historic Rout - BigGo Finance",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE10dUtocm9xTEZSanlObzRJVWJzSWRUVjlDRzYwWC0zeFhoN3RDTk9GVzJrSE84RDY4Z2l5cURyVllHc3YwRUJremN0NWd4UUVZd1ZXUmJvZzFiZUNvUnk5blNRWDhQRFpncV83cFB6c0trT0RGcVE?oc=5",
-      "date": "Thu, 26 Nov 2026 08:50:00 GMT",
-      "category": "tech",
-      "label": "AI・半導体",
-      "publisher": "BigGo Finance",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
       "title": "Nvidia Halts Chip Shipments to Southeast Asia - Wisevoter",
       "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOUVZPQ2JOUWVfdndhZ2NBenplSWdrV1BWR2VpektfZHFuVDljbm1KRzItQVBtYmNOMDJneVQyZXFqT005YjY4RFFnSWxPT2k5OENaMkl0VG5VMmw5MEF1U0ZyN0FsWVJoX3dwazhZdVhXOXhPSVp4R3ZpcXFKVU1Db2k5LW5XLXRC?oc=5",
       "date": "Thu, 26 Nov 2026 08:37:54 GMT",
@@ -688,17 +1205,6 @@
       "publisher": "Wisevoter",
       "sourceWeight": 0.55,
       "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "IRAN IN CONTROL: Iran Says Strait of Hormuz Will Remain Closed Until Conditions Are Met - EnergyNow.com",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPVnh1U08wWE5DdnNueUtJX29mYzNhVUxQUlV1TUxxX3NHWEliaEVaeV9vdC1MUjNSLUVBVUdjWUkwTlI4a2ZRTl9NYjBTOFYyRG1qaVpWdV8zQ3I5a0V5Smt4ZGN6UTBrNjE0RnZwS09qRWRZTmJjLVB0Um43MmNLdjRoOXNHNjIydFRQMWNBZWpIT3hqXzhGVUdqYnQxUG1iT0pfMDZoelJUOWdmQnlwc09MQTZYYTRa?oc=5",
-      "date": "Thu, 26 Nov 2026 08:28:40 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "EnergyNow.com",
-      "sourceWeight": 0.55,
-      "score": -0.35,
       "signalEligible": false
     },
     {
@@ -735,17 +1241,6 @@
       "signalEligible": false
     },
     {
-      "title": "Iran, US-Israel War Live Updates | West Asia conflict will have significant impact on global economy: Centre - Deccan Herald",
-      "link": "https://news.google.com/rss/articles/CBMi-gJBVV95cUxOU3l0cWR2Q0Q2aWUwTzJ5bWJEbGpmam1EQTRIX0FMQUl0UTBfX1hNbm5kWlROMXFCSTV0eGd1bGdvcGk2N0NkVk1kd3lWR1Q1VzRJV01KWW50MlJuU3RWUTdOcVJLb2tEdDlpN2NGeVB1dXdxVGxGZGxManBWeFZwaEdHSmdvTnA3eGFhdmlzRHBicm13Q3E3YlRjZXJjcTBXQlZELWhJNHF4a0NFSXNnUDI0QU14YXFMX01mQ0JqSUZvVFFhcVBPV0c1aVZFTVZ4dTJaVGtha21lS3Q0WnVIOVZsQnpQemZONTVsak50MzdhVnhHY2tKN1VrMXl0ZTIxaDQxWDZYUVRQRERpbkR5aDFCZTdmQnZlcjdUOGZ0RkhMcWZ1SHNneG5GQl94b2NZNkhGVk0tNi1CNzdsMUozbDRjSGdweTlYMUhiQUtGaHdzbnNZSjd3V3lLTW1CeVpTbW9pT1RrWjNWY3lOeTdySEktaGE1X0lTR3c?oc=5",
-      "date": "Thu, 26 Nov 2026 08:07:46 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "Deccan Herald",
-      "sourceWeight": 0.55,
-      "score": -0.35,
-      "signalEligible": false
-    },
-    {
       "title": "Dollar Rebounds as Labour Data Supports Fed Rate Hike Expectations - VT Markets",
       "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQQ3lIWENQTG5NTTZfTkJtTGVxZmtWdGRkbXV3T29mMmZTMXU2aFJRRndyWlh5bzFXaGZKM0MzTE91Ti1aSTdjV2hWREVNUmhjWVJlcDIwa0otbXlZWEgzSVRBbGJvM2JtUTRTcnR5OXBYb3FfODdqdkNHeDhvMkk2QXdYSDVGeHN1UVF2OW9TZS1aSl9hT3gzUU4yWk8wcVJIb3UtSw?oc=5",
       "date": "Thu, 26 Nov 2026 08:07:38 GMT",
@@ -768,12 +1263,45 @@
       "signalEligible": false
     },
     {
+      "title": "The US-Israeli War on Iran and Its Impacts on Energy Security and Import Dependency in Sub-Saharan Africa - Al Jazeera Centre for Studies",
+      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNOEU2YnZnWnpyWGQtTHpMNGxFVW9McnIwajl4VE5BcVZUbXF0eTdQRmFocDhsZm5xNFVPWDdlZ01oejJiSEtQZ3g1TzVyejZGZ1MwUlYxb2YyNWd1NFpxLVFuWTZuRng5ZDNBTTdlWDFaLWtjMWU3aDEtdXVQSERmbm4xWnplOGYwejVpa1ZwY3BIWjBTTzZrVm1ZdEQ0RUJRemdHZjZ5ODUwX25RYW90YlQxaFRZRmF6bU9UNWxyR2piRkNGMUE?oc=5",
+      "date": "Thu, 26 Nov 2026 08:00:00 GMT",
+      "category": "geo",
+      "label": "地政学",
+      "publisher": "Al Jazeera Centre for Studies",
+      "sourceWeight": 0.55,
+      "score": -0.35,
+      "signalEligible": false
+    },
+    {
+      "title": "Safeguarding the UK against economic coercion - Chatham House",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPNXJMY1psSlB4LURPMVZrcUFOWHBVejBXRVNFNTVHSjVxUjZ1MDFSQ1RUc255d1J6aUMwajZOU1JYZU9aWlFEX3E2cTBhdzBBMXBOR0FRSXV6ME9ZSEt5Y0hSY1J5MmNyUWc4UkpJLXFxN0MyUTZZNXBySHdKT3JRU2haUkVuX0JVLUtXMDZXc2N2OUxURTFWbjBQVlU4VzFfZ1Nidmtob19ESWtodXRtdkRMTHp0X0x0RlB3T096SGFyb2REdDNZ?oc=5",
+      "date": "Thu, 26 Nov 2026 08:00:00 GMT",
+      "category": "trade",
+      "label": "貿易・政策",
+      "publisher": "Chatham House",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "Yen edges lower ahead of Tokyo inflation figures - Economies.com",
       "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNcXcteEdLWW1mcjdjeXEwMm5MZVdzcFhhdTJ6NHdZV0JZVkdmU2dWck9kWlVJZXlUSjhVVkE4MjhOZnVVNWFSYjVxRHRIUDFJanFKS0djUzR0ZkxFYmRjXzQwbVRsMHFSMmU4aDFaUTRVWFRkQklkYWZ0SU1ObTVQZm1ycXJFejhYejJ1Ul9oaV85U0IxaFpZcnI4eWpNX0RCN3c0RVVBSFVSZw?oc=5",
       "date": "Thu, 26 Nov 2026 07:52:00 GMT",
       "category": "fx",
       "label": "為替",
       "publisher": "Economies.com",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Forex Today: Major currencies hold steady amid thin Thanksgiving Day liquidity - www.tmgm.com",
+      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNSVdGcFRFS2hXakt1UzlaRGIta3NucE1iTzhqY0pZLURkU0tib1ZOQkxjRktDdzBNUjdBd3RNVU5VakJ5eUQteENkcklIeU5PU2NqdElIelRxZUhyS1BuQWJBV0hOaEhtWHBPVFZESTlLMkwwTE51MkNTRnI0Y0U3Vmw0bVVTV2ZSbUxVRVN0bXJGeGZlcFZEaDJTTEJGTG1qZVNwM2FTbkx1WHJnNmRGT0pEcVlkeENjUTYzVUQxOGNsR3AyT1JjOE1ZMFRZZGxt?oc=5",
+      "date": "Thu, 26 Nov 2026 07:41:52 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "www.tmgm.com",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -823,17 +1351,6 @@
       "signalEligible": false
     },
     {
-      "title": "PGIM Credit flags AI financing risks amid Nvidia turmoil - InvestorDaily",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQVHlZb1plekQ2SjdaUF96Y0J6UHhHM1c0RE1vUHVuZVA0RnY1T3VaSzE5RzNtamxJdnIzcFNtOVhxc1dUcE1qaEtkS0o3a1VFRXBmQkVCTjJsdEFsWU9hUmNkVlN2NUJSR2JxZzVZcTNlNkdEWlluTWVUWmxzOGRidllkQ3RlRTRtYUVKbzUzNDNZbGxTZTNR?oc=5",
-      "date": "Thu, 26 Nov 2026 07:16:16 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "InvestorDaily",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
       "title": "Global Markets re-pricing Fed rate expectations amid PCE inflation concerns - FXStreet",
       "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPRnhoYzRDLUZuWkZTc1VoZXRVYzRmc0dfMHlEVzNncmxCQUFvOWhPT0dKdEFoVEt0ZjY4d29kdEVxUDJxaEFhYVJqQUdBZlpJQlZhVjQzVXp6SUlnVHQ0dUh4WnJ3aHZOaHVUYXFVTHFuNWl3bjA5OC1OcWU3V3M5MXQ5Y2NEemtFX1Z3dkE1ZWZsTERfUlF2MWwwY2dOODN5SVk0aW44LXJrTGIwZHBVaVU4a1d2dzV1Y0ctNlIzQQ?oc=5",
       "date": "Thu, 26 Nov 2026 07:10:50 GMT",
@@ -856,14 +1373,25 @@
       "signalEligible": false
     },
     {
-      "title": "Nvidia Halts AI Server Shipments to Four Southeast Asian Countries Amid New US Export Controls - Modern Diplomacy",
-      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPaWhMX1JWMTVpZkxwRDQ3eGYzbW5hMGxneXRrN2x1SzNNQmJKbUlTaGN3UXJ3cDlJMGxiemRKbXB6QzB4MzdCZXNkWnl4ZzZ5dllVb3FzWFdiSTB1S2QyREF5WU5UQm1hakZRTmtQeXpLLUpWRGpnTGM4MVNuREV4SHNmeGZnRXlmVDlqTmphS0EwRzl0N3pUVjR5bWJQbkV5WGtoVTlZVlJXYVdyNGZUMVo4WnZSZERpZGVGck1MbmotakFSWkhEWXQ2cWlzdw?oc=5",
-      "date": "Thu, 26 Nov 2026 07:01:17 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Modern Diplomacy",
+      "title": "New US tariffs capped at trade deal levels - FXStreet",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOSW80YmZOMjQwOTU1Sm83YnZYQW1HMXhnaldxa19vWUNva28zbWE3TG1yMzE0TThPSWN2VTJPQl91Wnp3bmVOVzFfbVVPMmhobkVLOTJ4TGFIOG9kbi1JMXlRQjhKeWg4QmRwXy1sYXFGQVpIdXdsWWhSb2oxZUtQSU9hWDRNYk5jaXpEWm9MN2Qxam8?oc=5",
+      "date": "Thu, 26 Nov 2026 06:56:23 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "FXStreet",
       "sourceWeight": 0.55,
       "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Japanese Yen retains gains as BoJ policymaker flags possibility of faster rate hikes - www.tmgm.com",
+      "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQeGd4d1J3U1JpWUgzYTl1QWhVWlFkQWhwVzRjblgxY0twUHNRYVVXa0dKbTdidkhDX1B5aHppemVQRGI0NFB1S1drYTRYQlVvRWdKZ1BkeXR3WFNJbXpMYXRiM2lKbm54THhyRkNheGxidzlLbnRBYmQwSUUtcEpPTHBfV21xeFdxZlUwLS1McjJ6V3ZOOEZIQVVxNE5pTVpoU3dEc2ZiSVJxaUNHY09BT2VyV2JCRFdjdGxtNTlKSTcyX2N6S0Y4NlRuMTdsWWFGcFp3TWZ4czRRNDQ2RnBnQkxVSG9wUWN5?oc=5",
+      "date": "Thu, 26 Nov 2026 06:17:41 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "www.tmgm.com",
+      "sourceWeight": 0.55,
+      "score": -0.38,
       "signalEligible": false
     },
     {
@@ -873,17 +1401,6 @@
       "category": "tech",
       "label": "AI・半導体",
       "publisher": "The Edge Malaysia",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "CBS News investigation finds US-based firms with Chinese owners buying advanced Nvidia's most advanced chips - India's News.Net",
-      "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPZmpBcVIzLUJtQkpTaEFnM1lMMElLZkpWbjBqd2g2Y181SnNHLTZVQkpvaFNFLWxIb2xuUlhMc2Y1RXI2dy1laHBnY1p0cHdidTdwMGRnS3hYNVBTS1h3TjJYYnNseVdEdE5hemlKdldGbUd3bTdLeVVZQUNtdnotTGNELWVzUl94V1VZbmNFeGdFb1IxTHVpV1pray1sc3lxUlBFeURQVVZPdFZFR2dlRVh0THhVRjNsbFphYW5FOC1XcnRqZ1BDbnFfMmwyZkhKNWFCQUY3MXNnWFo4ZzVJeFRR?oc=5",
-      "date": "Thu, 26 Nov 2026 06:00:00 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "India's News.Net",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -911,6 +1428,17 @@
       "signalEligible": false
     },
     {
+      "title": "US Inflation Rises To 3.8% in October 2026: How Will It Affect Gold Rates, Stock Markets, Interest Rates And India? - Jagran Josh",
+      "link": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxQdmZFZTllSldtbW1hcjdZZHF2OWFZc0dLZVZ3RW91djJldGJYbUN6bHN6dk9iZGNBSlk3b29DQVphY3otcWxOMzJRd0pKSmEzNS1yWjVTOW5RemxheWZoREt0WlM4ZXNqNWszcThCTy1oclB6aE96SDBKbmZDZzZRTmc1T29CdE1HQXVwWHZPTU9FWW1hY244dzJITWlFN3BHd0Q1dEVFM1hMV2xqaWhoeW5nUGJLZWo3LTMyemhzaGc5NWR1MXFQRnFoWTRKbEw0QkIxbHd5dlo2b0cxZjdvOTRWeUY5MUtrN2FGdlozZ2dfdHNTbEVQR211c9IBggJBVV95cUxNblJwUlpibWZpWTVhcEluakZ5Y2I3cUVneVNoejYxVEEzUVpUVFItWjFkV3FrLWhfRFVkWDExT2hvS3J4RE5uX3I2X1ktRW9OVDYtZVhZZllHRklRQlVKMGN4ZkZydEQtSXI4a1ZjbmlVOEJudHp4VERqNXZHRHhjeTdwOUI2QVdNSnNPcENXc2VoeXRSY3Znbzd3LVN3ekVrbURhY1hsdlVhUlBjdU56TXE0enNyVWxGNlpNeVhnUkp6LUg3RjlJczlGd25NY0ZLd3A3R1U2Nm5MbTdEc0tpQ0dOcl92Zk9ZWGIyTHRUWkVXOENxMUxVR2Zod0dJaGdmTnc?oc=5",
+      "date": "Thu, 26 Nov 2026 05:46:38 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Jagran Josh",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "Nvidia halts Southeast Asia shipments as US plugs AI supply chain loopholes China could exploit - Firstpost",
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQSENibGJHVXFkZ0JPVDVaOE9jUTV5T0hpY25EY2ZxeTNOODZ3dXhXZjJ3dVRGc1ZnY0Q4cXhHc0NLODNIcHJxYi1SUlhRREI3UjdYOUtLRXRvb2U1QWE0T3kxYlB2dExJcEhrM0gzaUNnVGxYYWdaNXlOZlVMdTRLU1ZENHFmdTZiWlpseFZiMUo5eUNGVm9BNjljd3BublplVnpoMU9fd19VNzUtaktLRTBHSFpYekHSAbwBQVVfeXFMUEdMb25lNHlaNXptYjhVLUdBSW5DNzZJS3p4RWRidldZSm52eGZBSlBxOE0xNWVpNk80YThnd2xVWXVlWjdMOFhhVFVVTWp0M2J1ZGNxdV9Oa0RrVGFxcU83OGgyVkhzRmZoU1pSbDNqTTM1QlZCZ25LNkJYeDh1Sk90UnNGU28zUC1nc2ltWGlYeFNTOG9pVWpzbDAwUjZRak5tOWxaRnlsbXhDVHhIQS16ZmlCRkoxRkN4Umg?oc=5",
       "date": "Thu, 26 Nov 2026 05:26:43 GMT",
@@ -922,23 +1450,12 @@
       "signalEligible": false
     },
     {
-      "title": "China's MSS and the Jensen Huang Affair: Implications for Tech Relations - India News Network",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQMnZwbU5OZEUtYmxCdWhVdUpqcWpkZm91cEtqNy1GNmQ4XzRtTDJiSWpMVXRLdzU2SV9PUTRCUkZyQlEzNE41TUVoTEc5LTIxQjBuSzJFM0RXY3NqQXlUVkhaeUsyU0tYRU1jbzNnR0R6WXlya1dCNm5YdUJ0cXB2UzJMTHhOYVRoTjBCOHFmYTNOMlJuNVBUeHVRbWh6aERpbms1Vg?oc=5",
-      "date": "Thu, 26 Nov 2026 05:25:30 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "India News Network",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "10-Year Treasury Yield Forecast 2027: Is 5% the New Normal? - Intellectia AI",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPS1RuM2JLYWtfMGJJeVROaUlKc3hmUk8zOUdqQnh1V3hSenUwUkpkWjNWTUROek1vSTN5RnFiQTNZbHFaQjgzY3l6Szh4RDJfTlEtbnpKUTltS21ud2ZFUGJDUUhZZnV0am13V2VtSl80V2dnMHMtNkNzc2FKZThIQUFPaWt6bTFJVkZHQlJULUl4R2pEY2tPcVVMRTVhSnBW?oc=5",
-      "date": "Thu, 26 Nov 2026 04:37:03 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Intellectia AI",
+      "title": "EUR/JPY Price Forecast: Slips below 174.50 as bearish bias persists beneath 100-day SMA - www.tmgm.com",
+      "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPOFJSdmJsVUh2NE9nWkRtUXAwTnRyaHpCME9MY3dMLW5kSXV4ZUlyeE9POVJyRG8xSjBKV1NsTmxnY1J2OHFhLXNueC1zdUZTRXhiRVhqTHUxMXZDdVNINTN4ejJKRzhubVlyR01fdEZIOU9OSzJwZDFhOFBjcVBZR0x3UGdZeHAxQWw5MXBKTWN2RTlNeXdjTkpKZmo3blNGMExsTFJoc0p3bzcwaFlVZXVnamNNcHQ5c28yeEdCaVBqUzZGRVBHX2RsenQtZUpyMjN1SzYwQzh4YXNnMGE0Mll2YnhVTE9uTE8zZDFn?oc=5",
+      "date": "Thu, 26 Nov 2026 05:16:52 GMT",
+      "category": "fx",
+      "label": "為替",
+      "publisher": "www.tmgm.com",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -988,6 +1505,17 @@
       "signalEligible": false
     },
     {
+      "title": "UK workers see wages rise by 4.6% as median monthly pay reaches £2,669 - The Workers Union",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPcjhWcW9tTUpDVElHdlNQT29kejEtM1pXZjlWNFoxVExZRG9hNUU1MGttVHRIQWN3X2tFRGJVRWhxSmJNRjBYY0UzUGdwSG53OEpieDllUHdaV3VONVpFN3UzU2NnRGUyb2o3UExZTXpudnhibnBpQ2djRUtxbUJmd2JCVHE5MFZpRW9oMzlOc0xzaGZnWDNoY3NMUGZ4Nk5VaEpiNVEyNkJabVptaXNsUQ?oc=5",
+      "date": "Thu, 26 Nov 2026 03:48:39 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "The Workers Union",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "Stocks Meltdown Spills Into Unlikely Market, Sinking Carry Trade - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQME1DZHA3Z2xzbFRfdDg0WjNOZktfaTRSUHNwQ013U0NDNHYzY3VpNV95NDZHX2p3YVFNU0lpM19iQW12dTJiSkhaWmZEZUkwZHB0TU0xcWt0OXNvS1BTR2x4czRHaHc2QWJwd1REVzE4eEdDNTVQbWJHamNqMEw2aEdzY3Zuemk2WkMwX2hyUlJxSnFHX1Y2eEV1dVVRZDV5WTZycUhEdml1ZEJEUHlyV1FPNlY?oc=5",
       "date": "Thu, 26 Nov 2026 03:16:00 GMT",
@@ -1005,6 +1533,17 @@
       "category": "tech",
       "label": "AI・半導体",
       "publisher": "24/7 Wall St.",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Nasdaq 100 Forecast: Nasdaq plunges as Nvidia selloff continues - FOREX.com",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQTmVrVEp1eHZOcVI3S1M1c1QyalNzXy1vWmtwUEJ5RUdLdWpYQWFTeEg1SEdkWUYwakZxd1k1RVJzM3QwQm9vMy1LWEVNbDByUUlRX2hOVmJ1Ujc5NHNNT2FlcFNaOENNbGJCaFJFSnMzeGZUZ0JYYVR2YkRrNXRSMUNrZkdyemtfVGRYdnRlLUQ5RThpYWVKS0JBX0lWTllkY3V5LVlVeElUR1FtLXc?oc=5",
+      "date": "Thu, 26 Nov 2026 02:56:08 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "FOREX.com",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -1032,9 +1571,20 @@
       "signalEligible": false
     },
     {
+      "title": "Iran’s efforts to offset US naval blockade fall short, economists warn - Iran International",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5LVHZGY0dqOS1IMWZ3bFRBazNKeVV5clZlZmJuTGtIZjY3cXA5NkhHYmhNdWl6d2d1V0VQX0trV3JMemgyRzZwd1dKWEhtOXpsUUE?oc=5",
+      "date": "Thu, 26 Nov 2026 02:04:00 GMT",
+      "category": "geo",
+      "label": "地政学",
+      "publisher": "Iran International",
+      "sourceWeight": 0.55,
+      "score": -0.35,
+      "signalEligible": false
+    },
+    {
       "title": "Fed Rate Hike Odds Hit 98%, But Eric Jackson Says It’s Time To Cut – Robin Brooks Warns Of ‘Full Meltdown’ - TradingView",
       "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxQMlJGRVRLLURIeFdQX3R2c0tObTJadEpiaHlQa1NXNGRtZVRWTV9zTGRwbWtpcDJhT1ExbS1seUdUM1lIaVpjYTlkcWdvbDZvNVo1SDhsOXpmeTRwaG5oWlRXdTVsRmQwMkVpNVliX1JxLVZpb2VfNU9ZaWpURjUxdVZhVmpYeHdXTEFlQ0wwOGJDVEg4Tng4NU5xZE9POGF0UGQxeHp4S2owR0RXczJxZFhkNUkzY1dIYmJMMmxqNWd3ZHMySlZ4Uko0X3UydndOd0FhbV91NUl2YTMwSGVlcmpLTlBGN1ZNby1ueU0yQTlfZzQ?oc=5",
-      "date": "Thu, 26 Nov 2026 01:43:47 GMT",
+      "date": "Thu, 26 Nov 2026 01:43:00 GMT",
       "category": "rates",
       "label": "金利・インフレ",
       "publisher": "TradingView",
@@ -1065,23 +1615,12 @@
       "signalEligible": false
     },
     {
-      "title": "Gas Prices Were Already Down 32.5 Cents Before the Midterms. Diesel Is Still Near $6. - Energy News Beat",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQQXlfWnM0N2FSS1ZCX3BvalBGQXFhQlVoVEFyTGhxUktPRXlnSnptVEFSZFRoR0RlRlB1NXhCdGVRUnZKMWM3U241cHg1ZlFWNUphbkstRktjRUJCb2pEcmhPdVdObFNHemY2VldzZ2U0eUtjMlRkRHVpdWlJd2phejYwMEVKS25CRzNvRDRPSEg4aXdqbm4yUzNvY2dTZWZxQm9ONzNFaUp2OHdla2dNSEZjc1lNRlU?oc=5",
-      "date": "Thu, 26 Nov 2026 01:16:27 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "Energy News Beat",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Post-Election Trade Outlook: Tariff Authority And Congressional Scrutiny - Legal 500",
-      "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOcmplVEtHOGpZX2liem1hd3pnRHpfSERUMTUxaUp2amJPNElJeHl6TENlR18yMG5nUEMyaDctbF96UTd4N09nNDRtTVplYlRBaHRQRlBtWUdmVl9tMTdvOHFxS3ZBNkh0d3ZEdjE0WmszY21MVEV4Wk9HSlhFcUZXSzBYRHpod0UxbUd1Y1pVV0liRUFvV0FPckFNWVgwYWFwdGxGbEI0WnRhZnZZYzJLdEcyNjNPSTZwQ0ZsYjdQaWxydlJ4Rk9nZ2pvNjJ1SXJmR203b29JTkM?oc=5",
-      "date": "Thu, 26 Nov 2026 00:25:28 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Legal 500",
+      "title": "Bank of America 2027 Economic Outlook: AI Investment as the Top US Economy Uncertainty, Fed Projected to Hike Interest Rates 3 More Times - 36氪",
+      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9xb3FtSDNtTGVMVVBkNDZIRXoxS2JCZ2Q1NGZlbDJXMUxnVVRta3hTV3J4NHZfXy1tazBieXFmNXp1d2JOU0VfLTg0N1VfUlFXTnk0?oc=5",
+      "date": "Thu, 26 Nov 2026 01:04:25 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "36氪",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -1109,28 +1648,6 @@
       "signalEligible": false
     },
     {
-      "title": "China’s two-month gallium and germanium reprieve gives US buyers time, not certainty - Benchmark Mineral Intelligence",
-      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQeXcycmxUS0ZHUnMzWVZCRnl5TVFXbjF3UmcxeEZXOTNqaTJXMzl1cW1xMlpNUjY4MXR5QjY0RUZkX3pFTTgzcnRBaTVPUGxVUUt6djV2aHdUbWI4amlKSzhmNDFJX2x5eDR2UDZRd0ZPTlhQd3dNZE1nakJrWEl1UmtTUXRnUmpuUjBCbVNrQjNQWGtSczRPZVg1c2d6TG9uR1YtRlg1d2FyRTVQZ09LVUFHRHRwMHdVYm1OMjYwTENObDhuQnFB?oc=5",
-      "date": "Thu, 26 Nov 2026 00:00:00 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Benchmark Mineral Intelligence",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Nvidia’s Crash = 1.5 Fed Rate Hikes｜RiskReversal Media - finance.biggo.com",
-      "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1JNXNPM19aU0JXM2ZncG1Yems0QkY4ZHBvaWY5ZUdFX1hYVHExNjhsakhoODByOGUwdHBFNWNLUDlqZmFJcEMyUzl6azZFQ1QyMnQ0LTQzNDljb1U2dG9n?oc=5",
-      "date": "Wed, 25 Nov 2026 23:39:16 GMT",
-      "category": "tech",
-      "label": "AI・半導体",
-      "publisher": "finance.biggo.com",
-      "sourceWeight": 0.55,
-      "score": -0.38,
-      "signalEligible": false
-    },
-    {
       "title": "China Memory Orders Drop; Eugene Says Samsung, SK Hynix Rebound Depends on North America Absorbing Demand - bloomingbit",
       "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5ZYzJocW1mOXRLTzNfWEJER1BaS3JONVgwTkJqUW9SZEpFajZhWjZmRWQwSjZNOXIyTXZndl9NZ1pVYnE0SmZKZ0I5SDFmMDk4ZkJCdA?oc=5",
       "date": "Wed, 25 Nov 2026 23:37:53 GMT",
@@ -1142,12 +1659,34 @@
       "signalEligible": false
     },
     {
+      "title": "AI Rally Shifts From Asian Semiconductors to US Hyperscalers as Neuberger Berman Says 'Easy Money Is Over' - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0zV1dRbkZteEZOUkhpVkNkSnhpV0tvbTZGVlAxNmdQRDd4VHdaWXlHeDR6WFNGdnpjZHRSa2lRQnlmQmxHdURjRHlSRlNZMEdPeU9rZVJaQ3hYMGk5TGdobE9saFJBRVFsVzBZZ19QM3o1czk5WlE?oc=5",
+      "date": "Wed, 25 Nov 2026 23:35:00 GMT",
+      "category": "tech",
+      "label": "AI・半導体",
+      "publisher": "BigGo Finance",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "Dollar-Yen at 159 Level as U.S. Tariff Proposal and BOJ Hawkish Remarks Collide; Tokyo Market Eyes Stocks and Board Member Tamura - BigGo Finance",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBzRGdacVllZm02VmdTdXNBSHZNb0ZDUUtlNndZUEh4Y21ZbXo0UVFOa0RVUmJNeV9rTURjUG96QzgteGg3V01pSGtoWXoyY2hHWHVaYVFtalBfSTRmVlJCNnZIT18zajFEckZPbkVYQl9ib0lLT2c?oc=5",
       "date": "Wed, 25 Nov 2026 23:25:00 GMT",
       "category": "fx",
       "label": "為替",
       "publisher": "BigGo Finance",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "October PCE Inflation Hits 3.8 Percent Fourth Straight Acceleration Before December Fed Meeting - OneBullEx",
+      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNbll0QlBJdGI0RWJqbzdBaXJ2VUxPSjZheTdxV2l0UkJ5aGJaaHY4RWlPRzNYNlBGbFA3MUg5MGZDQm93cnZ3OVhNYm93dXJVdEFmaTUxSGc2NkpYaU9KaWJPT1JFX2l2OXVaYnNmRzk4T1NvTkY2YnlNd3VYOWhzSWpkWnVZcXJ2aEtqVHF5VkhfUF90QTIzdjduaFpTR0tMaElDTjN5a1puVWVQdmpQT3NhMlRFaXhQajZvdTZQNGZZZ3o4Ym5heW0zNHhqWWNt?oc=5",
+      "date": "Wed, 25 Nov 2026 23:13:51 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "OneBullEx",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -1263,12 +1802,45 @@
       "signalEligible": false
     },
     {
+      "title": "Federal Reserve Bank of Cleveland - Federal Reserve (.gov)",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQclBYQUVnd1hnYUMzXzBpR0owTkhXdlJnOG0tck1SeU15c0FxYW5nSmFsWUhFc3V2ZndXVHV4QS1Ock9xUGpjRHRabmJkSnZGYUpGdDZZWFFscHFPLVBSVWpPQ3pvQU5GbEVGNjdUMzVFZ3Zsd084cmw4b25JN2p0VQ?oc=5",
+      "date": "Wed, 25 Nov 2026 22:39:40 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Federal Reserve (.gov)",
+      "sourceWeight": 1,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Federal Reserve Bank of St. Louis - Federal Reserve (.gov)",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBUU0dnSHU2dzdlOHJaaDBMZ0RfdkZEX0VRMkFPM19kYmN1blBvUVE4TFpqWEthN1dIR1AxNUstY3JnRWVGanFpejhUcFJJNjJuNmZTRlFOcHZqektZQmpuUlJFN0FkSUJyMFFydmtTUzR1azNMcjM2d3VhT1pSWTg?oc=5",
+      "date": "Wed, 25 Nov 2026 22:39:40 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "Federal Reserve (.gov)",
+      "sourceWeight": 1,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
       "title": "AI's debt binge is becoming a bond market problem, South Africa's central bank warns - investingLive",
       "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQLTZVMHJoNDF6aVJ5UWVmWkZSa0VkU0dHSHZ3OXR1cUt0aklpMjM5amxmZE9veFNFQjRqblNMQ2xsaWMyMDJfQkFfQjNDN1lKdDFFc25sOEIwRl9sTlVrdjF4RzF6eFplN0wwRTdoVkl2WlNtcVo3LS1paUlYZ2NRVUZZNERTYU9nOWcxd2FFWUpqcmZXeXVwaHNhMUtiNkF0TFJmNTZqTndnemFkUWhmLVhXeW51akdRMWxpTjdHQzRJQQ?oc=5",
       "date": "Wed, 25 Nov 2026 22:34:45 GMT",
       "category": "credit",
       "label": "金融システム",
       "publisher": "investingLive",
+      "sourceWeight": 0.55,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "Japanese Yen Forecast: USD/JPY Bulls Falter at Major Resistance—Critical Range Break in Focus - StoneX",
+      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQVXNvd3lkcnJRNHhMSGdlV0IzdVUySEt3elJHY3FEbUN1Ulp6RmtqZk9pbDkyeW50SFBxTC03clBGOEN6b09KSGp6ZW04M1lqY2JreGU1TDhSMWRkODRHY2hjZUR6UEtfeXBFOGp3QUswWTVYM1VYQ0taN1lUcHVRUC0tV1I0NGhrYVVyd0RLc3RJLVI1ei1rWlVWZWFMd3ZsZkE4OG9ITFl3YTd2azB1b1BPbUkxMWIyRDVuZ3dVR1NBMXFFMWVLYnprdkkwemFvdjEzTGMyUQ?oc=5",
+      "date": "Wed, 25 Nov 2026 22:30:22 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "StoneX",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -1285,17 +1857,6 @@
       "signalEligible": false
     },
     {
-      "title": "Stocks Pare Losses as AI Shares Pull Back Less - Wisevoter",
-      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNYmxRSEhVMDF4cm9BRzMyMjNSNW1MWkZ0ZjRLaV9mc3Y4R2xlVFVjN1NvUDg3cjgyUW5QQmtHd29lZTh3UTZwRXY4R2UyZ0FTbUlPbFREVXg5OTE4ZWVaOEgyMDhkajJHNTFiNU9iaTdPeGtwWV9OZzg4OVpqblhxWjJWem5jU2c?oc=5",
-      "date": "Wed, 25 Nov 2026 22:18:07 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Wisevoter",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
       "title": "What Trump should do next about Iran - Atlantic Council",
       "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQVW9kOUVYOU9ZUkVFaEM1OTV2WGVfeVhYNTFFOVg4QkJycEZrV0w3VmVHSUNPSW14alU0V3dKVTBUSGdCUEthdmo2MnR4b3ItdW1adUYteTRQQXl5bmZSdFJlUUlrNkxuNHhsdGtaT1hJSHNZTU1VRU9EclZjV2h2bE9GS1NlQXM?oc=5",
       "date": "Wed, 25 Nov 2026 21:56:08 GMT",
@@ -1307,24 +1868,13 @@
       "signalEligible": false
     },
     {
-      "title": "Will the Fed raise interest rates this year? Divided economists weigh in - ABC News - Breaking News, Latest News and Videos",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNX3NMLXhhYU1lOVVLWU9sY0k0SDUyQnEwMG9SZ1RzNHZobTIyYk9KWGJlOGhic3FKdlQ2NXlIVDF6SW1oRlNWZlY2NHlNLWlnNGoybzAwLWlkV3V1Q1ZtM21KS2FLTy02NEF6VjY4UmFNc2hYa21mRURlSkJYZWxtc1R3VmRYZFlKNUU3NzZiMkZGNGJZcG1xZUNCN0RQNkRndEVPb9IBqgFBVV95cUxOU1FSZ3pWOURaQUxBS296TzBtRFFGclJXTnpLYWwzZXU1Q01kcVZUczBxUDAwR3FaYmFZdzlXUWM2T0Q3TDVldm9nSVY4OERYRUtkdm5sdndPSU1ETU1yc3BuMEpXLTd2VFFZRTVQcWdMZFdEZ0EzYjhTS200RFBkZy1jbE01WVhVbEgyX1Z2dXc4MWxmbXd6cl9pSlp2TDRldkdkS2hwOVE0Zw?oc=5",
-      "date": "Wed, 25 Nov 2026 21:30:21 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "ABC News - Breaking News, Latest News and Videos",
+      "title": "SA Asks: What should Nvidia investors be watching for in the next few weeks? (Update) - TradingView",
+      "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNdGFqRk96RFFHTFphUjZVRmI4NWhnR09aTTNiZFoyMTZDbG5ZdTBrZjJ2NHg5TV93ay1NQ0tvaHo5Z1djZ3F1S1ZJdU1OR1NlZ3VyX0hrSXVrekxNd0Y5TWQzaUFlbURZNTk2V1BKZGxqVE9SbGZBcmN5TnF4cktsZ1lGZ0syUVBHcUZXOHB5VHlGVkJDb3E2RFJ0d0NWX1p6VjlrTkFmZExMQzdHVGRZQWxMbEU1VkFqWEQ5dGw2U2lQWV9LV0hyeXVJZUJ5TlhjOUxBZ0FtbGZqV0VR?oc=5",
+      "date": "Wed, 25 Nov 2026 21:00:56 GMT",
+      "category": "tech",
+      "label": "AI・半導体",
+      "publisher": "TradingView",
       "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "The Fed - The Surprising Stability of Hedge Fund Repo Haircuts - Federal Reserve (.gov)",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPaWQ4SVJoWkd6dlpkNXk1MGxMM1hJeUY4czlxaEhpMmZOMmZ2V2V3UlFZUFJuVjIwbEU4RFc0SlNBNHlaUmk1QTNOdFpRVGJXLTVpbnJPUHFFdnRpRk5aRTlTX2NKZnNTaGlDYWdlelZwTHc1TmZUWDNxTE1nekJLa2cyZDFsY1lsNHZ4UWQxWENqSkJnRlgwdk9DMEIxaGxuV1pRZjNnU2d5RXdQeHl0ZjBnVFQxQTJEMkdxclZmTQ?oc=5",
-      "date": "Wed, 25 Nov 2026 20:59:27 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Federal Reserve (.gov)",
-      "sourceWeight": 1,
       "score": 0,
       "signalEligible": false
     },
@@ -1340,12 +1890,23 @@
       "signalEligible": false
     },
     {
-      "title": "KPI – November 2026: State of the Economy | THE SHOP - THE SHOP",
-      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5FTFk0cnl5aEZkaDJhZW1TUVpoVVNzdUhjYlhVVkhlWklvM19LeDNzcVBqbWJFeGMzc1RBOExsLU5nS2NqbWZIVG9pRGJLdXlvaHdwWHpaUURNNjRJYnEzSWN6dmxQR20xd3l5LWlJR0MxaFZvR0pTaC1ZSdIBgwFBVV95cUxOUHVxcl9FNWV3NVI0VHVFV1UyZWZURndkTWR0cjdmR0xtSXhZQ3BIZ3dBdUFSUnJQcm9OWlRzTUdmZVJ3cmxZbU5ydnNlSTVNeHhqYlhIQzNoTEVLOTF1MTFvWlowNWVvMjBFSGZiUDNEakgya3UyLTlHZ3FWeDNrRUR3bw?oc=5",
-      "date": "Wed, 25 Nov 2026 20:40:31 GMT",
+      "title": "The Fed - The Surprising Stability of Hedge Fund Repo Haircuts - Federal Reserve (.gov)",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPaWQ4SVJoWkd6dlpkNXk1MGxMM1hJeUY4czlxaEhpMmZOMmZ2V2V3UlFZUFJuVjIwbEU4RFc0SlNBNHlaUmk1QTNOdFpRVGJXLTVpbnJPUHFFdnRpRk5aRTlTX2NKZnNTaGlDYWdlelZwTHc1TmZUWDNxTE1nekJLa2cyZDFsY1lsNHZ4UWQxWENqSkJnRlgwdk9DMEIxaGxuV1pRZjNnU2d5RXdQeHl0ZjBnVFQxQTJEMkdxclZmTQ?oc=5",
+      "date": "Wed, 25 Nov 2026 20:59:27 GMT",
       "category": "rates",
       "label": "金利・インフレ",
-      "publisher": "THE SHOP",
+      "publisher": "Federal Reserve (.gov)",
+      "sourceWeight": 1,
+      "score": 0,
+      "signalEligible": false
+    },
+    {
+      "title": "EUR/USD, Gold Forecast: Two trades to Watch - FOREX.com",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOUkp6MkN0dTc1c1BjS1FDaEtjOVlIVkNHXzRRQjNOT29rRGE2ZDh0Y1E2YkZTR0d3blVxYkhFb3Q3cGM0Mm0wM0ZDS2VhMlV3Xy1jVHdXM0hGRGhubWcwbGdhTlZIRzBLQ3RTMl83cVJPOG1FSkY5WkRyNERPSnJ6VDQ1ZlNaVlF4LUctMnYtZnlleG5NalN6eE1yRjRWY1lD?oc=5",
+      "date": "Wed, 25 Nov 2026 20:39:39 GMT",
+      "category": "rates",
+      "label": "金利・インフレ",
+      "publisher": "FOREX.com",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -1357,17 +1918,6 @@
       "category": "fx",
       "label": "為替",
       "publisher": "BigGo Finance",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Above $81.00: WTI stays steady as traders assess Middle East tensions - www.tmgm.com",
-      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNRFJwMlI3LUREcGFHRmN0cjlFZHhqNEY5Tk9sVW5oc0QxWHRzaC1rUlJTSjVsMnV1bHA2dmlGMW5jamtqVkY5bXpmWGEtU0dMMlpaQUdXbkNuQ0pGSm15eHFEaERUR0ZkV3pxM3M4Vlg4MXVPOFVOYlFORWxRVlJaSkdKaWpaemhrNzd2amsxcGwtX19hbEt3NS0yQ05rM2h1aWlKeEN0Qzh2RG1haTdCZFQ1SkgyQXNrNjRYX2F6andweFRaMnZHWkJoemU?oc=5",
-      "date": "Wed, 25 Nov 2026 20:03:45 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "www.tmgm.com",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
@@ -1431,559 +1981,9 @@
       "title": "Hawkish Rates, Targeted Liquidity: Bank Indonesia's Two-Handed Defense Of The Rupiah - OpEd - Eurasia Review",
       "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOd3lRWFZSeURYU3h3Y1lWNFBlbnZZTjdDa1UwaGljMDN6SkVMc0VXdlpldld6R0EzcXFQWndBT1FCMUtaQ1pDZUFJMk1DMDJBMEVaWU1CVEFhLXYwX3RIUW9YWE5RbEJSWjBsLUpIYXp5bjRvWW5IUlk0YlBGRVY2b0hDNC1tV3BLWWVzX0ZoU1BaWkc0bVJ2c0FPMmhZSHNmaTFpOTdtdld2SFBZa29QOFBmcDZkTDJGc2hOaGlmWk5lVUlj?oc=5",
       "date": "Wed, 25 Nov 2026 19:12:39 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
+      "category": "credit",
+      "label": "金融システム",
       "publisher": "Eurasia Review",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Iran dismisses US blockade, warns of broader confrontation - Iran International",
-      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9Cd0p4SEd5OXdfVExvWXVnYVBSX19aYXNtRWk0QWUybWp0VWNwSWZ1bHJxRUR2UmpDc3FpcXhGMmlqMS1yNjhvSUV5cGg3d2JDTXc?oc=5",
-      "date": "Wed, 25 Nov 2026 19:08:50 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "Iran International",
-      "sourceWeight": 0.55,
-      "score": -0.35,
-      "signalEligible": false
-    },
-    {
-      "title": "Tariff-ied! – Temporary Importation Under Bond: What Importers Need To Know - Legal 500",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPcGtYWXlvZWxwWFNJR1BPUW1wYk1jSFpscG9jV2xidTU1QnB2NC15UndrVDBnVEpsVEhmWDNEOVI1cUtSSTR1WnJfampGcnpSdHBoSU03WmhoQjg4R1paQ05VUHVZVjZoa1V3RU9sbEEzdE8zOEdTRThWUFhLdzhGdEd0eVpwS19vc0pjYmNlYlNYZDRNMzM5OUs2S0xQc2xQRDhCZGtYQ2JUNDdxZF9OYTh2SlNrWXBNSmlMUjdZMmU1OS1ubC16dVRCMXdfLXc?oc=5",
-      "date": "Wed, 25 Nov 2026 19:07:10 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Legal 500",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "US Inflation Hits 3.8% Ahead of December Fed Meeting, Weighing on Crypto - KuCoin",
-      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNVm9hTzNlVXd6TmtuOXkwcExKaVliRy1BSjBONlU4Q0dJVVdIX0hZVzJEdjVfM2piWmZ6aWJ3R2stak5ZYnBVU0o3RnlzNlVfMmotMmVXcFVyWS12UFg3Z21vcHlBNTN1OVlsVE1IWWhFMllueUNHRHM2c1Y5aVl6SEhZUkd1U1hXY3NrX1Rzc2tCYnNENXpOTzdWaWxzTF9Gc3JwQkg1bw?oc=5",
-      "date": "Wed, 25 Nov 2026 19:05:04 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "KuCoin",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "WTI Jumps to $83.49 and Brent to $92.41 on Ras Tanura Claim; $86 WTI and $96 Brent Targets Before OPEC+ Sunday - TradingNEWS",
-      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNbTdLa3JJN1FGYVRkc2FzR0d2R1FhQ1JSTUtKcEhIQkIyVXFYd3VEa0FvSEljT281TzBVYmNTR2gyZ184ZnJHUzBfdVl4WkExRkZydGpBb1ItX0t6RjNQZGpqb2NsZGxqeTMtR25pc2h3b1l2eC05OTg5RDA4ektyWWZwZ0p4TFpob3pxLUpTVmpVelRVT0J1QWNvYmVoUGpHdVU3aWZYMzBrSWhvQS04czhVajVWRU1xekhiYzdqbFVUM3R1ZlBmSmM2alRpaVRp?oc=5",
-      "date": "Wed, 25 Nov 2026 18:35:34 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "TradingNEWS",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "AI-driven sell-offs compounded by exchange rate volatility in emerging markets mark the end of the \"easy money\" era for FX carry trades. - 富途牛牛",
-      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNOHlVTFZWYV8zUnd5WEZ1RXhseWx3QWhOQWp6ZzhtQ25CaFRjY1NWNkNjekljNFVJSnRpZXJjUGdlcXlFX2VaS0RoVS1ZSW82NnVMQmY0T2NrdFRrT3JSa3BSTVBmNnJWdUJIY3JlU29xUUJmcXBaUV9HZGtRekNfQm0yb2pqZUVPbnJtUDd3NC0zUGotY2hsbzdqbzMySFg3M0dtZkJ5NA?oc=5",
-      "date": "Wed, 25 Nov 2026 18:18:25 GMT",
-      "category": "fx",
-      "label": "為替",
-      "publisher": "富途牛牛",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "ECB and Sveriges Riksbank conclude agreement for Sweden to join T2 - European Central Bank",
-      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPamRqVEhZbG90SUhFTnZCWVV5bm9aWmdCR3ZoanNOYkVLUzlPVzc2V3dDbWZaUm1TOHlyLUNyODNpbDFxVlZ6QzlPYWNkRXBkQWJRN2xaZ3BCZmk3RWJrQzU1cEROeG9wTFJsYWR3TWFUcjFIbnpCWTE3TUFPalR4S0ZBcEV0SDNfTy1j?oc=5",
-      "date": "Wed, 25 Nov 2026 17:54:16 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "European Central Bank",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Oil prices drop to three-month low of Sh11,568 per barrel as supply fears ease - The Eastleigh Voice",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQUWw5VjVTTTZpZmYyQnZPbkM3UDRILU9UblB3RTV5Ym00YVJKaGs0RVlIVFBjM0x2U2tKNUdnXzZVa1k5akdlQzlxOXcwTElYbDZ4YnA1TkVzQllTb3hIaDhjZ2VhZHpXSmdMd29wUFhSRjUwaGV3Vl9QVjhtZm5DYUdfVWkwazRFWl9OeE5rSDMyWXlFend6MV9uNjBDZnNiWmNod3FvVzJuODJ5X0tFXzgtdVJJQ1UtXzg4SFU0QQ?oc=5",
-      "date": "Wed, 25 Nov 2026 17:39:18 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "The Eastleigh Voice",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "ECB and Sveriges Riksbank conclude agreement for Sweden to join T2 - European Central Bank",
-      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOLWh6ZG9nMHU0UTJCWjM1VkNZU3hhMzdCd2lPQnVLUUJZYTdjZFBMdnZUT2l4Z2dpelJLZVhBeTMza2x1NW90cVRhUXM2cUNGdklQMGVTeEJBYTl3LTZiRW02aVRhTWt3UXVZS1RiamVEcUdDTmVYQU5YQlVoTGxiNWk5NnFNbGQzZzBF?oc=5",
-      "date": "Wed, 25 Nov 2026 17:31:31 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "European Central Bank",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "What Jensen Huang's Stunning Return Means for the AI Trade | Odd Lots - finance.biggo.com",
-      "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE8xM1pRV19RV0dNMHdPLVI1TDE5VC1VWDVfMENkUnc2cHlRT1BXZlJiS0tWcmRkcUp3bW1vb2hyWWRSY203Z08zSml3bS1BZ202blJnWlYwZVRkZ2ZvX1N3?oc=5",
-      "date": "Wed, 25 Nov 2026 17:30:59 GMT",
-      "category": "tech",
-      "label": "AI・半導体",
-      "publisher": "finance.biggo.com",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "US readies tariffs over manufacturing capacity, production concerns - Supply Chain Dive",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOdjN4bkVnb19hOU5ZQTJaU0RPN043TWpLcThYdGIxdndFa0U3SFZOcWhNMl9oVk9YeFBJRy1CbDQwbm9RcnZKZnZKd0MydEhHMWViS0pFbUVFcDJrSFNlcExoV01abjFLUHJkYlpvNDFfczQxTUNLVWtOeTZVdnZYalFJZUFRVGM1b0VNdVd4NGpzYlgwMTg0TG1kbktaeU5tNVFvNkZRelJkVllQNWlwdw?oc=5",
-      "date": "Wed, 25 Nov 2026 17:26:45 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Supply Chain Dive",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "US Dollar Rebounds Near 20-Month High as Markets Anticipate December Fed Rate Hike - Curaçao Chronicle",
-      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPenhZeHV0RmpzNUpWWjV5MmYydGotajFrSEtic1JQaFZZNUdEcWQtLURRdG5DaFNlaGI3eG1sVFlhelRZNmJ4QWNURW5ubVVjYzFFMjZOanZYQ0d3NEZTNEUzVjFIYUlXdldmQTFjU182cm4zcWJQWW93RnlNRTBiQ2p0dFVkamxGcWNTc0JRcVYxY3l4SjllNUtib0haY3h3SnRHQ0xXTDZ6Zlc4NUtmXzk2MlVOVW5OVWo2RDV0YV9WdXVzUFNZ?oc=5",
-      "date": "Wed, 25 Nov 2026 17:24:34 GMT",
-      "category": "fx",
-      "label": "為替",
-      "publisher": "Curaçao Chronicle",
-      "sourceWeight": 0.55,
-      "score": -0.38,
-      "signalEligible": false
-    },
-    {
-      "title": "Nvidia Stock: 5 Reasons the AI Trade Has Only Begun - Medium",
-      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPd1pTeUFleHlaajJzRTNybGthOGZyUXBvSXNub3lPbDRkQnU5M0lJUWNHOUZoSHBzMVBJZWdXX3U2bk5sRDV1NVBaNUFta1I3NVE0aWNPa1pTZEZmeWtQeWJsR0NDUVJ5eGFxVzlJS19HTG1BME9jdDg2YjRpeHYyTTVfWVZJUzhpamtOWW5SemVFejB2RXFfYmp3?oc=5",
-      "date": "Wed, 25 Nov 2026 17:21:47 GMT",
-      "category": "tech",
-      "label": "AI・半導体",
-      "publisher": "Medium",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Stock Market Today: Nasdaq IXIC Sinks 4.2%, S&P 500 SPX Tests 7,000, Dow DJI Slips; 7,240 Reclaim Target - TradingNEWS",
-      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOSFlJQ2sxUER6UkpOU2gycXBEUEhXck5CZUJOLVVTbUdFN3VWeFlWazhXMkhQTnZIekVfWi1BTUhaTll0WG4xZkdtbGVoR3A4N1VDQ1A1U3pSV3hhZ3VYem03eDh5R3dEaUt0RG1DNlItQnAyZVRjWENMZFluVWNndTJfRzBVZ05LUUh2TlRzanZacWFnZVNLcnFwOVhlT1R1Z2VBYWRuUFdCNjNYSk5qYlFHNVk4cHo1ZHJhcnBKMEptZ3M?oc=5",
-      "date": "Wed, 25 Nov 2026 17:05:34 GMT",
-      "category": "tech",
-      "label": "AI・半導体",
-      "publisher": "TradingNEWS",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "The average US 30-year mortgage rate eases to 7.21%, not far from 2026 high - ABC News - Breaking News, Latest News and Videos",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNY2pYcEgzQVFsZW1qYjh5QmJSY3hudUUwUDExb1AtUTRsdEsxQV9LMlJuZHM4dG13OUZXcm9FWnRzQWZJWFN2VDRCbElOUC1tQklxdTNDQTF0dmN6NDJuZ0luY3Y4RGVPWktuN0F1aHc1QVR1T0FFa1FKR0JiRk1hcnlFZml1LWtyU09ENlVLa1RlOEJHLVNWOXRUUdIBmwFBVV95cUxNY2pYcEgzQVFsZW1qYjh5QmJSY3hudUUwUDExb1AtUTRsdEsxQV9LMlJuZHM4dG13OUZXcm9FWnRzQWZJWFN2VDRCbElOUC1tQklxdTNDQTF0dmN6NDJuZ0luY3Y4RGVPWktuN0F1aHc1QVR1T0FFa1FKR0JiRk1hcnlFZml1LWtyU09ENlVLa1RlOEJHLVNWOXRUUQ?oc=5",
-      "date": "Wed, 25 Nov 2026 17:00:00 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "ABC News - Breaking News, Latest News and Videos",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "What to Look Out for in Economic Data This Week (November 23-27) - Kiplinger",
-      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1MeVNwMVVnVmhvRWo4b0N4WkhCRXQxTVRtb2ZmTWhCSmd4eERsN3Nfdllwejg0eG5ueFFCRUdPTzVUaXh4dEFZaWJqN3FFZnlFWTBlZ2ZvVkFFRzVScTR3TXRhZGl6MHp2RUF1clppVDRvR1lveC1FaXNCeXQ?oc=5",
-      "date": "Wed, 25 Nov 2026 16:59:16 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Kiplinger",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Crude Prices Climb on Escalating Attacks on Shipping in the Middle East - TradingView",
-      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOY2NqN1NKUTFJSmREX2U4MUljcDhEVXZfNzlnYl9zZ1FQWkxYaHVrS01iYUJGYWE1cTlfZktxdXpIWGx1dlpIckJLZmJCT3FOTjZkb3FPbkNvZVc2ZnA3Ty1Gd1liNjVDU01NV0FVQ2ctNHFiWlpyS29EbTF2dTI1RGFlbkdPeE81N3pyYW1ueTVPcGQ4ZGxkZEtSaFVaQUsxU3FCMWRWanYzYzJlTS1zeHY3RUVXZTF2bDM1SHpqSWZtVkVRTFJvSVV3?oc=5",
-      "date": "Wed, 25 Nov 2026 16:35:29 GMT",
-      "category": "oil",
-      "label": "原油・エネルギー",
-      "publisher": "TradingView",
-      "sourceWeight": 0.55,
-      "score": 0.38,
-      "signalEligible": false
-    },
-    {
-      "title": "Global AI trade to broaden beyond chips into power, grid - Morgan Stanley - TradingView",
-      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQNDZQOEJwZ0pyOXNMR09ORWZsVFZGS0pDN2ZqTGxPZHZKWWhkQTBxWHd1OVhkVzJCLUpoUzIwaE1OSWo0NE42aFVYTGtUdWlnd21LMjVWNDlRWTloeWd6d19CN1F1Qm1UeGR0SHUyeWhoLTZCLTVuSUhGd2thLXFQRTdVcmhZc2RPdlVyMkIzMFdmckZVenhydlJoV203YU1zdUNaRm1NMWhMaC1ESnJKUHEza3NEQmNkRVpWMi1rUnNxME02a3VoM25TT0FuUQ?oc=5",
-      "date": "Wed, 25 Nov 2026 16:27:02 GMT",
-      "category": "tech",
-      "label": "AI・半導体",
-      "publisher": "TradingView",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Call For Papers: International Conference On “Sea Lanes, Sanctions And Sovereignty” At TNDALU, Chennai - Live Law",
-      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNSkpFZ2ZHZ0RxSWc1VnpRbnlUTWhYSFR5aFEwbHRwN0hxYzBvT25uRUlmb3loV3ozc1phR3NkNHZGeEdjTGdFMjl1UExYeXlXR2RSM3ZYRnZLdm1STWJnTVA3Y2V2RVQwMmdLOWVUSmpvX2V3cFg4TmtfWmUyeVNGeGlCdVFUaFNmQmNxR1F4dTlDb3ZNNTZqYnFQQi1XNEE2TVdjYS16MHVTVVptQzNXUVQyOEt1Wml2TmZYSmxMaWNYeGlFVmVfWm9Rb9IBywFBVV95cUxNSkpFZ2ZHZ0RxSWc1VnpRbnlUTWhYSFR5aFEwbHRwN0hxYzBvT25uRUlmb3loV3ozc1phR3NkNHZGeEdjTGdFMjl1UExYeXlXR2RSM3ZYRnZLdm1STWJnTVA3Y2V2RVQwMmdLOWVUSmpvX2V3cFg4TmtfWmUyeVNGeGlCdVFUaFNmQmNxR1F4dTlDb3ZNNTZqYnFQQi1XNEE2TVdjYS16MHVTVVptQzNXUVQyOEt1Wml2TmZYSmxMaWNYeGlFVmVfWm9Rbw?oc=5",
-      "date": "Wed, 25 Nov 2026 15:54:23 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "Live Law",
-      "sourceWeight": 0.55,
-      "score": -0.38,
-      "signalEligible": false
-    },
-    {
-      "title": "Mortgage Rates Forecast For 2026: Experts Predict Whether Interest Rates Will Drop - Forbes",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9kMlJHRWhRY2owbnpsZWhWOHVVZFR1ZmM3NzhqTUVEVnpHR2xlMHp0QnR2eXFwV2wzQ2FMbXZTN3lTLUJ5OHgxdnk0S3Z2Q3hEQ2pEYW9xcWhrRktVS3B0RXB0NkdnM0hPMzBReG5neWZ1TTdvVWs4bWgxdWFNUkk?oc=5",
-      "date": "Wed, 25 Nov 2026 15:53:00 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Forbes",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "US tariff plan targeting China, other economies risks offsetting trade negotiation gains, business confidence: experts - Global Times",
-      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9adEo4WWFSS3A2NGZPT3JycFRLLWxwUWJzN21TaWRpSi0ycnU4S3UxcDJ5Q3hHWFhvSHpNc0FQWkRTMXNEa2c2M3dTb3NBaWY2dTZKODMzZHFXblB1R3EteVZn?oc=5",
-      "date": "Wed, 25 Nov 2026 15:45:00 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Global Times",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "NVIDIA Corp Stock (NVDA) Opened Down by 8.39% on Nov 25: Key Drivers Unveiled - TradingKey",
-      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQYnRhdDE5X0xoWHJoRS10dDhjbElUQ09mZFB3UEpNd0xOTlZxVUVVUVpvTXotdk1GZDU1LVlJZjNpc2pXbzVoblBiNF9vbV9ydTc5N0tEd2UxS3JLQWctNENRdjNIWTFybEdta3p3Z29jNlFlb0pRbXlfdmU3VVFDMkM1X0ZGcHFlRjNR?oc=5",
-      "date": "Wed, 25 Nov 2026 14:47:43 GMT",
-      "category": "tech",
-      "label": "AI・半導体",
-      "publisher": "TradingKey",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Greer calls Nvidia ‘structurally important’ to US technology industry amid growing global AI race - Business Upturn",
-      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQSV95ZkYtaFFYWVNlYUhiLUxSQV9MTkRQX0tFbUx3am04b29mV2JHdGI3TzJGVl9iNnlYd2ZZNDZOamJjbHl3Sk13VHFpYjZCNHRHS09INDZQV0o5Vi0wVkpOVjRGTWs2YnhXV3UxaDBFX3dCN0ZnenB3V19XcFVxN1BEUzl2R2tsZHhQc3M3LTFXQXpHZW9icVUwNTFZakN6bTRoSXd3VUkwek80Z1F4OUVTUmJXOVRPd3NoVGxxZVlSeU1KNEtDMXBxdG5zT0Rv?oc=5",
-      "date": "Wed, 25 Nov 2026 14:26:00 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Business Upturn",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Conference on CCP Risk Management 2027 - European Central Bank",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOOGd4clh2VE9HTjExZ3Q4UGpqQXRsNmg0bmllNzcya2s4ZzNmb1NIWXJPQUZDdktPeXNnYm5TOWpiRk91MTRmcHpMdU4tVUtvMU42andnLWtmdk1FeEl4TmNSS0Z6ODctQl9lVTNCTExBMzFKTFhwTERFdmtMZFNfOXllajh1cEJQdkkwd2NB?oc=5",
-      "date": "Wed, 25 Nov 2026 14:25:50 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "European Central Bank",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Chinese AI development hits severe delays as gap with US widens - Crypto Briefing",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE43Q2J1Rl9xa0QtNFplaG1Gc3g2RFhkMnJ2MmtKOUx3MHVpY1lTSWR2eGdoN2VOdmtuTzVFZE1LcWtERE9JemJiSzdKNzZ0bDdFNFBkeXZEVEZJWlB4cWtHUnhNajZJc2d6TjdkTHpaZXY?oc=5",
-      "date": "Wed, 25 Nov 2026 14:06:50 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Crypto Briefing",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "USTR Jamieson Greer says Washington must keep Nvidia on top - Crypto Briefing",
-      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBvZXhqQV9GZ0dTbnhnVFpmbkFYLUtDZDA3WEZHc293WkhVTURXVWFHdndGYTR4N1VGcUwyV25yOEF0VDljXzNrTFhxVmhPcFMtWmpid3F4QVJSMHp4RWlJTnF6WVNZOWNUdGpqS0piUHNFNDhJZzZR?oc=5",
-      "date": "Wed, 25 Nov 2026 13:57:08 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Crypto Briefing",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "US core PCE inflation poised to accelerate in October and trigger Federal Reserve rate hikes in 2027 - www.tmgm.com",
-      "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxPNjA4Y1dPSzd4dmpfdjBXZ2NuUHVDRDFmRmZyblZpWElONlBPX3NUYVpuNGRveWJ2cFBJcUZwWjRXRkhTbDhkdzN4VXZuaTN4d1FvZHRfN1VmSzZTOEJqYktuSHN5VERVLTJ2QjVlbkFsaHhfNGJOcmN1dHh6Y2hvWmpOdlo0d2N1bURUQWxQTEMyWDBlcUJtdDRHdVZLT2pWQnFQdUxxT1dxUEttS1dUM0JqRGh5SWx6S0lPT0d3Y25CVEhLaThGcFNWcGd1dENUV2xHSWxMMHZyWE40QV83cnQ0anRHQTRrR1MxbGF1RHhmVkU?oc=5",
-      "date": "Wed, 25 Nov 2026 13:56:23 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "www.tmgm.com",
-      "sourceWeight": 0.55,
-      "score": -0.38,
-      "signalEligible": false
-    },
-    {
-      "title": "SPDR Gold Shares (GLD) falls toward 52-week low as Fed rate hike bets rise - Beinsure",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPQ1pHY2RsZ0JPV3VxQTlBMzZsSzhDZDZPVnR1NzBKVEpvcDNhcTV6Mm5RWmVSZDV3eWc3LThDSm0zRm1pUExvQWRJMUt5SENkVzMtbm9BRFhrWmIydnRvcjI0YXdZOGwwQ0NaV1FweW1UZGxSR1kyMTBRcldQZjhQb1NUR2J0QmVXd2dESDJWRjZTbnNyX25RRmx5Z2EzYWNj?oc=5",
-      "date": "Wed, 25 Nov 2026 13:48:32 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Beinsure",
-      "sourceWeight": 0.55,
-      "score": -0.38,
-      "signalEligible": false
-    },
-    {
-      "title": "Breaking: US core PCE inflation rises to 3.3% YoY in October vs 3.2% expected - FXStreet",
-      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPQUZzWXlBNFZYYlJKZzB0Sk50eDNkVDl4cGowSFlianpHVzc5d1RTc25hQzAxNFNwX3VablB3c0tmZEhkNkxvSC1pS2JsaDRvMkJMUlY4N3ZvSEF6UkcwSnZsZTM2VUxNQ2IxdGRNSGNydTJ4LVpSTFluTFZVcEZ0MVlpRnltaE94MmsxLUtxZk9RRDNpVTkwSnZtQWZ3bzI3WVYzQks2T2FkbHctbjBGcm5JR3FQendHTDNYQ2tIUC1SQTBfWUxkWGZOZFVzT2Ex?oc=5",
-      "date": "Wed, 25 Nov 2026 13:40:27 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "FXStreet",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "US October PCE Tests Inflation Outlook Before Fed Decision - bsinews.id",
-      "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBSNVVaNTdzaGdQbmw4Q0JleEJBeVlwWmtrbWlPcUQ4a2xBN3JzSG5BeE5RdElkdUZiWkZTeWpZYmtkZ2JGVUU2cnpzY25WY0YzREh0UlpxTTZLd1d1bGlB?oc=5",
-      "date": "Wed, 25 Nov 2026 13:33:58 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "bsinews.id",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "US PCE Report Tests Inflation Outlook Before December Fed Decision - Limapagi",
-      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9WQ0xvT05PV0gxNWJzcDJ5cnk1NFNScFJOZXJoN2M1R2pDbWFvMEFXTldTTDdNcFAyclJ3ckRsQVNYSzlZTE41SnBpN1dyaUpWbnBaLUw0TkFwQUE0MWVaS2dsUFJzWGM?oc=5",
-      "date": "Wed, 25 Nov 2026 13:33:20 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Limapagi",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "US PCE Report Shapes December Fed Rate Outlook - cwibc.co.id",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1PdktyRUtjSF9aWHY1eDAxUmRGRmk5ZUNaN2VwODBUdnJWQW1mS2YyYXg5ZTFxMi1rWkZnUjgzYjhRVFA4dTZwSFlGUFg1M2pRMk5HZ2RselNEdw?oc=5",
-      "date": "Wed, 25 Nov 2026 13:33:01 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "cwibc.co.id",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "US October PCE Tests Fed Rate Outlook Before December Decision - Peradaban.id",
-      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5xWms5Q0JfbDhib3ZKenZXNnE4WU55dzBVcmdEY08wbnIwXzBKN05EUzdYVm82d0t5cG45b3VhSWtRTUZsdkdhd3ctWk9rTDJvTHhUZWgwZmJjNmdkR1FqTU5n?oc=5",
-      "date": "Wed, 25 Nov 2026 13:32:30 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Peradaban.id",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "GDP (Second Estimate) and Corporate Profits, 3rd Quarter 2026 - Bureau of Economic Analysis (BEA) (.gov)",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNbWhYV0xKaDBoUXFlVlpaOU1HWTU3R2drZHV1RUVTTlVnQ1Y0bTdUeS1VazF0eVNCd0g3dFAzVVcyQ21NTUZnY1BId2ZIaS1XalZSZ2xLMml4ZzljTmhTMDBudkNTa1Q3UVBFaHJMRjFhN3REOFFZWEhRNlFzU0lqb1ZEUnJrX2hrN2RNSmFZXzlwdw?oc=5",
-      "date": "Wed, 25 Nov 2026 13:30:00 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "Bureau of Economic Analysis (BEA) (.gov)",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Personal Income and Outlays, October 2026 - Bureau of Economic Analysis (BEA) (.gov)",
-      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBNRkZQa2pxcWxkY2QzQW4ybUFSSmRMSEc1dVdPeWhNSTR6Snd5R1RCWWZCNE5weXhlR0NybXJtOGZuZV9GQlVlRGlqYU44V2Foal83NjZFNFNsdENsenFZM2s5NHd2WjgtUXp6c0VQRGh4S2RSeEpfVVJR?oc=5",
-      "date": "Wed, 25 Nov 2026 13:30:00 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "Bureau of Economic Analysis (BEA) (.gov)",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "GDP News Release - U.S. Bureau of Economic Analysis (BEA) (.gov)",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBuejRtR2h3dkZiZ01aclE2X3QtZ21xMFlkTlpjYlllSDlIWW9hcHRrQVZVZXZtWVJRQ1ZWTC14cnA2VE8ybTFNSkU3NGZTWFdtVVZRNkdFaWlFUkw0LXViLWxZejRnU09sanlYRC1tSTE?oc=5",
-      "date": "Wed, 25 Nov 2026 13:30:00 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "U.S. Bureau of Economic Analysis (BEA) (.gov)",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "US October PCE Tests Fed Rate Outlook Before December Decision - Demokratis.co.id",
-      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9WWGVRd25fVDBVWkY3X0V6M2I1dER6SzBvMjNOekFkYmtjVkRrZGdGVjFCX3ZOeDFDNU1UTjAzMDRJMld0MVpSNzcwemF4NFIzaHM0TldXdmxPZ0VISGZuWWZuOHU?oc=5",
-      "date": "Wed, 25 Nov 2026 13:29:33 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Demokratis.co.id",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "The Fed is likely to raise rates in December. What it means for your holiday spending - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQc0h0TTRUOFV1ZTFHUWNqN1NsaFprZ1g4MFpBQjlMbWtoSUhqOWdoZnVqd0JycGNhblNYQjFBR2VHNEZXWm54cW5DTllHM1dGZFB4V3FJZm9GQWZfOHBfdTRKelVsZUx0NFFKZERLbmpsUDhJYkdEMDdIWWxmdlFFTdIBhgFBVV95cUxNcUNWNGtHTEVhRzVaSy0yajdKRl9yQ1Q5Y1JqR0VMRE9hd19rUUIxdDBBWFQ1a3lMYlc2dkhwV0dmSUpWOXUzMi1vQXlEVjk2ZU9NMnFiN3RncThRWk9zT0ltNXdEZnlxMHpscXVhbGhCU1FuT3BUWTVZWG9Td0dxUklwazNndw?oc=5",
-      "date": "Wed, 25 Nov 2026 13:15:01 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "CNBC",
-      "sourceWeight": 0.92,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "U.S.-China Farm Trade Talks Put Agricultural Market Access in Focus - AgroLatam",
-      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPZzhVWG5TVUZ1UTBlb3FEYjByZzhzSHhSbm5oZl80ZjAtUDE1Z0VUZDZmdW9rek1kUU50eElNMGdFeExiT1IzYTRBR1lzSVkyckROd2NxZjhIZXN0T19hREEtT1ZWSExqODNiSFF1YXZ3QkdhREdJUkxDMkhkZVc4QXVzWlpwT3NnR0E?oc=5",
-      "date": "Wed, 25 Nov 2026 13:08:51 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "AgroLatam",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Speech by Vice Chair for Supervision Bowman on modernizing banking supervision: a shared agenda for the Americas - Federal Reserve (.gov)",
-      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE03Mkd3YWZlb04wQkQ1M1hFUDU1a1VvUHAxOHhSTlo3Z05rbEtfUFBITHRwZkN0MnJUT1dkOHJtZmN1bThIc2pueWZtUFA3eENOdV9SdEtaSGNyaHhlczRjd0ViY1M5MWVSdkg3V1ZJOERiWVN6dEhB?oc=5",
-      "date": "Wed, 25 Nov 2026 12:29:21 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Federal Reserve (.gov)",
-      "sourceWeight": 1,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "INTERTANKO: Shipping resilience must not mean accepting attacks on vessels - safety4sea",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPZUNiWFZjMTRLWmpTSnhVVGptaHpTdjlrWkktRmxDUjN5WjBhaXVCVWREMTdCMERmQ2xkcGZMRTYwYmlMcEhkV3BhM3IwbF9Nb3F0RUZpMVU3eVpzMzY0THY0VWxfNW16X1ZOeWtkRzd1NEhzbXBkVVJtN1dqd1poTVNiMWpZdGtKTDI3TmRtSDdJYWJFeTRJb1RBOWdQQQ?oc=5",
-      "date": "Wed, 25 Nov 2026 12:17:12 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "safety4sea",
-      "sourceWeight": 0.55,
-      "score": -0.38,
-      "signalEligible": false
-    },
-    {
-      "title": "Debt Costs With Higher Interest Rates - Seeking Alpha",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNU0pqTm02RFh0VlNsZ1JMOVV6WkhzNWZNV0NJckMtUVNqMFkyQWlUTktWdDUzUUwyVmktb01JOXc5emxBS0N3bGdtcnF5YkJQSjNibTRRUXR4Um5Ka29sZlYxcktkXzJ0cW1sN0N4NjRtTUNsOHlpUDEwTWRTRXhteXpReXFsdm9LbUpMSnZyTEk3OFlyUmNn?oc=5",
-      "date": "Wed, 25 Nov 2026 11:30:00 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Seeking Alpha",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Iran blacklists 26 tugs as Tehran officials vow to break US Hormuz blockade - Lloyd's List",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPZ1FSRWZIc2lwUm5XcHFWdG5qNzJvSjk5YkZsNFBhZExnUVY0ZVlmSklvSV9pd3Z1em8wcWFTalpSWHRDaXRMajhjMnNiWnVPUHdtaVBLOGFMNDBsTzF5TEMwbFZLV0dKdFNGTVFSTFdydDR0VWZjQTY4Y1lQemdFYWlGdXNpUVo0MUUzZnR5TlUyNmVMX0dnOVJ5R3ZlWm1WaDRlaGlpeTFhVi0tUXdZUkhB?oc=5",
-      "date": "Wed, 25 Nov 2026 10:43:24 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "Lloyd's List",
-      "sourceWeight": 0.55,
-      "score": -0.35,
-      "signalEligible": false
-    },
-    {
-      "title": "Target (TGT) Stock Hits New 52-Week High - 24/7 Wall St.",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNNEpNYUs5XzJ6aGVKZUI3bmVybnFKcEZ0VEJRNnhyVF9OeHBfbld3al9OcktOTE1BVzFtRnBjY0FUcFJGekp1RnVaanBGdG5KU2hac1RkVm9ibEQtY0JpMnZDck8yS1BpT1p2LTdQWTMzd3lXSTZNNUdEcVNSWVVFTWliVVVFSlk4OFNxOHJB?oc=5",
-      "date": "Wed, 25 Nov 2026 10:15:07 GMT",
-      "category": "tech",
-      "label": "AI・半導体",
-      "publisher": "24/7 Wall St.",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Trump Wants Another Round Of Tariffs On India And China. But Courts, Congress And A Political Rebellion Could Stand In His Way - Inventiva",
-      "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNU2JBWVhuTzRKaUtNUC1iRHhMTDl0S0tjSkZDNFVSelFSR3IwcUxyaXZjdEJLWTk4TFRpWHF4YUFRUXc4dVd0LWt4dElUTjF3QzN2cTNXMHlQRmNac0ZYMV8xcXJLSE1hYXZCeU9tWGxyTXpmXzBiQUNGdWo0R3Y3OEZqY3FpNWwxbkNfeDR1UVNqSlRvVnhhLVMxSUdUeV9pOUtZMFlSb0czVWs0WVFmblBhZ3ZiMTRHdXJiUmZsX3BpUDFrNXI4eFNlWk5FYWVGb2s3TUFtM3NIMUtyMXUzd00tZU4yU3hyS3RoUGQyOFlGUQ?oc=5",
-      "date": "Wed, 25 Nov 2026 10:13:13 GMT",
-      "category": "trade",
-      "label": "貿易・政策",
-      "publisher": "Inventiva",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "US core PCE inflation set to heat up in October, prompting Federal Reserve rate hikes in 2027 - www.tmgm.com",
-      "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxPenQ0cmc5bERueVZGTThZdDJfSXgtZDZUenlDQVd2aVBRVHVmS0w0M1FQSEt1WEJ5cVZpQjBCcHloQ3cycFhxRW1FOXVqdHJLVlZDWUY4cmVMbGNKc0oyOHJ3STU4RV9KQmQ5MVBmVTFnRVBUczNQbDVHeGY1MjdOcmxDNnFpX1dGODdYRmN2TUlDZFh0NTZCeXlzV2JIaWRkdHNaSUV4bVpyaE1qZENxeml3X09hOVo4V3k4OXNfZEcwMDhOLWkteGNpNjJkU2VUVFEyVkJIOE1mallmOGhobVRjLWFQZEtrX0VsbFVRcw?oc=5",
-      "date": "Wed, 25 Nov 2026 10:04:56 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "www.tmgm.com",
-      "sourceWeight": 0.55,
-      "score": -0.38,
-      "signalEligible": false
-    },
-    {
-      "title": "Study on the payment attitudes of consumers in the euro area (SPACE) – 2026 - European Central Bank",
-      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPeWlvYk5taS03clpTNXB1aTNkbTI2UkgwazFPR0dwdXVvMVZFRGtLWWRHZGRwSURXOERqVW5WUGswQlk5RjhkdWp0c1JaQTR5NnBDaF81TWlXMmNTempJckZ0NVoxdjdCeVFSSG9TLUZ5ZVp3RENjTlk0S0lvX0V6R0JR?oc=5",
-      "date": "Wed, 25 Nov 2026 10:01:34 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "European Central Bank",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "Card payments edge past cash in shops; euro area consumers want both - European Central Bank",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPUnZ1RTh3TjBOUEhlUml2SlVhbDktejkzWDVMRVI1QTlacm1lTWVweGFKT0NjVU5kODY4TW51RzVZSWdVRTVfT2M4aUF5ZkJfZllOZ3phdVM5U2xfRXhJd204eW5IMXpFYmVzLTZxOVo4dkdLV1lSdzlWWTJFRUNhbEpWZTBZVjBD?oc=5",
-      "date": "Wed, 25 Nov 2026 10:01:22 GMT",
-      "category": "global",
-      "label": "世界景気",
-      "publisher": "European Central Bank",
-      "sourceWeight": 0.55,
-      "score": 0,
-      "signalEligible": false
-    },
-    {
-      "title": "The militia Iran says its enemies can't defeat, and the protests it has crushed - Iran International",
-      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1pcVJNcXUxTi04WkkwdGxKQ09YMS1KUXktalVfR25maGpjZE1lbk55UXZMQ0VmUkZCeml0bXBUSmNIU0V0UEtWQTc2MGRLemphdEE?oc=5",
-      "date": "Wed, 25 Nov 2026 09:44:33 GMT",
-      "category": "geo",
-      "label": "地政学",
-      "publisher": "Iran International",
-      "sourceWeight": 0.55,
-      "score": -0.35,
-      "signalEligible": false
-    },
-    {
-      "title": "2027 Federal Reserve rate hikes expected as US core PCE inflation is set to accelerate in October - www.tmgm.com",
-      "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQSUVUdzRtTXZaT2Q3bjZTemZJdjdHRzdkSENuTVE2WjFnY0lWcXU3dFpQaDRnT2tnQzdkaTdQMTdmR1M2cVQ3QXlMTWFqc1dTVEZLSml2RjY3cGxENFBMMmgzd2VoUkJyc1hjZ21nSVh3RFBpU3hpaUp3bXNpQmRsbmZ6SnJwYXFveHZLeHZkV1VSNy01M1JfMFZJNUlEMDdITFpRbHlGOXFYdUZVd3VFWlRYTnItczhjdnBXcTJRX1U5OTVPMkF6Q0F5TGVtVW1kc1ZyeEZ4c3JjQ3ZOY29VdkxDWlljSVBEeVdjVTh4cDM?oc=5",
-      "date": "Wed, 25 Nov 2026 09:40:54 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "www.tmgm.com",
-      "sourceWeight": 0.55,
-      "score": -0.38,
-      "signalEligible": false
-    },
-    {
-      "title": "USD holds its breath awaiting the US October inflation report, while the Japanese yen remains under pressure. - Vietnam.vn",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQLXR5SGRrSE1wSThvdS0xV3ZxeVpIcHNTcjRBcUJTVEhBMmF2WFE0M0R2OHNYTGs2cTlsakVYenRNTlUzQUdOaHFZVjc3OVUtYkRzcHlLT01sbUF6b21aSHhxOHVJZzJyWnZnZDhEb3NkQUdmVlE3Z0JodzFDc19Yakdqc1p5Q19nZnE3VWd0eHZDd0JOdlIwLXFGdkVhdTJs?oc=5",
-      "date": "Wed, 25 Nov 2026 09:24:24 GMT",
-      "category": "rates",
-      "label": "金利・インフレ",
-      "publisher": "Vietnam.vn",
       "sourceWeight": 0.55,
       "score": 0,
       "signalEligible": false
